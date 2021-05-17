@@ -15,6 +15,8 @@ public class Plant {
 	private String plantEnvi;
 	private String plantHumidity;
 	private Date plantDate;
+	private int plantCount;
+	private int plantPoint;
 	
 	private int plantinfoNo;
 	private String piLightInfo;
@@ -44,7 +46,6 @@ public class Plant {
 	public Plant() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public int getPlantNo() {
 		return plantNo;
@@ -140,6 +141,22 @@ public class Plant {
 
 	public void setPlantDate(Date plantDate) {
 		this.plantDate = plantDate;
+	}
+
+	public int getPlantCount() {
+		return plantCount;
+	}
+
+	public void setPlantCount(int plantCount) {
+		this.plantCount = plantCount;
+	}
+
+	public int getPlantPoint() {
+		return plantPoint;
+	}
+
+	public void setPlantPoint(int plantPoint) {
+		this.plantPoint = plantPoint;
 	}
 
 	public int getPlantinfoNo() {
@@ -332,18 +349,15 @@ public class Plant {
 				+ ", plantPlantae=" + plantPlantae + ", plantKind=" + plantKind + ", plantProperty=" + plantProperty
 				+ ", plantLeaf=" + plantLeaf + ", plantDetail=" + plantDetail + ", plantWater=" + plantWater
 				+ ", plantEnvi=" + plantEnvi + ", plantHumidity=" + plantHumidity + ", plantDate=" + plantDate
-				+ ", plantinfoNo=" + plantinfoNo + ", piLightInfo=" + piLightInfo + ", piLightContents="
-				+ piLightContents + ", piLightTip=" + piLightTip + ", piTempInfo=" + piTempInfo + ", piTempContents="
-				+ piTempContents + ", piTempTip=" + piTempTip + ", piTempBest=" + piTempBest + ", piHumidityInfo="
-				+ piHumidityInfo + ", piHumidityContents=" + piHumidityContents + ", piHumidityTip=" + piHumidityTip
-				+ ", piWaterInfo=" + piWaterInfo + ", piWaterContents=" + piWaterContents + ", piWaterTip=" + piWaterTip
-				+ ", piEarthInfo=" + piEarthInfo + ", piEarthContents=" + piEarthContents + ", piFerti=" + piFerti
-				+ ", piBunting=" + piBunting + ", plantfileNo=" + plantfileNo + ", plantfileName=" + plantfileName
-				+ ", plantfilePath=" + plantfilePath + ", plantfileSize=" + plantfileSize + ", plantfileDate="
-				+ plantfileDate + "]";
+				+ ", plantCount=" + plantCount + ", plantPoint=" + plantPoint + ", plantinfoNo=" + plantinfoNo
+				+ ", piLightInfo=" + piLightInfo + ", piLightContents=" + piLightContents + ", piLightTip=" + piLightTip
+				+ ", piTempInfo=" + piTempInfo + ", piTempContents=" + piTempContents + ", piTempTip=" + piTempTip
+				+ ", piTempBest=" + piTempBest + ", piHumidityInfo=" + piHumidityInfo + ", piHumidityContents="
+				+ piHumidityContents + ", piHumidityTip=" + piHumidityTip + ", piWaterInfo=" + piWaterInfo
+				+ ", piWaterContents=" + piWaterContents + ", piWaterTip=" + piWaterTip + ", piEarthInfo=" + piEarthInfo
+				+ ", piEarthContents=" + piEarthContents + ", piFerti=" + piFerti + ", piBunting=" + piBunting
+				+ ", plantfileNo=" + plantfileNo + ", plantfileName=" + plantfileName + ", plantfilePath="
+				+ plantfilePath + ", plantfileSize=" + plantfileSize + ", plantfileDate=" + plantfileDate + "]";
 	}
 
-
-	
-	
 }
