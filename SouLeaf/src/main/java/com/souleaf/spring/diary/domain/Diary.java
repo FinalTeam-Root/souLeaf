@@ -7,12 +7,20 @@ public class Diary {
 	private int diaryNo;
 	private String diaryTitle;
 	private String diaryContent;
-	private Date diaryDate;
-	private String diaryPath;
-	private long diarySize;
-	private Date diaryLastWater;
+	private String diaryDate;
+	private String diaryUpdate;
+	private String diaryRepicname;
 	 
 	public Diary() {}
+
+	public Diary(String diaryTitle, String diaryContent, String diaryDate, String diaryUpdate, String diaryRepicname) {
+		super();
+		this.diaryTitle = diaryTitle;
+		this.diaryContent = diaryContent;
+		this.diaryDate = diaryDate;
+		this.diaryUpdate = diaryUpdate;
+		this.diaryRepicname = diaryRepicname;
+	}
 
 	public int getDiaryNo() {
 		return diaryNo;
@@ -38,44 +46,36 @@ public class Diary {
 		this.diaryContent = diaryContent;
 	}
 
-	public Date getDiaryDate() {
+	public String getDiaryDate() {
 		return diaryDate;
 	}
 
-	public void setDiaryDate(Date diaryDate) {
+	public void setDiaryDate(String diaryDate) {
 		this.diaryDate = diaryDate;
 	}
 
-	public String getDiaryPath() {
-		return diaryPath;
+	public String getDiaryUpdate() {
+		return diaryUpdate;
 	}
 
-	public void setDiaryPath(String diaryPath) {
-		this.diaryPath = diaryPath;
+	public void setDiaryUpdate(String diaryUpdate) {
+		this.diaryUpdate = diaryUpdate;
 	}
 
-	public long getDiarySize() {
-		return diarySize;
+	public String getDiaryRepicname() {
+		return diaryRepicname;
 	}
 
-	public void setDiarySize(long diarySize) {
-		this.diarySize = diarySize;
-	}
-
-	public Date getDiaryLastWater() {
-		return diaryLastWater;
-	}
-
-	public void setDiaryLastWater(Date diaryLastWater) {
-		this.diaryLastWater = diaryLastWater;
+	public void setDiaryRepicname(String diaryRepicname) {
+		this.diaryRepicname = diaryRepicname;
 	}
 
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
-				+ ", diaryDate=" + diaryDate + ", diaryPath=" + diaryPath + ", diarySize=" + diarySize
-				+ ", diaryLastWater=" + diaryLastWater + "]";
-	};
-	
+				+ ", diaryDate=" + diaryDate + ", diaryUpdate=" + diaryUpdate + ", diaryRepicname=" + diaryRepicname
+				+ "]";
+	}
+
 	
 }

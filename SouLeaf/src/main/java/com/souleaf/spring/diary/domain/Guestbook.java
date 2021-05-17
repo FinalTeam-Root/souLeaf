@@ -6,7 +6,8 @@ public class Guestbook {
 	
 	private int guestbookNo;
 	private String guestbookContents;
-	private  Date guestbookDate;
+	private Date guestbookDate;
+	private Date guestbookupdate;
 	
 	public Guestbook() {}
 	
@@ -28,11 +29,18 @@ public class Guestbook {
 	public void setGuestbookDate(Date guestbookDate) {
 		this.guestbookDate = guestbookDate;
 	}
+	public Date getGuestbookupdate() {
+		return guestbookupdate;
+	}
+
+	public void setGuestbookupdate(Date guestbookupdate) {
+		this.guestbookupdate = guestbookupdate;
+	}
 
 	@Override
 	public String toString() {
 		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContents=" + guestbookContents + ", guestbookDate="
-				+ guestbookDate + "]";
+				+ guestbookDate + ", guestbookupdate=" + guestbookupdate + "]";
 	}
 	
 }
