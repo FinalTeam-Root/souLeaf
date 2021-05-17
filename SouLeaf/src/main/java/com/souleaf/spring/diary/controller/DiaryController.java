@@ -1,16 +1,27 @@
 package com.souleaf.spring.diary.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.WaterDay;
 
+@Controller
 public class DiaryController {
+	
+	// 상단의 성장일기 클릭시 화면 이동
+	@RequestMapping(value="diaryMainView.kh")
+	public String diaryView() {
+		System.out.println("들어옴");
+		return "/Diary/DiaryMain";
+	}
 	
 	// 일기 월별 리스트로 보기
 	public String diaryList() {
 		return null;
 	}
 	// 해당 날짜 클릭시 등록된 일기 보기
-	public String diaryDetailView() {
+	public String diaryDetailView() {	
 		return null;
 	}
 	// 일기 등록 화면

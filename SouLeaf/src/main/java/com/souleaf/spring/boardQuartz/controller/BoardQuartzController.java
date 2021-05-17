@@ -1,8 +1,6 @@
 package com.souleaf.spring.boardQuartz.controller;
 
 import java.util.ArrayList;
-
-import javax.annotation.PostConstruct;
  
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
@@ -22,7 +20,7 @@ public class BoardQuartzController{
 	private BoastService bService;
      
     //tomcat 구동 시 메소드가 자동 실행 되도록 하는 어노테이션
-    @PostConstruct
+    //@PostConstruct
     public void schedulerSet() throws Exception {
      
         //jobDetail 설정
