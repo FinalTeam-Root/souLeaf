@@ -29,7 +29,7 @@ public class BoastController {
 	
 	// 자랑하기 등록화면 이동
 	public String boastWriterView(Model model) {
-		return "";
+		return "test";
 	}
 	
 	// 자랑하기 게시글 등록
