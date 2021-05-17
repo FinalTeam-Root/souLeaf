@@ -1,6 +1,7 @@
 package com.souleaf.spring.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,14 +20,21 @@ public class MemberController {
 	private MemberService mService;
 	
 	// 회원가입 폼
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="enrollView.kh", method=RequestMethod.GET)
 	public String enrollView() {
-		return "";
+		return "member/memberJoin";
 	}
 	// 회원등록
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public String memberRegister(@ModelAttribute Member member) {
-		return null;
+	@RequestMapping(value="memberRegister.kh", method=RequestMethod.POST)
+	public String memberRegister(@ModelAttribute Member member,
+								 @RequestParam("post") String post , Model model) {
+		int result = mService.registerMember(member);
+		if(result < 0) {
+			return "redirect:home.kh";
+		}else {
+			model.addAttribute("msg", "회원 가입 실패!!");
+			return "common/errorPage";
+		}
 		
 	}
 	// 마이페이지 뷰
@@ -35,8 +43,15 @@ public class MemberController {
 		return ""; 
 	}
 	// 정보수정
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public String modifyMember(@ModelAttribute Member member) {
+	@RequestMapping(value="memberModify.kh", method=RequestMethod.POST)
+	public String modifyMember(@ModelAttribute Member member,
+							   @RequestParam("post") String post, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int result = mService.modifyMember(member);
+		if(result < 0 ){
+			session.setAttribute("loginMember", member);
+			return "redirect:home.kh";
+		}
 		return null;
 		
 	}
