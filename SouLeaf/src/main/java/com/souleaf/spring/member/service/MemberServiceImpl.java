@@ -23,26 +23,24 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int checkIdDup(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return factory.checkIdDup(memberId);
 	}
 
 	@Override
 	public int registerMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = factory.insertMember(member);
+		return result;
 	}
 
 	@Override
 	public int modifyMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = factory.updateMember(member);
+		return result;
 	}
 
 	@Override
 	public int deleteMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return factory.deleteMember(memberId);
 	}
 
 	@Override

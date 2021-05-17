@@ -27,7 +27,7 @@ public class MemberController {
 	// 회원등록
 	@RequestMapping(value="memberRegister.kh", method=RequestMethod.POST)
 	public String memberRegister(@ModelAttribute Member member,
-								 @RequestParam("post") String post , Model model) {
+								 Model model) {
 		int result = mService.registerMember(member);
 		if(result < 0) {
 			return "redirect:home.kh";
@@ -39,20 +39,23 @@ public class MemberController {
 	}
 	// 마이페이지 뷰
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public String myInfoView() {
-		return ""; 
+	public String myPageView() {
+		return "member/myPage"; 
 	}
 	// 정보수정
 	@RequestMapping(value="memberModify.kh", method=RequestMethod.POST)
 	public String modifyMember(@ModelAttribute Member member,
-							   @RequestParam("post") String post, Model model, HttpServletRequest request) {
+							   Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int result = mService.modifyMember(member);
 		if(result < 0 ){
 			session.setAttribute("loginMember", member);
 			return "redirect:home.kh";
+		}else {
+			model.addAttribute("msg", "정보 수정 실패" );
+			return "common/errorPage";
 		}
-		return null;
+		
 		
 	}
 	// 회원 탈퇴
@@ -60,14 +63,21 @@ public class MemberController {
 	public String memberDelete(
 							@RequestParam("memberId") String memberId,
 							Model model) {
-								return memberId;
+		int result = mService.deleteMember(memberId);
+		if(result > 0) {
+			return "redirect:logout.kh";
+		}else {
+			model.addAttribute("msg", "회원 탈퇴 실패");
+			return "common/errorPage";
+		}
+							
 		
 	}
 	// 아이디 중복 검사
 	@ResponseBody    
 	@RequestMapping(value="dupId.kh", method=RequestMethod.GET)
 	public String idDuplicateCheck(@RequestParam("memberId") String memberId) {
-		return memberId;
+		return String.valueOf(mService.checkIdDup(memberId));
 		
 	}
 	

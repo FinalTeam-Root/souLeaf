@@ -3,12 +3,13 @@ package com.souleaf.spring.member.store;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.store.MemberStore;
 
 public class MemberStoreLogic implements MemberStore {
-	private SqlSession sqlSession;
+	private SqlSessionTemplate sqlSession;
 
 	@Override
 	public List<Member> selectAll() {
@@ -18,32 +19,30 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public Member selectOneMember(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+		Member loginMember = sqlSession.selectOne("memberMapper.selectOneMember", member);
+		return loginMember;
 	}
 
 	@Override
 	public int checkIdDup(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne("memberMapper.checkIdDup", memberId);
 	}
 
 	@Override
 	public int insertMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.insert("memberMapper.insertMember", member);
+		return result;
 	}
 
 	@Override
 	public int updateMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.update("memberMapper.updateMember", member);
+		return result;
 	}
 
 	@Override
 	public int deleteMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("memberMapper.deleteMember", memberId);
 	}
 
 	@Override
