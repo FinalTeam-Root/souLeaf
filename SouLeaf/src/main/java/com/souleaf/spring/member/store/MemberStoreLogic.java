@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.store.MemberStore;
-
+@Repository
 public class MemberStoreLogic implements MemberStore {
 	private SqlSessionTemplate sqlSession;
 

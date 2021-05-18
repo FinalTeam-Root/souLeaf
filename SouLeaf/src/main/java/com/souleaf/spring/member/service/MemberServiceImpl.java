@@ -2,10 +2,12 @@ package com.souleaf.spring.member.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.member.store.MemberStore;
-
+@Service
 public class MemberServiceImpl implements MemberService {
 	private MemberStore factory;
 

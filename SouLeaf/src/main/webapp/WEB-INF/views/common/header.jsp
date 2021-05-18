@@ -41,13 +41,18 @@
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
 						<div class="login-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-comments" id="head-chat"> 채팅</span></a>
-			    			<a href="diaryMainView.kh" class="d-flex align-items-center justify-content-center"><span class="fa fa-leaf" id="head-leaf"> 성장일기</span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-user" id="head-mypage"> 마이페이지</span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-sign-out-alt" id="head-logout"> 로그아웃</span></a>
-			    		</p>
-		        </div>
+				    		<p class="mb-0 d-flex">
+				    			<c:if test="${loginUser eq null }">
+					    			<a href="loginView.kh" class="d-flex align-items-center justify-content-center"><span class="fas fa-sign-in-alt"> 로그인</span></a>
+				    			</c:if>
+				    			<c:if test="${loginUser ne null }">
+					    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fas fa-comments" id="head-chat"> 채팅</span></a>
+					    			<a href="diaryMainView.kh" class="d-flex align-items-center justify-content-center"><span class="fas fa-leaf" id="head-leaf"> 성장일기</span></a>
+					    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fas fa-user" id="head-mypage"> 마이페이지</span></a>
+					    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fas fa-sign-out-alt" id="head-logout"> 로그아웃</span></a>
+				    			</c:if>
+				    		</p>
+		       			</div>
 					</div>
 				</div>
 			</div>
