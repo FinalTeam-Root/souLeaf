@@ -7,10 +7,9 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="com.souleaf.spring.member.domain.Member" alias="Member"/>
-		
+		<typeAlias type="com.souleaf.spring.diary.domain.Diary" alias="Diary"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
-		
-	</mappers>
+		<mapper resource="mappers/diary-mapper.xml"/>	</mappers>
 </configuration>

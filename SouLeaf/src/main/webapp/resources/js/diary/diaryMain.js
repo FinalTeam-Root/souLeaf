@@ -99,6 +99,5 @@
     });
     calendar.render();
 
-      
   });
   

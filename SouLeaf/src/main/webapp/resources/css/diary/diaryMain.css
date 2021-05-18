@@ -1,28 +1,12 @@
 @charset "UTF-8";
-  body {
+/*   body {
     margin: 40px 10px;
     padding: 0;
     font-size: 14px;
-  }
+  } */
 
   #calendar {
     max-width: 80%;
     margin: 50px auto;
   }
-  /* 모달창 띄우는 style창 */
-  #element_to_pop_up { 
-    background-color:#fff;
-    border-radius:5px;
-    color:#000;
-    display:none; 
-    padding:20px;
-    min-width:400px;
-    min-height: 180px;
-  }
-  .b-close{
-      cursor:pointer;
-      position:absolute;
-      right:10px;
-      top:10px;
-  }
-  /* ******모달 끝******* */
+
