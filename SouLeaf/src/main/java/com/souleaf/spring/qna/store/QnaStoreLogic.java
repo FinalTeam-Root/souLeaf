@@ -3,11 +3,15 @@ package com.souleaf.spring.qna.store;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 
+@Repository
 public class QnaStoreLogic implements QnaStore{
+	@Autowired
 	private SqlSession sqlSession;
 
 	@Override
@@ -18,8 +22,7 @@ public class QnaStoreLogic implements QnaStore{
 
 	@Override
 	public ArrayList<Qna> selectSearchList(QnaSearch search) {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("qnaMapper.selectQnaList");
 	}
 
 	@Override
