@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.store.MemberStore;
 @Repository
 public class MemberStoreLogic implements MemberStore {
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	@Override
@@ -48,8 +50,8 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public Member loginMember(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sqlSession.selectOne("memberMapper.loginMember" , member);
 	}
 
 

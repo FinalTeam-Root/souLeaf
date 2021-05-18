@@ -19,6 +19,15 @@ public class Member {
 		
 	
 
+	public Member(String memberId, String memberPw) {
+		super();
+		this.memberId = memberId;
+		this.memberPw = memberPw;
+	}
+
+
+
+
 	public Member(int memberNo, String memberId, String memberPw, String memberNick, String mamberName, String memberPhoto,
 			String memberMail, Date memberJoin, Date memberOut, String memberStatus) {
 		super();
@@ -33,6 +42,9 @@ public class Member {
 		this.memberOut = memberOut;
 		this.memberStatus = memberStatus;
 	}
+
+
+
 
 
 

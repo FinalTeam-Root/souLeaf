@@ -596,13 +596,13 @@ a:focus {
             </div>
             <div class="row">
               <div class="col-xs-12 col-sm-12">
-                <form name="loginForm" class="loginForm" action="#" method="POST">
+                <form name="loginForm" class="loginForm" action="login.kh" method="POST">
                   <div class="form-group">
-                    <input type="email" class="form-control email" name="username" placeholder="Email address">
+                    <input type="text" class="form-control email" name="memberId" placeholder="아이디를 입력해주세요">
                   </div>
                   <div class="form-group">
                     <div class="pwdMask">
-                      <input type="password" class="form-control password" name="password" placeholder="Password">
+                      <input type="password" class="form-control password" name="memberPw" placeholder="비밀번호를 입력해주세요">
                       <span class="fa fa-eye-slash pwd-toggle"></span>
                     </div>
                   </div>
@@ -621,7 +621,7 @@ a:focus {
                     </div>
                   </div> <!-- ./remember-row -->
                   <div class="form-group">
-                    <a href="https://www.enationalelectronics.com" target="_blank" class="btn btn-lg btn-primary btn-block" type="button">Login with email</a>
+                    <input type="submit" value="로그인" class="btn btn-primary">
                     
                   </div>
                 </form>

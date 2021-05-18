@@ -2,6 +2,7 @@ package com.souleaf.spring.member.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.member.domain.Member;
@@ -9,7 +10,8 @@ import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.member.store.MemberStore;
 @Service
 public class MemberServiceImpl implements MemberService {
-	private MemberStore factory;
+	@Autowired
+	private MemberStore mStore;
 
 	@Override
 	public List<Member> selectAll() {
@@ -19,30 +21,30 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member loginMember(Member member) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return mStore.loginMember(member);
 	}
 
 	@Override
 	public int checkIdDup(String memberId) {
-		return factory.checkIdDup(memberId);
+		return mStore.checkIdDup(memberId);
 	}
 
 	@Override
 	public int registerMember(Member member) {
-		int result = factory.insertMember(member);
+		int result = mStore.insertMember(member);
 		return result;
 	}
 
 	@Override
 	public int modifyMember(Member member) {
-		int result = factory.updateMember(member);
+		int result = mStore.updateMember(member);
 		return result;
 	}
 
 	@Override
 	public int deleteMember(String memberId) {
-		return factory.deleteMember(memberId);
+		return mStore.deleteMember(memberId);
 	}
 
 	@Override

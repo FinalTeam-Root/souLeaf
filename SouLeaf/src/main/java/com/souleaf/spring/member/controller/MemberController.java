@@ -91,10 +91,26 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="login.kh", method=RequestMethod.POST)
-	public String memberLogin(HttpServletRequest request) {
-		return "home";
+	public String memberLogin(HttpServletRequest request, @ModelAttribute Member member, Model model) {
+		Member mOne = new Member(member.getMemberId(), member.getMemberPw());
+		Member loginUser = mService.loginMember(mOne);
+		if(loginUser != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
+			return "redirect:home.kh";
+		}else {
+			model.addAttribute("msg", "로그인 실패!");
+			return "common/errorPage";
+		}
 	}
 	
+	// 로그아웃
+	@RequestMapping(value="logout.kh", method=RequestMethod.GET)
+	public String memberLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:home.kh";
+	}
 	
 }
 	

@@ -2,7 +2,20 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="memberMapper">
- 
- 
+ <mapper namespace="memberMapper" >
+ <resultMap type="Member" id="memberResultMap">
+ <id property="memberNo" column="MEMBER_NO"></id>
+ <result property="memberId" column="MEMBER_ID"/>
+ <result property="memberPw" column="MEMBER_PW"/>
+ <result property="memberNick" column="MEMBER_NICK"/>
+ <result property="mamberName" column="MEMBER_NAME"/>
+ <result property="memberPhoto" column="MEMBER_PHONE"/>
+ <result property="memberMail" column="MEMBER_MAIL"/>
+ <result property="memberJoin" column="MEMBER_JOIN"/>
+ <result property="memberOut" column="MEMBER_OUT"/>
+ <result property="memberStatus" column="MEMBER_STATUS"/>
+ </resultMap>
+ <select id="loginMember" parameterType="Member" resultMap="memberResultMap">
+ SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw} AND MEMBER_STATUS = 'Y'
+ </select>
  </mapper>
