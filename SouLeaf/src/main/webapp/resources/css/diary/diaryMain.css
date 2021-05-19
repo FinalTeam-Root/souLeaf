@@ -1,12 +1,138 @@
 @charset "UTF-8";
-/*   body {
-    margin: 40px 10px;
-    padding: 0;
-    font-size: 14px;
-  } */
+.diary-content {
+  border: 1px solid red;
+  margin: 50px auto;
+}
+.tab-pane {
+  position:relative;
+  color: rgba(0,0,0,.87);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  border-radius: 1px;
+  width:1300px;
+  height: auto;
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  justify-content: center;
+  /* overflow: hidden; */
+  clear: left;
+}
 
-  #calendar {
-    max-width: 80%;
-    margin: 50px auto;
-  }
+.tab-content {
+  width:1300px;
+  height: auto;
+  margin: 100px auto 100px;
+}
+.nav-tab-content {
+  margin-left: 30px;
+}
+.nav-pills .nav-item .nav-link {
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 100px;
+  color: #555;
+  transition: all .3s;
+  /* padding: 10px 15px; */
+  text-align: center;
+  border-radius: 4px;
+}
+.nav-pills:not(.flex-column) .nav-item+.nav-item:not(:first-child) {
+  margin-left: 5px;
+}
+
+.nav-pills .nav-item .nav-link.active {
+  color: #fff;
+  background-color: #03ba5f;
+}
+
+.nav-pills .nav-item .nav-link:not(.active):hover {
+  background-color: rgba(200,200,200,.2);
+}
+
+.nav-pills .nav-item i {
+  display: block;
+  font-size: 30px;
+  padding: 15px 0;
+}
+
+.nav-pills.flex-column .nav-item+.nav-item {
+  margin-top: 5px;
+}
+/* 성장일기/사진첩/방명록 클릭 nav  끝@@@@ */
+
+
+/* @@@@@ 성장일기 메인에서 내 정보보기 @@@@@ */
+.myInfo {
+  /* border: 1px solid blue; */
+  max-width: 100%;
+  height: inherit;
+  float: left;
+  margin-right: 30px;
+
+}
+.calendar{
+  /* border: 1px solid red; */
+  height: inherit;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.card {
+  /* margin-bottom: 30px;
+  margin-top: 64px;
+  margin-left: 100px; */
+  border-radius: 1px !important;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.card-title{
+  font-weight: 700 !important;
+  margin-top: 10px;
+  color: #3c4858;
+}
+.text-gray {
+  color: #999!important;
+}
+
+.card .card-body{
+  padding: .9375rem 1.875rem;
+  width: 280px;
+  text-align: left;
+}
+.card.card-profile{
+  margin-top: 80px;
+  text-align: center;
+  width: 270px;
+}
+.card-description{
+  color: #999;
+}
+
+.card .card-category {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.card-profile .card-avatar {
+  width: 130px;
+  max-width: 130px;
+  max-height: 130px;
+  margin: -50px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+.card-profile .card-avatar img{
+  width: 100%;
+}
+.card-profile .card-avatar+.card-body{
+  margin-top: 15px;
+}
+
+/* @@@@@ 성장일기 메인에서 내 정보보기 끄읏!! @@@@@ */
+
 
