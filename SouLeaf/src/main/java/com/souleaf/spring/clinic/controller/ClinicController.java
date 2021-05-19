@@ -1,25 +1,12 @@
 package com.souleaf.spring.clinic.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.souleaf.spring.clinic.domain.Clinic;
@@ -27,10 +14,10 @@ import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
 
-@Controller
+//@Controller
 public class ClinicController {
 
-	@Autowired
+//	@Autowired
 	private ClinicService cService;
 	
 	// org.slf4j 아래에 있는 Logger, LoggerFactory 임포트
