@@ -5,42 +5,49 @@ import java.sql.Date;
 public class Guestbook {
 	
 	private int guestbookNo;
-	private String guestbookContents;
+	private String guestbookContent;
 	private Date guestbookDate;
-	private Date guestbookupdate;
+	private Date guestbookUpdate;
 	
 	public Guestbook() {}
-	
+
 	public int getGuestbookNo() {
 		return guestbookNo;
 	}
+
 	public void setGuestbookNo(int guestbookNo) {
 		this.guestbookNo = guestbookNo;
 	}
-	public String getGuestbookContents() {
-		return guestbookContents;
+
+	public String getGuestbookContent() {
+		return guestbookContent;
 	}
-	public void setGuestbookContents(String guestbookContents) {
-		this.guestbookContents = guestbookContents;
+
+	public void setGuestbookContent(String guestbookContent) {
+		this.guestbookContent = guestbookContent;
 	}
+
 	public Date getGuestbookDate() {
 		return guestbookDate;
 	}
+
 	public void setGuestbookDate(Date guestbookDate) {
 		this.guestbookDate = guestbookDate;
 	}
-	public Date getGuestbookupdate() {
-		return guestbookupdate;
+
+	public Date getGuestbookUpdate() {
+		return guestbookUpdate;
 	}
 
-	public void setGuestbookupdate(Date guestbookupdate) {
-		this.guestbookupdate = guestbookupdate;
+	public void setGuestbookUpdate(Date guestbookUpdate) {
+		this.guestbookUpdate = guestbookUpdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContents=" + guestbookContents + ", guestbookDate="
-				+ guestbookDate + ", guestbookupdate=" + guestbookupdate + "]";
+		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContent=" + guestbookContent + ", guestbookDate="
+				+ guestbookDate + ", guestbookUpdate=" + guestbookUpdate + "]";
 	}
+	
 	
 }

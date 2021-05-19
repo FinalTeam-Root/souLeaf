@@ -9,17 +9,18 @@ public class Diary {
 	private String diaryContent;
 	private String diaryDate;
 	private String diaryUpdate;
+	private String diaryPicname;
 	private String diaryRepicname;
 	 
 	public Diary() {}
 
-	public Diary(String diaryTitle, String diaryContent, String diaryDate, String diaryUpdate, String diaryRepicname) {
+	public Diary(int diaryNo, String diaryTitle, String diaryContent, String diaryDate, String diaryPicname) {
 		super();
+		this.diaryNo = diaryNo;
 		this.diaryTitle = diaryTitle;
 		this.diaryContent = diaryContent;
 		this.diaryDate = diaryDate;
-		this.diaryUpdate = diaryUpdate;
-		this.diaryRepicname = diaryRepicname;
+		this.diaryPicname = diaryPicname;
 	}
 
 	public int getDiaryNo() {
@@ -62,6 +63,14 @@ public class Diary {
 		this.diaryUpdate = diaryUpdate;
 	}
 
+	public String getDiaryPicname() {
+		return diaryPicname;
+	}
+
+	public void setDiaryPicname(String diaryPicname) {
+		this.diaryPicname = diaryPicname;
+	}
+
 	public String getDiaryRepicname() {
 		return diaryRepicname;
 	}
@@ -73,9 +82,10 @@ public class Diary {
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
-				+ ", diaryDate=" + diaryDate + ", diaryUpdate=" + diaryUpdate + ", diaryRepicname=" + diaryRepicname
-				+ "]";
+				+ ", diaryDate=" + diaryDate + ", diaryUpdate=" + diaryUpdate + ", diaryPicname=" + diaryPicname
+				+ ", diaryRepicname=" + diaryRepicname + "]";
 	}
 
+	
 	
 }

@@ -1,7 +1,6 @@
-
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
+	
     var calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
       eventClick: function(e) {
@@ -27,7 +26,7 @@
         center: 'prev,title,next',
         right: 'myCustomButton'
       },
-      initialDate: '2020-09-12',
+      initialDate: '2020-09-12', // 달력 초기화면에서 날짜 값
       navLinks: false, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
