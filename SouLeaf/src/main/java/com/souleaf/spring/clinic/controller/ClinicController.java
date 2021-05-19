@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +27,14 @@ import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
 
-//@Controller
+@Controller
 public class ClinicController {
 
-//	@Autowired
+	@Autowired
 	private ClinicService cService;
+	
+	// org.slf4j 아래에 있는 Logger, LoggerFactory 임포트
+	private Logger log = LoggerFactory.getLogger(ClinicController.class);
 
 	/**
 	 * 클리닉게시물을 가져오는 메소드
@@ -39,25 +44,25 @@ public class ClinicController {
 	 * @param page
 	 * @return clinicListView.jsp
 	 */
-//	@RequestMapping(value="clinicList.kh", method=RequestMethod.GET)
+	@RequestMapping(value="clinicList.kh", method=RequestMethod.GET)
 	public ModelAndView ClinicListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page) {
 
 		// 삼항연산자 「page」가 「null」 이 아니면 currentPage에 「page」 대입 「null」이면 currentPage에 「1」 대입
 		int currentPage = (page != null) ? page : 1;
-		// 클리닉 게시물 개수 조회
-		int listCount = cService.getListCount();
-		// 페이지 정보 취득
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-		// 페이지 정보를 이용한 클리닉 게시믈 취득
-		ArrayList<Clinic> clinicList = cService.printAll(pi);
-		if (!clinicList.isEmpty()) {
-			mv.addObject("bList", clinicList);
+		try {
+			// 클리닉 게시물 개수 조회
+			int listCount = cService.getListCount();
+			// 페이지 정보 취득
+			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+			// 페이지 정보를 이용한 클리닉 게시믈 취득
+			
+			ArrayList<Clinic> clinicList = cService.printAll(pi);
 			mv.addObject("pi", pi);
-			// clinicListView.jsp
+			mv.addObject("cList", clinicList);
 			mv.setViewName("clinic/clinicListView");
-		} else {
-			mv.addObject("msg", "클리닉 전체조회 실패");
-			mv.setViewName("common/errorPage");
+			log.info("클리닉 전체조회 성공"); 
+		} catch (Exception e) {
+			log.info("클리닉 전체조회 실패");
 		}
 		return mv;
 	}
