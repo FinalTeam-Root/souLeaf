@@ -1,6 +1,7 @@
 package com.souleaf.spring.plant.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,9 @@ public class PlantController {
 	
 		// 식물도감 리스트 페이지 이동 및 출력
 		@RequestMapping(value="plantListView.kh")
-		public ModelAndView plantListView(ModelAndView mv, Integer page, Model model) {
-			mv.addObject("nav","plant");
+		public ModelAndView plantListView(ModelAndView mv, Integer page, Model model, HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			session.setAttribute("nav", "plant");
 			mv.setViewName("plant/plantListView");
 			
 			return mv;
@@ -31,8 +33,9 @@ public class PlantController {
 		}
 		
 		// 식물도감 등록화면 이동
-		public String plantWriterView(Model model) {
-			return "";
+		@RequestMapping(value="plantWrite.kh")
+		public String plantWriterView() {
+			return "plant/plantWrite";
 		}
 		
 		// 식물도감 게시글 등록

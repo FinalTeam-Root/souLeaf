@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.picon-active{
+	background: #00bd56;
+}
+.picon {
+	width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ddd;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.picon span {
+	font-size: 20px;
+	color: #fff;
+}
+
+.dbox p span {
+    font-weight: 500;
+    color: #b5b5b5;
+}
