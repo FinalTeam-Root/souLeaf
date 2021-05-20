@@ -71,9 +71,8 @@ public class DiaryServiceImpl implements DiaryService{
 	}
 
 	@Override
-	public ArrayList<Guestbook> printAllGuestbook(int diaryNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Guestbook> printAllGuestbook(int memberDiary) {
+		return dStore.printAllGuestbook(memberDiary);
 	}
 
 	@Override

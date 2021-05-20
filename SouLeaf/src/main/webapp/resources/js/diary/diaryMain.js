@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 	
-	getGuestbookList();
+	//getGuestbookList();
 	//방명록 등록 버튼클릭 시 DB에 데이터 저장
 	$("#btnGuestbook").on("click",function() {
 		var guestbookContent = $("#comment-content").val()
@@ -121,8 +121,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 	
-	function getGuestbookList() {
-		
-	};
+	// function getGuestbookList() {
+	// 	var memberDiary = '${guestbook.memberDiary}'
+	// 	$.ajax({
+	// 		url:"guestbookList.kh",
+	// 		type:"get",
+	// 		data:{"memberDiary" : memberDiary},
+	// 		dataType : "json",
+	// 		success : function(data) {
+	// 			var $commentList = $("#comment-list");
+	// 			$commentList.html("");
+	// 			var $cardBody = $("<div class="card-body">");
+	// 			var $row = $("<div class="row">");
+	// 			var $col = $("<div class="col-md-2">");
+	// 			var $userImg = $("<img src="#" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
+  //       <a href="otherDiaryMain.kh?memberNo=${member.memberNo }"><p class="text-secondary text-center">김윤정</p></a>");
+
+
+	// 		}
+	// 	})	
+	// };
 });
   

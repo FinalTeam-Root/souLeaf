@@ -71,9 +71,8 @@ public class DiaryStoreLogic implements DiaryStore{
 	}
 
 	@Override
-	public ArrayList<Guestbook> printAllGuestbook(int diaryNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Guestbook> printAllGuestbook(int memberDiary) {
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectGuestbookList", memberDiary);
 	}
 
 	@Override

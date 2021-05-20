@@ -19,7 +19,6 @@
 </head>
 <body>  
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
-
 		<div class="diary-content">
 			<div class="tab-content tab-space">
 				<div class="nav-tab-content">
@@ -56,8 +55,8 @@
 									</a>
 								</div>
 								<div class="card-body ">
-									<h6 class="card-category text-gray" name="memberId">아이디</h6>
-									<h4 class="card-title" name="memberNick">닉네임</h4>
+									<h6 class="card-category text-gray" name="memberId">${loginUser.memberId }</h6>
+									<h4 class="card-title" name="memberNick">${loginUser.memberNick }</h4>
 									<hr>
 									<span>소개글 </span>
 									<p class="card-description" name="memberIntro">
@@ -72,9 +71,11 @@
 							</div>
 						</div>
 					</div> <!-- myInfo -->
-					<div class="calendar">
-						<div id='calendar'></div>
-					</div> <!-- calendar -->
+					
+						<div class="calendar">
+							<div id='calendar'></div>
+						</div> <!-- calendar -->
+				
 				</div>
 				
 				<div class="tab-pane" id="myDiary-picture">
@@ -88,15 +89,14 @@
 							<textarea id="comment-content" rows="3"></textarea>
 						</div>
 						<div class="comment-enroll">
-							<span>(0자/최대200자까지 작성)</span>
+							<span id="wordCount1">(0/최대 200자 작성가능)</span>
 							<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
 						</div>
-						
 						<div class="comment-list">
 							<div class="card-body">
-							<div class="row">
+								<div class="row">
 									<div class="col-md-2">
-										<img src="https://img.icons8.com/emoji/96/000000/person-facepalming.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
+										<img src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
 										<p class="text-secondary text-center">김윤정</p>
 									</div>
 									<div class="col-md-10">
@@ -116,7 +116,7 @@
 										<textarea id="comment-modify" rows="3"></textarea>
 									</div>
 									<div class="comment-reEnroll">
-										<span>(0자/최대200자까지 작성)</span>
+										<span id="wordCount2">(0/최대 200자 작성가능)</span>
 										<button type="button" class="btn btn-default btn-secondary">수정</button>
 									</div>
 								</div>
@@ -199,11 +199,11 @@
 							</div>
                     	</div>
 						<label class="col-xs-4" for="edit-picture">사진</label>
-						<div class="custom-file">
-							<div class="col-xs-12">
-								<input type="file" class="custom-file-input" name="diaryPicname" id="customFile">
-								<label class="custom-file-label" for="customFile"></label>
-							</div>
+						<div class="col-xs-12">
+							<div class="form-group files">
+							    <input type="file" class="custom-file-input" id="customFile">
+							    <label class="custom-file-label" for="customFile">Choose file</label>
+						  	</div>
 						</div>
 
 						<div class="form-group">
@@ -212,7 +212,7 @@
 									<textarea rows="4" cols="50" class="form-control form-control-sm" name="diaryContent"
 												id="edit-desc">
 									</textarea>
-									<p>최대200자까지작성가능(0자/200자)<p>
+									<p id="wordCount3">(0/최대 200자 작성가능)<p>
 							</div>
 						</div>
 						<br>
@@ -248,7 +248,49 @@
     	$("#edit-date,#edit-lastWater").datepicker({
         	format: "yyyy-mm-dd",
             language : "kr"
-        });                    
+        });  
+        
+        // 글자수 카운팅 어떻게 하나로 합쳐서 간단하게 할까?
+    	$('#comment-content').on('keyup',function() {
+    		var content = $(this).val();
+        	$('#wordCount1').html("("+content.length+"/최대 200자 작성가능)");
+
+    	    if(content.length > 200) {
+    	      alert("최대 200자까지 입력 가능합니다.");
+    	      $(this).val($(this).val().substring(0,200));
+    	      $("#wordCount1").html("(200/최대 200자 작성가능)");
+    	    }
+    		
+    	});
+    	$('#comment-modify').on('keyup',function() {
+    		var content = $(this).val();
+        	$('#wordCount2').html("("+content.length+"/최대 200자 작성가능)");
+
+    	    if(content.length > 200) {
+    	      alert("최대 200자까지 입력 가능합니다.");
+    	      $(this).val($(this).val().substring(0,200));
+    	      $("#wordCount2").html("(200/최대 200자 작성가능)");
+    	    }
+    		
+    	});
+    	$('#edit-desc').on('keyup',function() {
+    		var content = $(this).val();
+        	$('#wordCount3').html("("+content.length+"/최대 200자 작성가능)");
+
+    	    if(content.length > 200) {
+    	      alert("최대 200자까지 입력 가능합니다.");
+    	      $(this).val($(this).val().substring(0,200));
+    	      $("#wordCount3").html("(200/최대 200자 작성가능)");
+    	    }
+    		
+    	});
+    	// 카운팅 끝~!!!
+    	
+    	// 사진 첨부 시 이름이 안보여서 추가해주는 코드
+    	$("input[type='file']").on('change',function(){
+    		$(this).next('.custom-file-label').html(event.target.files[0].name);
+    	});
+    	
     </script>
 </body>
 </html>

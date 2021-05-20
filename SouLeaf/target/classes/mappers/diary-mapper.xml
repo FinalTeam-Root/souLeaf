@@ -12,24 +12,21 @@
  		<result property="diaryUpdate" column="DIARY_UPDATE"/>
  		<result property="diaryUpdate" column="DIARY_PICNAME"/>
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
-<!--  		<result property="memberNo" column="MEMBER_NO"/> -->
  		<result property="companionNo" column="COMPANION_NO"/>
 		<association property="memberNo" column="MEMBER_NO" javaType="Member" resultMap="memberResultMap"/>
  	</resultMap>
- 	
  	<resultMap type="Guestbook" id="guestbookResultMap">
  		<id property="guestbookNo" column="GUESTBOOK_NO"/>
  		<result property="guestbookContent" column="GUESTBOOK_CONTENT"/>
  		<result property="guestbookDate" column="GUESTBOOK_DATE"/>
  		<result property="guestbookUpdate" column="GUESTBOOK_UPDATE"/>
- 		<!-- <result property="memberNo" column="MEMBER_NO"/> -->
  		<result property="memberDiary" column="MEMBER_DIARY"/>
  		<association property="memberNo" column="MEMBER_NO" javaType="Member" resultMap="memberResultMap"/>
  	</resultMap>
  	
-<!-- 	<select id="selectOneMember" parameterType="Member" resultMap="memberResultMap">
-		
-	</select> -->
+	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
+		SELECT * FROM GUESTBOOK WHERE MEMBER_DIARY = #{memberDiary}
+	</select>
 	
 	<insert id="insertGuestbook">
 		INSERT INTO GUESTBOOK 
