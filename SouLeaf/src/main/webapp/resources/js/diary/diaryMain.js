@@ -98,5 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 
-  });
+
+	//방명록 등록 버튼클릭 시 DB에 데이터 저장
+	$("#btnGuestbook").on("click",function() {
+		alert("test");
+	});
+});
   

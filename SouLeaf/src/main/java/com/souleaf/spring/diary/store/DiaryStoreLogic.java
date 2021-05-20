@@ -72,8 +72,7 @@ public class DiaryStoreLogic implements DiaryStore{
 
 	@Override
 	public int insertGuestbook(Guestbook guestbook) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("diaryMapper.insertGuestbook",guestbook);
 	}
 
 	@Override

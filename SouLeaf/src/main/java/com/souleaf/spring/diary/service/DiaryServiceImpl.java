@@ -72,8 +72,7 @@ public class DiaryServiceImpl implements DiaryService{
 
 	@Override
 	public int registerGuestbook(Guestbook guestbook) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dStore.insertGuestbook(guestbook);
 	}
 
 	@Override

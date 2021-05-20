@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,8 @@
 </head>
 <body>  
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
-		<div clas="diary-content">
+
+		<div class="diary-content">
 			<div class="tab-content tab-space">
 				<div class="nav-tab-content">
 					<ul class="nav nav-pills" role="tablist">
@@ -71,6 +73,7 @@
 						<div id='calendar'></div>
 					</div> <!-- calendar -->
 				</div>
+				
 				<div class="tab-pane" id="myDiary-picture">
 					<div class="">
 						사진첩
@@ -83,11 +86,12 @@
 						</div>
 						<div class="comment-enroll">
 							<span>(0자/최대200자까지 작성)</span>
-							<button type="button" class="btn btn-default btn-secondary">등록</button>
+							<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
 						</div>
+						
 						<div class="comment-list">
 							<div class="card-body">
-								<div class="row">
+							<div class="row">
 									<div class="col-md-2">
 										<img src="https://img.icons8.com/emoji/96/000000/person-facepalming.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
 										<p class="text-secondary text-center">김윤정</p>
@@ -131,24 +135,15 @@
 									</div>
 								</div>
 							</div>
-							<div class="modify-section">
-								<div class="modifyform">
-									<div class="comment-retext">
-										<textarea id="comment-modify" rows="3"></textarea>
-									</div>
-									<div class="comment-reEnroll">
-										<span>(0자/최대200자까지 작성)</span>
-										<button type="button" class="btn btn-default btn-secondary">수정</button>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 
     <!-- 일기 등록, 수정 모달창 -->
-    <form action="diaryRegister.kh" method="post" enctype="multipart/form-data">
+   <!--  enctype="multipart/form-data" -->
+    <form action="#" method="post">
         <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
