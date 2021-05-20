@@ -65,34 +65,13 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	     
-	        	<c:if test="${nav eq 'home' }">
-		        	<li class="nav-item active"><a href="home.kh" class="nav-link">홈</a></li>
-					<li class="nav-item "><a href="intro.kh" class="nav-link">이야기</a></li>
-					<li class="nav-item"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>
-	        	</c:if>
-	        	<c:if test="${nav eq 'intro' }">
-					<li class="nav-item "><a href="home.kh" class="nav-link">홈</a></li>
-					<li class="nav-item active"><a href="intro.kh" class="nav-link">이야기</a></li>
-					<li class="nav-item"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>
-				</c:if>
-		        	<c:if test="${nav eq 'plant' }">
-					<li class="nav-item "><a href="home.kh" class="nav-link">홈</a></li>
-					<li class="nav-item "><a href="intro.kh" class="nav-link">이야기</a></li>
-					<li class="nav-item active"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>
-				</c:if>
-	        
+		        	<li class="nav-item <c:if test="${nav eq 'home' }">active</c:if>"><a href="home.kh" class="nav-link">홈</a></li>
+					<li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li>
+					<li class="nav-item <c:if test="${nav eq 'plant' }">active</c:if>"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
+					<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="#" class="nav-link">식물자랑</a></li>
+					<li class="nav-item <c:if test="${nav eq 'clinic' }">active</c:if>"><a href="#" class="nav-link">식물클리닉</a></li>
+					<li class="nav-item <c:if test="${nav eq 'curiosity' }">active</c:if>"><a href="#" class="nav-link">궁금해요</a></li>
 	        </ul>
-	      
 	      </div>
 	    </div>
 	  </nav>
