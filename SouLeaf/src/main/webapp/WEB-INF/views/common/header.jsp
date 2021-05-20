@@ -69,7 +69,7 @@
 	        	<c:if test="${nav eq 'home' }">
 		        	<li class="nav-item active"><a href="home.kh" class="nav-link">홈</a></li>
 					<li class="nav-item "><a href="intro.kh" class="nav-link">이야기</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물찾기</a></li>
+					<li class="nav-item"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>
@@ -77,7 +77,15 @@
 	        	<c:if test="${nav eq 'intro' }">
 					<li class="nav-item "><a href="home.kh" class="nav-link">홈</a></li>
 					<li class="nav-item active"><a href="intro.kh" class="nav-link">이야기</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">식물찾기</a></li>
+					<li class="nav-item"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>
+				</c:if>
+		        	<c:if test="${nav eq 'plant' }">
+					<li class="nav-item "><a href="home.kh" class="nav-link">홈</a></li>
+					<li class="nav-item "><a href="intro.kh" class="nav-link">이야기</a></li>
+					<li class="nav-item active"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">식물자랑</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">식물클리닉</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">궁금해요</a></li>

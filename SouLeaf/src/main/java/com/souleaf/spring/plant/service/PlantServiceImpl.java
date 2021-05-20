@@ -2,12 +2,15 @@ package com.souleaf.spring.plant.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantSearch;
 import com.souleaf.spring.plant.store.PlantStore;
-
+@Service
 public class PlantServiceImpl implements PlantService{
-	
+	@Autowired
 	private PlantStore factory;
 
 	@Override

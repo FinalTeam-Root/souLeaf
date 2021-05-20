@@ -2,20 +2,27 @@ package com.souleaf.spring.plant.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
-
+@Controller
 public class PlantController {
-	
+	@Autowired
 	private PlantService pService;
 	
 		// 식물도감 리스트 페이지 이동 및 출력
+		@RequestMapping(value="plantListView.kh")
 		public ModelAndView plantListView(ModelAndView mv, Integer page, Model model) {
-			return null;
+			mv.addObject("nav","plant");
+			mv.setViewName("plant/plantListView");
+			
+			return mv;
 		}
 		
 		// 식물도감 상세페이지 이동 및 출력

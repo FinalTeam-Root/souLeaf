@@ -3,12 +3,14 @@ package com.souleaf.spring.plant.store;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantSearch;
-
+@Repository
 public class PlantStoreLogic implements PlantStore{
-
+	@Autowired
 	private SqlSession sqlSession;
 	
 	@Override
