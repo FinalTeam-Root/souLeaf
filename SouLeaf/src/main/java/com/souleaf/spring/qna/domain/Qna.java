@@ -5,47 +5,48 @@ import java.sql.Date;
 public class Qna {
 
 	private int qnaNo;
-	private int memberNO;
+	private int memberNo;
+	private String memberNick;
 	private String qnaTitle;
 	private String qnaContent;
 	private Date qnaDate;
-	private String memberId;
-	
-	
-	public Qna() {}
+	private String qnaStatus;
+	private int qnaCount;
 
-	public Qna(int qnaNo, int memberNO, String qnaTitle, String qnaContent, Date qnaDate, String memberId, int ansNo,
-			String ansTitle, String ansContent, Date ansDate) {
-		super();
-		this.qnaNo = qnaNo;
-		this.memberNO = memberNO;
-		this.qnaTitle = qnaTitle;
-		this.qnaContent = qnaContent;
-		this.qnaDate = qnaDate;
-		this.memberId = memberId;
-		
+	public Qna() {
 	}
 
 	public int getQnaNo() {
 		return qnaNo;
 	}
 
-	public Qna(int qnaNo, int memberNO, String qnaTitle, String qnaContent, Date qnaDate, String memberId) {
+	public Qna(int qnaNo, int memberNo, String memberNick, String qnaTitle, String qnaContent, Date qnaDate,
+			String qnaStatus, int qnaCount) {
 		super();
 		this.qnaNo = qnaNo;
-		this.memberNO = memberNO;
+		this.memberNo = memberNo;
+		this.memberNick = memberNick;
 		this.qnaTitle = qnaTitle;
 		this.qnaContent = qnaContent;
 		this.qnaDate = qnaDate;
-		this.memberId = memberId;
+		this.qnaStatus = qnaStatus;
+		this.qnaCount = qnaCount;
 	}
 
-	public int getMemberNO() {
-		return memberNO;
+	public int getMemberNo() {
+		return memberNo;
 	}
 
-	public void setMemberNO(int memberNO) {
-		this.memberNO = memberNO;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getMemberNick() {
+		return memberNick;
+	}
+
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
 	}
 
 	public String getQnaTitle() {
@@ -72,12 +73,20 @@ public class Qna {
 		this.qnaDate = qnaDate;
 	}
 
-	public String getMemberId() {
-		return memberId;
+	public String getQnaStatus() {
+		return qnaStatus;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setQnaStatus(String qnaStatus) {
+		this.qnaStatus = qnaStatus;
+	}
+
+	public int getQnaCount() {
+		return qnaCount;
+	}
+
+	public void setQnaCount(int qnaCount) {
+		this.qnaCount = qnaCount;
 	}
 
 	public void setQnaNo(int qnaNo) {
@@ -86,10 +95,9 @@ public class Qna {
 
 	@Override
 	public String toString() {
-		return "Qna [qnaNo=" + qnaNo + ", memberNO=" + memberNO + ", qnaTitle=" + qnaTitle + ", qnaContent="
-				+ qnaContent + ", qnaDate=" + qnaDate + ", memberId=" + memberId + "]";
+		return "Qna [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", qnaTitle="
+				+ qnaTitle + ", qnaContent=" + qnaContent + ", qnaDate=" + qnaDate + ", qnaStatus=" + qnaStatus
+				+ ", qnaCount=" + qnaCount + "]";
 	}
 
-	
-	
 }

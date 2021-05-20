@@ -16,17 +16,16 @@ public class QnaServiceImpl implements QnaService {
 	@Autowired
 	private QnaStore qStore;
 	
-	
 	@Override
-	public ArrayList<Qna> printQnaAll() {
-		ArrayList<Qna> qList = qStore.selectAllList();
-		return qList;
+	public ArrayList<Qna> printQnaAll(PageInfo pi) {
+		return qStore.selectAllList(pi);
 	}
+	
 
 	@Override
 	public ArrayList<Qna> printSearchAll(QnaSearch search) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Qna> searchList = qStore.selectSearchList(search);
+		return searchList;
 	}
 
 	@Override
@@ -53,16 +52,22 @@ public class QnaServiceImpl implements QnaService {
 		return 0;
 	}
 
+
 	@Override
-	public ArrayList<Qna> printQnaAll(PageInfo pi) {
+	public int getListCount() {
+		return qStore.selectListCount();
+	}
+
+	@Override
+	public ArrayList<Qna> printQnaAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int addReadCount(int qnaNo) {
+		return qStore.addReadCount(qnaNo);
 	}
 
 
