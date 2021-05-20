@@ -5,7 +5,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <title>성장일기</title>
+    <title>souLeaf - 성장일기</title>
+    <link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">
     <link href='resources/css/diary/calendar.css' rel='stylesheet' />
     <link href='resources/css/diary/diaryMain.css' rel='stylesheet' />
     

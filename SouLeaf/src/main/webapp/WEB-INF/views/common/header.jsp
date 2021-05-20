@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>souLeaf - 반려식물</title>
+    <title>souLeaf - 솔리프</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
