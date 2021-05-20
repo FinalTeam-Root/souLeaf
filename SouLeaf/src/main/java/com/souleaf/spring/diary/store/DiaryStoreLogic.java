@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.domain.WaterDay;
+import com.souleaf.spring.member.domain.Member;
 
 @Repository
 public class DiaryStoreLogic implements DiaryStore{
@@ -16,6 +17,11 @@ public class DiaryStoreLogic implements DiaryStore{
 	@Autowired
 	private SqlSession sqlSession;
 
+	@Override
+	public Member printOneMember(int memberNo) {
+		return sqlSession.selectOne("diaryMapper.selectOneMember", memberNo);
+	}
+	
 	@Override
 	public ArrayList<Diary> monthViewListDiary(Diary diary) {
 		// TODO Auto-generated method stub
@@ -92,5 +98,6 @@ public class DiaryStoreLogic implements DiaryStore{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

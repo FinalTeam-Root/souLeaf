@@ -9,12 +9,18 @@ import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.domain.WaterDay;
 import com.souleaf.spring.diary.store.DiaryStore;
+import com.souleaf.spring.member.domain.Member;
 
 @Service
 public class DiaryServiceImpl implements DiaryService{
 
 	@Autowired
 	private DiaryStore dStore;
+	
+	@Override
+	public Member printOneMember(int memberNo) {
+		return dStore.printOneMember(memberNo);
+	}
 	
 	@Override
 	public ArrayList<Diary> monthViewListDiary(Diary diary) {
@@ -92,5 +98,6 @@ public class DiaryServiceImpl implements DiaryService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

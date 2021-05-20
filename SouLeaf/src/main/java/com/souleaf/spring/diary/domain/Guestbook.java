@@ -9,6 +9,7 @@ public class Guestbook {
 	private Date guestbookDate;
 	private Date guestbookUpdate;
 	private int memberNo;
+	private int memberDiary;
 	
 	public Guestbook() {}
 
@@ -52,11 +53,22 @@ public class Guestbook {
 		this.memberNo = memberNo;
 	}
 
+	public int getMemberDiary() {
+		return memberDiary;
+	}
+
+	public void setMemberDiary(int memberDiary) {
+		this.memberDiary = memberDiary;
+	}
+
 	@Override
 	public String toString() {
 		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContent=" + guestbookContent + ", guestbookDate="
-				+ guestbookDate + ", guestbookUpdate=" + guestbookUpdate + ", memberNo=" + memberNo + "]";
+				+ guestbookDate + ", guestbookUpdate=" + guestbookUpdate + ", memberNo=" + memberNo + ", memberDiary="
+				+ memberDiary + "]";
 	}
+	
+	
 	
 	
 	

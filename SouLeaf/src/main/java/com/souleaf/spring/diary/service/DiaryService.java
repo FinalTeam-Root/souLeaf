@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.domain.WaterDay;
+import com.souleaf.spring.member.domain.Member;
 
 public interface DiaryService {
+	
+	//로그인한 사용자 회원 정보뿌려주기
+	public Member printOneMember(int memberNo);
 	
 	// 일기 월별 리스트로 보기
 	public ArrayList<Diary> monthViewListDiary(Diary diary);
@@ -37,6 +41,7 @@ public interface DiaryService {
 	
 	// 사진첩 하단 
 	public ArrayList<Diary> printPlantPicAll(int diaryNo);
+	
 	
 	// 사진첩 동영상변환 @빽범
 	

@@ -7,13 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.domain.WaterDay;
 import com.souleaf.spring.diary.service.DiaryService;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.member.service.MemberService;
 
 @Controller
 public class DiaryController {
@@ -24,7 +27,6 @@ public class DiaryController {
 	// 상단의 성장일기 클릭시 화면 이동
 	@RequestMapping(value="diaryMainView.kh")
 	public String diaryView() {
-		//System.out.println("들어옴");
 		return "diary/diaryMain";
 	}
 	

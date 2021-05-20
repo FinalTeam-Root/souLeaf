@@ -97,11 +97,32 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     });
     calendar.render();
-
-
+	
+	getGuestbookList();
 	//방명록 등록 버튼클릭 시 DB에 데이터 저장
 	$("#btnGuestbook").on("click",function() {
-		alert("test");
+		var guestbookContent = $("#comment-content").val()
+		$.ajax({
+		url:"regiseterGuestbook.kh",
+		type:"post",
+		data:{"guestbookContent":guestbookContent},
+		success : function(data) {
+			if(data == "success"){
+				alert("방명록 등록 성공");
+				getGuestbookList();
+			} else {
+				alert("방명록 등록 실패!");
+			}
+		},
+		error : function() {
+		
+		}
+	
+		});
 	});
+	
+	function getGuestbookList() {
+		
+	};
 });
   
