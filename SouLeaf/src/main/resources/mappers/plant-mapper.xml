@@ -2,5 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="plantMapper">
 
+	<insert id="insertPlant">
+		INSERT INTO PLANT VALUES (SEQ_PLANT.NEXTVAL,#{plantName},#{plantEngname},#{plantPlantae},#{plantKind},#{plantProperty},#{plantLeaf},#{plantDetail},#{plantWater},#{plantEnvi},#{plantHumidity},DEFAULT,DEFAULT,DEFAULT)
+	
+	</insert>
+	
+	<insert id="insertPlantDetail">
+		INSERT INTO PLANTINFO VALUES(SEQ_PLANTINFO.NEXTVAL,SEQ_PLANT.CURRVAL,#{piLightInfo},#{piLightContents},#{piLightTip},#{piTempInfo},#{piTempContents},#{piTempTip},#{piTempBest},#{piHumidityInfo},#{piHumidityContents},#{piHumidityTip},#{piWaterInfo},#{piWaterContents},#{piWaterTip},#{piEarthInfo},#{piEarthContents},#{piFerti},#{piBunting})
+	
+	</insert>
 
 </mapper>

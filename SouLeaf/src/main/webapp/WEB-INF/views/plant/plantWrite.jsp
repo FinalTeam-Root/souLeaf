@@ -7,6 +7,7 @@
 <title>souLeaf - 식물도감</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/plant/plant-style.css">
+
 </head>
 <body>
 
@@ -65,6 +66,8 @@
 								</div>
 							
 							</div>
+							<form action="plantRegister.kh" method="post" enctype="multipart/form-data">
+							
 							
 							<div class="row no-gutters" id="pform1">
 								<div class="col-md-12">
@@ -75,68 +78,71 @@
 												<div class="col-md-4">
 													<div class="form-group">
 														<label class="label" for="name">종류</label>
-														<select class="form-control">
-															<option>1</option>
+														<select class="form-control" name="plantKind" id="plantKind">
+															<option value="1">1</option>
+															<option value="2">2</option>
 														</select>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
 														<label class="label" for="name">특성</label>
-														<select class="form-control">
-															<option>1</option>
+														<select class="form-control" name="plantProperty" id="plantProperty">
+															<option value="1">1</option>
+															<option value="2">2</option>
 														</select>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="form-group">
 														<label class="label" for="name">잎모양</label>
-														<select class="form-control">
-															<option>1</option>
+														<select class="form-control" name="plantLeaf" id="plantLeaf">
+															<option value="1">1</option>
+															<option value="2">2</option>
 														</select>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="name">식물 이름(한글)</label>
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+														<input type="text" class="form-control" name="plantName" id="plantName">
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
 														<label class="label" for="email">식물 이름(영어)</label>
-														<input type="text" class="form-control" name="email" id="email" placeholder="Email">
+														<input type="text" class="form-control" name="plantEngname" id="plantEngname">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">학명</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<input type="text" class="form-control" name="plantPlantae" id="plantPlantae">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">물 주기</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<input type="text" class="form-control" name="plantWater" id="plantWater">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">빛 정보</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<input type="text" class="form-control" name="plantEnvi" id="plantEnvi">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">습도 정보</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<input type="text" class="form-control" name="plantHumidity" id="plantHumidity">
 													</div>
 												</div>
 												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">식물 설명</label>
-														<textarea name="text" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+														<textarea name="plantDetail" class="form-control" id="plantDetail" cols="30" rows="4" placeholder="상세설명"></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
@@ -161,69 +167,105 @@
 												
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="name">빛</label>
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+														<label class="label" for="name">빛 종류</label>
+														<input type="text" class="form-control" name="piLightInfo" id="piLightInfo">
 													</div>
-												</div>
+												</div>												
 												<div class="col-md-6"> 
 													<div class="form-group">
 														<label class="label" for="email">빛 관리 Tip</label>
-														<input type="text" class="form-control" name="email" id="email" placeholder="Email">
+														<input type="text" class="form-control" name="piLightTip" id="piLightTip">
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="subject">온도</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<label class="label" for="name">빛 내용</label>
+														<input type="text" class="form-control" name="piLightContents" id="piLightContents">
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-4">
+													<div class="form-group">
+														<label class="label" for="subject">온도 종류</label>
+														<input type="text" class="form-control" name="piTempInfo" id="piTempInfo">
+													</div>
+												</div>												
+												<div class="col-md-4">
 													<div class="form-group">
 														<label class="label" for="subject">온도 관리 Tip</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<input type="text" class="form-control" name="piTempTip" id="piTempTip">
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-4">
 													<div class="form-group">
-														<label class="label" for="subject">습도</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<label class="label" for="subject">적정 온도</label>
+														<input type="text" class="form-control" name="piTempBest" id="piTempBest">
 													</div>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="subject">습도 관리 Tip</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">물</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">물 주기 Tip</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">흙</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">비료 Tip</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<label class="label" for="subject">온도 내용</label>
+														<input type="text" class="form-control" name="piTempContents" id="piTempContents">
 													</div>
 												</div>
 												
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">습도 종류</label>
+														<input type="text" class="form-control" name="piHumidityInfo" id="piHumidityInfo">
+													</div>
+												</div>												
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">습도 관리 Tip</label>
+														<input type="text" class="form-control" name="piHumidityTip" id="piHumidityTip">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="subject">습도 내용</label>
+														<input type="text" class="form-control" name="piHumidityContents" id="piHumidityContents">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">물 종류</label>
+														<input type="text" class="form-control" name="piWaterInfo" id="piWaterInfo">
+													</div>
+												</div>												
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">물 주기 Tip</label>
+														<input type="text" class="form-control" name="piWaterTip" id="piWaterTip">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="subject">물 내용</label>
+														<input type="text" class="form-control" name="piWaterContents" id="piWaterContents">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">흙 종류</label>
+														<input type="text" class="form-control" name="piEarthInfo" id="piEarthInfo">
+													</div>
+												</div>												
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">비료 Tip</label>
+														<input type="text" class="form-control" name="piFerti" id="piFerti">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="subject">흙 내용</label>
+														<input type="text" class="form-control" name="piEarthContents" id="piEarthContents">
+													</div>
+												</div>												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">분갈이 시기</label>
-														<textarea name="text" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+														<textarea name="piBunting" class="form-control" id="piBunting" cols="30" rows="4" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
@@ -248,17 +290,26 @@
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group">
-														<div class="file-upload-wrapper">
-												   <input type="file" id="input-file-now-custom-2" class="file-upload"
-												  data-height="500" />
-												</div>
+	
+<!-- <div id="fileUpload" class="dragAndDropDiv">Drag & Drop Files Here or Browse Files</div>
+        <input type="file" name="fileUpload" id="fileUpload" style="display:none;" multiple/> -->
+<center>
+<span class="btn btn-light fileinput-button">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>Drag and Drop files...</span>
+    <input type="file" name="ufile" id="ufile" multiple>
+</span>
+</center>    
+        
+<div id="output"><ul></ul></div>
+
 													</div>
 												</div>
 												
 													<div class="col-md-12">
 													<div class="form-group">
 													<input type="button" value="이전 단계" class="btn btn-primary" onclick="fnMove(2)">
-														<input type="button" value="등록" class="btn btn-primary" onclick="registerPlant()">
+														<input type="submit" value="등록" class="btn btn-primary">
 														<div class="submitting"></div>
 													</div>
 												</div>
@@ -268,7 +319,7 @@
 								</div>
 							</div>
 							<!-- 3 -->
-							
+							</form>
 						</div>
 					</div>
 				</div>

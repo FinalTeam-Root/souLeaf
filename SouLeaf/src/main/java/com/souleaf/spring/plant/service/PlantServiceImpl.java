@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.domain.PlantSearch;
 import com.souleaf.spring.plant.store.PlantStore;
 @Service
 public class PlantServiceImpl implements PlantService{
 	@Autowired
-	private PlantStore factory;
+	private PlantStore pStore;
 
 	@Override
 	public ArrayList<Plant> printAllList() {
@@ -26,19 +27,24 @@ public class PlantServiceImpl implements PlantService{
 	}
 
 	@Override
-	public int registerCuriosity(Plant plant) {
+	public int registerPlant(Plant plant, PlantInfo plantInfo) {
+		int result = 0;
+		int basicResult = 0;
+		int detailResult = 0;
+		basicResult = pStore.insertPlant(plant);
+		detailResult = pStore.insertDetailPlant(plantInfo);
+		result = basicResult * detailResult;
+		return result;
+	}
+
+	@Override
+	public int modifyPlant(Plant plant) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modifyCuriosity(Plant plant) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int removeCuriosity(int curiosityNo) {
+	public int removePlant(int curiosityNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -48,5 +54,6 @@ public class PlantServiceImpl implements PlantService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }

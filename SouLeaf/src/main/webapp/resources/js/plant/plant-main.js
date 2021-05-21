@@ -5,7 +5,51 @@ $('#ptext1').css('color','#00bd56');
 $('#ptext1').css('font-weight','bold');
 $('#pform2').hide();
 $('#pform3').hide();
-$('.file-upload').file_upload();
+$("input#ufile").change(function() {
+    $("#output ul").empty();
+        var ele = document.getElementById($(this).attr('id'));
+        var result = ele.files;
+        for(var x = 0;x< result.length;x++){
+        var fle = result[x];
+        $("#output ul").append("<li>" + fle.name + "(TYPE: " + fle.type + ", SIZE: " + fle.size + ")</li>");        
+    }
+
+});
+
+                
+});
+
+function readURL(input) {
+	console.log(input);
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      //$('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+    $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
 });
 
 function fnMove(seq){

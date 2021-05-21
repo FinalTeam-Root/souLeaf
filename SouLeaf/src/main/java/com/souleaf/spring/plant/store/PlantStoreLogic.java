@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.domain.PlantSearch;
 @Repository
 public class PlantStoreLogic implements PlantStore{
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public ArrayList<Plant> selectAllList() {
 		// TODO Auto-generated method stub
@@ -26,19 +27,23 @@ public class PlantStoreLogic implements PlantStore{
 	}
 
 	@Override
-	public int insertCuriosity(Plant plant) {
+	public int insertPlant(Plant plant) {
+		return sqlSession.insert("plantMapper.insertPlant", plant);
+	}
+
+	@Override
+	public int insertDetailPlant(PlantInfo plantInfo) {
+		return sqlSession.insert("plantMapper.insertPlantDetail", plantInfo);
+	}
+
+	@Override
+	public int updatePlant(Plant plant) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateCuriosity(Plant plant) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteCuriosity(int curiosityNo) {
+	public int deletePlant(int curiosityNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -48,5 +53,9 @@ public class PlantStoreLogic implements PlantStore{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	
+
 
 }
