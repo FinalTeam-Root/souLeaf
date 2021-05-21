@@ -97,18 +97,43 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
     });
     calendar.render();
-	
-	//getGuestbookList();
+
+	//input을 datepicker로 선언
+  $("#edit-date,#edit-lastWater").datepicker({
+    format: "yyyy-mm-dd",
+      language : "kr"
+  });  
+  
+
+// 글자 수 세주는 카운팅 적용
+$('#comment-content').on('keyup',function() {
+    getwordCount($(this), $('#wordCount1'));
+});
+
+$('#edit-desc').on('keyup',function() {
+    getwordCount($(this), $("#wordCount3"));
+});
+// 카운팅 끝~!!!
+
+// 사진 첨부 시 이름이 안보여서 추가해주는 코드
+$("input[type='file']").on('change',function(event){
+  $(this).next('.custom-file-label').html(event.target.files[0].name);
+});
+
+	getGuestbookList();
 	//방명록 등록 버튼클릭 시 DB에 데이터 저장
 	$("#btnGuestbook").on("click",function() {
-		var guestbookContent = $("#comment-content").val()
+		var guestbookContent = $("#comment-content").val();
+    var memberDiary = $("#memberDiary").val();
 		$.ajax({
 		url:"regiseterGuestbook.kh",
 		type:"post",
-		data:{"guestbookContent":guestbookContent},
+		data:{"guestbookContent":guestbookContent,"memberDiary":memberDiary},
 		success : function(data) {
 			if(data == "success"){
 				alert("방명록 등록 성공");
+        $("#comment-content").val("");
+        $("#wordCount1").text("(0/최대 200자 작성가능)");
 				getGuestbookList();
 			} else {
 				alert("방명록 등록 실패!");
@@ -120,26 +145,125 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 		});
 	});
+
+  // $('#customFile').on("drapover",dragOver)
+  // .on("dragleave",dragOver)
+  // .on("drop",uploadFiles);
 	
-	// function getGuestbookList() {
-	// 	var memberDiary = '${guestbook.memberDiary}'
-	// 	$.ajax({
-	// 		url:"guestbookList.kh",
-	// 		type:"get",
-	// 		data:{"memberDiary" : memberDiary},
-	// 		dataType : "json",
-	// 		success : function(data) {
-	// 			var $commentList = $("#comment-list");
-	// 			$commentList.html("");
-	// 			var $cardBody = $("<div class="card-body">");
-	// 			var $row = $("<div class="row">");
-	// 			var $col = $("<div class="col-md-2">");
-	// 			var $userImg = $("<img src="#" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
-  //       <a href="otherDiaryMain.kh?memberNo=${member.memberNo }"><p class="text-secondary text-center">김윤정</p></a>");
-
-
-	// 		}
-	// 	})	
-	// };
+  // function dragOver(e) {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // }
+  // function uploadFiles(e){
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // }
+  // function dragOver(e) {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   if (e.type == "dragover") {
+  //     $(e.target).css({
+  //         "background-color": "black",
+  //         "outline-offset": "-20px"
+  //     });
+  // } else {
+  //     $(e.target).css({
+  //         "background-color": "gray",
+  //         "outline-offset": "-10px"
+  //     });
+  // }
+  // }
 });
+
+// 글자수 카운팅 함수
+function getwordCount(textarea, alertText){
+  var content = textarea.val();
+  alertText.html("("+content.length+"/최대 200자 작성가능)");
+
+  if(content.length > 200) {
+    alert("최대 200자까지 입력 가능합니다.");
+    textarea.val(textarea.val().substring(0,200));
+    alertText.html("(200/최대 200자 작성가능)");
+  }
+}
+// this로 obj로 받아와서 제이쿼리 객체로 만든 다음에 객체탐색메소드를 이용해서 키업 적용
+// 수정을 누를수있는 버튼이 많이 존재하기 때문에 특정 객체만 불러와준다.
+function commentModify(obj) {
+  $(obj).on("keyup", function() {
+     var wordCount2 = $(obj).parent().next().find('#wordCount2');
+     getwordCount($(obj),wordCount2);
+  })
+}
+// 방명록 리스트를 불러오는 함수
+function getGuestbookList() {
+  var memberDiary = $('#memberDiary').val();
+  $.ajax({
+    url:"guestbookList.kh",
+    type:"get",
+    data:{"memberDiary" : memberDiary},
+    dataType : "json",
+    success : function(data) {
+     console.log(data);
+     var $cacommentList = $(".comment-list");
+     $cacommentList.html("");
+     if(data.length > 0) {
+       for(var i in data){
+         var $cardBody = $("<div class='card-body'>");
+         var $row = $("<div class='row'>").append("<div class='col-md-2'><img src='https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png' class='img rounded-circle img-fluid user-img' style='width: 50px';'/></a><p class='text-secondary text-center'>"+data[i].memberNick+"</p></div>")
+         .append("<div class='col-md-10'><div class='clearfix'><p>"+data[i].guestbookContent+"</p><span class='datetime'>"+data[i].guestbookDate+" </span><a href='#' onclick='modifyGuestbook(this,"+data[i].guestbookNo+",\""+data[i].guestbookContent+"\")'> 수정 </a> <a href='#' onclick='removeGuestbook("+data[i].guestbookNo+");return false'> 삭제</a></div></div>");
+         $cardBody.append($row);
+         $cacommentList.append($cardBody);
+       }
+       }
+     }, error :function(){
+       console.log("fail");
+     }
+  })	
+};
+// 방명록 수정 버튼 클릭시 수정창이 띄워주는 함수
+function modifyGuestbook(obj,guestbookNo, modifyContent) {
+  var $modifySection = $("<div class='modify-section'>");
+  var $modifyForm = $("<div class='modifyform'>").append("<div class='comment-retext'><textarea id='comment-modify' onclick='commentModify(this);' rows='3'>"+ modifyContent +"</textarea></div>").append("<div class='comment-reEnroll'><span id='wordCount2'>(0/최대 200자 작성가능)</span><button type='button' class='btn btn-default btn-secondary' onclick='modifyGuestbookCommit("+guestbookNo+",\""+modifyContent+"\")'>수정</button></div>");
+  $modifySection.append($modifyForm);
+  $(obj).parent().parent().parent().parent().after($modifySection);
+}
+
+// 방명록 수정 commit 함수
+function modifyGuestbookCommit(guestbookNo,modifyedContent) {
+  var modifyedContent = $("#comment-modify").val();
+  $.ajax({
+    url :"modifyGuestbook.kh",
+    type :"post",
+    data : {"guestbookNo":guestbookNo,"guestbookContent":modifyedContent},
+    success : function(data){
+      if(data == "success"){
+        alert("방명록이 수정되었습니다.");
+        getGuestbookList();
+      } else {
+        alert("방명록 수정 실패");
+      }
+    }
+  });
+}
+
+
+// 방명록 삭제함수
+function removeGuestbook(guestbookNo) {
+  $.ajax({
+    url : "deleteGuestbook.kh",
+    type : "get",
+    data: {"guestbookNo" :guestbookNo},
+    success : function(data){
+      if(data == "success") {
+        alert("방명록이 삭제되었습니다.");
+        getGuestbookList();
+      } else {
+        alert("방명록 삭제 실패");
+      }
+    },
+    error : function() {
+
+    }
+  });
+}
   

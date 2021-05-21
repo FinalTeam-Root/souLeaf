@@ -13,19 +13,21 @@
  		<result property="diaryUpdate" column="DIARY_PICNAME"/>
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
  		<result property="companionNo" column="COMPANION_NO"/>
-		<association property="memberNo" column="MEMBER_NO" javaType="Member" resultMap="memberResultMap"/>
+		<result property="memberNo" column="MEMBER_NO"/>
  	</resultMap>
  	<resultMap type="Guestbook" id="guestbookResultMap">
  		<id property="guestbookNo" column="GUESTBOOK_NO"/>
  		<result property="guestbookContent" column="GUESTBOOK_CONTENT"/>
  		<result property="guestbookDate" column="GUESTBOOK_DATE"/>
  		<result property="guestbookUpdate" column="GUESTBOOK_UPDATE"/>
+ 		<result property="memberNo" column="MEMBER_NO"/>
  		<result property="memberDiary" column="MEMBER_DIARY"/>
- 		<association property="memberNo" column="MEMBER_NO" javaType="Member" resultMap="memberResultMap"/>
+ 		<result property="memberNick" column="MEMBER_NICK" />
  	</resultMap>
  	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
-		SELECT * FROM GUESTBOOK WHERE MEMBER_DIARY = #{memberDiary}
+		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY 
+		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
 	
 	<insert id="insertGuestbook">
@@ -33,5 +35,12 @@
 		VALUES (SEQ_GUESTBOOK.NEXTVAL, #{guestbookContent},DEFAULT,DEFAULT,#{memberNo},#{memberDiary})
 	</insert>
 	
+	<update id="updateGuestbook">
+		UPDATE GUESTBOOK SET GUESTBOOK_CONTENT = #{guestbookContent},GUESTBOOK_UPDATE = SYSDATE WHERE GUESTBOOK_NO = #{guestbookNo}
+	</update>
+	
+	<delete id="deleteGuestbook">
+		DELETE FROM GUESTBOOK WHERE GUESTBOOK_NO = #{guestbookNo}
+	</delete>
 
  </mapper>

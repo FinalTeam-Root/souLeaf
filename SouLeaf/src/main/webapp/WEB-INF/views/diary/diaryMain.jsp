@@ -12,13 +12,11 @@
     <link href='resources/css/diary/calendar.css' rel='stylesheet' />
     <link href='resources/css/diary/diaryMain.css' rel='stylesheet' />
     
-    <script src='resources/js/diary/calendar.js'></script>
-    <script src='resources/js/diary/ko.js'></script>
-    <script src="resources/js/diary/diaryMain.js"></script>
     
 </head>
 <body>  
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
+    <input type="hidden" name="memberDiary" id="memberDiary" value=1>
 		<div class="diary-content">
 			<div class="tab-content tab-space">
 				<div class="nav-tab-content">
@@ -93,7 +91,7 @@
 							<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
 						</div>
 						<div class="comment-list">
-							<div class="card-body">
+						<!-- <div class="card-body">
 								<div class="row">
 									<div class="col-md-2">
 										<img src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
@@ -102,15 +100,13 @@
 									<div class="col-md-10">
 									   <div class="clearfix">
 											<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as</p>
-											<p>
 											<span class="datetime">2021.05.11 13:51</span> 
 											<a href="#">수정  </a> <a href="#"> 삭제</a>
-											</p>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="modify-section">
+							</div> -->
+						<!-- <div class="modify-section">
 								<div class="modifyform">
 									<div class="comment-retext">
 										<textarea id="comment-modify" rows="3"></textarea>
@@ -120,24 +116,7 @@
 										<button type="button" class="btn btn-default btn-secondary">수정</button>
 									</div>
 								</div>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-2">
-										<img src="https://img.icons8.com/emoji/96/000000/person-facepalming.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
-										<p class="text-secondary text-center">김윤정</p>
-									</div>
-									<div class="col-md-10">
-									   <div class="clearfix">
-											<p>잘보고 가요~ 너무 이뻐요 </p>
-											<p>
-											<span class="datetime">2021.05.11 13:51</span> 
-											<a href="#">수정  </a> <a href="#"> 삭제</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
@@ -242,55 +221,9 @@
     <!-- 모달창 끝 -->
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> 
-        
-    <script>
-        //input을 datepicker로 선언
-    	$("#edit-date,#edit-lastWater").datepicker({
-        	format: "yyyy-mm-dd",
-            language : "kr"
-        });  
-        
-        // 글자수 카운팅 어떻게 하나로 합쳐서 간단하게 할까?
-    	$('#comment-content').on('keyup',function() {
-    		var content = $(this).val();
-        	$('#wordCount1').html("("+content.length+"/최대 200자 작성가능)");
-
-    	    if(content.length > 200) {
-    	      alert("최대 200자까지 입력 가능합니다.");
-    	      $(this).val($(this).val().substring(0,200));
-    	      $("#wordCount1").html("(200/최대 200자 작성가능)");
-    	    }
-    		
-    	});
-    	$('#comment-modify').on('keyup',function() {
-    		var content = $(this).val();
-        	$('#wordCount2').html("("+content.length+"/최대 200자 작성가능)");
-
-    	    if(content.length > 200) {
-    	      alert("최대 200자까지 입력 가능합니다.");
-    	      $(this).val($(this).val().substring(0,200));
-    	      $("#wordCount2").html("(200/최대 200자 작성가능)");
-    	    }
-    		
-    	});
-    	$('#edit-desc').on('keyup',function() {
-    		var content = $(this).val();
-        	$('#wordCount3').html("("+content.length+"/최대 200자 작성가능)");
-
-    	    if(content.length > 200) {
-    	      alert("최대 200자까지 입력 가능합니다.");
-    	      $(this).val($(this).val().substring(0,200));
-    	      $("#wordCount3").html("(200/최대 200자 작성가능)");
-    	    }
-    		
-    	});
-    	// 카운팅 끝~!!!
-    	
-    	// 사진 첨부 시 이름이 안보여서 추가해주는 코드
-    	$("input[type='file']").on('change',function(){
-    		$(this).next('.custom-file-label').html(event.target.files[0].name);
-    	});
-    	
-    </script>
+    <script src="resources/js/diary/diaryMain.js"></script>   
+    <script src='resources/js/diary/calendar.js'></script>
+    <script src='resources/js/diary/ko.js'></script>
+    
 </body>
 </html>

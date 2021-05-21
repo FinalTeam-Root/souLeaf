@@ -82,14 +82,12 @@ public class DiaryStoreLogic implements DiaryStore{
 
 	@Override
 	public int updateGuestbook(Guestbook guestbook) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("diaryMapper.updateGuestbook", guestbook);
 	}
 
 	@Override
 	public int deleteGuestbook(Guestbook guestbook) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("diaryMapper.deleteGuestbook", guestbook);
 	}
 
 	@Override

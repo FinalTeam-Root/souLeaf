@@ -101,9 +101,10 @@ public class DiaryController {
 	// 방명록 등록
 	@ResponseBody
 	@RequestMapping(value="regiseterGuestbook.kh", method=RequestMethod.POST)
-	public String registerGuestbook(@ModelAttribute Guestbook guestbook, HttpSession session) {
+	public String registerGuestbook(@ModelAttribute Guestbook guestbook, @RequestParam("memberDiary") int memberDiary, HttpSession session) {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		guestbook.setMemberNo(loginUser.getMemberNo());
+		guestbook.setMemberDiary(memberDiary);
 		int result = dService.registerGuestbook(guestbook);
 		if(result > 0) {
 			return "success";
@@ -111,13 +112,29 @@ public class DiaryController {
 			return "fail";			
 		}
 	}
+	
 	// 방명록 수정
-	public String guestbookUpdate() {
-		return null;
+	@ResponseBody
+	@RequestMapping(value="modifyGuestbook.kh",method=RequestMethod.POST)
+	public String guestbookUpdate(@ModelAttribute Guestbook guestbook) {
+		int result = dService.modifyGuestbook(guestbook);
+		if(result >0) {
+			return "success";
+		} else {
+			return "fail";			
+		}
 	}
+	
 	// 방명록 삭제
-	public String guestbookDelete() {
-		return null;
+	@ResponseBody
+	@RequestMapping(value="deleteGuestbook.kh", method = RequestMethod.GET)
+	public String guestbookDelete(@ModelAttribute Guestbook guestbook) {
+		int result = dService.removeGuestbook(guestbook);
+		if(result >0) {
+			return "success";
+		} else {
+			return "false";
+		}
 	}
 	
 	// 사진첩 하단

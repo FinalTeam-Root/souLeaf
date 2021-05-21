@@ -6,10 +6,11 @@ public class Guestbook {
 	
 	private int guestbookNo;
 	private String guestbookContent;
-	private Date guestbookDate;
-	private Date guestbookUpdate;
+	private String guestbookDate;
+	private String guestbookUpdate;
 	private int memberNo;
 	private int memberDiary;
+	private String memberNick;
 	
 	public Guestbook() {}
 
@@ -29,19 +30,19 @@ public class Guestbook {
 		this.guestbookContent = guestbookContent;
 	}
 
-	public Date getGuestbookDate() {
+	public String getGuestbookDate() {
 		return guestbookDate;
 	}
 
-	public void setGuestbookDate(Date guestbookDate) {
+	public void setGuestbookDate(String guestbookDate) {
 		this.guestbookDate = guestbookDate;
 	}
 
-	public Date getGuestbookUpdate() {
+	public String getGuestbookUpdate() {
 		return guestbookUpdate;
 	}
 
-	public void setGuestbookUpdate(Date guestbookUpdate) {
+	public void setGuestbookUpdate(String guestbookUpdate) {
 		this.guestbookUpdate = guestbookUpdate;
 	}
 
@@ -61,11 +62,20 @@ public class Guestbook {
 		this.memberDiary = memberDiary;
 	}
 
+	
+	public String getMemberNick() {
+		return memberNick;
+	}
+
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
+	}
+
 	@Override
 	public String toString() {
 		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContent=" + guestbookContent + ", guestbookDate="
 				+ guestbookDate + ", guestbookUpdate=" + guestbookUpdate + ", memberNo=" + memberNo + ", memberDiary="
-				+ memberDiary + "]";
+				+ memberDiary + ", memberNick=" + memberNick + "]";
 	}
 	
 	
