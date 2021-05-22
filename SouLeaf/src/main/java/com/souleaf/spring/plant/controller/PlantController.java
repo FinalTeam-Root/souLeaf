@@ -1,10 +1,13 @@
 package com.souleaf.spring.plant.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +16,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.service.PlantService;
@@ -34,6 +41,20 @@ public class PlantController {
 			mv.setViewName("plant/plantListView");
 			
 			return mv;
+		}
+		
+		// 식물도감 리스트 출력
+		@ResponseBody
+		@RequestMapping(value="plantList.kh")
+		public void getPlantList(HttpServletResponse reponse, @RequestParam("current") int current) throws Exception {
+			System.out.println(current);
+			ArrayList<Plant> pList = pService.printAllList();
+			if(! pList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(pList, reponse.getWriter());
+			}else {
+				System.out.println("데이터가 없습니다");
+			}
 		}
 		
 		// 식물도감 상세페이지 이동 및 출력
@@ -54,7 +75,7 @@ public class PlantController {
 			List<MultipartFile> fList = multipartRequest.getFiles("ufile");
 			  String root = request.getSession().getServletContext().getRealPath("resources");
 			  
-		      String filePath = root+"\\uploadFiles"; //설정파일로 뺀다.
+		      String filePath = root+"\\uploadFiles\\plant"; //설정파일로 뺀다.
 		        File folder = new File(filePath);
 		        if(!folder.exists()) {
 		        	folder.mkdir();

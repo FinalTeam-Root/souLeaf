@@ -17,8 +17,7 @@ public class PlantStoreLogic implements PlantStore{
 
 	@Override
 	public ArrayList<Plant> selectAllList() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("plantMapper.selectAll");
 	}
 
 	@Override

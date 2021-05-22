@@ -20,8 +20,7 @@ public class PlantServiceImpl implements PlantService{
 
 	@Override
 	public ArrayList<Plant> printAllList() {
-		// TODO Auto-generated method stub
-		return null;
+		return pStore.selectAllList();
 	}
 
 	@Override

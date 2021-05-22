@@ -16,7 +16,12 @@
 		<result property="plantDate" column="PLANT_DATE"/>
 		<result property="plantCount" column="PLANT_COUNT"/>
 		<result property="plantPoint" column="PLANT_POINT"/>
+		<result property="plantFileName" column="PLANTFILE_NAME"/>
 	</resultMap>
+	
+	<select id="selectAll" parameterType="Plant" resultMap="plantResultMap">
+		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME FROM (SELECT ROW_NUMBER() OVER(PARTITION BY PLANT_NO ORDER BY PLANTFILE_NO) AS RNUM, PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME FROM PLANT JOIN PLANTFILE USING(PLANT_NO)) WHERE RNUM = 1
+	</select>
 
 	<insert id="insertPlant">
 		INSERT INTO PLANT VALUES (SEQ_PLANT.NEXTVAL,#{plantName},#{plantEngname},#{plantPlantae},#{plantKind},#{plantProperty},#{plantLeaf},#{plantDetail},#{plantWater},#{plantEnvi},#{plantHumidity},DEFAULT,DEFAULT,DEFAULT)
