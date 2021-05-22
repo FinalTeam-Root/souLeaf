@@ -42,7 +42,7 @@
 					</ul>
 				</div>
 			
-				<div class="tab-pane active" id="myDiary-calendar">
+				<div class="col-md-12 tab-pane active" id="myDiary-calendar">
 					<!-- 성장일기 메인에서 내 정보보기 -->
 					<div class="myInfo">
 						<div class="col-md-4">
@@ -69,11 +69,9 @@
 							</div>
 						</div>
 					</div> <!-- myInfo -->
-					
-						<div class="calendar">
+					<div class="calendar">
 							<div id='calendar'></div>
-						</div> <!-- calendar -->
-				
+					</div> <!-- calendar -->
 				</div>
 				
 				<div class="tab-pane" id="myDiary-picture">
@@ -91,32 +89,7 @@
 							<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
 						</div>
 						<div class="comment-list">
-						<!-- <div class="card-body">
-								<div class="row">
-									<div class="col-md-2">
-										<img src="https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png" class="img rounded-circle img-fluid user-img" style="width: 70px;"/>
-										<p class="text-secondary text-center">김윤정</p>
-									</div>
-									<div class="col-md-10">
-									   <div class="clearfix">
-											<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as</p>
-											<span class="datetime">2021.05.11 13:51</span> 
-											<a href="#">수정  </a> <a href="#"> 삭제</a>
-										</div>
-									</div>
-								</div>
-							</div> -->
-						<!-- <div class="modify-section">
-								<div class="modifyform">
-									<div class="comment-retext">
-										<textarea id="comment-modify" rows="3"></textarea>
-									</div>
-									<div class="comment-reEnroll">
-										<span id="wordCount2">(0/최대 200자 작성가능)</span>
-										<button type="button" class="btn btn-default btn-secondary">수정</button>
-									</div>
-								</div>
-							</div> -->
+
 						</div>
 					</div>
 				</div>
@@ -139,10 +112,10 @@
                 		<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-selectPlant" >반려식물 선택</label>
-									<select class="form-control form-control-sm" name="companionNick">
-										<option>산세베리아</option>
-										<option>로즈마리</option>
-										<option>부레옥잠</option>
+									<select class="form-control form-control-sm" name="selectCompanion" id="selectCompanion">
+										<option value="산세베리아">산세베리아</option>
+										<option value="로즈마리">로즈마리</option>
+										<option value="부레옥잠">부레옥잠</option>
 									</select>
 							</div>
                     	</div>
@@ -156,7 +129,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-start">날짜선택</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="diaryDate" id="edit-date" value="2021-05-18"/>
+								<input class="form-control datetimepicker-input" type="text" name="diaryDate" id="edit-date" />
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>
@@ -165,21 +138,64 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-color">색상</label>
-									<select class="form-control form-control-sm" name="diaryColor" id="edit-color">
-										<option value="#D25565" style="color:#D25565;">빨간색</option>
-										<option value="#9775fa" style="color:#9775fa;">보라색</option>
-										<option value="#ffa94d" style="color:#ffa94d;">주황색</option>
-										<option value="#74c0fc" style="color:#74c0fc;">파란색</option>
-										<option value="#f06595" style="color:#f06595;">핑크색</option>
-										<option value="#63e6be" style="color:#63e6be;">연두색</option>
-										<option value="#a9e34b" style="color:#a9e34b;">초록색</option>
-										<option value="#4d638c" style="color:#4d638c;">남색</option>
-									</select>
+								<div class="row colorspace">
+									<div class="custom-radios">
+									  <div>
+									    <input type="radio" id="color-1" name="color" value="#D25565" checked>
+									    <label for="color-1">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									  <div>
+									    <input type="radio" id="color-2" name="color" value="#9775fa">
+									    <label for="color-2">
+									      <span>
+									      </span>
+									    </label>
+									  </div>	
+									  <div>
+									    <input type="radio" id="color-3" name="color" value="#ffa94d">
+									    <label for="color-3">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									  <div>
+									    <input type="radio" id="color-4" name="color" value="#74c0fc">
+									    <label for="color-4">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									  <div>
+									    <input type="radio" id="color-5" name="color" value="#f06595">
+									    <label for="color-5">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									  <div>
+									    <input type="radio" id="color-6" name="color" value="#63e6be">
+									    <label for="color-6">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									  <div>
+									    <input type="radio" id="color-7" name="color" value="#4d638c">
+									    <label for="color-7">
+									      <span>
+									      </span>
+									    </label>
+									  </div>
+									</div>
+								</div>
 							</div>
                     	</div>
 						<label class="col-xs-4" for="edit-picture">사진</label>
 						<div class="col-xs-12">
-							<div class="form-group files">
+							<div class="form-group files fileSection">
 							    <input type="file" class="custom-file-input" id="customFile">
 							    <label class="custom-file-label" for="customFile">Choose file</label>
 						  	</div>
@@ -188,9 +204,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-desc">내용</label>
-									<textarea rows="4" cols="50" class="form-control form-control-sm" name="diaryContent"
-												id="edit-desc">
-									</textarea>
+									<textarea rows="4" cols="50" class="form-control form-control-sm" name="diaryContent" id="edit-desc"></textarea>
 									<p id="wordCount3">(0/최대 200자 작성가능)<p>
 							</div>
 						</div>
@@ -198,7 +212,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="diaryLastWater" id="edit-lastWater" value="2021-05-18"/>
+								<input class="form-control datetimepicker-input" type="text" name="diaryStartWater" id="edit-startWater"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>

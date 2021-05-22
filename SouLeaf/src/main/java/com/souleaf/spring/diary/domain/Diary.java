@@ -7,23 +7,16 @@ public class Diary {
 	private int diaryNo;
 	private String diaryTitle;
 	private String diaryContent;
-	private String diaryDate;
+	private String diaryStartDate;
+	private String diaryEndDate;
 	private String diaryUpdate;
+	private String diarycolor;
 	private String diaryPicname;
 	private String diaryRepicname;
 	private String memberNo;
 	private String companionNo;
 	 
 	public Diary() {}
-
-	public Diary(int diaryNo, String diaryTitle, String diaryContent, String diaryDate, String diaryPicname) {
-		super();
-		this.diaryNo = diaryNo;
-		this.diaryTitle = diaryTitle;
-		this.diaryContent = diaryContent;
-		this.diaryDate = diaryDate;
-		this.diaryPicname = diaryPicname;
-	}
 
 	public int getDiaryNo() {
 		return diaryNo;
@@ -49,12 +42,20 @@ public class Diary {
 		this.diaryContent = diaryContent;
 	}
 
-	public String getDiaryDate() {
-		return diaryDate;
+	public String getDiaryStartDate() {
+		return diaryStartDate;
 	}
 
-	public void setDiaryDate(String diaryDate) {
-		this.diaryDate = diaryDate;
+	public void setDiaryStartDate(String diaryStartDate) {
+		this.diaryStartDate = diaryStartDate;
+	}
+
+	public String getDiaryEndDate() {
+		return diaryEndDate;
+	}
+
+	public void setDiaryEndDate(String diaryEndDate) {
+		this.diaryEndDate = diaryEndDate;
 	}
 
 	public String getDiaryUpdate() {
@@ -63,6 +64,14 @@ public class Diary {
 
 	public void setDiaryUpdate(String diaryUpdate) {
 		this.diaryUpdate = diaryUpdate;
+	}
+
+	public String getDiarycolor() {
+		return diarycolor;
+	}
+
+	public void setDiarycolor(String diarycolor) {
+		this.diarycolor = diarycolor;
 	}
 
 	public String getDiaryPicname() {
@@ -81,11 +90,11 @@ public class Diary {
 		this.diaryRepicname = diaryRepicname;
 	}
 
-	public String getmemberNo() {
+	public String getMemberNo() {
 		return memberNo;
 	}
 
-	public void setmemberNo(String memberNo) {
+	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
 
@@ -100,10 +109,10 @@ public class Diary {
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
-				+ ", diaryDate=" + diaryDate + ", diaryUpdate=" + diaryUpdate + ", diaryPicname=" + diaryPicname
-				+ ", diaryRepicname=" + diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + "]";
+				+ ", diaryStartDate=" + diaryStartDate + ", diaryEndDate=" + diaryEndDate + ", diaryUpdate="
+				+ diaryUpdate + ", diarycolor=" + diarycolor + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
+				+ diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + "]";
 	}
-
 	
 	
 	

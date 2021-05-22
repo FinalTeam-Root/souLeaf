@@ -4,7 +4,9 @@ import java.sql.Date;
 
 public class WaterDay {
 	private int companionNo;
-	private Date diaryLastWater;
+	private String diaryStartWater;
+	private int diaryNo;
+	private Date diaryEndWater;
 	
 	public WaterDay() {
 		super();
@@ -19,18 +21,36 @@ public class WaterDay {
 		this.companionNo = companionNo;
 	}
 
-	public Date getDiaryLastWater() {
-		return diaryLastWater;
+	public String getDiaryStartWater() {
+		return diaryStartWater;
 	}
 
-	public void setDiaryLastWater(Date diaryLastWater) {
-		this.diaryLastWater = diaryLastWater;
+	public void setDiaryStartWater(String diaryStartWater) {
+		this.diaryStartWater = diaryStartWater;
+	}
+
+	public int getDiaryNo() {
+		return diaryNo;
+	}
+
+	public void setDiaryNo(int diaryNo) {
+		this.diaryNo = diaryNo;
+	}
+
+	public Date getDiaryEndWater() {
+		return diaryEndWater;
+	}
+
+	public void setDiaryEndWater(Date diaryEndWater) {
+		this.diaryEndWater = diaryEndWater;
 	}
 
 	@Override
 	public String toString() {
-		return "WarterDay [companionNo=" + companionNo + ", diaryLastWater=" + diaryLastWater + "]";
+		return "WaterDay [companionNo=" + companionNo + ", diaryStartWater=" + diaryStartWater + ", diaryNo=" + diaryNo
+				+ ", diaryEndWater=" + diaryEndWater + "]";
 	}
+
 	
 	
 }

@@ -9,6 +9,7 @@
 		<typeAlias type="com.souleaf.spring.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.souleaf.spring.diary.domain.Diary" alias="Diary"/>
 		<typeAlias type="com.souleaf.spring.diary.domain.Guestbook" alias="Guestbook"/>
+		<typeAlias type="com.souleaf.spring.diary.domain.WaterDay" alias="WaterDay"/>
 		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>

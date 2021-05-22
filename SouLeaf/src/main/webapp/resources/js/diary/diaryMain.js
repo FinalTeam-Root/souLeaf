@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'prev,title,next',
         right: 'myCustomButton'
       },
-      initialDate: '2020-09-12', // 달력 초기화면에서 날짜 값
+      defaultDate : Date, // 달력 초기화면에서 날짜 값 (오늘날짜 불러오기)
       navLinks: false, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
@@ -34,7 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
       locale: 'ko',
       fixedWeekCount : false,
       contentHeight: 600,
-      
+      // eventContent: {
+      //   html : '<div><img src="https://img.icons8.com/ultraviolet/40/000000/water.png" class="event-icon"/>물주는 날</div>'
+      // },
+      eventRender:function(title,start,end,color,img){
+        img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
+      },
       events: [
         
         {
@@ -62,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
           title: 'testmessage',
           start: '2020-09-22',
           end: '2020-09-22',
-          color : 'red'
+          color : '#f06595'
         },
 
         // areas where "Meeting" must be dropped
@@ -77,102 +82,90 @@ document.addEventListener('DOMContentLoaded', function() {
           start: '2020-09-13T10:00:00',
           end: '2020-09-13T16:00:00',
           display: 'background'
-        },
-
-        // red areas where no events can be dropped
-        {
-          start: '2020-09-24',
-          end: '2020-09-28',
-          overlap: false,
-          display: 'background',
-          color: '#ff9f89'
-        },
-        {
-          start: '2020-09-06',
-          end: '2020-09-08',
-          overlap: false,
-          display: 'background',
-          color: '#ff9f89'
         }
       ]
     });
     calendar.render();
 
-	//input을 datepicker로 선언
-  $("#edit-date,#edit-lastWater").datepicker({
-    format: "yyyy-mm-dd",
+    // 일기 등록 버튼 클릭 시 일기 등록
+    $("#save-event").on("click", function() {
+      var companionNick = $("#selectCompanion option:selected").val(); 
+      var diaryTitle = $("#edit-title").val();
+      var diaryStartDate = $("#edit-date").val();
+      var diaryColor = $("input[name='color']:checked").val();
+      var diaryPicname = $("#customFile").val();
+      var diaryContent = $("#edit-desc").val();
+      var diaryStartWater = $("#edit-startWater").val();
+      // diaryStartWater.add(Calendar.DATE,+7);
+      // diaryStartWater +7일 해주는 것은 어떻게 할까? 
+      console.log(diaryStartWater);
+      $.ajax({
+        url :"addDiary.kh",
+        type:"post",
+        data: {"companionNick":companionNick,"diaryTitle" :diaryTitle,
+      "diaryStartDate":diaryStartDate,"diaryColor":diaryColor,"diaryPicname":diaryPicname,"diaryContent":diaryContent,"diaryStartWater":diaryStartWater},
+      success : function(data) {
+        if(data == "success"){
+          alert("다이어리 등록 성공");
+        } else {
+          alert("다이어리 등록 실패!");
+        }
+      }, error : function() {
+        
+      }
+      })
+
+    })
+
+    //input을 datepicker로 선언
+    $("#edit-date,#edit-startWater").datepicker({
+      format: "yyyy-mm-dd",
       language : "kr"
-  });  
+    }).datepicker("setDate",new Date());
+    // datepicker 오늘 날짜 초기값 설정
+    // 하지만 달력 클릭시 오늘 날짜에 박스가 왜 안쳐질까?
   
+    // 글자 수 세주는 카운팅 적용
+    $('#comment-content').on('keyup',function() {
+        getwordCount($(this), $('#wordCount1'));
+    });
 
-// 글자 수 세주는 카운팅 적용
-$('#comment-content').on('keyup',function() {
-    getwordCount($(this), $('#wordCount1'));
-});
+    $('#edit-desc').on('keyup',function() {
+        getwordCount($(this), $("#wordCount3"));
+    });
+    // 카운팅 끝~!!!
 
-$('#edit-desc').on('keyup',function() {
-    getwordCount($(this), $("#wordCount3"));
-});
-// 카운팅 끝~!!!
+    // 사진 첨부 시 이름이 안보여서 추가해주는 코드
+    $("input[type='file']").on('change',function(event){
+      $(this).next('.custom-file-label').html(event.target.files[0].name);
+    });
 
-// 사진 첨부 시 이름이 안보여서 추가해주는 코드
-$("input[type='file']").on('change',function(event){
-  $(this).next('.custom-file-label').html(event.target.files[0].name);
-});
+    getGuestbookList();
+    //방명록 등록 버튼클릭 시 DB에 데이터 저장
+    $("#btnGuestbook").on("click",function() {
+      var guestbookContent = $("#comment-content").val();
+      var memberDiary = $("#memberDiary").val();
+      $.ajax({
+      url:"regiseterGuestbook.kh",
+      type:"post",
+      data:{"guestbookContent":guestbookContent,"memberDiary":memberDiary},
+      success : function(data) {
+        if(data == "success"){
+          alert("방명록 등록 성공");
+          $("#comment-content").val("");
+          $("#wordCount1").text("(0/최대 200자 작성가능)");
+          getGuestbookList();
+        } else {
+          alert("방명록 등록 실패!");
+        }
+      },
+      error : function() {
+      
+      }
+    
+      });
+	  });
 
-	getGuestbookList();
-	//방명록 등록 버튼클릭 시 DB에 데이터 저장
-	$("#btnGuestbook").on("click",function() {
-		var guestbookContent = $("#comment-content").val();
-    var memberDiary = $("#memberDiary").val();
-		$.ajax({
-		url:"regiseterGuestbook.kh",
-		type:"post",
-		data:{"guestbookContent":guestbookContent,"memberDiary":memberDiary},
-		success : function(data) {
-			if(data == "success"){
-				alert("방명록 등록 성공");
-        $("#comment-content").val("");
-        $("#wordCount1").text("(0/최대 200자 작성가능)");
-				getGuestbookList();
-			} else {
-				alert("방명록 등록 실패!");
-			}
-		},
-		error : function() {
-		
-		}
-	
-		});
-	});
-
-  // $('#customFile').on("drapover",dragOver)
-  // .on("dragleave",dragOver)
-  // .on("drop",uploadFiles);
-	
-  // function dragOver(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  // }
-  // function uploadFiles(e){
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  // }
-  // function dragOver(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   if (e.type == "dragover") {
-  //     $(e.target).css({
-  //         "background-color": "black",
-  //         "outline-offset": "-20px"
-  //     });
-  // } else {
-  //     $(e.target).css({
-  //         "background-color": "gray",
-  //         "outline-offset": "-10px"
-  //     });
-  // }
-  // }
 });
 
 // 글자수 카운팅 함수
@@ -245,7 +238,6 @@ function modifyGuestbookCommit(guestbookNo,modifyedContent) {
     }
   });
 }
-
 
 // 방명록 삭제함수
 function removeGuestbook(guestbookNo) {
