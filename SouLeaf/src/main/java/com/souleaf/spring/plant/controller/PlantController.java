@@ -58,8 +58,10 @@ public class PlantController {
 		}
 		
 		// 식물도감 상세페이지 이동 및 출력
-		public ModelAndView plantDetailView(ModelAndView mv,int plantNo, Model model) {
-			return null;
+		@RequestMapping(value="plantDetail.kh")
+		public ModelAndView plantDetailView(ModelAndView mv,@RequestParam("plantNo") int plantNo, Model model) {
+			mv.setViewName("plant/plantDetail");
+			return mv;
 		}
 		
 		// 식물도감 등록화면 이동

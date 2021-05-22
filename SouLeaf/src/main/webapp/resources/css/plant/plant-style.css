@@ -1,5 +1,18 @@
 @charset "UTF-8";
-
+.pd-icon{
+	color: #fff;
+	font-size: 25px;
+}
+.pdi-icon{
+	color: #00bd56;
+    font-size: 45px;
+}
+.services-2{
+	margin-bottom: 30px;
+}
+.heading-section{
+	margin-bottom: 3rem;
+}
 .picon-active{
 	background: #00bd56;
 }

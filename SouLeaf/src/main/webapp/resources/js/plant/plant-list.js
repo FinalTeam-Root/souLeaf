@@ -15,7 +15,7 @@ function getPlantList(){
       if(data.length > 0){
         var str = "";
         for(var i in data){
-          str+='<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">';
+          str+='<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" onclick="location.href=\'plantDetail.kh?plantNo='+data[i].plantNo+'\'">';
           str+='<div class="staff">';
           str+='<div class="img-wrap d-flex align-items-stretch">';
           str+='<div class="img align-self-stretch" style="background-image: url(resources/uploadFiles/plant/'+data[i].plantFileName+');"></div>';

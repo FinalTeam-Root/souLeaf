@@ -8557,7 +8557,7 @@ h1, h2, h3, h4, h5,
       box-shadow: 0px 10px 30px -4px rgba(0, 0, 0, 0.15); }
       .services .media-body .btn-custom span {
         color: #fff; }
-  .services:hover, .services.active {
+  /* .services:hover, .services.active {
     background: #00bd56; }
     .services:hover .icon, .services.active .icon {
       background: #fff; }
@@ -8569,7 +8569,8 @@ h1, h2, h3, h4, h5,
       background: #fff;
       right: -20px; }
       .services:hover .btn-custom span, .services.active .btn-custom span {
-        color: #00bd56; }
+        color: #00bd56; } */
+        /* service 호버,액티브 할 때 쓸 사람 복사해서 쓰세요*/
   @media (max-width: 991.98px) {
     .services {
       margin-bottom: 30px; } }
