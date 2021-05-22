@@ -51,10 +51,7 @@ public class PlantController {
 		// 식물도감 게시글 등록
 		@RequestMapping(value="plantRegister.kh", method = RequestMethod.POST)
 		public ModelAndView plantRegister(ModelAndView mv, @ModelAttribute Plant plant, @ModelAttribute PlantInfo plantInfo, MultipartHttpServletRequest multipartRequest, HttpServletRequest request,Model model) {
-			//int result = pService.registerPlant(plant, plantInfo);
 			List<MultipartFile> fList = multipartRequest.getFiles("ufile");
-			System.out.println(fList);
-			  Iterator<String> itr =  multipartRequest.getFileNames();
 			  String root = request.getSession().getServletContext().getRealPath("resources");
 			  
 		      String filePath = root+"\\uploadFiles"; //설정파일로 뺀다.
@@ -62,34 +59,8 @@ public class PlantController {
 		        if(!folder.exists()) {
 		        	folder.mkdir();
 		        }
-		       for(MultipartFile mf : fList) { //받은 파일들을 모두 돌린다.
-		            
-		            /* 기존 주석처리
-		            MultipartFile mpf = multipartRequest.getFile(itr.next());
-		            String originFileName = mpf.getOriginalFilename();
-		            System.out.println("FILE_INFO: "+originFileName); //받은 파일 리스트 출력'
-		            */
-		            
-		            //MultipartFile mpf = multipartRequest.getFile(itr.next());
-		     
-		            String originalFilename = mf.getOriginalFilename(); //파일명
-		     
-		            String fileFullPath = filePath+"\\"+originalFilename; //파일 전체 경로
-		     
-		            try {
-		                //파일 저장
-		              //  mpf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
-		                
-		                System.out.println("originalFilename => "+originalFilename);
-		                System.out.println("fileFullPath => "+fileFullPath);
-		     
-		            } catch (Exception e) {
-		                System.out.println("postTempFile_ERROR======>"+fileFullPath);
-		                e.printStackTrace();
-		            }
-		                         
-		       }
-			int result = 0;
+		        int result = pService.registerPlant(plant, plantInfo, fList, filePath);
+		       
 			if(result > 0) {
 				mv.setViewName("redirect:plantListView.kh");
 			}else {

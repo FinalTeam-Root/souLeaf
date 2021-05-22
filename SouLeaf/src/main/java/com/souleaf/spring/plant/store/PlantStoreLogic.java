@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.domain.PlantSearch;
 @Repository
@@ -52,6 +53,17 @@ public class PlantStoreLogic implements PlantStore{
 	public ArrayList<Plant> selectSearchAllList(PlantSearch search) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int selectOnePlant() {
+		return sqlSession.selectOne("plantMapper.plantNo");
+	}
+
+	@Override
+	public int insertPlantFile(PlantFile pFile) {
+		
+		return sqlSession.insert("plantMapper.insertPlantFile",pFile);
 	}
 
 	

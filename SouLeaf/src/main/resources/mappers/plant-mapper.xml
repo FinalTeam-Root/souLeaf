@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="plantMapper">
+	<resultMap type="Plant" id="plantResultMap">
+		<id property="plantNo" column="PLANT_NO"/>
+		<result property="plantName" column="PLANT_NAME"/>
+		<result property="plantEngname" column="PLANT_ENGNAME"/>
+		<result property="plantPlantae" column="PLANT_PLANTAE"/>
+		<result property="plantKind" column="PLANT_KIND"/>
+		<result property="plantProperty" column="PLANT_PROPERTY"/>
+		<result property="plantLeaf" column="PLANT_LEAF"/>
+		<result property="plantDetail" column="PLANT_DETAIL"/>
+		<result property="plantWater" column="PLANT_WATER"/>
+		<result property="plantEnvi" column="PLANT_ENVI"/>
+		<result property="plantHumidity" column="PLANT_HUMIDITY"/>
+		<result property="plantDate" column="PLANT_DATE"/>
+		<result property="plantCount" column="PLANT_COUNT"/>
+		<result property="plantPoint" column="PLANT_POINT"/>
+	</resultMap>
 
 	<insert id="insertPlant">
 		INSERT INTO PLANT VALUES (SEQ_PLANT.NEXTVAL,#{plantName},#{plantEngname},#{plantPlantae},#{plantKind},#{plantProperty},#{plantLeaf},#{plantDetail},#{plantWater},#{plantEnvi},#{plantHumidity},DEFAULT,DEFAULT,DEFAULT)
@@ -11,5 +27,13 @@
 		INSERT INTO PLANTINFO VALUES(SEQ_PLANTINFO.NEXTVAL,SEQ_PLANT.CURRVAL,#{piLightInfo},#{piLightContents},#{piLightTip},#{piTempInfo},#{piTempContents},#{piTempTip},#{piTempBest},#{piHumidityInfo},#{piHumidityContents},#{piHumidityTip},#{piWaterInfo},#{piWaterContents},#{piWaterTip},#{piEarthInfo},#{piEarthContents},#{piFerti},#{piBunting})
 	
 	</insert>
+	
+	<insert id="insertPlantFile">
+		INSERT INTO PLANTFILE VALUES(SEQ_PLANTFILE.NEXTVAL,#{plantFileName},#{plantFilePath},#{plantFileSize},DEFAULT,#{plantNo})
+	</insert>
+	
+	<select id="plantNo" resultType="_int" >
+		SELECT MAX(PLANT_NO) FROM PLANT ORDER BY PLANT_NO DESC
+	</select>
 
 </mapper>

@@ -12,6 +12,7 @@
 		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
+		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>

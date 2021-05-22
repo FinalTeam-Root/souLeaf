@@ -3,6 +3,7 @@ package com.souleaf.spring.plant.store;
 import java.util.ArrayList;
 
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.domain.PlantSearch;
 
@@ -14,4 +15,6 @@ public interface PlantStore {
 	public int updatePlant(Plant plant);// 식물도감 수정
 	public int deletePlant(int curiosityNo);// 식물도감 삭제
 	public ArrayList<Plant> selectSearchAllList(PlantSearch search);//식물도감 검색
+	public int selectOnePlant();
+	public int insertPlantFile(PlantFile pFile);
 }
