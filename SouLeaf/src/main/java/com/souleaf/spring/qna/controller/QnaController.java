@@ -42,7 +42,7 @@ public class QnaController {
 			log.info("QnA 전체 조회 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.info("QnA 전체 조회 실패");
+			//log.info("QnA 전체 조회 실패");
 		}
 		return mv;
 	}
@@ -81,11 +81,41 @@ public class QnaController {
 		}
 		return mv;
 	}
-	
+
 	// QnA 등록화면
 	@RequestMapping(value = "qnaWriteView.kh", method = RequestMethod.GET)
 	public String qnaWriteView() {
 		return "qna/qnaWriteForm";
 	}
 
+	// QnA 수정화면
+	@RequestMapping(value= "qnaModifyView.kh", method = RequestMethod.GET)
+	public ModelAndView qnaModifyView(ModelAndView mv, @RequestParam("qnaNo") int qnaNo) {
+		try {
+
+			Qna qna = qService.printQnaOne(qnaNo);
+			mv.addObject("qna", qna);
+			mv.setViewName("qna/qnaUpdateView");
+			log.info("QnA 게시글 수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.info("QnA 게시글 수정 실패");
+		}
+		return mv;
+
+	}
+	// QnA 삭제
+	@RequestMapping(value= "qnaDelete.kh", method=RequestMethod.GET)
+	public String qnaDelete(Model model, @RequestParam("qnaNo") int qnaNo) {
+		int result = qService.removeQna(qnaNo);
+		if(result > 0) {
+			return "redirect:qnaList.kh";
+		}else {
+			model.addAttribute("msg", "QnA 삭제 실패 ");
+			log.info("QnA 삭제 실패");
+			return "redirect:qnaList.kh";
+		}
+		
+		
+	}
 }

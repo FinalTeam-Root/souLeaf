@@ -15,12 +15,11 @@ import com.souleaf.spring.qna.store.QnaStore;
 public class QnaServiceImpl implements QnaService {
 	@Autowired
 	private QnaStore qStore;
-	
+
 	@Override
 	public ArrayList<Qna> printQnaAll(PageInfo pi) {
 		return qStore.selectAllList(pi);
 	}
-	
 
 	@Override
 	public ArrayList<Qna> printSearchAll(QnaSearch search) {
@@ -29,29 +28,24 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public Qna printQnaOne(int qId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Qna printQnaOne(int qnaNo) {
+		return qStore.selectOne(qnaNo);
 	}
 
 	@Override
 	public int registerQna(Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
+		return qStore.insertQna(qna);
 	}
 
 	@Override
 	public int modifyQna(Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
+		return qStore.updateQna(qna);
 	}
 
 	@Override
 	public int removeQna(int qId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return qStore.deleteQna(qId);
 	}
-
 
 	@Override
 	public int getListCount() {
@@ -59,17 +53,15 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public ArrayList<Qna> printQnaAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public int addReadCount(int qnaNo) {
 		return qStore.addReadCount(qnaNo);
 	}
 
+	@Override
+	public ArrayList<Qna> printQnaAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }

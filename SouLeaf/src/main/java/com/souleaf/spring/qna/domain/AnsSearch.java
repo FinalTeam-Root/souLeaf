@@ -1,14 +1,14 @@
 package com.souleaf.spring.qna.domain;
 
-public class QnaSearch {
-
+public class AnsSearch {
+	
 	private String searchCondition;
 	private String searchValue;
 	
-	public QnaSearch() {}
+	public AnsSearch() {}
 
-	
-	
+
+
 	public String getSearchCondition() {
 		return searchCondition;
 	}

@@ -18,4 +18,12 @@
  <select id="loginMember" parameterType="Member" resultMap="memberResultMap">
  SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw} AND MEMBER_STATUS = 'Y'
  </select>
+ 
+ <select id="checkIdDup" resultType="_int">
+ 	SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID = #{memberId}
+ </select>
+ 
+ <insert id="insertMember" parameterType="Member">
+ 	INSERT INTO MEMBER VALUES(#{memberId}, #{memberPw}, #{memberName}, #{memberMail}, #{memberNick}, SYSDATE, SYSDATE, 'Y')
+ </insert>
  </mapper>

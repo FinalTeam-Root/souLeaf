@@ -42,8 +42,7 @@ public class QnaStoreLogic implements QnaStore{
 
 	@Override
 	public int updateQna(Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("qnaMapper.updateQna", qna);
 	}
 
 	@Override
