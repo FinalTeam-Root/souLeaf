@@ -75,7 +75,7 @@ public class PlantController {
 			List<MultipartFile> fList = multipartRequest.getFiles("ufile");
 			  String root = request.getSession().getServletContext().getRealPath("resources");
 			  
-		      String filePath = root+"\\uploadFiles\\plant"; //설정파일로 뺀다.
+		      String filePath = root+"/uploadFiles/plant"; //설정파일로 뺀다.
 		        File folder = new File(filePath);
 		        if(!folder.exists()) {
 		        	folder.mkdir();

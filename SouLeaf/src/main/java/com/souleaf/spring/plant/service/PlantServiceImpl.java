@@ -41,7 +41,7 @@ public class PlantServiceImpl implements PlantService{
 		int plantNo = pStore.selectOnePlant();
 		for(MultipartFile mf : fList) {
 			 String originalFilename = mf.getOriginalFilename(); //파일명		     
-	         String fileFullPath = filePath+"\\"+originalFilename; //파일 전체 경로
+	         String fileFullPath = filePath+"/"+originalFilename; //파일 전체 경로
 	         long fileSize = mf.getSize(); // 파일사이즈
 	         try {
 	                //파일 저장

@@ -11,7 +11,7 @@ function getPlantList(){
     dataType : "json",
     success : function(data){
       
-      console.log(data);
+      
       if(data.length > 0){
         var str = "";
         for(var i in data){
@@ -26,7 +26,7 @@ function getPlantList(){
           str+='<div class="faded">';          
           str+='</div></div></div></div>';
         }
-        console.log(str);
+        
         $("#plant-list").append(str);
       }
       
