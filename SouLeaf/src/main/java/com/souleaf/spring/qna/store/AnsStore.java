@@ -16,4 +16,6 @@ public interface AnsStore {
 	public int updateAns(Ans ans);
 	public int deleteAns(int aId);
 	public ArrayList<Ans> selectSearchList(AnsSearch search);
+	public int selectListCount();
+	public int addReadCount(int ansNo);
 }

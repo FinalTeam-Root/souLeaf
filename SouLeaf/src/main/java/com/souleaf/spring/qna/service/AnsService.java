@@ -16,7 +16,7 @@ public interface AnsService {
 	public int modifyAns(Ans ans);
 	public int removeAns(int aId);
 	public int getListCount();
-	public void addReadCount(int ansNo);
+	public int addReadCount(int ansNo);
 	public ArrayList<Ans> printSearchAll(AnsSearch search);
 	
 }
