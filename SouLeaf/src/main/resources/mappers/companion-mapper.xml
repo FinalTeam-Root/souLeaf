@@ -15,11 +15,11 @@
 		<result property="companionNeedwater" column="COMPANION_NEEDWATER"></result>
 	</resultMap>
 	
-	<select id="selectAllList" resultType="boardResultMap">
+	<select id="selectAllList" resultType="companionResultMap">
 		SELECT * FROM COMPANION ORDER BY COMPANION_NO ASC
 	</select>
 	
-	<select id="selectOne" resultType="boardResultMap">
+	<select id="selectOne" resultType="companionResultMap">
 		SELECT * FROM COMPANION WHERE COMPANION_NO = #{companionNo}
 	</select>
 	

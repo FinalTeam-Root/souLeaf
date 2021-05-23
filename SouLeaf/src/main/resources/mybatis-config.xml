@@ -14,7 +14,7 @@
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
 		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
-		<typeAlias type="com.souleaf.spring.clinic.domain.clinic" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.Clinic" alias="Clinic"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicFile" alias="ClinicFile"/>
 	</typeAliases>
