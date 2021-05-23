@@ -29,15 +29,13 @@ public class QnaStoreLogic implements QnaStore{
 	}
 
 	@Override
-	public Qna selectOne(int qId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Qna selectOne(int qnaNo) {
+		return sqlSession.selectOne("qnaMapper.selectOne", qnaNo);
 	}
 
 	@Override
 	public int insertQna(Qna qna) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("qnaMapper.insertQna", qna);
 	}
 
 	@Override
@@ -46,9 +44,8 @@ public class QnaStoreLogic implements QnaStore{
 	}
 
 	@Override
-	public int deleteQna(int qId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteQna(int qnaNo) {
+		return sqlSession.update("qnaMapper.deleteQna", qnaNo);
 	}
 
 	@Override

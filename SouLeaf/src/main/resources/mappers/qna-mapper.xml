@@ -12,11 +12,35 @@
  		<result property="qnaTitle" column="QNA_TITLE"></result>
  		<result property="qnaContent" column="QNA_CONTENT"></result>
  		<result property="qnaDate" column="QNA_DATE"></result>
+ 		<result property="qnaUpdate" column="QNA_UPDATE"></result>
  		<result property="qnaStatus" column="QNA_STATUS"></result>
  		<result property="qnaCount" column="QNA_COUNT"></result>
  	
  		
  	</resultMap>
  
+ 	<select id="selectListCount" resultType="_int">
+ 		SELECT COUNT(*) FROM QNA WHERE QNA_STATUS = 'Y'
+ 	</select>
+ 	
+ 	<select id="selectAllList" resultMap="qnaResultMap">
+ 		SELECT * FROM QNA WHERE QNA_STATUS = 'Y' ORDER BY QNA BY QNA_NO DESC
+ 	</select>
+ 	
+ 	<select id="insertQna">
+ 		INSERT INTO QNA VALUES(SEQ_NEXTVAL, #{qnaTitle}, #{qnaContent}, #{memberNo}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+ 	</select>
+ 	
+ 	<update id="updateQna">
+ 		UPDATE QNA SET QNA_TITLE = #{qnaTitle}, QNA_CONTENT = #{qnaContent}, QNA_UPDATE = SYSDATE WHERE QNA_NO = #{qnaNo}
+ 	</update>
+ 	
+ 	<update id="updateCount">
+ 		UPDATE QNA SET QNA_COUNT = QNA_COUNT + 1 WHERE QNA_NO = #{qnaNo}
+ 	</update>
+ 	
+ 	<update id="deleteQna" parameterType="_int">
+ 		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO = #{qnaNo}
+ 	</update>
  </mapper>
  

@@ -17,39 +17,34 @@ public class AnsServiceImpl implements AnsService{
 	
 
 	@Override
-	public Ans printAnsOne(int aId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ans printAnsOne(int ansNo) {
+		return aStore.selectOne(ansNo);
 	}
 
 	@Override
 	public int registerAns(Ans ans) {
-		// TODO Auto-generated method stub
-		return 0;
+		return aStore.insertAns(ans);
 	}
 
 	@Override
 	public int modifyAns(Ans ans) {
-		// TODO Auto-generated method stub
-		return 0;
+		return aStore.updateAns(ans);
 	}
 
 	@Override
 	public int removeAns(int aId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return aStore.deleteAns(aId);
 	}
+	
 
 	@Override
 	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return aStore.selectListCount();
 	}
 
 	@Override
-	public void addReadCount(int ansNo) {
-		// TODO Auto-generated method stub
-		
+	public int addReadCount(int ansNo) {
+		return aStore.addReadCount(ansNo);
 	}
 
 	@Override

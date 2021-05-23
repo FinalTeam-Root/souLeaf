@@ -1,6 +1,10 @@
 package com.souleaf.spring.member.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
 
@@ -20,11 +28,11 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
-//	// 회원가입 폼
-//	@RequestMapping(value="enrollView.kh", method=RequestMethod.GET)
-//	public String enrollView() {
-//		return "member/memberJoin";
-//	}
+	// 회원가입 폼
+	@RequestMapping(value="enrollView.kh", method=RequestMethod.GET)
+	public String enrollView() {
+		return "member/enrollView";
+	}
 //	// 회원등록
 //	@RequestMapping(value="memberRegister.kh", method=RequestMethod.POST)
 //	public String memberRegister(@ModelAttribute Member member,
@@ -74,7 +82,7 @@ public class MemberController {
 //							
 //		
 //	}
-//	// 아이디 중복 검사
+    //아이디 중복 검사
 //	@ResponseBody    
 //	@RequestMapping(value="dupId.kh", method=RequestMethod.GET)
 //	public String idDuplicateCheck(@RequestParam("memberId") String memberId) {
@@ -112,6 +120,14 @@ public class MemberController {
 		return "redirect:home.kh";
 	}
 	
+	//아이디 중복 검사
+	@RequestMapping(value="idCheck.kh", method=RequestMethod.POST)
+	public void idDupleCheck(HttpServletResponse response, @ModelAttribute Member member) throws JsonIOException, IOException {
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 고정
+		Integer result = 0; // 변수 값 
+		result = mService.checkIdDup(member.getMemberId()) > 0 ? 1 : 0;
+		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
+	}                                                      
 }
 	
 
