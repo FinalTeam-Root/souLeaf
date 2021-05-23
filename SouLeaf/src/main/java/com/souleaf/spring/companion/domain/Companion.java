@@ -1,17 +1,19 @@
-package com.souleaf.spring.companion.main;
+package com.souleaf.spring.companion.domain;
 
 import java.sql.Date;
 
 public class Companion {
 	
-	private int companionNo;
-	private int plantNo;
-	private int memberNo;
-	private String companionNick;
-	private Date companionDate;
-	private Date companionUpdate;
-	private String companionPickName;
-	private String companionRepicName;
+	private int companionNo; // 반려식물번호
+	private int plantNo; // 식물번호
+	private int memberNo; // 회원번호
+	private String companionNick; // 애칭
+	private Date companionDate; // 등록일
+	private Date companionUpdate; // 수정일
+	private String companionPickName; // 식물 원본 사진
+	private String companionRepicName; // 식물 저장 사진
+	private Date companionLastWater; // 마지막 물 준날
+	private Date companionNeedWater; // 물 줘야하는 날
 	
 	public Companion() {}
 
@@ -79,12 +81,29 @@ public class Companion {
 		this.companionRepicName = companionRepicName;
 	}
 
+	public Date getCompanionLastWater() {
+		return companionLastWater;
+	}
+
+	public void setCompanionLastWater(Date companionLastWater) {
+		this.companionLastWater = companionLastWater;
+	}
+
+	public Date getCompanionNeedWater() {
+		return companionNeedWater;
+	}
+
+	public void setCompanionNeedWater(Date companionNeedWater) {
+		this.companionNeedWater = companionNeedWater;
+	}
+
 	@Override
 	public String toString() {
 		return "Companion [companionNo=" + companionNo + ", plantNo=" + plantNo + ", memberNo=" + memberNo
 				+ ", companionNick=" + companionNick + ", companionDate=" + companionDate + ", companionUpdate="
 				+ companionUpdate + ", companionPickName=" + companionPickName + ", companionRepicName="
-				+ companionRepicName + "]";
+				+ companionRepicName + ", companionLastWater=" + companionLastWater + ", companionNeedWater="
+				+ companionNeedWater + "]";
 	}
-	
+
 }

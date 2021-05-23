@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.souleaf.spring.companion.main.Companion;
+import com.souleaf.spring.companion.domain.Companion;
 
 //@Repository
 public class CompanionStoreLogic implements CompanionStore{

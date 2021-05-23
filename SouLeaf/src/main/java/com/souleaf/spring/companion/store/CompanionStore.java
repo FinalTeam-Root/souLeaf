@@ -2,7 +2,7 @@ package com.souleaf.spring.companion.store;
 
 import java.util.ArrayList;
 
-import com.souleaf.spring.companion.main.Companion;
+import com.souleaf.spring.companion.domain.Companion;
 
 public interface CompanionStore {
 

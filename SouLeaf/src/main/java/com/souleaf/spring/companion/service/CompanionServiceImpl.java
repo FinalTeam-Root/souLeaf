@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.souleaf.spring.companion.main.Companion;
+import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.companion.store.CompanionStore;
 
 //@Service

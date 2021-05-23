@@ -3,7 +3,7 @@ package com.souleaf.spring.companion.service;
 import java.util.ArrayList;
 
 import com.souleaf.spring.common.PageInfo;
-import com.souleaf.spring.companion.main.Companion;
+import com.souleaf.spring.companion.domain.Companion;
 
 public interface CompanionService {
 
