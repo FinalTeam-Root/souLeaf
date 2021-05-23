@@ -28,6 +28,17 @@
 		VALUES(SEQ_COMPANION, #{plantNo }, #{memberNo }, #{companionNick }, DEFAULT, NULL, #{companionPicname }, #{companionRepicname}, #{companionLastwater}, #{companionNeedwater})
 	</insert>
 	
+	<update id="updatecompanion">
+		UPDATE COMPANION SET PLANT_NO = #{plantNo }, COMPANION_NICK = #{companionNick },
+		COMPANION_UPDATE = SYSDATE, COMPANION_PICNAME = #{companionPicname }, COMPANION_REPICNAME = #{companionRepicname},
+		COMPANION_LASTWATER = #{companionLastwater}, COMPANION_NEEDWATER = #{companionNeedwater}
+		WHERE COMPANION_NO = #{companionNo }
+	</update>
+	
+	<delete id="deletecompanion">
+		DELETE FROM COMPANION WHERE COMPANION_NO = #{companionNo }
+	</delete>
+	
 	
 	
 </mapper>
