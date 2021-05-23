@@ -9,16 +9,21 @@
 		<typeAlias type="com.souleaf.spring.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.souleaf.spring.diary.domain.Diary" alias="Diary"/>
 		<typeAlias type="com.souleaf.spring.diary.domain.Guestbook" alias="Guestbook"/>
-		<typeAlias type="com.souleaf.spring.diary.domain.WaterDay" alias="WaterDay"/>
 		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.Clinic" alias="Clinic"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicFile" alias="ClinicFile"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/diary-mapper.xml"/>	
 		<mapper resource="mappers/qna-mapper.xml"/>
 		<mapper resource="mappers/plant-mapper.xml"/>
+		<mapper resource="mappers/companion-mapper.xml"/>
+		<mapper resource="mappers/clinic-mapper.xml"/>
 		</mappers>
 </configuration>
