@@ -12,7 +12,7 @@
 		<result property="companionPicname" column="COMPANION_PICNAME"></result>
 		<result property="companionRepicname" column="COMPANION_REPICNAME"></result>
 		<result property="companionLastwater" column="COMPANION_LASTWATER"></result>
-		<result property="companionNeedwater" column="COMPANION_NEEDWATER"></result>
+		<result property="companionNeedwater" column="COMPANION_NEEDWATER"></result>     
 	</resultMap>
 	
 	<select id="selectAllList" resultMap="companionResultMap">
