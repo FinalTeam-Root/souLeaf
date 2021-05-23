@@ -14,7 +14,16 @@
 		<result property="clinicRepot" column="CLINIC_REPOT"></result>
 		<result property="clinicWater" column="CLINIC_WATER"></result>
 	</resultMap>
-
+	
+		<resultMap type="ClinicFile" id="clinicFileResultMap">
+		<id property="clinicFileNo" column="CLINICFILE_NO"></id>
+		<result property="clinicNo" column="CLINIC_NO"></result>
+		<result property="clinicfileOriginalName" column="CLINICFILE_ORIGINALNAME"></result>
+		<result property="clinicfileRenameName" column="CLINICFILE_RENAMENAME"></result>
+		<result property="clinicfileSize" column="CLINICFILE_SIZE"></result>
+		<result property="clinicfileDate" column="CLINICFILE_DATE"></result>
+	</resultMap>
+	
 	<!-- 기본자료형으로 리턴하고싶으시면 resultType= _int && 생략가능 -->
 	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*) FROM CLINIC

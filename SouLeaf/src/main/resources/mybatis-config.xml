@@ -14,11 +14,17 @@
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.clinic" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicFile" alias="ClinicFile"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/diary-mapper.xml"/>	
 		<mapper resource="mappers/qna-mapper.xml"/>
 		<mapper resource="mappers/plant-mapper.xml"/>
+		<mapper resource="mappers/companion-mapper.xml"/>
+		<mapper resource="mappers/clinic-mapper.xml"/>
 		</mappers>
 </configuration>
