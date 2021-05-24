@@ -41,7 +41,7 @@ public class CompanionServiceImpl implements CompanionService{
 	}
 
 	@Override
-	public ArrayList<Companion> printAll(int memberNo) {
+	public ArrayList<Companion> printmemberAll(int memberNo) {
 		return companionStore.selectMemberCompanion(memberNo);
 	}
 

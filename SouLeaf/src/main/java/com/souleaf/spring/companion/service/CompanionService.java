@@ -11,5 +11,5 @@ public interface CompanionService {
 	public int registerCompanion(Companion companion); // 반려식물 등록
 	public int modifyCompanion(Companion companion); // 반려식물 수정
 	public int removeCompanion(int companionNo); // 반려식물 삭제
-	public ArrayList<Companion> printAll(int memberNo); // 회원 반려식물 조회
+	public ArrayList<Companion> printmemberAll(int memberNo); // 회원 반려식물 조회
 }
