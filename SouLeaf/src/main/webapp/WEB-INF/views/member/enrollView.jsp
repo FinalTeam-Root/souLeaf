@@ -1,86 +1,118 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<jsp:include page="../common/header.jsp"></jsp:include>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+  <script src="resources/js/login/enrollView.js"></script> 
+  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
- <script src="resources/js/member/enrollView.js"></script> 
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+     <link rel="stylesheet" href="resources/css/login/registermember.css">
 
-<!------ Include the above in your HEAD tag ---------->
-<jsp:include page="../common/header.jsp"></jsp:include>
-<!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-<body>
-   <div class="container">
-      <div class="col-md-6 mx-auto text-center">
-         <div class="header-title">
-            <h1 class="wv-heading--title">
-               회원가입
-            </h1>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-4 mx-auto">
-            <div class="myform form ">
-               <form action="" method="post" name="login">
-                  <div class="form-group">
-                     <input type="text" name="name"  class="form-control my-input" id="name" placeholder="Name">
+    <link rel="stylesheet" href="resources/css/login/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="resources/css/login/bootstrap.min.css">
+    
+    <!-- Style -->
+
+    <title>Sign Up #9</title>
+  </head>
+  <body>
+  
+
+  
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
+                  <h3>Sign Up</h3>
+                  <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                </div>
+                <form action="#" method="post">
+                  <div class="form-group first">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name">
+
                   </div>
-                  <div class="form-group">
-                     <input type="text" name="nickname"  class="form-control my-input" id="nickname" placeholder="NickName">
-                  </div>
-                  <div class="form-group">
-                     <input type="text" name="id"  class="form-control my-input classId" id="id" placeholder="ID">
+                  <div class="form-group first">
+                    <label for="id">Id</label>
+                    <input type="text" class="form-control classId" id="id">
+
                   </div>
                   <div class="form-group">
                      <p id="checkId">
                   </div>
-                  <div class="form-group">
-                     <input type="password" name="password"  class="form-control my-input passwordCheck" id="password" placeholder="PASSWORD">
+                  <div class="form-group first">
+                    <label for="nickname">NickName</label>
+                    <input type="text" class="form-control" id="name">
+
+                  </div>
+                  <div class="form-group first">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email">
+
                   </div>
                   <div class="form-group">
-                     <input type="password" name="password1"  class="form-control my-input passwordCheck" id="password1" placeholder="PASSWORD 확인">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control passwordCheck" id="password">
+                    
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="re-password">Re-type Password</label>
+                    <input type="password" name="password1" class="form-control passwordCheck" id="password1">
+                    
                   </div>
                   <div class="form-group">
                      <p id="passwordCheck">
                   </div>
-                  <div class="form-group">
-                     <input type="email" name="email"  class="form-control my-input" id="email" placeholder="Email">
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Agree our <a href="#">Terms and Conditions</a></span>
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                    <span class="ml-auto"><a href="#" class="forgot-pass">Sign In</a></span> 
                   </div>
-                  <div class="form-group">
-                     <input type="number" min="0" name="phone" id="phone"  class="form-control my-input" placeholder="Phone">
-                  </div>
-                  <div class="text-center ">
-                     <button type="submit" class=" btn btn-block send-button tx-tfm">Create Your Free Account</button>
-                  </div>
-                  <div class="col-md-12 ">
-                     <div class="login-or">
-                        <hr class="hr-or">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <a class="btn btn-block g-button" href="#">
-                     <i class="fa fa-google"></i> Sign up with KAKAO
-                     </a>
-                  </div>
-                  <div class="form-group">
-                     <a class="btn btn-block g-button" href="#">
-                     <i class="fa fa-google"></i> Sign up with NAVER
-                     </a>
-                  </div>
-                  <p class="small mt-3">By signing up, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-                  </p>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
-</body>
 
-<jsp:include page="../common/footer.jsp"></jsp:include>
+                  <input type="submit" value="Register" class="btn btn-pill text-white btn-block btn-primary">
+
+                  <span class="d-block text-center my-4 text-muted"> or register with</span>
+                  
+                  <div class="social-login text-center">
+                    <a href="#" class="facebook">
+                      <span class="icon-facebook mr-3"></span> 
+                    </a>
+                    <a href="#" class="twitter">
+                      <span class="icon-twitter mr-3"></span> 
+                    </a>
+                    <a href="#" class="google">
+                      <span class="icon-google mr-3"></span> 
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+    <script src="resources/js/login/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/login/popper.min.js"></script>
+    <script src="resources/js/login/bootstrap.min.js"></script>
+    <script src="resources/js/login/enrollView.js"></script>
+    <script src="resources/js/login/main.js"></script>
+  </body>
 </html>
