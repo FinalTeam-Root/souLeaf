@@ -93,7 +93,7 @@
             <!--   <div class="icon d-flex align-items-center justify-content-center">
             		<i class="far fa-lightbulb pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042309041빛.png" width="330">
+              <img src="/resources/images/plant/16063042309041빛.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" >
               <div class="media-body p-4">
                 <h3 class="heading">빛 : ${pInfo.piLightInfo }</h3>
                 <p style="text-align: left">${pInfo.piLightContents }</p>
@@ -106,7 +106,7 @@
              <!--  <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-thermometer-half pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042378202온도.png" width="330">
+              <img src="/resources/images/plant/16063042378202온도.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
               <div class="media-body p-4">
                 <h3 class="heading">온도 : ${pInfo.piTempInfo }</h3>
                 <p style="text-align: left">${pInfo.piTempContents }</p>
@@ -119,7 +119,7 @@
               <!-- <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-smog pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042424423습도.png" width="330">
+              <img src="/resources/images/plant/16063042424423습도.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
               <div class="media-body p-4">
                 <h3 class="heading">습도 : ${pInfo.piHumidityInfo }</h3>
                 <p style="text-align: left">${pInfo.piHumidityContents }</p>
@@ -134,7 +134,7 @@
            <!--    <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-faucet pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042476954.물.png" width="330">
+              <img src="/resources/images/plant/16063042476954.물.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
               <div class="media-body p-4">
                 <h3 class="heading">물 : ${pInfo.piWaterInfo }</h3>
                 <p style="text-align: left">${pInfo.piWaterContents }</p>
@@ -147,7 +147,7 @@
               <!-- <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-leaf pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042531905.흙.png" width="330">
+              <img src="/resources/images/plant/16063042531905.흙.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
               <div class="media-body p-4">
                 <h3 class="heading">흙 : ${pInfo.piEarthInfo }</h3>
                 <p style="text-align: left">${pInfo.piEarthContents }</p>
@@ -160,7 +160,7 @@
               <!-- <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-glass-whiskey pdi-icon"></i>
               </div> -->
-              <img src="/resources/images/plant/16063042585056.분갈이.png" width="330">
+              <img src="/resources/images/plant/16063042585056.분갈이.png" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
               <div class="media-body p-4">
                 <h3 class="heading">분갈이 시기 알아보기</h3>
                 <c:forTokens items="${pInfo.piBunting }" delims="⦁" var="bunting" varStatus="status">
