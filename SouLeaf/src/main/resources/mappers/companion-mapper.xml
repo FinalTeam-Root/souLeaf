@@ -36,9 +36,11 @@
 	</update>
 	
 	<delete id="deletecompanion">
-		DELETE FROM COMPANION WHERE COMPANION_NO = #{companionNo }
+		DELETE FROM COMPANION WHERE COMPANION_NO = #{companionNo } 
 	</delete>
 	
-	
+	<select id="selectMemberCompanion" resultMap="companionResultMap">
+		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo }
+	</select>
 	
 </mapper>

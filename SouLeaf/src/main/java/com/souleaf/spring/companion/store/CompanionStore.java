@@ -11,4 +11,5 @@ public interface CompanionStore {
 	public int insertCompanion(Companion companion);
 	public int updateCompanion(Companion companion);
 	public int deleteCompanion(int companionNo);
+	public ArrayList<Companion> selectMemberCompanion(int memberNo);
 }

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.companion.store.CompanionStore;
 
-//@Service
+@Service
 public class CompanionServiceImpl implements CompanionService{
 	
-//	@Autowired
+	@Autowired
 	private CompanionStore companionStore;
 	
 	
@@ -38,6 +38,11 @@ public class CompanionServiceImpl implements CompanionService{
 	@Override
 	public int removeCompanion(int companionNo) {
 		return companionStore.deleteCompanion(companionNo);
+	}
+
+	@Override
+	public ArrayList<Companion> printAll(int memberNo) {
+		return companionStore.selectMemberCompanion(memberNo);
 	}
 
 }

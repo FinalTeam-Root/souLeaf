@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.companion.domain.Companion;
 
-//@Repository
+@Repository
 public class CompanionStoreLogic implements CompanionStore{
 	
-//	@Autowired
+	@Autowired
 	private SqlSession sqlSession;
 
 	@Override
@@ -37,6 +37,11 @@ public class CompanionStoreLogic implements CompanionStore{
 	@Override
 	public int deleteCompanion(int companionNo) {
 		return sqlSession.update("companionMapper.deletecompanion", companionNo);
+	}
+
+	@Override
+	public ArrayList<Companion> selectMemberCompanion(int memberNo) {
+		return (ArrayList)sqlSession.selectList("companionMapper.selectMemberCompanion");
 	}
 
 }
