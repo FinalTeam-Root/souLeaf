@@ -105,5 +105,4 @@ public class Companion {
 				+ companionRepicName + ", companionLastWater=" + companionLastWater + ", companionNeedWater="
 				+ companionNeedWater + "]";
 	}
-
 }
