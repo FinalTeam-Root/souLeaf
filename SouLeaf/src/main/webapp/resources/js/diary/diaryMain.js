@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // 이미 등록된 일정 클릭 시 모달창
       eventClick: function(e) {
         $('#eventModal-modify').modal({
-          // 오
+          
         });
-    },
+      },
       // toolbar에 일기쓰기 버튼
       customButtons: {
         myCustomButton: {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
           click: function(e) {
             e.preventDefault();
             $('#eventModal-insert').modal({
-              // 옵션값넣기
+
             });
           }
         }
@@ -37,73 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
       // eventContent: {
       //   html : '<div><img src="https://img.icons8.com/ultraviolet/40/000000/water.png" class="event-icon"/>물주는 날</div>'
       // },
-      eventRender:function(title,start,end,color,img){
-        img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
-      },
+      // eventRender:function(title,start,end,color,img){
+      //   img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
+      // },
       // 일정 받아오는 함수 
-      //events: function(start, end, timezone, callback){
-      //   $.ajax({
-      //     url : "diaryList.kh",
-      //     type : "get",
-      //     dataType : "json",
-      //     data : {
-      //       startDate :moment(start).format('yyyy-mm-dd'),
-      //       endDate : moment(end).('yyyy-mm-dd')
-      //     },success : function(response) {
-      //       var fixedDate = response.map(function (array)) {
-      //         if(array.allDay && array.start != array.end) {
-      //           array.end = moment(array.end);
-      //         }
-      //         return array;
-      //       });
-      //       callback(fixedDate);
-      //     }
-      //   });
-      //  },
-      events: [
-        
-        {
-          title: 'Business Lunch',
-          start: '2020-09-03T13:00:00',
-          constraint: 'businessHours',
-          color: '#257e4a'
-        },
-        {
-          title: 'Meeting',
-          start: '2020-09-13T11:00:00',
-          constraint: 'availableForMeeting', // defined below
-          color: '#257e4a'
-        },
-        {
-          title: 'Conference',
-          start: '2020-09-18',
-          end: '2020-09-20'
-        },
-        {
-          title: 'Party',
-          start: '2020-09-29T20:00:00'
-        },
-        {
-          title: 'testmessage',
-          start: '2020-09-22',
-          end: '2020-09-22',
-          color : '#f06595'
-        },
-
-        // areas where "Meeting" must be dropped
-        {
-          groupId: 'availableForMeeting',
-          start: '2020-09-11T10:00:00',
-          end: '2020-09-11T16:00:00',
-          display: 'background'
-        },
-        {
-          groupId: 'availableForMeeting',
-          start: '2020-09-13T10:00:00',
-          end: '2020-09-13T16:00:00',
-          display: 'background'
-        }
-      ]
+      events: function(info, successCallback, failureCallback){
+        $.ajax({
+          url : "diaryList.kh",
+          type : "get",
+          dataType : "json",
+          data : {
+            "memberNo" : memberNo
+          },
+          success : function(response) {
+            successCallback(response);
+          }
+        });
+      }
     });
     calendar.render();
 
@@ -327,4 +277,7 @@ function removeGuestbook(guestbookNo) {
   });
 }
 
+function testFunc() {
+  alert("test");
+}
   

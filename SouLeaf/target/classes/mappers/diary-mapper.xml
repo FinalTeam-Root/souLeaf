@@ -28,9 +28,8 @@
  		<result property="memberNick" column="MEMBER_NICK" />
  	</resultMap>
  	
- 	<select id="selectAllDairy" parameterType="Diary" resultMap="diaryResultMap">
- 		SELECT DIARY_NO,DIARY_TITLE,DIARY_CONTENT,DIARY_STARTDATE,DIARY_ENDDATE,DIARY_UPDATE,DIARY_COLOR,DIARY_PICNAME,DIARY_REPICNAME,D.MEMBER_NO,C.COMPANION_NICK 
-		FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #(memberNo)
+ 	<select id="selectAllDairy" resultType="CalendarView">
+ 		SELECT DIARY_NO,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME,DIARY_REPICNAME,D.MEMBER_NO,C.COMPANION_NICK FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
  	</select>
  	
  	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">

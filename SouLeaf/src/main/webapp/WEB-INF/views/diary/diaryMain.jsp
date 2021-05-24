@@ -309,7 +309,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-title">제목</label>
-								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" required="required" />
+								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" value="" required="required" />
 							</div>
 	                   	</div>
 						<div class="form-group">
@@ -426,6 +426,7 @@
     <script src="resources/js/diary/diaryMain.js"></script>   
     <script src='resources/js/diary/calendar.js'></script>
     <script src='resources/js/diary/ko.js'></script>
+    <script src='resources/js/diary/locales-all.js'></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 </html>
