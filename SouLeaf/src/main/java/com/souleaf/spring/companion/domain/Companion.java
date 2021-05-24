@@ -12,8 +12,8 @@ public class Companion {
 	private Date companionUpdate; // 수정일
 	private String companionPickName; // 식물 원본 사진
 	private String companionRepicName; // 식물 저장 사진
-	private Date companionLastWater; // 마지막 물 준날
-	private Date companionNeedWater; // 물 줘야하는 날
+	private String companionLastWater; // 마지막 물 준날
+	private String companionNeedWater; // 물 줘야하는 날
 	
 	public Companion() {}
 
@@ -81,19 +81,19 @@ public class Companion {
 		this.companionRepicName = companionRepicName;
 	}
 
-	public Date getCompanionLastWater() {
+	public String getCompanionLastWater() {
 		return companionLastWater;
 	}
 
-	public void setCompanionLastWater(Date companionLastWater) {
+	public void setCompanionLastWater(String companionLastWater) {
 		this.companionLastWater = companionLastWater;
 	}
 
-	public Date getCompanionNeedWater() {
+	public String getCompanionNeedWater() {
 		return companionNeedWater;
 	}
 
-	public void setCompanionNeedWater(Date companionNeedWater) {
+	public void setCompanionNeedWater(String companionNeedWater) {
 		this.companionNeedWater = companionNeedWater;
 	}
 
