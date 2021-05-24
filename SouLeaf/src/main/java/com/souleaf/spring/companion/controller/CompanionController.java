@@ -202,7 +202,7 @@ public class CompanionController {
 			// 데이트 포멧
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			// 입력받은 날짜 date 변환
-			Date date = (Date) sdf.parse(companion.getCompanionLastWater());
+			java.util.Date date = (java.util.Date) sdf.parse(companion.getCompanionLastWater());
 			// 물준날 세팅
 			cal.setTime(date);
 			// Plant 줄주기 대입
