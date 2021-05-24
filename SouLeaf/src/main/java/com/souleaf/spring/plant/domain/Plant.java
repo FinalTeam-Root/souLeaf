@@ -18,6 +18,7 @@ public class Plant {
 	private int plantCount;
 	private int plantPoint;
 	private String plantFileName;
+	private String plantStatus;
 	
 	
 	
@@ -203,7 +204,18 @@ public class Plant {
 	public void setPlantFileName(String plantFileName) {
 		this.plantFileName = plantFileName;
 	}
+	
 
+
+	public String getPlantStatus() {
+		return plantStatus;
+	}
+
+
+
+	public void setPlantStatus(String plantStatus) {
+		this.plantStatus = plantStatus;
+	}
 
 
 	@Override
@@ -213,7 +225,7 @@ public class Plant {
 				+ ", plantLeaf=" + plantLeaf + ", plantDetail=" + plantDetail + ", plantWater=" + plantWater
 				+ ", plantEnvi=" + plantEnvi + ", plantHumidity=" + plantHumidity + ", plantDate=" + plantDate
 				+ ", plantCount=" + plantCount + ", plantPoint=" + plantPoint + ", plantFileName=" + plantFileName
-				+ "]";
+				+ ", plantStatus=" + plantStatus + "]";
 	}
 	
 	

@@ -123,7 +123,7 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">물 주기</label>
-														<input type="text" class="form-control" name="plantWater" id="plantWater">
+														<input type="number" class="form-control" name="plantWater" id="plantWater">
 													</div>
 												</div>
 												<div class="col-md-6">
