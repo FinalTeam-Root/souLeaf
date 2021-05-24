@@ -96,14 +96,20 @@ public class CompanionController {
 			Plant plant = plantService.printOne(companion.getPlantNo());
 			// 캘린더 선언
 			Calendar cal = Calendar.getInstance();
+			// 데이트 포멧
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// 입력받은 날짜 date 변환
+			Date date = (Date) sdf.parse(companion.getCompanionLastWater());
 			// 물준날 세팅
-			cal.setTime(companion.getCompanionLastWater());
+			cal.setTime(date);
 			// Plant 줄주기 대입
 			int plantWater = Integer.parseInt(plant.getPlantWater());
 			// 물준날 + 물주기 날짜
 			cal.add(Calendar.DATE, plantWater);
 			// set 물 주는날 
-			companion.setCompanionNeedWater((Date) cal.getTime());
+			String dateToStr = sdf.format(cal.getTime());
+			// 물 주는날 세팅
+			companion.setCompanionNeedWater(dateToStr);
 			
 			// 디비에 데이터를 저장하는 작업
 			CompanionService.registerCompanion(companion);
@@ -190,19 +196,23 @@ public class CompanionController {
 				ArrayList<PlantFile> plantFile = plantService.printFileList(companion.getPlantNo());
 				companion.setCompanionPickName(plantFile.get(0).getPlantFilePath());
 			}
-
+			Plant plant = plantService.printOne(companion.getPlantNo());
 			// 캘린더 선언
 			Calendar cal = Calendar.getInstance();
+			// 데이트 포멧
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			// 입력받은 날짜 date 변환
+			Date date = (Date) sdf.parse(companion.getCompanionLastWater());
 			// 물준날 세팅
-			cal.setTime(companion.getCompanionLastWater());
-			// 식물정보 가져오기
-			Plant plant = plantService.printOne(companion.getPlantNo());
-			// Plant 물주기 대입
+			cal.setTime(date);
+			// Plant 줄주기 대입
 			int plantWater = Integer.parseInt(plant.getPlantWater());
 			// 물준날 + 물주기 날짜
 			cal.add(Calendar.DATE, plantWater);
 			// set 물 주는날 
-			companion.setCompanionNeedWater((Date) cal.getTime());
+			String dateToStr = sdf.format(cal.getTime());
+			// 물 주는날 세팅
+			companion.setCompanionNeedWater(dateToStr);
 			
 			// DB 수정
 			CompanionService.modifyCompanion(companion);
