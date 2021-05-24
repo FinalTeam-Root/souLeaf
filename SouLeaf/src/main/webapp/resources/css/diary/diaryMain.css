@@ -310,3 +310,48 @@
 .event-icon {
   width: 24px;
 }
+
+
+/* 사진첩 사진 리스트 띄우기 */
+
+#demo {
+  height:100%;
+  position:relative;
+  overflow:hidden;
+}
+.thumb{
+  margin-bottom: 30px;
+}
+        
+.page-top{
+  margin-top:85px;
+}
+   
+img.zoom {
+    top: 0px; /* 수정 */
+    right: 0px; /* 수정 */
+    width: 100%;
+    height: 200px;
+    object-fit:cover;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+}
+ 
+.transition {
+    -webkit-transform: scale(1.05); 
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.modal-header {
+
+  border-bottom: none;
+}
+.modal-title {
+    color:#000;
+}
+.modal-footer{
+  display:none;  
+}

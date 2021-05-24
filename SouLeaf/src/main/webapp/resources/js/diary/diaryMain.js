@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // 이미 등록된 일정 클릭 시 모달창
       eventClick: function(e) {
         $('#eventModal-modify').modal({
-              // 옵션값넣기
+          // 오
         });
     },
       // toolbar에 일기쓰기 버튼
@@ -212,7 +212,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
   });
+  // 사진첩 리스트 부분
+  $(".fancybox").fancybox({
+    openEffect: "none",
+    closeEffect: "none",
+  });
 
+  $(".zoom").hover(function(){
+
+    $(this).addClass('transition');
+    }, function(){
+        
+    $(this).removeClass('transition');
+  });
   // document 끝
 });
 
