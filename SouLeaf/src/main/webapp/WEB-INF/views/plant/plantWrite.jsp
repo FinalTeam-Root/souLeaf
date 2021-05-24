@@ -166,64 +166,123 @@
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="name">빛 종류</label>
-														<input type="text" class="form-control" name="piLightInfo" id="piLightInfo">
+														<label class="label" for="name">빛 종류</label><br>
+														<div class="btn-group btn-group-toggle" data-toggle="buttons">
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piLightInfo" id="piLightInfo-1" value="부드러운 햇빛"> 부드러운 햇빛
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piLightInfo" id="piLightInfo-2" value="풍부한 햇빛"> 풍부한 햇빛
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piLightInfo" id="piLightInfo-3" value="강렬한 햇빛"> 강렬한 햇빛
+															</label>
+														</div>
 													</div>
 												</div>												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="name">빛 내용</label>
-														<textarea class="form-control" name="piLightContents"  id="piLightContents" cols="30" rows="4" ></textarea>
+														<textarea class="form-control" name="piLightContents"  id="piLightContents" cols="30" rows="1" ></textarea>
 													</div>
 												</div>
+												<div class="col-md-12">　</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="subject">온도 종류</label>
-														<input type="text" class="form-control" name="piTempInfo" id="piTempInfo">
+														<label class="label" for="subject">온도 종류</label><br>
+														<div class="btn-group btn-group-toggle" data-toggle="buttons">
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piTempInfo" id="piTempInfo-1" value="따뜻한 온도"> 따뜻한 온도
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piTempInfo" id="piTempInfo-2" value="서늘한 온도"> 서늘한 온도
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piTempInfo" id="piTempInfo-3" value="시원한 온도"> 시원한 온도
+															</label>
+														</div>
 													</div>
-												</div>												
+												</div>	
+																							
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">온도 내용</label>
-														<textarea class="form-control" name="piTempContents"  id="piTempContents" cols="30" rows="4" ></textarea>
+														<textarea class="form-control" name="piTempContents"  id="piTempContents" cols="30" rows="1" ></textarea>
 													</div>
 												</div>
+												<div class="col-md-12">　</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">습도 종류</label>
-														<input type="text" class="form-control" name="piHumidityInfo" id="piHumidityInfo">
+														<div class="btn-group btn-group-toggle" data-toggle="buttons">
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piHumidityInfo" id="piHumidityInfo-1" value="쾌적한 습도"> 쾌적한 습도
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piHumidityInfo" id="piHumidityInfo-2" value="건조한 습도"> 건조한 습도
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piHumidityInfo" id="piHumidityInfo-3" value="높은 습도"> 높은 습도
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piHumidityInfo" id="piHumidityInfo-4" value="다소 높은 습도"> 다소 높은 습도
+															</label>
+														</div>
 													</div>
 												</div>												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">습도 내용</label>
-														<textarea class="form-control" name="piHumidityContents"  id="piHumidityContents" cols="30" rows="4" ></textarea>
+														<textarea class="form-control" name="piHumidityContents"  id="piHumidityContents" cols="30" rows="1" ></textarea>
 													</div>
 												</div>
+												<div class="col-md-12">　</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">물 종류</label>
-														<input type="text" class="form-control" name="piWaterInfo" id="piWaterInfo">
+														<div class="btn-group btn-group-toggle" data-toggle="buttons">
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piWaterInfo" id="piWaterInfo-1" value="약간 목마르게"> 약간 목마르게
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piWaterInfo" id="piWaterInfo-2" value="흙이 바싹 마르지 않게"> 흙이 바싹 마르지 않게
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piWaterInfo" id="piWaterInfo-3" value="흙이 촉촉하게 젖도록"> 흙이 촉촉하게 젖도록
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piWaterInfo" id="piWaterInfo-4" value="흙이 말랐을 때 듬뿍"> 흙이 말랐을 때 듬뿍
+															</label>
+														</div>
 													</div>
 												</div>												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">물 내용</label>
-														<textarea class="form-control" name="piWaterContents"  id="piWaterContents" cols="30" rows="4" ></textarea>
+														<textarea class="form-control" name="piWaterContents"  id="piWaterContents" cols="30" rows="1" ></textarea>
 													</div>
 												</div>
+												<div class="col-md-12">　</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="subject">흙 종류</label>
-														<input type="text" class="form-control" name="piEarthInfo" id="piEarthInfo">
+														<label class="label" for="subject">흙 종류</label><br>
+															<div class="btn-group btn-group-toggle" data-toggle="buttons">
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piEarthInfo" id="piEarthInfo-1" value="배수가 잘되는 흙"> 배수가 잘되는 흙
+															</label>
+															<label class="btn btn-outline-success">
+																<input type="radio" name="piEarthInfo" id="piEarthInfo-2" value="배수가 안되는 흙"> 배수가 안되는 흙
+															</label>															
+														</div>
 													</div>
 												</div>												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">흙 내용</label>
-														<textarea class="form-control" name="piEarthContents"  id="piEarthContents" cols="30" rows="4" ></textarea>
+														<textarea class="form-control" name="piEarthContents"  id="piEarthContents" cols="30" rows="1" ></textarea>
 													</div>
-												</div>												
+												</div>			
+												<div class="col-md-12">　</div>									
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">분갈이 시기</label>
