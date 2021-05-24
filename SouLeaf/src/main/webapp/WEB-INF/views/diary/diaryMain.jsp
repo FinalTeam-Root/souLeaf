@@ -79,67 +79,132 @@
 				<div class="tab-pane" id="myDiary-picture">
 					<div class="video">
 						<div class="video-Companion">
-							<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
+							<select class="form-select" name="companionNo" id="selectVideo">
 									<option value="1">핑크개나리</option>
 									<option value="2">카스테라</option>
 							</select>
 						</div>
 						<div class="video-play">
-								<p>비디오 영역</p>
+								<div class="play">비디오 영역</div>
 						</div>
 					</div>
 					<!-- 사진 영역  -->
-					<div class="picture">
-						<div class="row">
-				        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
-				                </a>
-				            </div>
-				            
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            
-				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            
-				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            
-				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				            
-				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-				                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-				                </a>
-				            </div>
-				       </div>
-					</div>
-				</div>
+					<div class="picture-section">      
+						<div id="carouselExampleControls" class="carousel slide" data-touch="false" data-interval="false">
+							<div class="carousel-inner">
+						    	<div class="carousel-item active">
+									<div class="row">
+							        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							            	<a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
+							                </a>
+							            </div>
+							            
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							       </div> <!-- row -->
+				   			</div> <!-- carousel-item active -->
+						    <div class="carousel-item">
+						     	<div class="row">
+						        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
+						                </a>
+						            </div>
+						            
+						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            
+						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            
+						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            
+						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            
+						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						            
+						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+						                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+						                </a>
+						            </div>
+						   		</div> <!-- row -->
+	    					</div> <!-- carousel-item -->
+  					  	</div> <!-- carousel-inner -->
+							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
+								<span class="carousel-control-prev-icon changecolor" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+								<span class="carousel-control-next-icon changecolor" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div> <!-- carouselExampleControls -->    
+					</div> <!-- picture -->
+				</div> <!--  myDiary-picture -->
+				
 				<div class="tab-pane" id="myDaiary-guest">
 					<div class="comment">
 						<div class="comment-content">

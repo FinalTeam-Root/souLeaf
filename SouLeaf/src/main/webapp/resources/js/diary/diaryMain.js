@@ -3,10 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	
     var calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
-      eventClick: function(e) {
+      eventClick: function(info) {
         $('#eventModal-modify').modal({
           
         });
+        // info.jsEvent.preventDefault(); // don't let the browser navigate
+
+        // if (info.event.url) {
+        //   window.open("diaryMainView.kh");
+        // }
       },
       // toolbar에 일기쓰기 버튼
       customButtons: {
@@ -26,14 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'prev,title,next',
         right: 'myCustomButton'
       },
-      defaultDate : Date, // 달력 초기화면에서 날짜 값 (오늘날짜 불러오기)
+      //defaultDate : Date, // 달력 초기화면에서 날짜 값 (오늘날짜 불러오기)
       navLinks: false, // can click day/week names to navigate views
       businessHours: true, // display business hours
       editable: true,
       selectable: true,
       locale: 'ko',
       fixedWeekCount : false,
-      contentHeight: 600,
+      contentHeight: 750,
+      dayMaxEventRows: true, // for all non-TimeGrid views
       // eventContent: {
       //   html : '<div><img src="https://img.icons8.com/ultraviolet/40/000000/water.png" class="event-icon"/>물주는 날</div>'
       // },
@@ -47,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
           type : "get",
           dataType : "json",
           data : {
-            "memberNo" : memberNo
+            memberNo : 1
           },
           success : function(response) {
             successCallback(response);

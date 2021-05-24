@@ -73,6 +73,7 @@ public class DiaryController {
 	}
 	
 	// 일기 리스트 가져오기
+	// 물주는날은 어떻게 가져올까??
 	@RequestMapping(value="diaryList.kh",method=RequestMethod.GET)
 	public void diaryList(HttpServletResponse response, @RequestParam("memberNo") int memberNo) throws Exception {
 		ArrayList<Diary> dList = dService.printAllDiary(memberNo);

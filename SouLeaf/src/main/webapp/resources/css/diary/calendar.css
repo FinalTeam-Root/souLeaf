@@ -656,7 +656,7 @@ A HORIZONTAL event
   right: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 .fc .fc-popover {
-    position: absolute;
+    position: fixed;
     z-index: 9999;
     box-shadow: 0 2px 6px rgba(0,0,0,.15);
   }
@@ -864,7 +864,7 @@ A HORIZONTAL event
     border-radius: 0 0 0 3px;
   }
 .fc-liquid-hack .fc-daygrid-day-frame {
-    position: static; /* will cause inner absolute stuff to expand to <td> */
+    position: absolute; /* will cause inner absolute stuff to expand to <td> */
   }
 .fc-daygrid-event { /* make root-level, because will be dragged-and-dropped outside of a component root */
   position: relative; /* for z-indexes assigned later */
