@@ -21,9 +21,21 @@ public class PlantStoreLogic implements PlantStore{
 	}
 
 	@Override
-	public Plant selectOne(Plant plant) {
+	public Plant selectOne(int plantNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("plantMapper.selectPlant", plantNo);
+	}
+	
+	@Override
+	public PlantInfo selectOneInfo(int plantNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("plantMapper.selectPlantInfo",plantNo);
+	}
+
+	@Override
+	public ArrayList<PlantFile> selectFileList(int plantNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("plantMapper.selectFileList",plantNo);
 	}
 
 	@Override
@@ -64,6 +76,8 @@ public class PlantStoreLogic implements PlantStore{
 		
 		return sqlSession.insert("plantMapper.insertPlantFile",pFile);
 	}
+
+	
 
 	
 	

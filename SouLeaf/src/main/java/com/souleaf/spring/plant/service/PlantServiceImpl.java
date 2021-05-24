@@ -24,9 +24,8 @@ public class PlantServiceImpl implements PlantService{
 	}
 
 	@Override
-	public Plant printOne(Plant plant) {
-		// TODO Auto-generated method stub
-		return null;
+	public Plant printOne(int plantNo) {
+		return pStore.selectOne(plantNo);
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class PlantServiceImpl implements PlantService{
 	}
 
 	@Override
-	public int removePlant(int curiosityNo) {
+	public int removePlant(int plantNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -74,6 +73,16 @@ public class PlantServiceImpl implements PlantService{
 	public ArrayList<Plant> printSearchAllList(PlantSearch search) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public PlantInfo printOneInfo(int plantNo) {
+		return pStore.selectOneInfo(plantNo);
+	}
+
+	@Override
+	public ArrayList<PlantFile> printFileList(int plantNo) {
+		return pStore.selectFileList(plantNo);
 	}
 	
 

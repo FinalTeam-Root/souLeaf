@@ -19,8 +19,45 @@
 		<result property="plantFileName" column="PLANTFILE_NAME"/>
 	</resultMap>
 	
+	<resultMap type="PlantInfo" id="plantInfoResultMap">
+		<id property="plantinfoNo" column="PLANTINFO_NO"/>
+		<result property="plantNo" column="PLANT_NO"/>
+		<result property="piLightInfo" column="PI_LIGHT_INFO"/>
+		<result property="piLightContents" column="PI_LIGHT_CONTENTS"/>
+		<result property="piTempInfo" column="PI_TEMP_INFO"/>
+		<result property="piTempContents" column="PI_TEMP_CONTENTS"/>
+		<result property="piHumidityInfo" column="PI_HUMIDITY_INFO"/>
+		<result property="piHumidityContents" column="PI_HUMIDITY_CONTENTS"/>
+		<result property="piWaterInfo" column="PI_WATER_INFO"/>
+		<result property="piWaterContents" column="PI_WATER_CONTENTS"/>
+		<result property="piEarthInfo" column="PI_EARTH_INFO"/>
+		<result property="piEarthContents" column="PI_EARTH_CONTENTS"/>
+		<result property="piBunting" column="PI_BUNTING"/>
+	</resultMap>
+	
+	<resultMap type="PlantFile" id="plantFileResultMap">
+		<id property="plantFileNo" column="PLANTFILE_NO"/>
+		<result property="plantFileName" column="PLANTFILE_NAME"/>
+		<result property="plantFilePath" column="PLANTFILE_PATH"/>
+		<result property="plantFileSize" column="PLANTFILE_SIZE"/>
+		<result property="plantFileDate" column="PLANTFILE_DATE"/>
+		<result property="plantNo" column="PLANT_NO"/>
+	</resultMap>
+	
 	<select id="selectAll" parameterType="Plant" resultMap="plantResultMap">
 		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME FROM (SELECT ROW_NUMBER() OVER(PARTITION BY PLANT_NO ORDER BY PLANTFILE_NO) AS RNUM, PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME FROM PLANT JOIN PLANTFILE USING(PLANT_NO)) WHERE RNUM = 1 ORDER BY PLANT_NO DESC
+	</select>
+	
+	<select id="selectPlant" parameterType="Plant" resultMap="plantResultMap">
+		SELECT * FROM PLANT WHERE PLANT_NO = #{plantNo}
+	</select>
+	
+	<select id="selectPlantInfo" parameterType="PlantInfo" resultMap="plantInfoResultMap">
+		SELECT * FROM PLANTINFO WHERE PLANT_NO = #{plantNo}
+	</select>
+	
+	<select id="selectFileList" parameterType="PlantFile" resultMap="plantFileResultMap">
+		SELECT * FROM PLANTFILE WHERE PLANT_NO = #{plantNo}
 	</select>
 
 	<insert id="insertPlant">
@@ -29,7 +66,7 @@
 	</insert>
 	
 	<insert id="insertPlantDetail">
-		INSERT INTO PLANTINFO VALUES(SEQ_PLANTINFO.NEXTVAL,SEQ_PLANT.CURRVAL,#{piLightInfo},#{piLightContents},#{piLightTip},#{piTempInfo},#{piTempContents},#{piTempTip},#{piTempBest},#{piHumidityInfo},#{piHumidityContents},#{piHumidityTip},#{piWaterInfo},#{piWaterContents},#{piWaterTip},#{piEarthInfo},#{piEarthContents},#{piFerti},#{piBunting})
+		INSERT INTO PLANTINFO VALUES(SEQ_PLANTINFO.NEXTVAL,SEQ_PLANT.CURRVAL,#{piLightInfo},#{piLightContents},#{piTempInfo},#{piTempContents},#{piHumidityInfo},#{piHumidityContents},#{piWaterInfo},#{piWaterContents},#{piEarthInfo},#{piEarthContents},#{piBunting})
 	
 	</insert>
 	

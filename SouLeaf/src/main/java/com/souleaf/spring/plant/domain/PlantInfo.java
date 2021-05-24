@@ -4,23 +4,17 @@ public class PlantInfo {
 
 	private int plantNo;
 	private int plantinfoNo;
-	private String piLightInfo;
-	private String piLightContents;
-	private String piLightTip;
-	private String piTempInfo;
-	private String piTempContents;
-	private String piTempTip;
-	private String piTempBest;
-	private String piHumidityInfo;
-	private String piHumidityContents;
-	private String piHumidityTip;
-	private String piWaterInfo;
-	private String piWaterContents;
-	private String piWaterTip;
-	private String piEarthInfo;
-	private String piEarthContents;
-	private String piFerti;
-	private String piBunting;
+	private String piLightInfo; // 빛 정보
+	private String piLightContents; // 빛 내용
+	private String piTempInfo; // 온도 정보
+	private String piTempContents; // 온도 내용
+	private String piHumidityInfo; // 습도 정보
+	private String piHumidityContents; // 습도 내용
+	private String piWaterInfo; // 물 정보 
+	private String piWaterContents; // 물 내용
+	private String piEarthInfo; // 흙 정보
+	private String piEarthContents; // 흙 내용
+	private String piBunting; // 분갈이시기
 	
 	public PlantInfo() {
 		// TODO Auto-generated constructor stub
@@ -58,14 +52,6 @@ public class PlantInfo {
 		this.piLightContents = piLightContents;
 	}
 
-	public String getPiLightTip() {
-		return piLightTip;
-	}
-
-	public void setPiLightTip(String piLightTip) {
-		this.piLightTip = piLightTip;
-	}
-
 	public String getPiTempInfo() {
 		return piTempInfo;
 	}
@@ -80,22 +66,6 @@ public class PlantInfo {
 
 	public void setPiTempContents(String piTempContents) {
 		this.piTempContents = piTempContents;
-	}
-
-	public String getPiTempTip() {
-		return piTempTip;
-	}
-
-	public void setPiTempTip(String piTempTip) {
-		this.piTempTip = piTempTip;
-	}
-
-	public String getPiTempBest() {
-		return piTempBest;
-	}
-
-	public void setPiTempBest(String piTempBest) {
-		this.piTempBest = piTempBest;
 	}
 
 	public String getPiHumidityInfo() {
@@ -114,14 +84,6 @@ public class PlantInfo {
 		this.piHumidityContents = piHumidityContents;
 	}
 
-	public String getPiHumidityTip() {
-		return piHumidityTip;
-	}
-
-	public void setPiHumidityTip(String piHumidityTip) {
-		this.piHumidityTip = piHumidityTip;
-	}
-
 	public String getPiWaterInfo() {
 		return piWaterInfo;
 	}
@@ -136,14 +98,6 @@ public class PlantInfo {
 
 	public void setPiWaterContents(String piWaterContents) {
 		this.piWaterContents = piWaterContents;
-	}
-
-	public String getPiWaterTip() {
-		return piWaterTip;
-	}
-
-	public void setPiWaterTip(String piWaterTip) {
-		this.piWaterTip = piWaterTip;
 	}
 
 	public String getPiEarthInfo() {
@@ -162,14 +116,6 @@ public class PlantInfo {
 		this.piEarthContents = piEarthContents;
 	}
 
-	public String getPiFerti() {
-		return piFerti;
-	}
-
-	public void setPiFerti(String piFerti) {
-		this.piFerti = piFerti;
-	}
-
 	public String getPiBunting() {
 		return piBunting;
 	}
@@ -181,13 +127,11 @@ public class PlantInfo {
 	@Override
 	public String toString() {
 		return "PlantInfo [plantNo=" + plantNo + ", plantinfoNo=" + plantinfoNo + ", piLightInfo=" + piLightInfo
-				+ ", piLightContents=" + piLightContents + ", piLightTip=" + piLightTip + ", piTempInfo=" + piTempInfo
-				+ ", piTempContents=" + piTempContents + ", piTempTip=" + piTempTip + ", piTempBest=" + piTempBest
-				+ ", piHumidityInfo=" + piHumidityInfo + ", piHumidityContents=" + piHumidityContents
-				+ ", piHumidityTip=" + piHumidityTip + ", piWaterInfo=" + piWaterInfo + ", piWaterContents="
-				+ piWaterContents + ", piWaterTip=" + piWaterTip + ", piEarthInfo=" + piEarthInfo + ", piEarthContents="
-				+ piEarthContents + ", piFerti=" + piFerti + ", piBunting=" + piBunting + "]";
+				+ ", piLightContents=" + piLightContents + ", piTempInfo=" + piTempInfo + ", piTempContents="
+				+ piTempContents + ", piHumidityInfo=" + piHumidityInfo + ", piHumidityContents=" + piHumidityContents
+				+ ", piWaterInfo=" + piWaterInfo + ", piWaterContents=" + piWaterContents + ", piEarthInfo="
+				+ piEarthInfo + ", piEarthContents=" + piEarthContents + ", piBunting=" + piBunting + "]";
 	}
-	
+
 	
 }

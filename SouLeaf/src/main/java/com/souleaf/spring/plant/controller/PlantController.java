@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.service.PlantService;
 @Controller
@@ -60,6 +61,12 @@ public class PlantController {
 		// 식물도감 상세페이지 이동 및 출력
 		@RequestMapping(value="plantDetail.kh")
 		public ModelAndView plantDetailView(ModelAndView mv,@RequestParam("plantNo") int plantNo, Model model) {
+			Plant plant = pService.printOne(plantNo);
+			PlantInfo pInfo = pService.printOneInfo(plantNo);
+			ArrayList<PlantFile> pfList = pService.printFileList(plantNo);
+			mv.addObject("plant",plant);
+			mv.addObject("pInfo",pInfo);
+			mv.addObject("pfList",pfList);
 			mv.setViewName("plant/plantDetail");
 			return mv;
 		}

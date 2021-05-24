@@ -164,66 +164,40 @@
 										<h3 class="mb-4">상세정보</h3>
 										<div class="contactForm">
 											<div class="row">
-												
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="name">빛 종류</label>
 														<input type="text" class="form-control" name="piLightInfo" id="piLightInfo">
 													</div>
 												</div>												
-												<div class="col-md-6"> 
-													<div class="form-group">
-														<label class="label" for="email">빛 관리 Tip</label>
-														<input type="text" class="form-control" name="piLightTip" id="piLightTip">
-													</div>
-												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="name">빛 내용</label>
-														<input type="text" class="form-control" name="piLightContents" id="piLightContents">
+														<textarea class="form-control" name="piLightContents"  id="piLightContents" cols="30" rows="4" ></textarea>
 													</div>
 												</div>
-												<div class="col-md-4">
+												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">온도 종류</label>
 														<input type="text" class="form-control" name="piTempInfo" id="piTempInfo">
 													</div>
 												</div>												
-												<div class="col-md-4">
-													<div class="form-group">
-														<label class="label" for="subject">온도 관리 Tip</label>
-														<input type="text" class="form-control" name="piTempTip" id="piTempTip">
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="form-group">
-														<label class="label" for="subject">적정 온도</label>
-														<input type="text" class="form-control" name="piTempBest" id="piTempBest">
-													</div>
-												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">온도 내용</label>
-														<input type="text" class="form-control" name="piTempContents" id="piTempContents">
+														<textarea class="form-control" name="piTempContents"  id="piTempContents" cols="30" rows="4" ></textarea>
 													</div>
 												</div>
-												
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">습도 종류</label>
 														<input type="text" class="form-control" name="piHumidityInfo" id="piHumidityInfo">
 													</div>
 												</div>												
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">습도 관리 Tip</label>
-														<input type="text" class="form-control" name="piHumidityTip" id="piHumidityTip">
-													</div>
-												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">습도 내용</label>
-														<input type="text" class="form-control" name="piHumidityContents" id="piHumidityContents">
+														<textarea class="form-control" name="piHumidityContents"  id="piHumidityContents" cols="30" rows="4" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-6">
@@ -232,16 +206,10 @@
 														<input type="text" class="form-control" name="piWaterInfo" id="piWaterInfo">
 													</div>
 												</div>												
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">물 주기 Tip</label>
-														<input type="text" class="form-control" name="piWaterTip" id="piWaterTip">
-													</div>
-												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">물 내용</label>
-														<input type="text" class="form-control" name="piWaterContents" id="piWaterContents">
+														<textarea class="form-control" name="piWaterContents"  id="piWaterContents" cols="30" rows="4" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-6">
@@ -250,16 +218,10 @@
 														<input type="text" class="form-control" name="piEarthInfo" id="piEarthInfo">
 													</div>
 												</div>												
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">비료 Tip</label>
-														<input type="text" class="form-control" name="piFerti" id="piFerti">
-													</div>
-												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">흙 내용</label>
-														<input type="text" class="form-control" name="piEarthContents" id="piEarthContents">
+														<textarea class="form-control" name="piEarthContents"  id="piEarthContents" cols="30" rows="4" ></textarea>
 													</div>
 												</div>												
 												<div class="col-md-12">
