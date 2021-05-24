@@ -15,7 +15,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> selectAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
