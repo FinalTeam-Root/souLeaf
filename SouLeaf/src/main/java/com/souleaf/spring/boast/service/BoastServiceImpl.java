@@ -10,17 +10,18 @@ import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 
 import com.souleaf.spring.boast.store.BoastStore;
+import com.souleaf.spring.common.PageInfo;
 
-//@Service
+@Service
 public class BoastServiceImpl implements BoastService {
 	
-//	@Autowired
+@Autowired
 	private BoastStore bStore;
 
-	@Override
-	public ArrayList<Boast> printAll() {
-		// TODO Auto-generated method stub
-		return null;
+@Override
+	public ArrayList<Boast> printAll(PageInfo pi) {
+		//
+		return bStore.selectAllList(pi);
 	}
 
 	@Override
@@ -31,26 +32,36 @@ public class BoastServiceImpl implements BoastService {
 
 	@Override
 	public Boast printOne(int boastNo) {
-		// TODO Auto-generated method stub
-		return null;
+		//
+		return bStore.selectOne(boastNo);
 	}
+	
+	@Override
+	public int getListCount() {
+		//
+		return bStore.selectListCount();
+	}
+	
+
+	
+	
 
 	@Override
 	public int registerBoast(Boast boast) {
-		// TODO Auto-generated method stub
-		return 0;
+		//
+		return bStore.insertBoast(boast);
 	}
 
 	@Override
 	public int modifyBoast(Boast boast) {
-		// TODO Auto-generated method stub
-		return 0;
+		//
+		return bStore.updateBoast(boast);
 	}
 
 	@Override
 	public int removeBoast(int boastNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		//
+		return bStore.deleteBoast(boastNo);
 	}
 
 	@Override
@@ -61,32 +72,32 @@ public class BoastServiceImpl implements BoastService {
 
 	@Override
 	public int addReadCount(int boastNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		//
+		return bStore.addReadCount(boastNo);
 	}
 
 	@Override
 	public ArrayList<BoastReply> printAllBoastReply(int boastNo) {
-		// TODO Auto-generated method stub
-		return null;
+		//
+		return bStore.selectAllBoastReply(boastNo);
 	}
 
 	@Override
 	public int registerBoastReply(BoastReply reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		//
+		return bStore.insertBoastReply(reply);
 	}
 
 	@Override
 	public int modifyBoastReply(BoastReply reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 
+		return bStore.updateBoastReply(reply);
 	}
 
 	@Override
-	public int removeBoastReply(int boastNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int removeBoastReply(BoastReply reply) {
+		// 
+		return bStore.deleteBoastReply(reply);
 	}
 
 	@Override
@@ -128,5 +139,9 @@ public class BoastServiceImpl implements BoastService {
 	}
 
 
-
+	@Override
+	public ArrayList<Boast> printAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

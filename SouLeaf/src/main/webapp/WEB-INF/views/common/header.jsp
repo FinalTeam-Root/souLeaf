@@ -68,7 +68,7 @@
 		        	<li class="nav-item <c:if test="${nav eq 'home' }">active</c:if>"><a href="home.kh" class="nav-link">홈</a></li>
 					<li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li>
 					<li class="nav-item <c:if test="${nav eq 'plant' }">active</c:if>"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
-					<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="#" class="nav-link">식물자랑</a></li>
+					<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="boastListView.kh" class="nav-link">식물자랑</a></li>
 					<li class="nav-item <c:if test="${nav eq 'clinic' }">active</c:if>"><a href="#" class="nav-link">식물클리닉</a></li>
 					<li class="nav-item <c:if test="${nav eq 'curiosity' }">active</c:if>"><a href="#" class="nav-link">궁금해요</a></li>
 	        </ul>

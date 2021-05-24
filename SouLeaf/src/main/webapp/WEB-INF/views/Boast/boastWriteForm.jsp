@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>souLeaf - 식물자랑</title>
+<jsp:include page="../common/header.jsp"></jsp:include>
 </head>
 <body>
+<h1>식물자랑 ㅌㅅㅌ</h1>
 
 </body>
 </html>

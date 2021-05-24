@@ -4,28 +4,30 @@ import java.sql.Date;
 
 public class Boast {
 
-	private int boastNo;
-	private String boastTitle;
-	private String boastCount;
-	private Date boastDate;
-	private Date boastUpdate;
-	private int memberNo;
-	private int boastPoint;
+	private int boastNo; // 글번호
+	private String boastTitle; // 글제목
+	private String boastContent; // 글내용
+	private String boastCount; // 조회수
+	private Date boastDate; // 작성일
+	private Date boastUpdate; // 수정일
+	private int memberNo; // 회원번호
+	private int boastPoint; // 랭킹포인트
+	private String boastStatus; // 상태
 	
 	public Boast() {}
 
-	public Boast(int boastNo, String boastTitle, String boastCount, Date boastDate, Date boastUpdate, int memberNo,
-			int boastPoint) {
+	public Boast(int boastNo, String boastTitle, String boastContent, String boastCount, Date boastDate,
+			Date boastUpdate, int memberNo, int boastPoint, String boastStatus) {
 		super();
 		this.boastNo = boastNo;
 		this.boastTitle = boastTitle;
+		this.boastContent = boastContent;
 		this.boastCount = boastCount;
 		this.boastDate = boastDate;
 		this.boastUpdate = boastUpdate;
 		this.memberNo = memberNo;
 		this.boastPoint = boastPoint;
-		
-		
+		this.boastStatus = boastStatus;
 	}
 
 	public int getBoastNo() {
@@ -42,6 +44,14 @@ public class Boast {
 
 	public void setBoastTitle(String boastTitle) {
 		this.boastTitle = boastTitle;
+	}
+
+	public String getBoastContent() {
+		return boastContent;
+	}
+
+	public void setBoastContent(String boastContent) {
+		this.boastContent = boastContent;
 	}
 
 	public String getBoastCount() {
@@ -84,14 +94,20 @@ public class Boast {
 		this.boastPoint = boastPoint;
 	}
 
+	public String getBoastStatus() {
+		return boastStatus;
+	}
+
+	public void setBoastStatus(String boastStatus) {
+		this.boastStatus = boastStatus;
+	}
+
 	@Override
 	public String toString() {
-		return "Boast [boastNo=" + boastNo + ", boastTitle=" + boastTitle + ", boastCount=" + boastCount
-				+ ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate + ", memberNo=" + memberNo
-				+ ", boastPoint=" + boastPoint + "]";
+		return "Boast [boastNo=" + boastNo + ", boastTitle=" + boastTitle + ", boastContent=" + boastContent
+				+ ", boastCount=" + boastCount + ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate
+				+ ", memberNo=" + memberNo + ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + "]";
 	}
 	
-	
-	
 }
-	
+			
