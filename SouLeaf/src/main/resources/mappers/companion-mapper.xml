@@ -25,13 +25,13 @@
 	
 	<insert id="insertcompanion">
 		INSERT INTO COMPANION 
-		VALUES(SEQ_COMPANION, #{plantNo }, #{memberNo }, #{companionNick }, DEFAULT, NULL, #{companionPicname }, #{companionRepicname}, #{companionLastwater}, #{companionNeedwater})
+		VALUES(SEQ_COMPANION, #{plantNo }, #{memberNo }, #{companionNick }, DEFAULT, NULL, #{companionPicName }, #{companionRepicName}, #{companionLastWater}, #{companionNeedWater})
 	</insert>
 	
 	<update id="updatecompanion">
 		UPDATE COMPANION SET PLANT_NO = #{plantNo }, COMPANION_NICK = #{companionNick },
-		COMPANION_UPDATE = SYSDATE, COMPANION_PICNAME = #{companionPicname }, COMPANION_REPICNAME = #{companionRepicname},
-		COMPANION_LASTWATER = #{companionLastwater}, COMPANION_NEEDWATER = #{companionNeedwater}
+		COMPANION_UPDATE = SYSDATE, COMPANION_PICNAME = #{companionPicName }, COMPANION_REPICNAME = #{companionRepicName},
+		COMPANION_LASTWATER = #{companionLastWater}, COMPANION_NEEDWATER = #{companionNeedWater}
 		WHERE COMPANION_NO = #{companionNo }
 	</update>
 	
