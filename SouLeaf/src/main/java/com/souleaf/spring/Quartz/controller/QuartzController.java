@@ -53,7 +53,7 @@ public class QuartzController{
      * @since 2021.8.16
      * @throws Exception
      */
-    public void scheduledStart() throws Exception{
+    public void scheduledStart() throws Exception{ 
     	
 //    	System.out.println("test");
     	
