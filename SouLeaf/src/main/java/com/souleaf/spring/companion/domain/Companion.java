@@ -10,7 +10,7 @@ public class Companion {
 	private String companionNick; // 애칭
 	private Date companionDate; // 등록일
 	private Date companionUpdate; // 수정일
-	private String companionPickName; // 식물 원본 사진
+	private String companionPicName; // 식물 원본 사진
 	private String companionRepicName; // 식물 저장 사진
 	private String companionLastWater; // 마지막 물 준날
 	private String companionNeedWater; // 물 줘야하는 날
@@ -65,12 +65,12 @@ public class Companion {
 		this.companionUpdate = companionUpdate;
 	}
 
-	public String getCompanionPickName() {
-		return companionPickName;
+	public String getCompanionPicName() {
+		return companionPicName;
 	}
 
-	public void setCompanionPickName(String companionPickName) {
-		this.companionPickName = companionPickName;
+	public void setCompanionPicName(String companionPicName) {
+		this.companionPicName = companionPicName;
 	}
 
 	public String getCompanionRepicName() {
@@ -101,8 +101,9 @@ public class Companion {
 	public String toString() {
 		return "Companion [companionNo=" + companionNo + ", plantNo=" + plantNo + ", memberNo=" + memberNo
 				+ ", companionNick=" + companionNick + ", companionDate=" + companionDate + ", companionUpdate="
-				+ companionUpdate + ", companionPickName=" + companionPickName + ", companionRepicName="
+				+ companionUpdate + ", companionPicName=" + companionPicName + ", companionRepicName="
 				+ companionRepicName + ", companionLastWater=" + companionLastWater + ", companionNeedWater="
 				+ companionNeedWater + "]";
 	}
+
 }
