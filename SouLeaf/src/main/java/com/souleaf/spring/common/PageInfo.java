@@ -47,11 +47,11 @@ public class PageInfo {
 			this.currentPage = currentPage;
 		}
 
-		public int getBoastLimit() {
+		public int getBoardLimit() {
 			return boardLimit;
 		}
 
-		public void setBoastLimit(int boardLimit) {
+		public void setBoardLimit(int boardLimit) {
 			this.boardLimit = boardLimit;
 		}
 
