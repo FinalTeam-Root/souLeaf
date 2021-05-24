@@ -6,9 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
-import com.souleaf.spring.diary.domain.WaterDay;
 import com.souleaf.spring.member.domain.Member;
 
 @Repository
@@ -17,84 +17,82 @@ public class DiaryStoreLogic implements DiaryStore{
 	@Autowired
 	private SqlSession sqlSession;
 
+	//로그인한 사용자 회원 정보뿌려주기
 	@Override
-	public Member printOneMember(int memberNo) {
+	public Member selectOneMember(int memberNo) {
 		return sqlSession.selectOne("diaryMapper.selectOneMember", memberNo);
 	}
 	
+	// 다이어리 전체 내용 불러오기
 	@Override
-	public ArrayList<Diary> monthViewListDiary(Diary diary) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Diary> selectAllDiary(int memberNo) {
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectAllDairy",memberNo);
+	}
+	// 해당 날짜 클릭시 등록된 일기 보기
+	@Override
+	public Diary selectOneDiary(int diaryNo) {
+		return sqlSession.selectOne("diaryMapper.selectOneDiary", diaryNo);
+	}
+	
+	// 내 반려식물 전체 조회
+	@Override
+	public ArrayList<Companion> selectAllCompanion(int memberNo) {
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectAllCompanion", memberNo);
 	}
 
-	@Override
-	public Diary selectOneDiary(Diary diary) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WaterDay selectOneWaterDay(WaterDay waterDay) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int insertWater(WaterDay waterDay) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateWater(WaterDay waterDay) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	// 일기 등록
 	@Override
 	public int insertDiary(Diary diary) {
-		// TODO Auto-generated method stub
-		return 0;
+		sqlSession.insert("diaryMapper.insertDiary", diary);
+		return diary.getDiaryNo();
+	}
+	// 마지막 물 준 날 유무
+	@Override
+	public Companion selectOneWaterDay(Companion companion) {
+		return sqlSession.selectOne("diaryMapper.selectOneWaterDay", companion);
 	}
 
+	// 마지막 물 준날 기준으로 물주는 날 갱신 
+	@Override
+	public int updateWater(Companion companion) {
+		return sqlSession.update("diaryMapper.updateWaterDay", companion);
+	}
+	
+	// 일기 수정
 	@Override
 	public int updateDiary(Diary diary) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("diaryMapper.updateDiary", diary);
 	}
-
+	// 일기 삭제
 	@Override
 	public int deleteDiary(Diary diary) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("diaryMapper.deleteDiary", diary);
 	}
-
+	
+	// 방명록 전체 조회
 	@Override
 	public ArrayList<Guestbook> printAllGuestbook(int memberDiary) {
 		return (ArrayList)sqlSession.selectList("diaryMapper.selectGuestbookList", memberDiary);
 	}
-
+	// 방명록 등록
 	@Override
 	public int insertGuestbook(Guestbook guestbook) {
 		return sqlSession.insert("diaryMapper.insertGuestbook",guestbook);
 	}
-
+	// 방명록 수정
 	@Override
 	public int updateGuestbook(Guestbook guestbook) {
 		return sqlSession.update("diaryMapper.updateGuestbook", guestbook);
 	}
-
+	// 방명록 삭제
 	@Override
 	public int deleteGuestbook(Guestbook guestbook) {
 		return sqlSession.delete("diaryMapper.deleteGuestbook", guestbook);
 	}
-
+	// 사진첩 리스트
 	@Override
 	public ArrayList<Diary> selectPlantPicAll(int diaryNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

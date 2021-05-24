@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
       eventClick: function(e) {
-        $('#eventModal').modal({
+        $('#eventModal-modify').modal({
               // 옵션값넣기
         });
     },
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
           text: '일기쓰기',
           click: function(e) {
             e.preventDefault();
-            $('#eventModal').modal({
+            $('#eventModal-insert').modal({
               // 옵션값넣기
             });
           }
@@ -40,6 +40,26 @@ document.addEventListener('DOMContentLoaded', function() {
       eventRender:function(title,start,end,color,img){
         img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
       },
+      // 일정 받아오는 함수 
+      //events: function(start, end, timezone, callback){
+      //   $.ajax({
+      //     url : "diaryList.kh",
+      //     type : "get",
+      //     dataType : "json",
+      //     data : {
+      //       startDate :moment(start).format('yyyy-mm-dd'),
+      //       endDate : moment(end).('yyyy-mm-dd')
+      //     },success : function(response) {
+      //       var fixedDate = response.map(function (array)) {
+      //         if(array.allDay && array.start != array.end) {
+      //           array.end = moment(array.end);
+      //         }
+      //         return array;
+      //       });
+      //       callback(fixedDate);
+      //     }
+      //   });
+      //  },
       events: [
         
         {
@@ -87,38 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 
-    // 일기 등록 버튼 클릭 시 일기 등록
-    $("#save-event").on("click", function() {
-      var companionNick = $("#selectCompanion option:selected").val(); 
-      var diaryTitle = $("#edit-title").val();
-      var diaryStartDate = $("#edit-date").val();
-      var diaryColor = $("input[name='color']:checked").val();
-      var diaryPicname = $("#customFile").val();
-      var diaryContent = $("#edit-desc").val();
-      var diaryStartWater = $("#edit-startWater").val();
-      // diaryStartWater.add(Calendar.DATE,+7);
-      // diaryStartWater +7일 해주는 것은 어떻게 할까? 
-      console.log(diaryStartWater);
-      $.ajax({
-        url :"addDiary.kh",
-        type:"post",
-        data: {"companionNick":companionNick,"diaryTitle" :diaryTitle,
-      "diaryStartDate":diaryStartDate,"diaryColor":diaryColor,"diaryPicname":diaryPicname,"diaryContent":diaryContent,"diaryStartWater":diaryStartWater},
-      success : function(data) {
-        if(data == "success"){
-          alert("다이어리 등록 성공");
-        } else {
-          alert("다이어리 등록 실패!");
-        }
-      }, error : function() {
-        
-      }
-      })
-
-    })
-
     //input을 datepicker로 선언
-    $("#edit-date,#edit-startWater").datepicker({
+    $("#edit-date,#edit-startWater,#modify-edit-date,#modify-edit-startWater").datepicker({
       format: "yyyy-mm-dd",
       language : "kr"
     }).datepicker("setDate",new Date());
@@ -166,6 +156,64 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 	  });
 
+      // 일기 삭제 버튼 클릭
+  $("#deleteEvent").on("click",function() {
+    $.ajax({
+      url : "diaryDelete.kh",
+      type : "get",
+      data : {"diaryNo":diaryNo, "diaryRepicname":diaryRepicname},
+      success : function(data) {
+        if(data == "success") {
+          alert("일기가 삭제되었습니다.");
+          // 삭제 후 달력리스트 불러오기
+
+        } else {
+          alert("일기 삭제 실패!!");
+        }
+      },
+      error : function() {
+
+      }
+    })
+  });
+
+  $("#updateEvent").on("click",function() {
+    // var companionNick = $("#selectCompanion option:selected").val(); 
+    var diaryTitle = $("#modify-edit-title").val();
+    var diaryStartDate = $("#modify-edit-date").val();
+    var diaryColor = $("input[name='color']:checked").val();
+    var diaryPicname = $("#modify-customFile").val();
+    var diaryContent = $("#edit-desc2").val();
+    var diaryStartWater = $("#modify-edit-startWater").val();
+    console.log(diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,diaryStartWater);
+    $.ajax({
+      url : "diaryUpdate.kh",
+      type : "post",
+      enctype: 'multipart/form-data',
+      processData: false,    
+      contentType: false,
+      data : {"diaryTitle":diaryTitle,"diaryStartDate":diaryStartDate,"diaryColor":diaryColor,"diaryPicname":diaryPicname,"diaryContent":diaryContent,"diaryStartWater":diaryStartWater},
+      success :function(data) {
+        if(data == "success") {
+            alert("일기 수정 완료");
+            // 일기 목록 불러오기
+
+            // 수정 후 내용 초기화
+            diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
+            $("input[name='color']:radio[value='#D25565']").attr('checked',true);
+            diaryTitle = "";
+            diaryContent = "";
+          } else {
+            alert("일기 수정 실패");
+          }
+        },
+        error : function() {
+
+        }
+    });
+  });
+
+  // document 끝
 });
 
 // 글자수 카운팅 함수
@@ -186,6 +234,13 @@ function commentModify(obj) {
      var wordCount2 = $(obj).parent().next().find('#wordCount2');
      getwordCount($(obj),wordCount2);
   })
+}
+
+function diaryModify(obj) {
+  $(obj).on("keyup", function() {
+    var editdesc2 = $(obj).parent().find('#wordCount4');
+    getwordCount($(obj),editdesc2);
+ })
 }
 // 방명록 리스트를 불러오는 함수
 function getGuestbookList() {
@@ -211,9 +266,10 @@ function getGuestbookList() {
      }, error :function(){
        console.log("fail");
      }
-  })	
+  });
+  
 };
-// 방명록 수정 버튼 클릭시 수정창이 띄워주는 함수
+// 방명록 수정 버튼 클릭시 수정창을 띄워주는 함수
 function modifyGuestbook(obj,guestbookNo, modifyContent) {
   var $modifySection = $("<div class='modify-section'>");
   var $modifyForm = $("<div class='modifyform'>").append("<div class='comment-retext'><textarea id='comment-modify' onclick='commentModify(this);' rows='3'>"+ modifyContent +"</textarea></div>").append("<div class='comment-reEnroll'><span id='wordCount2'>(0/최대 200자 작성가능)</span><button type='button' class='btn btn-default btn-secondary' onclick='modifyGuestbookCommit("+guestbookNo+",\""+modifyContent+"\")'>수정</button></div>");
@@ -258,4 +314,5 @@ function removeGuestbook(guestbookNo) {
     }
   });
 }
+
   

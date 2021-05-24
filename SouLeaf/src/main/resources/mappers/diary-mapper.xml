@@ -8,12 +8,15 @@
  		<id property="diaryNo" column="DIARY_NO"/>
  		<result property="diaryTitle" column="DIARY_TITLE"/>
  		<result property="diaryContent" column="DIARY_CONTENT"/>
- 		<result property="diaryDate" column="DIARY_DATE"/>
+ 		<result property="diaryStartDate" column="DIARY_STARTDATE"/>
+ 		<result property="diaryEndDate" column="DIARY_ENDDATE"/>
  		<result property="diaryUpdate" column="DIARY_UPDATE"/>
- 		<result property="diaryUpdate" column="DIARY_PICNAME"/>
+ 		<result property="diaryColor" column="DIARY_COLOR"/>
+ 		<result property="diaryPicname" column="DIARY_PICNAME"/>
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
- 		<result property="companionNo" column="COMPANION_NO"/>
 		<result property="memberNo" column="MEMBER_NO"/>
+ 		<result property="companionNo" column="COMPANION_NO"/>
+ 		<result property="companionNick" column="COMPANION_NICK"/>
  	</resultMap>
  	<resultMap type="Guestbook" id="guestbookResultMap">
  		<id property="guestbookNo" column="GUESTBOOK_NO"/>
@@ -25,14 +28,49 @@
  		<result property="memberNick" column="MEMBER_NICK" />
  	</resultMap>
  	
+ 	<select id="selectAllDairy" parameterType="Diary" resultMap="diaryResultMap">
+ 		SELECT DIARY_NO,DIARY_TITLE,DIARY_CONTENT,DIARY_STARTDATE,DIARY_ENDDATE,DIARY_UPDATE,DIARY_COLOR,DIARY_PICNAME,DIARY_REPICNAME,D.MEMBER_NO,C.COMPANION_NICK 
+		FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #(memberNo)
+ 	</select>
+ 	
+ 	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
+ 		SELECT * FROM DIARY WHERE DIARY_NO = #{diaryNo}
+ 	</select>
+ 	
+ <!-- 	<select id="selectAllCompanion" parameterType="Companion" resultMap="">
+ 		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo}
+ 	</select>
+ 	
+	<select id="selectOneWaterDay" parameterType="WaterDay" resultMap="waterDayResultMap">
+
+	</select>
+ -->
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
 		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY 
 		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
 	
+	
+	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
+		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo})
+	</insert>
+	
+	<update id="updateDiary">
+		UPDATE DIARY SET 
+		DIARY_TITLE = #{diaryTitle},DIARY_CONTENT=#{diaryContent},DIARY_STARTDATE=#{diaryStartDate},DIARY_ENDDATE=#{diaryStartDate},DIARY_UPDATE= SYSDATE,DIARY_COLOR=#{diaryColor},DIARY_PICNAME=#{diaryPicname},DIARY_REPICNAME=#{diaryRepicname} WHERE DIARY_NO = #{diaryNo}
+	</update>
+	
+	<delete id="deleteDiary">
+		DELETE FROM DIARY WHERE DIARY_NO = #{diaryNo}
+	</delete>
+	
+	<update id="updateWaterDay">
+		
+	</update>
+	
 	<insert id="insertGuestbook">
 		INSERT INTO GUESTBOOK 
-		VALUES (SEQ_GUESTBOOK.NEXTVAL, #{guestbookContent},DEFAULT,DEFAULT,#{memberNo},#{memberDiary})
+		VALUES (SEQ_GUESTBOOK.NEXTVAL, #{guestbookContent},#{diaryPicname},#{diaryRepicname},#{memberNo},#{memberDiary})
 	</insert>
 	
 	<update id="updateGuestbook">

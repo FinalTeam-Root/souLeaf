@@ -2,9 +2,9 @@ package com.souleaf.spring.diary.service;
 
 import java.util.ArrayList;
 
+import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
-import com.souleaf.spring.diary.domain.WaterDay;
 import com.souleaf.spring.member.domain.Member;
 
 public interface DiaryService {
@@ -12,18 +12,19 @@ public interface DiaryService {
 	//로그인한 사용자 회원 정보뿌려주기
 	public Member printOneMember(int memberNo);
 	
-	// 일기 월별 리스트로 보기
-	public ArrayList<Diary> monthViewListDiary(Diary diary);
+	// 다이어리 전체 내용 불러오기
+	public ArrayList<Diary> printAllDiary(int memberNo);
 	// 해당 날짜 클릭시 등록된 일기 보기
-	public Diary printOneDiary(Diary diary);
-	// 마지막 물 준 날 유무
-	public WaterDay printOneWaterDay(WaterDay waterDay);
-	// 마지막 물 준날 기준으로 물주는 날 표시
-	public int registerWater(WaterDay waterDay);
-	// 마지막 물 준날 기준으로 물주는 날 갱신 
-	public int modifyWater(WaterDay waterDay);
+	public Diary printOneDiary(int diaryNo);
+	
+	// 내 반려식물 전체 조회 
+	public ArrayList<Companion> printAllCompanion(int memberNo);
 	// 일기 등록
 	public int registerDiary(Diary diary);
+	// 마지막 물 준 날 가져오기
+	public Companion printOneWaterDay(Companion companion);
+	// 마지막 물 준날 기준으로 물주는 날 갱신 
+	public int modifyWater(Companion companion);
 	// 일기 수정
 	public int modifyDiary(Diary diary);
 	// 일기 삭제
@@ -39,8 +40,9 @@ public interface DiaryService {
 	public int removeGuestbook(Guestbook guestbook);
 	
 	
-	// 사진첩 하단 
+	// 사진첩 리스트
 	public ArrayList<Diary> printPlantPicAll(int diaryNo);
+
 	
 	
 	// 사진첩 동영상변환 @빽범

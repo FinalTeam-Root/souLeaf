@@ -10,11 +10,12 @@ public class Diary {
 	private String diaryStartDate;
 	private String diaryEndDate;
 	private String diaryUpdate;
-	private String diarycolor;
+	private String diaryColor;
 	private String diaryPicname;
 	private String diaryRepicname;
-	private String memberNo;
-	private String companionNo;
+	private int memberNo;
+	private int companionNo;
+	private String companionNick;
 	 
 	public Diary() {}
 
@@ -66,12 +67,12 @@ public class Diary {
 		this.diaryUpdate = diaryUpdate;
 	}
 
-	public String getDiarycolor() {
-		return diarycolor;
+	public String getdiaryColor() {
+		return diaryColor;
 	}
 
-	public void setDiarycolor(String diarycolor) {
-		this.diarycolor = diarycolor;
+	public void setdiaryColor(String diaryColor) {
+		this.diaryColor = diaryColor;
 	}
 
 	public String getDiaryPicname() {
@@ -90,29 +91,39 @@ public class Diary {
 		this.diaryRepicname = diaryRepicname;
 	}
 
-	public String getMemberNo() {
+	public int getMemberNo() {
 		return memberNo;
 	}
 
-	public void setMemberNo(String memberNo) {
+	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
 
-	public String getCompanionNo() {
+	public int getCompanionNo() {
 		return companionNo;
 	}
 
-	public void setCompanionNo(String companionNo) {
+	public void setCompanionNo(int companionNo) {
 		this.companionNo = companionNo;
+	}
+
+	public String getCompanionNick() {
+		return companionNick;
+	}
+
+	public void setCompanionNick(String companionNick) {
+		this.companionNick = companionNick;
 	}
 
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
 				+ ", diaryStartDate=" + diaryStartDate + ", diaryEndDate=" + diaryEndDate + ", diaryUpdate="
-				+ diaryUpdate + ", diarycolor=" + diarycolor + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
-				+ diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + "]";
+				+ diaryUpdate + ", diaryColor=" + diaryColor + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
+				+ diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + ", companionNick="
+				+ companionNick + "]";
 	}
+
 	
 	
 	
