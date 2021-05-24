@@ -58,7 +58,7 @@ public class MemberController {
 		
 	}
 	// 마이페이지 뷰
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="myInfo.kh", method=RequestMethod.GET)
 	public String myPageView() {
 		return "member/myPage"; 
 	}
@@ -79,7 +79,7 @@ public class MemberController {
 		
 	}
 	// 회원 탈퇴
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="memberDelete.kh", method=RequestMethod.GET)
 	public String memberDelete(
 							@RequestParam("memberId") String memberId,
 							Model model) {
