@@ -86,12 +86,12 @@ public class CompanionController {
 			if (!uploadFile.getOriginalFilename().equals("")) {
 				String renameFileName = saveFile(uploadFile, request);
 				if (renameFileName != null) {
-					companion.setCompanionPickName(uploadFile.getOriginalFilename());
+					companion.setCompanionPicName(uploadFile.getOriginalFilename());
 					companion.setCompanionRepicName(renameFileName);
 				}
 			} else {
 				ArrayList<PlantFile> plantFile = plantService.printFileList(companion.getPlantNo());
-				companion.setCompanionPickName(plantFile.get(0).getPlantFilePath());
+				companion.setCompanionPicName(plantFile.get(0).getPlantFilePath());
 			}
 			Plant plant = plantService.printOne(companion.getPlantNo());
 			// 캘린더 선언
@@ -179,22 +179,22 @@ public class CompanionController {
 			// 파일 삭제 후 업로드 ( 수정 )
 			if (reloadFile != null && !reloadFile.isEmpty()) {
 				// 기존 파일 삭제
-				if (companion.getCompanionPickName() != "") {
+				if (companion.getCompanionPicName() != "") {
 					deleteFile(companion.getCompanionRepicName(), request);
 				}
 				// 새 파일 업로드
 				String renameFileName = saveFile(reloadFile, request);
 				if (renameFileName != null) {
-					companion.setCompanionPickName(reloadFile.getOriginalFilename());
+					companion.setCompanionPicName(reloadFile.getOriginalFilename());
 					companion.setCompanionRepicName(renameFileName);
 				}
 			} else {
 				// 기존 파일 삭제
-				if (companion.getCompanionPickName() != "") {
+				if (companion.getCompanionPicName() != "") {
 					deleteFile(companion.getCompanionRepicName(), request);
 				}
 				ArrayList<PlantFile> plantFile = plantService.printFileList(companion.getPlantNo());
-				companion.setCompanionPickName(plantFile.get(0).getPlantFilePath());
+				companion.setCompanionPicName(plantFile.get(0).getPlantFilePath());
 			}
 			Plant plant = plantService.printOne(companion.getPlantNo());
 			// 캘린더 선언
