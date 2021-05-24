@@ -58,8 +58,8 @@ public class CompanionController {
 	public ModelAndView companionDetail(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
 		
 		try {
-			Companion Companion = CompanionService.printOne(companionNo);
-			mv.addObject("Companion", Companion);
+			Companion companion = CompanionService.printOne(companionNo);
+			mv.addObject("Companion", companion);
 			mv.setViewName("Companion/CompanionDetailView");
 			log.info("반려식물 상세조회 성공");
 		} catch (Exception e) {
@@ -195,9 +195,9 @@ public class CompanionController {
 			Calendar cal = Calendar.getInstance();
 			// 물준날 세팅
 			cal.setTime(companion.getCompanionLastWater());
-			// 식물정도 가져오기
+			// 식물정보 가져오기
 			Plant plant = plantService.printOne(companion.getPlantNo());
-			// Plant 줄주기 대입
+			// Plant 물주기 대입
 			int plantWater = Integer.parseInt(plant.getPlantWater());
 			// 물준날 + 물주기 날짜
 			cal.add(Calendar.DATE, plantWater);
