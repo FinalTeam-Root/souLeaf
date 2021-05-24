@@ -11,6 +11,7 @@
 	<meta name="theme-color" content="#ffffff">
     <link href='resources/css/diary/calendar.css' rel='stylesheet' />
     <link href='resources/css/diary/diaryMain.css' rel='stylesheet' />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>  
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
@@ -76,8 +77,67 @@
 				</div>
 				
 				<div class="tab-pane" id="myDiary-picture">
-					<div class="">
-						사진첩
+					<div class="video">
+						<div class="video-Companion">
+							<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
+									<option value="1">핑크개나리</option>
+									<option value="2">카스테라</option>
+							</select>
+						</div>
+						<div class="video-play">
+								<p>비디오 영역</p>
+						</div>
+					</div>
+					<!-- 사진 영역  -->
+					<div class="picture">
+						<div class="row">
+				        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
+				                </a>
+				            </div>
+				            
+				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            
+				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            
+				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            
+				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            
+				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				            
+				             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+				                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+				                </a>
+				            </div>
+				       </div>
 					</div>
 				</div>
 				<div class="tab-pane" id="myDaiary-guest">
@@ -209,7 +269,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="companionLastwater" id="edit-startWater"/>
+								<input class="form-control datetimepicker-input" type="text" name="companionLastWater" id="edit-startWater"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>
@@ -366,6 +426,6 @@
     <script src="resources/js/diary/diaryMain.js"></script>   
     <script src='resources/js/diary/calendar.js'></script>
     <script src='resources/js/diary/ko.js'></script>
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 </html>

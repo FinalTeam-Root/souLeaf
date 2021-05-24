@@ -2,12 +2,12 @@ package com.souleaf.spring.diary.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,11 +29,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
+import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.companion.service.CompanionService;
 import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.service.DiaryService;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.service.PlantService;
 
 @Controller
 public class DiaryController {
@@ -40,8 +44,11 @@ public class DiaryController {
 	@Autowired
 	private DiaryService dService;
 	
-//	@Autowired
-//	private CompanionService cService;
+	@Autowired
+	private CompanionService cService;
+	
+	@Autowired
+	private PlantService pService;
 	
 	// 상단의 성장일기 클릭시 화면 이동
 	@RequestMapping(value="diaryMainView.kh")
@@ -56,14 +63,14 @@ public class DiaryController {
 	}
 	
 	// 내 반려식물 불러오기
-//	@RequestMapping(value="companionList.kh", method=RequestMethod.POST)
-//	public ModelAndView companionList(HttpSession session, ModelAndView mv) {
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		ArrayList<Companion> companion = dService.printAllCompanion(loginUser.getMemberNo());
-//		mv.addObject("companion", companion).setViewName("diary/diaryMain");
-//		System.out.println(companion.toString());
-//		return mv;
-//	}
+	@RequestMapping(value="companionList.kh", method=RequestMethod.POST)
+	public ModelAndView companionList(HttpSession session, ModelAndView mv) {
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		// 반려식물 전체 가져오는 메소드 = printAll()
+		ArrayList<Companion> cList = cService.printmemberAll(loginUser.getMemberNo());
+		
+		return mv;
+	}
 	
 	// 일기 리스트 가져오기
 	@RequestMapping(value="diaryList.kh",method=RequestMethod.GET)
@@ -78,6 +85,7 @@ public class DiaryController {
 	}
 	
 	// 일기 상세 불러오기
+	@RequestMapping(value="detailDiary.kh", method=RequestMethod.POST)
 	public ModelAndView diaryDetailView(ModelAndView mv, @RequestParam("diaryNo") int diaryNo) {	
 		try {
 			Diary diary = dService.printOneDiary(diaryNo);
@@ -92,35 +100,46 @@ public class DiaryController {
 	
 	// 일기 등록하기
 	@RequestMapping(value="addDiary.kh", method=RequestMethod.POST)
-	public String registerDiary(@ModelAttribute Diary diary, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile ,HttpServletRequest request, HttpSession session ) {
+	public String registerDiary(@ModelAttribute Diary diary, @RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile ,HttpServletRequest request, HttpSession session ) throws Exception {
 		
-		// 서버에 데이터를 저장하는 작업
-		if(!uploadFile.getOriginalFilename().equals("")) {
-			String renameFileName = saveFile(uploadFile,request);
-			if(renameFileName != null) {
-				diary.setDiaryPicname(uploadFile.getOriginalFilename());
-				diary.setDiaryRepicname(renameFileName);
+			// 서버에 데이터를 저장하는 작업
+			if(!uploadFile.getOriginalFilename().equals("")) {
+				String renameFileName = saveFile(uploadFile,request);
+				if(renameFileName != null) {
+					diary.setDiaryPicname(uploadFile.getOriginalFilename());
+					diary.setDiaryRepicname(renameFileName);
+				}
 			}
-		}
 
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		diary.setMemberNo(loginUser.getMemberNo());
-		int diaryNo = dService.registerDiary(diary);
-		// if 일기 등록 성공
-		if(diaryNo > 0) {
-//			// 등록될때 생성된 diary번호를 어떻게받아올까? 
-//			// 해결 : https://marobiana.tistory.com/23
-//			wDay.setDiaryNo(diaryNo);
-//			wDay = dService.printOneWaterDay(waterDay);
-//			// 	if waterday테이블이 null이면 
-//			if(wDay == null) {
-//				wResult = dService.registerWater(waterDay);
-//			} else {
-//				// 	update modifyWater()
-//				wResult = dService.modifyWater(waterDay); 
-//			}
-//			return "redirect:diaryMainView.kh";
-//		}
+			Member loginUser = (Member)session.getAttribute("loginUser");
+			diary.setMemberNo(loginUser.getMemberNo());
+			int diaryNo = dService.registerDiary(diary);
+			// if 일기 등록 성공
+			if(diaryNo > 0) {
+			// 등록될때 생성된 diary번호를 어떻게받아올까? 
+			// 해결 : https://marobiana.tistory.com/23
+			// 기존에 입력된 물주기를 가져와줌
+			Companion companion = cService.printOne(companionNo);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			  // 기존 물 주는 날 != 내가 입력한 마지막 물주는 날
+			if(companion.getCompanionLastWater() != companionLastWater) {
+				companion.setCompanionLastWater(companionLastWater);
+				// 캘린더 선언
+				Calendar cal = Calendar.getInstance();
+				Date date = (Date) sdf.parse(companion.getCompanionLastWater());
+				// 물준날 세팅
+				cal.setTime(date);
+				// Plant 줄주기 대입
+				Plant plant = pService.printOne(companion.getPlantNo());
+				int plantWater = Integer.parseInt(plant.getPlantWater());
+				// 물준날 + 물주기 날짜
+				cal.add(Calendar.DATE, plantWater);
+				// set 물 주는날 
+				String dateToStr = sdf.format(cal.getTime());
+				companion.setCompanionNeedWater(dateToStr);
+				
+				cService.modifyCompanion(companion);
+			}
 		};
 		return "redirect:diaryMainView.kh";  
 	}
