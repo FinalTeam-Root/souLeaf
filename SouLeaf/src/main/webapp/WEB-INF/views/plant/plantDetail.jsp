@@ -15,10 +15,32 @@
     	<div class="container">
     		<div class="row d-flex no-gutters">
     			<div class="col-md-5 d-flex">
-    			<c:forEach items="${pfList }" var="pf">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="resources/uploadFiles/plant/156865194290901_stuckyi_01_@yuaigroundhttpswww.instagram.compBv1Hxqjhie3utm_source=ig_web_copy_link_.jpg" class="d-block w-100" alt="...">
+    </div>
+    <c:forEach items="${pfList }" var="pf">
+    <div class="carousel-item">
+      <img src="resources/uploadFiles/plant/${pf.plantFileName}" class="d-block w-100" alt="...">
+    </div>
+    </c:forEach>
+  
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    			<%-- <c:forEach items="${pfList }" var="pf">
+    			
     				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(resources/uploadFiles/plant/${pf.plantFileName});">
     				</div>
-    			</c:forEach>
+    			</c:forEach> --%>
     				<!-- <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(resources/images/about-1.jpg);">
     				</div> -->
     			</div>
@@ -155,6 +177,6 @@
     </section>
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
-<!-- <script src="resources/js/plant/plant-detail.js"></script> -->
+<script src="resources/js/plant/plant-detail.js"></script>
 </body>
 </html>
