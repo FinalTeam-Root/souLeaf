@@ -212,7 +212,7 @@ public class CompanionController {
 			e.printStackTrace();
 			mv.setViewName("redirect:companionList.kh");
 			log.info("반려식물 수정 실패");
-		}
+		} 
 		return mv;
 	}
 	

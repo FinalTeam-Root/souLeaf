@@ -40,7 +40,7 @@
 	</delete>
 	
 	<select id="selectMemberCompanion" resultMap="companionResultMap">
-		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo }
+		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo } 
 	</select>
 	
 </mapper>
