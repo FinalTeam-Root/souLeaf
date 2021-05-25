@@ -30,7 +30,7 @@ public interface DiaryStore {
 		public int deleteDiary(Diary diary);
 		
 		// 방명록 전체 조회
-		public ArrayList<Guestbook> printAllGuestbook(int diaryNo);
+		public ArrayList<Guestbook> selectAllGuestbook(int diaryNo);
 		// 방명록 등록
 		public int insertGuestbook(Guestbook guestbook);
 		// 방명록 수정
@@ -40,7 +40,7 @@ public interface DiaryStore {
 		
 		
 		// 사진첩 리스트
-		public ArrayList<Diary> selectPlantPicAll(int diaryNo);
+		public ArrayList<Diary> selectPlantPicAll(int membeNo);
 
 
 		

@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -81,7 +83,7 @@ public class DiaryController {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(dList, response.getWriter());
 		} else {
-			System.out.println("데이터가 없습니다.");
+			System.out.println("일기리스트 가 없습니다.");
 		}
 	}
 	
@@ -288,9 +290,16 @@ public class DiaryController {
 		}
 	}
 	
-	// 사진첩 하단
-	public String diaryPicList() {
-		return null;
+	// 사진첩 리스트 불러오기
+	@RequestMapping(value="diaryPicList.kh", method=RequestMethod.GET)
+	public void diaryPicList(HttpServletResponse response, @RequestParam("memberNo") int memberNo) throws Exception {
+		ArrayList<Diary> dList = dService.printPlantPicAll(memberNo);
+		if(!dList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(dList,response.getWriter());
+		} else {
+			System.out.println("사진데이터가 없습니다.");			
+		}
 	}
 	// 사진 동영상 변환...@빽범
 }

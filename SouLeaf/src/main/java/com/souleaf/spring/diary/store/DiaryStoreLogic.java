@@ -71,7 +71,7 @@ public class DiaryStoreLogic implements DiaryStore{
 	
 	// 방명록 전체 조회
 	@Override
-	public ArrayList<Guestbook> printAllGuestbook(int memberDiary) {
+	public ArrayList<Guestbook> selectAllGuestbook(int memberDiary) {
 		return (ArrayList)sqlSession.selectList("diaryMapper.selectGuestbookList", memberDiary);
 	}
 	// 방명록 등록
@@ -92,7 +92,6 @@ public class DiaryStoreLogic implements DiaryStore{
 	// 사진첩 리스트
 	@Override
 	public ArrayList<Diary> selectPlantPicAll(int diaryNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectPlantPicAll", sqlSession);
 	}
 }

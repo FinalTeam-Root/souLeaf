@@ -41,7 +41,7 @@ public interface DiaryService {
 	
 	
 	// 사진첩 리스트
-	public ArrayList<Diary> printPlantPicAll(int diaryNo);
+	public ArrayList<Diary> printPlantPicAll(int membeNo);
 
 	
 	

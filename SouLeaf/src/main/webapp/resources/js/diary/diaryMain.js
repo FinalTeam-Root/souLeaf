@@ -3,15 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	
     var calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
-      eventClick: function(info) {
-        $('#eventModal-modify').modal({
-          
-        });
-        // info.jsEvent.preventDefault(); // don't let the browser navigate
+      // {
+      //   title: 'testmessage',
+      //   start: '2020-09-22',
+      //   end: '2020-09-22',
+      //   color : '#f06595'
+      //   constraint: 'availableForMeeting', // defined below
+      // },
 
-        // if (info.event.url) {
-        //   window.open("diaryMainView.kh");
-        // }
+      eventClick: function(info) {
+        // $('#eventModal-modify').modal({
+          
+        // });
+        alert('Event:' + info.event.constraint);
+        info.jsEvent.preventDefault(); // don't let the browser navigate
+
       },
       // toolbar에 일기쓰기 버튼
       customButtons: {
@@ -46,14 +52,16 @@ document.addEventListener('DOMContentLoaded', function() {
       // eventRender:function(title,start,end,color,img){
       //   img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
       // },
+
       // 일정 받아오는 함수 
       events: function(info, successCallback, failureCallback){
+        var memberNo = $("#memberNo").val();
         $.ajax({
           url : "diaryList.kh",
           type : "get",
           dataType : "json",
           data : {
-            memberNo : 1
+            "memberNo" : memberNo
           },
           success : function(response) {
             successCallback(response);
@@ -282,8 +290,19 @@ function removeGuestbook(guestbookNo) {
     }
   });
 }
-
-function testFunc() {
-  alert("test");
-}
   
+
+function getDiaryPicList(){
+  var memberNo = '${diary.memberNo}'
+  $.ajax({
+    url : "diaryPicList.kh",
+    type : "get",
+    data : {"memberNo": memberNo},
+    dataType : "json",
+    success : function(data){
+      var $carouselInner = $('.carousel-inner');
+      $carouselInner.html("");
+      // var $carouselItem = ;
+    }
+  })
+}

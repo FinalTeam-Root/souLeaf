@@ -44,10 +44,15 @@
 
 	</select>
  -->
+	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryResultMap">
+		SELECT DIARY_PICNAME FROM DIARY WHERE MEMBER_NO = #{memberNo};
+	</select>
+	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
 		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY 
 		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
+	
 	
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">

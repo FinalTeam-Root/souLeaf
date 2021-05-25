@@ -71,7 +71,7 @@ public class DiaryServiceImpl implements DiaryService{
 	// 방명록 전체 조회
 	@Override
 	public ArrayList<Guestbook> printAllGuestbook(int memberDiary) {
-		return dStore.printAllGuestbook(memberDiary);
+		return dStore.selectAllGuestbook(memberDiary);
 	}
 	// 방명록 등록
 	@Override
@@ -91,9 +91,8 @@ public class DiaryServiceImpl implements DiaryService{
 	
 	// 사진첩 리스트
 	@Override
-	public ArrayList<Diary> printPlantPicAll(int diaryNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Diary> printPlantPicAll(int membeNo) {
+		return dStore.selectPlantPicAll(membeNo);
 	}
 
 
