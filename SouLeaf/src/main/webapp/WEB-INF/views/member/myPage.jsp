@@ -1,77 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>souLeaf - 마이페이지</title>
+<link rel="icon" type="image/png" sizes="16x16"
+	href="resources/images/favicon-16x16.png">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!--     <script src='resources/js/jquery-3.2.1.min.js'></script> -->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<style>
+.nav-tabs>li {
+	float: left;
+	margin-bottom: -1px;
+}
 
-<head>
-	<title>souLeaf - 마이페이지</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	color: #555;
+	cursor: default;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: transparent;
+}
+
+.nav-tabs>li>a {
+	margin-right: 2px;
+	line-height: 1.42857143;
+	border: 1px solid transparent;
+	border-radius: 4px 4px 0 0;
+}
+
+.nav>li>a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+}
+</style>
 </head>
-
 <body>
-	<hr>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<div class="container bootstrap snippet">
+	<br>
+	<br>
 		<div class="row">
 			<div class="col-sm-10">
-				<h1>User name</h1>
+				<h4>User name 님</h4>
 			</div>
-<!-- 			<div class="col-sm-2"> -->
-<!-- 				<a href="/users" class="pull-right"><img title="profile image" -->
-<!-- 					class="img-circle img-responsive" -->
-<!-- 					src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a> -->
-<!-- 			</div> -->
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
 				<!--left col-->
-
-
+				
 				<div class="text-center">
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-						class="avatar img-circle img-thumbnail" alt="avatar">
+					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 100%; height: 230px;">
 					<h6>Upload a different photo...</h6>
 					<input type="file" class="text-center center-block file-upload">
 				</div>
-				</hr>
 				<br>
 
 
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						Website <i class="fa fa-link fa-1x"></i>
-					</div>
-					<div class="panel-body">
-						<a href="http://bootnipets.com">bootnipets.com</a>
-					</div>
+				<div class="card" style="width: 16rem;">
+					<div class="card-header">소개글</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">안녕하세요~! 저는 식물을 사랑하는 사람입니다.</li>
+					</ul>
+
 				</div>
 
-
-				<ul class="list-group">
-					<li class="list-group-item text-muted">Activity <i
-						class="fa fa-dashboard fa-1x"></i></li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span>
-						125</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span>
-						13</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
-						37</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span>
-						78</li>
-				</ul>
+				<br>
+				<div class="card" style="width: 16rem;">
+					<div class="card-header">반려식물</div>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb"
+							style="margin-bottom: -; margin-bottom: 0px; background-color: white;">
+							<li class="breadcrumb-item"><a href="#">#Home</a></li>
+							<li class="breadcrumb-item"><a href="#">#Library</a></li>
+							<li class="breadcrumb-item"><a href="#">#Data</a></li>
+						</ol>
+					</nav>
+				</div>
 
 				<div class="panel panel-default">
 					<div class="panel-heading">Social Media</div>
@@ -374,27 +386,26 @@
 		<!--/col-9-->
 	</div>
 	<!--/row-->
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function() {
-	
-		    
-		    var readURL = function(input) {
-		        if (input.files && input.files[0]) {
-		            var reader = new FileReader();
-	
-		            reader.onload = function (e) {
-		                $('.avatar').attr('src', e.target.result);
-		            }
-		    
-		            reader.readAsDataURL(input.files[0]);
-		        }
-		    }
-		    
-	
-		    $(".file-upload").on('change', function(){
-		        readURL(this);
-		    });
+
+			var readURL = function(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+
+					reader.onload = function(e) {
+						$('.avatar').attr('src', e.target.result);
+					}
+
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+
+			$(".file-upload").on('change', function() {
+				readURL(this);
+			});
 		});
 	</script>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
