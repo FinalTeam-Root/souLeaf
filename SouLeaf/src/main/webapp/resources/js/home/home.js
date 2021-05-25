@@ -1,5 +1,6 @@
 
 $( document ).ready(function() {
+open_chatroom();
 	$( window ).resize(function() {
    		open_chatroom();
 	});		

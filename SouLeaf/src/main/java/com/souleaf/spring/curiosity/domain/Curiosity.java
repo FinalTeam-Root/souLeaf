@@ -7,26 +7,33 @@ public class Curiosity {
 	private String curiosityContent;
 	private String curiosityFileName;
 	private String curiosityFilePath;
-	private long curiosityFileSize;
+	private String curiosityFileRename;
 	private Date curiosityDate;
+	private Date curiosityUpdate;
+	private String criosityStatus;
 	private int memberNo;
-	private String memberName;
+	private String memberNick;
+	private int curiosityCount;
 	
 	public Curiosity() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Curiosity(int curiosityNo, String curiosityContent, String curiosityFileName, String curiosityFilePath,
-			long curiosityFileSize, Date curiosityDate, int memberNo, String memberName) {
+			String curiosityFileRename, Date curiosityDate, Date curiosityUpdate, String criosityStatus, int memberNo,
+			String memberNick, int curiosityCount) {
 		super();
 		this.curiosityNo = curiosityNo;
 		this.curiosityContent = curiosityContent;
 		this.curiosityFileName = curiosityFileName;
 		this.curiosityFilePath = curiosityFilePath;
-		this.curiosityFileSize = curiosityFileSize;
+		this.curiosityFileRename = curiosityFileRename;
 		this.curiosityDate = curiosityDate;
+		this.curiosityUpdate = curiosityUpdate;
+		this.criosityStatus = criosityStatus;
 		this.memberNo = memberNo;
-		this.memberName = memberName;
+		this.memberNick = memberNick;
+		this.curiosityCount = curiosityCount;
 	}
 
 	public int getCuriosityNo() {
@@ -61,12 +68,12 @@ public class Curiosity {
 		this.curiosityFilePath = curiosityFilePath;
 	}
 
-	public long getCuriosityFileSize() {
-		return curiosityFileSize;
+	public String getCuriosityFileRename() {
+		return curiosityFileRename;
 	}
 
-	public void setCuriosityFileSize(long curiosityFileSize) {
-		this.curiosityFileSize = curiosityFileSize;
+	public void setCuriosityFileRename(String curiosityFileRename) {
+		this.curiosityFileRename = curiosityFileRename;
 	}
 
 	public Date getCuriosityDate() {
@@ -77,6 +84,22 @@ public class Curiosity {
 		this.curiosityDate = curiosityDate;
 	}
 
+	public Date getCuriosityUpdate() {
+		return curiosityUpdate;
+	}
+
+	public void setCuriosityUpdate(Date curiosityUpdate) {
+		this.curiosityUpdate = curiosityUpdate;
+	}
+
+	public String getCriosityStatus() {
+		return criosityStatus;
+	}
+
+	public void setCriosityStatus(String criosityStatus) {
+		this.criosityStatus = criosityStatus;
+	}
+
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -85,23 +108,30 @@ public class Curiosity {
 		this.memberNo = memberNo;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getMemberNick() {
+		return memberNick;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
+	}
+
+	public int getCuriosityCount() {
+		return curiosityCount;
+	}
+
+	public void setCuriosityCount(int curiosityCount) {
+		this.curiosityCount = curiosityCount;
 	}
 
 	@Override
 	public String toString() {
 		return "Curiosity [curiosityNo=" + curiosityNo + ", curiosityContent=" + curiosityContent
 				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFilePath=" + curiosityFilePath
-				+ ", curiosityFileSize=" + curiosityFileSize + ", curiosityDate=" + curiosityDate + ", memberNo="
-				+ memberNo + ", memberName=" + memberName + "]";
+				+ ", curiosityFileRename=" + curiosityFileRename + ", curiosityDate=" + curiosityDate
+				+ ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus=" + criosityStatus + ", memberNo="
+				+ memberNo + ", memberNick=" + memberNick + ", curiosityCount=" + curiosityCount + "]";
 	}
-
-	
 
 	
 	
