@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <script src="resources/js/login/enrollView.js"></script> 
+  <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
   
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -37,15 +37,15 @@
                   <h3>Sign Up</h3>
                   <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
                 </div>
-                <form action="#" method="post">
+                <form action="memberRegister.kh" method="post">
                   <div class="form-group first">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" name="memberName" class="form-control" id="name">
 
                   </div>
                   <div class="form-group first">
                     <label for="id">Id</label>
-                    <input type="text" class="form-control classId" id="id">
+                    <input type="text" name="memberId" class="form-control classId" id="id">
 
                   </div>
                   <div class="form-group">
@@ -53,17 +53,18 @@
                   </div>
                   <div class="form-group first">
                     <label for="nickname">NickName</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" name="memberNick" class="form-control" id="name">
 
                   </div>
                   <div class="form-group first">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email">
-
+                    <input type="text" name="memberMail" class="form-control" id="email">
+					
+				  
                   </div>
                   <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control passwordCheck" id="password">
+                    <input type="password" name="memberPw" class="form-control passwordCheck" id="password">
                     
                   </div>
                   <div class="form-group last mb-4">
@@ -82,21 +83,10 @@
                     <span class="ml-auto"><a href="#" class="forgot-pass">Sign In</a></span> 
                   </div>
 
-                  <input type="submit" value="Register" class="btn btn-pill text-white btn-block btn-primary">
+                  <input type="submit" value="가입하기" class="btn btn-pill text-white btn-block btn-primary">
 
-                  <span class="d-block text-center my-4 text-muted"> or register with</span>
                   
-                  <div class="social-login text-center">
-                    <a href="#" class="facebook">
-                      <span class="icon-facebook mr-3"></span> 
-                    </a>
-                    <a href="#" class="twitter">
-                      <span class="icon-twitter mr-3"></span> 
-                    </a>
-                    <a href="#" class="google">
-                      <span class="icon-google mr-3"></span> 
-                    </a>
-                  </div>
+                
                 </form>
               </div>
             </div>

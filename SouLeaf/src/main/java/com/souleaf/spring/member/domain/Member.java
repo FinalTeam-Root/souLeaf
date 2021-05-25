@@ -7,7 +7,7 @@ public class Member {
 	private String memberId;
 	private String memberPw;
 	private String memberNick;
-	private String mamberName;
+	private String memberName;
 	private String memberPhoto;
 	private String memberMail;
 	private Date memberJoin;
@@ -28,23 +28,20 @@ public class Member {
 
 
 
-	public Member(int memberNo, String memberId, String memberPw, String memberNick, String mamberName, String memberPhoto,
+	public Member(int memberNo, String memberId, String memberPw, String memberNick, String memberName, String memberPhoto,
 			String memberMail, Date memberJoin, Date memberOut, String memberStatus) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.memberNick = memberNick;
-		this.mamberName = mamberName;
+		this.memberName = memberName;
 		this.memberPhoto = memberPhoto;
 		this.memberMail = memberMail;
 		this.memberJoin = memberJoin;
 		this.memberOut = memberOut;
 		this.memberStatus = memberStatus;
 	}
-
-
-
 
 
 
@@ -105,15 +102,15 @@ public class Member {
 
 
 
-	public String getMamberName() {
-		return mamberName;
+	public String getMemberName() {
+		return memberName;
 	}
 
 
 
 
-	public void setMamberName(String mamberName) {
-		this.mamberName = mamberName;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
 
@@ -192,13 +189,18 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick="
-				+ memberNick + ", mamberName=" + mamberName + ", memberPhoto=" + memberPhoto + ", memberMail="
+				+ memberNick + ", memberName=" + memberName + ", memberPhoto=" + memberPhoto + ", memberMail="
 				+ memberMail + ", memberJoin=" + memberJoin + ", memberOut=" + memberOut + ", memberStatus="
 				+ memberStatus + "]";
 	}
 
 
 
+
+
+
+
+	
 	
 	
 

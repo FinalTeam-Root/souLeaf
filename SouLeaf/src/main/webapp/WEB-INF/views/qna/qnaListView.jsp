@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>게시글</title>
 </head>
 <body>
  <jsp:include page="../common/header.jsp"></jsp:include> 
+ 
 
   <section class="ftco-section bg-light ftco-faqs">
     	<div class="container">
