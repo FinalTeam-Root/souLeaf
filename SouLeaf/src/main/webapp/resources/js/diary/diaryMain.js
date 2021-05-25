@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       eventClick: function(info) {
 
-        $('#eventModal-modify').modal("show");
+        $('#eventModal-modify').modal();
 
         // diaryNo 받아와서 담아주기
         var diaryNo = info.event.extendedProps.diaryNo;
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(data == "success") {
           alert("일기가 삭제되었습니다.");
           // 삭제 후 달력리스트 불러오기
-          $('#eventModal-modify').modal("hide");
+          // $('#eventModal-modify').modal("hide");
         } else {
           alert("일기 삭제 실패!!");
         }
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(data == "success") {
             alert("일기 수정 완료");
             // 일기 수정 후 모달창 닫아주기
-            $('#eventModal-modify').modal("hide");
+            // $('#eventModal-modify').modal("hide");
             // 수정 후 내용 초기화
             diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
             $("input[name='color']:radio[value='#D25565']").attr('checked',true);
