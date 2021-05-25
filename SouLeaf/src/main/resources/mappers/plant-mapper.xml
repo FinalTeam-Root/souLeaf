@@ -45,6 +45,10 @@
 		<result property="plantNo" column="PLANT_NO"/>
 	</resultMap>
 	
+	<select id="plantNo" resultType="_int" >
+		SELECT MAX(PLANT_NO) FROM PLANT ORDER BY PLANT_NO DESC
+	</select>
+	
 	<select id="selectAll" parameterType="Plant" resultMap="plantResultMap">
 		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANT_STATUS FROM (SELECT ROW_NUMBER() OVER(PARTITION BY PLANT_NO ORDER BY PLANTFILE_NO) AS RNUM, PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANT_STATUS FROM PLANT JOIN PLANTFILE USING(PLANT_NO)) WHERE RNUM = 1 AND PLANT_STATUS = 'Y' ORDER BY PLANT_NO DESC
 	</select>
@@ -60,6 +64,7 @@
 	<select id="selectFileList" parameterType="PlantFile" resultMap="plantFileResultMap">
 		SELECT * FROM PLANTFILE WHERE PLANT_NO = #{plantNo}
 	</select>
+	
 
 	<insert id="insertPlant">
 		INSERT INTO PLANT VALUES (SEQ_PLANT.NEXTVAL,#{plantName},#{plantEngname},#{plantPlantae},#{plantKind},#{plantProperty},#{plantLeaf},#{plantDetail},#{plantWater},#{plantEnvi},#{plantHumidity},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
@@ -75,8 +80,15 @@
 		INSERT INTO PLANTFILE VALUES(SEQ_PLANTFILE.NEXTVAL,#{plantFileName},#{plantFilePath},#{plantFileSize},DEFAULT,#{plantNo})
 	</insert>
 	
-	<select id="plantNo" resultType="_int" >
-		SELECT MAX(PLANT_NO) FROM PLANT ORDER BY PLANT_NO DESC
-	</select>
+	<update id="updatePlant" parameterType="Plant">
+		 UPDATE PLANT SET PLANT_NAME=#{plantName}, PLANT_ENGNAME=#{plantEngname}, PLANT_PLANTAE=#{plantPlantae}, PLANT_KIND=#{plantKind}, PLANT_PROPERTY=#{plantProperty}, PLANT_LEAF=#{plantLeaf}, PLANT_DETAIL=#{plantDetail}, PLANT_WATER=#{plantWater}, PLANT_ENVI=#{plantEnvi}, PLANT_HUMIDITY=#{plantHumidity} WHERE PLANT_NO = #{plantNo} 
+	</update>
+	
+	<update id="updatePlantDetail" parameterType="PlantInfo">
+		UPDATE PLANTINFO SET PI_LIGHT_INFO=#{piLightInfo}, PI_LIGHT_CONTENTS=#{piLightContents}, PI_TEMP_INFO=#{piTempInfo}, PI_TEMP_CONTENTS=#{piTempContents}, PI_HUMIDITY_INFO=#{piHumidityInfo}, PI_HUMIDITY_CONTENTS=#{piHumidityContents}, PI_WATER_INFO=#{piWaterInfo}, PI_WATER_CONTENTS=#{piWaterContents}, PI_EARTH_INFO=#{piEarthInfo}, PI_EARTH_CONTENTS=#{piEarthContents}, PI_BUNTING=#{piBunting} WHERE PLANTINFO_NO=#{plantinfoNo} 
+	</update>
+	
+	
+
 
 </mapper>

@@ -100,13 +100,37 @@ public class PlantController {
 		}
 
 		// 식물도감 수정화면 이동
-		public ModelAndView plantUpdateView(ModelAndView mv, int plantNo, Model model) {
-			return null;
+		@RequestMapping(value="plantUpdateView.kh")
+		public ModelAndView plantUpdateView(ModelAndView mv, @RequestParam("plantNo") int plantNo, Model model) {
+			Plant plant = pService.printOne(plantNo);
+			PlantInfo pInfo = pService.printOneInfo(plantNo);
+			ArrayList<PlantFile> pfList = pService.printFileList(plantNo);
+			mv.addObject("plant",plant);
+			mv.addObject("pInfo",pInfo);
+			mv.addObject("pfList",pfList);
+			mv.setViewName("plant/plantUpdate");
+			return mv;
 		}
 		
 		// 식물도감 게시글 수정
-		public ModelAndView plantUpdate(ModelAndView mv, Plant plant,MultipartFile uploadFile, Model model) {
-			return null;
+		@RequestMapping(value="plantUpdate.kh", method = RequestMethod.POST)
+		public ModelAndView plantUpdate(ModelAndView mv, @ModelAttribute Plant plant, @ModelAttribute PlantInfo plantInfo, MultipartHttpServletRequest multipartRequest, HttpServletRequest request,Model model) {
+			List<MultipartFile> fList = multipartRequest.getFiles("ufile");
+			  String root = request.getSession().getServletContext().getRealPath("resources");
+			  
+		      String filePath = root+"/uploadFiles/plant"; //설정파일로 뺀다.
+		        File folder = new File(filePath);
+		        if(!folder.exists()) {
+		        	folder.mkdir();
+		        }
+		        int result = pService.modifyPlant(plant, plantInfo, fList, filePath);
+		       
+			if(result > 0) {
+				mv.setViewName("redirect:plantListView.kh");
+			}else {
+				mv.setViewName("common/errorPage");
+			}
+			return mv;
 		}
 		
 		// 식물도감 게시글 삭제
