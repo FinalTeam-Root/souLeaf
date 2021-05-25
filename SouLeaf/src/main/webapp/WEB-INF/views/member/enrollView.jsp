@@ -65,7 +65,7 @@
                   <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="memberPw" class="form-control passwordCheck" id="password">
-                    
+                    <span id="pwMsg"></span>
                   </div>
                   <div class="form-group last mb-4">
                     <label for="re-password">Re-type Password</label>
