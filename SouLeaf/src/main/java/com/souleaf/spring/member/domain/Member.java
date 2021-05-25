@@ -8,8 +8,9 @@ public class Member {
 	private String memberPw;
 	private String memberNick;
 	private String memberName;
-	private String memberPhoto;
+	private String memberPhone;
 	private String memberMail;
+	private String memberPhoto;
 	private Date memberJoin;
 	private Date memberOut;
 	private String memberStatus;
@@ -28,16 +29,18 @@ public class Member {
 
 
 
-	public Member(int memberNo, String memberId, String memberPw, String memberNick, String memberName, String memberPhoto,
-			String memberMail, Date memberJoin, Date memberOut, String memberStatus) {
+	public Member(int memberNo, String memberId, String memberPw, String memberNick, String memberName,
+			String memberPhone, String memberMail, String memberPhoto, Date memberJoin, Date memberOut,
+			String memberStatus) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberPw = memberPw;
 		this.memberNick = memberNick;
 		this.memberName = memberName;
-		this.memberPhoto = memberPhoto;
+		this.memberPhone = memberPhone;
 		this.memberMail = memberMail;
+		this.memberPhoto = memberPhoto;
 		this.memberJoin = memberJoin;
 		this.memberOut = memberOut;
 		this.memberStatus = memberStatus;
@@ -116,15 +119,15 @@ public class Member {
 
 
 
-	public String getMemberPhoto() {
-		return memberPhoto;
+	public String getMemberPhone() {
+		return memberPhone;
 	}
 
 
 
 
-	public void setMemberPhoto(String memberPhoto) {
-		this.memberPhoto = memberPhoto;
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
 
@@ -139,6 +142,20 @@ public class Member {
 
 	public void setMemberMail(String memberMail) {
 		this.memberMail = memberMail;
+	}
+
+
+
+
+	public String getMemberPhoto() {
+		return memberPhoto;
+	}
+
+
+
+
+	public void setMemberPhoto(String memberPhoto) {
+		this.memberPhoto = memberPhoto;
 	}
 
 
@@ -189,10 +206,13 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick="
-				+ memberNick + ", memberName=" + memberName + ", memberPhoto=" + memberPhoto + ", memberMail="
-				+ memberMail + ", memberJoin=" + memberJoin + ", memberOut=" + memberOut + ", memberStatus="
-				+ memberStatus + "]";
+				+ memberNick + ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberMail="
+				+ memberMail + ", memberPhoto=" + memberPhoto + ", memberJoin=" + memberJoin + ", memberOut="
+				+ memberOut + ", memberStatus=" + memberStatus + "]";
 	}
+
+	
+
 
 
 

@@ -11,6 +11,7 @@
  <result property="memberName" column="MEMBER_NAME"/>
  <result property="memberPhone" column="MEMBER_PHONE"/>
  <result property="memberMail" column="MEMBER_MAIL"/>
+ <result property="memberPhoto" column="MEMBER_PHOTO"/>
  <result property="memberJoin" column="MEMBER_JOIN"/>
  <result property="memberOut" column="MEMBER_OUT"/>
  <result property="memberStatus" column="MEMBER_STATUS"/>
