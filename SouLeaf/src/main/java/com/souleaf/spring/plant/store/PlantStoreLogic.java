@@ -50,8 +50,7 @@ public class PlantStoreLogic implements PlantStore{
 
 	@Override
 	public int updatePlant(Plant plant) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("plantMapper.updatePlant",plant);
 	}
 
 	@Override
@@ -75,6 +74,17 @@ public class PlantStoreLogic implements PlantStore{
 	public int insertPlantFile(PlantFile pFile) {
 		
 		return sqlSession.insert("plantMapper.insertPlantFile",pFile);
+	}
+
+	@Override
+	public int updateDetailPlant(PlantInfo plantInfo) {
+		return sqlSession.update("plantMapper.updatePlantDetail",plantInfo);
+	}
+
+	@Override
+	public int deletePlantFile(int plantNo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

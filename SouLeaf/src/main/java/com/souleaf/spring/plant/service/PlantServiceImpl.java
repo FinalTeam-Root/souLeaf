@@ -58,9 +58,34 @@ public class PlantServiceImpl implements PlantService{
 	}
 
 	@Override
-	public int modifyPlant(Plant plant) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int modifyPlant(Plant plant, PlantInfo plantInfo, List<MultipartFile> fList, String filePath) {
+		int result = 0;
+		int basicResult = 0;
+		int detailResult = 0;
+		int fileResult = 1;
+		
+		basicResult = pStore.updatePlant(plant);
+		detailResult = pStore.updateDetailPlant(plantInfo);
+		int plantNo = plant.getPlantNo();
+		
+			for(MultipartFile mf : fList) {
+				if(mf.getOriginalFilename() != "") {
+					String originalFilename = mf.getOriginalFilename(); //파일명		     
+					String fileFullPath = filePath+"/"+originalFilename; //파일 전체 경로
+					long fileSize = mf.getSize(); // 파일사이즈
+					try {
+						//파일 저장
+						PlantFile pFile = new PlantFile(originalFilename, fileFullPath, fileSize, plantNo);
+						fileResult *= pStore.insertPlantFile(pFile);
+						mf.transferTo(new File(fileFullPath)); //파일저장 실제로는 service에서 처리
+					} catch (Exception e) {
+						System.out.println("postTempFile_ERROR======>"+fileFullPath);
+						e.printStackTrace();
+					}
+				}
+			}
+		result = basicResult * detailResult * fileResult;
+		return result;
 	}
 
 	@Override

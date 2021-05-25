@@ -18,7 +18,7 @@ public interface PlantService {
 	public PlantInfo printOneInfo(int plantNo);// 식물도감 상세정보 출력
 	public ArrayList<PlantFile> printFileList(int plantNo); // 식물도감 이미지 리스트 출력
 	public int registerPlant(Plant plant,PlantInfo plantInfo, List<MultipartFile> fList, String filePath);// 식물도감 등록
-	public int modifyPlant(Plant plant);// 식물도감 수정
+	public int modifyPlant(Plant plant,PlantInfo plantInfo, List<MultipartFile> fList, String filePath);// 식물도감 수정
 	public int removePlant(int plantNo);// 식물도감 삭제
 	public ArrayList<Plant> printSearchAllList(PlantSearch search);//식물도감 검색
 }
