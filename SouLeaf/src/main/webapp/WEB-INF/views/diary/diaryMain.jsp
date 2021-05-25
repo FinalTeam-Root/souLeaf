@@ -95,8 +95,8 @@
 						    	<div class="carousel-item active">
 									<div class="row">
 							        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							            	<a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							            	<a href="resources/uploadFiles/diary/20210522234249.png" class="fancybox" rel="ligthbox">
+							                    <img  src="resources/uploadFiles/diary/20210522234249.png" class="zoom img-fluid "  alt="">
 							                </a>
 							            </div>
 							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -141,58 +141,58 @@
 							                </a>
 							            </div>
 							       </div> <!-- row -->
-				   			</div> <!-- carousel-item active -->
-						    <div class="carousel-item">
-						     	<div class="row">
-						        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
-						                </a>
-						            </div>
-						            
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						   		</div> <!-- row -->
-	    					</div> <!-- carousel-item -->
-  					  	</div> <!-- carousel-inner -->
+					   			</div> <!-- carousel-item active -->
+							    <div class="carousel-item">
+							     	<div class="row">
+							        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
+							                </a>
+							            </div>
+							            
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+							            
+							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+							                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+							                </a>
+							            </div>
+						   			</div> <!-- row -->
+	    						</div> <!-- carousel-item -->
+  					  		</div> <!-- carousel-inner -->
 							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
 								<span class="carousel-control-prev-icon changecolor" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
@@ -374,13 +374,13 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-title">제목</label>
-								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" value="" required="required" />
+								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" value="test" required="required" />
 							</div>
 	                   	</div>
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-start">날짜선택</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="diaryStartDate" id="modify-edit-date" />
+								<input class="form-control datetimepicker-input" type="text" name="diaryStartDate" id="modify-edit-date" value="start"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>
@@ -392,50 +392,50 @@
 								<div class="row colorspace">
 									<div class="custom-radios">
 									  <div>
-									    <input type="radio" id="color-1" name="color" value="#D25565" checked>
-									    <label for="color-1">
+									    <input type="radio" id="color-11" name="color" value="#D25565">
+									    <label for="color-11">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-2" name="color" value="#9775fa">
-									    <label for="color-2">
+									    <input type="radio" id="color-22" name="color" value="#9775fa">
+									    <label for="color-22">
 									      <span>
 									      </span>
 									    </label>
 									  </div>	
 									  <div>
-									    <input type="radio" id="color-3" name="color" value="#ffa94d">
-									    <label for="color-3">
+									    <input type="radio" id="color-33" name="color" value="#ffa94d">
+									    <label for="color-33">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-4" name="color" value="#74c0fc">
-									    <label for="color-4">
+									    <input type="radio" id="color-44" name="color" value="#74c0fc">
+									    <label for="color-44">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-5" name="color" value="#f06595">
-									    <label for="color-5">
+									    <input type="radio" id="color-55" name="color" value="#f06595">
+									    <label for="color-55">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-6" name="color" value="#63e6be">
-									    <label for="color-6">
+									    <input type="radio" id="color-66" name="color" value="#63e6be">
+									    <label for="color-66">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-7" name="color" value="#4d638c">
-									    <label for="color-7">
+									    <input type="radio" id="color-77" name="color" value="#4d638c">
+									    <label for="color-77">
 									      <span>
 									      </span>
 									    </label>
@@ -455,7 +455,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-desc">내용</label>
-									<textarea rows="4" cols="50" class="form-control form-control-sm" onclick="diaryModify(this);" name="diaryContent" id="edit-desc2"></textarea>
+									<textarea rows="4" cols="50" class="form-control form-control-sm" onclick="diaryModify(this);" name="diaryContent" id="edit-desc2" ></textarea>
 									<p id="wordCount4">(0/최대 200자 작성가능)<p>
 							</div>
 						</div>

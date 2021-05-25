@@ -187,7 +187,7 @@ public class DiaryController {
 	// 일기 수정하기
 	@ResponseBody
 	@RequestMapping(value="diaryUpdate.kh", method=RequestMethod.POST)
-	public String diaryUpdate(@ModelAttribute Diary diary,HttpServletRequest request, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile) {
+	public String diaryUpdate(@ModelAttribute Diary diary,@RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo,HttpServletRequest request, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile) throws Exception {
 			// 파일 삭제 후 업로드 (수정)
 			if(uploadFile != null && !uploadFile.isEmpty()) {
 				// 기존 파일 삭제
@@ -201,12 +201,38 @@ public class DiaryController {
 					diary.setDiaryRepicname(diaryRepicname);
 				}
 			}
+			
 			int result = dService.modifyDiary(diary);
+			// if 일기 등록 성공
 			if(result > 0) {
-				return "success";
-			} else {
-				return "fail";
+				// 등록될때 생성된 diary번호를 어떻게받아올까? 
+				// 해결 : https://marobiana.tistory.com/23
+				// 기존에 입력된 물주기를 가져와줌
+				Companion companion = cService.printOne(companionNo);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				  // 기존 물 주는 날 != 내가 입력한 마지막 물주는 날
+				if(companion.getCompanionLastWater() != companionLastWater) {
+					companion.setCompanionLastWater(companionLastWater);
+					// 캘린더 선언
+					Calendar cal = Calendar.getInstance();
+					Date date = (Date) sdf.parse(companion.getCompanionLastWater());
+					// 물준날 세팅
+					cal.setTime(date);
+					// Plant 줄주기 대입
+					Plant plant = pService.printOne(companion.getPlantNo());
+					int plantWater = Integer.parseInt(plant.getPlantWater());
+					// 물준날 + 물주기 날짜
+					cal.add(Calendar.DATE, plantWater);
+					// set 물 주는날 
+					String dateToStr = sdf.format(cal.getTime());
+					companion.setCompanionNeedWater(dateToStr);
+					
+					cService.modifyCompanion(companion);
+					return "success";
+				}
+					return "fail";
 			}
+			return "null"; // 이게 뭐지??!?!?!
 	}
 	
 	// 일기 삭제하기

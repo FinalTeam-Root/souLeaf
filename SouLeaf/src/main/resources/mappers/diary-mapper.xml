@@ -45,7 +45,7 @@
 	</select>
  -->
 	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryResultMap">
-		SELECT DIARY_PICNAME FROM DIARY WHERE MEMBER_NO = #{memberNo};
+		SELECT DIARY_REPICKNAME FROM DIARY WHERE MEMBER_NO = #{memberNo};
 	</select>
 	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">

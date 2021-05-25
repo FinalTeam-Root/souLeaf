@@ -12,13 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // },
 
       eventClick: function(info) {
-        // $('#eventModal-modify').modal({
-          
-        // });
-        alert('Event:' + info.event.constraint);
-        info.jsEvent.preventDefault(); // don't let the browser navigate
-
-      },
+        $('#eventModal-modify').modal("show");
+        $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
+        var date = getFormatDate(info.event.start);
+        $('#eventModal-modify .modal-body #modify-edit-date').val(date);
+        $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
+        console.log(info.event.backgroundColor);
+        $("#eventModal-modify .modal-body input:radio[name='color'][value='"+info.event.backgroundColor+"']").attr('checked',true);
+      },  
       // toolbar에 일기쓰기 버튼
       customButtons: {
         myCustomButton: {
@@ -291,7 +292,7 @@ function removeGuestbook(guestbookNo) {
   });
 }
   
-
+// 사진첩 리스트 띄우기
 function getDiaryPicList(){
   var memberNo = '${diary.memberNo}'
   $.ajax({
@@ -302,7 +303,30 @@ function getDiaryPicList(){
     success : function(data){
       var $carouselInner = $('.carousel-inner');
       $carouselInner.html("");
-      // var $carouselItem = ;
+      var $carouselItem;
+      var $row;
+      var $thumb;
+      if(data.length > 0){
+        for(var i in data){
+          $carouselItemActive = $("<div class='carousel-item active'>");
+          $carouselItem = $("<div class='carousel-item'>");
+          $row = $("<div class='row'>");
+          $thumb = $("<div class='col-lg-3 col-md-4 col-xs-6 thumb'>").append("<a href='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='fancybox' rel='ligthbox'><img  src='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='zoom img-fluid '  alt=''></a>");
+        }
+      }
+ 
     }
   })
+}
+
+/**
+ *  yyyyMMdd 포맷으로 반환
+ */
+ function getFormatDate(date){
+  var year = date.getFullYear();              //yyyy
+  var month = (1 + date.getMonth());          //M
+  month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+  var day = date.getDate();                   //d
+  day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+  return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
