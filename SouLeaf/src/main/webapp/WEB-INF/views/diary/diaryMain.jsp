@@ -338,7 +338,8 @@
 							</div>
                     	</div>
             		</div>
-            		<div class="modal-footer modalBtnContainer-addEvent">
+            		<br>
+            		<div class="form-group" style="margin-left:360px;">
                         <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
                         <button type="submit" class="btn btn-primary" id="save-event">등록</button>
                     </div> 
@@ -469,7 +470,7 @@
 							</div>
 	                   	</div>
 	           		</div>
-	                   <div class="modal-footer modalBtnContainer-modifyEvent">
+	                   <div class="form-group" style="margin-left:298px;">
 	            			<c:url var="dDelete" value="diaryDelete.kh">
 	            				<c:param name="diaryNo" value="${diary.diaryNo }"></c:param>
 	            				<c:param name="diaryRepicname" value="${diary.diaryRepicname }"></c:param>
