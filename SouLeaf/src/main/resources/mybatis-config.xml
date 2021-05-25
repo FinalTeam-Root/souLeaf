@@ -14,6 +14,9 @@
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.Curiosity" alias="Curiosity"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.CuriosityReply" alias="CuriosityReply"/>
+		<typeAlias type="com.souleaf.spring.curiosity.domain.CuriositySearch" alias="CuriositySearch"/>
 		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.Clinic" alias="Clinic"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
@@ -25,6 +28,7 @@
 		<mapper resource="mappers/diary-mapper.xml"/>	
 		<mapper resource="mappers/qna-mapper.xml"/>
 		<mapper resource="mappers/plant-mapper.xml"/>
+		<mapper resource="mappers/curiosity-mapper.xml"/>
 		<mapper resource="mappers/companion-mapper.xml"/>
 		<mapper resource="mappers/clinic-mapper.xml"/>
 		<mapper resource="mappers/boast-mapper.xml"/>

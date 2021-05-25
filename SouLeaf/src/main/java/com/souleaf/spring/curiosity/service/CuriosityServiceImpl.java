@@ -2,15 +2,18 @@ package com.souleaf.spring.curiosity.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
 import com.souleaf.spring.curiosity.store.CuriosityStore;
 import com.souleaf.spring.plant.domain.Plant;
-
+@Service
 public class CuriosityServiceImpl implements CuriosityService {
-
-	private CuriosityStore factory;
+	@Autowired
+	private CuriosityStore cStore;
 
 	@Override
 	public ArrayList<Curiosity> printAllList() {

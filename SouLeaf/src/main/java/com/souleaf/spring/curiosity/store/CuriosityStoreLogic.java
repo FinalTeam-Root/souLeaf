@@ -3,14 +3,16 @@ package com.souleaf.spring.curiosity.store;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
 import com.souleaf.spring.plant.domain.Plant;
-
+@Repository
 public class CuriosityStoreLogic implements CuriosityStore{
-	
+	@Autowired
 	private SqlSession sqlSession;
 
 	@Override

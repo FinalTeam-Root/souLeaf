@@ -1,8 +1,12 @@
 package com.souleaf.spring.curiosity.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,14 +14,18 @@ import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.plant.domain.Plant;
-
+@Controller
 public class CuriosityController {
-
+	@Autowired
 	private CuriosityService cService;
 	
 	// 궁금해요 리스트 페이지 이동 및 출력
-	public ModelAndView curiosityListView(ModelAndView mv, Integer page, Model model) {
-		return null;
+	@RequestMapping(value="curiosityListView.kh")
+	public ModelAndView curiosityListView(ModelAndView mv,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("nav", "curiosity");
+		mv.setViewName("curiosity/curiosityListView");
+		return mv;
 	}
 	
 	// 궁금해요 상세페이지 이동 및 출력
