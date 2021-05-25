@@ -17,6 +17,7 @@
 		<result property="plantCount" column="PLANT_COUNT"/>
 		<result property="plantPoint" column="PLANT_POINT"/>
 		<result property="plantFileName" column="PLANTFILE_NAME"/>
+		<result property="plantFileRename" column="PLANTFILE_RENAME"/>
 		<result property="plantStatus" column="PLANT_STATUS"/>
 	</resultMap>
 	
@@ -43,6 +44,7 @@
 		<result property="plantFileSize" column="PLANTFILE_SIZE"/>
 		<result property="plantFileDate" column="PLANTFILE_DATE"/>
 		<result property="plantNo" column="PLANT_NO"/>
+		<result property="plantFileRename" column="PLANTFILE_RENAME"/>
 	</resultMap>
 	
 	<select id="plantNo" resultType="_int" >
@@ -50,7 +52,7 @@
 	</select>
 	
 	<select id="selectAll" parameterType="Plant" resultMap="plantResultMap">
-		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANT_STATUS FROM (SELECT ROW_NUMBER() OVER(PARTITION BY PLANT_NO ORDER BY PLANTFILE_NO) AS RNUM, PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANT_STATUS FROM PLANT JOIN PLANTFILE USING(PLANT_NO)) WHERE RNUM = 1 AND PLANT_STATUS = 'Y' ORDER BY PLANT_NO DESC
+		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANTFILE_RENAME,PLANT_STATUS FROM (SELECT ROW_NUMBER() OVER(PARTITION BY PLANT_NO ORDER BY PLANTFILE_NO) AS RNUM, PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_DETAIL,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DATE,PLANT_COUNT,PLANT_POINT,PLANTFILE_NAME,PLANTFILE_RENAME,PLANT_STATUS FROM PLANT JOIN PLANTFILE USING(PLANT_NO)) WHERE RNUM = 1 AND PLANT_STATUS = 'Y' ORDER BY PLANT_NO DESC
 	</select>
 	
 	<select id="selectPlant" parameterType="Plant" resultMap="plantResultMap">
@@ -77,7 +79,7 @@
 	</insert>
 	
 	<insert id="insertPlantFile">
-		INSERT INTO PLANTFILE VALUES(SEQ_PLANTFILE.NEXTVAL,#{plantFileName},#{plantFilePath},#{plantFileSize},DEFAULT,#{plantNo})
+		INSERT INTO PLANTFILE VALUES(SEQ_PLANTFILE.NEXTVAL,#{plantFileName},#{plantFilePath},#{plantFileSize},DEFAULT,#{plantNo},#{plantFileRename})
 	</insert>
 	
 	<update id="updatePlant" parameterType="Plant">
@@ -88,6 +90,9 @@
 		UPDATE PLANTINFO SET PI_LIGHT_INFO=#{piLightInfo}, PI_LIGHT_CONTENTS=#{piLightContents}, PI_TEMP_INFO=#{piTempInfo}, PI_TEMP_CONTENTS=#{piTempContents}, PI_HUMIDITY_INFO=#{piHumidityInfo}, PI_HUMIDITY_CONTENTS=#{piHumidityContents}, PI_WATER_INFO=#{piWaterInfo}, PI_WATER_CONTENTS=#{piWaterContents}, PI_EARTH_INFO=#{piEarthInfo}, PI_EARTH_CONTENTS=#{piEarthContents}, PI_BUNTING=#{piBunting} WHERE PLANTINFO_NO=#{plantinfoNo} 
 	</update>
 	
+	<delete id="deleteFile">
+		DELETE FROM PLANTFILE WHERE PLANT_NO = #{plantNo} AND PLANTFILE_NO = #{plantFileNo}
+	</delete>
 	
 
 

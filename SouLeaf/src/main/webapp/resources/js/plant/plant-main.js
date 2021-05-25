@@ -87,3 +87,21 @@ function fnMove(seq){
 }
 
 
+
+function deleteFile(index,plantNo,fileNo,fileName){
+    
+  $.ajax({
+    url:"deleteFile.kh",
+    type:"get",
+    data:{"plantNo":plantNo,"plantFileNo":fileNo,"plantFileRename":fileName},
+    success: function(result){
+      console.log(result);
+      console.log("#li"+index);
+      $("#li"+index).css('display','none');
+    },
+    error: function(){
+      console.log("fail");
+    }
+
+  });
+}

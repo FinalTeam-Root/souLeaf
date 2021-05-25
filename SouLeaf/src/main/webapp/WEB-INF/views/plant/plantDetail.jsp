@@ -20,12 +20,12 @@
     <c:forEach items="${pfList }" var="pf" varStatus="status">
 	<c:if test="${status.index eq 0 }">
 	    <div class="carousel-item active">
-	      <img src="resources/uploadFiles/plant/${pf.plantFileName}" class="d-block w-100" alt="...">
+	      <img src="resources/uploadFiles/plant/${pf.plantFileRename}" class="d-block w-100" alt="...">
 	    </div>
 	</c:if>  
 	<c:if test="${status.index ne 0 }">
 	    <div class="carousel-item">
-	      <img src="resources/uploadFiles/plant/${pf.plantFileName}" class="d-block w-100" alt="...">
+	      <img src="resources/uploadFiles/plant/${pf.plantFileRename}" class="d-block w-100" alt="...">
 	    </div>	
 	</c:if>    
     </c:forEach>

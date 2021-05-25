@@ -11,14 +11,14 @@ function getPlantList(){
     dataType : "json",
     success : function(data){
       
-      
+      console.log(data);
       if(data.length > 0){
         var str = "";
         for(var i in data){
           str+='<div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated" onclick="location.href=\'plantDetail.kh?plantNo='+data[i].plantNo+'\'">';
           str+='<div class="staff">';
           str+='<div class="img-wrap d-flex align-items-stretch">';
-          str+='<div class="img align-self-stretch" style="background-image: url(resources/uploadFiles/plant/'+data[i].plantFileName+');"></div>';
+          str+='<div class="img align-self-stretch" style="background-image: url(resources/uploadFiles/plant/'+data[i].plantFileRename+');"></div>';
           str+='</div>';
           str+='<div class="text pt-3 px-3 pb-4 text-center">';
           str+='<span class="position mb-2">'+data[i].plantEngname+'</span>';

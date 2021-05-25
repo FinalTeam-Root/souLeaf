@@ -20,5 +20,5 @@ public interface PlantStore {
 	public ArrayList<Plant> selectSearchAllList(PlantSearch search);//식물도감 검색
 	public int selectOnePlant();
 	public int insertPlantFile(PlantFile pFile);// 식물도감 파일 등록
-	public int deletePlantFile(int plantNo);// 식물도감 파일 삭제
+	public int deletePlantFile(PlantFile plantFile);// 식물도감 파일 삭제
 }

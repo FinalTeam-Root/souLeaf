@@ -311,7 +311,7 @@
 										기존파일 리스트 
 										<ul>
 										<c:forEach items="${pfList }" var="pf" varStatus="status">
-										<li>${pf.plantFileName}</li>
+										<li id="li${status.index }">${pf.plantFileName}<input type="button" class="btn btn-outline-danger btn-xs" onclick="deleteFile(${status.index },${plant.plantNo },${pf.plantFileNo},'${pf.plantFileRename }')" value="삭제"></li>
 										</c:forEach>
 										</ul>
 										<div class="contactForm">

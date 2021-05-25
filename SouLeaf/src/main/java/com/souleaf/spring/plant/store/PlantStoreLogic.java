@@ -82,9 +82,8 @@ public class PlantStoreLogic implements PlantStore{
 	}
 
 	@Override
-	public int deletePlantFile(int plantNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deletePlantFile(PlantFile plantFile) {
+		return sqlSession.delete("plantMapper.deleteFile",plantFile);
 	}
 
 	

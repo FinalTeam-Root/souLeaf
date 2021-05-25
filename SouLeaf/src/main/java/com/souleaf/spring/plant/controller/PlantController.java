@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -145,10 +146,28 @@ public class PlantController {
 		}
 		
 		// 저장된 파일 삭제
-		public void deleteFile(String fileName, HttpServletRequest request) {
-			
+		@ResponseBody
+		@RequestMapping(value="deleteFile.kh")
+		public String deleteFile(@ModelAttribute PlantFile plantFile,HttpServletRequest request,HttpServletResponse reponse) {
+			deleteFile(plantFile.getPlantFileRename(),request);
+			int result = pService.removeFile(plantFile);
+			if(result > 0) {
+				return result+"";
+				
+			}else {
+				return result+"";
+			}
 		}
 	
+		//  파일 삭제
+		public void deleteFile(String fileName,HttpServletRequest request) {
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String savePath = root + "/uploadFiles/plant";
+			File file = new File(savePath + "/" +fileName);
+			if(file.exists()) {
+				file.delete();
+			}
+		}
 	
 
 }

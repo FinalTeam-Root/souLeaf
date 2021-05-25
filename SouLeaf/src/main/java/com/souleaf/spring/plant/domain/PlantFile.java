@@ -9,20 +9,21 @@ public class PlantFile {
 	private long plantFileSize;
 	private Date plantFileDate;
 	private int plantNo;
+	private String plantFileRename;
 	
 	public PlantFile() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PlantFile(String plantFileName, String plantFilePath, long plantFileSize, int plantNo) {
+	public PlantFile(String plantFileName, String plantFilePath, long plantFileSize,
+			int plantNo, String plantFileRename) {
 		super();
 		this.plantFileName = plantFileName;
 		this.plantFilePath = plantFilePath;
 		this.plantFileSize = plantFileSize;
 		this.plantNo = plantNo;
+		this.plantFileRename = plantFileRename;
 	}
-
-
 
 	public int getPlantFileNo() {
 		return plantFileNo;
@@ -63,7 +64,7 @@ public class PlantFile {
 	public void setPlantFileDate(Date plantFileDate) {
 		this.plantFileDate = plantFileDate;
 	}
-	
+
 	public int getPlantNo() {
 		return plantNo;
 	}
@@ -72,12 +73,21 @@ public class PlantFile {
 		this.plantNo = plantNo;
 	}
 
+	public String getPlantFileRename() {
+		return plantFileRename;
+	}
+
+	public void setPlantFileRename(String plantFileRename) {
+		this.plantFileRename = plantFileRename;
+	}
+
 	@Override
 	public String toString() {
 		return "PlantFile [plantFileNo=" + plantFileNo + ", plantFileName=" + plantFileName + ", plantFilePath="
 				+ plantFilePath + ", plantFileSize=" + plantFileSize + ", plantFileDate=" + plantFileDate + ", plantNo="
-				+ plantNo + "]";
+				+ plantNo + ", plantFileRename=" + plantFileRename + "]";
 	}
+
 	
 	
 }
