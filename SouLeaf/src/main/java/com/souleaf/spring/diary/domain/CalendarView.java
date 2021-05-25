@@ -1,13 +1,36 @@
 package com.souleaf.spring.diary.domain;
 
 public class CalendarView {
+	private int diaryNo;
+	private String memberNo;
 	private String title;
 	private String start;
 	private String end;
 	private String color;
 	private String constraint;
+	private String companionLastwater;
+	private String companionNeedwater;	
+	private String companionNick;
+	private String diaryPicname;
+	private String diaryRepicname;
 	
 	public CalendarView() {}
+
+	public int getDiaryNo() {
+		return diaryNo;
+	}
+
+	public void setDiaryNo(int diaryNo) {
+		this.diaryNo = diaryNo;
+	}
+
+	public String getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
 
 	public String getTitle() {
 		return title;
@@ -49,11 +72,55 @@ public class CalendarView {
 		this.constraint = constraint;
 	}
 
+	public String getCompanionLastwater() {
+		return companionLastwater;
+	}
+
+	public void setCompanionLastwater(String companionLastwater) {
+		this.companionLastwater = companionLastwater;
+	}
+
+	public String getCompanionNeedwater() {
+		return companionNeedwater;
+	}
+
+	public void setCompanionNeedwater(String companionNeedwater) {
+		this.companionNeedwater = companionNeedwater;
+	}
+
+	public String getCompanionNick() {
+		return companionNick;
+	}
+
+	public void setCompanionNick(String companionNick) {
+		this.companionNick = companionNick;
+	}
+
+	public String getDiaryPicname() {
+		return diaryPicname;
+	}
+
+	public void setDiaryPicname(String diaryPicname) {
+		this.diaryPicname = diaryPicname;
+	}
+
+	public String getDiaryRepicname() {
+		return diaryRepicname;
+	}
+
+	public void setDiaryRepicname(String diaryRepicname) {
+		this.diaryRepicname = diaryRepicname;
+	}
+
 	@Override
 	public String toString() {
-		return "CalendarView [title=" + title + ", start=" + start + ", end=" + end + ", color=" + color
-				+ ", constraint=" + constraint + "]";
+		return "CalendarView [diaryNo=" + diaryNo + ", memberNo=" + memberNo + ", title=" + title + ", start=" + start
+				+ ", end=" + end + ", color=" + color + ", constraint=" + constraint + ", companionLastwater="
+				+ companionLastwater + ", companionNeedwater=" + companionNeedwater + ", companionNick=" + companionNick
+				+ ", diaryPicname=" + diaryPicname + ", diaryRepicname=" + diaryRepicname + "]";
 	}
+
+	
 	
 	
 }

@@ -6,15 +6,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>souLeaf - 성장일기</title>
-    <link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="theme-color" content="#ffffff">
+    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
     <link href='resources/css/diary/calendar.css' rel='stylesheet' />
     <link href='resources/css/diary/diaryMain.css' rel='stylesheet' />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>  
-    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
     <!-- 다이어리 주인의 memberNo -->
     <input type="hidden" name="memberDiary" id="memberDiary" value="1">
     <!-- 방명록을 작성하는 사람의 memberNo -->
@@ -334,7 +331,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="companionLastWater" id="edit-startWater"/>
+								<input class="form-control datetimepicker-input" type="text" name="companionLastWater" id="edit-lastWater"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>
@@ -352,19 +349,21 @@
     <!-- 모달창 끝 -->
 
 	<!-- 일기 수정 삭제 모달창 -->
-       <div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
-           <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h5>일기 보기</h5>
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                       <span aria-hidden="true">&times;</span></button>
-                       <h4 class="modal-title"></h4>
+		<input type="hidden" name="diaryRepicname" value="#">
+		<input type="hidden" id="diaryUniqNo" value="0">
+       	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
+           	<div class="modal-dialog" role="document">
+               	<div class="modal-content">
+                   	<div class="modal-header">
+	                      <h5>일기 보기</h5>
+	                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                      <span aria-hidden="true">&times;</span></button>
+	                      <h4 class="modal-title"></h4>
 	               	</div>
 	               	<div class="modal-body">
 	               		<div class="form-group">
 							<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-selectPlant" >반려식물 선택</label>
+							<label class="col-xs-4" for="edit-selectPlant" >반려식물</label>
 								<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
 									<option value="1">핑크개나리</option>
 									<option value="2">카스테라</option>
@@ -374,7 +373,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-title">제목</label>
-								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" value="test" required="required" />
+								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" required="required" />
 							</div>
 	                   	</div>
 						<div class="form-group">
@@ -392,49 +391,49 @@
 								<div class="row colorspace">
 									<div class="custom-radios">
 									  <div>
-									    <input type="radio" id="color-11" name="color" value="#D25565">
+									    <input type="radio" id="color-1" name="color" value="#D25565">
 									    <label for="color-11">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-22" name="color" value="#9775fa">
+									    <input type="radio" id="color-2" name="color" value="#9775fa">
 									    <label for="color-22">
 									      <span>
 									      </span>
 									    </label>
 									  </div>	
 									  <div>
-									    <input type="radio" id="color-33" name="color" value="#ffa94d">
+									    <input type="radio" id="color-3" name="color" value="#ffa94d">
 									    <label for="color-33">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-44" name="color" value="#74c0fc">
+									    <input type="radio" id="color-4" name="color" value="#74c0fc">
 									    <label for="color-44">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-55" name="color" value="#f06595">
+									    <input type="radio" id="color-5" name="color" value="#f06595">
 									    <label for="color-55">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-66" name="color" value="#63e6be">
+									    <input type="radio" id="color-6" name="color" value="#63e6be">
 									    <label for="color-66">
 									      <span>
 									      </span>
 									    </label>
 									  </div>
 									  <div>
-									    <input type="radio" id="color-77" name="color" value="#4d638c">
+									    <input type="radio" id="color-7" name="color" value="#4d638c">
 									    <label for="color-77">
 									      <span>
 									      </span>
@@ -463,7 +462,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="companionLastwater" id="modify-edit-startWater"/>
+								<input class="form-control datetimepicker-input" type="text" name="companionLastwater" id="modify-edit-lastWater"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 								</div>

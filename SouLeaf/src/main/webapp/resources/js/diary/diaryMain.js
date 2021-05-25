@@ -12,13 +12,27 @@ document.addEventListener('DOMContentLoaded', function() {
       // },
 
       eventClick: function(info) {
+
         $('#eventModal-modify').modal("show");
+
+        // diaryNo 받아와서 담아주기
+        var diaryNo = info.event.extendedProps.diaryNo;
+        $('#diaryUniqNo').val(diaryNo);
+        // LastWaterday 받아와서 담아주기
+        var companionLastwater = info.event.extendedProps.companionLastwater;
+        console.log(companionLastwater);
+        // 반려식물 애칭 받아와서 담아주기
+        var companionNick = info.event.extendedProps.companionNick;
+
+        -$('#eventModalmodify .modal-body #selectCompanion').append("<option value='1'>"+companionNick+"</option>");
+        $('#eventModal-modify .modal-body #selectCompanion').html("");
         $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
-        var date = getFormatDate(info.event.start);
-        $('#eventModal-modify .modal-body #modify-edit-date').val(date);
+        var todayDate = getFormatDate(info.event.start);
+        $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
         $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
-        console.log(info.event.backgroundColor);
-        $("#eventModal-modify .modal-body input:radio[name='color'][value='"+info.event.backgroundColor+"']").attr('checked',true);
+        $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
+        $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
+
       },  
       // toolbar에 일기쓰기 버튼
       customButtons: {
@@ -73,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 
     //input을 datepicker로 선언
-    $("#edit-date,#edit-startWater,#modify-edit-date,#modify-edit-startWater").datepicker({
+    $("#edit-date,#edit-lastWater,#modify-edit-date,#modify-edit-lasttWater").datepicker({
       format: "yyyy-mm-dd",
       language : "kr"
     }).datepicker("setDate",new Date());
@@ -121,17 +135,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 	  });
 
-      // 일기 삭제 버튼 클릭
+  // 일기 삭제 버튼 클릭
   $("#deleteEvent").on("click",function() {
+    var diaryNo = $('#diaryUniqNo').val();
     $.ajax({
       url : "diaryDelete.kh",
       type : "get",
-      data : {"diaryNo":diaryNo, "diaryRepicname":diaryRepicname},
+      data : {"diaryNo": diaryNo, "diaryRepicname":diaryRepicname},
       success : function(data) {
         if(data == "success") {
           alert("일기가 삭제되었습니다.");
           // 삭제 후 달력리스트 불러오기
-
+          $('#eventModal-modify').modal("hide");
         } else {
           alert("일기 삭제 실패!!");
         }
@@ -141,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     })
   });
-
+  // 일기 수정하기 코드
   $("#updateEvent").on("click",function() {
     // var companionNick = $("#selectCompanion option:selected").val(); 
     var diaryTitle = $("#modify-edit-title").val();
@@ -161,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
       success :function(data) {
         if(data == "success") {
             alert("일기 수정 완료");
-            // 일기 목록 불러오기
-
+            // 일기 수정 후 모달창 닫아주기
+            $('#eventModal-modify').modal("hide");
             // 수정 후 내용 초기화
             diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
             $("input[name='color']:radio[value='#D25565']").attr('checked',true);

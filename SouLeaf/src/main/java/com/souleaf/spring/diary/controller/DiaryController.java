@@ -76,6 +76,7 @@ public class DiaryController {
 	
 	// 일기 리스트 가져오기
 	// 물주는날은 어떻게 가져올까??
+	// diaryNo은 어떻게 가져올까??
 	@RequestMapping(value="diaryList.kh",method=RequestMethod.GET)
 	public void diaryList(HttpServletResponse response, @RequestParam("memberNo") int memberNo) throws Exception {
 		ArrayList<Diary> dList = dService.printAllDiary(memberNo);
@@ -85,14 +86,14 @@ public class DiaryController {
 		} else {
 			System.out.println("일기리스트 가 없습니다.");
 		}
-	}
+	} 
 	
+	// 이놈은 필요없다!
 	// 일기 상세 불러오기
 	@RequestMapping(value="detailDiary.kh", method=RequestMethod.POST)
 	public ModelAndView diaryDetailView(ModelAndView mv, @RequestParam("diaryNo") int diaryNo) {	
 		try {
 			Diary diary = dService.printOneDiary(diaryNo);
-			// 다시 데이터를 모달창으로 어떻게 가지? 
 			mv.addObject("diary",diary).setViewName("redirect:dirayMainView.kh");
 		}catch(Exception e){
 			e.printStackTrace();
