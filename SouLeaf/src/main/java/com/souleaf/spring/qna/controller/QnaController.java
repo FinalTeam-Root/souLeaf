@@ -85,7 +85,7 @@ public class QnaController {
 	// QnA 등록화면
 	@RequestMapping(value = "qnaWriteView.kh", method = RequestMethod.GET)
 	public String qnaWriteView() {
-		return "qna/qnaWriteForm";
+		return "qna/qnaWriteView";
 	}
 
 	// QnA 수정화면
