@@ -18,6 +18,10 @@
  		<result property="companionNo" column="COMPANION_NO"/>
  		<result property="companionNick" column="COMPANION_NICK"/>
  	</resultMap>
+ 	 	<resultMap type="Diary" id="diaryJsonMap">
+ 		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+ 	</resultMap>
  	<resultMap type="Guestbook" id="guestbookResultMap">
  		<id property="guestbookNo" column="GUESTBOOK_NO"/>
  		<result property="guestbookContent" column="GUESTBOOK_CONTENT"/>
@@ -44,8 +48,8 @@
 
 	</select>
  -->
-	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryResultMap">
-		SELECT DIARY_REPICKNAME FROM DIARY WHERE MEMBER_NO = #{memberNo};
+	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryJsonMap">
+		SELECT DIARY_REPICNAME, MEMBER_NO FROM DIARY WHERE MEMBER_NO = #{memberNo} AND DIARY_REPICNAME IS NOT NULL ORDER BY DIARY_NO DESC
 	</select>
 	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">

@@ -7,9 +7,9 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>souLeaf - 성장일기</title>
     <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link href='resources/css/diary/calendar.css' rel='stylesheet' />
     <link href='resources/css/diary/diaryMain.css' rel='stylesheet' />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>  
     <!-- 다이어리 주인의 memberNo -->
@@ -89,56 +89,57 @@
 					<div class="picture-section">      
 						<div id="carouselExampleControls" class="carousel slide" data-touch="false" data-interval="false">
 							<div class="carousel-inner">
-						    	<div class="carousel-item active">
-									<div class="row">
-							        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							            	<a href="resources/uploadFiles/diary/20210522234249.png" class="fancybox" rel="ligthbox">
-							                    <img  src="resources/uploadFiles/diary/20210522234249.png" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
-							                </a>
-							            </div>
-							            
-							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            
-							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            
-							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            
-							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            
-							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							            
-							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-							                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-							                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-							                </a>
-							            </div>
-							       </div> <!-- row -->
-					   			</div> <!-- carousel-item active -->
+						    	<!-- <!-- <div class="carousel-item active">
+						 			<div class="row">
+								        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								            	<a href="resources/uploadFiles/diary/20210522234249.png" class="fancybox" rel="ligthbox">
+								                    <img  src="resources/uploadFiles/diary/20210522234249.png" class="zoom img-fluid "  alt="">
+								                </a>
+								          	</div>
+								          	
+								            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
+								                </a>
+								            </div>
+								            
+								            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div>
+								            
+								            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div>
+								            
+								             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div>
+								            
+								             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div>
+								            
+								             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div>
+								            
+								             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+								                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
+								                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
+								                </a>
+								            </div> 
+								      </div> row 
+					   			</div> carousel-item active
 							    <div class="carousel-item">
 							     	<div class="row">
 							        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
@@ -176,7 +177,7 @@
 							                </a>
 							            </div>
 							            
-							             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+							            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
 							                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
 							                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
 							                </a>
@@ -187,8 +188,8 @@
 							                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
 							                </a>
 							            </div>
-						   			</div> <!-- row -->
-	    						</div> <!-- carousel-item -->
+						   			</div> row
+	    						</div> <!-- carousel-item  -->
   					  		</div> <!-- carousel-inner -->
 							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" >
 								<span class="carousel-control-prev-icon changecolor" aria-hidden="true"></span>
@@ -350,7 +351,7 @@
     <!-- 모달창 끝 -->
 
 	<!-- 일기 수정 삭제 모달창 -->
-		<input type="hidden" name="diaryRepicname" value="#">
+		<input type="hidden" name="diaryRepicture" value="0">
 		<input type="hidden" id="diaryUniqNo" value="0">
        	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
            	<div class="modal-dialog" role="document">
@@ -361,137 +362,138 @@
 	                      <span aria-hidden="true">&times;</span></button>
 	                      <h4 class="modal-title"></h4>
 	               	</div>
-	               	<div class="modal-body">
-	               		<div class="form-group">
-							<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-selectPlant" >반려식물</label>
-								<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
-									<option value="1">핑크개나리</option>
-									<option value="2">카스테라</option>
-								</select>
-							</div>
-	                   	</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<label class="col-xs-4" for="edit-title">제목</label>
-								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" required="required" />
-							</div>
-	                   	</div>
-						<div class="form-group">
-							<label class="col-xs-4" for="edit-start">날짜선택</label>
-							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="diaryStartDate" id="modify-edit-date" value="start"/>
-								<div class="input-group-append" data-toggle="datetimepicker">
-									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
+	               		<div class="modal-body">
+		               		<div class="form-group">
+								<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-selectPlant" >반려식물</label>
+									<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
+										<option value="1">핑크개나리</option>
+										<option value="2">카스테라</option>
+									</select>
 								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<label class="col-xs-4" for="edit-color">색상</label>
-								<div class="row colorspace">
-									<div class="custom-radios">
-									  <div>
-									    <input type="radio" id="color-1" name="color" value="#D25565">
-									    <label for="color-11">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
-									  <div>
-									    <input type="radio" id="color-2" name="color" value="#9775fa">
-									    <label for="color-22">
-									      <span>
-									      </span>
-									    </label>
-									  </div>	
-									  <div>
-									    <input type="radio" id="color-3" name="color" value="#ffa94d">
-									    <label for="color-33">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
-									  <div>
-									    <input type="radio" id="color-4" name="color" value="#74c0fc">
-									    <label for="color-44">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
-									  <div>
-									    <input type="radio" id="color-5" name="color" value="#f06595">
-									    <label for="color-55">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
-									  <div>
-									    <input type="radio" id="color-6" name="color" value="#63e6be">
-									    <label for="color-66">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
-									  <div>
-									    <input type="radio" id="color-7" name="color" value="#4d638c">
-									    <label for="color-77">
-									      <span>
-									      </span>
-									    </label>
-									  </div>
+		                   	</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="edit-title">제목</label>
+									<input class="form-control form-control-sm" type="text" name="diaryTitle" id="modify-edit-title" required="required" />
+								</div>
+		                   	</div>
+							<div class="form-group">
+								<label class="col-xs-4" for="edit-start">날짜선택</label>
+								<div class="col-xs-12 input-group date" id="datapicker2">
+									<input class="form-control datetimepicker-input" type="text" name="diaryStartDate" id="modify-edit-date" value="start"/>
+									<div class="input-group-append" data-toggle="datetimepicker">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
 									</div>
 								</div>
 							</div>
-	                   	</div>
-						<label class="col-xs-4" for="edit-picture">사진</label>
-						<div class="col-xs-12">
-							<div class="form-group files fileSection">
-							    <input type="file" class="custom-file-input" name=uploadFile id="modify-customFile">
-							    <label class="custom-file-label" for="customFile">Choose file</label>
-						  	</div>
-						</div>
-						
-						<div class="form-group">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="edit-color">색상</label>
+									<div class="row colorspace">
+										<div class="custom-radios">
+										  <div>
+										    <input type="radio" id="color-11" name="color" value="#D25565">
+										    <label for="color-11">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										  <div>
+										    <input type="radio" id="color-22" name="color" value="#9775fa">
+										    <label for="color-22">
+										      <span>
+										      </span>
+										    </label>
+										  </div>	
+										  <div>
+										    <input type="radio" id="color-33" name="color" value="#ffa94d">
+										    <label for="color-33">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										  <div>
+										    <input type="radio" id="color-44" name="color" value="#74c0fc">
+										    <label for="color-44">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										  <div>
+										    <input type="radio" id="color-55" name="color" value="#f06595">
+										    <label for="color-55">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										  <div>
+										    <input type="radio" id="color-66" name="color" value="#63e6be">
+										    <label for="color-66">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										  <div>
+										    <input type="radio" id="color-77" name="color" value="#4d638c">
+										    <label for="color-77">
+										      <span>
+										      </span>
+										    </label>
+										  </div>
+										</div>
+									</div>
+								</div>
+		                   	</div>
+							<label class="col-xs-4" for="edit-picture">사진</label>
 							<div class="col-xs-12">
-								<label class="col-xs-4" for="edit-desc">내용</label>
-									<textarea rows="4" cols="50" class="form-control form-control-sm" onclick="diaryModify(this);" name="diaryContent" id="edit-desc2" ></textarea>
-									<p id="wordCount4">(0/최대 200자 작성가능)<p>
+								<div class="form-group files fileSection">
+								    <input type="file" class="custom-file-input" name=uploadFile id="modify-customFile">
+								    <label class="custom-file-label" for="customFile">Choose file</label>
+							  	</div>
 							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
-							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="companionLastwater" id="modify-edit-lastWater"/>
-								<div class="input-group-append" data-toggle="datetimepicker">
-									<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
+						
+							<div class="form-group">
+								<div class="col-xs-12">
+									<label class="col-xs-4" for="edit-desc">내용</label>
+										<textarea rows="4" cols="50" class="form-control form-control-sm" onclick="diaryModify(this);" name="diaryContent" id="edit-desc2" ></textarea>
+										<p id="wordCount4">(0/최대 200자 작성가능)<p>
 								</div>
 							</div>
-	                   	</div>
-	           		</div>
-	                   <div class="form-group" style="margin-left:298px;">
+							<br>
+							<div class="form-group">
+								<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
+								<div class="col-xs-12 input-group date" id="datapicker2">
+									<input class="form-control datetimepicker-input" type="text" name="companionLastwater" id="modify-edit-lastWater"/>
+									<div class="input-group-append" data-toggle="datetimepicker">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div> 
+									</div>
+								</div>
+		                   	</div>
+	           			</div><!-- /.modal-body -->
+	                   	<div class="form-group" style="margin-left:298px;">
 	            			<c:url var="dDelete" value="diaryDelete.kh">
 	            				<c:param name="diaryNo" value="${diary.diaryNo }"></c:param>
 	            				<c:param name="diaryRepicname" value="${diary.diaryRepicname }"></c:param>
 	            			</c:url>
 	                   		<c:url var="dModify" value="diaryUpdate.kh">
 	            				<c:param name="diaryNo" value="${diary.diaryNo } "></c:param>
+	            				<c:param name="diaryRepicname" value="${diary.diaryRepicname }"></c:param>
 	            			</c:url>
 	                       <button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
 	                       <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
 	                       <button type="button" class="btn btn-primary" id="updateEvent">수정</button>
-	               		</div><!-- /.modal-body -->
+	               		</div>
 	               </div><!-- /.modal-content -->
 	           </div><!-- /.modal-dialog -->
 	       </div><!-- /.modal -->
 	   <!-- 모달창 끝 -->
 	
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
     <script src="resources/js/diary/diaryMain.js"></script>   
     <script src='resources/js/diary/calendar.js'></script>
     <script src='resources/js/diary/ko.js'></script>
     <script src='resources/js/diary/locales-all.js'></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 </body>
 </html>

@@ -16,15 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#eventModal-modify').modal();
 
         // diaryNo 받아와서 담아주기
-        var diaryNo = info.event.extendedProps.diaryNo;
-        $('#diaryUniqNo').val(diaryNo);
+        $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
         // LastWaterday 받아와서 담아주기
         var companionLastwater = info.event.extendedProps.companionLastwater;
         console.log(companionLastwater);
         // 반려식물 애칭 받아와서 담아주기
         var companionNick = info.event.extendedProps.companionNick;
-
-        -$('#eventModalmodify .modal-body #selectCompanion').append("<option value='1'>"+companionNick+"</option>");
+        // diaryPicname 받아와서 담아주기
+        var diaryPicname = info.event.extendedProps.diaryPicname;
+        var diaryRepicname = info.event.extendedProps.diaryRepicname;
+        
+        $('#eventModalmodify .modal-body #selectCompanion').append("<option value='1'>"+companionNick+"</option>");
         $('#eventModal-modify .modal-body #selectCompanion').html("");
         $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
         var todayDate = getFormatDate(info.event.start);
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
         $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
         $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
+        $('#eventModal-modify .modal-body #modify-customFile').val(diaryRepicname);
 
       },  
       // toolbar에 일기쓰기 버튼
@@ -138,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 일기 삭제 버튼 클릭
   $("#deleteEvent").on("click",function() {
     var diaryNo = $('#diaryUniqNo').val();
+    console.log(diaryNo);
     $.ajax({
       url : "diaryDelete.kh",
       type : "get",
@@ -146,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(data == "success") {
           alert("일기가 삭제되었습니다.");
           // 삭제 후 달력리스트 불러오기
-          // $('#eventModal-modify').modal("hide");
+          $('#eventModal-modify').modal("hide");
         } else {
           alert("일기 삭제 실패!!");
         }
@@ -193,6 +197,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   // 사진첩 리스트 부분
+  //getDiaryPicList();
+
   $(".fancybox").fancybox({
     openEffect: "none",
     closeEffect: "none",
@@ -205,6 +211,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
     $(this).removeClass('transition');
   });
+  
+  getDiaryPicList();
   // document 끝
 });
 
@@ -309,7 +317,7 @@ function removeGuestbook(guestbookNo) {
   
 // 사진첩 리스트 띄우기
 function getDiaryPicList(){
-  var memberNo = '${diary.memberNo}'
+  var memberNo = $("#memberNo").val();
   $.ajax({
     url : "diaryPicList.kh",
     type : "get",
@@ -318,16 +326,68 @@ function getDiaryPicList(){
     success : function(data){
       var $carouselInner = $('.carousel-inner');
       $carouselInner.html("");
+      var $carouselItemActive;
       var $carouselItem;
       var $row;
+      var $row1;
       var $thumb;
+      var $carouselRow;
+      console.log(data);
       if(data.length > 0){
-        for(var i in data){
-          $carouselItemActive = $("<div class='carousel-item active'>");
-          $carouselItem = $("<div class='carousel-item'>");
-          $row = $("<div class='row'>");
-          $thumb = $("<div class='col-lg-3 col-md-4 col-xs-6 thumb'>").append("<a href='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='fancybox' rel='ligthbox'><img  src='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='zoom img-fluid '  alt=''></a>");
-        }
+        
+        
+        
+
+        // if(data.length == 1){
+        //   $carouselItemActive.append($row);
+        // } 
+        // else if(data.length == data.length % 8 == 0 ){
+        //   $carouselItem.append($row);
+        // }
+          
+          for(var i in data){ // i 값이 8의 배수가 되면 다음 것으로 넘어감...
+            $thumb = $("<div class='col-lg-3 col-md-4 col-xs-6 thumb'>").append("<a href='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='fancybox' rel='ligthbox'><img src='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='zoom img-fluid'></a>");
+            
+            // if(i >= 0 && i < 8) {
+            //   $row.append($thumb);
+            // }else if(i == 8) {
+            //   $carouselItemActive.append($row);
+            //   $carouselInner.append($carouselItemActive);
+            //   $row = $("<div class='row'>");
+            //   $row.append($thumb);
+            // }else if(i > 8 && i < 16) {
+            //   $row.append($thumb);
+            //   $carouselItem.append($row);
+            // }else if(i == data.length) {
+            //   $carouselInner.append($carouselItem); 
+            // }
+
+            if(i == 0){
+              $row = $("<div class='row'>");
+              $carouselItemActive = $("<div class='carousel-item active'>");
+              $carouselItemActive.append($row);
+              $row.append($thumb);
+              $carouselInner.append($carouselItemActive);           
+            } else if(i % 8 != 0){
+              $row.append($thumb);                  
+              $carouselItemActive.append($row);
+            }
+            
+            if(i > 7) {
+              if(i % 8 == 0){ 
+                $carouselItem = $("<div class='carousel-item'>");
+                $row = $("<div class='row'>");
+                $carouselItem.append($row);
+                $row.append($thumb);
+                $carouselInner.append($carouselItem); 
+              }else if(i % 8 != 0){
+                $row.append($thumb); 
+                $carouselItem.append($row);
+              }
+            }  
+                                
+            
+          }
       }
  
     }

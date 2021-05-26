@@ -92,6 +92,6 @@ public class DiaryStoreLogic implements DiaryStore{
 	// 사진첩 리스트
 	@Override
 	public ArrayList<Diary> selectPlantPicAll(int diaryNo) {
-		return (ArrayList)sqlSession.selectList("diaryMapper.selectPlantPicAll", sqlSession);
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectPlantPicAll", diaryNo);
 	}
 }
