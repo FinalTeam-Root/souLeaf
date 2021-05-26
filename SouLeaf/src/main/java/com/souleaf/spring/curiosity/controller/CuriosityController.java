@@ -34,8 +34,9 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 등록화면 이동
-	public String curiosityWriterView(Model model) {
-		return "";
+	@RequestMapping(value="curiosityWrite.kh")
+	public String curiosityWriterView() {
+		return "curiosity/curiosityWrite";
 	}
 	
 	// 궁금해요 게시글 등록
