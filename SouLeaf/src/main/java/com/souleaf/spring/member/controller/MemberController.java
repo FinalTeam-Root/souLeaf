@@ -30,68 +30,73 @@ import com.google.gson.JsonIOException;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
+import com.souleaf.spring.security.service.MemberSha256;
 
 @Controller
 public class MemberController {
-	
+
 	@Inject
 	JavaMailSender mailSender;
 	@Autowired
 	private MemberService mService;
 
 	// 회원가입 폼
-	@RequestMapping(value = "enrollView.kh", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "enrollView.kh", method = { RequestMethod.GET, RequestMethod.POST })
 	public String enrollView() {
 		return "member/enrollView";
 	}
+
 	// 회원등록
-	@RequestMapping(value="memberRegister.kh", method= {RequestMethod.POST, RequestMethod.GET})
-	public String memberRegister(@ModelAttribute Member member,
-								 Model model) {
+	@RequestMapping(value = "memberRegister.kh", method = { RequestMethod.POST, RequestMethod.GET })
+	public String memberRegister(@ModelAttribute Member member, Model model) {
+		// 암호 확인
+		System.out.println("첫번째:" + member.getMemberPw());
+		// 비밀번호 암호화 (sha256
+		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
+		member.setMemberPw(encryPassword);
+		System.out.println("두번째:" + member.getMemberPw());
 		int result = mService.registerMember(member);
-		if(result > 0) {
+		if (result > 0) {
 			return "redirect:home.kh";
-		}else {
+		} else {
 			model.addAttribute("msg", "회원 가입 실패!!");
 			return "common/errorPage";
 		}
-		
+
 	}
+
 	// 마이페이지 뷰
-	@RequestMapping(value="myInfo.kh", method=RequestMethod.GET)
+	@RequestMapping(value = "myInfo.kh", method = RequestMethod.GET)
 	public String myPageView() {
-		return "member/myPage"; 
+		return "member/myPage";
 	}
+
 	// 정보수정
-	@RequestMapping(value="memberModify.kh", method=RequestMethod.POST)
-	public String modifyMember(@ModelAttribute Member member,
-							   Model model, HttpServletRequest request) {
+	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
+	public String modifyMember(@ModelAttribute Member member, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int result = mService.modifyMember(member);
-		if(result < 0 ){
+		if (result < 0) {
 			session.setAttribute("loginMember", member);
 			return "redirect:home.kh";
-		}else {
-			model.addAttribute("msg", "정보 수정 실패" );
+		} else {
+			model.addAttribute("msg", "정보 수정 실패");
 			return "common/errorPage";
 		}
-		
-		
+
 	}
+
 	// 회원 탈퇴
-	@RequestMapping(value="memberDelete.kh", method=RequestMethod.GET)
-	public String memberDelete(
-							@RequestParam("memberId") String memberId,
-							Model model) {
+	@RequestMapping(value = "memberDelete.kh", method = RequestMethod.GET)
+	public String memberDelete(@RequestParam("memberId") String memberId, Model model) {
 		int result = mService.deleteMember(memberId);
-		if(result > 0) {
+		if (result > 0) {
 			return "redirect:logout.kh";
-		}else {
+		} else {
 			model.addAttribute("msg", "회원 탈퇴 실패");
 			return "common/errorPage";
 		}
-							
-		
+
 	}
 	// 아이디 중복 검사
 //	@ResponseBody    
@@ -217,8 +222,16 @@ public class MemberController {
 
 	@RequestMapping(value = "login.kh", method = RequestMethod.POST)
 	public String memberLogin(HttpServletRequest request, @ModelAttribute Member member, Model model) {
+		// 암호 확인
+		System.out.println("첫번째:" + member.getMemberPw());
+		// 비밀번호 암호화 (sha256
+		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
+		member.setMemberPw(encryPassword);
+		System.out.println("두번째:" + member.getMemberPw());
 		Member mOne = new Member(member.getMemberId(), member.getMemberPw());
+
 		Member loginUser = mService.loginMember(mOne);
+
 		if (loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);

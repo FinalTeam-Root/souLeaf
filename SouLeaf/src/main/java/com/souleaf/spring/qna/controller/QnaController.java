@@ -33,11 +33,11 @@ public class QnaController {
 	public ModelAndView qnaListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page) {
 		int currentPage = (page != null) ? page : 1;
 		try {
-			int listCount = qService.getListCount();
-			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-			ArrayList<Qna> qList = qService.printQnaAll(pi);
-			mv.addObject("qList", qList);
-			mv.addObject("pi", pi);
+//			int listCount = qService.getListCount();
+//			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+//			ArrayList<Qna> qList = qService.printQnaAll(pi);
+//			mv.addObject("qList", qList);
+//			mv.addObject("pi", pi);
 			mv.setViewName("qna/qnaListView");
 			log.info("QnA 전체 조회 성공");
 		} catch (Exception e) {

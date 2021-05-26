@@ -1,3 +1,8 @@
+
+
+
+
+
 $(function(){ // code insert
 	$(".classId").focusout(function() {
 	 $.ajax({

@@ -15,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> selectAll() {
-		return null;
+		return mStore.selectAll();
 	}
 
 	@Override

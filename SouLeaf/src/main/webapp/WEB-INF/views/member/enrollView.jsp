@@ -97,8 +97,11 @@
       </div>
     </div>
   </div>
+	
+  	<script type="text/javascript" language="javascript" src="/sha256min.js"></script>
 
-  
+
+  	
     <script src="resources/js/login/jquery-3.3.1.min.js"></script>
     <script src="resources/js/login/popper.min.js"></script>
     <script src="resources/js/login/bootstrap.min.js"></script>
