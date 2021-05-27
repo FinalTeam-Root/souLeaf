@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -26,6 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
@@ -46,6 +49,20 @@ public class CuriosityController {
 		return mv;
 	}
 	
+	// 식물도감 리스트 출력
+	@ResponseBody
+	@RequestMapping(value="curiosityList.kh")
+	public void getPlantList(HttpServletResponse reponse, @RequestParam("current") int current) throws Exception {
+		System.out.println(current);
+		ArrayList<Curiosity> cList = cService.printAllList();
+		if(! cList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(cList, reponse.getWriter());
+		}else {
+			System.out.println("데이터가 없습니다");
+		}
+	}
+	
 	// 궁금해요 상세페이지 이동 및 출력
 	public ModelAndView curiosityDetailView(ModelAndView mv,int curiosityNo, Model model) {
 		return null;
@@ -62,8 +79,10 @@ public class CuriosityController {
 	public ModelAndView curiosityRegister(ModelAndView mv, Curiosity curiosity, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("loginUser");
+		String curiosityFileRename = (String)session.getAttribute("fileName");
 		int memberNo = member.getMemberNo();
-		curiosity.setMemberNo(memberNo);		
+		curiosity.setMemberNo(memberNo);	
+		curiosity.setCuriosityFileRename(curiosityFileRename);
 	
 		int result = cService.registerCuriosity(curiosity);
 		if(result > 0) {
@@ -139,6 +158,8 @@ public class CuriosityController {
 			e.printStackTrace();
 		}
 		// 리턴
+		HttpSession session = request.getSession();
+		session.setAttribute("fileName", renameFileName);
 		return renameFileName;
 	}
 	

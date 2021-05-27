@@ -31,6 +31,12 @@
 										<form action="curiosityRegister.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
 										
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="subject">제목</label>
+														<input type="text" class="form-control" name="curiosityContent" id="curiosityContent">
+													</div>
+												</div>
 												
 												<div class="col-md-12">
 													<div class="form-group">
@@ -58,6 +64,6 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
-  <script src="resources/js/curiosity/curiosity-list.js"></script>
+  <script src="resources/js/curiosity/curiosity-detail.js"></script>
 </body>
 </html>

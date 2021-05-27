@@ -17,8 +17,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 
 	@Override
 	public ArrayList<Curiosity> selectAllList() {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllList");
 	}
 
 	@Override

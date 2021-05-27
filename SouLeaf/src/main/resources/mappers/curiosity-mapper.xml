@@ -18,5 +18,9 @@
 	<insert id="insertCuriosity">
 		INSERT INTO CURIOSITY VALUES (SEQ_CURIOSITY.NEXTVAL,#{curiosityContent},#{curiosityFileName},SYSDATE,NULL,#{memberNo},#{curiosityFileRename},DEFAULT,DEFAULT,#{curiosityContents})
 	</insert>
+	
+	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+	</select>
 
 </mapper>
