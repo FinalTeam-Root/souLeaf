@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="resources/css/qna/qnalist.css">
 <meta charset="UTF-8">
 <title>Q&A</title>
 </head>
@@ -38,10 +38,12 @@
 						      </h2>
 						    </div>
 						    <div class="collapse" id="collapse${status.index }" role="tabpanel" aria-labelledby="heading${status.index }">
-						      <div class="card-body py-3 px-0">${qna.qnaContent }
-						      	
-						      	<button class="" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>
-						      	<button class="" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
+						      <div class="card-body py-3 px-4">${qna.qnaContent }
+						      	<div id="btn_group">
+						  
+						      	<button id="listbtn1" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>
+						      	<button id="listbtn2" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
+						      	</div>
 						      </div>
 						    </div>
 						  </div>

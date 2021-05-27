@@ -1,0 +1,34 @@
+#listbtn1 {
+	margin-right:-4px;
+	margin-left: 900px;
+	width: 80px;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius:15px;
+}
+
+#listbtn2 {
+	margin-left:-3px;
+	width: 80px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius:15px;
+}
+#btn_group button{
+	border: 1px solid skyblue;
+	color: skyblue;
+	background-color:rgva==ba(0,0,0,0);
+	padding: 5px;
+}
+#btn_group button:hover{
+	color:white;
+	background-color: #03b962;
+}
+.collapse {
+	
+	text-align: left;
+}
