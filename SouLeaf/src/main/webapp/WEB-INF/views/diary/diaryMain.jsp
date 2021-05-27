@@ -89,7 +89,7 @@
 					<div class="picture-section">      
 						<div id="carouselExampleControls" class="carousel slide" data-touch="false" data-interval="false">
 							<div class="carousel-inner">
-						    	<!-- <!-- <div class="carousel-item active">
+						    	<!-- <div class="carousel-item active">
 						 			<div class="row">
 								        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
 								            	<a href="resources/uploadFiles/diary/20210522234249.png" class="fancybox" rel="ligthbox">
@@ -204,18 +204,18 @@
 				</div> <!--  myDiary-picture -->
 				
 				<div class="tab-pane" id="myDaiary-guest">
-					<div class="comment">
-						<div class="comment-content">
-							<textarea id="comment-content" rows="3"></textarea>
+						<div class="comment">
+							<!-- <div class="comment-content">
+								<textarea id="comment-content" rows="3"></textarea>
+							</div>
+							<div class="comment-enroll">
+								<span id="wordCount1">(0/최대 200자 작성가능)</span>
+								<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
+							</div> -->
+							<div class="comment-list">
+	
+							</div>
 						</div>
-						<div class="comment-enroll">
-							<span id="wordCount1">(0/최대 200자 작성가능)</span>
-							<button type="button" id="btnGuestbook" class="btn btn-default btn-secondary">등록</button>
-						</div>
-						<div class="comment-list">
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -235,9 +235,8 @@
                 		<div class="form-group">
 							<div class="col-xs-12">
 							<label class="col-xs-4" for="edit-selectPlant" >반려식물 선택</label>
-								<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
-									<option value="1">핑크개나리</option>
-									<option value="2">카스테라</option>
+								<select class="form-control form-control-sm" name="companionNo" id="selectCom">
+									
 								</select>
 							</div>
                     	</div>

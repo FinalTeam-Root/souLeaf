@@ -59,19 +59,26 @@ public class DiaryController {
 	}
 	
 	// 다른 사람 성장일기 들어가기
+	// requsetParam : 다른사람 일기를 들어갈때 그 일기의 주인의 memberNo
 	@RequestMapping(value="diaryMainOtherView.kh")
 	public String diaryviewOther() {
 		return "diary/diaryMainOther";
 	}
 	
 	// 내 반려식물 불러오기
-	@RequestMapping(value="companionList.kh", method=RequestMethod.POST)
-	public ModelAndView companionList(HttpSession session, ModelAndView mv) {
+	@RequestMapping(value="companionList.kh", method=RequestMethod.GET)
+	public void companionList(HttpServletResponse response, HttpSession session) throws Exception {
 		Member loginUser = (Member)session.getAttribute("loginUser");
+		System.out.println(loginUser.getMemberNo());
 		// 반려식물 전체 가져오는 메소드 = printAll()
 		ArrayList<Companion> cList = cService.printmemberAll(loginUser.getMemberNo());
-		
-		return mv;
+		if(!cList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(cList, response.getWriter());
+		} else {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(cList, response.getWriter());
+		}
 	}
 	
 	// 일기 리스트 가져오기

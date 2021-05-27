@@ -40,14 +40,6 @@
  		SELECT * FROM DIARY WHERE DIARY_NO = #{diaryNo}
  	</select>
  	
- <!-- 	<select id="selectAllCompanion" parameterType="Companion" resultMap="">
- 		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo}
- 	</select>
- 	
-	<select id="selectOneWaterDay" parameterType="WaterDay" resultMap="waterDayResultMap">
-
-	</select>
- -->
 	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryJsonMap">
 		SELECT DIARY_REPICNAME, MEMBER_NO FROM DIARY WHERE MEMBER_NO = #{memberNo} AND DIARY_REPICNAME IS NOT NULL ORDER BY DIARY_NO DESC
 	</select>

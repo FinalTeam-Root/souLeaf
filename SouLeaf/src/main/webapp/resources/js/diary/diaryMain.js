@@ -42,13 +42,36 @@ document.addEventListener('DOMContentLoaded', function() {
         myCustomButton: {
           text: '일기쓰기',
           click: function(e) {
-            e.preventDefault();
-            $('#eventModal-insert').modal({
-
+            $.ajax({
+              url : "companionList.kh",
+              type : "get",
+              dataType : "json",
+              success : function(data) {
+                var $select = $('#selectCom');
+                $select.html("");
+                console.log(data);
+                var $option;
+                if(data.length > 0) {
+                  for(var i in data){
+                    if(i == 0) {
+                      $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
+                      $select.append($option);
+                    }
+                      $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
+                      $select.append($option);
+                  }
+                  e.preventDefault();
+                  $('#eventModal-insert').modal({});
+                } else if(data.length == 0) {
+                  var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
+                  if(noList == true){
+                    location.href="companionRegister.kh";
+                  }
+                }
+              }
             });
           }
         }
-    
       },
       headerToolbar: {
         left: 'today',
@@ -70,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // eventRender:function(title,start,end,color,img){
       //   img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
       // },
-
       // 일정 받아오는 함수 
       events: function(info, successCallback, failureCallback){
         var memberNo = $("#memberNo").val();
@@ -88,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     calendar.render();
+    
+    $("#selectCom").on("change", function(e){
+      $('#edit-lastWater').val(e.target[e.target.selectedIndex].dataset.comWater);
+      // console.log($(e.target).data("comWater"));
+      // console.log(e.target[e.target.selectedIndex].dataset.comWater);
+    });
 
     //input을 datepicker로 선언
     $("#edit-date,#edit-lastWater,#modify-edit-date,#modify-edit-lasttWater").datepicker({
@@ -196,25 +224,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
   });
-  // 사진첩 리스트 부분
-  //getDiaryPicList();
-
-  $(".fancybox").fancybox({
-    openEffect: "none",
-    closeEffect: "none",
-  });
-
-  $(".zoom").hover(function(){
-
-    $(this).addClass('transition');
-    }, function(){
-        
-    $(this).removeClass('transition');
-  });
   
-  getDiaryPicList();
+  // 사진첩 리스트 부분
+
+  
   // document 끝
 });
+
 
 // 글자수 카운팅 함수
 function getwordCount(textarea, alertText){
@@ -329,38 +345,11 @@ function getDiaryPicList(){
       var $carouselItemActive;
       var $carouselItem;
       var $row;
-      var $row1;
       var $thumb;
-      var $carouselRow;
       console.log(data);
-      if(data.length > 0){
-        
-        
-        
-
-        // if(data.length == 1){
-        //   $carouselItemActive.append($row);
-        // } 
-        // else if(data.length == data.length % 8 == 0 ){
-        //   $carouselItem.append($row);
-        // }
-          
+      if(data.length > 0){     
           for(var i in data){ // i 값이 8의 배수가 되면 다음 것으로 넘어감...
             $thumb = $("<div class='col-lg-3 col-md-4 col-xs-6 thumb'>").append("<a href='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='fancybox' rel='ligthbox'><img src='resources/uploadFiles/diary/"+data[i].diaryRepicname+"' class='zoom img-fluid'></a>");
-            
-            // if(i >= 0 && i < 8) {
-            //   $row.append($thumb);
-            // }else if(i == 8) {
-            //   $carouselItemActive.append($row);
-            //   $carouselInner.append($carouselItemActive);
-            //   $row = $("<div class='row'>");
-            //   $row.append($thumb);
-            // }else if(i > 8 && i < 16) {
-            //   $row.append($thumb);
-            //   $carouselItem.append($row);
-            // }else if(i == data.length) {
-            //   $carouselInner.append($carouselItem); 
-            // }
 
             if(i == 0){
               $row = $("<div class='row'>");
@@ -385,8 +374,6 @@ function getDiaryPicList(){
                 $carouselItem.append($row);
               }
             }  
-                                
-            
           }
       }
  
@@ -405,3 +392,16 @@ function getDiaryPicList(){
   day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
   return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
+
+$(document).on('click','#head-leaf', function(){
+  $(".fancybox").fancybox({
+    openEffect: "none",
+    closeEffect: "none",
+  });
+  $(".zoom").hover(function(){
+    $(this).addClass('transition');
+  }, function(){
+    $(this).removeClass('transition');
+  });
+});
+getDiaryPicList();

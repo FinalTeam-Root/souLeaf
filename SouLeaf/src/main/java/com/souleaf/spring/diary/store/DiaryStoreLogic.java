@@ -34,6 +34,7 @@ public class DiaryStoreLogic implements DiaryStore{
 		return sqlSession.selectOne("diaryMapper.selectOneDiary", diaryNo);
 	}
 	
+	// 필요없음~!
 	// 내 반려식물 전체 조회
 	@Override
 	public ArrayList<Companion> selectAllCompanion(int memberNo) {

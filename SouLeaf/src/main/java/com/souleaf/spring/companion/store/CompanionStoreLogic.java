@@ -41,7 +41,7 @@ public class CompanionStoreLogic implements CompanionStore{
 
 	@Override
 	public ArrayList<Companion> selectMemberCompanion(int memberNo) {
-		return (ArrayList)sqlSession.selectList("companionMapper.selectMemberCompanion");
+		return (ArrayList)sqlSession.selectList("companionMapper.selectMemberCompanion", memberNo);
 	}
 
 }

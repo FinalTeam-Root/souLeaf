@@ -35,6 +35,7 @@ public class DiaryServiceImpl implements DiaryService{
 		return dStore.selectOneDiary(diaryNo);
 	}
 	
+	// 필요없음~!
 	// 내 반려식물 전체 조회
 	@Override
 	public ArrayList<Companion> printAllCompanion(int memberNo) {
