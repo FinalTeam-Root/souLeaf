@@ -7,6 +7,7 @@
 <title>souLeaf - 식물도감</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
+<link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">
 
 </head>
 <body>
@@ -27,33 +28,14 @@
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
 										<!-- <h3 class="mb-4">Contact Us</h3> -->
-										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<form action="curiosityRegister.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
-											<div class="col-md-12">
-													<div class="form-group">
-											<div class="file-upload">
-  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-
-  <div class="image-upload-wrap">
-    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-    <div class="drag-text">
-      <h3>Drag and drop a file or select add Image</h3>
-    </div>
-  </div>
-  <div class="file-upload-content">
-    <img class="file-upload-image" src="#" alt="your image" />
-    <div class="image-title-wrap">
-      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+										
 												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="message" class="form-control" id="message" cols="30" rows="1" placeholder="이 식물 이름이 뭔가요?"></textarea>
+														<textarea name="curiosityContents" class="form-control" id="summernote" cols="30" rows="1" placeholder="이 식물 이름이 뭔가요?"></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
@@ -75,6 +57,7 @@
 		</section>
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
+  <script src="resources/js/summernote/summernote-lite.js"></script>
   <script src="resources/js/curiosity/curiosity-list.js"></script>
 </body>
 </html>

@@ -29,8 +29,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 
 	@Override
 	public int insertCuriosity(Curiosity curiosity) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("curiosityMapper.insertCuriosity", curiosity);
 	}
 
 	@Override
