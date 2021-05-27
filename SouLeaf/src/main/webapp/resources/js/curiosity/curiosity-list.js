@@ -25,7 +25,7 @@ function getCuriosityList(){
 			}
 
 			str+=' <div class="text">';
-			str+='	<h3 class="heading"><a href="#">'+data[i].curiosityContent+'</a></h3>';
+			str+='	<h3 class="heading"><a href="curiosityDetail.kh?curiosityNo='+data[i].curiosityNo+'">'+data[i].curiosityContent+'</a></h3>';
 			str+='	<div class="meta">';
 			str+='	  <div><span class="icon-calendar"></span>'+data[i].curiosityDate+'</div>';
 			str+='	  <div><span class="icon-person"></span>'+data[i].memberNo+'</div>';

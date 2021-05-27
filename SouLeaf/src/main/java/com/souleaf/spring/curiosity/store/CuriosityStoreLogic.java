@@ -21,9 +21,8 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	}
 
 	@Override
-	public Curiosity selectOne(Curiosity curiosity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Curiosity selectOne(int curiosityNo) {
+		return sqlSession.selectOne("curiosityMapper.selectCuriosity",curiosityNo);
 	}
 
 	@Override

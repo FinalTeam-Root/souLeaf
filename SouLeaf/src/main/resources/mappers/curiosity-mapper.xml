@@ -22,5 +22,9 @@
 	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
 		SELECT * FROM CURIOSITY WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
 	</select>
+	
+	<select id="selectCuriosity" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOSITY_STATUS = 'Y'
+	</select>
 
 </mapper>

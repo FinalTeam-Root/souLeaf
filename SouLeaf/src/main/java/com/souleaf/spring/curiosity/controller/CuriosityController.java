@@ -64,8 +64,15 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 상세페이지 이동 및 출력
-	public ModelAndView curiosityDetailView(ModelAndView mv,int curiosityNo, Model model) {
-		return null;
+	@RequestMapping(value="curiosityDetail.kh")
+	public ModelAndView curiosityDetailView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo,  Model model) {
+		Curiosity curiosity = cService.printOne(curiosityNo);
+		if(curiosity != null) {
+			mv.addObject("curiosity",curiosity).setViewName("curiosity/curiosityDetail");
+		}else {
+			
+		}
+		return mv;
 	}
 	
 	// 궁금해요 등록화면 이동

@@ -10,7 +10,7 @@ import com.souleaf.spring.plant.domain.Plant;
 public interface CuriosityService {
 
 	public ArrayList<Curiosity> printAllList();// 게시글 출력
-	public Curiosity printOne(Curiosity curiosity);// 게시글 상세보기
+	public Curiosity printOne(int curiosityNo);// 게시글 상세보기
 	public int registerCuriosity(Curiosity curiosity);// 게시글 등록
 	public int modifyCuriosity(Curiosity curiosity);// 게시글 수정
 	public int removeCuriosity(int curiosityNo);// 게시글 삭제

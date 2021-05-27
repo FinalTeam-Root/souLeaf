@@ -21,9 +21,8 @@ public class CuriosityServiceImpl implements CuriosityService {
 	}
 
 	@Override
-	public Curiosity printOne(Curiosity curiosity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Curiosity printOne(int curiosityNo) {
+		return cStore.selectOne(curiosityNo);
 	}
 
 	@Override
