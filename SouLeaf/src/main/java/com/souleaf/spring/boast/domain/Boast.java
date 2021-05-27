@@ -108,6 +108,16 @@ public class Boast {
 				+ ", boastCount=" + boastCount + ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate
 				+ ", memberNo=" + memberNo + ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + "]";
 	}
+
+	public void setOriginalFilename(String originalFilename) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRenameFilename(String renameFileName) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 			

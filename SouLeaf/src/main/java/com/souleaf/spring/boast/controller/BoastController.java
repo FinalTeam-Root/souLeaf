@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,7 +72,7 @@ public class BoastController {
 					// 메소드 체이닝 방식
 					mv.addObject("boast", boast).setViewName("boast/boastDetailView");
 				}else {
-					mv.addObject("msg", "게시글 상세 조회 실패!");
+					mv.addObject("msg", "게시글 상세 조회 실패!!!!!!!!!!!!!");
 					mv.setViewName("common/errorPage");
 				}
 		return mv;
@@ -85,21 +86,56 @@ public class BoastController {
 	}
 	
 	// 자랑하기 게시글 등록
-	public ModelAndView boastRegister(ModelAndView mv, Boast boast, MultipartFile uploadFile, Model model) {
-		return null;
-	}
+	@RequestMapping(value="boastWrite.kh", method = RequestMethod.POST )
+	public ModelAndView boastRegister(ModelAndView mv, @ModelAttribute Boast boast, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile,
+			HttpServletRequest request)  {
+		// 서버에 파일을 저장하는 작업
+				if(!uploadFile.getOriginalFilename().equals("")) {
+					String renameFileName = saveFile(uploadFile, request);
+					System.out.println("들어왔니");
+					if(renameFileName != null) {
+						boast.setOriginalFilename(uploadFile.getOriginalFilename());
+						boast.setRenameFilename(renameFileName);
+						System.out.println("들어왔니");
+					}
+				}// 디비에 데이터를 저장하는 작업
+				System.out.println("들어왔니");
+				int result = 0;
+				String path = "";
+				result = bService.registerBoast(boast);
+				if(result > 0) {
+					path = "redirect:boastList.kh";
+				}else {
+					mv.addObject("msg", "게시글 등록 실패");
+					path = "common/errorPage";
+				}
+				mv.setViewName(path);
+				return mv;
+			}
+	
+	
 	
 	// 자랑하기 수정화면 이동
-	public ModelAndView boastUpdateView(ModelAndView mv, int boastNo, Model model) {
-		return null;
+	@RequestMapping(value="boastUpdateView.kh")
+	public ModelAndView boastUpdateView(ModelAndView mv, @RequestParam("boastNo")int boastNo, Model model) {
+		Boast boast = bService.printOne(boastNo);
+		if(boast != null) {
+			mv.addObject("boast", boast).setViewName("Boast/boastUpdateView");
+		}else {
+			mv.addObject("msg", "상세조회실패!");
+		}
+		
+		return mv;
 	}
 	
 	// 자랑하기 게시글 수정
+	@RequestMapping(value="boastUpdate.kh", method = RequestMethod.POST)
 	public ModelAndView boastUpdate(ModelAndView mv, Boast boast, MultipartFile uploadFile, Model model) {
-		return null;
+		return mv;
 	}
 	
 	// 자랑하기 게시글 삭제
+	@RequestMapping(value="boastDelete.kh", method=RequestMethod.GET)
 	public String boastDelete(int boastNo, Model model, HttpServletRequest request) {
 		return "";
 	}

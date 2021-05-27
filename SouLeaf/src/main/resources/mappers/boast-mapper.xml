@@ -14,13 +14,16 @@
 </resultMap>
 <select id="selectListCount" resultType="_int">
 SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y' </select>
-<select id="selectAllList"  resultMap="boastResultMap">
+<select id="selectAllList" parameterType="Boast"  resultMap="boastResultMap">
 		SELECT * FROM BOAST WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 		
 	</select>
-	
+	<select id="selectOne" parameterType="Boast" resultMap="boastResultMap">SELECT * FROM BOAST WHERE BOAST_NO = #{boastNo } AND BOAST_STATUS = 'Y' </select>
 
-	
+<insert id="insertBoast">
+INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert>
+
+
 	
 	
 	

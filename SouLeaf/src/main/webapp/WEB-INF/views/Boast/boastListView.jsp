@@ -59,7 +59,7 @@
               	<div class="meta mb-2">
                   <div><a href="#">조회수 좋아요</a></div>
                   <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                  <div><a href="boastDetail.kh" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
                 </div>
                 <h3 class="heading"><a href="#">자랑합니다 랄라 랄라 랄라</a></h3>
               </div>

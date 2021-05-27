@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자랑하기</title>
+<title>souLeaf - 자랑하기</title>
 </head>
 <body>
+
 
 </body>
 </html>
