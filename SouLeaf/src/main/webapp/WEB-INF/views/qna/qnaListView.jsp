@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>게시글</title>
+<title>Q&A</title>
 </head>
 <body>
  <jsp:include page="../common/header.jsp"></jsp:include> 
