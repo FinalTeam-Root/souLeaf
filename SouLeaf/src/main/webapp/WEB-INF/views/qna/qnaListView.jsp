@@ -85,6 +85,7 @@
 	        </div>
         </div>
     	</div>
+    	<button class="" onclick="location.href='qnaWriteView.kh?qnaNo=${qna.qnaNo}'">글쓰기</button>
     </section>
 
  <jsp:include page="../common/footer.jsp"></jsp:include> 
