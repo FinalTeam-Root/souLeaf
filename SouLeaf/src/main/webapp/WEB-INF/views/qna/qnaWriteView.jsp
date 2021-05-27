@@ -119,7 +119,7 @@ $('#summernote').summernote({
 ['color', ['forecolor','color']],
 ['para', ['ul', 'ol', 'paragraph']],
 ['table', ['table']],
-['insert', ['link', 'picture', 'video']],
+
 ['view', ['fullscreen', 'codeview', 'help']],
 ],
 defaultFontName:'바탕',
@@ -145,7 +145,7 @@ popover: {
                 ['font', ['bold', 'underline', 'clear']],
                 ['para', ['ul', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture']]
+               
               ]
             }
   });
