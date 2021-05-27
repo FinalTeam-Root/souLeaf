@@ -13,7 +13,7 @@ body {
   color:#fff;
   line-height:1.2;
   margin:0;
-  background:linear-gradient(to bottom, rgba(0, 0, 0,0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/tropical-login-form.jpg);
+  background:linear-gradient(to bottom, rgba(0, 0, 0,0.1) 0%, rgba(0, 0, 0, 0.1) 100%), url(resources/images/main_bg_14.jpg);
   background-repeat:repeat;
   background-size:cover;
   font-size: 18px;
@@ -66,7 +66,7 @@ a {
   height:530px;
   margin:auto;
   display:block;
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(0,0,0,0.2);
   border-radius:15px;
   padding:15px;
   margin-bottom:50px;
