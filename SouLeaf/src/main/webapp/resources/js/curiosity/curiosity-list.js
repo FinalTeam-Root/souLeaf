@@ -1,36 +1,47 @@
 $(function(){
-
+  getCuriosityList();
 });
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
+function getCuriosityList(){
 
-    var reader = new FileReader();
+  $.ajax({
+    url : "curiosityList.kh",
+    type:"get",
+    data : {"current":1},
+    dataType : "json",
+    success : function(data){
+      
+      console.log(data);
+      if(data.length > 0){
+        var str = "";
+        for(var i in data){
+			str+='<div class="col-lg-4 sidebar pl-lg-4 ftco-animate fadeInUp ftco-animated">';
+			str+='<div class="block-21 mb-4 d-flex">';
 
-    reader.onload = function(e) {
-      $('.image-upload-wrap').hide();
+			if(data[i].curiosityFileRename == null){
+				str+=' <a class="blog-img mr-4" style="background-image: url(resources/uploadFiles/curiosity/defaultplant.png);"></a>';
+			}else{
+				str+=' <a class="blog-img mr-4" style="background-image: url(resources/uploadFiles/curiosity/'+data[i].curiosityFileRename+');"></a>';
+			}
 
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
+			str+=' <div class="text">';
+			str+='	<h3 class="heading"><a href="#">'+data[i].curiosityContent+'</a></h3>';
+			str+='	<div class="meta">';
+			str+='	  <div><span class="icon-calendar"></span>'+data[i].curiosityDate+'</div>';
+			str+='	  <div><span class="icon-person"></span>'+data[i].memberNo+'</div>';
+			str+='	  <div><span class="icon-chat"></span>'+data[i].curiosityCount+'</div>';
+			str+='	</div></div></div></div>';
+        }
+        
+        $("#curiosity-list").append(str);
+      }
+      
+    },
+    error : function(){
+      console.log('fail');
+    }
 
-      $('.image-title').html(input.files[0].name);
-    };
+  });
 
-    reader.readAsDataURL(input.files[0]);
 
-  } else {
-    removeUpload();
-  }
 }
-
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
-}
-$('.image-upload-wrap').bind('dragover', function () {
-        $('.image-upload-wrap').addClass('image-dropping');
-    });
-    $('.image-upload-wrap').bind('dragleave', function () {
-        $('.image-upload-wrap').removeClass('image-dropping');
-});

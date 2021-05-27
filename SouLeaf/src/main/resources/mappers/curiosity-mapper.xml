@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="curiosityMapper">
+	<resultMap type="Curiosity" id="curiosityResultMap">
+		<id property="curiosityNo" column="CURIOSITY_NO"/>
+		<result property="curiosityContent" column="CURIOSITY_CONTENT"/>
+		<result property="curiosityFileName" column="CURIOSITY_FILENAME"/>
+		<result property="curiosityFileRename" column="CURIOSITY_FILERENAME"/>
+		<result property="curiosityDate" column="CURIOSITY_DATE"/>
+		<result property="curiosityUpdate" column="CURIOSITY_UPDATEDATE"/>
+		<result property="criosityStatus" column="CURIOSITY_STATUS"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="curiosityCount" column="CURIOSITY_COUNT"/>
+		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
+	</resultMap>
 	
+	<insert id="insertCuriosity">
+		INSERT INTO CURIOSITY VALUES (SEQ_CURIOSITY.NEXTVAL,#{curiosityContent},#{curiosityFileName},SYSDATE,NULL,#{memberNo},#{curiosityFileRename},DEFAULT,DEFAULT,#{curiosityContents})
+	</insert>
+	
+	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+	</select>
 
 </mapper>

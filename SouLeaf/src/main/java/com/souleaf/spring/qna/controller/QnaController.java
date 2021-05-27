@@ -144,7 +144,7 @@ public class QnaController {
 	public String qnaDelete(Model model, @RequestParam("qnaNo") int qnaNo) {
 		int result = qService.removeQna(qnaNo);
 		if(result > 0) {
-			return "redirect:qnaList.kh";
+			return "redirect:qnaListView.kh";
 		}else {
 			model.addAttribute("msg", "QnA 삭제 실패 ");
 			log.info("QnA 삭제 실패");

@@ -9490,14 +9490,15 @@ textarea.form-control {
     margin-bottom: 4px;
     font-weight: 400; }
     .block-27 ul li a, .block-27 ul li span {
-      color: gray;
+      /* color: gray; */
       text-align: center;
+      font-weight : 500;
       display: inline-block;
       width: 40px;
       height: 40px;
       line-height: 40px;
       border-radius: 50%;
-      border: 2px solid #e6e6e6; }
+     /*  border: 2px solid #e6e6e6; */ }
     .block-27 ul li.active a, .block-27 ul li.active span {
       background: #00bd56;
       color: #fff;
@@ -9733,7 +9734,7 @@ textarea.form-control {
     .categories li.active a span, .sidelink li.active a span {
       color: #00bd56; }
 
-#ftco-loader {
+/* #ftco-loader {
   position: fixed;
   width: 96px;
   height: 96px;
@@ -9790,7 +9791,7 @@ textarea.form-control {
   stroke-dashoffset: 0;
   -webkit-animation: loader-dash 1.5s ease-in-out infinite;
   animation: loader-dash 1.5s ease-in-out infinite;
-  stroke-linecap: round; }
+  stroke-linecap: round; } */
 
 @-webkit-keyframes loader-rotate {
   100% {

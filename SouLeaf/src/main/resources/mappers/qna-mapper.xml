@@ -49,7 +49,7 @@
 	</update>
 
 	<update id="deleteQna" parameterType="_int">
-		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO = #{qnaNo}
+		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
 	</update>
 </mapper>
  

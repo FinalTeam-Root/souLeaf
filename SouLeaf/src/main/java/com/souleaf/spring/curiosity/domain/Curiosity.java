@@ -5,8 +5,7 @@ import java.sql.Date;
 public class Curiosity {
 	private int curiosityNo;
 	private String curiosityContent;
-	private String curiosityFileName;
-	private String curiosityFilePath;
+	private String curiosityFileName;	
 	private String curiosityFileRename;
 	private Date curiosityDate;
 	private Date curiosityUpdate;
@@ -14,19 +13,19 @@ public class Curiosity {
 	private int memberNo;
 	private String memberNick;
 	private int curiosityCount;
+	private String curiosityContents;
 	
 	public Curiosity() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Curiosity(int curiosityNo, String curiosityContent, String curiosityFileName, String curiosityFilePath,
-			String curiosityFileRename, Date curiosityDate, Date curiosityUpdate, String criosityStatus, int memberNo,
-			String memberNick, int curiosityCount) {
+	public Curiosity(int curiosityNo, String curiosityContent, String curiosityFileName, String curiosityFileRename,
+			Date curiosityDate, Date curiosityUpdate, String criosityStatus, int memberNo, String memberNick,
+			int curiosityCount, String curiosityContents) {
 		super();
 		this.curiosityNo = curiosityNo;
 		this.curiosityContent = curiosityContent;
 		this.curiosityFileName = curiosityFileName;
-		this.curiosityFilePath = curiosityFilePath;
 		this.curiosityFileRename = curiosityFileRename;
 		this.curiosityDate = curiosityDate;
 		this.curiosityUpdate = curiosityUpdate;
@@ -34,6 +33,7 @@ public class Curiosity {
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
 		this.curiosityCount = curiosityCount;
+		this.curiosityContents = curiosityContents;
 	}
 
 	public int getCuriosityNo() {
@@ -58,14 +58,6 @@ public class Curiosity {
 
 	public void setCuriosityFileName(String curiosityFileName) {
 		this.curiosityFileName = curiosityFileName;
-	}
-
-	public String getCuriosityFilePath() {
-		return curiosityFilePath;
-	}
-
-	public void setCuriosityFilePath(String curiosityFilePath) {
-		this.curiosityFilePath = curiosityFilePath;
 	}
 
 	public String getCuriosityFileRename() {
@@ -124,14 +116,24 @@ public class Curiosity {
 		this.curiosityCount = curiosityCount;
 	}
 
+	public String getCuriosityContents() {
+		return curiosityContents;
+	}
+
+	public void setCuriosityContents(String curiosityContents) {
+		this.curiosityContents = curiosityContents;
+	}
+
 	@Override
 	public String toString() {
 		return "Curiosity [curiosityNo=" + curiosityNo + ", curiosityContent=" + curiosityContent
-				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFilePath=" + curiosityFilePath
-				+ ", curiosityFileRename=" + curiosityFileRename + ", curiosityDate=" + curiosityDate
-				+ ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus=" + criosityStatus + ", memberNo="
-				+ memberNo + ", memberNick=" + memberNick + ", curiosityCount=" + curiosityCount + "]";
+				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFileRename=" + curiosityFileRename
+				+ ", curiosityDate=" + curiosityDate + ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus="
+				+ criosityStatus + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", curiosityCount="
+				+ curiosityCount + ", curiosityContents=" + curiosityContents + "]";
 	}
+
+	
 
 	
 	
