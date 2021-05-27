@@ -15,9 +15,15 @@ function getCuriosityList(){
       if(data.length > 0){
         var str = "";
         for(var i in data){
-			str+='<div class="col-lg-6 sidebar pl-lg-5 ftco-animate fadeInUp ftco-animated">';
+			str+='<div class="col-lg-4 sidebar pl-lg-4 ftco-animate fadeInUp ftco-animated">';
 			str+='<div class="block-21 mb-4 d-flex">';
-			str+=' <a class="blog-img mr-4" style="background-image: url(resources/uploadFiles/curiosity/'+data[i].curiosityFileRename+');"></a>';
+
+			if(data[i].curiosityFileRename == null){
+				str+=' <a class="blog-img mr-4" style="background-image: url(resources/uploadFiles/curiosity/defaultplant.png);"></a>';
+			}else{
+				str+=' <a class="blog-img mr-4" style="background-image: url(resources/uploadFiles/curiosity/'+data[i].curiosityFileRename+');"></a>';
+			}
+
 			str+=' <div class="text">';
 			str+='	<h3 class="heading"><a href="#">'+data[i].curiosityContent+'</a></h3>';
 			str+='	<div class="meta">';
