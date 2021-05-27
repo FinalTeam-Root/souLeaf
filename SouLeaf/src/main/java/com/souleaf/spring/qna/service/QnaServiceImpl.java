@@ -43,8 +43,8 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public int removeQna(int qId) {
-		return qStore.deleteQna(qId);
+	public int removeQna(int qnaNo) {
+		return qStore.deleteQna(qnaNo);
 	}
 
 	@Override
