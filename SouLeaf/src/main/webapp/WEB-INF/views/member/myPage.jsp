@@ -385,8 +385,9 @@
 					</div>
 					<div class="tab-pane fade" id="comments" role="tabpanel"
 						aria-labelledby="comments-tab">내 댓글</div>
-					<div class="tab-pane fade" id="question" role="tabpanel"
-						aria-labelledby="question-tab">QnA문의</div>
+					<div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">QnA문의
+						<button class="" onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
+					</div>
 				</div>
 				<!--/tab-pane-->
 			</div>
