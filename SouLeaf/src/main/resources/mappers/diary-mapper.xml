@@ -17,6 +17,7 @@
 		<result property="memberNo" column="MEMBER_NO"/>
  		<result property="companionNo" column="COMPANION_NO"/>
  		<result property="companionNick" column="COMPANION_NICK"/>
+ 		<result property="diaryStatus" column="DIARY_STATUS"/>
  	</resultMap>
  	 	<resultMap type="Diary" id="diaryJsonMap">
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
@@ -49,11 +50,17 @@
 		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
 	
-	
+	<select id="selectByMemberDiary">
+		SELECT * FROM (SELECT * FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo} ORDER BY DIARY_STARTDATE DESC) WHERE ROWNUM = 1
+	</select>
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
-		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo})
+		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},DEFAULT)
 	</insert>
+	
+	<delete id="deleteReDiary">
+		DELETE FROM DIARY WHERE COMPANION_NO = #{companionNo} AND DIARY_STATUS =#{diaryStatus}
+	</delete>
 	
 	<update id="updateDiary">
 		UPDATE DIARY SET 

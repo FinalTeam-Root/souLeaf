@@ -204,13 +204,13 @@
 										      </span>
 										    </label>
 										  </div>
-										  <div>
+										  <!-- <div>
 										    <input type="radio" id="color-77" name="color" value="#4d638c">
 										    <label for="color-77">
 										      <span>
 										      </span>
 										    </label>
-										  </div>
+										  </div> -->
 										</div>
 									</div>
 								</div>

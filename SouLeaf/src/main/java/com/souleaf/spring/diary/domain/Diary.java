@@ -16,6 +16,7 @@ public class Diary {
 	private int memberNo;
 	private int companionNo;
 	private String companionNick;
+	private String diaryStatus;
 	 
 	public Diary() {}
 
@@ -115,16 +116,21 @@ public class Diary {
 		this.companionNick = companionNick;
 	}
 
+	public String getDiaryStatus() {
+		return diaryStatus;
+	}
+
+	public void setDiaryStatus(String diaryStatus) {
+		this.diaryStatus = diaryStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
 				+ ", diaryStartDate=" + diaryStartDate + ", diaryEndDate=" + diaryEndDate + ", diaryUpdate="
 				+ diaryUpdate + ", diaryColor=" + diaryColor + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
 				+ diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + ", companionNick="
-				+ companionNick + "]";
+				+ companionNick + ", diaryStatus=" + diaryStatus + "]";
 	}
 
-	
-	
-	
 }

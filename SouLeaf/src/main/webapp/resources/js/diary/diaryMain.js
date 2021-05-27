@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     calendar.render();
-    
+
     $("#selectCom").on("change", function(e){
       $('#edit-lastWater').val(e.target[e.target.selectedIndex].dataset.comWater);
       // console.log($(e.target).data("comWater"));

@@ -61,8 +61,9 @@ public class DiaryController {
 	// 다른 사람 성장일기 들어가기
 	// requsetParam : 다른사람 일기를 들어갈때 그 일기의 주인의 memberNo
 	@RequestMapping(value="diaryMainOtherView.kh")
-	public String diaryviewOther() {
-		return "diary/diaryMainOther";
+	public ModelAndView diaryviewOther(ModelAndView mv, @RequestParam("memberNo") int memberNo) {
+		mv.addObject("memberDiary", memberNo).setViewName("diary/diaryMainOther");
+		return mv;
 	}
 	
 	// 내 반려식물 불러오기
@@ -81,7 +82,7 @@ public class DiaryController {
 		}
 	}
 	
-	// 일기 리스트 가져오기
+	// 일기 달력에 뿌려주는 리스트 가져오기
 	// 물주는날은 어떻게 가져올까??
 	// diaryNo은 어떻게 가져올까??
 	@RequestMapping(value="diaryList.kh",method=RequestMethod.GET)
@@ -121,7 +122,7 @@ public class DiaryController {
 					diary.setDiaryRepicname(renameFileName);
 				}
 			}
-
+			
 			Member loginUser = (Member)session.getAttribute("loginUser");
 			diary.setMemberNo(loginUser.getMemberNo());
 			int diaryNo = dService.registerDiary(diary);
@@ -148,12 +149,26 @@ public class DiaryController {
 				// set 물 주는날 
 				String dateToStr = sdf.format(cal.getTime());
 				companion.setCompanionNeedWater(dateToStr);
-				
+				// 물 줘야 하는 날 수정
 				cService.modifyCompanion(companion);
+				
+				// 기존의 물줘야 하는 날 다이어리 삭제
+				Diary reDiary = new Diary();
+				reDiary.setDiaryStatus("W");
+				reDiary.setCompanionNo(companionNo);
+				reDiary.setMemberNo(loginUser.getMemberNo());
+				dService.removeReDiary(reDiary);
+				
+				// 지우고 새로운 물 줘야하는날 등록
+				reDiary.setDiaryStartDate(dateToStr);
+				reDiary.setDiaryTitle(companion.getCompanionNick()+"물줘!");
+				reDiary.setdiaryColor("#4d638c");
+				dService.registerDiary(reDiary);
 			}
 		};
 		return "redirect:diaryMainView.kh";  
 	}
+	
 	
 	// 파일 저장하기
 	public String saveFile(MultipartFile file, HttpServletRequest request) {
@@ -195,64 +210,75 @@ public class DiaryController {
 	// 일기 수정하기
 	@ResponseBody
 	@RequestMapping(value="diaryUpdate.kh", method=RequestMethod.POST)
-	public String diaryUpdate(@ModelAttribute Diary diary,@RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo,HttpServletRequest request, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile) throws Exception {
-			// 파일 삭제 후 업로드 (수정)
-			if(uploadFile != null && !uploadFile.isEmpty()) {
-				// 기존 파일 삭제
-				if(diary.getDiaryPicname() != "") {
-					deleteFile(diary.getDiaryRepicname(), request);
-				}
-				// 새 파일 업로드
-				String diaryRepicname = saveFile(uploadFile, request);
-				if(diaryRepicname != null) {
-					diary.setDiaryPicname(uploadFile.getOriginalFilename());
-					diary.setDiaryRepicname(diaryRepicname);
-				}
+	public String diaryUpdate(@ModelAttribute Diary diary,
+			@RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo,
+			HttpServletRequest request, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile)
+			throws Exception {
+		// 파일 삭제 후 업로드 (수정)
+		if (uploadFile != null && !uploadFile.isEmpty()) {
+			// 기존 파일 삭제
+			if (diary.getDiaryPicname() != "") {
+				deleteFile(diary.getDiaryRepicname(), request);
 			}
-			
-			int result = dService.modifyDiary(diary);
-			// if 일기 등록 성공
-			if(result > 0) {
-				// 등록될때 생성된 diary번호를 어떻게받아올까? 
-				// 해결 : https://marobiana.tistory.com/23
-				// 기존에 입력된 물주기를 가져와줌
-				Companion companion = cService.printOne(companionNo);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				  // 기존 물 주는 날 != 내가 입력한 마지막 물주는 날
-				if(companion.getCompanionLastWater() != companionLastWater) {
-					companion.setCompanionLastWater(companionLastWater);
-					// 캘린더 선언
-					Calendar cal = Calendar.getInstance();
-					Date date = (Date) sdf.parse(companion.getCompanionLastWater());
-					// 물준날 세팅
-					cal.setTime(date);
-					// Plant 줄주기 대입
-					Plant plant = pService.printOne(companion.getPlantNo());
-					int plantWater = Integer.parseInt(plant.getPlantWater());
-					// 물준날 + 물주기 날짜
-					cal.add(Calendar.DATE, plantWater);
-					// set 물 주는날 
-					String dateToStr = sdf.format(cal.getTime());
-					companion.setCompanionNeedWater(dateToStr);
-					
-					cService.modifyCompanion(companion);
-					return "success";
-				}
-					return "fail";
+			// 새 파일 업로드
+			String diaryRepicname = saveFile(uploadFile, request);
+			if (diaryRepicname != null) {
+				diary.setDiaryPicname(uploadFile.getOriginalFilename());
+				diary.setDiaryRepicname(diaryRepicname);
 			}
-			return "null"; // 이게 뭐지??!?!?!
+		}
+		int result = dService.modifyDiary(diary);
+		// if 일기 등록 성공
+		if (result > 0) {
+			Companion companion = new Companion();
+			// 위에서 사라진 게시물 뺀 나머지중에서 최신 날짜를 가져옴
+			Diary delDairy = dService.printByMemberDiary(diary);
+			String originalDate = diary.getDiaryStartDate();
+			int intOriginalDate = Integer.parseInt(originalDate.replace("-", ""));
+			String newDate = delDairy.getDiaryStartDate();
+			int intNewDate = Integer.parseInt(newDate.replace("-", ""));
+			// 최신이 된 기존의 날짜가 수정된 날짜보다 클때
+			if (intNewDate > intOriginalDate) {
+				companion.setCompanionLastWater(newDate);
+				cService.modifyCompanion(companion);
+				changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
+				// 내가 바꾼 날짜가 최신이라면
+			} else if (intNewDate == intOriginalDate) {
+				companion.setCompanionLastWater(newDate);
+				cService.modifyCompanion(companion);
+				changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
+			} else {
+
+			}
+			return "success";
+		}
+		return "fail";
 	}
 	
 	// 일기 삭제하기
 	@ResponseBody
 	@RequestMapping(value="diaryDelete.kh", method=RequestMethod.GET)
-	public String diaryDelete(@ModelAttribute Diary diary, @RequestParam("diaryRepicname") String diaryRepicname, HttpServletRequest request) {
+	public String diaryDelete(@ModelAttribute Diary diary, @RequestParam("diaryRepicname") String diaryRepicname, HttpServletRequest request) throws Exception {
 		// 업로드된 파일 삭제
 		if(diaryRepicname != "") {
 			deleteFile(diaryRepicname, request);
 		}
-		// 디비에 데이터 업데이트
+		// 디비에 데이터 삭제하기
+		// 최신 날짜면 최신날짜는 날짜삭제 
 		int result = dService.removeDiary(diary);
+		// 위에서 사라진 게시물 뺀 나머지중에서 최신 날짜를 가져옴
+		Diary delDairy = dService.printByMemberDiary(diary);
+		String originalDate = diary.getDiaryStartDate();
+		int intOriginalDate = Integer.parseInt(originalDate.replace("-", ""));
+		String newDate = delDairy.getDiaryStartDate();
+		int intNewDate = Integer.parseInt(newDate.replace("-", ""));
+		// 삭제한 날짜가 최신이라면 물 줘야 하는 날을 변경한다
+		if(intOriginalDate > intNewDate) {
+			Companion companion = new Companion();
+			companion.setCompanionLastWater(newDate);
+			cService.modifyCompanion(companion);
+			changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
+		} 
 		if(result > 0) {
 			return "success";
 		} else {
@@ -260,6 +286,43 @@ public class DiaryController {
 		}
 		
 	}
+	
+	// 일기 등록 웅앵,.,,
+	public void changeWater(int companionNo, int memberNo) throws Exception {
+		Companion companion = cService.printOne(companionNo);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		// 캘린더 선언
+		Calendar cal = Calendar.getInstance();
+		Date date = (Date) sdf.parse(companion.getCompanionLastWater());
+		// 물준날 세팅
+		cal.setTime(date);
+		// Plant 줄주기 대입
+		Plant plant = pService.printOne(companion.getPlantNo());
+		int plantWater = Integer.parseInt(plant.getPlantWater());
+		// 물준날 + 물주기 날짜
+		cal.add(Calendar.DATE, plantWater);
+		// set 물 주는날 
+		String dateToStr = sdf.format(cal.getTime());
+		companion.setCompanionNeedWater(dateToStr);
+		// 물 줘야 하는 날 수정
+		cService.modifyCompanion(companion);
+		
+		// 기존의 물줘야 하는 날 다이어리 삭제
+		Diary reDiary = new Diary();
+		reDiary.setDiaryStatus("W");
+		reDiary.setCompanionNo(companionNo);
+		reDiary.setMemberNo(memberNo);
+		dService.removeReDiary(reDiary);
+		
+		// 지우고 새로운 물 줘야하는날 등록
+		reDiary.setDiaryStartDate(dateToStr);
+		reDiary.setDiaryTitle(companion.getCompanionNick()+"물줘!");
+		reDiary.setdiaryColor("#4d638c");
+		dService.registerDiary(reDiary);
+			
+	}
+	
+	
 	
 	// 저장된 파일 삭제
 	public void deleteFile(String fileName, HttpServletRequest request) {

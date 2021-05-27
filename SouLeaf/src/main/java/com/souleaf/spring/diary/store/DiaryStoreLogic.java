@@ -33,14 +33,12 @@ public class DiaryStoreLogic implements DiaryStore{
 	public Diary selectOneDiary(int diaryNo) {
 		return sqlSession.selectOne("diaryMapper.selectOneDiary", diaryNo);
 	}
-	
 	// 필요없음~!
 	// 내 반려식물 전체 조회
 	@Override
 	public ArrayList<Companion> selectAllCompanion(int memberNo) {
 		return (ArrayList)sqlSession.selectList("diaryMapper.selectAllCompanion", memberNo);
 	}
-
 	// 일기 등록
 	@Override
 	public int insertDiary(Diary diary) {
@@ -52,13 +50,11 @@ public class DiaryStoreLogic implements DiaryStore{
 	public Companion selectOneWaterDay(Companion companion) {
 		return sqlSession.selectOne("diaryMapper.selectOneWaterDay", companion);
 	}
-
 	// 마지막 물 준날 기준으로 물주는 날 갱신 
 	@Override
 	public int updateWater(Companion companion) {
 		return sqlSession.update("diaryMapper.updateWaterDay", companion);
 	}
-	
 	// 일기 수정
 	@Override
 	public int updateDiary(Diary diary) {
@@ -69,7 +65,6 @@ public class DiaryStoreLogic implements DiaryStore{
 	public int deleteDiary(Diary diary) {
 		return sqlSession.delete("diaryMapper.deleteDiary", diary);
 	}
-	
 	// 방명록 전체 조회
 	@Override
 	public ArrayList<Guestbook> selectAllGuestbook(int memberDiary) {
@@ -94,5 +89,16 @@ public class DiaryStoreLogic implements DiaryStore{
 	@Override
 	public ArrayList<Diary> selectPlantPicAll(int diaryNo) {
 		return (ArrayList)sqlSession.selectList("diaryMapper.selectPlantPicAll", diaryNo);
+	}
+	// 다이어리에 기존의 물 줘야하는 날 삭제
+	@Override
+	public int deleteReDiary(Diary diary) {
+		return sqlSession.delete("diaryMapper.deleteReDiary", diary);
+	}
+
+	// 멤버별 다이어리 리스트 조회 
+	@Override
+	public Diary selectByMemberDiary(Diary diary) {
+		return sqlSession.selectOne("diaryMapper.selectByMemberDiary", diary);
 	}
 }

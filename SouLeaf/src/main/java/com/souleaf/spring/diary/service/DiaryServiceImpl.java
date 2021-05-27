@@ -96,6 +96,18 @@ public class DiaryServiceImpl implements DiaryService{
 		return dStore.selectPlantPicAll(membeNo);
 	}
 
+	// 다이어리에 기존의 물 줘야하는 날 삭제
+	@Override
+	public int removeReDiary(Diary diary) {
+		return dStore.deleteReDiary(diary);
+	}
+
+	// 멤버별 다이어리 리스트 조회 
+	@Override
+	public Diary printByMemberDiary(Diary diary) {
+		return dStore.selectByMemberDiary(diary);
+	}
+
 
 
 }

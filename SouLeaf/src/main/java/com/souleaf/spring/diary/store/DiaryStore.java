@@ -42,6 +42,12 @@ public interface DiaryStore {
 		// 사진첩 리스트
 		public ArrayList<Diary> selectPlantPicAll(int membeNo);
 
+		// 다이어리에 기존의 물 줘야하는 날 삭제
+		public int deleteReDiary(Diary diary);
+
+		// 멤버별 다이어리 리스트 조회 
+		public Diary selectByMemberDiary(Diary diary);
+
 
 		
 		// 사진첩 동영상변환 @빽범
