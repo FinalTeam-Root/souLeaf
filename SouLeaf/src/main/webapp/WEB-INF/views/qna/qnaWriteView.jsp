@@ -120,7 +120,7 @@ $('#summernote').summernote({
 ['para', ['ul', 'ol', 'paragraph']],
 ['table', ['table']],
 
-['view', ['fullscreen', 'codeview', 'help']],
+['view', ['codeview', 'help']],
 ],
 defaultFontName:'바탕',
 fontNames: ['Arial', 'Comic Sans MS','맑은 고딕','궁서','굴림','돋음체','바탕'],
