@@ -10,6 +10,7 @@
 	cursor: pointer;
 	border-top-left-radius: 15px;
 	border-bottom-left-radius:15px;
+	background-image: none;
 }
 
 #listbtn2 {
@@ -19,16 +20,17 @@
 	border-bottom-right-radius:15px;
 }
 #btn_group button{
-	border: 1px solid skyblue;
-	color: skyblue;
-	background-color:rgva==ba(0,0,0,0);
+	border: 1px solid #03b962;
+	color: #03b962;
+	background-color:rgba==ba(0,0,0,0);
 	padding: 5px;
+	background-image: none;
 }
 #btn_group button:hover{
 	color:white;
 	background-color: #03b962;
 }
-.collapse {
-	
-	text-align: left;
+#lastbtn {
+	margin-left: 1000px;
+	margin-top: -40px;
 }

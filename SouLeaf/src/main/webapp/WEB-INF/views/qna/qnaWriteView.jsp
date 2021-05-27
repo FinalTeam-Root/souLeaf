@@ -62,9 +62,20 @@
 				</div>
 			</div>
 		</section>
+<div class="container">
+  <textarea id="summernote" name="qnaContent">
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    	
+  </textarea>    
   
   
        
+        <!--  게시물 등록 버튼!!!!!!!! -->
+        <div align = "center">
+        <input type="submit" class="btn btn-outline-success" value="등록">
+          <input type="button"  class="btn btn-outline-success" onclick="location.href='qnaListView.kh'" value="취소">
+        </div>
         </form>
 </div>
  
