@@ -111,3 +111,10 @@
   transition: all .2s ease;
 }
 
+.curiosity-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 250px;
+  height: 20px;
+}

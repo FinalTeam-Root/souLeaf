@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 궁금해요</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
 </head>
 <body>
 

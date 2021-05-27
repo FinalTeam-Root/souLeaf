@@ -26,8 +26,8 @@
 							<div class="row no-gutters">
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-									<h2 class="heading-section">${curiosity.curiosityContent }</h2>
-									<div class="media p-1">
+									<h2 class="heading-section p-1">${curiosity.curiosityContent }</h2>
+									<div class="media p-2">
 									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width:60px; height: 60px">
 									  <div class="media-body">
 									    <strong>작성자</strong><br>
@@ -43,21 +43,32 @@
 											</div>
 										<hr>
 										
-									댓글 1개
-									<br><br>
-
+									<p class="p-3" style="margin-bottom: 0px">댓글 2개</p>
+									
 <div class="media p-3">
-  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width:60px; height: 60px">
+  <div>
+  </div>
+  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 rounded-circle" style="width:60px; height: 60px">
   <div class="media-body">
-    <strong>댓글작성자 <small>2020-05-27 11:12:12</small></strong>
-    <p class="p-1">댓글남겨요...</p>
+   <strong>댓글작성자</strong><br>
+   <span class="mx-1">댓글남겨요...</span><br>
+   <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
   </div>
 </div>
 
-									<br><br>
-									<textarea class="form-control"></textarea>
+<div class="media p-3">
+  <div>
+  </div>
+  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 rounded-circle" style="width:60px; height: 60px">
+  <div class="media-body">
+   <strong>댓글작성자</strong><br>
+   <span class="mx-1">댓글남겨요...</span><br>
+   <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
+  </div>
+</div>
 
-			
+									<br>
+									<textarea class="form-control"></textarea>
 									</div>
 								</div>
 							
