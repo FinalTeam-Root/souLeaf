@@ -3,6 +3,7 @@ package com.souleaf.spring.qna.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
+import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 import com.souleaf.spring.qna.service.QnaService;
@@ -33,11 +35,12 @@ public class QnaController {
 	public ModelAndView qnaListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page) {
 		int currentPage = (page != null) ? page : 1;
 		try {
-//			int listCount = qService.getListCount();
-//			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-//			ArrayList<Qna> qList = qService.printQnaAll(pi);
-//			mv.addObject("qList", qList);
-//			mv.addObject("pi", pi);
+			int listCount = qService.getListCount();
+			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+			ArrayList<Qna> qList = qService.printQnaAll(pi);
+			System.out.println(qList);
+			mv.addObject("qList", qList);
+			mv.addObject("pi", pi);
 			mv.setViewName("qna/qnaListView");
 			log.info("QnA 전체 조회 성공");
 		} catch (Exception e) {
@@ -83,26 +86,58 @@ public class QnaController {
 	}
 
 	// QnA 등록화면
-	@RequestMapping(value = "qnaWriteView.kh", method = RequestMethod.GET)
+	@RequestMapping(value = "qnaWriteView.kh", method = { RequestMethod.POST, RequestMethod.GET })
 	public String qnaWriteView() {
 		return "qna/qnaWriteView";
 	}
+	
+	// QnA 등록기능
+	@RequestMapping(value = "qnaRegister.kh", method = RequestMethod.POST)
+	public ModelAndView qnaRegister(ModelAndView mv, @ModelAttribute Qna qna, HttpSession session, HttpServletRequest request) {
+		Member member = (Member)session.getAttribute("loginUser");
+		int memberNo = member.getMemberNo();
+		qna.setMemberNo(memberNo);
+		int result = 0;
+		String path = "";
+		result = qService.registerQna(qna);
+		if(result > 0 ) {
+			path = "redirect:qnaListView.kh";
+		}else {
+			mv.addObject("msg", "게시글 등록 실패");
+			path = "qnaRegister.kh";
+		}
+		mv.setViewName(path);
+		return mv;
+	}
 
 	// QnA 수정화면
-	@RequestMapping(value= "qnaModifyView.kh", method = RequestMethod.GET)
+	@RequestMapping(value= "qnaModifyView.kh", method = { RequestMethod.POST, RequestMethod.GET })
 	public ModelAndView qnaModifyView(ModelAndView mv, @RequestParam("qnaNo") int qnaNo) {
 		try {
 
 			Qna qna = qService.printQnaOne(qnaNo);
 			mv.addObject("qna", qna);
 			mv.setViewName("qna/qnaUpdateView");
-			log.info("QnA 게시글 수정 성공");
+			log.info("QnA 게시글 수정 페이지로 이동");
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.info("QnA 게시글 수정 실패");
+			log.info("QnA 게시글 수정 페이지로 이동 실패");
 		}
 		return mv;
 
+	}
+	@RequestMapping(value="qnaUpdate.kh", method=RequestMethod.POST)
+	public ModelAndView qnaModify(ModelAndView mv, @ModelAttribute Qna qna) {
+		int result = qService.modifyQna(qna);
+		System.out.println(result);
+		if(result > 0) {
+			mv.setViewName("redirect:qnaListView.kh");
+			
+		}else {
+			mv.setViewName("redirect:qnaListView.kh");
+		}
+		return mv;
+		
 	}
 	// QnA 삭제
 	@RequestMapping(value= "qnaDelete.kh", method=RequestMethod.GET)

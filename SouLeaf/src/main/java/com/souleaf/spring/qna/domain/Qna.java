@@ -7,6 +7,7 @@ public class Qna {
 	private int qnaNo;
 	private int memberNo;
 	private String memberNick;
+	private Date qnaUpdate; // 몹쓸놈
 	private String qnaTitle;
 	private String qnaContent;
 	private Date qnaDate;
@@ -16,21 +17,26 @@ public class Qna {
 	public Qna() {
 	}
 
-	public int getQnaNo() {
-		return qnaNo;
-	}
-
-	public Qna(int qnaNo, int memberNo, String memberNick, String qnaTitle, String qnaContent, Date qnaDate,
-			String qnaStatus, int qnaCount) {
+	public Qna(int qnaNo, int memberNo, String memberNick, Date qnaUpdate, String qnaTitle, String qnaContent,
+			Date qnaDate, String qnaStatus, int qnaCount) {
 		super();
 		this.qnaNo = qnaNo;
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
+		this.qnaUpdate = qnaUpdate;
 		this.qnaTitle = qnaTitle;
 		this.qnaContent = qnaContent;
 		this.qnaDate = qnaDate;
 		this.qnaStatus = qnaStatus;
 		this.qnaCount = qnaCount;
+	}
+
+	public int getQnaNo() {
+		return qnaNo;
+	}
+
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
 	public int getMemberNo() {
@@ -47,6 +53,14 @@ public class Qna {
 
 	public void setMemberNick(String memberNick) {
 		this.memberNick = memberNick;
+	}
+
+	public Date getQnaUpdate() {
+		return qnaUpdate;
+	}
+
+	public void setQnaUpdate(Date qnaUpdate) {
+		this.qnaUpdate = qnaUpdate;
 	}
 
 	public String getQnaTitle() {
@@ -89,15 +103,14 @@ public class Qna {
 		this.qnaCount = qnaCount;
 	}
 
-	public void setQnaNo(int qnaNo) {
-		this.qnaNo = qnaNo;
-	}
-
 	@Override
 	public String toString() {
-		return "Qna [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", qnaTitle="
-				+ qnaTitle + ", qnaContent=" + qnaContent + ", qnaDate=" + qnaDate + ", qnaStatus=" + qnaStatus
-				+ ", qnaCount=" + qnaCount + "]";
+		return "Qna [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", qnaUpdate="
+				+ qnaUpdate + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent + ", qnaDate=" + qnaDate
+				+ ", qnaStatus=" + qnaStatus + ", qnaCount=" + qnaCount + "]";
 	}
 
+	
+
+	
 }

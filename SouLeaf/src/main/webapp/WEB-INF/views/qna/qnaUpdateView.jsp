@@ -17,20 +17,22 @@
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
 										<h3 class="mb-4">Q&A</h3>
-										<form action="qnaRegister.kh" method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<form action="qnaUpdate.kh" method="POST">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="name">제목</label>
-														<input type="text" class="form-control" name="qnaTitle" id="name" placeholder="Name">
+														<input type="text" class="form-control" value="${qna.qnaTitle }" name="qnaTitle"  id="name" placeholder="Name">
 													</div>
 												</div>
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="qnaContent" class="form-control" id="message" cols="30" rows="4" placeholder="내용을 입력해주세요"></textarea>
+														<textarea name="qnaContent" class="form-control" id="message" cols="30" rows="4" placeholder="내용을 입력해주세요">${qna.qnaContent }</textarea>
 													</div>
 												
 												<div class="col-md-12">
+												${qna.qnaNo }
+												<input type="hidden" value="${qna.qnaNo }" name="qnaNo">
 													<div class="form-group">
 														<input type="submit" value="Send Message" class="btn btn-primary">
 														<div class="submitting"></div>
