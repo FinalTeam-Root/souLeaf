@@ -127,7 +127,7 @@ public class CuriosityController {
 	
 		int result = cService.modifyCuriosity(curiosity);
 		if(result > 0) {
-			mv.setViewName("redirect:curiosityListView.kh");
+			mv.setViewName("redirect:curiosityDetail.kh?curiosityNo="+curiosity.getCuriosityNo());
 			session.setAttribute("fileName", "");
 		}else {
 			

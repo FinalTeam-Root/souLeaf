@@ -30,7 +30,12 @@
 	</insert>
 	
 	<update id="updateCuriosity" parameterType="Curiosity">
-		UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_FILERENAME = #{curiosityFileRename}, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	<if test="curiosityFileRename.toString() == ''">
+			UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</if>
+	<if test="curiosityFileRename.toString() != ''">
+			UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_FILERENAME = #{curiosityFileRename}, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</if>
 	</update>
 	
 	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">

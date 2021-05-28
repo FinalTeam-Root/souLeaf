@@ -89,8 +89,7 @@ function replyRegister(curiosityNo){
 	  });
 }
 
-function replyModifyView(obj,curiosityNo,memberNo,replyNo,content){
-	console.log('들어오나');
+function replyModifyView(obj,curiosityNo,memberNo,replyNo,content){	
     $textarea = '<div class="row"><textarea rows="1" style="width:80%" class="p-3 ml-5 mr-1  form-control" id="replyReContent">'+content+'</textarea><button class="mt-4 p-2 btn btn-secondary" style="float:right;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
   $(obj).hide();  
   $(obj).parent().parent().parent().after($textarea);
@@ -141,7 +140,7 @@ function getReplyList(curiosityNo){
 			str+='</div>';
 			str+='</div>';
 		 }
-		 console.log(str);
+		
 		  $("#curiosity-comment").html(str);
 		}
 		},
