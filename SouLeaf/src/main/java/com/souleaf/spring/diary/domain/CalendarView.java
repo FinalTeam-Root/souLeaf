@@ -13,6 +13,7 @@ public class CalendarView {
 	private String companionNick;
 	private String diaryPicname;
 	private String diaryRepicname;
+	private int companionNo;
 	
 	public CalendarView() {}
 
@@ -112,13 +113,25 @@ public class CalendarView {
 		this.diaryRepicname = diaryRepicname;
 	}
 
+	
+	public int getCompanionNo() {
+		return companionNo;
+	}
+
+	public void setCompanionNo(int companionNo) {
+		this.companionNo = companionNo;
+	}
+
 	@Override
 	public String toString() {
 		return "CalendarView [diaryNo=" + diaryNo + ", memberNo=" + memberNo + ", title=" + title + ", start=" + start
 				+ ", end=" + end + ", color=" + color + ", constraint=" + constraint + ", companionLastwater="
 				+ companionLastwater + ", companionNeedwater=" + companionNeedwater + ", companionNick=" + companionNick
-				+ ", diaryPicname=" + diaryPicname + ", diaryRepicname=" + diaryRepicname + "]";
+				+ ", diaryPicname=" + diaryPicname + ", diaryRepicname=" + diaryRepicname + ", companionNo="
+				+ companionNo + "]";
 	}
+
+	
 
 	
 	

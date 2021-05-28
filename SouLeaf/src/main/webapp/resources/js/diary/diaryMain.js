@@ -25,16 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // diaryPicname 받아와서 담아주기
         var diaryPicname = info.event.extendedProps.diaryPicname;
         var diaryRepicname = info.event.extendedProps.diaryRepicname;
+        // companionNo 받아와서 담아주기
+        var companionNo = info.event.extendedProps.companionNo;
         
-        $('#eventModalmodify .modal-body #selectCompanion').append("<option value='1'>"+companionNick+"</option>");
-        $('#eventModal-modify .modal-body #selectCompanion').html("");
+        $('#eventModalmodify .modal-body #selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
+        //$('#eventModal-modify .modal-body #selectCompanion').html("");
         $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
         var todayDate = getFormatDate(info.event.start);
         $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
         $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
         $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
         $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
-        $('#eventModal-modify .modal-body #modify-customFile').val(diaryRepicname);
+        // $('#eventModal-modify .modal-body #modify-customFile').val(diaryRepicname);
 
       },  
       // toolbar에 일기쓰기 버튼
@@ -87,12 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
       fixedWeekCount : false,
       contentHeight: 750,
       dayMaxEventRows: true, // for all non-TimeGrid views
+
       // eventContent: {
       //   html : '<div><img src="https://img.icons8.com/ultraviolet/40/000000/water.png" class="event-icon"/>물주는 날</div>'
       // },
       // eventRender:function(title,start,end,color,img){
       //   img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
       // },
+
       // 일정 받아오는 함수 
       events: function(info, successCallback, failureCallback){
         var memberNo = $("#memberNo").val();
@@ -111,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.render();
 
+    // 반려식물 선택값에 따라서 마지막 물 준날 셋팅
     $("#selectCom").on("change", function(e){
       $('#edit-lastWater').val(e.target[e.target.selectedIndex].dataset.comWater);
       // console.log($(e.target).data("comWater"));
@@ -151,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
       data:{"guestbookContent":guestbookContent,"memberDiary":memberDiary},
       success : function(data) {
         if(data == "success"){
-          alert("방명록 등록 성공");
           $("#comment-content").val("");
           $("#wordCount1").text("(0/최대 200자 작성가능)");
           getGuestbookList();
@@ -225,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // 사진첩 리스트 부분
 
+  getDiaryPicList();
   
   // document 끝
 });
@@ -283,7 +287,6 @@ function getGuestbookList() {
        console.log("fail");
      }
   });
-  
 };
 // 방명록 수정 버튼 클릭시 수정창을 띄워주는 함수
 function modifyGuestbook(obj,guestbookNo, modifyContent) {
@@ -393,7 +396,8 @@ function getDiaryPicList(){
   return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
-$(document).on('click','#head-leaf', function(){
+$(document).on('load', function(){
+  debugger;
   $(".fancybox").fancybox({
     openEffect: "none",
     closeEffect: "none",
@@ -404,4 +408,4 @@ $(document).on('click','#head-leaf', function(){
     $(this).removeClass('transition');
   });
 });
-getDiaryPicList();
+// getDiaryPicList();

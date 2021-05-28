@@ -153,6 +153,7 @@ public class DiaryController {
 				cService.modifyCompanion(companion);
 				
 				// 기존의 물줘야 하는 날 다이어리 삭제
+				// 우철님이 반려식물 등록할때 insert를 해주는데 이것을 삭제하는 방식이다.
 				Diary reDiary = new Diary();
 				reDiary.setDiaryStatus("W");
 				reDiary.setCompanionNo(companionNo);
@@ -161,7 +162,7 @@ public class DiaryController {
 				
 				// 지우고 새로운 물 줘야하는날 등록
 				reDiary.setDiaryStartDate(dateToStr);
-				reDiary.setDiaryTitle(companion.getCompanionNick()+"물줘!");
+				reDiary.setDiaryTitle(companion.getCompanionNick()+" 물줘!");
 				reDiary.setdiaryColor("#4d638c");
 				dService.registerDiary(reDiary);
 			}
@@ -231,25 +232,20 @@ public class DiaryController {
 		// if 일기 등록 성공
 		if (result > 0) {
 			Companion companion = new Companion();
-			// 위에서 사라진 게시물 뺀 나머지중에서 최신 날짜를 가져옴
+			// 위에서 수정된 게시물을 포함한 데이터 중에 해당식물의 마지막 물준날의 가장 최신날짜를 가져옴
 			Diary delDairy = dService.printByMemberDiary(diary);
 			String originalDate = diary.getDiaryStartDate();
 			int intOriginalDate = Integer.parseInt(originalDate.replace("-", ""));
 			String newDate = delDairy.getDiaryStartDate();
 			int intNewDate = Integer.parseInt(newDate.replace("-", ""));
-			// 최신이 된 기존의 날짜가 수정된 날짜보다 클때
-			if (intNewDate > intOriginalDate) {
+			// 불러온 데이터중 가장 최신날짜와 내가 수정하려고 들고온 값 비교
+			// 불러온 데이터가 가장 최신날짜
+			if (intNewDate >= intOriginalDate) {
 				companion.setCompanionLastWater(newDate);
 				cService.modifyCompanion(companion);
 				changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
-				// 내가 바꾼 날짜가 최신이라면
-			} else if (intNewDate == intOriginalDate) {
-				companion.setCompanionLastWater(newDate);
-				cService.modifyCompanion(companion);
-				changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
-			} else {
-
-			}
+				// 내가 바꾼 날짜와 최신날짜가 같다면
+			} 
 			return "success";
 		}
 		return "fail";
