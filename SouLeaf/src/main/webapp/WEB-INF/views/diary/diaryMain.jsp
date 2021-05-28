@@ -351,7 +351,7 @@
 	</form>
 	<!-- 모달창 끝 -->
 
-	<!-- 일기 수정 삭제 모달창 -->
+	<!-- 일기 보기 수정 삭제 모달창 -->
 	<input type="hidden" name="diaryRepicture" value="0">
 	<input type="hidden" id="diaryUniqNo" value="0">
 	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
@@ -369,9 +369,9 @@
 					<div class="form-group">
 						<div class="col-xs-12">
 							<label class="col-xs-4" for="edit-selectPlant">반려식물</label> 
+							<input type="hidden" id="companionUniqNo" value="0">
 							<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
-<!-- 								<option value="1">핑크개나리</option>
-								<option value="2">카스테라</option> -->
+
 							</select>
 						</div>
 					</div>

@@ -67,7 +67,7 @@ public class DiaryController {
 	}
 	
 	// 내 반려식물 불러오기
-	@RequestMapping(value="companionList.kh", method=RequestMethod.GET)
+	@RequestMapping(value="myCompanionList.kh", method=RequestMethod.GET)
 	public void companionList(HttpServletResponse response, HttpSession session) throws Exception {
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		System.out.println(loginUser.getMemberNo());

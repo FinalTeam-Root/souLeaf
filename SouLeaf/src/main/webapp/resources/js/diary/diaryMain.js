@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var diaryPicname = info.event.extendedProps.diaryPicname;
         var diaryRepicname = info.event.extendedProps.diaryRepicname;
         // companionNo 받아와서 담아주기
-        var companionNo = info.event.extendedProps.companionNo;
-        
-        $('#eventModalmodify .modal-body #selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
-        //$('#eventModal-modify .modal-body #selectCompanion').html("");
+        var companionNo= info.event.extendedProps.companionNo;
+  
+        $('#selectCompanion').html("");
+        $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
         $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
         var todayDate = getFormatDate(info.event.start);
         $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
           text: '일기쓰기',
           click: function(e) {
             $.ajax({
-              url : "companionList.kh",
+              url : "myCompanionList.kh",
               type : "get",
               dataType : "json",
               success : function(data) {
@@ -90,14 +90,14 @@ document.addEventListener('DOMContentLoaded', function() {
       contentHeight: 750,
       dayMaxEventRows: true, // for all non-TimeGrid views
 
-      // eventContent: {
-      //   html : '<div><img src="https://img.icons8.com/ultraviolet/40/000000/water.png" class="event-icon"/>물주는 날</div>'
-      // },
+      eventContent: {
+        html : "<div><img src='https://img.icons8.com/officexs/16/000000/water.png'/> 물줘!</div>"
+      },
       // eventRender:function(title,start,end,color,img){
       //   img.find("span.fc.title").prepend("<img src='https://img.icons8.com/ultraviolet/40/000000/water.png' class='event-icon'/>");
       // },
 
-      // 일정 받아오는 함수 
+      // 일정 받아와서 달력에 데이터 뿌려주는 기능
       events: function(info, successCallback, failureCallback){
         var memberNo = $("#memberNo").val();
         $.ajax({
@@ -396,9 +396,9 @@ function getDiaryPicList(){
   return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
 }
 
-$(document).on('load', function(){
-  debugger;
-  $(".fancybox").fancybox({
+// 사진첩 동적으로 불러온 것을 다시 동적으로 입혀줌
+$(document).on('click',function(e){
+  $('.fancybox').fancybox({
     openEffect: "none",
     closeEffect: "none",
   });
