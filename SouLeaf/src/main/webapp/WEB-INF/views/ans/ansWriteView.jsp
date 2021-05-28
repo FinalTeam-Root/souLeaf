@@ -28,26 +28,26 @@
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
 										<!-- <h3 class="mb-4">Contact Us</h3> -->
-										<form action="qnaRegister.kh" method="post" enctype="multipart/form-data">
+										<form action="ansRegister.kh"" method="post" enctype="multipart/form-data">
 											<div class="row">
 										
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">제목</label>
-														<input type="text" class="form-control" name="qnaTitle" id="qnaTitle">
+														<input type="text" class="form-control" name="ansTitle" id="ansTitle">
 													</div>
 												</div>
 												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="qnaContent" class="form-control" id="summernote" cols="30" rows="1" placeholder="이 식물 이름이 뭔가요?"></textarea>
+														<textarea name="ansContent" class="form-control" id="summernote" cols="30" rows="1" placeholder="이 식물 이름이 뭔가요?"></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<input type="submit" class="btn btn-outline-success" value="등록">
-         												<input type="button"  class="btn btn-outline-success" onclick="location.href='qnaListView.kh'" value="취소">
+         												<input type="button"  class="btn btn-outline-success" onclick="location.href='ansListView.kh'" value="취소">
 														<div class="submitting"></div>
 													</div>
 												</div>

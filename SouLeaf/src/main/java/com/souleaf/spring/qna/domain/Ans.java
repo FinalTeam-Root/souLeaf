@@ -6,24 +6,24 @@ import java.util.ArrayList;
 public class Ans {
 	
 	private int ansNo;
-	private int memberNO;
+	private int memberNo;
 	private String ansTitle;
 	private String ansContent;
 	private Date ansDate;
-	private String memberId;
+	private int qnaNo;
 	
 	public Ans() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ans(int ansNo, int memberNO, String ansTitle, String ansContent, Date ansDate, String memberId) {
+	public Ans(int ansNo, int memberNo, String ansTitle, String ansContent, Date ansDate, int qnaNo) {
 		super();
 		this.ansNo = ansNo;
-		this.memberNO = memberNO;
+		this.memberNo = memberNo;
 		this.ansTitle = ansTitle;
 		this.ansContent = ansContent;
 		this.ansDate = ansDate;
-		this.memberId = memberId;
+		this.qnaNo = qnaNo;
 	}
 
 	public int getAnsNo() {
@@ -34,12 +34,12 @@ public class Ans {
 		this.ansNo = ansNo;
 	}
 
-	public int getMemberNO() {
-		return memberNO;
+	public int getMemberNo() {
+		return memberNo;
 	}
 
-	public void setMemberNO(int memberNO) {
-		this.memberNO = memberNO;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	public String getAnsTitle() {
@@ -66,19 +66,19 @@ public class Ans {
 		this.ansDate = ansDate;
 	}
 
-	public String getMemberId() {
-		return memberId;
+	public int getQnaNo() {
+		return qnaNo;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
 	}
 
 	@Override
 	public String toString() {
-		return "Ans [ansNo=" + ansNo + ", memberNO=" + memberNO + ", ansTitle=" + ansTitle + ", ansContent="
-				+ ansContent + ", ansDate=" + ansDate + ", memberId=" + memberId + "]";
+		return "Ans [ansNo=" + ansNo + ", memberNo=" + memberNo + ", ansTitle=" + ansTitle + ", ansContent="
+				+ ansContent + ", ansDate=" + ansDate + ", qnaNo=" + qnaNo + "]";
 	}
-	
+
 	
 }
