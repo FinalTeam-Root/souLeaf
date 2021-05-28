@@ -15,6 +15,16 @@
 		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
 	</resultMap>
 	
+	<resultMap type="CuriosityReply" id="curiosityReplyResultMap">
+		<id property="curicommentNo" column="CURICOMMENT_NO"/>
+		<result property="curicommentContent" column="CURICOMMENT_CONTENT"/>
+		<result property="curicommentDate" column="CURICOMMENT_DATE"/>
+		<result property="curicommentStatus" column="CURIOCOMMENT_STATUS"/>
+		<result property="curiosityNo" column="CURIOSITY_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>		
+	</resultMap>
+	
 	<insert id="insertCuriosity">
 		INSERT INTO CURIOSITY VALUES (SEQ_CURIOSITY.NEXTVAL,#{curiosityContent},#{curiosityFileName},SYSDATE,NULL,#{memberNo},#{curiosityFileRename},DEFAULT,DEFAULT,#{curiosityContents})
 	</insert>
@@ -26,5 +36,11 @@
 	<select id="selectCuriosity" parameterType="Curiosity" resultMap="curiosityResultMap">
 		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOSITY_STATUS = 'Y'
 	</select>
+	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply">
+		INSERT INTO CURICOMMENT VALUES (SEQ_CURICOMMENT.NEXTVAL, #{curicommentContent}, DEFAULT, #{curiosityNo}, #{memberNo}, DEFAULT)
+	</insert>
 
 </mapper>

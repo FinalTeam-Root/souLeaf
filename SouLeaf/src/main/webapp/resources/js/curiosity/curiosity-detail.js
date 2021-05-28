@@ -66,3 +66,22 @@ $('.image-upload-wrap').bind('dragover', function () {
     $('.image-upload-wrap').bind('dragleave', function () {
         $('.image-upload-wrap').removeClass('image-dropping');
 });
+
+function replyRegister(curiosityNo){	
+	var content = $("#replyContent").val();
+	$.ajax({
+		url : "curiosityReplyRegister.kh",
+		type:"post",
+		data : {"curiosityNo":curiosityNo,"curicommentContent":content},		
+		success : function(data){
+				
+		 console.log(data);
+		  
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+}

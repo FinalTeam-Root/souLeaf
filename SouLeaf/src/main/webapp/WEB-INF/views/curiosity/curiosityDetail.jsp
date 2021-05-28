@@ -30,9 +30,9 @@
 									<div class="media p-2">
 									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width:60px; height: 60px">
 									  <div class="media-body">
-									    <strong>작성자</strong><br>
-									    <small>2020-05-27</small>
-									    <small align="right">조회수 0</small>
+									    <strong>${curiosity.memberNick }</strong><br>
+									    <small>${curiosity.curiosityDate }</small>
+									    <small align="right">조회수 ${curiosity.curiosityCount }</small>
 									  </div>
 									</div>
 										<hr>
@@ -48,10 +48,10 @@
 <div class="media p-3">
   <div>
   </div>
-  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 rounded-circle" style="width:60px; height: 60px">
+  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">
   <div class="media-body">
    <strong>댓글작성자</strong><br>
-   <span class="mx-1">댓글남겨요...</span><br>
+   <span>댓글남겨요...</span><br>
    <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
   </div>
 </div>
@@ -59,16 +59,17 @@
 <div class="media p-3">
   <div>
   </div>
-  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 rounded-circle" style="width:60px; height: 60px">
+  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">
   <div class="media-body">
    <strong>댓글작성자</strong><br>
-   <span class="mx-1">댓글남겨요...</span><br>
+   <span>댓글남겨요...</span><br>
    <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
   </div>
 </div>
 
 									<br>
-									<textarea class="form-control"></textarea>
+									<textarea class="form-control" id="replyContent"></textarea>
+									<button class="mt-2 p-2 btn btn-secondary" style="float:right;" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
 									</div>
 								</div>
 							

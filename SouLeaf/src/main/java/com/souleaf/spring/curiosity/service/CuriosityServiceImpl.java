@@ -68,8 +68,7 @@ public class CuriosityServiceImpl implements CuriosityService {
 
 	@Override
 	public int registerCuriosityReply(CuriosityReply reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cStore.insertCuriosityReply(reply);
 	}
 
 	@Override

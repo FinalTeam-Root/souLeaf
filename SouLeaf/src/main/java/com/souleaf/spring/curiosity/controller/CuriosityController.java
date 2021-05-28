@@ -20,6 +20,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
@@ -49,15 +51,15 @@ public class CuriosityController {
 		return mv;
 	}
 	
-	// 식물도감 리스트 출력
+	// 궁금해요 리스트 출력
 	@ResponseBody
 	@RequestMapping(value="curiosityList.kh")
-	public void getPlantList(HttpServletResponse reponse, @RequestParam("current") int current) throws Exception {
+	public void getPlantList(HttpServletResponse response, @RequestParam("current") int current) throws Exception {
 		System.out.println(current);
 		ArrayList<Curiosity> cList = cService.printAllList();
 		if(! cList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			gson.toJson(cList, reponse.getWriter());
+			gson.toJson(cList, response.getWriter());
 		}else {
 			System.out.println("데이터가 없습니다");
 		}
@@ -117,13 +119,28 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 댓글 리스트 출력
-	public ModelAndView curiosityReplyListView(ModelAndView mv, int curiosityNo, CuriosityReply reply, Model model) {
-		return null;
+	public void curiosityReplyListView(HttpServletResponse response,@RequestParam("curiosityNo") int curiosityNo, CuriosityReply reply, Model model) throws Exception {
+		ArrayList<CuriosityReply> rList = cService.printAllCuriosityReply(curiosityNo);
+		if(! rList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+			gson.toJson(rList, response.getWriter());
+		}else {
+			System.out.println("데이터가 없습니다");
+		}
 	}
 	
 	// 궁금해요 댓글 등록
-	public ModelAndView curiosityReplyRegister(ModelAndView mv, int curiosityNo, CuriosityReply reply, MultipartFile uploadFile, Model model) {
-		return null;
+	@ResponseBody
+	@RequestMapping(value="curiosityReplyRegister.kh", method = RequestMethod.POST)
+	public String curiosityReplyRegister(@ModelAttribute CuriosityReply reply, HttpSession session) {
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		reply.setMemberNo(loginUser.getMemberNo());
+		int result = cService.registerCuriosityReply(reply);
+		if(result > 0) {
+			return result+"";
+		}else {
+			return result+"";
+		}
 	}
 	
 	// 궁금해요 댓글 수정
