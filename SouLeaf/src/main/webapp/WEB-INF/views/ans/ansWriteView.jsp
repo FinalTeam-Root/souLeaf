@@ -46,7 +46,7 @@
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="submit" class="btn btn-outline-success" value="등록">
+														<input type="submit" class="btn btn-outline-success" value="등록" >
          												<input type="button"  class="btn btn-outline-success" onclick="location.href='ansListView.kh'" value="취소">
 														<div class="submitting"></div>
 													</div>
