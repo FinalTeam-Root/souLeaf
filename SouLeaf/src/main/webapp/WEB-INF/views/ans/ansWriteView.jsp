@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,13 +46,8 @@
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<c:if test="${loginUser.memberId eq 'admin' }">
-														<input type="submit" class="btn btn-outline-success" value="등록">
-														</c:if>
-														<c:if test="${loginUser.memberId ne 'admin' }">
 														<input type="submit" class="btn btn-outline-success" value="등록">
          												<input type="button"  class="btn btn-outline-success" onclick="location.href='qnaListView.kh'" value="취소">
-														</c:if>
 														<div class="submitting"></div>
 													</div>
 												</div>

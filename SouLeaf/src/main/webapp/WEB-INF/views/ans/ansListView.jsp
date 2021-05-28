@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" href="resources/css/qna/qnalist.css">
 <meta charset="UTF-8">
-<title>Q&A</title>
+<title>답변하기</title>
 </head>
 <body>
  <jsp:include page="../common/header.jsp"></jsp:include> 
@@ -24,7 +24,7 @@
     				</div>
     				<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
     				
-    				<c:forEach items="${qList }" var="qna" varStatus="status">
+    				<c:forEach items="${aList }" var="ans" varStatus="status">
 			
 			
 			
@@ -40,16 +40,9 @@
 						    <div class="collapse" id="collapse${status.index }" role="tabpanel" aria-labelledby="heading${status.index }">
 						      <div class="card-body py-3 px-4">${qna.qnaContent }
 						      	<div id="btn_group">
-						  		<c:if test="${loginUser.memberId eq 'admin' }">
-						  				<button id="ansbtn" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
-								</c:if>
-								<c:if test="${loginUser.memberId eq 'admin' }">
-										<button class="" id="ansbtn" onclick="location.href='qnaWriteView.kh'">답변하기</button>
-								</c:if>
-								<c:if test="${loginUser.memberId ne 'admin' }">
-								      	<button id="listbtn1" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>
-								      	<button id="listbtn2" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
-								</c:if>
+						  
+						      	<button id="listbtn1" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>
+						      	<button id="listbtn2" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
 						      	</div>
 						      </div>
 						    </div>

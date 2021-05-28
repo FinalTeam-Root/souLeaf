@@ -387,7 +387,13 @@
 					<div class="tab-pane fade" id="comments" role="tabpanel"
 						aria-labelledby="comments-tab">내 댓글</div>
 					<div class="tab-pane fade" id="question" role="tabpanel"  aria-labelledby="question-tab">QnA문의
+					<c:if test="${loginUser.memberId eq 'admin' }">
+						<button class="" id="lastbtn" onclick="location.href='qnaListView.kh'">답변하기</button>
+					</c:if>
+					<c:if test="${loginUser.memberId ne 'admin' }">
 						<button class="" id="lastbtn" onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
+					</c:if>
+					
 					</div>
 				</div>
 				<!--/tab-pane-->

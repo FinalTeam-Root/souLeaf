@@ -27,17 +27,22 @@ public class AnsController {
 	private AnsService aService;
 	private Logger log = LoggerFactory.getLogger(AnsController.class);
 	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public void getIndex() throws Exception {
+		log.info("get index");
+	}
+	
 	// 관리자 전체 조회
 	@RequestMapping(value="ansListView.kh", method=RequestMethod.GET)
 	public ModelAndView ansList(ModelAndView mv, @RequestParam(value= "page", required = false) Integer page) {
 		int currentPage = (page != null) ? page : 1;
 		try {
-			int listCount = aService.getListCount();
-			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-			ArrayList<Ans> aList = aService.printAnsAll(pi);
-			mv.addObject("aList", aList);
-			mv.addObject("pi", pi);
-			mv.setViewName("qna/ansListView");
+//			int listCount = aService.getListCount();
+//			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+//			ArrayList<Ans> aList = aService.printAnsAll(pi);
+//			mv.addObject("aList", aList);
+//			mv.addObject("pi", pi);
+			mv.setViewName("ans/ansListView");
 			log.info("AnS 전체 조회 성공");
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -88,22 +93,22 @@ public class AnsController {
 		return "ans/ansWriteForm";
 	}
 	
-	// AnS 수정화면
-	@RequestMapping(value= "ansModifyView.kh", method = RequestMethod.GET)
-	public ModelAndView ansModifyView(ModelAndView mv, @RequestParam("ansNo") int ansNo) {
-		try {
-
-			Ans ans = aService.printAnsOne(ansNo);
-			mv.addObject("ans", ans);
-			mv.setViewName("ans/ansUpdateView");
-			log.info("AnS 게시글 수정 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("AnS 게시글 수정 실패");
-		}
-		return mv;
-
-	}
+//	// AnS 수정화면
+//	@RequestMapping(value= "ansModifyView.kh", method = RequestMethod.GET)
+//	public ModelAndView ansModifyView(ModelAndView mv, @RequestParam("ansNo") int ansNo) {
+//		try {
+//
+//			Ans ans = aService.printAnsOne(ansNo);
+//			mv.addObject("ans", ans);
+//			mv.setViewName("ans/ansUpdateView");
+//			log.info("AnS 게시글 수정 성공");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			log.info("AnS 게시글 수정 실패");
+//		}
+//		return mv;
+//
+//	}
 	@RequestMapping(value= "ansDelete.kh", method=RequestMethod.GET)
 	public String qnaDelete(Model model, @RequestParam("ansNo") int ansNo) {
 		int result = aService.removeAns(ansNo);
