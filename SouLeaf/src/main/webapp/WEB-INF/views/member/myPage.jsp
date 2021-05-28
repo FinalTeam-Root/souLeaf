@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="resources/css/qna/qnalist.css">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 <title>souLeaf - 마이페이지</title>
 <link rel="icon" type="image/png" sizes="16x16"
@@ -385,8 +386,8 @@
 					</div>
 					<div class="tab-pane fade" id="comments" role="tabpanel"
 						aria-labelledby="comments-tab">내 댓글</div>
-					<div class="tab-pane fade" id="question" role="tabpanel" aria-labelledby="question-tab">QnA문의
-						<button class="" onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
+					<div class="tab-pane fade" id="question" role="tabpanel"  aria-labelledby="question-tab">QnA문의
+						<button class="" id="lastbtn" onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
 					</div>
 				</div>
 				<!--/tab-pane-->

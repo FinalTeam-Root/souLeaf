@@ -83,7 +83,7 @@
 				</c:if>
 				</td>
 			</tr>
-			<button id="lastbtn" class="" onclick="location.href='qnaWriteView.kh?qnaNo=${qna.qnaNo}'">글쓰기</button>
+			<button id="lastbtn" class="" onclick="location.href='qnaWriteView.kh?qnaNo=${qna.qnaNo}'">등록</button>
 				</div>
 	        </div>
         </div>
