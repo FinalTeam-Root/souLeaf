@@ -33,7 +33,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	@Override
 	public int updateCuriosity(Curiosity curiosity) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("curiosityMapper.updateCuriosity", curiosity);
 	}
 
 	@Override
@@ -62,8 +62,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 
 	@Override
 	public ArrayList<CuriosityReply> selectAllCuriosityReply(int curiosityNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllReplyList",curiosityNo);
 	}
 
 	@Override
@@ -74,8 +73,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 
 	@Override
 	public int updateCuriosityReply(CuriosityReply reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("curiosityMapper.updateReply", reply);
 	}
 
 	@Override

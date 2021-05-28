@@ -29,6 +29,10 @@
 		INSERT INTO CURIOSITY VALUES (SEQ_CURIOSITY.NEXTVAL,#{curiosityContent},#{curiosityFileName},SYSDATE,NULL,#{memberNo},#{curiosityFileRename},DEFAULT,DEFAULT,#{curiosityContents})
 	</insert>
 	
+	<update id="updateCuriosity" parameterType="Curiosity">
+		UPDATE CURIOSITY SET CURIOSITY_CONTENT = #{curiosityContent}, CURIOSITY_UPDATEDATE = SYSDATE, CURIOSITY_FILERENAME = #{curiosityFileRename}, CURIOSITY_CONTENTS = #{curiosityContents}  WHERE CURIOSITY_NO = #{curiosityNo} AND MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</update>
+	
 	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
 		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
 	</select>
@@ -42,5 +46,13 @@
 	<insert id="insertReply">
 		INSERT INTO CURICOMMENT VALUES (SEQ_CURICOMMENT.NEXTVAL, #{curicommentContent}, DEFAULT, #{curiosityNo}, #{memberNo}, DEFAULT)
 	</insert>
+	
+	<select id="selectAllReplyList" parameterType="CuriosityReply" resultMap="curiosityReplyResultMap">
+		SELECT * FROM CURICOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOCOMMENT_STATUS = 'Y'
+	</select>
+	
+	<update id="updateReply">
+		UPDATE CURICOMMENT SET CURICOMMENT_CONTENT = #{curicommentContent} WHERE CURIOSITY_NO= #{curiosityNo} AND CURICOMMENT_NO = #{curicommentNo} AND MEMBER_NO = #{memberNo}
+	</update>
 
 </mapper>

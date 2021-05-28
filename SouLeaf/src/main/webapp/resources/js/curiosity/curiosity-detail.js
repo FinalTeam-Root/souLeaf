@@ -12,6 +12,7 @@ $(function(){
 		        	}
 		        }
 		 });
+		 getReplyList($("#curiosityNo").val());
 });
 
 /**
@@ -74,10 +75,75 @@ function replyRegister(curiosityNo){
 		type:"post",
 		data : {"curiosityNo":curiosityNo,"curicommentContent":content},		
 		success : function(data){
+						 
+		if(data == 1){
+			getReplyList(curiosityNo);
+			$("#replyContent").val("");
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+}
+
+function replyModifyView(obj,curiosityNo,memberNo,replyNo,content){
+	console.log('들어오나');
+    $textarea = '<div class="row"><textarea rows="1" style="width:80%" class="p-3 ml-5 mr-1  form-control" id="replyReContent">'+content+'</textarea><button class="mt-4 p-2 btn btn-secondary" style="float:right;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
+  $(obj).hide();  
+  $(obj).parent().parent().parent().after($textarea);
+}
+
+function replyUpdate(curiosityNo,memberNo,replyNo){	
+	var content = $("#replyReContent").val();
+	$.ajax({
+		url : "curiosityReplyModify.kh",
+		type:"post",
+		data : {"curiosityNo":curiosityNo,"memberNo":memberNo,"curicommentNo":replyNo,"curicommentContent":content},		
+		success : function(data){
+						 
+		if(data == 1){
+			getReplyList(curiosityNo);
+			$("#replyContent").val("");
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+	
+}
+
+function getReplyList(curiosityNo){	
+	
+	$.ajax({
+		url : "curiosityReplyList.kh",
+		type:"get",
+		data : {"curiosityNo":curiosityNo},	
+		dataType:"json",	
+		success : function(data){
 				
-		 console.log(data);
-		  
-		  
+			var str = "";
+			if(data.length > 0){
+				$("#comment-count").text(data.length);
+		
+		 for(var i in data){
+			str+='<div class="media p-3">';
+			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			str+='<div class="media-body">';
+			str+='<strong>'+data[i].memberNick+'</strong><br>';
+			str+='<span>'+data[i].curicommentContent+'</span><br>';
+			str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger curiosity-btn">삭제</span></small><br>';
+			str+='</div>';
+			str+='</div>';
+		 }
+		 console.log(str);
+		  $("#curiosity-comment").html(str);
+		}
 		},
 		error : function(){
 		  console.log('fail');

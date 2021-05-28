@@ -104,13 +104,35 @@ public class CuriosityController {
 	}
 
 	// 궁금해요 수정화면 이동
-	public ModelAndView curiosityUpdateView(ModelAndView mv, int curiosityNo, Model model) {
-		return null;
+	@RequestMapping(value="curiosityModifyView.kh")
+	public ModelAndView curiosityUpdateView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo,@ModelAttribute Curiosity curiosity, Model model) {
+		curiosity = cService.printOne(curiosityNo);
+		if(curiosity != null) {
+			mv.addObject("curiosity",curiosity).setViewName("curiosity/curiosityUpdate");
+		}else {
+			
+		}
+		return mv;
 	}
 	
 	// 궁금해요 게시글 수정
-	public ModelAndView curiosityUpdate(ModelAndView mv, Curiosity curiosity,MultipartFile uploadFile, Model model) {
-		return null;
+	@RequestMapping(value="curiosityModify.kh",method = RequestMethod.POST)
+	public ModelAndView curiosityUpdate(ModelAndView mv, Curiosity curiosity, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("loginUser");
+		String curiosityFileRename = (String)session.getAttribute("fileName");
+		int memberNo = member.getMemberNo();
+		curiosity.setMemberNo(memberNo);	
+		curiosity.setCuriosityFileRename(curiosityFileRename);
+	
+		int result = cService.modifyCuriosity(curiosity);
+		if(result > 0) {
+			mv.setViewName("redirect:curiosityListView.kh");
+			session.setAttribute("fileName", "");
+		}else {
+			
+		}
+		return mv;
 	}
 	
 	// 궁금해요 게시글 삭제
@@ -119,11 +141,13 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 댓글 리스트 출력
+	@ResponseBody
+	@RequestMapping(value="curiosityReplyList.kh")
 	public void curiosityReplyListView(HttpServletResponse response,@RequestParam("curiosityNo") int curiosityNo, CuriosityReply reply, Model model) throws Exception {
-		ArrayList<CuriosityReply> rList = cService.printAllCuriosityReply(curiosityNo);
-		if(! rList.isEmpty()) {
+		ArrayList<CuriosityReply> crList = cService.printAllCuriosityReply(curiosityNo);
+		if(! crList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-			gson.toJson(rList, response.getWriter());
+			gson.toJson(crList, response.getWriter());
 		}else {
 			System.out.println("데이터가 없습니다");
 		}
@@ -144,8 +168,17 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 댓글 수정
-	public ModelAndView curiosityReplyUpdate(ModelAndView mv, int curiosityNo, CuriosityReply reply, MultipartFile uploadFile, Model model) {
-		return null;
+	@ResponseBody
+	@RequestMapping(value="curiosityReplyModify.kh", method = RequestMethod.POST)
+	public String curiosityReplyModify(@ModelAttribute CuriosityReply reply, HttpSession session) {
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		reply.setMemberNo(loginUser.getMemberNo());
+		int result = cService.modifyCuriosityReply(reply);
+		if(result > 0) {
+			return result+"";
+		}else {
+			return result+"";
+		}
 	}
 	
 	// 궁금해요 댓글 삭제

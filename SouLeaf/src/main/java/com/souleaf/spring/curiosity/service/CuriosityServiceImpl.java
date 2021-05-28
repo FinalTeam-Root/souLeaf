@@ -32,8 +32,7 @@ public class CuriosityServiceImpl implements CuriosityService {
 
 	@Override
 	public int modifyCuriosity(Curiosity curiosity) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cStore.updateCuriosity(curiosity);
 	}
 
 	@Override
@@ -62,8 +61,7 @@ public class CuriosityServiceImpl implements CuriosityService {
 
 	@Override
 	public ArrayList<CuriosityReply> printAllCuriosityReply(int curiosityNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return cStore.selectAllCuriosityReply(curiosityNo);
 	}
 
 	@Override
@@ -73,8 +71,7 @@ public class CuriosityServiceImpl implements CuriosityService {
 
 	@Override
 	public int modifyCuriosityReply(CuriosityReply reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cStore.updateCuriosityReply(reply);
 	}
 
 	@Override

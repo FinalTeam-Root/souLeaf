@@ -33,6 +33,7 @@
 									    <strong>${curiosity.memberNick }</strong><br>
 									    <small>${curiosity.curiosityDate }</small>
 									    <small align="right">조회수 ${curiosity.curiosityCount }</small>
+									    <small style="float: right"><a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }">수정</a></small>
 									  </div>
 									</div>
 										<hr>
@@ -43,9 +44,10 @@
 											</div>
 										<hr>
 										
-									<p class="p-3" style="margin-bottom: 0px">댓글 2개</p>
-									
-<div class="media p-3">
+									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
+									<input type="hidden" id="curiosityNo" value="${curiosity.curiosityNo }">
+									<span id="curiosity-comment"></span>
+<!-- <div class="media p-3">
   <div>
   </div>
   <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">
@@ -54,22 +56,12 @@
    <span>댓글남겨요...</span><br>
    <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
   </div>
-</div>
-
-<div class="media p-3">
-  <div>
-  </div>
-  <img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">
-  <div class="media-body">
-   <strong>댓글작성자</strong><br>
-   <span>댓글남겨요...</span><br>
-   <small>2020-05-27 11:12:12 <a href="" class="text-success">수정</a> <a href="" class="text-danger">삭제</a></small>
-  </div>
-</div>
-
+</div> -->
 									<br>
-									<textarea class="form-control" id="replyContent"></textarea>
-									<button class="mt-2 p-2 btn btn-secondary" style="float:right;" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
+									<div class="row">
+									<textarea class="form-control ml-4 mr-1 " id="replyContent" style="width: 90%" placeholder="댓글을 남겨주세요" ></textarea>
+									<button class="mt-4 p-2 btn btn-secondary" style="float:right;" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
+									</div>
 									</div>
 								</div>
 							
