@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CurrencyEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,11 +33,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
+import com.souleaf.spring.common.CuriosityPagination;
+import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.common.Pagination;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.qna.domain.Qna;
 @Controller
 public class CuriosityController {
 	@Autowired
@@ -44,19 +49,23 @@ public class CuriosityController {
 	
 	// 궁금해요 리스트 페이지 이동 및 출력
 	@RequestMapping(value="curiosityListView.kh")
-	public ModelAndView curiosityListView(ModelAndView mv,HttpServletRequest request) {
+	public ModelAndView curiosityListView(ModelAndView mv,@RequestParam(value = "page", required = false) Integer page ,@RequestParam(value = "count", required = false) Integer count, HttpServletRequest request) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
 		HttpSession session = request.getSession();
 		session.setAttribute("nav", "curiosity");
-		mv.setViewName("curiosity/curiosityListView");
+		mv.addObject("page",currentPage).addObject("count",currentCount).setViewName("curiosity/curiosityListView");
 		return mv;
 	}
 	
 	// 궁금해요 리스트 출력
 	@ResponseBody
 	@RequestMapping(value="curiosityList.kh")
-	public void getPlantList(HttpServletResponse response, @RequestParam("current") int current) throws Exception {
-		System.out.println(current);
-		ArrayList<Curiosity> cList = cService.printAllList();
+	public void getCuriosityList(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception {
+		int currentPage = (page != null) ? page : 1;
+		int listCount = cService.getCuriosityListCount();
+		PageInfo pi = CuriosityPagination.getPageInfo(currentPage, listCount);
+		ArrayList<Curiosity> cList = cService.printAllList(pi);
 		if(! cList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(cList, response.getWriter());
@@ -65,12 +74,25 @@ public class CuriosityController {
 		}
 	}
 	
+	// 궁금해요 페이지 출력
+	@ResponseBody
+	@RequestMapping(value="curiosityPage.kh")
+	public void getCuriosityPage(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
+		int currentPage = (page != null) ? page : 1;
+		int listCount = cService.getCuriosityListCount();
+		PageInfo pi = CuriosityPagination.getPageInfo(currentPage, listCount);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(pi, response.getWriter());
+	}
+	
 	// 궁금해요 상세페이지 이동 및 출력
 	@RequestMapping(value="curiosityDetail.kh")
-	public ModelAndView curiosityDetailView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo,  Model model) {
+	public ModelAndView curiosityDetailView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
 		Curiosity curiosity = cService.printOne(curiosityNo);
 		if(curiosity != null) {
-			mv.addObject("curiosity",curiosity).setViewName("curiosity/curiosityDetail");
+			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("curiosity",curiosity).setViewName("curiosity/curiosityDetail");
 		}else {
 			
 		}
@@ -105,10 +127,12 @@ public class CuriosityController {
 
 	// 궁금해요 수정화면 이동
 	@RequestMapping(value="curiosityModifyView.kh")
-	public ModelAndView curiosityUpdateView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo,@ModelAttribute Curiosity curiosity, Model model) {
+	public ModelAndView curiosityUpdateView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo,@ModelAttribute Curiosity curiosity, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
 		curiosity = cService.printOne(curiosityNo);
 		if(curiosity != null) {
-			mv.addObject("curiosity",curiosity).setViewName("curiosity/curiosityUpdate");
+			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("curiosity",curiosity).setViewName("curiosity/curiosityUpdate");
 		}else {
 			
 		}
@@ -117,7 +141,9 @@ public class CuriosityController {
 	
 	// 궁금해요 게시글 수정
 	@RequestMapping(value="curiosityModify.kh",method = RequestMethod.POST)
-	public ModelAndView curiosityUpdate(ModelAndView mv, Curiosity curiosity, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, Model model, HttpServletRequest request) {
+	public ModelAndView curiosityUpdate(ModelAndView mv, Curiosity curiosity, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model, HttpServletRequest request) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("loginUser");
 		String curiosityFileRename = (String)session.getAttribute("fileName");
@@ -127,7 +153,7 @@ public class CuriosityController {
 	
 		int result = cService.modifyCuriosity(curiosity);
 		if(result > 0) {
-			mv.setViewName("redirect:curiosityDetail.kh?curiosityNo="+curiosity.getCuriosityNo());
+			mv.setViewName("redirect:curiosityDetail.kh?curiosityNo="+curiosity.getCuriosityNo()+"&page="+currentPage+"&count="+currentCount);
 			session.setAttribute("fileName", "");
 		}else {
 			

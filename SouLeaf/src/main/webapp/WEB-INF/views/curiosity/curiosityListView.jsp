@@ -25,8 +25,9 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
               <h2 class="heading-section" align="center" style="margin-bottom:50px">식물이름이 궁금해요!</h2>
-        <div class="row" id="curiosity-list">
-        
+        <div class="row" id="curiosity-list" style="min-height: 500px;">
+        <input type="hidden" id="currentPage" value="${page }">
+         <input type="hidden" id="currentCount" value="${count }">
        <!--    <div class="col-lg-6 sidebar pl-lg-5 ftco-animate">        
               <div class="block-21 mb-4 d-flex">
                 <a class="blog-img mr-4" style="background-image: url(resources/images/image_1.jpg);"></a>
@@ -47,7 +48,7 @@
            				 <div class="row mt-5">
 				          <div class="col text-center">
 				            <div class="block-27">
-				              <ul>
+				              <ul id="curiosity-page">
 				                <li><a href="#">&lt;</a></li>
 				                <li class="active"><span>1</span></li>
 				                <li><a href="#">2</a></li>

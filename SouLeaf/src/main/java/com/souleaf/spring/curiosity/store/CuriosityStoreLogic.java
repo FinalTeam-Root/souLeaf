@@ -2,10 +2,12 @@ package com.souleaf.spring.curiosity.store;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
@@ -16,8 +18,15 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	private SqlSession sqlSession;
 
 	@Override
-	public ArrayList<Curiosity> selectAllList() {
-		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllList");
+	public int selectCuriosityListCount() {
+		return sqlSession.selectOne("curiosityMapper.selectListCount");
+	}
+	
+	@Override
+	public ArrayList<Curiosity> selectAllList(PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllList", null, rowBounds);
 	}
 
 	@Override
@@ -82,6 +91,7 @@ public class CuriosityStoreLogic implements CuriosityStore{
 		return 0;
 	}
 
+	
 	
 
 }

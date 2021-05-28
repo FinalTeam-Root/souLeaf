@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
@@ -16,8 +17,13 @@ public class CuriosityServiceImpl implements CuriosityService {
 	private CuriosityStore cStore;
 
 	@Override
-	public ArrayList<Curiosity> printAllList() {
-		return cStore.selectAllList();
+	public int getCuriosityListCount() {
+		return cStore.selectCuriosityListCount();
+	}
+	
+	@Override
+	public ArrayList<Curiosity> printAllList(PageInfo pi) {
+		return cStore.selectAllList(pi);
 	}
 
 	@Override
@@ -79,6 +85,7 @@ public class CuriosityServiceImpl implements CuriosityService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
 
 }

@@ -2,14 +2,15 @@ package com.souleaf.spring.curiosity.service;
 
 import java.util.ArrayList;
 
+import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface CuriosityService {
-
-	public ArrayList<Curiosity> printAllList();// 게시글 출력
+	public int getCuriosityListCount(); // 게시글 갯수 
+	public ArrayList<Curiosity> printAllList(PageInfo pi);// 게시글 출력
 	public Curiosity printOne(int curiosityNo);// 게시글 상세보기
 	public int registerCuriosity(Curiosity curiosity);// 게시글 등록
 	public int modifyCuriosity(Curiosity curiosity);// 게시글 수정

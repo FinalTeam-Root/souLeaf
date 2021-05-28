@@ -46,6 +46,8 @@
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
+														<input type="hidden" name="page" value="${page }"> 
+														<input type="hidden" name="count" value="${count }"> 
 														<input type="hidden" name="curiosityNo" value="${curiosity.curiosityNo }">
 														<input type="submit" value="등록" class="btn btn-primary">
 														<div class="submitting"></div>

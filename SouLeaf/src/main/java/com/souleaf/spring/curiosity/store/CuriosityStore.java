@@ -2,14 +2,15 @@ package com.souleaf.spring.curiosity.store;
 
 import java.util.ArrayList;
 
+import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface CuriosityStore {
-
-	public ArrayList<Curiosity> selectAllList();// 게시글 출력
+	public int selectCuriosityListCount();
+	public ArrayList<Curiosity> selectAllList(PageInfo pi);// 게시글 출력
 	public Curiosity selectOne(int curiosityNo);// 게시글 상세보기
 	public int insertCuriosity(Curiosity curiosity);// 게시글 등록
 	public int updateCuriosity(Curiosity curiosity);// 게시글 수정

@@ -46,6 +46,10 @@
 		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOSITY_STATUS = 'Y'
 	</select>
 	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM CURIOSITY WHERE CURIOSITY_STATUS = 'Y'
+	</select>
+	
 	<!-- 댓글 -->
 	
 	<insert id="insertReply">

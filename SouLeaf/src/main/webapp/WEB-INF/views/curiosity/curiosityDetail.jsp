@@ -33,7 +33,8 @@
 									    <strong>${curiosity.memberNick }</strong><br>
 									    <small>${curiosity.curiosityDate }</small>
 									    <small align="right">조회수 ${curiosity.curiosityCount }</small>
-									    <small style="float: right"><a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }">수정</a></small>
+									    <small style="float: right"><a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a></small>
+									    <a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>
 									  </div>
 									</div>
 										<hr>
