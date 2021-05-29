@@ -61,13 +61,12 @@ public class PlantController {
 		// 식물도감 검색페이지 이동 및 출력
 		@RequestMapping(value="plantSearch.kh")
 		public ModelAndView plantSearchView(ModelAndView mv,@RequestParam("search") String search) {
-			System.out.println("들어옴?");
 			ArrayList<Plant> pList = pService.printSearchAllList(search);
 			System.out.println(pList);
 			if(! pList.isEmpty()) {
 				mv.addObject("pList",pList).setViewName("plant/plantSearchView");
 			}else {
-				mv.addObject("pList",null).setViewName("plant/plantSearchView");
+				mv.addObject("pList",null).addObject("search",search).setViewName("plant/plantSearchView");
 			}
 			return mv;
 		}

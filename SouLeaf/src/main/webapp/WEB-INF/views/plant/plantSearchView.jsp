@@ -26,7 +26,7 @@
     
    <section class="ftco-section bg-light">
 			<div class="container">
-			
+				<c:if test="${pList eq null }"><div class="mb-3" style="font-size: 30px">찾으시는 식물이 <span class="text-success"><strong>${search }</strong></span> 맞나요?</div></c:if>
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>
@@ -35,12 +35,12 @@
               </form><br>
               
 				<div class="row" id="plant-list">
-						<c:forEach items="${pList }" var="pi" varStatus="status">
-					<div class="col-md-4 col-lg-3 ftco-animate">
-						<div class="staff">
 						<c:if test="${pList eq null }">
-						검색결과가 없습니다
+						<div class="ml-5">검색 결과가 없습니다.</div>
 						</c:if>
+						<c:forEach items="${pList }" var="pi" varStatus="status">
+					<div class="col-md-6 col-lg-3 ftco-animate" onclick="location.href='plantDetail.kh?plantNo=${pi.plantNo}'">
+						<div class="staff">
 						
 							<div class="img-wrap d-flex align-items-stretch">
 								<div class="img align-self-stretch" style="background-image: url(resources/uploadFiles/plant/${pi.plantFileRename});"></div>
