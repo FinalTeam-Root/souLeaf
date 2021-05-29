@@ -60,9 +60,8 @@ public class PlantStoreLogic implements PlantStore{
 	}
 
 	@Override
-	public ArrayList<Plant> selectSearchAllList(PlantSearch search) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Plant> selectSearchAllList(String search) {
+		return (ArrayList)sqlSession.selectList("plantMapper.selectSearch", search);
 	}
 
 	@Override

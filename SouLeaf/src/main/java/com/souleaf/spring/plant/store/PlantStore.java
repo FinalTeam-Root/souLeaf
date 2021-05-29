@@ -17,7 +17,7 @@ public interface PlantStore {
 	public int updatePlant(Plant plant);// 식물도감 수정
 	public int updateDetailPlant(PlantInfo plantInfo);// 식물도감 상세정보 수정
 	public int deletePlant(int plantNo);// 식물도감 삭제
-	public ArrayList<Plant> selectSearchAllList(PlantSearch search);//식물도감 검색
+	public ArrayList<Plant> selectSearchAllList(String search);//식물도감 검색
 	public int selectOnePlant();
 	public int insertPlantFile(PlantFile pFile);// 식물도감 파일 등록
 	public int deletePlantFile(PlantFile plantFile);// 식물도감 파일 삭제

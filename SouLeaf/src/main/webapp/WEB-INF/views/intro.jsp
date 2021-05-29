@@ -17,49 +17,51 @@
       </div>
     </section>
     
-    <section class="ftco-section ftco-no-pt ftco-no-pb">
+   
+<section class="about-us py-5 " id="about-us">
+    <div class="container mt-5">
+	<div class="row ftco-animate">
+		<div class="col-md-6">
+		    <h1 class='text-success'>Welcome!</h1>
+		    <h2>Know More About Us</h2>
+		    <hr>
+		    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etae magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		    <button type="button" class="btn btn-success">Let's Know More</button>
+
+		</div>
+		<div class="col-md-6 ">
+		    <img class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" src="https://i.ibb.co/vvM7myx/Untitled-1.jpg"alt="">
+		</div>
+	</div>
+</div>
+</section>
+
+   
+      <section class="ftco-section bg-light ftco-faqs">
     	<div class="container">
-    		<div class="row d-flex no-gutters">
-    			<div class="col-md-5 d-flex">
-    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(resources/images/about-1.jpg);">
-    				</div>
-    			</div>
-    			<div class="col-md-7 pl-md-5 py-md-5">
-    				<div class="heading-section pt-md-5">
-	            <h2 class="mb-4">Why Choose Us?</h2>
-    				</div>
-    				<div class="row">
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-stethoscope"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Care Advices</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-customer-service"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Customer Supports</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-emergency-call"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Emergency Services</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-veterinarian"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Veterinary Help</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    			</div>
-	        </div>
+    		 <div class="row ftco-animate">
+        <div class="col-lg-6">
+         <div class="about-image clearfix">
+           <div class="single-image float-left">
+            <img src="https://i.ibb.co/Z89vbqS/2.jpg" alt="">
+           </div> 
+          <div class="single-image image-tow float-right">
+         <img src="https://i.ibb.co/vvM7myx/Untitled-1.jpg" alt="">
+       </div> 
+     </div> 
+       </div>
+         <div class="col-lg-6">
+          <div class="about-content">
+             <h3> Welcome to our Company name </h3>
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+			 <br> 
+			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+			 <br><br>
+           <a class="main-btn mt-25 m4" href="#">Learn More <i class="fas fa-arrow-right"></i></a>
+         </div> 
         </div>
+       </div> 
     	</div>
     </section>
   

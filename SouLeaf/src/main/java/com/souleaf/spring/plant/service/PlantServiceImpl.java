@@ -104,9 +104,8 @@ public class PlantServiceImpl implements PlantService{
 	}
 
 	@Override
-	public ArrayList<Plant> printSearchAllList(PlantSearch search) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Plant> printSearchAllList(String search) {
+		return pStore.selectSearchAllList(search);
 	}
 
 	@Override

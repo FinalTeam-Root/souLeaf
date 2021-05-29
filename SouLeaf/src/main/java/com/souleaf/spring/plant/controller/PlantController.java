@@ -49,7 +49,6 @@ public class PlantController {
 		@ResponseBody
 		@RequestMapping(value="plantList.kh")
 		public void getPlantList(HttpServletResponse reponse, @RequestParam("current") int current) throws Exception {
-			System.out.println(current);
 			ArrayList<Plant> pList = pService.printAllList();
 			if(! pList.isEmpty()) {
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
@@ -58,6 +57,21 @@ public class PlantController {
 				System.out.println("데이터가 없습니다");
 			}
 		}
+		
+		// 식물도감 검색페이지 이동 및 출력
+		@RequestMapping(value="plantSearch.kh")
+		public ModelAndView plantSearchView(ModelAndView mv,@RequestParam("search") String search) {
+			System.out.println("들어옴?");
+			ArrayList<Plant> pList = pService.printSearchAllList(search);
+			System.out.println(pList);
+			if(! pList.isEmpty()) {
+				mv.addObject("pList",pList).setViewName("plant/plantSearchView");
+			}else {
+				mv.addObject("pList",null).setViewName("plant/plantSearchView");
+			}
+			return mv;
+		}
+		
 		
 		// 식물도감 상세페이지 이동 및 출력
 		@RequestMapping(value="plantDetail.kh")

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,26 +33,34 @@
                   <input type="text" class="form-control" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
               </form><br>
+              
 				<div class="row" id="plant-list">
-					<!-- <div class="col-md-6 col-lg-3 ftco-animate">
+						<c:forEach items="${pList }" var="pi" varStatus="status">
+					<div class="col-md-4 col-lg-3 ftco-animate">
 						<div class="staff">
+						<c:if test="${pList eq null }">
+						검색결과가 없습니다
+						</c:if>
+						
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(resources/uploadFiles/plant/${pi.plantFileRename});"></div>
 							</div>
 							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
-								<span class="position mb-2">Health Coach</span>
+								<span class="position mb-2">${pi.plantEngname }</span>
+								<h3>${pi.plantName }</h3>
 								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>									
 	             				 </div>
 							</div>
+							
 						</div>
-					</div> -->
+					</div>
+						</c:forEach>
+					
 				</div>
 			</div>
 		</section>
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
-<script src="resources/js/plant/plant-list.js"></script>
+<!-- <script src="resources/js/plant/plant-list.js"></script> -->
 </body>
 </html>
