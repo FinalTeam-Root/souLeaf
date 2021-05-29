@@ -51,12 +51,12 @@
 		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
 	
-	<select id="selectByMemberDiary">
+	<select id="selectByMemberDiary" parameterType="Diary" resultMap="diaryResultMap">
 		SELECT * FROM (SELECT * FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo} ORDER BY DIARY_STARTDATE DESC) WHERE ROWNUM = 1
 	</select>
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
-		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},DEFAULT,#{waterIcon})
+		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},#{diaryStatus},#{imgUrl})
 	</insert>
 	
 	<delete id="deleteReDiary">

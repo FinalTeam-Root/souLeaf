@@ -3,6 +3,7 @@ package com.souleaf.spring.diary.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,7 +71,6 @@ public class DiaryController {
 	@RequestMapping(value="myCompanionList.kh", method=RequestMethod.GET)
 	public void companionList(HttpServletResponse response, HttpSession session) throws Exception {
 		Member loginUser = (Member)session.getAttribute("loginUser");
-		System.out.println(loginUser.getMemberNo());
 		// 반려식물 전체 가져오는 메소드 = printAll()
 		ArrayList<Companion> cList = cService.printmemberAll(loginUser.getMemberNo());
 		if(!cList.isEmpty()) {
@@ -163,6 +163,7 @@ public class DiaryController {
 				// 지우고 새로운 물 줘야하는날 등록
 				reDiary.setDiaryStartDate(dateToStr);
 				reDiary.setDiaryTitle(companion.getCompanionNick()+" 물줘!");
+				reDiary.setDiaryStatus("W");
 				reDiary.setdiaryColor("#4d638c");
 				reDiary.setImgUrl("resources/images/watericon.png");
 				dService.registerDiary(reDiary);
@@ -213,8 +214,7 @@ public class DiaryController {
 	@ResponseBody
 	@RequestMapping(value="diaryUpdate.kh", method=RequestMethod.POST)
 	public String diaryUpdate(@ModelAttribute Diary diary,
-			@RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo,
-			HttpServletRequest request, @RequestParam(value = "diaryPicname", required = false) MultipartFile uploadFile)
+			@RequestParam("companionLastWater") String companionLastWater, HttpServletRequest request, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile)
 			throws Exception {
 		// 파일 삭제 후 업로드 (수정)
 		if (uploadFile != null && !uploadFile.isEmpty()) {
@@ -253,9 +253,8 @@ public class DiaryController {
 	}
 	
 	// 일기 삭제하기
-	@ResponseBody
 	@RequestMapping(value="diaryDelete.kh", method=RequestMethod.GET)
-	public String diaryDelete(@ModelAttribute Diary diary, @RequestParam("diaryRepicname") String diaryRepicname, HttpServletRequest request) throws Exception {
+	public void diaryDelete(@ModelAttribute Diary diary, @RequestParam("diaryRepicname") String diaryRepicname, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 업로드된 파일 삭제
 		if(diaryRepicname != "") {
 			deleteFile(diaryRepicname, request);
@@ -263,25 +262,42 @@ public class DiaryController {
 		// 디비에 데이터 삭제하기
 		// 최신 날짜면 최신날짜는 날짜삭제 
 		int result = dService.removeDiary(diary);
-		// 위에서 사라진 게시물 뺀 나머지중에서 최신 날짜를 가져옴
-		Diary delDairy = dService.printByMemberDiary(diary);
-		String originalDate = diary.getDiaryStartDate();
-		int intOriginalDate = Integer.parseInt(originalDate.replace("-", ""));
-		String newDate = delDairy.getDiaryStartDate();
-		int intNewDate = Integer.parseInt(newDate.replace("-", ""));
-		// 삭제한 날짜가 최신이라면 물 줘야 하는 날을 변경한다
-		if(intOriginalDate > intNewDate) {
-			Companion companion = new Companion();
-			companion.setCompanionLastWater(newDate);
-			cService.modifyCompanion(companion);
-			changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
-		} 
+		HashMap<String, Object> diaryMap = new HashMap<String, Object>();
+		String resultYN = "";
 		if(result > 0) {
-			return "success";
+			// 위에서 사라진 게시물 뺀 나머지중에서 최신 날짜를 가져옴
+			Diary delDairy = dService.printByMemberDiary(diary);
+			String originalDate = diary.getDiaryStartDate();
+			int intOriginalDate = Integer.parseInt(originalDate.replace("-", ""));
+			String newDate = delDairy.getDiaryStartDate();
+			int intNewDate = Integer.parseInt(newDate.replace("-", ""));
+			// 삭제한 날짜가 최신이라면 물 줘야 하는 날을 변경한다
+			if(intOriginalDate > intNewDate) {
+				Companion companion = new Companion();
+				companion.setCompanionLastWater(newDate);
+				cService.modifyCompanion(companion);
+				changeWater(delDairy.getCompanionNo(), delDairy.getMemberNo());
+			} 
+			diaryMap.put("dList", dService.printAllDiary(diary.getMemberNo()));
+			resultYN = "success";
 		} else {
-			return "fail";
+			resultYN = "fail";
 		}
+		diaryMap.put("resultYN",resultYN);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 날짜 포맷 변경!
+		//ArrayList에서 gson형태로 변환시켜준다.
+		gson.toJson(diaryMap, response.getWriter());
 		
+	}
+	
+	// 저장된 파일 삭제
+	public void deleteFile(String fileName, HttpServletRequest request) {
+		String root = request.getSession().getServletContext().getRealPath("resuorces");
+		String savePath = root + "/uploadFiles/diary";
+		File file = new File(savePath + "/" + fileName);
+		if(file.exists()) {
+			file.delete();
+		}
 	}
 	
 	// 일기 등록 웅앵,.,,
@@ -319,21 +335,9 @@ public class DiaryController {
 			
 	}
 	
-	
-	
-	// 저장된 파일 삭제
-	public void deleteFile(String fileName, HttpServletRequest request) {
-		String root = request.getSession().getServletContext().getRealPath("resuorces");
-		String savePath = root + "/uploadFiles/diary";
-		File file = new File(savePath + "/" + fileName);
-		if(file.exists()) {
-			file.delete();
-		}
-	}
-	
 	// 방명록 전체 조회
 	@RequestMapping(value="guestbookList.kh", method=RequestMethod.GET)
-	public void guestbookList(HttpServletResponse response, @RequestParam("memberDiary") int memberDiary) throws JsonIOException, IOException {
+	public void guestbookList(HttpServletResponse response, HttpSession session ,@RequestParam("memberDiary") int memberDiary) throws JsonIOException, IOException {
 		ArrayList<Guestbook> gList = dService.printAllGuestbook(memberDiary);
 		if(!gList.isEmpty()) {
 			//gson을 사용해 결과리스트 리턴(response)하기

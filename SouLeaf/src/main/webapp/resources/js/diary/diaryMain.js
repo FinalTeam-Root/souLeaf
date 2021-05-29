@@ -1,31 +1,24 @@
+var calendar;
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 	
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+    calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
-      // {
-      //   title: 'testmessage',
-      //   start: '2020-09-22',
-      //   end: '2020-09-22',
-      //   color : '#f06595'
-      //   constraint: 'availableForMeeting', // defined below
-      // },
-
       eventClick: function(info) {
-
         $('#eventModal-modify').modal();
 
         // diaryNo 받아와서 담아주기
         $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
         // LastWaterday 받아와서 담아주기
         var companionLastwater = info.event.extendedProps.companionLastwater;
-        console.log(companionLastwater);
         // 반려식물 애칭 받아와서 담아주기
         var companionNick = info.event.extendedProps.companionNick;
         // diaryPicname 받아와서 담아주기
         var diaryPicname = info.event.extendedProps.diaryPicname;
-        var diaryRepicname = info.event.extendedProps.diaryRepicname;
+        $('#diaryRepicInfo').val(info.event.extendedProps.diaryRepicname);
+        // var diaryRepicname = info.event.extendedProps.diaryRepicname;
         // companionNo 받아와서 담아주기
+        $('#companionNoInfo').val(info.event.extendedProps.companionNo);
         var companionNo= info.event.extendedProps.companionNo;
   
         $('#selectCompanion').html("");
@@ -36,8 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
         $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
         $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
-        // $('#eventModal-modify .modal-body #modify-customFile').val(diaryRepicname);
-
+        //$('#eventModal-modify .modal-body #modify-customFile').val(diaryPicname);
       },  
       // toolbar에 일기쓰기 버튼
       customButtons: {
@@ -90,14 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
       contentHeight: 750,
       dayMaxEventRows: true, // for all non-TimeGrid views
 
-      eventContent: function(arg){
-        // if(info.event.title != null) {
-        // }
-        // html : "<div><img src='https://img.icons8.com/officexs/16/000000/water.png'/> 물줘!</div>",
-        // console.log(arg.event.extendedProps);
-        
-      },
-
       // 일정 받아와서 달력에 데이터 뿌려주는 기능
       events: 
       function(info, successCallback, failureCallback){
@@ -114,24 +98,24 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       },
-      // 물방울 아이콘 넣어주는 함수
+      // 물방울 아이콘 생성 함수
       eventContent:function(arg){
         let arrayOfDomNodes = []
-        let imgEventWrap = document.createElement('div');
+        // icon event
+        let eventWrap = document.createElement('div');
+        eventWrap.classList = "fc-event-wrap"
         if(arg.event.extendedProps.image_url) {
-          let imgEvent = '<img src="'+arg.event.extendedProps.image_url+'" >'
-          imgEventWrap.classList = "fc-event-wrap"
-          imgEventWrap.style.cssFloat= 'left';
-          imgEventWrap.innerHTML = imgEvent;
+          let imgEvent = '<img src="'+arg.event.extendedProps.image_url+'" >';
+          eventWrap.innerHTML = imgEvent;
         }
         // title event
         let titleEvent = document.createElement('div')
         if(arg.event._def.title) {
-          titleEvent.innerHTML = arg.event._def.title
           titleEvent.classList = "fc-event-title fc-sticky"
+          titleEvent.innerHTML = arg.event._def.title
+          eventWrap.append(titleEvent);
         }
-
-        arrayOfDomNodes = [titleEvent,imgEventWrap]
+        arrayOfDomNodes = [eventWrap]
         return {domNodes: arrayOfDomNodes}
       },
     });
@@ -195,16 +179,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // 일기 삭제 버튼 클릭
   $("#deleteEvent").on("click",function() {
     var diaryNo = $('#diaryUniqNo').val();
-    console.log(diaryNo);
+    var diaryRepicname = $('#diaryRepicInfo').val();
+    var memberNo = $('#memberNo').val();
+    var companionNo = $('#companionNoInfo').val();
+    var startDate = $('#modify-edit-date').val();
     $.ajax({
       url : "diaryDelete.kh",
       type : "get",
-      data : {"diaryNo": diaryNo, "diaryRepicname":diaryRepicname},
+      data : {"diaryNo": diaryNo, "diaryRepicname":diaryRepicname, "memberNo" :memberNo, "companionNo":companionNo,"diaryStartDate":startDate},
+      dataType : "json",
       success : function(data) {
-        if(data == "success") {
+        if(data.resultYN == "success") {
           alert("일기가 삭제되었습니다.");
-          // 삭제 후 달력리스트 불러오기
-          $('#eventModal-modify').modal("hide");
+          $('#eventModal-modify').modal('hide');
+          calendar.refetchEvents();
         } else {
           alert("일기 삭제 실패!!");
         }
@@ -216,23 +204,34 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // 일기 수정하기 코드
   $("#updateEvent").on("click",function() {
-    // var companionNick = $("#selectCompanion option:selected").val(); 
+    var companionNo = $("#selectCompanion option:selected").val(); 
     var diaryTitle = $("#modify-edit-title").val();
     var diaryStartDate = $("#modify-edit-date").val();
     var diaryColor = $("input[name='color']:checked").val();
     var diaryPicname = $("#modify-customFile").val();
     var diaryContent = $("#edit-desc2").val();
-    var diaryStartWater = $("#modify-edit-startWater").val();
-    console.log(diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,diaryStartWater);
+    var companionLastWater = $("#modify-edit-lastWater").val();
+
+    var formData = new FormData(); // 위에 있는 데이터를 이 녀석이 다 데리고 감
+    formData.append("companionNo",companionNo);
+    formData.append("diaryTitle",diaryTitle);
+    formData.append("diaryStartDate",diaryStartDate);
+    formData.append("diaryColor",diaryColor);
+    formData.append("diaryPicname",diaryPicname);
+    formData.append("diaryContent",diaryContent);
+    formData.append("companionLastWater",companionLastWater);
+
+    console.log(companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
     $.ajax({
       url : "diaryUpdate.kh",
       type : "post",
-      enctype: 'multipart/form-data',
       processData: false,    
       contentType: false,
-      data : {"diaryTitle":diaryTitle,"diaryStartDate":diaryStartDate,"diaryColor":diaryColor,"diaryPicname":diaryPicname,"diaryContent":diaryContent,"diaryStartWater":diaryStartWater},
+      enctype:'multipart/form-data',
+      data : formData,
       success :function(data) {
         if(data == "success") {
+          callback(data);
             alert("일기 수정 완료");
             // 일기 수정 후 모달창 닫아주기
             // $('#eventModal-modify').modal("hide");
@@ -287,6 +286,8 @@ function diaryModify(obj) {
 // 방명록 리스트를 불러오는 함수
 function getGuestbookList() {
   var memberDiary = $('#memberDiary').val();
+  var memberNo = $("#member-no").val();
+  console.log(memberNo);
   $.ajax({
     url:"guestbookList.kh",
     type:"get",
@@ -295,7 +296,6 @@ function getGuestbookList() {
     success : function(data) {
      console.log(data);
      var $cacommentList = $(".comment-list");
-     //var cif = '<c:if test='${"+data[i].memberNo eq loginUser.memberNo+"}'>';
      $cacommentList.html("");
      if(data.length > 0) {
        for(var i in data){
@@ -303,11 +303,12 @@ function getGuestbookList() {
          var $colmd2 = $("<div class='col-md-2'>");
          var $colmd10 = $("<div class='col-md-10'>");
          var $row = $("<div class='row'>");
-         //var $row = $("<div class='row'>").append("<div class='col-md-2'><img src='https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png' class='img rounded-circle img-fluid user-img' style='width: 50px';'/><p class='text-secondary text-center'>"+data[i].memberNick+"</p></div>").append("<div class='col-md-10'><div class='clearfix'><p>"+data[i].guestbookContent+"</p><span class='datetime'>"+data[i].guestbookDate+" </span><a href='#' onclick='modifyGuestbook(this,"+data[i].guestbookNo+",\""+data[i].guestbookContent+"\")'> 수정 </a> <a href='#' onclick='removeGuestbook("+data[i].guestbookNo+");return false'> 삭제</a></div></div>");
+
          $colmd2.append("<img src='https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png' class='img rounded-circle img-fluid user-img' style='width: 50px';'/><p class='text-secondary text-center'>"+data[i].memberNick+"</p></div>");
          var $clearfix = $("<div class='clearfix'>");
          $clearfix.append("<p>"+data[i].guestbookContent+"</p><span class='datetime'>"+data[i].guestbookDate+" </span>");
-         if ( false ) {           
+
+         if(data[i].memberNo == memberNo){
            $clearfix.append("<a href='#' onclick='modifyGuestbook(this,"+data[i].guestbookNo+",\""+data[i].guestbookContent+"\")'> 수정 </a> <a href='#' onclick='removeGuestbook("+data[i].guestbookNo+");return false'> 삭제</a>");
          }
          $colmd10.append($clearfix);

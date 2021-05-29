@@ -17,8 +17,7 @@
 	<!-- 다이어리 주인의 memberNo -->
 	<input type="hidden" name="memberDiary" id="memberDiary" value="1">
 	<!-- 방명록을 작성하는 사람의 memberNo -->
-	<input type="hidden" name="memberNo" id="memberNo"
-		value="${loginUser.memberNo}">
+	<input type="hidden" name="memberNo" id="memberNo" value="${loginUser.memberNo}">
 	<div class="diary-content">
 		<div class="tab-content tab-space">
 			<div class="nav-tab-content">
@@ -201,7 +200,7 @@
 				<!-- picture -->
 			</div>
 			<!--  myDiary-picture -->
-
+			<input type="hidden" id="member-no" value="${loginUser.memberNo }">
 			<div class="tab-pane" id="myDaiary-guest">
 				<div class="comment">
 					<!-- <div class="comment-content">
@@ -235,8 +234,7 @@
 						<div class="form-group">
 							<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-selectPlant">반려식물 선택</label>
-								<select class="form-control form-control-sm" name="companionNo"
-									id="selectCom">
+								<select class="form-control form-control-sm" name="companionNo" id="selectCom">
 
 								</select>
 							</div>
@@ -352,8 +350,10 @@
 	<!-- 모달창 끝 -->
 
 	<!-- 일기 보기 수정 삭제 모달창 -->
-	<input type="hidden" name="diaryRepicture" value="0">
+	<input type="hidden" id="diaryRepicInfo" value="0">
 	<input type="hidden" id="diaryUniqNo" value="0">
+	<input type="hidden" id="companionNoInfo" value="0">
+	<form id="diaryModifyForm" method="post" enctype="multipart/form-data">
 	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -436,9 +436,8 @@
 					<label class="col-xs-4" for="edit-picture">사진</label>
 					<div class="col-xs-12">
 						<div class="form-group files fileSection">
-							<input type="file" class="custom-file-input" name=uploadFile
-								id="modify-customFile"> <label class="custom-file-label"
-								for="customFile">Choose file</label>
+							<input type="file" class="custom-file-input" name="uploadFile" id="modify-customFile"> 
+							<label class="custom-file-label" for="customFile">Choose file</label>
 						</div>
 					</div>
 
@@ -467,14 +466,6 @@
 				</div>
 				<!-- /.modal-body -->
 				<div class="form-group" style="margin-left: 298px;">
-					<c:url var="dDelete" value="diaryDelete.kh">
-						<c:param name="diaryNo" value="${diary.diaryNo }"></c:param>
-						<c:param name="diaryRepicname" value="${diary.diaryRepicname }"></c:param>
-					</c:url>
-					<c:url var="dModify" value="diaryUpdate.kh">
-						<c:param name="diaryNo" value="${diary.diaryNo } "></c:param>
-						<c:param name="diaryRepicname" value="${diary.diaryRepicname }"></c:param>
-					</c:url>
 					<button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
 					<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
 					<button type="button" class="btn btn-primary" id="updateEvent">수정</button>
@@ -483,16 +474,17 @@
 			<!-- /.modal-content -->
 		</div>
 		<!-- /.modal-dialog -->
+		</form>
 	</div>
 	<!-- /.modal -->
 	<!-- 모달창 끝 -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 	<script src="resources/js/diary/diaryMain.js"></script>
 	<script src='resources/js/diary/calendar.js'></script>
 	<script src='resources/js/diary/ko.js'></script>
 	<script src='resources/js/diary/locales-all.js'></script>
 </body>
 </html>
+
