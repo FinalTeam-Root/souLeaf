@@ -164,6 +164,7 @@ public class DiaryController {
 				reDiary.setDiaryStartDate(dateToStr);
 				reDiary.setDiaryTitle(companion.getCompanionNick()+" 물줘!");
 				reDiary.setdiaryColor("#4d638c");
+				reDiary.setImgUrl("resources/images/watericon.png");
 				dService.registerDiary(reDiary);
 			}
 		};
@@ -213,7 +214,7 @@ public class DiaryController {
 	@RequestMapping(value="diaryUpdate.kh", method=RequestMethod.POST)
 	public String diaryUpdate(@ModelAttribute Diary diary,
 			@RequestParam("companionLastWater") String companionLastWater, @RequestParam("companionNo") int companionNo,
-			HttpServletRequest request, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile)
+			HttpServletRequest request, @RequestParam(value = "diaryPicname", required = false) MultipartFile uploadFile)
 			throws Exception {
 		// 파일 삭제 후 업로드 (수정)
 		if (uploadFile != null && !uploadFile.isEmpty()) {

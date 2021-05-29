@@ -8,6 +8,7 @@ public class CalendarView {
 	private String end;
 	private String color;
 	private String constraint;
+	private String image_url;
 	private String companionLastwater;
 	private String companionNeedwater;	
 	private String companionNick;
@@ -73,6 +74,15 @@ public class CalendarView {
 		this.constraint = constraint;
 	}
 
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
+
 	public String getCompanionLastwater() {
 		return companionLastwater;
 	}
@@ -113,7 +123,6 @@ public class CalendarView {
 		this.diaryRepicname = diaryRepicname;
 	}
 
-	
 	public int getCompanionNo() {
 		return companionNo;
 	}
@@ -125,15 +134,11 @@ public class CalendarView {
 	@Override
 	public String toString() {
 		return "CalendarView [diaryNo=" + diaryNo + ", memberNo=" + memberNo + ", title=" + title + ", start=" + start
-				+ ", end=" + end + ", color=" + color + ", constraint=" + constraint + ", companionLastwater="
-				+ companionLastwater + ", companionNeedwater=" + companionNeedwater + ", companionNick=" + companionNick
-				+ ", diaryPicname=" + diaryPicname + ", diaryRepicname=" + diaryRepicname + ", companionNo="
-				+ companionNo + "]";
+				+ ", end=" + end + ", color=" + color + ", constraint=" + constraint + ", image_url=" + image_url
+				+ ", companionLastwater=" + companionLastwater + ", companionNeedwater=" + companionNeedwater
+				+ ", companionNick=" + companionNick + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
+				+ diaryRepicname + ", companionNo=" + companionNo + "]";
 	}
 
-	
-
-	
-	
 	
 }

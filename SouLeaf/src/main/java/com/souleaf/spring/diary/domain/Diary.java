@@ -17,6 +17,7 @@ public class Diary {
 	private int companionNo;
 	private String companionNick;
 	private String diaryStatus;
+	private String imgUrl;
 	 
 	public Diary() {}
 
@@ -124,13 +125,22 @@ public class Diary {
 		this.diaryStatus = diaryStatus;
 	}
 
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "Diary [diaryNo=" + diaryNo + ", diaryTitle=" + diaryTitle + ", diaryContent=" + diaryContent
 				+ ", diaryStartDate=" + diaryStartDate + ", diaryEndDate=" + diaryEndDate + ", diaryUpdate="
 				+ diaryUpdate + ", diaryColor=" + diaryColor + ", diaryPicname=" + diaryPicname + ", diaryRepicname="
 				+ diaryRepicname + ", memberNo=" + memberNo + ", companionNo=" + companionNo + ", companionNick="
-				+ companionNick + ", diaryStatus=" + diaryStatus + "]";
+				+ companionNick + ", diaryStatus=" + diaryStatus + ", imgUrl=" + imgUrl + "]";
 	}
+
 
 }

@@ -18,6 +18,7 @@
  		<result property="companionNo" column="COMPANION_NO"/>
  		<result property="companionNick" column="COMPANION_NICK"/>
  		<result property="diaryStatus" column="DIARY_STATUS"/>
+ 		<result property="imgUrl" column="IMG_URL"/>
  	</resultMap>
  	 	<resultMap type="Diary" id="diaryJsonMap">
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
@@ -34,7 +35,7 @@
  	</resultMap>
  	
  	<select id="selectAllDairy" resultType="CalendarView">
- 		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
+ 		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
  	</select>
  	
  	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
@@ -55,7 +56,7 @@
 	</select>
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
-		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},DEFAULT)
+		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},DEFAULT,#{waterIcon})
 	</insert>
 	
 	<delete id="deleteReDiary">
