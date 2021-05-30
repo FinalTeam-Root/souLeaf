@@ -331,6 +331,7 @@ public class DiaryController {
 		reDiary.setDiaryStartDate(dateToStr);
 		reDiary.setDiaryTitle(companion.getCompanionNick()+"물줘!");
 		reDiary.setdiaryColor("#4d638c");
+		reDiary.setImgUrl("resources/images/watericon.png");
 		dService.registerDiary(reDiary);
 			
 	}

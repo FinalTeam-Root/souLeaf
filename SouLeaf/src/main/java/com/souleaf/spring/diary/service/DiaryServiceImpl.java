@@ -107,7 +107,6 @@ public class DiaryServiceImpl implements DiaryService{
 	public Diary printByMemberDiary(Diary diary) {
 		return dStore.selectByMemberDiary(diary);
 	}
-
-
+	
 
 }

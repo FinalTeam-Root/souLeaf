@@ -38,6 +38,10 @@
  		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
  	</select>
  	
+ 	<select id="selectAll" resultMap="diaryResultMap">
+ 		SELECT * FROM DIARY
+ 	</select>
+ 	
  	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
  		SELECT * FROM DIARY WHERE DIARY_NO = #{diaryNo}
  	</select>

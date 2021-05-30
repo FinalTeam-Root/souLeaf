@@ -11,7 +11,6 @@ public interface DiaryStore {
 
 		//로그인한 사용자 회원 정보뿌려주기
 		public Member selectOneMember(int memberNo);
-		
 		// 다이어리 전체 내용 불러오기
 		public ArrayList<Diary> selectAllDiary(int memberNo);
 		// 해당 날짜 클릭시 등록된 일기 보기

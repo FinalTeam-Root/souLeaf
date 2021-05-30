@@ -354,133 +354,144 @@
 	<input type="hidden" id="diaryUniqNo" value="0">
 	<input type="hidden" id="companionNoInfo" value="0">
 	<form id="diaryModifyForm" method="post" enctype="multipart/form-data">
-	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5>일기 보기</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title"></h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-selectPlant">반려식물</label> 
-							<input type="hidden" id="companionUniqNo" value="0">
-							<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
+		<div class="modal fade" tabindex="-1" role="dialog" id="eventModal-modify">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5>일기 보기</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-selectPlant">반려식물</label> <input
+									type="hidden" id="companionUniqNo" value="0"> <select
+									class="form-control form-control-sm" name="companionNo"
+									id="selectCompanion">
 
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-title">제목</label> <input
-								class="form-control form-control-sm" type="text"
-								name="diaryTitle" id="modify-edit-title" required="required" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-xs-4" for="edit-start">날짜선택</label>
-						<div class="col-xs-12 input-group date" id="datapicker2">
-							<input class="form-control datetimepicker-input" type="text"
-								name="diaryStartDate" id="modify-edit-date" value="start" />
-							<div class="input-group-append" data-toggle="datetimepicker">
-								<div class="input-group-text">
-									<i class="fa fa-calendar"></i>
-								</div>
+								</select>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-color">색상</label>
-							<div class="row colorspace">
-								<div class="custom-radios">
-									<div>
-										<input type="radio" id="color-11" name="color" value="#D25565">
-										<label for="color-11"> <span> </span>
-										</label>
-									</div>
-									<div>
-										<input type="radio" id="color-22" name="color" value="#9775fa">
-										<label for="color-22"> <span> </span>
-										</label>
-									</div>
-									<div>
-										<input type="radio" id="color-33" name="color" value="#ffa94d">
-										<label for="color-33"> <span> </span>
-										</label>
-									</div>
-									<div>
-										<input type="radio" id="color-44" name="color" value="#74c0fc">
-										<label for="color-44"> <span> </span>
-										</label>
-									</div>
-									<div>
-										<input type="radio" id="color-55" name="color" value="#f06595">
-										<label for="color-55"> <span> </span>
-										</label>
-									</div>
-									<div>
-										<input type="radio" id="color-66" name="color" value="#63e6be">
-										<label for="color-66"> <span> </span>
-										</label>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-title">제목</label> <input
+									class="form-control form-control-sm" type="text"
+									name="diaryTitle" id="modify-edit-title" required="required" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4" for="edit-start">날짜선택</label>
+							<div class="col-xs-12 input-group date" id="datapicker2">
+								<input class="form-control datetimepicker-input" type="text"
+									name="diaryStartDate" id="modify-edit-date" value="start" />
+								<div class="input-group-append" data-toggle="datetimepicker">
+									<div class="input-group-text">
+										<i class="fa fa-calendar"></i>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<label class="col-xs-4" for="edit-picture">사진</label>
-					<div class="col-xs-12">
-						<div class="form-group files fileSection">
-							<input type="file" class="custom-file-input" name="uploadFile" id="modify-customFile"> 
-							<label class="custom-file-label" for="customFile">Choose file</label>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-color">색상</label>
+								<div class="row colorspace">
+									<div class="custom-radios">
+										<div>
+											<input type="radio" id="color-11" name="color"
+												value="#D25565"> <label for="color-11"> <span>
+											</span>
+											</label>
+										</div>
+										<div>
+											<input type="radio" id="color-22" name="color"
+												value="#9775fa"> <label for="color-22"> <span>
+											</span>
+											</label>
+										</div>
+										<div>
+											<input type="radio" id="color-33" name="color"
+												value="#ffa94d"> <label for="color-33"> <span>
+											</span>
+											</label>
+										</div>
+										<div>
+											<input type="radio" id="color-44" name="color"
+												value="#74c0fc"> <label for="color-44"> <span>
+											</span>
+											</label>
+										</div>
+										<div>
+											<input type="radio" id="color-55" name="color"
+												value="#f06595"> <label for="color-55"> <span>
+											</span>
+											</label>
+										</div>
+										<div>
+											<input type="radio" id="color-66" name="color"
+												value="#63e6be"> <label for="color-66"> <span>
+											</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+						<label class="col-xs-4" for="edit-picture">사진</label>
+						<div class="col-xs-12">
+							<div class="form-group files fileSection">
+								<input type="file" class="custom-file-input" name="uploadFile" id="modify-customFile"> 
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+						</div>
 
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label class="col-xs-4" for="edit-desc">내용</label>
-							<textarea rows="4" cols="50" class="form-control form-control-sm"
-								onclick="diaryModify(this);" name="diaryContent" id="edit-desc2"></textarea>
-							<p id="wordCount4">(0/최대 200자 작성가능)
-							<p>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<label class="col-xs-4" for="edit-desc">내용</label>
+								<textarea rows="4" cols="50"
+									class="form-control form-control-sm"
+									onclick="diaryModify(this);" name="diaryContent"
+									id="edit-desc2"></textarea>
+								<p id="wordCount4">(0/최대 200자 작성가능)
+								<p>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="form-group">
-						<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
-						<div class="col-xs-12 input-group date" id="datapicker2">
-							<input class="form-control datetimepicker-input" type="text"
-								name="companionLastwater" id="modify-edit-lastWater" />
-							<div class="input-group-append" data-toggle="datetimepicker">
-								<div class="input-group-text">
-									<i class="fa fa-calendar"></i>
+						<br>
+						<div class="form-group">
+							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
+							<div class="col-xs-12 input-group date" id="datapicker2">
+								<input class="form-control datetimepicker-input" type="text"
+									name="companionLastwater" id="modify-edit-lastWater" />
+								<div class="input-group-append" data-toggle="datetimepicker">
+									<div class="input-group-text">
+										<i class="fa fa-calendar"></i>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- /.modal-body -->
+					<div class="form-group" style="margin-left: 298px;">
+						<button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
+						<button type="button" class="btn btn-primary" id="updateEvent">수정</button>
+					</div>
 				</div>
-				<!-- /.modal-body -->
-				<div class="form-group" style="margin-left: 298px;">
-					<button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
-					<button type="button" class="btn btn-primary" id="updateEvent">수정</button>
-				</div>
+				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-content -->
+			<!-- /.modal-dialog -->
 		</div>
-		<!-- /.modal-dialog -->
-		</form>
-	</div>
+	</form>
 	<!-- /.modal -->
 	<!-- 모달창 끝 -->
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script src="resources/js/diary/diaryMain.js"></script>
 	<script src='resources/js/diary/calendar.js'></script>
 	<script src='resources/js/diary/ko.js'></script>
