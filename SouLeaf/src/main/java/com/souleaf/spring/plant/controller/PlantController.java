@@ -62,7 +62,6 @@ public class PlantController {
 		@RequestMapping(value="plantSearch.kh")
 		public ModelAndView plantSearchView(ModelAndView mv,@RequestParam("search") String search) {
 			ArrayList<Plant> pList = pService.printSearchAllList(search);
-			System.out.println(pList);
 			if(! pList.isEmpty()) {
 				mv.addObject("pList",pList).setViewName("plant/plantSearchView");
 			}else {

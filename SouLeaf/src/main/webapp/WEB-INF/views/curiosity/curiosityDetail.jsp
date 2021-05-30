@@ -30,11 +30,20 @@
 									<div class="media p-2">
 									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width:60px; height: 60px">
 									  <div class="media-body">
-									    <strong>${curiosity.memberNick }</strong><br>
+									  <div class="dropdown">
+  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ${curiosity.memberNick }
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="diaryMainView.kh?memberNo=${curiosity.memberNo }">일기 보러가기</a>
+    <a class="dropdown-item" href="#">1:1 채팅</a>
+  </div>
+</div>
+									   
 									    <small>${curiosity.curiosityDate }</small>
 									    <small align="right">조회수 ${curiosity.curiosityCount }</small>
-									    <small style="float: right"><a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a></small>
-									    <a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>
+									    <small style="float: right"><a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp; <a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a></small>
+									    
 									  </div>
 									</div>
 										<hr>
