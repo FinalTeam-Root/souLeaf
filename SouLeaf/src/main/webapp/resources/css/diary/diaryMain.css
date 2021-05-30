@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("tippy.js/themes/light.css");
 .diary-content {
   margin: 50px auto;
 }

@@ -117,20 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
         arrayOfDomNodes = [eventWrap]
         return {domNodes: arrayOfDomNodes}
       },
-      //   events: [
-      //   {
-      //     title: 'All Day Event',
-      //     description: 'description for All Day Event',
-      //     start: '2021-05-01'
-      //   }
-      // ],
-      // eventDidMount: function(info) {
-      //   tippy(info.el,{
-      //     content:  info.event.extendedProps.description,
-      //   },
-
-      //   );
-      // },
+      eventDidMount: function(info) {
+        tippy(info.el,{
+          content: '<span style="color:green;">'+info.event.title+'</span><br><span>'+info.event.constraint+'</span><br><img style="object-fit :cover; width:100px; height:100px" src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'">',
+          theme: 'light',
+          allowHTML :true,
+        }
+        )
+      },
     });
     calendar.render();
 
@@ -206,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
           alert("일기가 삭제되었습니다.");
           $('#eventModal-modify').modal('hide');
           calendar.refetchEvents();
+          getDiaryPicList();
         } else {
           alert("일기 삭제 실패!!");
         }
@@ -223,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var diaryTitle = $("#modify-edit-title").val();
     var diaryStartDate = $("#modify-edit-date").val();
     var diaryColor = $("input[name='color']:checked").val();
-    var diaryPicname = $("#modify-customFile").val();
+    var diaryPicname = $("#modify-customFile");
     var diaryContent = $("#edit-desc2").val();
     var companionLastWater = $("#modify-edit-lastWater").val();
 
@@ -234,11 +229,11 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append("diaryTitle",diaryTitle);
     formData.append("diaryStartDate",diaryStartDate);
     formData.append("diaryColor",diaryColor);
-    formData.append("diaryPicname",diaryPicname);
+    formData.append("uploadFile",diaryPicname[0].files[0]);
     formData.append("diaryContent",diaryContent);
     formData.append("companionLastWater",companionLastWater);
 
-    //console.log(diaryNo,companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
+    console.log(diaryNo,companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
     $.ajax({
       url : "diaryUpdate.kh",
       type : "post",
@@ -250,8 +245,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if(data == "success") {
           alert("일기 수정 완료");
           $('#eventModal-modify').modal('hide');
-          // calendar.refetchEvents();
+          calendar.refetchEvents();
           callback(data);
+          getDiaryPicList();
             // 수정 후 내용 초기화
             // diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
             // $("input[name='color']:radio[value='#D25565']").attr('checked',true);

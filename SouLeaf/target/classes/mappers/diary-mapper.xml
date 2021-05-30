@@ -38,10 +38,6 @@
  		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
  	</select>
  	
- 	<select id="selectAll" resultMap="diaryResultMap">
- 		SELECT * FROM DIARY
- 	</select>
- 	
  	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
  		SELECT * FROM DIARY WHERE DIARY_NO = #{diaryNo}
  	</select>
@@ -56,7 +52,7 @@
 	</select>
 	
 	<select id="selectByMemberDiary" parameterType="Diary" resultMap="diaryResultMap">
-		SELECT * FROM (SELECT * FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo} ORDER BY DIARY_STARTDATE DESC) WHERE ROWNUM = 1
+		SELECT * FROM (SELECT * FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo} AND DIARY_STATUS = 'W' ORDER BY DIARY_STARTDATE DESC) WHERE ROWNUM = 1
 	</select>
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">

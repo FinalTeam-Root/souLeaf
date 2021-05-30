@@ -22,8 +22,6 @@ public class DiaryStoreLogic implements DiaryStore{
 	public Member selectOneMember(int memberNo) {
 		return sqlSession.selectOne("diaryMapper.selectOneMember", memberNo);
 	}
-	// 다이어리 전체 (캘린더X)
-	
 	
 	// 다이어리 전체 내용 불러오기
 	@Override

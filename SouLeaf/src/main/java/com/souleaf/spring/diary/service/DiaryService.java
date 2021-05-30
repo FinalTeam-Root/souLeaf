@@ -50,7 +50,6 @@ public interface DiaryService {
 	public Diary printByMemberDiary(Diary diary);
 
 	
-	
 	// 사진첩 동영상변환 @빽범
 	
 }

@@ -13,7 +13,7 @@
 </head>
 <body>  
     <!-- 다이어리 주인의 memberNo -->
-    <input type="hidden" name="memberDiary" id="memberDiary" value="1">
+    <input type="hidden" name="memberDiary" id="memberDiary" value="${diary.memberNo }">
     <!-- 방명록을 작성하는 사람의 memberNo -->
     <input type="hidden" name="memberNo" id="memberNo" value="${loginUser.memberNo}">
 		<div class="diary-content">
@@ -52,8 +52,8 @@
 									</a>
 								</div>
 								<div class="card-body ">
-									<h6 class="card-category text-gray" name="memberId">${loginUser.memberId }</h6>
-									<h4 class="card-title" name="memberNick">${loginUser.memberNick }</h4>
+									<h6 class="card-category text-gray" name="memberId">${diary.memberId }</h6>
+									<h4 class="card-title" name="memberNick">${diary.memberNick }</h4>
 									<hr>
 									<span>소개글 </span>
 									<p class="card-description" name="memberIntro">
@@ -77,8 +77,7 @@
 					<div class="video">
 						<div class="video-Companion">
 							<select class="form-select" name="companionNo" id="selectVideo">
-									<option value="1">핑크개나리</option>
-									<option value="2">카스테라</option>
+
 							</select>
 						</div>
 						<div class="video-play">
@@ -137,8 +136,7 @@
 								<div class="col-xs-12">
 								<label class="col-xs-4" for="edit-selectPlant" >반려식물</label>
 									<select class="form-control form-control-sm" name="companionNo" id="selectCompanion">
-										<option value="1">핑크개나리</option>
-										<option value="2">카스테라</option>
+
 									</select>
 								</div>
 		                   	</div>

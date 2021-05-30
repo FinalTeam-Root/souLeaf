@@ -46,8 +46,8 @@ public interface DiaryStore {
 
 		// 멤버별 다이어리 리스트 조회 
 		public Diary selectByMemberDiary(Diary diary);
-
-
+		
+		
 		
 		// 사진첩 동영상변환 @빽범
 }
