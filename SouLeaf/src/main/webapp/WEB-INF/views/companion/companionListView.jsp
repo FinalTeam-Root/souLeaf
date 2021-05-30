@@ -209,10 +209,10 @@
 				var plantNo = $("#inlineFormCustomSelect option:selected").val();
 				var companionNick = $("#companionNick").val();
 				var lastWater = $("#lastWater").val();
-				var uploadFile = $("#uploadFile").val();
-// 				var uploadFile = $("#uploadFile")[0].files[0];
+// 				var uploadFile = $("#uploadFile").val();
+				var uploadFile = $("#uploadFile")[0].files[0];
 				var memberNo = $("#memberNo").val();
-				console.log(plantNo, companionNick, lastWater, plantfile, memberNo);
+				console.log(plantNo, companionNick, lastWater, uploadFile, memberNo);
 				
 				var formData = new FormData(); // 위에 있는 데이터를 이 녀석이 다 데리고 감
 			    formData.append("plantNo",plantNo);

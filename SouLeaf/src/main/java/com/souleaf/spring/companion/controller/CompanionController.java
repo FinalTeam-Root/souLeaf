@@ -2,10 +2,10 @@ package com.souleaf.spring.companion.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -223,7 +223,7 @@ public class CompanionController {
 	public String saveFile(MultipartFile file, HttpServletRequest request) {
 		// 파일 저장 경로 설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		String savePath = root + "/companionFiles";
+		String savePath = root + "/uploadFiles/companion";
 		// 저장 폴더 선택
 		File folder = new File(savePath);
 		// 폴더없으면 자동 생성
