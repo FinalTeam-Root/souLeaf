@@ -15,6 +15,10 @@ public class Companion {
 	private String companionLastWater; // 마지막 물 준날
 	private String companionNeedWater; // 물 줘야하는 날
 	
+	// 추가 get/set
+	private String plantName; // 식물명
+	private String plantWater; // 물 주기
+	
 	public Companion() {}
 
 	public int getCompanionNo() {
@@ -95,6 +99,22 @@ public class Companion {
 
 	public void setCompanionNeedWater(String companionNeedWater) {
 		this.companionNeedWater = companionNeedWater;
+	}
+	
+	public String getPlantWater() {
+		return plantWater;
+	}
+
+	public void setPlantWater(String plantWater) {
+		this.plantWater = plantWater;
+	}
+
+	public String getPlantName() {
+		return plantName;
+	}
+
+	public void setPlantName(String plantName) {
+		this.plantName = plantName;
 	}
 
 	@Override

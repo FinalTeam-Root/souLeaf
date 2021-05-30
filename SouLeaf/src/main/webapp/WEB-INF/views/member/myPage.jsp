@@ -287,7 +287,7 @@
 							</div>
 							<div class="row">
 								<div class="single_what_we_do leftFont"
-									onclick="location.href='companionList.kh'">
+									onclick="location.href='companionListView.kh'">
 									<div class="top_line"></div>
 									<br>
 									<h4 class="what_we_do_title">반려 식물 정보</h4>
