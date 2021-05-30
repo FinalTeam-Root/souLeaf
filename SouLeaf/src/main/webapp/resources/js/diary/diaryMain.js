@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
       fixedWeekCount : false,
       contentHeight: 750,
       dayMaxEventRows: true, // for all non-TimeGrid views
-
       // 일정 받아와서 달력에 데이터 뿌려주는 기능
       events: 
       function(info, successCallback, failureCallback){
@@ -118,6 +117,20 @@ document.addEventListener('DOMContentLoaded', function() {
         arrayOfDomNodes = [eventWrap]
         return {domNodes: arrayOfDomNodes}
       },
+      //   events: [
+      //   {
+      //     title: 'All Day Event',
+      //     description: 'description for All Day Event',
+      //     start: '2021-05-01'
+      //   }
+      // ],
+      // eventDidMount: function(info) {
+      //   tippy(info.el,{
+      //     content:  info.event.extendedProps.description,
+      //   },
+
+      //   );
+      // },
     });
     calendar.render();
 
@@ -129,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     //input을 datepicker로 선언
-    $("#edit-date,#edit-lastWater,#modify-edit-date,#modify-edit-lasttWater").datepicker({
+    $("#edit-date,#edit-lastWater,#modify-edit-date,#modify-edit-lastWater").datepicker({
       format: "yyyy-mm-dd",
       language : "kr"
     }).datepicker("setDate",new Date());
@@ -204,6 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // 일기 수정하기 코드
   $("#updateEvent").on("click",function() {
+    var diaryNo = $('#diaryUniqNo').val();
+    var memberNo = $('#memberNo').val();
     var companionNo = $("#selectCompanion option:selected").val(); 
     var diaryTitle = $("#modify-edit-title").val();
     var diaryStartDate = $("#modify-edit-date").val();
@@ -213,6 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var companionLastWater = $("#modify-edit-lastWater").val();
 
     var formData = new FormData(); // 위에 있는 데이터를 이 녀석이 다 데리고 감
+    formData.append("diaryNo",diaryNo);
+    formData.append("memberNo", memberNo);
     formData.append("companionNo",companionNo);
     formData.append("diaryTitle",diaryTitle);
     formData.append("diaryStartDate",diaryStartDate);
@@ -221,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append("diaryContent",diaryContent);
     formData.append("companionLastWater",companionLastWater);
 
-    console.log(companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
+    //console.log(diaryNo,companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
     $.ajax({
       url : "diaryUpdate.kh",
       type : "post",
@@ -231,15 +248,15 @@ document.addEventListener('DOMContentLoaded', function() {
       data : formData,
       success :function(data) {
         if(data == "success") {
+          alert("일기 수정 완료");
+          $('#eventModal-modify').modal('hide');
+          // calendar.refetchEvents();
           callback(data);
-            alert("일기 수정 완료");
-            // 일기 수정 후 모달창 닫아주기
-            // $('#eventModal-modify').modal("hide");
             // 수정 후 내용 초기화
-            diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
-            $("input[name='color']:radio[value='#D25565']").attr('checked',true);
-            diaryTitle = "";
-            diaryContent = "";
+            // diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
+            // $("input[name='color']:radio[value='#D25565']").attr('checked',true);
+            // diaryTitle = "";
+            // diaryContent = "";
           } else {
             alert("일기 수정 실패");
           }
