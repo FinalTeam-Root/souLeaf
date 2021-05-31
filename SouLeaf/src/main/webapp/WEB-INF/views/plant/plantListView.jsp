@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 식물도감</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/plant/plant-style.css">
 </head>
 <body>
 
@@ -26,7 +27,14 @@
    <section class="ftco-section bg-light">
 			<div class="container">
 			어떤 종류의 식물을 찾고 있나요?<br>
-			<button>잎이 있는 식물</button>
+			 <div class="form-group">
+      <h4>select it</h4></br>
+        <div data-toggle="buttons">
+          <label class="btn btn-default btn-circle btn-lg active"><input type="radio" name="q1" value="0"><i class="glyphicon glyphicon-home" checked></i></label>
+          <label class="btn btn-default btn-circle btn-lg">       <input type="radio" name="q1" value="1"><i class="glyphicon glyphicon-ok"></i></label>
+          <label class="btn btn-default btn-circle btn-lg">       <input type="radio" name="q1" value="2"><i class="glyphicon glyphicon-remove"></i></label>
+        </div>
+      </div>
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>
