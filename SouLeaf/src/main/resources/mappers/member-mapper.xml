@@ -39,6 +39,6 @@
  </delete>
  
   <select id="selectMember" resultMap="memberResultMap">
- 	SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_STATUS = 'Y'
+ 	SELECT * FROM MEMBER WHERE MEMBER_NO = #{memberNo} AND MEMBER_STATUS = 'Y'
  </select>
  </mapper>
