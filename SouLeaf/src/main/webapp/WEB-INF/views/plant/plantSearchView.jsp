@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 식물도감</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/plant/plant-style.css">
 </head>
 <body>
 
@@ -30,7 +31,7 @@
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>
-                  <input type="text" class="form-control" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
+                  <input type="text" class="form-control plant-search" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
               </form><br>
               

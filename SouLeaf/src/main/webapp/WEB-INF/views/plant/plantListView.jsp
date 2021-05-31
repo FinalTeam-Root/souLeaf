@@ -106,7 +106,7 @@
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>
-                  <input type="text" class="form-control" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
+                  <input type="text" class="form-control plant-search" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
               </form>
                식물데이터 <span id="plant-count">0</span> 건
