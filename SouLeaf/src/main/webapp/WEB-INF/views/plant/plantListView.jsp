@@ -26,8 +26,8 @@
     
    <section class="ftco-section bg-light">
 			<div class="container">
-			<h2>어떤 종류의 식물을 찾고 있나요?</h2><br>
-<div class="form-group">
+			<h2>어떤 종류의 식물을 찾고 있나요?</h2><br> 
+<div class="form-group contactForm">
 	<label class="label" for="name">종류</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
 		<label class="btn btn-outline-success" for="plant-kind1" onclick="getPlantSearchList(this)">
@@ -44,7 +44,7 @@
 		</label>
 	</div>
 </div>
-<div class="form-group">
+<div class="form-group contactForm">
 	<label class="label" for="name">특성</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
 		<label class="btn btn-outline-success" for="plant-property1" onclick="getPlantSearchList(this)">
@@ -67,7 +67,7 @@
 		</label>&nbsp;&nbsp;		
 	</div>
 </div>
-<div class="form-group">
+<div class="form-group contactForm">
 	<label class="label" for="name">잎</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
 		<label class="btn btn-outline-success" for="plant-leaf1" onclick="getPlantSearchList(this)">
@@ -100,14 +100,18 @@
 		<label class="btn btn-outline-success" for="plant-leaf10" onclick="getPlantSearchList(this)">
 			<input type="radio" name="plant-leaf" id="plant-leaf10" value="10" > 무늬
 		</label>&nbsp;&nbsp;
-	</div>
+	</div><br><br>
+	<div class="form-group"><button class="btn btn-danger" onclick="resetSelect()">선택 리셋</button></div>
 </div><br>
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>
                   <input type="text" class="form-control" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
-              </form><br>
+              </form>
+               식물데이터 <span id="plant-count">0</span> 건
+              <br><br>
+             
 				<div class="row" id="plant-list">
 					<!-- <div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">

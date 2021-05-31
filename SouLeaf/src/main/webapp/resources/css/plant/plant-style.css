@@ -103,13 +103,13 @@
  .btn, .fileupload-buttonbar .toggle {
 margin-bottom: 5px;
 }
-.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
-/*color: #fff;
+/* .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+color: #fff;
 background-color: #47a447;
-border-color: #398439;*/
-}
+border-color: #398439;
+} */
 .btn:hover, .btn:focus {
-color: #333;
+color: #FFF;
 text-decoration: none;
 }
 .fileinput-button {
