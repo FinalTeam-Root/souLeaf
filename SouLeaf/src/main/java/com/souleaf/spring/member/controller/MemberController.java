@@ -71,8 +71,14 @@ public class MemberController {
 		return "member/myPage";
 	}
 
+	// 회원수정 폼
+	@RequestMapping(value = "memerModifyView.kh", method = { RequestMethod.GET, RequestMethod.POST })
+	public String memberModifyView() {
+		return "member/memberModifyView";
+	}
+	
 	// 정보수정
-	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
+	@RequestMapping(value = "memberModify.kh", method = RequestMethod.GET)
 	public String modifyMember(@ModelAttribute Member member, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int result = mService.modifyMember(member);

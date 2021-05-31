@@ -15,6 +15,7 @@
  <result property="memberJoin" column="MEMBER_JOIN"/>
  <result property="memberOut" column="MEMBER_OUT"/>
  <result property="memberStatus" column="MEMBER_STATUS"/>
+ <result property="memberIntro" column="MEMBER_INTRO"/>
  </resultMap>
  <select id="loginMember" parameterType="Member" resultMap="memberResultMap">
  SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw} AND MEMBER_STATUS = 'Y'
@@ -30,7 +31,7 @@
  
  <update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
-		SET MEMBER_PW = #{memberPw}, MEMBER_MAIL = #{memberMail}, MEMBER_PHONE = #{memberPhone}, UPDATE_DATE = SYSDATE
+		SET MEMBER_PW = #{memberPw}, MEMBER_NICK = #{memberNick}, MEMBER_MAIL = #{memberMail}, MEMBER_INTRO = #{memberIntro}, MEMBER_PHOTO = #{memberPhoto}, UPDATE_DATE = SYSDATE
 		WHERE MEMBER_ID = #{memberId}
  </update>
  

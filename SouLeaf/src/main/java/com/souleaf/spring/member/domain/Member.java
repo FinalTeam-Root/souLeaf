@@ -13,6 +13,7 @@ public class Member {
 	private String memberPhoto;
 	private Date memberJoin;
 	private Date memberOut;
+	private String memberIntro;
 	private String memberStatus;
 
 	public Member() {}
@@ -31,7 +32,7 @@ public class Member {
 
 	public Member(int memberNo, String memberId, String memberPw, String memberNick, String memberName,
 			String memberPhone, String memberMail, String memberPhoto, Date memberJoin, Date memberOut,
-			String memberStatus) {
+			String memberIntro, String memberStatus) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -43,6 +44,7 @@ public class Member {
 		this.memberPhoto = memberPhoto;
 		this.memberJoin = memberJoin;
 		this.memberOut = memberOut;
+		this.memberIntro = memberIntro;
 		this.memberStatus = memberStatus;
 	}
 
@@ -189,6 +191,20 @@ public class Member {
 
 
 
+	public String getMemberIntro() {
+		return memberIntro;
+	}
+
+
+
+
+	public void setMemberIntro(String memberIntro) {
+		this.memberIntro = memberIntro;
+	}
+
+
+
+
 	public String getMemberStatus() {
 		return memberStatus;
 	}
@@ -208,21 +224,12 @@ public class Member {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick="
 				+ memberNick + ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberMail="
 				+ memberMail + ", memberPhoto=" + memberPhoto + ", memberJoin=" + memberJoin + ", memberOut="
-				+ memberOut + ", memberStatus=" + memberStatus + "]";
+				+ memberOut + ", memberIntro=" + memberIntro + ", memberStatus=" + memberStatus + "]";
 	}
 
-	
 
 
-
-
-
-
-
-
-	
-	
-	
+ 
 
 
 	

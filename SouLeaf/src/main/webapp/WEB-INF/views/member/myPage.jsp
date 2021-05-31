@@ -274,7 +274,7 @@
 						<div class="container">
 							<div class="row">
 								<div class="single_what_we_do leftFont"
-									onclick="location.href='memberModify.kh'">
+									onclick="location.href='memerModifyView.kh'">
 									<div class="top_line"></div>
 									<br>
 									<h4 class="what_we_do_title">기본 정보</h4>
