@@ -245,4 +245,7 @@ user agent stylesheetinput, textarea, keygen, select, button, meter, progress {
     background: #f8f9fd !important;
 }
 
-
+.reset-btn{
+	background: #00bd56;
+    border-radius: 25px;
+}

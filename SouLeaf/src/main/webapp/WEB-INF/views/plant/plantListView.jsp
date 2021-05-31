@@ -27,9 +27,10 @@
    <section class="ftco-section bg-light">
 			<div class="container">
 			<h2>어떤 종류의 식물을 찾고 있나요?</h2><br> 
-<div class="form-group contactForm">
+<div class="form-group contactForm" id="kind-form">
 	<label class="label" for="name">종류</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
+	<button class="btn btn-success reset-btn" onclick="resetSelect()" style="border-radius: 25px"><img src="/resources/images/plant/reset-btn.png" width="20"></button>&nbsp;&nbsp;
 		<label class="btn btn-outline-success" for="plant-kind1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
 		</label>&nbsp;&nbsp;
@@ -44,7 +45,7 @@
 		</label>
 	</div>
 </div>
-<div class="form-group contactForm">
+<div class="form-group contactForm" id="property-form">
 	<label class="label" for="name">특성</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
 		<label class="btn btn-outline-success" for="plant-property1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
@@ -67,7 +68,7 @@
 		</label>&nbsp;&nbsp;		
 	</div>
 </div>
-<div class="form-group contactForm">
+<div class="form-group contactForm" id="leaf-form">
 	<label class="label" for="name">잎</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
 		<label class="btn btn-outline-success" for="plant-leaf1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
@@ -100,8 +101,9 @@
 		<label class="btn btn-outline-success" for="plant-leaf10" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf10" value="10" > 무늬
 		</label>&nbsp;&nbsp;
-	</div><br><br>
-	<div class="form-group"><button class="btn btn-danger" onclick="resetSelect()">선택 리셋</button></div>
+	</div><br><br>	
+	<div class="form-group" ></div>
+	
 </div><br>
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">

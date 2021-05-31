@@ -2,6 +2,8 @@ $plantKind='1,2,3,4',$plantProperty='1,2,3,4,5,6',$plantLeaf='1,2,3,4,5,6,7,8,9,
 
 $(function(){
   getPlantList();
+  $("#property-form").hide();
+  $("#leaf-form").hide();  
 });
 
 function getPlantList(){
@@ -50,9 +52,9 @@ function getPlantSearchList(obj){
   console.log($(obj).children().attr('name'));
   var label = $(obj).children().attr('name');
   switch(label){
-    case 'plant-kind': $plantKind=$(obj).children().val();
+    case 'plant-kind': $plantKind=$(obj).children().val(); $("#property-form").show();
     break;
-    case 'plant-property': $plantProperty=$(obj).children().val();
+    case 'plant-property': $plantProperty=$(obj).children().val(); $("#leaf-form").show();
     break;
     case 'plant-leaf' : $plantLeaf=$(obj).children().val();
     break;
@@ -103,4 +105,7 @@ function resetSelect(){
   $('.form-group').children('div').children().removeClass('active');
   $plantKind='1,2,3,4',$plantProperty='1,2,3,4,5,6',$plantLeaf='1,2,3,4,5,6,7,8,9,10';
   getPlantSearchList();
+  $("#property-form").hide();
+  $("#leaf-form").hide();
+
 }
