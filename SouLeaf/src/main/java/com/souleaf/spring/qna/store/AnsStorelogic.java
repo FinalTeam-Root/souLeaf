@@ -16,10 +16,9 @@ public class AnsStorelogic implements AnsStore {
 	private SqlSession sqlSession;
 
 	@Override
-	public ArrayList<Ans> selectAllList(PageInfo pi) {
-		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("ansMapper.selectAnsList", null, rowBounds);
+	public ArrayList<Ans> selectAllList() {
+		
+		return (ArrayList)sqlSession.selectList("ansMapper.selectAnsList");
 	}
 
 	@Override

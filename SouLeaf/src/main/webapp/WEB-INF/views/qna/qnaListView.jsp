@@ -39,6 +39,11 @@
 						    </div>
 						    <div class="collapse" id="collapse${status.index }" role="tabpanel" aria-labelledby="heading${status.index }">
 						      <div class="card-body py-3 px-4">${qna.qnaContent }
+						      <c:forEach items="${aList }" var="ans" varStatus="status">
+						       <c:if test="${qna.qnaNo eq ans.qnaNo}">
+						       	답변 : ${ans.ansContent }
+						       </c:if>
+						      </c:forEach>
 						      	<div id="btn_group">
 						  		<c:if test="${loginUser.memberId eq 'admin' }">
 						  				<button id="ansbtn" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>

@@ -20,12 +20,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.qna.domain.Ans;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
+import com.souleaf.spring.qna.service.AnsService;
 import com.souleaf.spring.qna.service.QnaService;
 
 @Controller
 public class QnaController {
+	@Autowired
+	private AnsService aService;
 	@Autowired
 	private QnaService qService;
 	private Logger log = LoggerFactory.getLogger(QnaController.class);
@@ -38,8 +42,10 @@ public class QnaController {
 			int listCount = qService.getListCount();
 			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 			ArrayList<Qna> qList = qService.printQnaAll(pi);
+			ArrayList<Ans> aList = aService.printAnsAll();
 			System.out.println(qList);
 			mv.addObject("qList", qList);
+			mv.addObject("aList", aList);
 			mv.addObject("pi", pi);
 			mv.setViewName("qna/qnaListView");
 			log.info("QnA 전체 조회 성공");
