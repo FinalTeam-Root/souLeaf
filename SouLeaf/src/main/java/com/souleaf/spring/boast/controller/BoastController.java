@@ -41,15 +41,10 @@ public class BoastController {
 	private BoastService bService;
 
 	// 자랑하기 리스트 페이지 이동 및 출력
-
-	@RequestMapping(value = "boastListView.kh")
-	public String boastListView() {
-		return "Boast/boastListView";
-	}
-
 	@RequestMapping(value = "boastListView.kh", method = RequestMethod.GET)
-	public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page) {
-
+	public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.setAttribute("nav", "boast");
 		int currentPage = (page != null) ? page : 1;
 		int listCount = bService.getListCount();
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
@@ -75,7 +70,6 @@ public class BoastController {
 
 		// 게시글 상세 조회
 		Boast boast = bService.printOne(boastNo);
-		System.out.println(boast.toString());
 		if (boast != null) {
 			// 메소드 체이닝 방식
 			mv.addObject("boast", boast).setViewName("Boast/boastDetailView"); // 대소문자
