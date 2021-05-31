@@ -15,7 +15,7 @@
 </head>
 <body>
 	<!-- 다이어리 주인의 memberNo -->
-	<input type="hidden" name="memberDiary" id="memberDiary" value="1">
+	<input type="hidden" name="memberDiary" id="memberDiary" value="${loginUser.memberNo} ">
 	<!-- 방명록을 작성하는 사람의 memberNo -->
 	<input type="hidden" name="memberNo" id="memberNo" value="${loginUser.memberNo}">
 	<div class="diary-content">

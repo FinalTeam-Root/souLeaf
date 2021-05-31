@@ -38,6 +38,7 @@ import com.souleaf.spring.diary.domain.Diary;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.diary.service.DiaryService;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
 
@@ -53,17 +54,25 @@ public class DiaryController {
 	@Autowired
 	private PlantService pService;
 	
+	@Autowired
+	private MemberService mService;
+	
 	// 상단의 성장일기 클릭시 화면 이동
 	@RequestMapping(value="diaryMainView.kh")
-	public String diaryView() {
+	public String diaryView(HttpSession session) {
+		session.setAttribute("nav", "");
 		return "diary/diaryMain";
 	}
 	
 	// 다른 사람 성장일기 들어가기
 	// requsetParam : 다른사람 일기를 들어갈때 그 일기의 주인의 memberNo
 	@RequestMapping(value="diaryMainOtherView.kh")
-	public ModelAndView diaryviewOther(ModelAndView mv, @RequestParam("memberNo") int memberNo) {
-		mv.addObject("memberDiary", memberNo).setViewName("diary/diaryMainOther");
+	public ModelAndView diaryviewOther(ModelAndView mv, @RequestParam("memberDiary") int memberNo, HttpSession session) {
+		Member member = mService.printMember(memberNo);
+		session.setAttribute("nav", "");
+		mv.addObject("member", member);
+		mv.addObject("memberDiary", memberNo);
+		mv.setViewName("diary/diaryMainOther");
 		return mv;
 	}
 	

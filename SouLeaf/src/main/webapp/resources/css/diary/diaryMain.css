@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("tippy.js/themes/light.css");
 .diary-content {
   margin: 50px auto;
 }
@@ -416,4 +415,10 @@ img.zoom {
 }
 .carousel-control-prev {
   left: -125px;
+}
+
+/* 일정 클릭 시 호버창 */
+.tippy-box[data-theme~='light'] {
+  background-color: white;
+  color: black;
 }

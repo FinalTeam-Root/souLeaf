@@ -13,7 +13,7 @@
 </head>
 <body>  
     <!-- 다이어리 주인의 memberNo -->
-    <input type="hidden" name="memberDiary" id="memberDiary" value="${diary.memberNo }">
+    <input type="hidden" name="memberDiary" id="memberDiary" value="${memberDiary}">
     <!-- 방명록을 작성하는 사람의 memberNo -->
     <input type="hidden" name="memberNo" id="memberNo" value="${loginUser.memberNo}">
 		<div class="diary-content">
@@ -52,8 +52,8 @@
 									</a>
 								</div>
 								<div class="card-body ">
-									<h6 class="card-category text-gray" name="memberId">${diary.memberId }</h6>
-									<h4 class="card-title" name="memberNick">${diary.memberNick }</h4>
+									<h6 class="card-category text-gray" name="memberId">${member.memberId }</h6>
+									<h4 class="card-title" name="memberNick">${member.memberNick }</h4>
 									<hr>
 									<span>소개글 </span>
 									<p class="card-description" name="memberIntro">
@@ -238,7 +238,9 @@
 	
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include> 
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script src="resources/js/diary/diaryMain.js"></script>   
+   	<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="resources/js/diary/diaryMainOther.js"></script>   
     <script src='resources/js/diary/calendar.js'></script>
     <script src='resources/js/diary/ko.js'></script>
     <script src='resources/js/diary/locales-all.js'></script>

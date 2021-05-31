@@ -5,72 +5,36 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
       eventClick: function(info) {
-        $('#eventModal-modify').modal();
+        // $('#eventModal-modify').modal();
 
-        // diaryNo 받아와서 담아주기
-        $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
-        // LastWaterday 받아와서 담아주기
-        var companionLastwater = info.event.extendedProps.companionLastwater;
-        // 반려식물 애칭 받아와서 담아주기
-        var companionNick = info.event.extendedProps.companionNick;
-        // diaryPicname 받아와서 담아주기
-        var diaryPicname = info.event.extendedProps.diaryPicname;
-        $('#diaryRepicInfo').val(info.event.extendedProps.diaryRepicname);
-        // var diaryRepicname = info.event.extendedProps.diaryRepicname;
-        // companionNo 받아와서 담아주기
-        $('#companionNoInfo').val(info.event.extendedProps.companionNo);
-        var companionNo= info.event.extendedProps.companionNo;
+        // // diaryNo 받아와서 담아주기
+        // $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
+        // // LastWaterday 받아와서 담아주기
+        // var companionLastwater = info.event.extendedProps.companionLastwater;
+        // // 반려식물 애칭 받아와서 담아주기
+        // var companionNick = info.event.extendedProps.companionNick;
+        // // diaryPicname 받아와서 담아주기
+        // var diaryPicname = info.event.extendedProps.diaryPicname;
+        // $('#diaryRepicInfo').val(info.event.extendedProps.diaryRepicname);
+        // // var diaryRepicname = info.event.extendedProps.diaryRepicname;
+        // // companionNo 받아와서 담아주기
+        // $('#companionNoInfo').val(info.event.extendedProps.companionNo);
+        // var companionNo= info.event.extendedProps.companionNo;
   
-        $('#selectCompanion').html("");
-        $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
-        $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
-        var todayDate = getFormatDate(info.event.start);
-        $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
-        $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
-        $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
-        $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
-        //$('#eventModal-modify .modal-body #modify-customFile').val(diaryPicname);
+        // $('#selectCompanion').html("");
+        // $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
+        // $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
+        // var todayDate = getFormatDate(info.event.start);
+        // $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
+        // $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
+        // $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
+        // $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
+        // //$('#eventModal-modify .modal-body #modify-customFile').val(diaryPicname);
       },  
-      // toolbar에 일기쓰기 버튼
-      customButtons: {
-        myCustomButton: {
-          text: '일기쓰기',
-          click: function(e) {
-            $.ajax({
-              url : "myCompanionList.kh",
-              type : "get",
-              dataType : "json",
-              success : function(data) {
-                var $select = $('#selectCom');
-                $select.html("");
-                console.log(data);
-                var $option;
-                if(data.length > 0) {
-                  for(var i in data){
-                    if(i == 0) {
-                      $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
-                      $select.append($option);
-                    }
-                      $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
-                      $select.append($option);
-                  }
-                  e.preventDefault();
-                  $('#eventModal-insert').modal({});
-                } else if(data.length == 0) {
-                  var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
-                  if(noList == true){
-                    location.href="companionListView.kh";
-                  }
-                }
-              }
-            });
-          }
-        }
-      },
       headerToolbar: {
         left: 'today',
         center: 'prev,title,next',
-        right: 'myCustomButton'
+        right : null
       },
       //defaultDate : Date, // 달력 초기화면에서 날짜 값 (오늘날짜 불러오기)
       navLinks: false, // can click day/week names to navigate views
@@ -84,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // 일정 받아와서 달력에 데이터 뿌려주는 기능
       events: 
       function(info, successCallback, failureCallback){
-        var memberNo = $("#memberNo").val();
+        var memberNo = $("#memberDiary").val();
         $.ajax({
           url : "diaryList.kh",
           type : "get",
@@ -119,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       eventDidMount: function(info) {
         tippy(info.el,{
-          content: '<div style="background :'+info.event.backgroundColor+';"><span>제목:'+info.event.title+'</span></div><br><span>내용: '+info.event.constraint+'</span><br><img style="object-fit :cover;" src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'">',
+          content: '<div style="background :'+info.event.color +';">제목:'+info.event.title+'</span></div><br><span>'+info.event.constraint+'</span><br><img style="object-fit :cover; width:100px; height:100px" src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'">',
           theme: 'light',
           allowHTML :true,
           delay: [500,200],
@@ -183,88 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
       });
 	  });
-
-  // 일기 삭제 버튼 클릭
-  $("#deleteEvent").on("click",function() {
-    var diaryNo = $('#diaryUniqNo').val();
-    var diaryRepicname = $('#diaryRepicInfo').val();
-    var memberNo = $('#memberNo').val();
-    var companionNo = $('#companionNoInfo').val();
-    var startDate = $('#modify-edit-date').val();
-    $.ajax({
-      url : "diaryDelete.kh",
-      type : "get",
-      data : {"diaryNo": diaryNo, "diaryRepicname":diaryRepicname, "memberNo" :memberNo, "companionNo":companionNo,"diaryStartDate":startDate},
-      dataType : "json",
-      success : function(data) {
-        if(data.resultYN == "success") {
-          alert("일기가 삭제되었습니다.");
-          $('#eventModal-modify').modal('hide');
-          calendar.refetchEvents();
-          getDiaryPicList();
-        } else {
-          alert("일기 삭제 실패!!");
-        }
-      },
-      error : function() {
-
-      }
-    })
-  });
-  // 일기 수정하기 코드
-  $("#updateEvent").on("click",function() {
-    var diaryNo = $('#diaryUniqNo').val();
-    var memberNo = $('#memberNo').val();
-    var companionNo = $("#selectCompanion option:selected").val(); 
-    var diaryTitle = $("#modify-edit-title").val();
-    var diaryStartDate = $("#modify-edit-date").val();
-    var diaryColor = $("input[name='color']:checked").val();
-    var diaryPicname = $("#modify-customFile");
-    var diaryContent = $("#edit-desc2").val();
-    var companionLastWater = $("#modify-edit-lastWater").val();
-
-    var formData = new FormData(); // 위에 있는 데이터를 이 녀석이 다 데리고 감
-    formData.append("diaryNo",diaryNo);
-    formData.append("memberNo", memberNo);
-    formData.append("companionNo",companionNo);
-    formData.append("diaryTitle",diaryTitle);
-    formData.append("diaryStartDate",diaryStartDate);
-    formData.append("diaryColor",diaryColor);
-    formData.append("uploadFile",diaryPicname[0].files[0]);
-    formData.append("diaryContent",diaryContent);
-    formData.append("companionLastWater",companionLastWater);
-
-    console.log(diaryNo,companionNo,diaryTitle,diaryStartDate,diaryColor,diaryPicname,diaryContent,companionLastWater);
-    $.ajax({
-      url : "diaryUpdate.kh",
-      type : "post",
-      processData: false,    
-      contentType: false,
-      enctype:'multipart/form-data',
-      data : formData,
-      success :function(data) {
-        if(data == "success") {
-          alert("일기 수정 완료");
-          $('#eventModal-modify').modal('hide');
-          calendar.refetchEvents();
-          callback(data);
-          getDiaryPicList();
-            // 수정 후 내용 초기화
-            // diaryStartDate = data; // 날짜는 오늘날짜로 돌아오게 해주자!
-            // $("input[name='color']:radio[value='#D25565']").attr('checked',true);
-            // diaryTitle = "";
-            // diaryContent = "";
-          } else {
-            alert("일기 수정 실패");
-          }
-        },
-        error : function() {
-
-        }
-    });
-  });
   
-
   getDiaryPicList();
   
   // document 끝
@@ -300,7 +183,7 @@ function diaryModify(obj) {
 // 방명록 리스트를 불러오는 함수
 function getGuestbookList() {
   var memberDiary = $('#memberDiary').val();
-  var memberNo = $("#member-no").val();
+  var memberNo = $("#memberNo").val();
   console.log(memberNo);
   $.ajax({
     url:"guestbookList.kh",
@@ -384,7 +267,7 @@ function removeGuestbook(guestbookNo) {
   
 // 사진첩 리스트 띄우기
 function getDiaryPicList(){
-  var memberNo = $("#memberNo").val();
+  var memberNo = $("#memberDiary").val();
   $.ajax({
     url : "diaryPicList.kh",
     type : "get",
