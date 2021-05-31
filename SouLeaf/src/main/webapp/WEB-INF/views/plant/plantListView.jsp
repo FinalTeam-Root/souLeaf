@@ -30,16 +30,16 @@
 <div class="form-group contactForm">
 	<label class="label" for="name">종류</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
-		<label class="btn btn-outline-success" for="plant-kind1" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-kind1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind2" onclick="getPlantSearchList(this)" >
+		<label class="btn btn-outline-success" for="plant-kind2" onclick="getPlantSearchList(this)" style="border-radius: 25px" >
 			<input type="radio" name="plant-kind" id="plant-kind2" value="2" > 공중식물
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind3" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-kind3" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-kind" id="plant-kind3" value="3" > 다육식물
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind4" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-kind4" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-kind" id="plant-kind4" value="4" > 덩굴식물
 		</label>
 	</div>
@@ -47,22 +47,22 @@
 <div class="form-group contactForm">
 	<label class="label" for="name">특성</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
-		<label class="btn btn-outline-success" for="plant-property1" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property1"  value="1" > 공기정화
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-property2" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property2" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property2" value="2"> 향기나는
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-property3" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property3" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property3"  value="3" > 반려동물 안전한
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-property4" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property4" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property4"  value="4" > 빛이 적어도 되는
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-property5" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property5" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property5"  value="5" > 열매 맺는
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-property6" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-property6" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-property" id="plant-property6"  value="6" > 꽃이 피는
 		</label>&nbsp;&nbsp;		
 	</div>
@@ -70,34 +70,34 @@
 <div class="form-group contactForm">
 	<label class="label" for="name">잎</label><br>
 	<div class="btn-group btn-group-toggle" data-toggle="buttons" >
-		<label class="btn btn-outline-success" for="plant-leaf1" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf1" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf1" value="1" > 넓은
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf2" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf2" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf2" value="2"> 둥근
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf3" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf3" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf3" value="3" > 뾰족한
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf4" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf4" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf4" value="4" > 길쭉한
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf5" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf5" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf5" value="5" > 갈라진
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf6" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf6" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf6" value="6" > 하트모양
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf7" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf7" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf7" value="7" > 별모양
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf8" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf8" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf8" value="8" > 작은
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf9" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf9" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf9" value="9" > 두꺼운
 		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-leaf10" onclick="getPlantSearchList(this)">
+		<label class="btn btn-outline-success" for="plant-leaf10" onclick="getPlantSearchList(this)" style="border-radius: 25px">
 			<input type="radio" name="plant-leaf" id="plant-leaf10" value="10" > 무늬
 		</label>&nbsp;&nbsp;
 	</div><br><br>
