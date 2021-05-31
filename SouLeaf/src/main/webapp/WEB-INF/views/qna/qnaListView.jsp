@@ -44,7 +44,7 @@
 						  				<button id="ansbtn" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
 								</c:if>
 								<c:if test="${loginUser.memberId eq 'admin' }">
-										<button class="" id="ansbtn" onclick="location.href='qnaWriteView.kh'">답변하기</button>
+										<button class="" id="ansbtn" onclick="location.href='ansWriteView.kh?qnaNo=${qna.qnaNo}'">답변하기</button>
 								</c:if>
 								<c:if test="${loginUser.memberId ne 'admin' }">
 								      	<button id="listbtn1" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>

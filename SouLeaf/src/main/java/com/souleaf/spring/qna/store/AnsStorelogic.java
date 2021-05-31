@@ -4,12 +4,15 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.qna.domain.Ans;
 import com.souleaf.spring.qna.domain.AnsSearch;
-
+@Repository
 public class AnsStorelogic implements AnsStore {
+	@Autowired
 	private SqlSession sqlSession;
 
 	@Override

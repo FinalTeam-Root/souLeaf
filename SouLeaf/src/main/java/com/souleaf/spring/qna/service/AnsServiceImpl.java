@@ -2,6 +2,7 @@ package com.souleaf.spring.qna.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.common.PageInfo;
@@ -12,6 +13,7 @@ import com.souleaf.spring.qna.store.AnsStore;
 
 @Service
 public class AnsServiceImpl implements AnsService{
+	@Autowired
 	private AnsStore aStore;
 
 	

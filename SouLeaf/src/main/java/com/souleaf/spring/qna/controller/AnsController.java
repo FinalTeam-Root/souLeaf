@@ -2,6 +2,9 @@ package com.souleaf.spring.qna.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
+import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.qna.domain.Ans;
 import com.souleaf.spring.qna.domain.AnsSearch;
 import com.souleaf.spring.qna.domain.Qna;
@@ -89,8 +93,26 @@ public class AnsController {
 		
 	
 	@RequestMapping(value="ansWriteView.kh", method=RequestMethod.GET)
-	public String ansWriteView() {
-		return "ans/ansWriteForm";
+	public String ansWriteView(@RequestParam("qnaNo") int qnaNo, Model model) {
+		model.addAttribute("qnaNo", qnaNo);
+		return "ans/ansWriteView";
+	}
+	@RequestMapping(value = "ansRegister.kh", method = RequestMethod.POST)
+	public ModelAndView ansRegister(ModelAndView mv, @ModelAttribute Ans ans, HttpSession session, HttpServletRequest request) {
+		Member member = (Member)session.getAttribute("loginUser");
+		int memberNo = member.getMemberNo();
+		ans.setMemberNo(memberNo);
+		int result = 0;
+		String path = "";
+		result = aService.registerAns(ans);
+		if(result > 0 ) {
+			path = "redirect:qnaListView.kh";
+		}else {
+			mv.addObject("msg", "게시글 등록 실패");
+			path = "ansRegister.kh";
+		}
+		mv.setViewName(path);
+		return mv;
 	}
 	
 //	// AnS 수정화면

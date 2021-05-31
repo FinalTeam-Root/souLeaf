@@ -11,6 +11,8 @@
 		<typeAlias type="com.souleaf.spring.diary.domain.CalendarView" alias="CalendarView"/>
 		<typeAlias type="com.souleaf.spring.diary.domain.Guestbook" alias="Guestbook"/>
 		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
+		<typeAlias type="com.souleaf.spring.qna.domain.Ans" alias="Ans"/>
+		<typeAlias type="com.souleaf.spring.qna.domain.Qna" alias="Qna"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.Plant" alias="Plant"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantInfo" alias="PlantInfo"/>
 		<typeAlias type="com.souleaf.spring.plant.domain.PlantFile" alias="PlantFile"/>
@@ -27,6 +29,7 @@
 		<mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/diary-mapper.xml"/>	
 		<mapper resource="mappers/qna-mapper.xml"/>
+		<mapper resource="mappers/ans-mapper.xml"/>
 		<mapper resource="mappers/plant-mapper.xml"/>
 		<mapper resource="mappers/curiosity-mapper.xml"/>
 		<mapper resource="mappers/companion-mapper.xml"/>
