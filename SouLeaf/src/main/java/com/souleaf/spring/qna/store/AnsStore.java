@@ -10,7 +10,7 @@ import com.souleaf.spring.qna.domain.QnaSearch;
 
 public interface AnsStore {
 	
-	public ArrayList<Ans> selectAllList(PageInfo pi); // 전체 리스트 출력
+	public ArrayList<Ans> selectAllList(); // 전체 리스트 출력
 	public Ans selectOne(int aId);
 	public int insertAns(Ans ans);
 	public int updateAns(Ans ans);

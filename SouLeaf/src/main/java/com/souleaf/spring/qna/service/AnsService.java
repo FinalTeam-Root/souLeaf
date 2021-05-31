@@ -10,7 +10,7 @@ import com.souleaf.spring.qna.domain.QnaSearch;
 
 public interface AnsService {
 
-	public ArrayList<Ans> printAnsAll(PageInfo pi);
+	public ArrayList<Ans> printAnsAll();
 	public Ans printAnsOne(int aId);
 	public int registerAns(Ans ans);
 	public int modifyAns(Ans ans);

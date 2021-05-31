@@ -55,9 +55,15 @@ public class AnsServiceImpl implements AnsService{
 		return searchList;
 	}
 
+//	@Override
+//	public ArrayList<Ans> printAnsAll(PageInfo pi) {
+//		return aStore.selectAllList(pi);
+//	}
+
 	@Override
-	public ArrayList<Ans> printAnsAll(PageInfo pi) {
-		return aStore.selectAllList(pi);
+	public ArrayList<Ans> printAnsAll() {
+		// TODO Auto-generated method stub
+		return aStore.selectAllList();
 	}
 
 }
