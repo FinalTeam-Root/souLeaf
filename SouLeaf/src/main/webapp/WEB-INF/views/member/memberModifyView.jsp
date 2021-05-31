@@ -28,13 +28,13 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="memberId">아이디</label>
-														<input type="text" class="form-control" name="memberId" id="=memberId" placeholder="MemberId" value="${mOne.memberId }">
+														<input type="text" class="form-control" name="memberId" id="=memberId" placeholder="MemberId" value="${mOne.memberId }" readonly>
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
 														<label class="label" for="memberName">이름</label>
-														<input type="text" class="form-control" name="memberName" id="memberName" placeholder="memberName" value="${mOne.memberNick }">
+														<input type="text" class="form-control" name="memberName" id="memberName" placeholder="memberName" value="${mOne.memberName }" readonly>
 													</div>
 												</div>	
 												<div class="col-md-6">

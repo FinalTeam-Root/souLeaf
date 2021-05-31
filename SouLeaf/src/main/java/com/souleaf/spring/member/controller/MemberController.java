@@ -75,30 +75,38 @@ public class MemberController {
 	@RequestMapping(value = "memerModifyView.kh", method = { RequestMethod.GET, RequestMethod.POST })
 	public String memberModifyView(HttpSession session, HttpServletRequest request, Model model) {
 		session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
+		Member loginUser = (Member) session.getAttribute("loginUser");
 		int memberNo = loginUser.getMemberNo();
 		Member mOne = mService.printMember(memberNo);
-		if(mOne != null) {
-			
+		if (mOne != null) {
+
 			model.addAttribute("mOne", mOne);
-		}else {
+		} else {
 			model.addAttribute("mOne", null);
 		}
 		return "member/memberModifyView";
 	}
-	
+
 	// 정보수정
 	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
 	public String modifyMember(@ModelAttribute Member member, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		System.out.println("controller");
 		int memberNo = loginUser.getMemberNo();
 		member.setMemberNo(memberNo);
+
+		// 암호 확인
+		System.out.println("첫번째:" + member.getMemberPw());
+		// 비밀번호 암호화 (sha256
+		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
+		member.setMemberPw(encryPassword);
+		System.out.println("두번째:" + member.getMemberPw());
 		int result = mService.modifyMember(member);
-		
-		if (result < 0) {
+
+		if (result > 0) {
 			session.setAttribute("loginMember", member);
-		
+
 			return "redirect:home.kh";
 		} else {
 			model.addAttribute("msg", "정보 수정 실패");
