@@ -52,4 +52,9 @@ public class MemberServiceImpl implements MemberService {
 		return 0;
 	}
 
+	@Override
+	public Member printMember(Member member) {
+		return mStore.selectMember(member);
+	}
+
 }

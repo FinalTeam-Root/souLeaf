@@ -21,12 +21,6 @@ public class MemberStoreLogic implements MemberStore {
 	}
 
 	@Override
-	public Member selectOneMember(Member member) {
-		Member loginMember = sqlSession.selectOne("memberMapper.selectOneMember", member);
-		return loginMember;
-	}
-
-	@Override
 	public int checkIdDup(String memberId) {
 		return sqlSession.selectOne("memberMapper.checkIdDup", memberId);
 	}
@@ -54,5 +48,8 @@ public class MemberStoreLogic implements MemberStore {
 		return sqlSession.selectOne("memberMapper.loginMember" , member);
 	}
 
-
+	@Override
+	public Member selectMember(Member member) {
+		return sqlSession.selectOne("memberMapper.selectMember", member);
+	}
 }

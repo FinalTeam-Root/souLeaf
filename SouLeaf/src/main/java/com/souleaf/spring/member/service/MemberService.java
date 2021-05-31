@@ -12,6 +12,7 @@ public interface MemberService {
 	public int registerMember(Member member);
 	public int modifyMember(Member member);
 	public int deleteMember(String memberId);
+	public Member printMember(Member member);
 	
 }
 
