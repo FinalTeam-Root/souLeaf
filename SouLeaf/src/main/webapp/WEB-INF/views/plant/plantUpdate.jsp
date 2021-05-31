@@ -80,8 +80,10 @@
 													<div class="form-group">
 														<label class="label" for="name">종류</label>
 														<select class="form-control" name="plantKind" id="plantKind">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1" <c:if test="${plant.plantKind =='1' }">selected</c:if>>잎이 있는 식물</option>
+															<option value="2" <c:if test="${plant.plantKind =='2' }">selected</c:if>>공중식물</option>
+															<option value="3" <c:if test="${plant.plantKind =='3' }">selected</c:if>>다육식물</option>
+															<option value="4" <c:if test="${plant.plantKind =='4' }">selected</c:if>>덩굴식물</option>
 														</select>
 													</div>
 												</div>
@@ -89,8 +91,12 @@
 													<div class="form-group">
 														<label class="label" for="name">특성</label>
 														<select class="form-control" name="plantProperty" id="plantProperty">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1" <c:if test="${plant.plantProperty =='1' }">selected</c:if>>공기정화</option>
+															<option value="2" <c:if test="${plant.plantProperty =='2' }">selected</c:if>>향기나는</option>
+															<option value="3" <c:if test="${plant.plantProperty =='3' }">selected</c:if>>반려동물 안전한</option>
+															<option value="4" <c:if test="${plant.plantProperty =='4' }">selected</c:if>>빛이 적어도 되는</option>
+															<option value="5" <c:if test="${plant.plantProperty =='5' }">selected</c:if>>열매 맺는</option>
+															<option value="6" <c:if test="${plant.plantProperty =='6' }">selected</c:if>>꽃이 피는</option>
 														</select>
 													</div>
 												</div>
@@ -98,8 +104,16 @@
 													<div class="form-group">
 														<label class="label" for="name">잎모양</label>
 														<select class="form-control" name="plantLeaf" id="plantLeaf">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1" <c:if test="${plant.plantLeaf =='1' }">selected</c:if>>넑은</option>
+															<option value="2" <c:if test="${plant.plantLeaf =='2' }">selected</c:if>>둥근</option>
+															<option value="3" <c:if test="${plant.plantLeaf =='3' }">selected</c:if>>뾰족한</option>
+															<option value="4" <c:if test="${plant.plantLeaf =='4' }">selected</c:if>>길쭉한</option>
+															<option value="5" <c:if test="${plant.plantLeaf =='5' }">selected</c:if>>갈라진</option>
+															<option value="6" <c:if test="${plant.plantLeaf =='6' }">selected</c:if>>하트모양</option>
+															<option value="7" <c:if test="${plant.plantLeaf =='7' }">selected</c:if>>별모양</option>
+															<option value="8" <c:if test="${plant.plantLeaf =='8' }">selected</c:if>>작은</option>
+															<option value="9" <c:if test="${plant.plantLeaf =='9' }">selected</c:if>>두꺼운</option>
+															<option value="10" <c:if test="${plant.plantLeaf =='10' }">selected</c:if>>무늬</option>
 														</select>
 													</div>
 												</div>

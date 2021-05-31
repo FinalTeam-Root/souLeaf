@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,6 +122,11 @@ public class PlantServiceImpl implements PlantService{
 	@Override
 	public int removeFile(PlantFile plantFile) {
 		return pStore.deletePlantFile(plantFile);
+	}
+
+	@Override
+	public ArrayList<Plant> printSelectList(HashMap<String, String> plantSelect) {
+		return pStore.selectChoiceList(plantSelect);
 	}
 	
 

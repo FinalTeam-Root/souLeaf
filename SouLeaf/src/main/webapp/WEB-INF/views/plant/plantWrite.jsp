@@ -79,8 +79,10 @@
 													<div class="form-group">
 														<label class="label" for="name">종류</label>
 														<select class="form-control" name="plantKind" id="plantKind">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1">잎이 있는 식물</option>
+															<option value="2">공중식물</option>
+															<option value="3">다육식물</option>
+															<option value="4">덩굴식물</option>
 														</select>
 													</div>
 												</div>
@@ -88,8 +90,12 @@
 													<div class="form-group">
 														<label class="label" for="name">특성</label>
 														<select class="form-control" name="plantProperty" id="plantProperty">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1">공기정화</option>
+															<option value="2">향기나는</option>
+															<option value="3">반려동물 안전한</option>
+															<option value="4">빛이 적어도 되는</option>
+															<option value="5">열매 맺는</option>
+															<option value="6">꽃이 피는</option>
 														</select>
 													</div>
 												</div>
@@ -97,8 +103,16 @@
 													<div class="form-group">
 														<label class="label" for="name">잎모양</label>
 														<select class="form-control" name="plantLeaf" id="plantLeaf">
-															<option value="1">1</option>
-															<option value="2">2</option>
+															<option value="1">넑은</option>
+															<option value="2">둥근</option>
+															<option value="3">뾰족한</option>
+															<option value="4">길쭉한</option>
+															<option value="5">갈라진</option>
+															<option value="6">하트모양</option>
+															<option value="7">별모양</option>
+															<option value="8">작은</option>
+															<option value="9">두꺼운</option>
+															<option value="10">무늬</option>
 														</select>
 													</div>
 												</div>

@@ -1,6 +1,7 @@
 package com.souleaf.spring.plant.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,11 @@ public class PlantStoreLogic implements PlantStore{
 	@Override
 	public int deletePlantFile(PlantFile plantFile) {
 		return sqlSession.delete("plantMapper.deleteFile",plantFile);
+	}
+
+	@Override
+	public ArrayList<Plant> selectChoiceList(HashMap<String, String> plantSelect) {
+		return (ArrayList)sqlSession.selectList("plantMapper.selectChoiceList", plantSelect);
 	}
 
 	

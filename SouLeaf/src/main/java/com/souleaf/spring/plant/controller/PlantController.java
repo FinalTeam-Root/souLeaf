@@ -3,6 +3,7 @@ package com.souleaf.spring.plant.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,12 +49,33 @@ public class PlantController {
 		// 식물도감 리스트 출력
 		@ResponseBody
 		@RequestMapping(value="plantList.kh")
-		public void getPlantList(HttpServletResponse reponse, @RequestParam("current") int current) throws Exception {
+		public void getPlantList(HttpServletResponse response, @RequestParam("current") int current) throws Exception {
 			ArrayList<Plant> pList = pService.printAllList();
 			if(! pList.isEmpty()) {
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-				gson.toJson(pList, reponse.getWriter());
+				gson.toJson(pList, response.getWriter());
 			}else {
+				System.out.println("데이터가 없습니다");
+			}
+		}
+		
+		@RequestMapping(value="plantSelect.kh")
+		public void getPlantSelectList(HttpServletResponse response,@RequestParam("plantKind") String plantKind,@RequestParam("plantProperty") String plantProperty,@RequestParam("plantLeaf") String plantLeaf) throws Exception{
+			System.out.println(plantKind);
+			System.out.println(plantProperty);
+			System.out.println(plantLeaf);
+			HashMap<String, String> plantSelect = new HashMap<String, String>();
+			plantSelect.put("plantKind", plantKind);
+			plantSelect.put("plantProperty", plantProperty);
+			plantSelect.put("plantLeaf", plantLeaf);
+			
+			ArrayList<Plant> pList = pService.printSelectList(plantSelect);
+			if(!pList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(pList, response.getWriter());
+			}else {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(pList, response.getWriter());
 				System.out.println("데이터가 없습니다");
 			}
 		}
