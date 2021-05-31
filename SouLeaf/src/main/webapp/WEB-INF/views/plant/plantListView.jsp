@@ -25,7 +25,8 @@
     
    <section class="ftco-section bg-light">
 			<div class="container">
-			
+			어떤 종류의 식물을 찾고 있나요?<br>
+			<button>잎이 있는 식물</button>
 			 <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group">
                   <span class="fa fa-search"></span>

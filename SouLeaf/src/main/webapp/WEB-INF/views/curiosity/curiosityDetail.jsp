@@ -35,7 +35,7 @@
     ${curiosity.memberNick }
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="diaryMainView.kh?memberNo=${curiosity.memberNo }">일기 보러가기</a>
+    <a class="dropdown-item" href="diaryMainOtherView.kh?memberNo=${curiosity.memberNo }">일기 보러가기</a>
     <a class="dropdown-item" href="#">1:1 채팅</a>
   </div>
 </div>

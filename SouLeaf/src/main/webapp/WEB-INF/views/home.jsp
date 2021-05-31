@@ -9,7 +9,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
-          	<h1 class="mb-4">누구나 식물을 쉽게, 즐겁게, 함께.. </h1>
+          	<h1 class="mb-4">누구나 식물을 쉽게, 즐겁게, 함께</h1>
             <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
           </div>
         </div>
@@ -105,52 +105,6 @@
     	</div>
     </section>
 
-    <section class="ftco-counter" id="section-counter">
-    	<div class="container">
-				<div class="row">
-          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="50">0</strong>
-              </div>
-              <div class="text">
-              	<span>Customer</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="18500">0</strong>
-              </div>
-              <div class="text">
-              	<span>Professionals</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="20">0</strong>
-              </div>
-              <div class="text">
-              	<span>Products</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="50">0</strong>
-              </div>
-              <div class="text">
-              	<span>Pets Hosted</span>
-              </div>
-            </div>
-          </div>
-        </div>
-    	</div>
-    </section>
 
     <section class="ftco-section bg-light ftco-faqs">
     	<div class="container">
@@ -352,71 +306,7 @@
       </div>
     </section>
 
-    <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Affordable Packages</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(resources/images/pricing-1.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Personal</span>
-	            	<span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mos</sub></span>
-	            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
 
-	            	<a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(resources/images/pricing-2.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Business</span>
-		            <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mos</sub></span>
-		            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
-
-		            <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(resources/images/pricing-3.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Ultimate</span>
-		            <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mos</sub></span>
-		            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
-
-		            <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-    	</div>
-    </section>
 		
 		<section class="ftco-section">
 			<div class="container">
