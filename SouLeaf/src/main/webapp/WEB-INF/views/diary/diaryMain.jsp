@@ -40,8 +40,8 @@
 					<div class="col-md-4">
 						<div class="card card-profile">
 							<div class="card-avatar">
-								<a href="#"> <img
-									src="https://img.icons8.com/plasticine/100/000000/plant-under-sun.png" />
+								<a href="#"> 
+								<img src="resources/images/basicMemberImg.png" />
 								</a>
 							</div>
 							<div class="card-body ">
@@ -68,12 +68,13 @@
 				<div class="video">
 					<div class="video-Companion">
 						<select class="form-select" name="companionNo" id="selectVideo">
-							<option value="1">핑크개나리</option>
-							<option value="2">카스테라</option>
+							
 						</select>
 					</div>
 					<div class="video-play">
-						<div class="play">비디오 영역</div>
+						<div class="play">
+							<img alt="" src="resources/images/about.jpg">
+						</div>
 					</div>
 				</div>
 				<!-- 사진 영역  -->
@@ -131,57 +132,8 @@
 							                </a>
 							            </div> 
 							      </div> row 
-				   			</div> carousel-item active
-						    <div class="carousel-item">
-						     	<div class="row">
-						        	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="">
-						                </a>
-						            </div>
-						            
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-						            
-						             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-						                <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox">
-						                    <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="">
-						                </a>
-						            </div>
-					   			</div> row
-    						</div> <!-- carousel-item  -->
+				   			</div> <!-- carousel-item active -->
+						   
 						</div>
 						<!-- carousel-inner -->
 						<a class="carousel-control-prev" href="#carouselExampleControls"

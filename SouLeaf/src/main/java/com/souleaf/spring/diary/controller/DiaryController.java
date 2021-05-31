@@ -417,4 +417,14 @@ public class DiaryController {
 		}
 	}
 	// 사진 동영상 변환...@빽범
+	@RequestMapping(value="diaryPicVideo.kh", method=RequestMethod.GET)
+	public void diaryPicOneCompanion(HttpServletResponse response, @ModelAttribute Diary diary) throws Exception {
+		ArrayList<Diary> dList = dService.printPicOneCompanion(diary);
+		if(!dList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(dList,response.getWriter());
+		} else {
+			System.out.println("해당 식물의 사진이 존재하지 않습니다.");			
+		}
+	}
 }

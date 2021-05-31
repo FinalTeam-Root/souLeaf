@@ -102,4 +102,10 @@ public class DiaryStoreLogic implements DiaryStore{
 		return sqlSession.selectOne("diaryMapper.selectByMemberDiary", diary);
 	}
 
+	// 사진 동영상 변환
+	@Override
+	public ArrayList<Diary> selectAllPicOneComanion(Diary diary) {
+		return (ArrayList)sqlSession.selectList("diaryMapper.selectAllPicOneComanion",diary);
+	}
+
 }

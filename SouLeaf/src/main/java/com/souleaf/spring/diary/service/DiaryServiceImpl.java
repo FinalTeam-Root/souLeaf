@@ -107,6 +107,13 @@ public class DiaryServiceImpl implements DiaryService{
 	public Diary printByMemberDiary(Diary diary) {
 		return dStore.selectByMemberDiary(diary);
 	}
+	
+	
+    // 사진 동영상 변환
+	@Override
+	public ArrayList<Diary> printPicOneCompanion(Diary diary) {
+		return dStore.selectAllPicOneComanion(diary);
+	}
 
 
 }

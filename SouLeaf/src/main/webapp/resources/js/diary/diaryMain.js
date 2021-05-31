@@ -118,13 +118,22 @@ document.addEventListener('DOMContentLoaded', function() {
         return {domNodes: arrayOfDomNodes}
       },
       eventDidMount: function(info) {
-        tippy(info.el,{
-          content: '<div style="background :'+info.event.backgroundColor+';"><span>제목:'+info.event.title+'</span></div><br><span>내용: '+info.event.constraint+'</span><br><img style="object-fit :cover;" src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'">',
+        var content;
+        if(info.event.extendedProps.diaryRepicname != null) {
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'<img src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'" alt="No Images"></div></div>';
+        }else{
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'</div></div>';
+        }
+        var tippyContent = {          
           theme: 'light',
           allowHTML :true,
-          delay: [500,200],
-        }
-        )
+          delay: [400,300],
+          animation : 'scale',
+          maxWidth: 500,
+          arrow: '',
+        };
+        tippyContent.content = content;
+        tippy(info.el,tippyContent);
       },
     });
     calendar.render();
@@ -183,6 +192,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
       });
 	  });
+
+
+  // 사진첩의 동영상 생성을 위한 반려식물 선택
 
   // 일기 삭제 버튼 클릭
   $("#deleteEvent").on("click",function() {
@@ -457,3 +469,26 @@ $(document).on('click',function(){
   });
 });
 // getDiaryPicList();
+
+$.ajax({
+  url : "myCompanionList.kh",
+  type : "get",
+  dataType : "json",
+  success : function(data) {
+    var $select = $('#selectVideo');
+    $select.html("");
+    console.log(data);
+    var $option;
+    if(data.length > 0) {
+      for(var i in data){
+        if(i == 0) {
+          $option = $("<option> 반려식물을 선택! </option>");
+          $select.append($option);
+        }
+          $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
+          $select.append($option);
+      }
+    
+    }
+  }
+});

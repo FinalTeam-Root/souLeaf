@@ -48,6 +48,7 @@ public interface DiaryStore {
 		public Diary selectByMemberDiary(Diary diary);
 		
 		
-		
 		// 사진첩 동영상변환 @빽범
+		public ArrayList<Diary> selectAllPicOneComanion(Diary diary);
+		
 }
