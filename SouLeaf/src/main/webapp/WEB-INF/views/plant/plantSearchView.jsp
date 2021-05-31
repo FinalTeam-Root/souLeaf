@@ -34,7 +34,12 @@
                   <input type="text" class="form-control plant-search" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
               </form>
+              <c:if test="${pList eq null }">
+              식물데이터 <span id="plant-count">0</span> 건
+              </c:if>
+              <c:if test="${pList ne null}">
                식물데이터 <span id="plant-count">${pList.size() }</span> 건
+               </c:if>
               <br><br>
 				<div class="row" id="plant-list">
 						<c:if test="${pList eq null }">
