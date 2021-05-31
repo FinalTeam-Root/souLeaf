@@ -64,6 +64,7 @@ function companionListView(){
         	str+='				</div>';
           }
         
+        $("#companion-list").html("");
         $("#companion-list").append(str);
       }
       

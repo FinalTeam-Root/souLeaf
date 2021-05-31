@@ -9,6 +9,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.souleaf.spring.companion.domain.Companion;
 import com.souleaf.spring.companion.service.CompanionService;
+import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.service.PlantService;
@@ -43,8 +45,9 @@ public class CompanionController {
 	
 	// 반려식물 조회 화면 이동
 	@RequestMapping(value="companionListView.kh", method=RequestMethod.GET)
-	public ModelAndView companionLisAll(ModelAndView mv) {
-		ArrayList<Companion> cList = companionService.printAll();
+	public ModelAndView companionLisAll(ModelAndView mv, HttpSession session) {
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		ArrayList<Companion> cList = companionService.printmemberAll(loginUser.getMemberNo());
 		ArrayList<Plant> pList = plantService.printAllList();
 		int listSize = cList.size();
 		mv.addObject("listSize", listSize);
@@ -56,10 +59,11 @@ public class CompanionController {
 	
 	// 반려식물 전체 조회
 	@RequestMapping(value="companionList.kh")
-	public void companionList(HttpServletResponse response) {
+	public void companionList(HttpServletResponse response, HttpSession session) {
 		ArrayList<Companion> realList = new ArrayList<Companion>();
 		try {
-			ArrayList<Companion> cList = companionService.printAll();
+			Member loginUser = (Member)session.getAttribute("loginUser");
+			ArrayList<Companion> cList = companionService.printmemberAll(loginUser.getMemberNo());
 			System.out.println(cList.toString());
 			log.info("반려식물 전체조회 성공" + cList.toString());
 			for(Companion listOne : cList) {
@@ -99,26 +103,26 @@ public class CompanionController {
 	}
 	
 	// 반려식물 상세 조회
-	@RequestMapping(value="companionDetail.kh", method=RequestMethod.GET)
-	public ModelAndView companionDetail(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
-		
-		try {
-			Companion companion = companionService.printOne(companionNo);
-			mv.addObject("Companion", companion);
-			mv.setViewName("companion/companionDetailView");
-			log.info("반려식물 상세조회 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("반려식물 상세조회 실패");
-		}
-		return mv;
-	}
+//	@RequestMapping(value="companionDetail.kh", method=RequestMethod.GET)
+//	public ModelAndView companionDetail(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
+//		
+//		try {
+//			Companion companion = companionService.printOne(companionNo);
+//			mv.addObject("Companion", companion);
+//			mv.setViewName("companion/companionDetailView");
+//			log.info("반려식물 상세조회 성공");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			log.info("반려식물 상세조회 실패");
+//		}
+//		return mv;
+//	}
 	
 	// 반려식물 등록화면
-	@RequestMapping(value="companionWriteView.kh", method=RequestMethod.GET)
-	public String companionWriteView() {
-		return "companion/companionWriteForm";
-	}
+//	@RequestMapping(value="companionWriteView.kh", method=RequestMethod.GET)
+//	public String companionWriteView() {
+//		return "companion/companionWriteForm";
+//	}
 	
 	// 반려식물 등록
 	@ResponseBody
@@ -167,58 +171,6 @@ public class CompanionController {
 			return "fail";
 		}
 	}
-		
-		
-		
-	// 반려식물 등록
-//	@RequestMapping(value="companionRegister.kh", method=RequestMethod.POST)
-//	public ModelAndView companionRegister(ModelAndView mv,
-//							@ModelAttribute Companion companion,
-//							@RequestParam(value="uploadFile", required=false) MultipartFile uploadFile,
-//							HttpServletRequest request) {
-//		try {
-//			// 서버에 파일을 저장하는 작업
-//			if (!uploadFile.getOriginalFilename().equals("")) {
-//				String renameFileName = saveFile(uploadFile, request);
-//				if (renameFileName != null) {
-//					companion.setCompanionPicName(uploadFile.getOriginalFilename());
-//					companion.setCompanionRepicName(renameFileName);
-//				}
-//			} else {
-//				ArrayList<PlantFile> plantFile = plantService.printFileList(companion.getPlantNo());
-//				companion.setCompanionPicName(plantFile.get(0).getPlantFilePath());
-//			}
-//			Plant plant = plantService.printOne(companion.getPlantNo());
-//			// 캘린더 선언
-//			Calendar cal = Calendar.getInstance();
-//			// 데이트 포멧
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//			// 입력받은 날짜 date 변환
-//			Date date = (Date) sdf.parse(companion.getCompanionLastWater());
-//			// 물준날 세팅
-//			cal.setTime(date);
-//			// Plant 줄주기 대입
-//			int plantWater = Integer.parseInt(plant.getPlantWater());
-//			// 물준날 + 물주기 날짜
-//			cal.add(Calendar.DATE, plantWater);
-//			// set 물 주는날 
-//			String dateToStr = sdf.format(cal.getTime());
-//			// 물 주는날 세팅
-//			companion.setCompanionNeedWater(dateToStr);
-//			
-//			// 디비에 데이터를 저장하는 작업
-//			companionService.registerCompanion(companion);
-//			mv.setViewName("redirect:companionListView.kh");
-//			log.info("반려식물 상세조회 성공");
-//		} catch (Exception e) {
-//			// 실패시에 화면이동과 화면에 얼러트로 경고창 띄어주면서 리스트로 가야하는데 이거에 대한 처리가 부족함
-//			// 여기서 result 로 99 든 뭐든 넘겨줘서 리절트값이 99라면 얼러트 창을 띄어주는식으로?
-//			e.printStackTrace();
-//			log.info("반려식물 상세조회 실패");
-//			mv.setViewName("redirect:companionListView.kh");
-//		}
-//		return mv;
-//	}
 	
 	public String saveFile(MultipartFile file, HttpServletRequest request) {
 		// 파일 저장 경로 설정
@@ -250,19 +202,19 @@ public class CompanionController {
 	}
 	
 	// 반려식물 수정화면
-	@RequestMapping(value="companionModifyView.kh")
-	public ModelAndView companionModifyView(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
-		
-		try {
-			Companion companion = companionService.printOne(companionNo);
-			mv.addObject("companion", companion).setViewName("companion/companionUpdateView");
-			log.info("반려식물 수정화면 불러오기 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("반려식물 수정화면 불러오기 실패");
-		}
-		return mv;
-	}
+//	@RequestMapping(value="companionModifyView.kh")
+//	public ModelAndView companionModifyView(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
+//		
+//		try {
+//			Companion companion = companionService.printOne(companionNo);
+//			mv.addObject("companion", companion).setViewName("companion/companionUpdateView");
+//			log.info("반려식물 수정화면 불러오기 성공");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			log.info("반려식물 수정화면 불러오기 실패");
+//		}
+//		return mv;
+//	}
 	
 	// 반려식물 수정
 	@RequestMapping(value="companionUpdate.kh", method=RequestMethod.POST)

@@ -231,6 +231,7 @@
 					success : function(data) {
 						if(data == "success") {
 							// 리스트 다시 출력
+							hideRegister();
 							companionListView();
 						}else {
 							alert("등록 실패..");
