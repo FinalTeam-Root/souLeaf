@@ -54,6 +54,7 @@ public class CuriosityController {
 		int currentCount = (count != null) ? count : 0;
 		HttpSession session = request.getSession();
 		session.setAttribute("nav", "curiosity");
+		session.setAttribute("fileName", "");
 		mv.addObject("page",currentPage).addObject("count",currentCount).setViewName("curiosity/curiosityListView");
 		return mv;
 	}
