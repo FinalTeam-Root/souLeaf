@@ -23,47 +23,47 @@
 							<div class="row no-gutters">
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+										<form action="memberModify.kh" method="POST" id="contactForm" name="contactForm" class="contactForm">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="name">아이디</label>
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+														<label class="label" for="memberId">아이디</label>
+														<input type="text" class="form-control" name="memberId" id="=memberId" placeholder="MemberId" value="${mOne.memberId }">
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
-														<label class="label" for="nick">이름</label>
-														<input type="nick" class="form-control" name="nick" id="nick" placeholder="Nick">
+														<label class="label" for="memberName">이름</label>
+														<input type="text" class="form-control" name="memberName" id="memberName" placeholder="memberName" value="${mOne.memberNick }">
+													</div>
+												</div>	
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="memberNick">닉네임</label>
+														<input type="text" class="form-control" name="memberNick" id="memberNick" placeholder="memberNick" value="${mOne.memberNick }">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="subject">닉네임</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label class="label" for="subject">이메일</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<label class="label" for="memberMail">이메일</label>
+														<input type="text" class="form-control" name="memberMail" id="memberMail" placeholder="memberMail" value="${mOne.memberMail }">
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
-														<label class="label" for="email">비밀번호</label>
-														<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+														<label class="label" for="memberPw">비밀번호</label>
+														<input type="password" class="form-control" name="memberPw" id=password placeholder="새 비밀번호">
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
-														<label class="label" for="email">비밀번호 확인</label>
-														<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+														<label class="label" for="password1">비밀번호 확인</label>
+														<input type="password" class="form-control" name="memberPw1" id="password1" placeholder="비밀번호 확인">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="submit" value="Send Message" class="btn btn-primary">
+														<input type="submit" value="수정 완료" class="btn btn-primary">
 														<div class="submitting"></div>
 													</div>
 												</div>
