@@ -53,8 +53,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member printMember(Member member) {
-		return mStore.selectMember(member);
+	public Member printMember(int memberNo) {
+		return mStore.selectMember(memberNo);
 	}
 
 }

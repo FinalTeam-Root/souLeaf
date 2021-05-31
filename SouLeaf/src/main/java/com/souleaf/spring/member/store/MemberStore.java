@@ -11,5 +11,5 @@ public interface MemberStore {
 	public int updateMember(Member member);
 	public int deleteMember(String memberId);
 	public Member loginMember(Member member); // 로그인
-	public Member selectMember(Member member);
+	public Member selectMember(int memberNo);
 }

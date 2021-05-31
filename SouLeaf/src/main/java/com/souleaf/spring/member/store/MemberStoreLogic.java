@@ -49,7 +49,7 @@ public class MemberStoreLogic implements MemberStore {
 	}
 
 	@Override
-	public Member selectMember(Member member) {
-		return sqlSession.selectOne("memberMapper.selectMember", member);
+	public Member selectMember(int memberNo) {
+		return sqlSession.selectOne("memberMapper.selectMember", memberNo);
 	}
 }
