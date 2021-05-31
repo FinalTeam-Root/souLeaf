@@ -197,7 +197,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="name">빛 내용</label>
-														<textarea class="form-control" name="piLightContents"  id="piLightContents" cols="30" rows="1" ></textarea>
+														<textarea class="form-control" name="piLightContents"  id="piLightContents" cols="30" rows="2" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">　</div>
@@ -221,7 +221,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">온도 내용</label>
-														<textarea class="form-control" name="piTempContents"  id="piTempContents" cols="30" rows="1" ></textarea>
+														<textarea class="form-control" name="piTempContents"  id="piTempContents" cols="30" rows="2" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">　</div>
@@ -247,7 +247,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">습도 내용</label>
-														<textarea class="form-control" name="piHumidityContents"  id="piHumidityContents" cols="30" rows="1" ></textarea>
+														<textarea class="form-control" name="piHumidityContents"  id="piHumidityContents" cols="30" rows="2" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">　</div>
@@ -273,7 +273,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">물 내용</label>
-														<textarea class="form-control" name="piWaterContents"  id="piWaterContents" cols="30" rows="1" ></textarea>
+														<textarea class="form-control" name="piWaterContents"  id="piWaterContents" cols="30" rows="2" ></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">　</div>
@@ -293,7 +293,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">흙 내용</label>
-														<textarea class="form-control" name="piEarthContents"  id="piEarthContents" cols="30" rows="1" ></textarea>
+														<textarea class="form-control" name="piEarthContents"  id="piEarthContents" cols="30" rows="2" ></textarea>
 													</div>
 												</div>			
 												<div class="col-md-12">　</div>									
