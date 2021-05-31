@@ -33,11 +33,12 @@
                   <span class="fa fa-search"></span>
                   <input type="text" class="form-control plant-search" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
                 </div>
-              </form><br>
-              
+              </form>
+               식물데이터 <span id="plant-count">${pList.size() }</span> 건
+              <br><br>
 				<div class="row" id="plant-list">
 						<c:if test="${pList eq null }">
-						<div class="ml-5">검색 결과가 없습니다.</div>
+						<div style="margin: 0 auto;">검색 결과가 없습니다.</div>
 						</c:if>
 						<c:forEach items="${pList }" var="pi" varStatus="status">
 					<div class="col-md-6 col-lg-3 ftco-animate" onclick="location.href='plantDetail.kh?plantNo=${pi.plantNo}'">

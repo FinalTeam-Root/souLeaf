@@ -61,9 +61,6 @@ public class PlantController {
 		
 		@RequestMapping(value="plantSelect.kh")
 		public void getPlantSelectList(HttpServletResponse response,@RequestParam("plantKind") String plantKind,@RequestParam("plantProperty") String plantProperty,@RequestParam("plantLeaf") String plantLeaf) throws Exception{
-			System.out.println(plantKind);
-			System.out.println(plantProperty);
-			System.out.println(plantLeaf);
 			HashMap<String, String> plantSelect = new HashMap<String, String>();
 			plantSelect.put("plantKind", plantKind);
 			plantSelect.put("plantProperty", plantProperty);

@@ -115,6 +115,7 @@
               <br><br>
              
 				<div class="row" id="plant-list">
+				<div id="no-list"></div>
 					<!-- <div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">

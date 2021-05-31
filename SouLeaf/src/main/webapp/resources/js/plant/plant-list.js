@@ -84,7 +84,7 @@ function getPlantSearchList(obj){
           str+='</div></div></div></div>';
         }
       }else{
-        str="<div class='ml-5'>데이터가 존재하지 않습니다.</div>";
+        str='<div style="margin: 0 auto;">데이터가 존재하지 않습니다.</div>';
 
       }
       $("#plant-list").append(str);
