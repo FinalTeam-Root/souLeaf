@@ -11,6 +11,11 @@
 <result property= "memberNo" column="MEMBER_NO"></result> 
 <result property= "boastPoint" column="BOAST_POINT"></result>
 <result property= "boastStatus" column="BOAST_STATUS"></result>
+<result property= "plantNo" column="PLANT_NO"></result>
+<result property= "boastFileName" column="BOAST_FILENAME"></result>
+<result property= "boastReName" column="BOAST_RENAME"></result>
+<result property= "memberName" column="MEMBER_NAME"></result>
+
 </resultMap>
 <select id="selectListCount" resultType="_int">
 SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y' </select>
@@ -18,13 +23,39 @@ SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y' </select>
 		SELECT * FROM BOAST WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 		
 	</select>
-	<select id="selectOne" parameterType="Boast" resultMap="boastResultMap">SELECT * FROM BOAST WHERE BOAST_NO = #{boastNo } AND BOAST_STATUS = 'Y' </select>
+	<select id="selectOne" parameterType="Boast" resultMap="boastResultMap">
+		 SELECT BOAST_NO ,
+				BOAST_TITLE ,
+				BOAST_CONTENT ,
+				BOAST_COUNT ,
+				BOAST_DATE ,
+				BOAST_UPDATE ,
+				MEMBER_NO ,
+				MEMBER_NAME,
+				BOAST_POINT ,
+				BOAST_STATUS ,
+				PLANT_NO ,
+				BOAST_FILENAME ,
+				BOAST_RENAME  
+				FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND BOAST_STATUS = 'Y'
+	</select>
 
-<insert id="insertBoast">
-INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert>
+<insert id="insertBoast"  >
 
 
-	
+INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent }, DEFAULT, DEFAULT, DEFAULT, #{memberNo},DEFAULT, DEFAULT, #{plantNo}, #{boastFileName}, #{boastReName}) </insert>
+<!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert> -->
+
+<update id="updateBoast">
+UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENT = #{boastContent},  BOAST_UPDATE = SYSDATE WHERE BOAST_NO = #{boastNo}
+</update>
+<update id="updateCount">
+UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
+ </update>
+
+<update id="deleteBoast" parameterType="_int">
+UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo } 
+</update>	
 	
 	
 	

@@ -2,6 +2,8 @@ package com.souleaf.spring.boast.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
@@ -49,6 +51,7 @@ public interface BoastService {
 //	ArrayList<Boast> printAll();
 	//int removeBoastReply(BoastReply reply);
 	ArrayList<Boast> printAll();
+	
 	
 	
 	

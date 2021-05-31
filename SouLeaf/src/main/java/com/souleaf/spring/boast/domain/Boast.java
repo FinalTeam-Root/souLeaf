@@ -11,13 +11,18 @@ public class Boast {
 	private Date boastDate; // 작성일
 	private Date boastUpdate; // 수정일
 	private int memberNo; // 회원번호
+	private String memberName; // 작성자 이름
 	private int boastPoint; // 랭킹포인트
 	private String boastStatus; // 상태
+	private int plantNo; // 식물번호
+	private String boastFileName; // 사진이름 
+	private String boastReName; // 서버사진이름
 	
 	public Boast() {}
-
+	
 	public Boast(int boastNo, String boastTitle, String boastContent, String boastCount, Date boastDate,
-			Date boastUpdate, int memberNo, int boastPoint, String boastStatus) {
+			Date boastUpdate, int memberNo, String memberName, int boastPoint, String boastStatus, int plantNo,
+			String boastFileName, String boastReName) {
 		super();
 		this.boastNo = boastNo;
 		this.boastTitle = boastTitle;
@@ -26,9 +31,14 @@ public class Boast {
 		this.boastDate = boastDate;
 		this.boastUpdate = boastUpdate;
 		this.memberNo = memberNo;
+		this.memberName = memberName;
 		this.boastPoint = boastPoint;
 		this.boastStatus = boastStatus;
+		this.plantNo = plantNo;
+		this.boastFileName = boastFileName;
+		this.boastReName = boastReName;
 	}
+	
 
 	public int getBoastNo() {
 		return boastNo;
@@ -86,6 +96,14 @@ public class Boast {
 		this.memberNo = memberNo;
 	}
 
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	public int getBoastPoint() {
 		return boastPoint;
 	}
@@ -102,22 +120,46 @@ public class Boast {
 		this.boastStatus = boastStatus;
 	}
 
+	public int getPlantNo() {
+		return plantNo;
+	}
+
+	public void setPlantNo(int plantNo) {
+		this.plantNo = plantNo;
+	}
+
+	public String getBoastFileName() {
+		return boastFileName;
+	}
+
+	public void setBoastFileName(String boastFileName) {
+		this.boastFileName = boastFileName;
+	}
+
+	public String getBoastReName() {
+		return boastReName;
+	}
+
+	public void setBoastReName(String boastReName) {
+		this.boastReName = boastReName;
+	}
+
 	@Override
 	public String toString() {
 		return "Boast [boastNo=" + boastNo + ", boastTitle=" + boastTitle + ", boastContent=" + boastContent
 				+ ", boastCount=" + boastCount + ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate
-				+ ", memberNo=" + memberNo + ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + "]";
+				+ ", memberNo=" + memberNo + ", memberName=" + memberName + ", boastPoint=" + boastPoint
+				+ ", boastStatus=" + boastStatus + ", plantNo=" + plantNo + ", boastFileName=" + boastFileName
+				+ ", boastReName=" + boastReName + "]";
 	}
 
-	public void setOriginalFilename(String originalFilename) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public void setRenameFilename(String renameFileName) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
+
+
+
+
 	
 }
 			
