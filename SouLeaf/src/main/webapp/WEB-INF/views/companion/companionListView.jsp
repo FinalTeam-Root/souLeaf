@@ -58,11 +58,9 @@
 #registerForm {
 	display:none;
 }
-
 </style>
 </head>
 <body>
-
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -77,7 +75,7 @@
 					</c:if>
 				</div>
 			</div>
-
+			<!-- 반려 식물 등록폼 -->
 			<div id="registerForm">
 				<div class="row justify-content-center blockstyle">
 					<div class="col-md-12">
@@ -85,18 +83,18 @@
 							<div class="row no-gutters writeStyle">
 								<div class="col-md-7">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-										<form method="POST" id="contactForm" name="contactForm" class="contactForm" enctype="multipart/form-data">
-										<input type="hidden" value="${loginUser.memberNo}" id="memberNo">
+										<form action="companionRegister.kh" method="POST" id="contactForm" name="contactForm" class="contactForm" enctype="multipart/form-data">
+										<input type="hidden" value="${loginUser.memberNo}" name="memberNo" id="memberNo">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="name">품종</label>
 														<div class="col-auto my-1">
 															<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-															<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+															<select name="plantNo" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 																<option selected>식물을 선택하세요</option>
 																<c:forEach items="${pList }" var="plant">
-																	<option id="plantNo" value="${plant.plantNo }">${plant.plantName}</option>
+																	<option id="plantNo" value="${plant.plantNo }">${plant.plantName }</option>
 																</c:forEach>
 															</select>
 														</div>
@@ -116,7 +114,7 @@
 														<label class="label" for="subject">마지막 물 준날</label>
 														<div class="form-group">
 															<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-																<input type="text" id="lastWater" class="form-control datetimepicker-input" data-target="#datetimepicker1">
+																<input type="text" name="companionLastWater" id="lastWater" class="form-control datetimepicker-input" data-target="#datetimepicker1">
 																<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker"></div>
 															</div>
 														</div>
@@ -131,9 +129,9 @@
 														    <input type="file" class="file-upload custom-file-input" id="uploadFile" name="uploadFile" aria-describedby="inputGroupFileAddon04">
 														    <label class="custom-file-label" for="uploadFile">Choose file</label>
 														  </div>
-														<button id="companionSubmit" type="button" class="btn btn-outline-success backcolor" style="margin-left:10px;padding-top: 8px;padding-bottom: 8px;height: 38px; " >등록</button>
+														<button id="companionSubmit" type="submit" class="btn btn-outline-success backcolor" style="margin-left:10px;padding-top: 8px;padding-bottom: 8px;height: 38px; " >등록</button>
 <!-- 														<input id="companionSubmit" type="submit" class="btn btn-outline-success backcolor" value="등록" style="margin-left:10px;"> -->
-														<input type="reset" id="companionCancel" onclick="hideRegister()" class="btn btn-outline-success backcolor" style="padding-top: 8px;padding-bottom: 8px;height: 38px;"value="취소">
+														<input id="companionCancel" type="reset"  onclick="hideRegister()" class="btn btn-outline-success backcolor" style="padding-top: 8px;padding-bottom: 8px;height: 38px;"value="취소">
 														</div>
 													</div>
 												</div>
@@ -143,19 +141,92 @@
 									</div>
 								</div>
 								<div class="col-md-5 d-flex align-items-stretch">
-									<img src="" class="avatar" alt="avatar" style="width: 100%; height: 475px; outline: none; border: none;">
+									<img src="" class="avatar" alt="avatar" style="width: 100%; height: 470px; outline: none; border: none;">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!-- 반려 식물 리스트 -->
+			<c:forEach items="${cList }" var="cList">
+				<div class="row justify-content-center blockstyle">
+					<div class="col-md-12">
+						<div class="wrapper">
+							<div class="row no-gutters">
+								<div class="col-md-7">
+									<div class="contact-wrap w-100 p-md-5 p-4">
+										<form action="companionDelete.kh" method="GET" id="contactForm" name="contactForm" class="contactForm">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="row">
+														<input type="hidden" id="companionRepicName" name="companionRepicName" value="${cList.companionRepicName }">
+														<h3 class="mb-4">${cList.companionNick }</h3>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="name">품종</label> <input
+															type="text" class="form-control" name="name" id="name"
+															value="${cList.plantName }" readonly>
+														<div class="top_line"></div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="regist">등록일</label>
+														<input type="text" class="form-control" name="regist" id="regist" value="${cList.companionDate }" readonly>
+														<div class="top_line"></div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">마지막 물 준날</label>
+															<input type="text" class="form-control" name="subject" id="subject" value="${cList.companionLastWater }" readonly>
+															<div class="top_line"></div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="subject">tip!</label> <input
+															type="text" class="form-control" name="subject"
+															id="subject" value="${cList.plantWater }일마다 겉흙이 마르면 줘"
+															readonly>
+														<div class="top_line"></div>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<c:url var="cDetail" value="companionDelete.kh">
+														<c:param name="companionNo" value="${cList.companionNo }"></c:param>
+														<c:param name="companionRepicName" value="${cList.companionRepicName }"></c:param>
+													</c:url>
+													<a href="${cDetail }">${cList.companionNo }</a>
+<!-- 													<button type="button" -->
+<!-- 															class="btn btn-outline-success backcolor" -->
+<!-- 															style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">삭제</button> -->
+													<button type="button" class="btn btn-outline-success backcolor"
+														style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">수정</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="col-md-5 d-flex align-items-stretch">
+									<div class="info-wrap w-100 p-5 img"
+										style="background-image: url(${cList.companionRepicName });"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			
+			
 
-			<div id="companion-list"></div>
-			</div>
+		</div>
 	</section>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-	<script src="resources/js/companion/companion-list.js"></script>
+<!-- 	<script src="resources/js/companion/companion-list.js"></script> -->
 	<script>
 		var readURL = function(input) {
 			if (input.files && input.files[0]) {
@@ -166,10 +237,6 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
-
-		$("#uploadFile").on('change', function(){
-			readURL(this);
-		});
 		
 		$(".file-upload").on('change', function(){
 			readURL(this);
@@ -179,47 +246,13 @@
 			$(this).next('.custom-file-label').html(event.target.files[0].name);
 		});
 
-		$(document).ready(function() {
-			$("#companionSubmit").on("click", function() {
-				var plantNo = $("#inlineFormCustomSelect option:selected").val();
-				var companionNick = $("#companionNick").val();
-				var lastWater = $("#lastWater").val();
-// 				var uploadFile = $("#uploadFile").val();
-				var uploadFile = $("#uploadFile")[0].files[0];
-				var memberNo = $("#memberNo").val();
-				console.log(plantNo, companionNick, lastWater, uploadFile, memberNo);
-				
-				var formData = new FormData(); // 위에 있는 데이터를 이 녀석이 다 데리고 감
-			    formData.append("plantNo",plantNo);
-			    formData.append("companionNick", companionNick);
-			    formData.append("companionLastWater", lastWater);
-			    formData.append("uploadFile", uploadFile);
-			    formData.append("memberNo", memberNo);
-
-				$.ajax({
-					url : "companionRegister.kh",
-					type : "post",
-				    enctype: 'multipart/form-data',
-				    processData: false,    
-				    contentType: false,
-					data : formData,
-					success : function(data) {
-						if(data == "success") {
-							// 리스트 다시 출력
-							companionListView();
-							hideRegister();
-					        if(data.length = 3){
-					        	$('#registerbutton').hide();
-					        }
-						}else {
-							alert("등록 실패..");
-						}
-					},
-					error : function() {
-					}
-				});
-			});
-		});
+		
+		
+		$("#lastWater").datepicker({
+			format : "yyyy-mm-dd",
+			language : "kr"
+		}).datepicker("setDate", new Date());
+		
 		
 	function showRegister(val){
 	      if($('#registerForm').css('display') == 'none'){
@@ -236,19 +269,10 @@
 	      $('#registerbutton').show();
 	    }
 	}
-	function showModifyBlock(obj) {
-		console.log(obj); // <img ~~~>
-		//$(obj).
-	}
 
-	
 	$(document).on("click",function(){
 		
-		
-		$("#lastWater,#lastWater0,#lastWater1,#lastWater2").datepicker({
-			format : "yyyy-mm-dd",
-			language : "kr"
-		}).datepicker("setDate", new Date());
+
 		
 		$(function() {
 			$('#companionNick').keyup(function(e) {
@@ -256,124 +280,6 @@
 				$(this).height(((companionNick.split('\n').length + 1) * 1.5)+ 'em');
 				$('#counter').html(companionNick.length + '/6 최대6자 입력');});
 			$('#companionNick').keyup();
-		});
-		
-		$(function() {
-			$('#companionNick0').keyup(function(e) {
-				var companionNick0 = $(this).val();
-				$(this).height(((companionNick0.split('\n').length + 1) * 1.5)+ 'em');
-				$('#counter0').html(companionNick0.length + '/6 최대6자 입력');});
-			$('#companionNick0').keyup();
-		});
-		
-		$(function() {
-			$('#companionNick1').keyup(function(e) {
-				var companionNick1 = $(this).val();
-				$(this).height(((companionNick1.split('\n').length + 1) * 1.5)+ 'em');
-				$('#counter1').html(companionNick1.length + '/6 최대6자 입력');});
-			$('#companionNick1').keyup();
-		});
-		
-		$(function() {
-			$('#companionNick2').keyup(function(e) {
-				var companionNick2 = $(this).val();
-				$(this).height(((companionNick2.split('\n').length + 1) * 1.5)+ 'em');
-				$('#counter2').html(companionNick2.length + '/6 최대6자 입력');});
-			$('#companionNick2').keyup();
-		});
-		
-		// 수정아이콘 클릭
-		$("#updateForm").on("click", function() {
-			 $('#updateName').show();
-			 $('#printName').hide();
-			 $('#updateWater').show();
-			 $('#printWater').hide();
-			 $('#updateFile').show();
-			 $('#printFile').hide();
-			 $('#updateReset').show();
-			 $('#updateSubmit').show();
-			 $('#deleteSubmit').hide();
-		});
-		
-		$("#updateForm0").on("click", function() {
-			 $('#updateName0').show();
-			 $('#printName0').hide();
-			 $('#updateWater0').show();
-			 $('#printWater0').hide();
-			 $('#updateFile0').show();
-			 $('#printFile0').hide();
-			 $('#updateReset0').show();
-			 $('#updateSubmit0').show();
-			 $('#deleteSubmit0').hide();
-		});
-		
-		$("#updateForm1").on("click", function() {
-			 $('#updateName1').show();
-			 $('#printName1').hide();
-			 $('#updateWater1').show();
-			 $('#printWater1').hide();
-			 $('#updateFile1').show();
-			 $('#printFile1').hide();
-			 $('#updateReset1').show();
-			 $('#updateSubmit1').show();
-			 $('#deleteSubmit1').hide();
-		});
-		
-		$("#updateForm2").on("click", function() {
-			 $('#updateName2').show();
-			 $('#printName2').hide();
-			 $('#updateWater2').show();
-			 $('#printWater2').hide();
-			 $('#updateFile2').show();
-			 $('#printFile2').hide();
-			 $('#updateReset2').show();
-			 $('#updateSubmit2').show();
-			 $('#deleteSubmit2').hide();
-		});
-		
-		$("#updateReset").on("click", function() {
-			 $('#updateName').hide();
-			 $('#printName').show();
-			 $('#updateWater').hide();
-			 $('#printWater').show();
-			 $('#updateFile').hide();
-			 $('#printFile').show();
-			 $('#updateReset').hide();
-			 $('#updateSubmit').hide();
-			 $('#deleteSubmit').show();
-		});
-		$("#updateReset0").on("click", function() {
-			 $('#updateName0').hide();
-			 $('#printName0').show();
-			 $('#updateWater0').hide();
-			 $('#printWater0').show();
-			 $('#updateFile0').hide();
-			 $('#printFile0').show();
-			 $('#updateReset0').hide();
-			 $('#updateSubmit0').hide();
-			 $('#deleteSubmit0').show();
-		});
-		$("#updateReset1").on("click", function() {
-			 $('#updateName1').hide();
-			 $('#printName1').show();
-			 $('#updateWater1').hide();
-			 $('#printWater1').show();
-			 $('#updateFile1').hide();
-			 $('#printFile1').show();
-			 $('#updateReset1').hide();
-			 $('#updateSubmit1').hide();
-			 $('#deleteSubmit1').show();
-		});
-		$("#updateReset2").on("click", function() {
-			 $('#updateName2').hide();
-			 $('#printName2').show();
-			 $('#updateWater2').hide();
-			 $('#printWater2').show();
-			 $('#updateFile2').hide();
-			 $('#printFile2').show();
-			 $('#updateReset2').hide();
-			 $('#updateSubmit2').hide();
-			 $('#deleteSubmit2').show();
 		});
 	});
 
