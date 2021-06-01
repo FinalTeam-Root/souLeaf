@@ -61,7 +61,9 @@
 									</p>
 									<span>반려식물</span>
 									<p class="card-description">
-										#산세베리아 / #무궁화 / #개나리
+										<c:forEach var="name" items="${pList }" varStatus="index">
+										<a href="plantDetail.kh?plantNo=${name.plantNo }">#${name.plantName}</a>
+									</c:forEach>
 									</p>
 									<a href="#" class="btn btn-primary">chat</a>
 								</div>

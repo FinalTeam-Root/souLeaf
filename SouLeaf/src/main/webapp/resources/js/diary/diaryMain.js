@@ -120,10 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
       eventDidMount: function(info) {
         var content;
         if(info.event.extendedProps.diaryRepicname != null) {
-          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+'; padding:10px 10px"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'<img src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'" alt="No Images"></div></div>';
-        }else{
-          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+'; padding:10px 10px"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'</div></div>';
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'<img src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'" alt="No Images"></div></div>';
+        }else if(info.event.extendedProps.image_url){
+          content = '<div class="cal-card"><div class="cal-titleImg" style="background :'+info.event.backgroundColor+';"><span><img src="'+info.event.extendedProps.image_url+'" style="width : 18px; height:18px;">'+info.event.title+'</span></div></div>';
+        } else{
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'</div></div>';
         }
+        
         var tippyContent = {          
           theme: 'light',
           allowHTML :true,

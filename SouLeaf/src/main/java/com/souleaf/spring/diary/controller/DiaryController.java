@@ -59,9 +59,12 @@ public class DiaryController {
 	
 	// 상단의 성장일기 클릭시 화면 이동
 	@RequestMapping(value="diaryMainView.kh")
-	public String diaryView(HttpSession session) {
+	public ModelAndView diaryView(ModelAndView mv, HttpSession session,@RequestParam("memberNo") int memberNo) {
 		session.setAttribute("nav", "");
-		return "diary/diaryMain";
+		ArrayList<Plant> pList = pService.printMemberCompanion(memberNo);
+		mv.addObject("pList", pList);
+		mv.setViewName("diary/diaryMain");
+		return mv;
 	}
 	
 	// 다른 사람 성장일기 들어가기
@@ -69,14 +72,16 @@ public class DiaryController {
 	@RequestMapping(value="diaryMainOtherView.kh")
 	public ModelAndView diaryviewOther(ModelAndView mv, @RequestParam("memberDiary") int memberNo, HttpSession session) {
 		Member member = mService.printMember(memberNo);
+		ArrayList<Plant> pList = pService.printMemberCompanion(memberNo);
 		session.setAttribute("nav", "");
+		mv.addObject("pList", pList);
 		mv.addObject("member", member);
 		mv.addObject("memberDiary", memberNo);
 		mv.setViewName("diary/diaryMainOther");
 		return mv;
 	}
 	
-	// 내 반려식물 불러오기
+	// 내 반려식물 닉네임 불러오기
 	@RequestMapping(value="myCompanionList.kh", method=RequestMethod.GET)
 	public void companionList(HttpServletResponse response, HttpSession session) throws Exception {
 		Member loginUser = (Member)session.getAttribute("loginUser");
@@ -89,7 +94,7 @@ public class DiaryController {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(cList, response.getWriter());
 		}
-	}
+	}	
 	
 	// 일기 달력에 뿌려주는 리스트 가져오기
 	// 물주는날은 어떻게 가져올까??
@@ -104,6 +109,7 @@ public class DiaryController {
 			System.out.println("일기리스트 가 없습니다.");
 		}
 	} 
+	
 	
 	// 이놈은 필요없다!
 	// 일기 상세 불러오기

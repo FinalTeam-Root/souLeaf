@@ -3,34 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 	
     calendar = new FullCalendar.Calendar(calendarEl, {
-      // 이미 등록된 일정 클릭 시 모달창
-      eventClick: function(info) {
-        // $('#eventModal-modify').modal();
 
-        // // diaryNo 받아와서 담아주기
-        // $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
-        // // LastWaterday 받아와서 담아주기
-        // var companionLastwater = info.event.extendedProps.companionLastwater;
-        // // 반려식물 애칭 받아와서 담아주기
-        // var companionNick = info.event.extendedProps.companionNick;
-        // // diaryPicname 받아와서 담아주기
-        // var diaryPicname = info.event.extendedProps.diaryPicname;
-        // $('#diaryRepicInfo').val(info.event.extendedProps.diaryRepicname);
-        // // var diaryRepicname = info.event.extendedProps.diaryRepicname;
-        // // companionNo 받아와서 담아주기
-        // $('#companionNoInfo').val(info.event.extendedProps.companionNo);
-        // var companionNo= info.event.extendedProps.companionNo;
-  
-        // $('#selectCompanion').html("");
-        // $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
-        // $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
-        // var todayDate = getFormatDate(info.event.start);
-        // $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
-        // $('#eventModal-modify .modal-body #edit-desc2').val(info.event.constraint);
-        // $("#eventModal-modify .modal-body input:radio[name='color']:input[value='"+info.event.backgroundColor+"']").attr('checked',true);
-        // $('#eventModal-modify .modal-body #modify-edit-lastWater').val(companionLastwater);
-        // //$('#eventModal-modify .modal-body #modify-customFile').val(diaryPicname);
-      },  
+ 
       headerToolbar: {
         left: 'today',
         center: 'prev,title,next',
@@ -82,13 +56,25 @@ document.addEventListener('DOMContentLoaded', function() {
         return {domNodes: arrayOfDomNodes}
       },
       eventDidMount: function(info) {
-        tippy(info.el,{
-          content: '<div style="background :'+info.event.color +';">제목:'+info.event.title+'</span></div><br><span>'+info.event.constraint+'</span><br><img style="object-fit :cover; width:100px; height:100px" src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'">',
+        var content;
+        if(info.event.extendedProps.diaryRepicname != null) {
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'<img src="resources/uploadFiles/diary/'+info.event.extendedProps.diaryRepicname+'" alt="No Images"></div></div>';
+        }else if(info.event.extendedProps.image_url){
+          content = '<div class="cal-card"><div class="cal-titleImg" style="background :'+info.event.backgroundColor+';"><span><img src="'+info.event.extendedProps.image_url+'" style="width : 18px; height:18px;">'+info.event.title+'</span></div></div>';
+        } else{
+          content = '<div class="cal-card"><div class="cal-title" style="background :'+info.event.backgroundColor+';"><span>'+info.event.title+'</span></div><div class="cal-text">&nbsp'+info.event.constraint+'</div></div>';
+        }
+        
+        var tippyContent = {          
           theme: 'light',
           allowHTML :true,
-          delay: [500,200],
-        }
-        )
+          delay: [400,300],
+          animation : 'scale',
+          maxWidth: 500,
+          arrow: '',
+        };
+        tippyContent.content = content;
+        tippy(info.el,tippyContent);
       },
     });
     calendar.render();
