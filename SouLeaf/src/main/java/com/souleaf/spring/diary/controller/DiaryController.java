@@ -185,7 +185,6 @@ public class DiaryController {
       return "redirect:diaryMainView.kh";
    }
 	
-	
 	// 파일 저장하기
 	public String saveFile(MultipartFile file, HttpServletRequest request) {
 		// 파일 저장 경로 설정
@@ -218,6 +217,7 @@ public class DiaryController {
 		// 리턴
 		return renameFileName;
 	}
+	
 	// 이건 필요없어 아마도..
 	public String diaryModifyView() {
 		return null;

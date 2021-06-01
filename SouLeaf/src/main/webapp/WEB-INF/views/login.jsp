@@ -13,9 +13,7 @@
 <style type="text/css">
 body{
 /* background: #c9ccd1;  Old browsers */ 
-    background: linear-gradient(
-45deg
-, #207dff 0%, #00bd55 100%);
+    background: #fff9e67a;
 }
 .form-style input{
 	border:0;
@@ -65,34 +63,34 @@ height:50px;
 <img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" class="img-fluid" style="min-height:100%;" />
 </div>
 <div class="col-md-6 bg-white p-5">
-<h3 class="pb-3">Login Form</h3>
+<div align="center">
+		<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png"  style="margin-bottom: 10px; width:200px;"></a>
+	</div>
 <div class="form-style">
 <form action="login.kh" method="post">
   <div class="form-group pb-3">    
-    <input type="text" placeholder="ID" class="form-control" name="memberId" id="exampleInputEmail1" >   
+    <input type="text" placeholder="아이디" class="form-control" name="memberId" id="exampleInputEmail1" >   
   </div>
   <div class="form-group pb-3">   
-    <input type="password" placeholder="Password" name="memberPw" class="form-control" id="exampleInputPassword1">
+    <input type="password" placeholder="비밀번호" name="memberPw" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="d-flex align-items-center justify-content-between">
-<div class="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span class="pl-2 font-weight-bold">Remember Me</span></div>
-<div><a href="#">Forget Password?</a></div>
+<div class="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span class="pl-2 font-weight-bold">아이디 저장</span></div>
+<div><a href="#">비밀번호 찾기</a></div>
 </div>
    <div class="pb-2">
-  <button type="submit" class="btn btn-success w-100 font-weight-bold mt-2">Login</button>
+  <button type="submit" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
    </div>
 </form>
   <div class="sideline">OR</div>
   <div>
-  <button type="submit" class="btn btn-warning w-100 font-weight-bold mt-2 kakao-btn"><i class="fa fa-facebook" aria-hidden="true"></i> Login With Kakao</button>
+  <button type="submit" class="btn btn-warning w-100 font-weight-bold mt-2 kakao-btn"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-topic.png" style="width:23px;"/> 카카오톡계정으로 로그인</button>
   </div>
   <div class="pt-4 text-center">
-  Get Members Benefit. <a href="enrollView.kh">Sign Up</a>
+  <a href="enrollView.kh">회원가입</a>
   </div>
 </div>
-	<div align="center">
-		<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png" width="200"></a>
-	</div>
+	
 </div>
 </div>
 </div>

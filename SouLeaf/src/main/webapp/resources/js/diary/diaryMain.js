@@ -4,9 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	
     calendar = new FullCalendar.Calendar(calendarEl, {
       // 이미 등록된 일정 클릭 시 모달창
-      eventClick: function(info) {
-        $('#eventModal-modify').modal();
-
+      eventClick: function(info) { 
+        if(!info.event.extendedProps.image_url){
+          $('#eventModal-modify').modal();
+        }
         // diaryNo 받아와서 담아주기
         $('#diaryUniqNo').val(info.event.extendedProps.diaryNo);
         // LastWaterday 받아와서 담아주기
@@ -96,6 +97,40 @@ document.addEventListener('DOMContentLoaded', function() {
             successCallback(response);
           }
         });
+      },
+      dateClick: function(info) {
+        $('#eventModal-insert').modal({});
+        $('#edit-date').val(info.dateStr);
+        $.ajax({
+          url : "myCompanionList.kh",
+          type : "get",
+          dataType : "json",
+          success : function(data) {
+            var $select = $('#selectCom');
+            $select.html("");
+            console.log(data);
+            var $option;
+            if(data.length > 0) {
+              for(var i in data){
+                if(i == 0) {
+                  $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
+                  $select.append($option);
+                }
+                  $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
+                  $select.append($option);
+              }
+              e.preventDefault();
+              $('#eventModal-insert').modal({});
+              $('#edit-date').val(info.dateStr);
+            } else if(data.length == 0) {
+              var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
+              if(noList == true){
+                location.href="companionListView.kh";
+              }
+            }
+          }
+        });
+
       },
       // 물방울 아이콘 생성 함수
       eventContent:function(arg){

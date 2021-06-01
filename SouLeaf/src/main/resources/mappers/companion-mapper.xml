@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="selectOne" resultMap="companionResultMap">
-		SELECT * FROM COMPANION WHERE MEMBER_NO = #{memberNo} ORDER BY COMPANION_NO ASC
+		SELECT * FROM COMPANION WHERE COMPANION_NO = #{companionNo } ORDER BY COMPANION_NO ASC
 	</select>
 	
 	<insert id="insertcompanion">
