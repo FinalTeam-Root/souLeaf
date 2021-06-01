@@ -156,7 +156,7 @@
 							<div class="row no-gutters">
 								<div class="col-md-7">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-										<form action="companionDelete.kh" method="GET" id="contactForm" name="contactForm" class="contactForm">
+										<form id="contactForm" name="contactForm" class="contactForm">
 											<div class="row">
 												<div class="col-md-12">
 													<div class="row">
@@ -196,14 +196,13 @@
 													</div>
 												</div>
 												<div class="col-md-12">
-													<c:url var="cDetail" value="companionDelete.kh">
+													<c:url var="cDelete" value="companionDelete.kh">
 														<c:param name="companionNo" value="${cList.companionNo }"></c:param>
 														<c:param name="companionRepicName" value="${cList.companionRepicName }"></c:param>
 													</c:url>
-													<a href="${cDetail }">${cList.companionNo }</a>
-<!-- 													<button type="button" -->
-<!-- 															class="btn btn-outline-success backcolor" -->
-<!-- 															style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">삭제</button> -->
+													<a href="${cDelete }"><button type="button"class="btn btn-outline-success backcolor"
+															style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">삭제</button></a>
+ 									
 													<button type="button" class="btn btn-outline-success backcolor"
 														style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">수정</button>
 												</div>

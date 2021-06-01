@@ -203,6 +203,9 @@ public class CompanionController {
 			
 			Diary reDiary = new Diary();
             // 새로운 물 줘야하는날 등록
+			reDiary.setDiaryStatus("W");
+	        reDiary.setCompanionNo(companion.getCompanionNo());
+	        reDiary.setMemberNo(companion.getMemberNo());
             reDiary.setDiaryStartDate(dateToStr);
             reDiary.setDiaryTitle(companion.getCompanionNick() + " 물줘!");
             reDiary.setdiaryColor("#4d638c");
@@ -324,28 +327,30 @@ public class CompanionController {
 		return mv;
 	}
 	
-	// 게시글 삭제
+	// 반려식물 삭제
 	@RequestMapping(value="companionDelete.kh", method=RequestMethod.GET)
-	public ModelAndView companionDelete(ModelAndView mv,  @ModelAttribute Companion companion ,HttpServletRequest request) {
+	public ModelAndView companionDelete(ModelAndView mv, @RequestParam("companionNo") int companionNo,
+			@RequestParam("companionRepicName") String companionRepicName ,HttpServletRequest request) {
 		
 		try {
 			// 업로드된 파일 삭제
-			if(companion.getCompanionRepicName() != "") {
-				deleteFile(companion.getCompanionRepicName(), request);
+			if(companionRepicName != "") {
+				deleteFile(companionRepicName, request);
 			}
-			log.info("반려식물 수정 실패");
-			companionService.removeCompanion(companion.getCompanionNo());
+			companionService.removeCompanion(companionNo);
+			log.info("반려식물 수정 성공");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.info("반려식물 수정 실패");
 		}
-		mv.setViewName("redirect:companionList.kh");
+		mv.setViewName("redirect:companionListView.kh");
 		return mv;
 	}
 	
 	public void deleteFile(String fileName, HttpServletRequest request) {
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		String savePath = root + "/companionFiles";
+		String savePath = root + "/uploadFiles/companion";
 		File file = new File(savePath + "/" + fileName);
 		if(file.exists()) {
 			file.delete();
