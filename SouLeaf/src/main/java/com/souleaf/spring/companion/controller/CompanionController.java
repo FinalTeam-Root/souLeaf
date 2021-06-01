@@ -201,6 +201,9 @@ public class CompanionController {
 			// 물 주는날 세팅
 			companion.setCompanionNeedWater(dateToStr);
 			
+			// 디비에 데이터를 저장하는 작업
+			companionService.registerCompanion(companion);
+			
 			Diary reDiary = new Diary();
             // 새로운 물 줘야하는날 등록
 			reDiary.setDiaryStatus("W");
@@ -210,10 +213,9 @@ public class CompanionController {
             reDiary.setDiaryTitle(companion.getCompanionNick() + " 물줘!");
             reDiary.setdiaryColor("#4d638c");
             reDiary.setImgUrl("resources/images/watericon.png");
-            diaryService.registerDiary(reDiary);
+            diaryService.registerWaterDiary(reDiary);
 			
-			// 디비에 데이터를 저장하는 작업
-			companionService.registerCompanion(companion);
+
 			
 			log.info("반려식물 등록 성공");
 		} catch (Exception e) {
