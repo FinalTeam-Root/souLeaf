@@ -73,7 +73,7 @@
 			<div class="row justify-content-center blockstyle">
 				<div class="col-md-12">
 					<c:if test="${listSize lt 3}">
-						<button type="button" id="registerbutton" class="btn btn-outline-success backcolor" onclick="showRegister()">등록하기</button>
+					<button type="button" id="registerbutton" class="btn btn-outline-success backcolor" onclick="showRegister()">등록하기</button>
 					</c:if>
 				</div>
 			</div>
@@ -92,10 +92,8 @@
 													<div class="form-group">
 														<label class="label" for="name">품종</label>
 														<div class="col-auto my-1">
-															<label class="mr-sm-2 sr-only"
-																for="inlineFormCustomSelect">Preference</label> <select
-																class="custom-select mr-sm-2"
-																id="inlineFormCustomSelect">
+															<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+															<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 																<option selected>식물을 선택하세요</option>
 																<c:forEach items="${pList }" var="plant">
 																	<option id="plantNo" value="${plant.plantNo }">${plant.plantName}</option>
@@ -117,8 +115,7 @@
 													<div class="form-group">
 														<label class="label" for="subject">마지막 물 준날</label>
 														<div class="form-group">
-															<div class="input-group date" id="datetimepicker1"
-																data-target-input="nearest">
+															<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
 																<input type="text" id="lastWater" class="form-control datetimepicker-input" data-target="#datetimepicker1">
 																<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker"></div>
 															</div>
@@ -134,9 +131,9 @@
 														    <input type="file" class="file-upload custom-file-input" id="uploadFile" name="uploadFile" aria-describedby="inputGroupFileAddon04">
 														    <label class="custom-file-label" for="uploadFile">Choose file</label>
 														  </div>
-														<button id="companionSubmit" type="button" class="btn btn-outline-success backcolor" style="margin-left:10px;" >등록</button>
+														<button id="companionSubmit" type="button" class="btn btn-outline-success backcolor" style="margin-left:10px;padding-top: 8px;padding-bottom: 8px;height: 38px; " >등록</button>
 <!-- 														<input id="companionSubmit" type="submit" class="btn btn-outline-success backcolor" value="등록" style="margin-left:10px;"> -->
-														<input type="reset" id="companionCancel" onclick="hideRegister()" class="btn btn-outline-success backcolor" value="취소">
+														<input type="reset" id="companionCancel" onclick="hideRegister()" class="btn btn-outline-success backcolor" style="padding-top: 8px;padding-bottom: 8px;height: 38px;"value="취소">
 														</div>
 													</div>
 												</div>
@@ -147,12 +144,7 @@
 								</div>
 								<div class="col-md-5 d-flex align-items-stretch">
 									<img src="" class="avatar" alt="avatar" style="width: 100%; height: 475px; outline: none; border: none;">
-<!-- 									<img src="" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 100%; height: 490px; outline: none; border: none;"> -->
-<!-- 									<div class="info-wrap w-100 p-5 img" style=" background-image: url(resources/images/main_bg_4.jpg);"> -->
-<!-- 									</div> -->
 								</div>
-								
-								
 							</div>
 						</div>
 					</div>
@@ -162,28 +154,9 @@
 			<div id="companion-list"></div>
 			</div>
 	</section>
-
-
-
-
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script src="resources/js/companion/companion-list.js"></script>
 	<script>
-	
-		
-		$("#lastWater").datepicker({
-			format : "yyyy-mm-dd",
-			language : "kr"
-		}).datepicker("setDate", new Date());
-
-		$(function() {
-			$('#companionNick').keyup(function(e) {
-				var companionNick = $(this).val();
-				$(this).height(((companionNick.split('\n').length + 1) * 1.5)+ 'em');
-				$('#counter').html(companionNick.length + '/6 최대6자 입력');});
-			$('#companionNick').keyup();
-		});
-		
 		var readURL = function(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
@@ -193,11 +166,14 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+
+		$("#uploadFile").on('change', function(){
+			readURL(this);
+		});
 		
 		$(".file-upload").on('change', function(){
 			readURL(this);
 		});
-
 		
 		$("input[type='file']").on('change',function(event){
 			$(this).next('.custom-file-label').html(event.target.files[0].name);
@@ -205,7 +181,6 @@
 
 		$(document).ready(function() {
 			$("#companionSubmit").on("click", function() {
-				alert($("#uploadFile").val());
 				var plantNo = $("#inlineFormCustomSelect option:selected").val();
 				var companionNick = $("#companionNick").val();
 				var lastWater = $("#lastWater").val();
@@ -231,8 +206,11 @@
 					success : function(data) {
 						if(data == "success") {
 							// 리스트 다시 출력
-							hideRegister();
 							companionListView();
+							hideRegister();
+					        if(data.length = 3){
+					        	$('#registerbutton').hide();
+					        }
 						}else {
 							alert("등록 실패..");
 						}
@@ -243,7 +221,7 @@
 			});
 		});
 		
-	function showRegister(){
+	function showRegister(val){
 	      if($('#registerForm').css('display') == 'none'){
 	      $('#registerForm').show();
 	      $('#registerbutton').hide();
@@ -258,6 +236,147 @@
 	      $('#registerbutton').show();
 	    }
 	}
+	function showModifyBlock(obj) {
+		console.log(obj); // <img ~~~>
+		//$(obj).
+	}
+
+	
+	$(document).on("click",function(){
+		
+		
+		$("#lastWater,#lastWater0,#lastWater1,#lastWater2").datepicker({
+			format : "yyyy-mm-dd",
+			language : "kr"
+		}).datepicker("setDate", new Date());
+		
+		$(function() {
+			$('#companionNick').keyup(function(e) {
+				var companionNick = $(this).val();
+				$(this).height(((companionNick.split('\n').length + 1) * 1.5)+ 'em');
+				$('#counter').html(companionNick.length + '/6 최대6자 입력');});
+			$('#companionNick').keyup();
+		});
+		
+		$(function() {
+			$('#companionNick0').keyup(function(e) {
+				var companionNick0 = $(this).val();
+				$(this).height(((companionNick0.split('\n').length + 1) * 1.5)+ 'em');
+				$('#counter0').html(companionNick0.length + '/6 최대6자 입력');});
+			$('#companionNick0').keyup();
+		});
+		
+		$(function() {
+			$('#companionNick1').keyup(function(e) {
+				var companionNick1 = $(this).val();
+				$(this).height(((companionNick1.split('\n').length + 1) * 1.5)+ 'em');
+				$('#counter1').html(companionNick1.length + '/6 최대6자 입력');});
+			$('#companionNick1').keyup();
+		});
+		
+		$(function() {
+			$('#companionNick2').keyup(function(e) {
+				var companionNick2 = $(this).val();
+				$(this).height(((companionNick2.split('\n').length + 1) * 1.5)+ 'em');
+				$('#counter2').html(companionNick2.length + '/6 최대6자 입력');});
+			$('#companionNick2').keyup();
+		});
+		
+		// 수정아이콘 클릭
+		$("#updateForm").on("click", function() {
+			 $('#updateName').show();
+			 $('#printName').hide();
+			 $('#updateWater').show();
+			 $('#printWater').hide();
+			 $('#updateFile').show();
+			 $('#printFile').hide();
+			 $('#updateReset').show();
+			 $('#updateSubmit').show();
+			 $('#deleteSubmit').hide();
+		});
+		
+		$("#updateForm0").on("click", function() {
+			 $('#updateName0').show();
+			 $('#printName0').hide();
+			 $('#updateWater0').show();
+			 $('#printWater0').hide();
+			 $('#updateFile0').show();
+			 $('#printFile0').hide();
+			 $('#updateReset0').show();
+			 $('#updateSubmit0').show();
+			 $('#deleteSubmit0').hide();
+		});
+		
+		$("#updateForm1").on("click", function() {
+			 $('#updateName1').show();
+			 $('#printName1').hide();
+			 $('#updateWater1').show();
+			 $('#printWater1').hide();
+			 $('#updateFile1').show();
+			 $('#printFile1').hide();
+			 $('#updateReset1').show();
+			 $('#updateSubmit1').show();
+			 $('#deleteSubmit1').hide();
+		});
+		
+		$("#updateForm2").on("click", function() {
+			 $('#updateName2').show();
+			 $('#printName2').hide();
+			 $('#updateWater2').show();
+			 $('#printWater2').hide();
+			 $('#updateFile2').show();
+			 $('#printFile2').hide();
+			 $('#updateReset2').show();
+			 $('#updateSubmit2').show();
+			 $('#deleteSubmit2').hide();
+		});
+		
+		$("#updateReset").on("click", function() {
+			 $('#updateName').hide();
+			 $('#printName').show();
+			 $('#updateWater').hide();
+			 $('#printWater').show();
+			 $('#updateFile').hide();
+			 $('#printFile').show();
+			 $('#updateReset').hide();
+			 $('#updateSubmit').hide();
+			 $('#deleteSubmit').show();
+		});
+		$("#updateReset0").on("click", function() {
+			 $('#updateName0').hide();
+			 $('#printName0').show();
+			 $('#updateWater0').hide();
+			 $('#printWater0').show();
+			 $('#updateFile0').hide();
+			 $('#printFile0').show();
+			 $('#updateReset0').hide();
+			 $('#updateSubmit0').hide();
+			 $('#deleteSubmit0').show();
+		});
+		$("#updateReset1").on("click", function() {
+			 $('#updateName1').hide();
+			 $('#printName1').show();
+			 $('#updateWater1').hide();
+			 $('#printWater1').show();
+			 $('#updateFile1').hide();
+			 $('#printFile1').show();
+			 $('#updateReset1').hide();
+			 $('#updateSubmit1').hide();
+			 $('#deleteSubmit1').show();
+		});
+		$("#updateReset2").on("click", function() {
+			 $('#updateName2').hide();
+			 $('#printName2').show();
+			 $('#updateWater2').hide();
+			 $('#printWater2').show();
+			 $('#updateFile2').hide();
+			 $('#printFile2').show();
+			 $('#updateReset2').hide();
+			 $('#updateSubmit2').hide();
+			 $('#deleteSubmit2').show();
+		});
+	});
+
 	</script>
 </body>
 </html>
