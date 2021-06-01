@@ -48,7 +48,8 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: NanumSquareRound;  
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
@@ -58,7 +59,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",'NanumSquareRound';
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",'NanumSquareRound'; */
+  font-family: NanumSquareRound;  
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -160,7 +162,8 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+/*   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+  font-family: NanumSquareRound;
   font-size: 1em; }
 
 pre {
@@ -209,7 +212,8 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+/*   font-family: inherit; */
+  font-family: NanumSquareRound;
   font-size: inherit;
   line-height: inherit; }
 
@@ -301,7 +305,8 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: inherit;
+/*   font-family: inherit; */
+  font-family: NanumSquareRound;
   font-weight: 500;
   line-height: 1.2;
   color: inherit; }
@@ -4758,7 +4763,8 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/*   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: NanumSquareRound;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -4843,7 +4849,8 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: NanumSquareRound;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7777,7 +7784,9 @@ button.bg-dark:focus {
     margin-left: auto !important; } }
 
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+ /*  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */ 
+  font-family: NanumSquareRound; 
+  }
 
 .text-justify {
   text-align: justify !important; }
@@ -8004,7 +8013,8 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+ /*  font-family: "Montserrat", Arial, sans-serif; */
+  font-family: NanumSquareRound;
   background: #fff;
   font-size: 15px;
   line-height: 1.8;
@@ -8301,7 +8311,8 @@ h1, h2, h3, h4, h5,
   .hero-wrap .slider-text h1 {
     color: #fff;
     line-height: 1.2;
-    font-family: "Montserrat", Arial, sans-serif;
+    /* font-family: "Montserrat", Arial, sans-serif; */
+    font-family: NanumSquareRound;
     font-size: 60px;
     font-weight: 800; }
     @media (max-width: 991.98px) {
@@ -8313,7 +8324,8 @@ h1, h2, h3, h4, h5,
     font-size: 15px;
     color: #00bd56;
     text-transform: uppercase;
-    font-family: "Montserrat", Arial, sans-serif;
+    /* font-family: "Montserrat", Arial, sans-serif; */
+    font-family: NanumSquareRound;
     font-weight: 700;
     letter-spacing: 2px; }
   .hero-wrap .slider-text p {
