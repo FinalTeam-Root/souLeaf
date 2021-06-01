@@ -25,7 +25,7 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
               <h2 class="heading-section" align="center" style="margin-bottom:50px">식물이름이 궁금해요!</h2>
-        <div class="row" id="curiosity-list" style="min-height: 390px;">
+        <div class="row" id="curiosity-list" style="min-height: 450px;">
         <input type="hidden" id="currentPage" value="${page }">
          <input type="hidden" id="currentCount" value="${count }">
        <!--    <div class="col-lg-6 sidebar pl-lg-5 ftco-animate">        
