@@ -47,7 +47,6 @@ public class PlantController {
 		}
 		
 		// 식물도감 리스트 출력
-		@ResponseBody
 		@RequestMapping(value="plantList.kh")
 		public void getPlantList(HttpServletResponse response, @RequestParam("current") int current) throws Exception {
 			ArrayList<Plant> pList = pService.printAllList();

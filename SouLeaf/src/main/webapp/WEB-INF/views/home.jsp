@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="ko">
   <jsp:include page="common/header.jsp"></jsp:include>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="resources/css/home/home-style.css">
     <div class="hero-wrap js-fullheight" style="background-image: url('resources/images/main_bg_5.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -22,39 +24,60 @@
           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
             <div class="d-block services active text-center">
               <div class="icon d-flex align-items-center justify-content-center">
-            		<span class="flaticon-blind"></span>
+            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#FFD700;"></i> -->
+            		<i class="fas fa-crown" style="font-size:40px; color:#FFD700;"></i>
               </div>
-              <div class="media-body">
-                <h3 class="heading">Dog Walking</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right.</p>
-                <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+               <div class="media-body">
+                <h3 class="heading" style="text-align: left">BEST 1</h3>
+                <div class="rank-form">
+                  <img src="resources/uploadFiles/plant/120210531162553.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
+                  <div class="text pt-3 px-3 pb-4 text-center">
+					<span class="position mb-2">Red box Gum</span>
+					<h3>유칼립투스 폴리안</h3>
+				</div>
+				</div>
               </div>
             </div>      
           </div>
+          
           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
             <div class="d-block services text-center">
               <div class="icon d-flex align-items-center justify-content-center">
-            		<span class="flaticon-dog-eating"></span>
+            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#C0C0C0;"></i> -->
+            		<i class="fas fa-crown" style="font-size:40px; color:#C0C0C0;"></i>
               </div>
-              <div class="media-body">
-                <h3 class="heading">Pet Daycare</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right.</p>
-                <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+               <div class="media-body">
+                <h3 class="heading" style="text-align: left">BEST 2</h3>
+                <div class="rank-form">
+                  <img src="/resources/uploadFiles/plant/120210531142943.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
+                  <div class="text pt-3 px-3 pb-4 text-center">
+					<span class="position mb-2">Red box Gum</span>
+					<h3>유칼립투스 폴리안</h3>
+				</div>
+				</div>
               </div>
             </div>    
           </div>
+          
           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
             <div class="d-block services text-center">
               <div class="icon d-flex align-items-center justify-content-center">
-            		<span class="flaticon-grooming"></span>
+            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#865d5a;"></i> -->
+            		<i class="fas fa-crown" style="font-size:40px; color:#865d5a;"></i>
               </div>
               <div class="media-body">
-                <h3 class="heading">Pet Grooming</h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right.</p>
-                <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+                <h3 class="heading" style="text-align: left">BEST 3</h3>
+                <div class="rank-form">
+                  <img src="/resources/uploadFiles/plant/120210531162046.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
+                  <div class="text pt-3 px-3 pb-4 text-center">
+					<span class="position mb-2">Red box Gum</span>
+					<h3>유칼립투스 폴리안</h3>
+				</div>
+				</div>
               </div>
             </div>      
           </div>
+          
         </div>
     	</div>
     </section>
@@ -62,43 +85,26 @@
     <section class="ftco-section ftco-no-pt ftco-no-pb">
     	<div class="container">
     		<div class="row d-flex no-gutters">
-    			<div class="col-md-5 d-flex">
-    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(resources/images/about-1.jpg);">
-    				</div>
-    			</div>
-    			<div class="col-md-7 pl-md-5 py-md-5">
+    			
+    			<div class="col-md-12 pl-md-5 py-md-5">
     				<div class="heading-section pt-md-5">
-	            <h2 class="mb-4">Why Choose Us?</h2>
+	            <h5 class="mb-4" style="color:#00b564">Plant Search</h5>
     				</div>
-    				<div class="row">
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-stethoscope"></span></div>
+    				<div class="row" align="center" >
+	    				<div class="col-md-12 services-2 w-100 d-flex" >
 	    					<div class="text pl-3">
-	    						<h4>Care Advices</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
+	    						
+			  <form action="plantSearch.kh" method="get" class="search-form">
+                <div class="form-group" >
+                 <h1 style="display: -webkit-inline-box; font-weight: 800; font-size: 100px">나는&nbsp;<input type="text" class="form-control plant-search" name="search" id="plantSearch" autocomplete="OFF">&nbsp;를</h1>
+                </div>
+              </form>
+	    						<h1 style="font-weight: 800; font-size: 100px">잘 키우는 방법이</h1>
+	    						<h1 style="font-weight: 800; font-size: 100px">궁금하다.</h1>
 	    					</div>
 	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-customer-service"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Customer Supports</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-emergency-call"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Emergency Services</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-veterinarian"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Veterinary Help</h4>
-	    						<p>Far far away, behind the word mountains, far from the countries.</p>
-	    					</div>
-	    				</div>
+	    				
+	    				
 	    			</div>
 	        </div>
         </div>

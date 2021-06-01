@@ -1,8 +1,7 @@
 var currentCount = $("#currentCount").val();
 var currentPage = $("#currentPage").val();
 $(function(){
-  
-  console.log("현재페이지"+currentPage);
+    
   getCuriosityList(currentPage);
   
 });
@@ -14,8 +13,7 @@ function getPageInfo(page){
     type: "get",
     data:{"page":page},
     dataType : "json",
-    success : function(data){
-      console.log(data);
+    success : function(data){      
       str = "";
       if(data.startPage == 1){
 

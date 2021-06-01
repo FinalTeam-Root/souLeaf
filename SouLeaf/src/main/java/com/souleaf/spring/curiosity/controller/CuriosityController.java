@@ -167,7 +167,6 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 댓글 리스트 출력
-	@ResponseBody
 	@RequestMapping(value="curiosityReplyList.kh")
 	public void curiosityReplyListView(HttpServletResponse response,@RequestParam("curiosityNo") int curiosityNo, CuriosityReply reply, Model model) throws Exception {
 		ArrayList<CuriosityReply> crList = cService.printAllCuriosityReply(curiosityNo);

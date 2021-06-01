@@ -4,6 +4,15 @@ open_chatroom();
 	$( window ).resize(function() {
    		open_chatroom();
 	});		
+
+$("#plantSearch").on("change keyup",function(){
+	var content = $("#plantSearch").val();
+	   	$("#plantSearch").css('width',100*content.length+'px');
+		   if(content.length <= 0){
+			$("#plantSearch").css('width','250px');
+		   }
+
+	});
 });
 
 

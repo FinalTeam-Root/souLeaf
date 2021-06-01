@@ -14,8 +14,7 @@ function getPlantList(){
     data : {"current":1},
     dataType : "json",
     success : function(data){
-      $("#plant-count").text(data.length);
-      console.log(data);
+      $("#plant-count").text(data.length);      
       if(data.length > 0){
         var str = "";
         for(var i in data){
@@ -48,8 +47,7 @@ function getPlantSearchList(obj){
      
   var kind = $("input[name=plant-kind]:checked").val();
   var property = $("input[name=plant-property]:checked").val();
-  var leaf = $("input[name=plant-leaf]:checked").val();  
-  console.log($(obj).children().attr('name'));
+  var leaf = $("input[name=plant-leaf]:checked").val();    
   var label = $(obj).children().attr('name');
   switch(label){
     case 'plant-kind': $plantKind=$(obj).children().val(); $("#property-form").show();
@@ -59,8 +57,7 @@ function getPlantSearchList(obj){
     case 'plant-leaf' : $plantLeaf=$(obj).children().val();
     break;
   }
-  console.log($plantKind,$plantProperty,$plantLeaf);
-
+  
   $.ajax({
     url : "plantSelect.kh",
     type: "get",
@@ -99,9 +96,7 @@ function getPlantSearchList(obj){
 }
 
 
-function resetSelect(){
-  console.log('reset');
-  console.log($('.form-group'));
+function resetSelect(){  
   $('.form-group').children('div').children().removeClass('active');
   $plantKind='1,2,3,4',$plantProperty='1,2,3,4,5,6',$plantLeaf='1,2,3,4,5,6,7,8,9,10';
   getPlantSearchList();
