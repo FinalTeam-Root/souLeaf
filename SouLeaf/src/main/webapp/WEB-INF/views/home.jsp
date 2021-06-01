@@ -7,12 +7,15 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="resources/css/home/home-style.css">
     <div class="hero-wrap js-fullheight" style="background-image: url('resources/images/main_bg_5.jpg');" data-stellar-background-ratio="0.5">
+     <video class="video-intro" id="myVideo" poster="https://mdbootstrap.com/img/Photos/Others/background.jpg" playsinline autoplay muted loop>
+      <source src="/resources/video/video-pc.mp4" type="video/mp4">
+    </video>
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
-          	<h1 class="mb-4">누구나 식물을 쉽게, 즐겁게, 함께</h1>
-            <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+          	<h1 class="mb-4" style="font-size: 100px">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
+            <!-- <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p> -->
           </div>
         </div>
       </div>
@@ -81,14 +84,23 @@
         </div>
     	</div>
     </section>
+<div class="typing-txt"> 
+  <ul>
+    <li>개나리</li>
+    <li>민달레</li>
+    <li>스투키</li>
+</ul>
 
-    <section class="ftco-section ftco-no-pt ftco-no-pb">
+</div> 
+
+  
+    <section class="ftco-section ftco-no-pt ftco-no-pb" style="background: #fff">
     	<div class="container">
     		<div class="row d-flex no-gutters">
     			
     			<div class="col-md-12 pl-md-5 py-md-5">
     				<div class="heading-section pt-md-5">
-	            <h5 class="mb-4" style="color:#00b564">Plant Search</h5>
+	            <h3 class="mb-4" style="color:#00b564; font-weight: 800">Plant Search</h3>
     				</div>
     				<div class="row" align="center" >
 	    				<div class="col-md-12 services-2 w-100 d-flex" >
@@ -96,11 +108,11 @@
 	    						
 			  <form action="plantSearch.kh" method="get" class="search-form">
                 <div class="form-group" >
-                 <h1 style="display: -webkit-inline-box; font-weight: 800; font-size: 100px">나는&nbsp;<input type="text" class="form-control plant-search" name="search" id="plantSearch" autocomplete="OFF">&nbsp;를</h1>
+                 <h1 style="display: -webkit-inline-box; font-weight: 800; font-size: 100px; /* color: #fff */">나는&nbsp;<input type="text" class="form-control plant-search" name="search" id="plantSearch" autocomplete="OFF" maxlength="11">&nbsp;<p class="typing"></p>를</h1>
                 </div>
               </form>
-	    						<h1 style="font-weight: 800; font-size: 100px">잘 키우는 방법이</h1>
-	    						<h1 style="font-weight: 800; font-size: 100px">궁금하다.</h1>
+	    						<h1 style="font-weight: 800; font-size: 100px; /* color: #fff */">잘 키우는 방법이</h1>
+	    						<h1 style="font-weight: 800; font-size: 100px; /* color: #fff */">궁금하다.</h1>
 	    					</div>
 	    				</div>
 	    				
@@ -313,97 +325,6 @@
     </section>
 
 
-		
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Pets Gallery</h2>
-          </div>
-        </div>
-				<div class="row">
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-1.jpg);">
-            	<a href="resources/images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">Persian Cat</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-2.jpg);">
-            	<a href="resources/images/gallery-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Pomeranian</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-3.jpg);">
-            	<a href="resources/images/gallery-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">Sphynx Cat</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-4.jpg);">
-            	<a href="resources/images/gallery-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">British Shorthair</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-5.jpg);">
-            	<a href="resources/images/gallery-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Beagle</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(resources/images/gallery-6.jpg);">
-            	<a href="resources/images/gallery-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Pug</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-			</div>
-		</section>
 
     <section class="ftco-section bg-light">
       <div class="container">
