@@ -28,6 +28,8 @@ import com.google.gson.GsonBuilder;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.common.BoastPagination;
+import com.souleaf.spring.common.CuriosityPagination;
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
 import com.souleaf.spring.curiosity.domain.Curiosity;
@@ -40,7 +42,7 @@ public class BoastController {
 	@Autowired
 	private BoastService bService;
 
-	// 자랑하기 리스트 페이지 이동 및 출력
+	// 자랑하기 리스트 페이지 이동 및 출력 //////////
 	@RequestMapping(value = "boastListView.kh", method = RequestMethod.GET)
 	public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -62,7 +64,32 @@ public class BoastController {
 		return mv;
 	}
 
-	// 자랑하기 상세페이지 이동 및 출력
+	// 자랑하기 리스트 출력
+		@RequestMapping(value="boastList.kh")
+		public void getBoastList(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception {
+			int currentPage = (page != null) ? page : 1;
+			int listCount = bService.getListCount();
+			PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
+			ArrayList<Boast> bList = bService.printAll(pi);
+			if(! bList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(bList, response.getWriter());
+			}else {
+				System.out.println("데이터가 없습니다");
+			}
+		}
+	
+	// 자랑하기 페이지 출력
+	@RequestMapping(value="boastPage.kh")
+	public void getBoastPage(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
+		int currentPage = (page != null) ? page : 1;
+		int listCount = bService.getListCount();
+		PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(pi, response.getWriter());
+	}
+	
+	// 자랑하기 상세페이지 이동 및 출력////////////
 	@RequestMapping(value = "boastDetail.kh", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView boastDetailView(ModelAndView mv, @RequestParam("boastNo") int boastNo) {
 		// 조회수 증가
@@ -234,17 +261,17 @@ public class BoastController {
 	
 
 	// 자랑하기 댓글 등록
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value="boastReplyRegister.kh", method = RequestMethod.POST)
-	 * public String boastReplyRegister(@ModelAttribute BoastReply reply,
-	 * HttpSession session) { Member loginUser =
-	 * (Member)session.getAttribute("loginUser");
-	 * reply.setMemberNo(loginUser.getMemberNo()); int result =
-	 * bService.registerBoastReply(reply); if(result > 0) { return result+""; }else
-	 * { return result+""; } }
-	 */
+	
+	  @ResponseBody
+	  
+	  @RequestMapping(value="boastReplyRegister.kh", method = RequestMethod.POST)
+	  public String boastReplyRegister(@ModelAttribute BoastReply reply,
+	  HttpSession session) { Member loginUser =
+	  (Member)session.getAttribute("loginUser");
+	  reply.setMemberNo(loginUser.getMemberNo()); int result =
+	  bService.registerBoastReply(reply); if(result > 0) { return result+""; }else
+	  { return result+""; } }
+	 
 	
 	
 	/*
@@ -252,11 +279,25 @@ public class BoastController {
 	 * BoastReply reply, MultipartFile uploadFile, Model model) { return null; }
 	 */
 	// 자랑하기 댓글 수정
-	public ModelAndView boastReplyUpdate(ModelAndView mv, int boastNo, BoastReply reply, MultipartFile uploadFile,
-			Model model) {
-		return null;
+	  @ResponseBody
+	  @RequestMapping(value="boastReplyModify.kh", method = RequestMethod.POST)
+		public String boastReplyModify(@ModelAttribute BoastReply reply, HttpSession session) {
+			Member loginUser = (Member)session.getAttribute("loginUser");
+			reply.setMemberNo(loginUser.getMemberNo());
+			int result = bService.modifyBoastReply(reply);
+			if(result > 0) {
+				return result+"";
+			}else {
+				return result+"";
+			}
+		}
+		
+	  
+	//public ModelAndView boastReplyUpdate(ModelAndView mv, int boastNo, BoastReply reply, MultipartFile uploadFile,
+	//		Model model) {
+	//	return null;
 
-	}
+	//}
 
 	// 자랑하기 댓글 삭제
 	public String boastReplyDelete(int boastNo, Model model) {
@@ -292,6 +333,8 @@ public class BoastController {
 			e.printStackTrace();
 		}
 		// 리턴
+		HttpSession session = request.getSession();
+		session.setAttribute("fileName", renameFileName);
 		return renameFileName;
 
 	}

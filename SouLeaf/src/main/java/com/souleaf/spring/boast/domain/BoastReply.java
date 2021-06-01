@@ -9,17 +9,21 @@ public class BoastReply {
 	private int bocommentSuper; // 부모 댓글
 	private String bocommentContent; // 댓글 내용
 	private Timestamp bocommentDate; // 댓글 작성일 
+	private int memberNo;
+	private String memberName;
 	
 	public BoastReply() {}
 
 	public BoastReply(int bocommentNo, int boastNo, int bocommentSuper, String bocommentContent,
-			Timestamp bocommentDate) {
+			Timestamp bocommentDate, int memberNo, String memberName) {
 		super();
 		this.bocommentNo = bocommentNo;
 		this.boastNo = boastNo;
 		this.bocommentSuper = bocommentSuper;
 		this.bocommentContent = bocommentContent;
 		this.bocommentDate = bocommentDate;
+		this.memberNo = memberNo;
+		this.memberName = memberName;
 	}
 
 	public int getBocommentNo() {
@@ -62,13 +66,31 @@ public class BoastReply {
 		this.bocommentDate = bocommentDate;
 	}
 
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	@Override
 	public String toString() {
 		return "BoastReply [bocommentNo=" + bocommentNo + ", boastNo=" + boastNo + ", bocommentSuper=" + bocommentSuper
-				+ ", bocommentContent=" + bocommentContent + ", bocommentDate=" + bocommentDate + "]";
+				+ ", bocommentContent=" + bocommentContent + ", bocommentDate=" + bocommentDate + ", memberNo="
+				+ memberNo + ", memberName=" + memberName + "]";
 	}
 
-	
 
+
+	
 	
 }

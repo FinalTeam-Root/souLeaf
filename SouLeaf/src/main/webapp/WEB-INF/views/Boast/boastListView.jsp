@@ -28,7 +28,9 @@
     <section class="ftco-section bg-light">
       <div class="container">
         <h2 class="heading-section" align="center" style="margin-bottom:50px">반려식물을 자랑해봐요!</h2>
-        <div class="row d-flex">
+        <div class="row d-flex" id="boast-list" style="min-height: 450px;">
+         <input type="hidden" id="currentPage" value="${page }">
+         <input type="hidden" id="currentCount" value="${count }">
          <!--  <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
               <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
@@ -66,7 +68,7 @@
         <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
-              <ul>
+              <ul id="boast-page">
                 <li><a href="#">&lt;</a></li>
                 <li class="active"><span>1</span></li>
                 <li><a href="#">2</a></li>

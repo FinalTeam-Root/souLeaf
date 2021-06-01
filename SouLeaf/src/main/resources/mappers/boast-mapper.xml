@@ -15,7 +15,7 @@
 <result property= "boastFileName" column="BOAST_FILENAME"></result>
 <result property= "boastReName" column="BOAST_RENAME"></result>
 <result property= "memberName" column="MEMBER_NAME"></result>
-
+<result property="boastReplyCount" column="BOAST_REPLYCOUNT"/>
 </resultMap>
 <select id="selectListCount" resultType="_int">
 SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y' </select>
@@ -57,6 +57,11 @@ UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
 UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo } 
 </update>	
 	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply">
+		INSERT INTO BCOMMENT VALUES (SEQ_BOCOMMENT.NEXTVAL, #{boastNo }, #{bocommentSuper } ,#{bocommentContent }, DEFAULT , DEFAULT)
+	</insert>
 	
 	
 </mapper>

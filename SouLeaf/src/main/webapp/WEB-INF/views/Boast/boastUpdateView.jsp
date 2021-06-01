@@ -107,6 +107,8 @@
 
 		<!--  게시물 등록 버튼!!!!!!!! -->
 		<div align="center">
+		<input type="hidden" name="page" value="${page }"> 
+														<input type="hidden" name="count" value="${count }"> 
 		<input type="hidden" name="boastNo" value="${boast.boastNo }">
 			<input type="submit" class="btn btn-outline-success" value="등록">
 			<!--  <input type="button" class="btn btn-outline-success" value="취소" onclick="location.href='boastListView.kh'"></button> -->
