@@ -76,10 +76,10 @@ public class CompanionController {
 				listOne.setPlantName(plant.getPlantName());
 				listOne.setPlantWater(plant.getPlantWater());
 				cList.add(listOne);
-				int listSize = cList.size();
-				mv.addObject("listSize", listSize);
-				mv.addObject("cList",cList);
 			}
+			int listSize = cList.size();
+			mv.addObject("listSize", listSize);
+			mv.addObject("cList",cList);
 			log.info("반려 식물 정보" + cList.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -211,7 +211,6 @@ public class CompanionController {
 			
 			// 디비에 데이터를 저장하는 작업
 			companionService.registerCompanion(companion);
-			
 			
 			log.info("반려식물 등록 성공");
 		} catch (Exception e) {
