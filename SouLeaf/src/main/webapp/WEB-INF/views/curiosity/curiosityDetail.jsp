@@ -29,31 +29,43 @@
 									<div class="contact-wrap w-100 p-md-5 p-4">
 									<h2 class="heading-section p-1 ml-3">${curiosity.curiosityContent }</h2>
 									<div class="media p-1 ml-3">
-									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-1 rounded-circle" style="width:60px; height: 60px">
-									  <div class="media-body">
-  <div class="dropdown mt-2">
-  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 12px 10px;    text-transform: none;">
-    ${curiosity.memberNick }
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="diaryMainOtherView.kh?memberDiary=${curiosity.memberNo }">일기 보러가기</a>
-    <a class="dropdown-item" href="#">1:1 채팅</a>
-  </div>
-  <small>${curiosity.curiosityDate } &nbsp;&nbsp;<span class="far fa-eye"></span> ${curiosity.curiosityCount } &nbsp;&nbsp;<span class="fa fa-comment"></span> <span id="replyCount">0</span></small>
-</div>
-									   
-									    
-									    
-									    <small style="float: right"><a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
-									     <c:if test="${loginUser.memberNo eq curiosity.memberNo  }">
-									    <a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
+										<img src="resources/images/main_bg_8.jpg" alt="John Doe"
+											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
+											
+										<div class="media-body row">
+											<div class="dropdown mt-2 col-md-6">
+												<button class="btn dropdown-toggle" type="button"
+													id="dropdownMenuButton" data-toggle="dropdown"
+													aria-haspopup="true" aria-expanded="false"
+													style="padding: 12px 10px; font-size: 15px; text-transform: none;">
+													${curiosity.memberNick }</button>
+												<div class="dropdown-menu"
+													aria-labelledby="dropdownMenuButton">
+													<a class="dropdown-item"
+														href="diaryMainOtherView.kh?memberDiary=${curiosity.memberNo }">일기
+														보러가기</a> <a class="dropdown-item" href="#">1:1 채팅</a>
+												</div>
+												${curiosity.curiosityDate } &nbsp;&nbsp;<span
+													class="far fa-eye"></span> ${curiosity.curiosityCount }
+												&nbsp;&nbsp;<span class="fa fa-comment"></span> <span
+													id="replyCount">0</span>
+											</div>
+
+
+											<div class="col-md-6">
+											<span style="float: right" class="mt-4"><a
+												href="curiosityListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
+												<c:if test="${loginUser.memberNo eq curiosity.memberNo  }">
+													<a
+														href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
 									    <a href="#">삭제</a>
-									    </c:if>
-									    </small>
-									    
-									  </div>
+												</c:if> </span>
+
+											</div>
+										</div>
+										
 									</div>
-										<hr>
+									<hr>
 											<div class="row">										
 												<div class="col-md-12 contact-wrap w-100 p-md-5 p-3" style="min-height: 300px">
 													${curiosity.curiosityContents }

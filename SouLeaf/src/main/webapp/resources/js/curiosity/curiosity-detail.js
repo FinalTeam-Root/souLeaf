@@ -90,7 +90,7 @@ function replyRegister(curiosityNo){
 }
 
 function replyModifyView(obj,curiosityNo,memberNo,replyNo,content){	
-    $textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:11%; height: 32px !important;" class="form-control" id="replyReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:5%;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
+    $textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
 	$(".curiosity-btn").hide();
   $(obj).hide();  
   $(obj).parent().parent().parent().after($textarea);

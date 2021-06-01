@@ -80,7 +80,7 @@ height:50px;
  <div class="container p-5 mt-4" >
 <div class="row m-5 no-gutters shadow-lg">
 <div class="col-md-6 d-none d-md-block">
-<img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" class="img-fluid" style="min-height:100%;" />
+<img src="/resources/images/login_main_2.jpg" class="img-fluid" style="min-height:100%;" />
 </div>
 <div class="col-md-6 bg-white p-5">
 <div align="center">
@@ -96,7 +96,7 @@ height:50px;
   </div>
   <div class="d-flex align-items-center justify-content-between">
 <div class="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span class="pl-2 font-weight-bold">아이디 저장</span></div>
-<div><a href="#">비밀번호 찾기</a></div>
+<div><a href="#">아이디 찾기</a>&nbsp;&nbsp;&nbsp; <a href="#">비밀번호 찾기</a></div>
 </div>
    <div class="pb-2">
   <button type="submit" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
@@ -107,7 +107,7 @@ height:50px;
   <button type="submit" class="btn btn-warning w-100 font-weight-bold mt-2 kakao-btn"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-topic.png" style="width:23px;"/> 카카오톡계정으로 로그인</button>
   </div>
   <div class="pt-4 text-center">
-  아직 회원이 아니신가요? <a href="enrollView.kh">회원가입</a>
+  <a href="enrollView.kh">아직 회원이 아니신가요? </a>
   </div>
 </div>
 	
