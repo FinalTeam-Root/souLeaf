@@ -83,6 +83,10 @@ function typing(){
 	$("#plantSearch").on("focus" , function(){
 		$(".typing").hide();
 	});
+  $(".typing").on("click", function(){
+    $(".typing").hide();
+    $("#plantSearch").focus();
+  });
 });
 
 
