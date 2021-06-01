@@ -86,6 +86,12 @@ public class CuriosityServiceImpl implements CuriosityService {
 		return 0;
 	}
 
+	@Override
+	public void addViewCount(int curiosityNo) {
+		cStore.updateViewCount(curiosityNo);
+		
+	}
+
 	
 
 }

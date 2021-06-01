@@ -22,4 +22,5 @@ public interface CuriosityStore {
 	public int insertCuriosityReply(CuriosityReply reply); // 댓글 등록
 	public int updateCuriosityReply(CuriosityReply reply); // 댓글 수정
 	public int deleteCuriosityReply(int curiosityNo); // 댓글 삭제
+	public void updateViewCount(int curiosityNo); // 조회수 증가
 }

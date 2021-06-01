@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,34 +27,40 @@
 							<div class="row no-gutters">
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-									<h2 class="heading-section p-1">${curiosity.curiosityContent }</h2>
-									<div class="media p-2">
-									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width:60px; height: 60px">
+									<h2 class="heading-section p-1 ml-3">${curiosity.curiosityContent }</h2>
+									<div class="media p-1 ml-3">
+									  <img src="resources/images/main_bg_8.jpg" alt="John Doe" class="mr-1 rounded-circle" style="width:60px; height: 60px">
 									  <div class="media-body">
-									  <div class="dropdown">
-  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="dropdown mt-2">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 12px 10px;    text-transform: none;">
     ${curiosity.memberNick }
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="diaryMainOtherView.kh?memberDiary=${curiosity.memberNo }">일기 보러가기</a>
     <a class="dropdown-item" href="#">1:1 채팅</a>
   </div>
+  <small>${curiosity.curiosityDate } &nbsp;&nbsp;<span class="far fa-eye"></span> ${curiosity.curiosityCount } &nbsp;&nbsp;<span class="fa fa-comment"></span> <span id="replyCount">0</span></small>
 </div>
 									   
-									    <small>${curiosity.curiosityDate }</small>
-									    <small align="right">조회수 ${curiosity.curiosityCount }</small>
-									    <small style="float: right"><a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp; <a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a></small>
+									    
+									    
+									    <small style="float: right"><a href="curiosityListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
+									     <c:if test="${loginUser.memberNo eq curiosity.memberNo  }">
+									    <a href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
+									    <a href="#">삭제</a>
+									    </c:if>
+									    </small>
 									    
 									  </div>
 									</div>
 										<hr>
 											<div class="row">										
-												<div class="col-md-12 contact-wrap w-100 p-md-5 p-4" style="min-height: 300px">
+												<div class="col-md-12 contact-wrap w-100 p-md-5 p-3" style="min-height: 300px">
 													${curiosity.curiosityContents }
 												</div>
 											</div>
 										<hr>
-										
+										<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
 									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
 									<input type="hidden" id="curiosityNo" value="${curiosity.curiosityNo }">
 									<span id="curiosity-comment"></span>
@@ -68,9 +75,9 @@
   </div>
 </div> -->
 									<br>
-									<div class="row">
-									<textarea class="form-control ml-4 mr-1 " id="replyContent" style="width: 90%" placeholder="댓글을 남겨주세요" ></textarea>
-									<button class="mt-4 p-2 btn btn-secondary" style="float:right;" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
+									<div class="row" style="position: relative;">
+									<input type="text" class="form-control" id="replyContent" style="width: 95%; margin-left:1.5%; height: 32px !important;" placeholder="댓글을 남겨주세요" >
+									<button class="mt-4 p-2 btn btn-secondary reply-btn" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
 									</div>
 									</div>
 								</div>

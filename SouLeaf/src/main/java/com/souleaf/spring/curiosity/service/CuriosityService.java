@@ -22,5 +22,6 @@ public interface CuriosityService {
 	public int registerCuriosityReply(CuriosityReply reply); // 댓글 등록
 	public int modifyCuriosityReply(CuriosityReply reply); // 댓글 수정
 	public int removeCuriosityReply(int curiosityNo); // 댓글 삭제
+	public void addViewCount(int curiosityNo); // 조회수 증가
 	
 }

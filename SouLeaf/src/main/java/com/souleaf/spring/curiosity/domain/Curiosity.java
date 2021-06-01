@@ -14,6 +14,7 @@ public class Curiosity {
 	private String memberNick;
 	private int curiosityCount;
 	private String curiosityContents;
+	private int replyCount;
 	
 	public Curiosity() {
 		// TODO Auto-generated constructor stub
@@ -21,7 +22,7 @@ public class Curiosity {
 
 	public Curiosity(int curiosityNo, String curiosityContent, String curiosityFileName, String curiosityFileRename,
 			Date curiosityDate, Date curiosityUpdate, String criosityStatus, int memberNo, String memberNick,
-			int curiosityCount, String curiosityContents) {
+			int curiosityCount, String curiosityContents, int replyCount) {
 		super();
 		this.curiosityNo = curiosityNo;
 		this.curiosityContent = curiosityContent;
@@ -34,6 +35,7 @@ public class Curiosity {
 		this.memberNick = memberNick;
 		this.curiosityCount = curiosityCount;
 		this.curiosityContents = curiosityContents;
+		this.replyCount = replyCount;
 	}
 
 	public int getCuriosityNo() {
@@ -124,15 +126,24 @@ public class Curiosity {
 		this.curiosityContents = curiosityContents;
 	}
 
+	public int getReplyCount() {
+		return replyCount;
+	}
+
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
+
 	@Override
 	public String toString() {
 		return "Curiosity [curiosityNo=" + curiosityNo + ", curiosityContent=" + curiosityContent
 				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFileRename=" + curiosityFileRename
 				+ ", curiosityDate=" + curiosityDate + ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus="
 				+ criosityStatus + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", curiosityCount="
-				+ curiosityCount + ", curiosityContents=" + curiosityContents + "]";
+				+ curiosityCount + ", curiosityContents=" + curiosityContents + ", replyCount=" + replyCount + "]";
 	}
 
+	
 	
 
 	

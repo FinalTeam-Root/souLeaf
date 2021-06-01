@@ -60,7 +60,6 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 리스트 출력
-	@ResponseBody
 	@RequestMapping(value="curiosityList.kh")
 	public void getCuriosityList(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception {
 		int currentPage = (page != null) ? page : 1;
@@ -76,7 +75,6 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 페이지 출력
-	@ResponseBody
 	@RequestMapping(value="curiosityPage.kh")
 	public void getCuriosityPage(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
 		int currentPage = (page != null) ? page : 1;
@@ -91,6 +89,7 @@ public class CuriosityController {
 	public ModelAndView curiosityDetailView(ModelAndView mv,@RequestParam("curiosityNo") int curiosityNo, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
 		int currentPage = (page != null) ? page : 1;
 		int currentCount = (count != null) ? count : 0;
+		cService.addViewCount(curiosityNo);
 		Curiosity curiosity = cService.printOne(curiosityNo);
 		if(curiosity != null) {
 			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("curiosity",curiosity).setViewName("curiosity/curiosityDetail");

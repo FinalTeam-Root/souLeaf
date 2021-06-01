@@ -90,7 +90,8 @@ function replyRegister(curiosityNo){
 }
 
 function replyModifyView(obj,curiosityNo,memberNo,replyNo,content){	
-    $textarea = '<div class="row"><textarea rows="1" style="width:80%" class="p-3 ml-5 mr-1  form-control" id="replyReContent">'+content+'</textarea><button class="mt-4 p-2 btn btn-secondary" style="float:right;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
+    $textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:11%; height: 32px !important;" class="form-control" id="replyReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:5%;" onclick="replyUpdate('+curiosityNo+','+memberNo+','+replyNo+')">수정</button></div>';
+	$(".curiosity-btn").hide();
   $(obj).hide();  
   $(obj).parent().parent().parent().after($textarea);
 }
@@ -118,7 +119,7 @@ function replyUpdate(curiosityNo,memberNo,replyNo){
 }
 
 function getReplyList(curiosityNo){	
-	
+	var loginNo = $("#loginNo").val();
 	$.ajax({
 		url : "curiosityReplyList.kh",
 		type:"get",
@@ -129,14 +130,21 @@ function getReplyList(curiosityNo){
 			var str = "";
 			if(data.length > 0){
 				$("#comment-count").text(data.length);
+				$("#replyCount").text(data.length);
 		
 		 for(var i in data){
 			str+='<div class="media p-3">';
-			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mx-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
 			str+='<div class="media-body">';
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
 			str+='<span>'+data[i].curicommentContent+'</span><br>';
-			str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger curiosity-btn">삭제</span></small><br>';
+            if(loginNo == data[i].memberNo){
+				str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger curiosity-btn">삭제</span></small><br>';
+
+			}else{
+				str+='<small>'+data[i].curicommentDate+'</small><br>';
+			}
+
 			str+='</div>';
 			str+='</div>';
 		 }

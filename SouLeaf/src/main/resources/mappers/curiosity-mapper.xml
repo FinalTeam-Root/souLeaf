@@ -13,6 +13,7 @@
 		<result property="memberNick" column="MEMBER_NICK"/>
 		<result property="curiosityCount" column="CURIOSITY_COUNT"/>
 		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
+		<result property="replyCount" column="REPLY_COUNT"/>
 	</resultMap>
 	
 	<resultMap type="CuriosityReply" id="curiosityReplyResultMap">
@@ -38,8 +39,12 @@
 	</if>
 	</update>
 	
+	<update id="updateViewCount">
+		UPDATE CURIOSITY SET CURIOSITY_COUNT = CURIOSITY_COUNT+1 WHERE CURIOSITY_NO = #{curiosityNo}
+	</update>
+	
 	<select id="selectAllList" parameterType="Curiosity" resultMap="curiosityResultMap">
-		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+		SELECT CURIOSITY_NO,CURIOSITY_CONTENT,CURIOSITY_DATE,CURIOSITY_FILERENAME,MEMBER_NO,MEMBER_NICK,CURIOSITY_COUNT,(SELECT COUNT(*) FROM CURICOMMENT B WHERE A.CURIOSITY_NO=B.CURIOSITY_NO) REPLY_COUNT FROM CURIOSITY A JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
 	</select>
 	
 	<select id="selectCuriosity" parameterType="Curiosity" resultMap="curiosityResultMap">

@@ -121,5 +121,14 @@
 .curiosity-btn{
 	
 	cursor: pointer;
-	}
 }
+
+
+.reply-btn{
+	    float: right;
+    position: absolute;
+    top: -24px;
+    right: 15px;
+    height: 32px;
+}
+
