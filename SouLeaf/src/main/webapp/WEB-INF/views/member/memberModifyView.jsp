@@ -79,6 +79,8 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<button type="submit" id="modifybtn" class="btn btn-primary">수정하기</button>
+													<button type="submit" id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'" class="btn btn-primary">취소</button>
+													<%-- <button id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'">취소</button> --%>
 													<div class="submitting"></div>
 												</div>
 											</div>
