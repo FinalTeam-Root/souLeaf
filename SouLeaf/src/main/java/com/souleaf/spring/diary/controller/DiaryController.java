@@ -110,7 +110,6 @@ public class DiaryController {
 		}
 	} 
 	
-	
 	// 이놈은 필요없다!
 	// 일기 상세 불러오기
 	@RequestMapping(value="detailDiary.kh", method=RequestMethod.POST)
@@ -177,12 +176,12 @@ public class DiaryController {
             reDiary.setdiaryColor("#4d638c");
             reDiary.setImgUrl("resources/images/watericon.png");
             dService.registerDiary(reDiary);
-            return "redirect:diaryMainView.kh";
+            return "redirect:diaryMainView.kh?memberNo="+diary.getMemberNo();
          }
       } catch (Exception e) {
          e.printStackTrace();
       } 
-      return "redirect:diaryMainView.kh";
+      return "redirect:diaryMainView.kh?memberNo="+diary.getMemberNo();
    }
 	
 	// 파일 저장하기

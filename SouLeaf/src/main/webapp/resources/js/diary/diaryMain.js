@@ -441,7 +441,7 @@ function getDiaryPicList(){
     data : {"memberNo": memberNo},
     dataType : "json",
     success : function(data){
-      var $carouselInner = $('.carousel-inner');
+      var $carouselInner = $('#carouselPicture');
       $carouselInner.html("");
       var $carouselItemActive;
       var $carouselItem;

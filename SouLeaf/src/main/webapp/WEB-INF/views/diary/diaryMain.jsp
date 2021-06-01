@@ -82,15 +82,26 @@
 					</div>
 					<div class="video-play">
 						<div class="play">
-							<img alt="" src="resources/images/about.jpg">
+							<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="200">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
+									</div>
+									<div class="carousel-item">
+										<img src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<!-- 사진 영역  -->
 				<div class="picture-section">
-					<div id="carouselExampleControls" class="carousel slide"
-						data-touch="false" data-interval="false">
-						<div class="carousel-inner">
+					<div id="carouselExampleControls" class="carousel slide" data-touch="false" data-interval="false">
+						<div class="carousel-inner" id="carouselPicture">
 						<!-- <div class="carousel-item active">
 					 			<div class="row">
 							        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
