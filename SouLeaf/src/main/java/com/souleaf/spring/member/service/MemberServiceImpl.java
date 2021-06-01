@@ -46,15 +46,16 @@ public class MemberServiceImpl implements MemberService {
 		return mStore.deleteMember(memberId);
 	}
 
-	@Override
-	public int checkNick(String memberNick) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public Member printMember(int memberNo) {
 		return mStore.selectMember(memberNo);
 	}
+
+	@Override
+	public int checkNickDup(String memberNick) {
+		return mStore.checkNickDup(memberNick);
+	}
+
 
 }

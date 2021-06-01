@@ -52,4 +52,9 @@ public class MemberStoreLogic implements MemberStore {
 	public Member selectMember(int memberNo) {
 		return sqlSession.selectOne("memberMapper.selectMember", memberNo);
 	}
+
+	@Override
+	public int checkNickDup(String memberNick) {
+		return sqlSession.selectOne("memberMapper.checkNickDup", memberNick);
+	}
 }

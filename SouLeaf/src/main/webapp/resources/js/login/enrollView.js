@@ -4,7 +4,7 @@
 
 
 $(function(){ // code insert
-	$(".classId").focusout(function() {
+	$(".classId").keyup(function() {
 	 $.ajax({
 	        url :"/idCheck.kh",
 	        type:"post",
@@ -30,7 +30,7 @@ $(function(){ // code insert
 			var test = alert("정보수정이 완료되었습니다.");
 			
 		});
-});
+
 
 
 		$(".passwordCheck").keyup(function() {
@@ -65,14 +65,50 @@ $(function(){ // code insert
 		}
 
 	}    
-
-
-
+	
+		$(".classId").keyup(function() {
+		 $.ajax({
+				url :"/idCheck.kh",
+				type:"post",
+				data: {"memberId": $("#id").val()},
+			  success : function(data) {
+				  
+				   if(data != 0){
+					$("#checkId").html("중복된 아이디 입니다");
+				  }else {
+				   $("#checkId").html("사용 가능한 아이디 입니다");
+				   }
+			  }  
+	
+			  
+			  });
+			  
+			});
+		
+				$(".classNick").keyup(function() {
+				 $.ajax({
+						url :"/nickCheck.kh",
+						type:"post",
+						data: {"memberNick": $("#nick").val()},
+					  success : function(data) {
+						  
+						   if(data != 0){
+							$("#checkNick").html("중복된 닉네임 입니다");
+						  }else {
+						   $("#checkNick").html("사용 가능한 닉네임 입니다");
+						   }
+					  }  
+			
+					  
+					  });
+								
+					});
+				});
  
 	       	
 	        
 	       
 	     	
 	
-	        
-
+				
+		

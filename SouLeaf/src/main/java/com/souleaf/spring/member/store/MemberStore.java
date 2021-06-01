@@ -12,4 +12,5 @@ public interface MemberStore {
 	public int deleteMember(String memberId);
 	public Member loginMember(Member member); // 로그인
 	public Member selectMember(int memberNo);
+	public int checkNickDup(String memberNick);
 }

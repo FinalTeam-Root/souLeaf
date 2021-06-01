@@ -59,6 +59,9 @@ height:50px;
 #signbtn{
 	border-radius:5px;
 }
+.checkBtn {
+color:red;
+}
 </style>
 </head>
 <body>
@@ -77,13 +80,16 @@ height:50px;
     <input type="text" placeholder="아이디" name="memberId" class="form-control classId" id="id">
   </div>
   <div class="form-group">
-       <p id="checkId">
+       <p id="checkId" class="checkBtn">
   </div>
   <div class="form-group pb-3">   
-    <input type="password" placeholder="닉네임" name="memberNick" class="form-control classId" id="nick">
+    <input type="text" placeholder="닉네임" name="memberNick" class="form-control classNick" id="nick" maxlength="6">
+  </div>
+  <div class="form-group">
+       <p id="checkNick" class="checkBtn">
   </div>
   <div class="form-group pb-3">   
-    <input type="text" placeholder="이메일" name="memberMail" class="form-control classId" id="email">
+    <input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
   </div>
   <div class="form-group pb-3">   
     <input type="password" placeholder="패스워드" name="memberPw" class="form-control passwordCheck" id="password">
@@ -92,7 +98,7 @@ height:50px;
     <input type="password" placeholder="패스워드 확인" name="password1" class="form-control passwordCheck" id="password1">
   </div>
   <div class="form-group pb-3">
-         <p id="passwordCheck">
+         <p id="passwordCheck" class="checkBtn">
   </div>
   <div class="d-flex align-items-center justify-content-between">
 </div>
@@ -106,8 +112,8 @@ height:50px;
 </div>
 </div>
 </div>
-<script type="text/javascript" language="javascript" src="/sha256min.js"></script>
- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+ <script type="text/javascript" language="javascript" src="/sha256min.js"></script> 
+ <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="resources/js/login/enrollView.js"></script>
  <script src="resources/js/login/main.js"></script>

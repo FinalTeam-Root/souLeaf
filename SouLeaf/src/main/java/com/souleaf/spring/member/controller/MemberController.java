@@ -328,4 +328,13 @@ public class MemberController {
 		result = mService.checkIdDup(member.getMemberId()) > 0 ? 1 : 0;
 		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
 	}
+	// 닉네임 중복 검사
+	@RequestMapping(value = "nickCheck.kh", method = RequestMethod.POST)
+	public void nickDupleCheck(HttpServletResponse response, @ModelAttribute Member member)
+			throws JsonIOException, IOException {
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 고정
+		Integer result = 0; // 변수 값
+		result = mService.checkNickDup(member.getMemberNick()) > 0 ? 1 : 0;
+		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
+	}
 }

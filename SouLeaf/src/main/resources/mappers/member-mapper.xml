@@ -27,6 +27,10 @@
  	SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID = #{memberId}
  </select>
  
+ <select id="checkNickDup" resultType="_int">
+ 	SELECT COUNT(*) FROM MEMBER WHERE MEMBER_NICK = #{memberNick}
+ </select>
+ 
  <insert id="insertMember" parameterType="Member">
  	INSERT INTO MEMBER(MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NICK, MEMBER_NAME, MEMBER_MAIL, MEMBER_JOIN, MEMBER_OUT, MEMBER_STATUS) VALUES(SEQ_MEMBER.NEXTVAL, #{memberId}, #{memberPw}, #{memberNick}, #{memberName}, #{memberMail}, SYSDATE, NULL, 'Y')
  </insert>
