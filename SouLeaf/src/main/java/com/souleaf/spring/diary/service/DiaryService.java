@@ -17,6 +17,9 @@ public interface DiaryService {
 	// 해당 날짜 클릭시 등록된 일기 보기
 	public Diary printOneDiary(int diaryNo);
 	
+	// 물 줘야 하는 날 등록
+	public int registerWaterDiary(Diary diary);
+	
 	// 내 반려식물 전체 조회 
 	public ArrayList<Companion> printAllCompanion(int memberNo);
 	// 일기 등록

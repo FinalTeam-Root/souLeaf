@@ -115,5 +115,11 @@ public class DiaryServiceImpl implements DiaryService{
 		return dStore.selectAllPicOneComanion(diary);
 	}
 
+	// 물 줘야 하는 날 등록
+	@Override
+	public int registerWaterDiary(Diary diary) {
+      return dStore.insertWaterDiary(diary);
+	}
+
 
 }

@@ -13,6 +13,8 @@ public interface DiaryStore {
 		public Member selectOneMember(int memberNo);
 		// 다이어리 전체 내용 불러오기
 		public ArrayList<Diary> selectAllDiary(int memberNo);
+		// 물 줘야 하는 날 등록
+	    public int insertWaterDiary(Diary diary);
 		// 해당 날짜 클릭시 등록된 일기 보기
 		public Diary selectOneDiary(int diaryNo);
 		// 내 반려식물 전체 조회 

@@ -35,7 +35,7 @@
  	</resultMap>
  	
  	<select id="selectAllDairy" resultType="CalendarView">
- 		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
+ 		SELECT DIARY_NO AS "diaryNo" ,DIARY_TITLE AS "title",DIARY_CONTENT AS "constraint",DIARY_STARTDATE AS "start",DIARY_ENDDATE AS "end",DIARY_UPDATE,DIARY_COLOR AS "color",DIARY_PICNAME AS "diaryPicname",DIARY_REPICNAME AS "diaryRepicname",D.MEMBER_NO AS "memberNo",C.COMPANION_NICK AS "companionNick", C.COMPANION_LASTWATER AS "companionLastwater", C.COMPANION_NEEDWATER AS "companionNeedwater", COMPANION_NO AS "companionNo" ,IMG_URL AS "image_url" FROM DIARY D LEFT JOIN COMPANION C USING (COMPANION_NO) WHERE D.MEMBER_NO = #{memberNo}
  	</select>
  	
  	<select id="selectOneDiary" parameterType="Diary" resultMap="diaryResultMap">
@@ -47,8 +47,7 @@
 	</select>
 	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
-		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY 
-		FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
+		SELECT GUESTBOOK_NO, GUESTBOOK_CONTENT, GUESTBOOK_DATE, GUESTBOOK_UPDATE, MEMBER_NO, MEMBER_NICK ,MEMBER_DIARY,MEMBER_FILERENAME FROM GUESTBOOK JOIN MEMBER USING(MEMBER_NO) WHERE MEMBER_DIARY = #{memberDiary} ORDER BY GUESTBOOK_DATE DESC
 	</select>
 	
 	<select id="selectByMemberDiary" parameterType="Diary" resultMap="diaryResultMap">
@@ -62,6 +61,10 @@
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
 		INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{companionNo},#{diaryStatus},#{imgUrl})
 	</insert>
+	
+	<insert id="insertWaterDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
+      INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{SEQ_COMPANION.CURRVAL},#{diaryStatus},#{imgUrl})
+  	</insert>
 	
 	<delete id="deleteReDiary">
 		DELETE FROM DIARY WHERE COMPANION_NO = #{companionNo} AND DIARY_STATUS =#{diaryStatus}

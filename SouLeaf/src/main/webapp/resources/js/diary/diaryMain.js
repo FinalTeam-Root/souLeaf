@@ -368,7 +368,7 @@ function getGuestbookList() {
          var $colmd10 = $("<div class='col-md-10'>");
          var $row = $("<div class='row'>");
 
-         $colmd2.append("<img src='https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png' class='img rounded-circle img-fluid user-img' style='width: 50px';'/><p class='text-secondary text-center'>"+data[i].memberNick+"</p></div>");
+         $colmd2.append("<img src='resources/images/basicMemberImg.png' class='img rounded-circle img-fluid user-img' style='width: 50px';'/><p class='text-secondary text-center'>"+data[i].memberNick+"</p></div>");
          var $clearfix = $("<div class='clearfix'>");
          $clearfix.append("<p>"+data[i].guestbookContent+"</p><span class='datetime'>"+data[i].guestbookDate+" </span>");
 

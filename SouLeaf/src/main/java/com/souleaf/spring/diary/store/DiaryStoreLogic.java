@@ -55,6 +55,11 @@ public class DiaryStoreLogic implements DiaryStore{
 	public int updateWater(Companion companion) {
 		return sqlSession.update("diaryMapper.updateWaterDay", companion);
 	}
+	// 물 줘야 하는 날 등록
+	@Override
+	public int insertWaterDiary(Diary diary) {
+      return sqlSession.insert("diaryMapper.insertWaterDiary",diary);
+	}
 	// 일기 수정
 	@Override
 	public int updateDiary(Diary diary) {

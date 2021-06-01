@@ -177,11 +177,11 @@ public class DiaryController {
             reDiary.setdiaryColor("#4d638c");
             reDiary.setImgUrl("resources/images/watericon.png");
             dService.registerDiary(reDiary);
+            return "redirect:diaryMainView.kh";
          }
       } catch (Exception e) {
          e.printStackTrace();
-         return "redirect:diaryMainView.kh";
-      }
+      } 
       return "redirect:diaryMainView.kh";
    }
 	
