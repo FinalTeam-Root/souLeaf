@@ -78,7 +78,7 @@
 												</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="submit" value="수정 완료" class="btn btn-primary">
+													<button type="submit" id="modifybtn" class="btn btn-primary">수정하기</button>
 													<div class="submitting"></div>
 												</div>
 											</div>
@@ -92,7 +92,7 @@
 			</div>
 		</div>
 	</section>
-	<script src="resources/js/login/memberModifyView.js"></script>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script src="resources/js/login/memberModifyView.js"></script>
 </body>
 </html>

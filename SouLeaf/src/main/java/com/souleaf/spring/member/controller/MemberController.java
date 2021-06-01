@@ -107,7 +107,7 @@ public class MemberController {
 		if (result > 0) {
 			session.setAttribute("loginMember", member);
 
-			return "redirect:home.kh";
+			return "redirect:myInfo.kh";
 		} else {
 			model.addAttribute("msg", "정보 수정 실패");
 			return "common/errorPage";
