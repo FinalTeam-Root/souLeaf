@@ -91,6 +91,11 @@ public class PlantStoreLogic implements PlantStore{
 		return (ArrayList)sqlSession.selectList("plantMapper.selectChoiceList", plantSelect);
 	}
 
+	@Override
+	public ArrayList<Plant> selectMemberCompanion(int memberNo) {
+		return (ArrayList)sqlSession.selectList("plantMapper.selectMemberCompanion", memberNo);
+	}
+
 	
 
 	

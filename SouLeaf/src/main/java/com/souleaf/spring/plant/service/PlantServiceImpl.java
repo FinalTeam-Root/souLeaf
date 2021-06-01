@@ -128,6 +128,11 @@ public class PlantServiceImpl implements PlantService{
 	public ArrayList<Plant> printSelectList(HashMap<String, String> plantSelect) {
 		return pStore.selectChoiceList(plantSelect);
 	}
+
+	@Override
+	public ArrayList<Plant> printMemberCompanion(int memberNo) {
+		return pStore.selectMemberCompanion(memberNo);
+	}
 	
 
 }
