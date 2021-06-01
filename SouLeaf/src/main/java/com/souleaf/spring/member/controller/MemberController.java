@@ -93,14 +93,18 @@ public class MemberController {
 
 	// 정보수정
 	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
-	public String modifyMember(@ModelAttribute Member member, Model model, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,  HttpServletRequest request) {
+	public String modifyMember(@ModelAttribute Member member, Model model,
+		@RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,
+		HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member) session.getAttribute("loginUser");
-		String memberFileRename = (String)session.getAttribute("fileName");
+		String memberFileRename = (String) session.getAttribute("fileName");
 		System.out.println("controller");
 		int memberNo = loginUser.getMemberNo();
+		member.setMemberMail(member.getMemberMail());
+		member.setMemberNick(member.getMemberNick());
+		member.setMemberIntro(member.getMemberIntro());
 		member.setMemberNo(memberNo);
-		member.setMemberName(memberFileRename);
 
 		// 암호 확인
 		System.out.println("첫번째:" + member.getMemberPw());
@@ -108,19 +112,50 @@ public class MemberController {
 		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
 		member.setMemberPw(encryPassword);
 		System.out.println("두번째:" + member.getMemberPw());
-		int result = mService.modifyMember(member);
-
-		if (result > 0) {
-			session.setAttribute("loginMember", member);
-			session.setAttribute("fileName", "");
-			return "redirect:myInfo.kh";
+		// 서버에 데이터를 저장하는 작업
+		if (!uploadFile.getOriginalFilename().equals("")) {
+			String renameFileName = saveFile(uploadFile, request);
+			if (renameFileName != null) {
+				member.setMemberPhoto(uploadFile.getOriginalFilename());
+				member.setMemberFileRename(renameFileName);
+			}
 		} else {
-			model.addAttribute("msg", "정보 수정 실패");
-			return "common/errorPage";
+			// 파일 삭제 후 업로드 (수정)
+			if (uploadFile != null && !uploadFile.isEmpty()) {
+				// 기존 파일 삭제
+				if (member.getMemberPhoto() != "") {
+					deleteFile(member.getMemberFileRename(), request);
+				}
+				// 새 파일 업로드
+				String memberReFilename = saveFile(uploadFile, request);
+				if (memberReFilename != null) {
+					member.setMemberPhoto(uploadFile.getOriginalFilename());
+					member.setMemberFileRename(memberReFilename);
+				}
+			}
+
 		}
 
+		int result = mService.modifyMember(member);
+		if(result > 0) {
+			return "redirect:myInfo.kh";
+		}
+		return "redirect:myInfo.kh";
+		
+
+
 	}
-	
+	// 저장된 파일 삭제
+		public void deleteFile(String fileName, HttpServletRequest request) {
+			String root = request.getSession().getServletContext().getRealPath("resuorces");
+			String savePath = root + "/uploadFiles/member";
+			File file = new File(savePath + "/" + fileName);
+			if(file.exists()) {
+				file.delete();
+			}
+		}
+
+
 	public String saveFile(MultipartFile file, HttpServletRequest request) {
 		// 파일 저장 경로 설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -328,6 +363,7 @@ public class MemberController {
 		result = mService.checkIdDup(member.getMemberId()) > 0 ? 1 : 0;
 		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
 	}
+
 	// 닉네임 중복 검사
 	@RequestMapping(value = "nickCheck.kh", method = RequestMethod.POST)
 	public void nickDupleCheck(HttpServletResponse response, @ModelAttribute Member member)

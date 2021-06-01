@@ -24,7 +24,7 @@
 							<div class="col-md-12">
 								<div class="contact-wrap w-100 p-md-5 p-4">
 									<form action="memberModify.kh" method="post" id="contactForm"
-										name="contactForm" class="contactForm">
+										name="contactForm" class="contactForm" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group">
@@ -40,6 +40,12 @@
 														type="text" class="form-control" name="memberName"
 														id="memberName" placeholder="memberName"
 														value="${mOne.memberName }" readonly>
+												</div>
+												<div class="form-group">
+													<label class="label" for="memberFileRename">사진파일</label> <input
+														type="file" class="form-control" name="uploadFile"
+														id="memberFilerename" placeholder="memberFilerename"
+														value="${mOne.memberFileRename }" readonly>
 												</div>
 											</div>
 											<div class="col-md-6">
