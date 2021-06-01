@@ -26,6 +26,10 @@ $(function(){ // code insert
 		$("#password").on("keyup",function(){
 			passwordCheck();
 		  });
+			$("#signbtn").on("click",function(){
+			var test = alert("정보수정이 완료되었습니다.");
+			
+		});
 });
 
 
