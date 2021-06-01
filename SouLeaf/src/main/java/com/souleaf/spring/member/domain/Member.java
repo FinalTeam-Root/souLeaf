@@ -15,7 +15,8 @@ public class Member {
 	private Date memberOut;
 	private String memberIntro;
 	private String memberStatus;
-
+	private String memberFileRename;
+	private String memberFileName;
 	public Member() {}
 	
 		
@@ -32,7 +33,7 @@ public class Member {
 
 	public Member(int memberNo, String memberId, String memberPw, String memberNick, String memberName,
 			String memberPhone, String memberMail, String memberPhoto, Date memberJoin, Date memberOut,
-			String memberIntro, String memberStatus) {
+			String memberIntro, String memberStatus, String memberFileRename, String memberFileName) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -46,6 +47,8 @@ public class Member {
 		this.memberOut = memberOut;
 		this.memberIntro = memberIntro;
 		this.memberStatus = memberStatus;
+		this.memberFileRename = memberFileRename;
+		this.memberFileName = memberFileName;
 	}
 
 
@@ -219,19 +222,43 @@ public class Member {
 
 
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+
+
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
+
+
+
+	public String getMemberFileName() {
+		return memberFileName;
+	}
+
+
+
+
+	public void setMemberFileName(String memberFileName) {
+		this.memberFileName = memberFileName;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick="
 				+ memberNick + ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", memberMail="
 				+ memberMail + ", memberPhoto=" + memberPhoto + ", memberJoin=" + memberJoin + ", memberOut="
-				+ memberOut + ", memberIntro=" + memberIntro + ", memberStatus=" + memberStatus + "]";
+				+ memberOut + ", memberIntro=" + memberIntro + ", memberStatus=" + memberStatus + ", memberFileRename="
+				+ memberFileRename + ", memberFileName=" + memberFileName + "]";
 	}
 
 
-
- 
-
-
-	
 
 }

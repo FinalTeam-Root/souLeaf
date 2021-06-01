@@ -4,18 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="memberMapper" >
  <resultMap type="Member" id="memberResultMap">
- <id property="memberNo" column="MEMBER_NO"></id>
- <result property="memberId" column="MEMBER_ID"/>
- <result property="memberPw" column="MEMBER_PW"/>
- <result property="memberNick" column="MEMBER_NICK"/>
- <result property="memberName" column="MEMBER_NAME"/>
- <result property="memberPhone" column="MEMBER_PHONE"/>
- <result property="memberMail" column="MEMBER_MAIL"/>
- <result property="memberPhoto" column="MEMBER_PHOTO"/>
- <result property="memberJoin" column="MEMBER_JOIN"/>
- <result property="memberOut" column="MEMBER_OUT"/>
- <result property="memberStatus" column="MEMBER_STATUS"/>
- <result property="memberIntro" column="MEMBER_INTRO"/>
+	 <id property="memberNo" column="MEMBER_NO"></id>
+	 <result property="memberId" column="MEMBER_ID"/>
+	 <result property="memberPw" column="MEMBER_PW"/>
+	 <result property="memberNick" column="MEMBER_NICK"/>
+	 <result property="memberName" column="MEMBER_NAME"/>
+	 <result property="memberPhone" column="MEMBER_PHONE"/>
+	 <result property="memberMail" column="MEMBER_MAIL"/>
+	 <result property="memberPhoto" column="MEMBER_PHOTO"/>
+	 <result property="memberJoin" column="MEMBER_JOIN"/>
+	 <result property="memberOut" column="MEMBER_OUT"/>
+	 <result property="memberStatus" column="MEMBER_STATUS"/>
+	 <result property="memberIntro" column="MEMBER_INTRO"/>
+	 <result property="memberFileName" column="MEMBER_FILENAME"/>
+	 <result property="memberFileRename" column="MEMBER_FILERENAME"/>
  </resultMap>
  <select id="loginMember" parameterType="Member" resultMap="memberResultMap">
  SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw} AND MEMBER_STATUS = 'Y'
@@ -31,7 +33,7 @@
  
  <update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
-		SET MEMBER_PW = #{memberPw}, MEMBER_NICK = #{memberNick}, MEMBER_MAIL = #{memberMail}, MEMBER_INTRO = #{memberIntro}, MEMBER_PHOTO = #{memberPhoto}
+		SET MEMBER_PW = #{memberPw}, MEMBER_NICK = #{memberNick}, MEMBER_MAIL = #{memberMail}, MEMBER_FILERENAME = #{memberFileRename}, MEMBER_INTRO = #{memberIntro}, MEMBER_PHOTO = #{memberPhoto}
 		WHERE MEMBER_ID = #{memberId}
  </update>
  
