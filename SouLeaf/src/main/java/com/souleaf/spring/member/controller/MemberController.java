@@ -1,8 +1,11 @@
 package com.souleaf.spring.member.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -89,12 +93,14 @@ public class MemberController {
 
 	// 정보수정
 	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
-	public String modifyMember(@ModelAttribute Member member, Model model, HttpServletRequest request) {
+	public String modifyMember(@ModelAttribute Member member, Model model, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,  HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member loginUser = (Member) session.getAttribute("loginUser");
+		String memberFileRename = (String)session.getAttribute("fileName");
 		System.out.println("controller");
 		int memberNo = loginUser.getMemberNo();
 		member.setMemberNo(memberNo);
+		member.setMemberName(memberFileRename);
 
 		// 암호 확인
 		System.out.println("첫번째:" + member.getMemberPw());
@@ -106,13 +112,47 @@ public class MemberController {
 
 		if (result > 0) {
 			session.setAttribute("loginMember", member);
-
+			session.setAttribute("fileName", "");
 			return "redirect:myInfo.kh";
 		} else {
 			model.addAttribute("msg", "정보 수정 실패");
 			return "common/errorPage";
 		}
 
+	}
+	
+	public String saveFile(MultipartFile file, HttpServletRequest request) {
+		// 파일 저장 경로 설정
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String savePath = root + "/uploadFiles/member"; // /uploadFiles/diary 이런식으로
+
+		// 저장 폴더 선택
+		File folder = new File(savePath);
+		// 폴더없으면 자동 생성
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+		// 파일명 변경하기
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String originalFileName = file.getOriginalFilename();
+		String renameFileName = sdf.format(new Date(System.currentTimeMillis())) + "."
+				+ originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+		// a.bc.jpg
+		String filePath = folder + "/" + renameFileName;
+		// 파일저장
+		try {
+			file.transferTo(new File(filePath));
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// 리턴
+		HttpSession session = request.getSession();
+		session.setAttribute("fileName", renameFileName);
+		return renameFileName;
 	}
 
 	// 회원 탈퇴
