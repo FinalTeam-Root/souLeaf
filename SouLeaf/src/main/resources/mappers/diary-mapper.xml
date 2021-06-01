@@ -63,7 +63,7 @@
 	</insert>
 	
 	<insert id="insertWaterDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">
-      INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},#{SEQ_COMPANION.CURRVAL},#{diaryStatus},#{imgUrl})
+      INSERT INTO DIARY VALUES (SEQ_DIARY.NEXTVAL,#{diaryTitle},#{diaryContent},#{diaryStartDate},#{diaryStartDate},NULL,#{diaryColor},#{diaryPicname},#{diaryRepicname},#{memberNo},SEQ_COMPANION.CURRVAL,#{diaryStatus},#{imgUrl})
   	</insert>
 	
 	<delete id="deleteReDiary">
