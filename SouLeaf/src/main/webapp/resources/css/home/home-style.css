@@ -18,18 +18,20 @@
 }
 
 .plant-search{
-	    border-top: 0;
+	border-top: 0;
     border-left: 0;
     border-right: 0;
     border-radius: 0;
-    padding-left: 0;  
+    padding-left: 0;
+      
 }
 .search-form .form-group input {
     padding-right: 0;
     font-size: 100px;
     font-weight:800;
     width: 300px;
-    display: revert;
+    display: revert; 
+    padding-top: 10px;
 }
 .form-control {
     height: 100px !important;
@@ -66,10 +68,16 @@
   line-height:1;
   position: absolute;
     left: 40%;
-    top: 10%;
+    top: 15%;
 } 
 @keyframes cursor{ 
   0%{border-right: 1px solid #fff} 
   50%{border-right: 1px solid #000} 
   100%{border-right: 1px solid #fff} 
+}
+
+.btn-outline-success {
+    color: #666;
+    border-color: #aaa;
+    font-size: 1.78571vw;
 }
