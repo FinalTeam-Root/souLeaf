@@ -11,10 +11,30 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <style type="text/css">
+ @font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body{
 /* background: #c9ccd1;  Old browsers */ 
-    background: #fff9e67a;
+    /* background: #fff9e67a; */
+    font-family:NanumSquareRound;
+    background: linear-gradient(
+45deg
+, #20ffb752 0%, #bd83003b 100%);
 }
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #00bd56; }
+  a:hover, a:focus {
+    text-decoration: none;
+    color: #00bd56;
+    outline: none !important; }
+
 .form-style input{
 	border:0;
 	height:50px;
@@ -87,7 +107,7 @@ height:50px;
   <button type="submit" class="btn btn-warning w-100 font-weight-bold mt-2 kakao-btn"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-topic.png" style="width:23px;"/> 카카오톡계정으로 로그인</button>
   </div>
   <div class="pt-4 text-center">
-  <a href="enrollView.kh">회원가입</a>
+  아직 회원이 아니신가요? <a href="enrollView.kh">회원가입</a>
   </div>
 </div>
 	
@@ -98,7 +118,7 @@ height:50px;
 
  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!——— Include the above in your HEAD tag —————>
 
 </body>
 </html>
