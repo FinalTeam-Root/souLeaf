@@ -5,244 +5,102 @@
 <head>
 <meta charset="UTF-8">
 <title>souLeaf - 로그인</title>
+<link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <style type="text/css">
-
-body {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 300;
-  color:#fff;
-  line-height:1.2;
-  margin:0;
-  background:linear-gradient(to bottom, rgba(0, 0, 0,0.1) 0%, rgba(0, 0, 0, 0.1) 100%), url(resources/images/main_bg_14.jpg);
-  background-repeat:repeat;
-  background-size:cover;
-  font-size: 18px;
+body{
+/* background: #c9ccd1;  Old browsers */ 
+    background: linear-gradient(
+45deg
+, #207dff 0%, #00bd55 100%);
 }
-.info {
-  margin-bottom:50px;
-}
-.info p {
-  text-align:center;
-  color: #fff;
-  text-transform:none;
-  font-weight:500;
-  font-size:17px;
-  margin-top:2px
-}
-
-.info i {
-  color:#F31131;
-}
-.clearfix {clear:both;}
-
-textarea:focus, input:focus{
-    outline: none;
-}
-
-h1 {
-  text-align:center; 
-  color: #fff;
-  text-shadow: 1px 1px 0px #222;
-  margin:50px 0px 0px 0px;
-  font-size:32px;
-  font-weight:500;
-}
-h2 {
-  font-weight:300;
-  font-size:27px;
-  margin:0px;
-  text-align:center;
-  text-transform:uppercase;
-  margin-top:50px;
-  padding-bottom:15px;
-}
-a {
-  text-decoration: inherit;
-  color: inherit;
-}
-
-.container {
-  width:560px;
-  height:530px;
-  margin:auto;
-  display:block;
-  background-color:rgba(0,0,0,0.2);
-  border-radius:15px;
-  padding:15px;
-  margin-bottom:50px;
-}
-.login-form {
-  position:relative;
-  border:2px solid rgba(255,255,255,0.2);
-  width:99%;
-  height:99%;
-  margin:auto;
-  display:block;
-  vertical-align:middle;
-  border-radius:15px;
-}
-.login-form hr.to-right {
-  width: 45%;
-  position:absolute;
-  right:30px;
-  border: 0px none;
-  height: 3px;
-  background-image: linear-gradient(to left,transparent, #F9E206);
-}
-.login-form hr.to-left {
-  width: 45%;
-  position:absolute;
-  left:30px;
-  border: 0px none;
-  height: 3px;
-  background-image: linear-gradient(to right,transparent, #F9E206);
-}
-
-.container-login {
-  width:60%;
-  margin:auto;
-  display:block;
-  margin-top:30px;
-}
-
-label {
-  width: 100%;
-  display: inline-block;
-  padding:0px 0px 5px 5px;
-  margin-top: 20px;
-  font-size:18px;
-}
-input {
-  border: 0px none;
-  width: 94%;
-  border-radius: 4px;
-  height: 25px;
-  padding: 5px 3%;
-  font-size:15px;
-  font-family: inherit;
-  color:#222;
-}
-button {
-	width:100%;
-	background-color:rgba(74,129,51,0.4);
-	border:2px solid #6FC149;
-	color:#fff;
-	border-radius:5px;
+.form-style input{
+	border:0;
 	height:50px;
-	text-transform:uppercase;
-	font-size:19px;
-	cursor:pointer;
-	transition:all 0.3s;
+	border-radius:0;
+border-bottom:1px solid #ebebeb;	
+}
+.form-style input:focus{
+border-bottom:1px solid #007bff;	
+box-shadow:none;
+outline:0;
+background-color:#ebebeb;	
+}
+.sideline {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	color:#ccc;
+}
+button{
+height:50px;	
+}
+.sideline:before,
+.sideline:after {
+    content: '';
+    border-top: 1px solid #ebebeb;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
 }
 
-.login-footer {
-	margin-top:50px;
+.sideline:after {
+    margin: 0 0 0 20px;
 }
-.login-footer a {
-	font-size: 16px;
-	margin:5px 0px;
-	text-align:center;
-	color:rgba(255,255,255,0.4);
-	font-weight:400;
-	line-height:1.4;
-	display: block;
-	transition:all 0.2s;
+.kakao-btn{
+	background: #F7E600;
+	border-color: #F7E600;
+	color: #3b1e1e;
 }
-.login-footer a:hover {
-	color:rgba(255,255,255,0.7);
-}
-.login-footer i {
-	padding:0px 6px 0px 0px;
-}
-
-.check {
-	padding: 20px 0px;
-}
-.check label {
-    display:inline;
-	margin-top:5px;
-	position: relative;
-	top: 5px;
-}
-.check p {
-    display:inline;
-	margin-left: 8px;
-}
-.checkbox {
-    display: none;
-}
-
-.checkbox:checked + svg .path-moving {
-    -webkit-transition: stroke .4s,stroke-dasharray .4s,stroke-dashoffset .4s cubic-bezier(.3,.8,.6,1.5);
-    transition: stroke .4s,stroke-dasharray .4s,stroke-dashoffset .4s cubic-bezier(.3,.8,.6,1.5);
-    stroke-dasharray: 25 90;
-    stroke-dashoffset: 0;
-}
-
-.path-moving,
-.path-back {
-    fill: none;
-    stroke: #64A546;
-    stroke-width: 3px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.path-moving {
-    -webkit-transition: stroke .4s,stroke-dasharray .4s,stroke-dashoffset .4s;
-    transition: stroke .4s,stroke-dasharray .4s,stroke-dashoffset .4s;
-    stroke: #ffffff;
-    stroke-dasharray: 110;
-    stroke-dashoffset: -32;
-}
-
 </style>
-<body>
-  <h1>로그인</h1>
-  <div class="info"><a href="https://www.grandvincent-marion.fr" target="_blank"><p>  <i class="fa fa-heart"></i> Login </p></a></div>
-   <div class="container">
-      <form name="loginForm" class="loginForm" action="login.kh" method="POST">
-	<div class="login-form">
-		
-		<h2>Welcome to souLeaf</h2>
-		<hr class="to-right">
-		<hr class="to-left">
-		
-			<div class="container-login">
-		
-				<label>아이디(ID)</label>
-				<input type="text"  name="memberId" placeholder="아이디를 입력하세요"></input>
-			
-				<label>비밀번호(Password)</label>
-				<input type="password" name="memberPw" placeholder="●●●●●●●●●●" ></input>	
-				
-				<div class="check">
-						<label>				
-							<input id="check" type="checkbox" class="checkbox">
-								<svg xmlns="http://www.w3.org/2000/svg" width="26px" height="23px">
-									<path class="path-back"  d="M1.5,6.021V2.451C1.5,2.009,1.646,1.5,2.3,1.5h18.4c0.442,0,0.8,0.358,0.8,0.801v18.398c0,0.442-0.357,0.801-0.8,0.801H2.3c-0.442,0-0.8-0.358-0.8-0.801V6"/>
-									<path class="path-moving" d="M24.192,3.813L11.818,16.188L1.5,6.021V2.451C1.5,2.009,1.646,1.5,2.3,1.5h18.4c0.442,0,0.8,0.358,0.8,0.801v18.398c0,0.442-0.357,0.801-0.8,0.801H2.3c-0.442,0-0.8-0.358-0.8-0.801V6"/>
-								</svg>
-						</label>
-						<p>로그인 유지</p>
-					</div>
-				
-				<button>Login </button>
-				
-				<div class="login-footer">
-					<a href=""><i class="fa fa-exclamation-circle"></i> 비밀번호 찾기  </a>
-					<a href="enrollView.kh"><i class="fa fa-thumbs-up"></i> 회원가입   </a>
-				</div>
-				
-			</div>
-	
-	</form>
-	</div>
-  </div> 
-    
-
- 
 </head>
+<body>
+ <div class="container p-5 mt-4" >
+<div class="row m-5 no-gutters shadow-lg">
+<div class="col-md-6 d-none d-md-block">
+<img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" class="img-fluid" style="min-height:100%;" />
+</div>
+<div class="col-md-6 bg-white p-5">
+<h3 class="pb-3">Login Form</h3>
+<div class="form-style">
+<form action="login.kh" method="post">
+  <div class="form-group pb-3">    
+    <input type="text" placeholder="ID" class="form-control" name="memberId" id="exampleInputEmail1" >   
+  </div>
+  <div class="form-group pb-3">   
+    <input type="password" placeholder="Password" name="memberPw" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="d-flex align-items-center justify-content-between">
+<div class="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span class="pl-2 font-weight-bold">Remember Me</span></div>
+<div><a href="#">Forget Password?</a></div>
+</div>
+   <div class="pb-2">
+  <button type="submit" class="btn btn-success w-100 font-weight-bold mt-2">Login</button>
+   </div>
+</form>
+  <div class="sideline">OR</div>
+  <div>
+  <button type="submit" class="btn btn-warning w-100 font-weight-bold mt-2 kakao-btn"><i class="fa fa-facebook" aria-hidden="true"></i> Login With Kakao</button>
+  </div>
+  <div class="pt-4 text-center">
+  Get Members Benefit. <a href="enrollView.kh">Sign Up</a>
+  </div>
+</div>
+	<div align="center">
+		<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png" width="200"></a>
+	</div>
+</div>
+</div>
+</div>
+
+
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 </body>
-<%-- <jsp:include page="common/footer.jsp"></jsp:include> --%>
 </html>
