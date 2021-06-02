@@ -79,5 +79,9 @@
 .btn-outline-success {
     color: #666;
     border-color: #aaa;
-    font-size: 1.78571vw;
+    font-size: 1.28571vw;
+}
+
+.custom-btn{
+	color:#00b564; border-color:#00b564;  border-radius: 50px; font-size: 1.28571vw;
 }

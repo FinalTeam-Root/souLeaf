@@ -1,4 +1,4 @@
-
+$kind = 0, $property = 0;
 $( document ).ready(function() {
 open_chatroom();
 	$( window ).resize(function() {
@@ -110,3 +110,31 @@ function open_chatroom(){
 }
 }
 
+function kindSelect(value){
+  $kind = value;
+  console.log($.trim($("label[for='plant-kind"+value+"']").text()));
+  var kindText = $.trim($("label[for='plant-kind"+value+"']").text());
+  $("#plant-text").text(kindText);
+  $("#plant-text").css('color','#00b564');
+  $("#kind-form").hide();
+  $("#property-form").show();
+}
+
+function propertySelect(value){  
+  $property = value;
+  $("#select-btn").show();  
+}
+
+function resetSelect(){
+  $kind = 0;
+  $property = 0;
+  $("#plant-text").text('어떤 식물을');
+  $("#plant-text").css('color','#000');
+  $('.form-group').children('div').children().removeClass('active');
+  $("#property-form").hide();
+  $("#kind-form").show();
+}
+
+function plantSelect(){
+  location.href = 'plantListView.kh?kind='+$kind+'&property='+$property;
+}

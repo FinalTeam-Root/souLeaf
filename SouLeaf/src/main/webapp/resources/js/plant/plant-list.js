@@ -1,9 +1,20 @@
 $plantKind='1,2,3,4',$plantProperty='1,2,3,4,5,6',$plantLeaf='1,2,3,4,5,6,7,8,9,10';
 
 $(function(){
-  getPlantList();
-  $("#property-form").hide();
-  $("#leaf-form").hide();  
+  
+
+  if($("#kind-status").val() > 0){
+    $("#property-form").show();
+    $("#leaf-form").show(); 
+    $plantKind = $("#kind-status").val();
+    $plantProperty = $("#property-status").val();
+    $plantLeaf = $("#leaf-status").val();
+    getPlantSearchList();
+  }else{
+    getPlantList();
+    $("#property-form").hide();
+    $("#leaf-form").hide();  
+  }
 });
 
 function getPlantList(){
@@ -44,7 +55,7 @@ function getPlantList(){
 }
 
 function getPlantSearchList(obj){
-     
+ 
   var kind = $("input[name=plant-kind]:checked").val();
   var property = $("input[name=plant-property]:checked").val();
   var leaf = $("input[name=plant-leaf]:checked").val();    
@@ -63,7 +74,9 @@ function getPlantSearchList(obj){
     type: "get",
     data: {"plantKind":$plantKind,"plantProperty":$plantProperty,"plantLeaf":$plantLeaf},
     dataType:"json",
-    success: function(data){
+    success: function(data){ 
+      console.log($plantKind);
+      console.log(data);     
       $("#plant-count").text(data.length);
       $("#plant-list").html("");
       var str = "";
@@ -92,7 +105,7 @@ function getPlantSearchList(obj){
 
 
   });
-  
+  history.pushState("", "", "?kind="+$plantKind+"&property="+$plantProperty+"&leaf="+$plantLeaf);
 }
 
 

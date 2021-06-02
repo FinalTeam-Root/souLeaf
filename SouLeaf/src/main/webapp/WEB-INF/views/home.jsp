@@ -94,8 +94,8 @@
 </div> 
 
   
-    <section class="ftco-section ftco-no-pt ftco-no-pb" style="background: #fff">
-    	<div class="container">
+    <section class="ftco-section ftco-no-pt ftco-no-pb " style="background: #fff">
+    	<div class="container ftco-animate">
     		<div class="row d-flex no-gutters">
 
 			<div class="col-md-12 pl-md-5 py-md-5">
@@ -127,35 +127,56 @@
     </section>
 
 
-    <section class="ftco-section bg-light ftco-faqs">
-    	<div class="container">
+    <section class="ftco-section bg-light ftco-faqs ">
+    	<div class="container ftco-animate">
     		<div class="row">
     			<div class="col-lg-12" align="center">
     				<div class="heading-section mb-5 mt-5 mt-lg-0">
-	            <h1 class="mb-3" style="font-size:     font-size: 3.21429vw"><strong>어떤 종류의 식물을 찾고있나요?</strong></h1>
+	            <h1 class="mb-3" style="font-size:     font-size: 3.21429vw"><strong><span id="plant-text">어떤 식물</span>을 찾고있나요?</strong></h1>
     				</div>
-    				<div>
+    				
+    				
 					<div class="form-group contactForm" id="kind-form">
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-outline-success" for="plant-kind1"
-								style="border-radius: 50px"> <input type="radio"
-								name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
-							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
-								for="plant-kind2" style="border-radius: 50px"> <input
-								type="radio" name="plant-kind" id="plant-kind2" value="2">
-								공중식물
-							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
-								for="plant-kind3" style="border-radius: 50px"> <input
-								type="radio" name="plant-kind" id="plant-kind3" value="3">
-								다육식물
-							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
-								for="plant-kind4" style="border-radius: 50px"> <input
-								type="radio" name="plant-kind" id="plant-kind4" value="4">
-								덩굴식물
+							<label class="btn btn-outline-success" for="plant-kind1" style="border-radius: 50px" onclick="kindSelect(1)"> 
+							 	<input type="radio" name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
+							 </label>&nbsp;&nbsp;
+						    <label class="btn btn-outline-success" for="plant-kind2" style="border-radius: 50px" onclick="kindSelect(2)">
+						     	<input type="radio" name="plant-kind" id="plant-kind2" value="2">공중식물
+							</label>&nbsp;&nbsp; 
+							<label class="btn btn-outline-success"	for="plant-kind3" style="border-radius: 50px" onclick="kindSelect(3)"> 
+								<input type="radio" name="plant-kind" id="plant-kind3" value="3">다육식물
+							</label>&nbsp;&nbsp; 
+							<label class="btn btn-outline-success" for="plant-kind4" style="border-radius: 50px" onclick="kindSelect(4)">
+							 	<input type="radio" name="plant-kind" id="plant-kind4" value="4">덩굴식물
 							</label>
 						</div>
 					</div>
-				</div>
+					
+					<div class="form-group contactForm" id="property-form" style="display: none">
+						<button class="btn btn-outline-success custom-btn"  onclick="resetSelect()">뒤로</button>&nbsp;&nbsp;						
+						<div class="btn-group btn-group-toggle" data-toggle="buttons" >
+							<label class="btn btn-outline-success" for="plant-property1" onclick="propertySelect(1)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property1"  value="1" > 공기정화
+							</label>&nbsp;&nbsp;
+							<label class="btn btn-outline-success" for="plant-property2" onclick="propertySelect(2)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property2" value="2"> 향기나는
+							</label>&nbsp;&nbsp;
+							<label class="btn btn-outline-success" for="plant-property3" onclick="propertySelect(3)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property3"  value="3" > 반려동물 안전한
+							</label>&nbsp;&nbsp;
+							<label class="btn btn-outline-success" for="plant-property4" onclick="propertySelect(4)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property4"  value="4" > 빛이 적어도 되는
+							</label>&nbsp;&nbsp;
+							<label class="btn btn-outline-success" for="plant-property5" onclick="propertySelect(5)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property5"  value="5" > 열매 맺는
+							</label>&nbsp;&nbsp;
+							<label class="btn btn-outline-success" for="plant-property6" onclick="propertySelect(6)" style="border-radius: 50px">
+								<input type="radio" name="plant-property" id="plant-property6"  value="6" > 꽃이 피는
+							</label>&nbsp;&nbsp;	
+						</div>
+							<button class="btn btn-outline-success custom-btn" id="select-btn" style="display: none" onclick="plantSelect()">검색</button>
+					</div>
 	        </div>
         </div>
     	</div>

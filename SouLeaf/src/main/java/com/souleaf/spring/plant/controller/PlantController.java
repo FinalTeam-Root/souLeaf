@@ -38,10 +38,13 @@ public class PlantController {
 	
 		// 식물도감 리스트 페이지 이동 및 출력
 		@RequestMapping(value="plantListView.kh")
-		public ModelAndView plantListView(ModelAndView mv, Integer page, Model model, HttpServletRequest request) {
+		public ModelAndView plantListView(ModelAndView mv, HttpServletRequest request, @RequestParam(value = "kind", required = false) String kindValue, @RequestParam(value = "property", required = false) String proValue,@RequestParam(value = "leaf", required = false) String leafValue ) {
+			String kind = (kindValue != null) ? kindValue : "0";
+			String property = (proValue != null) ? proValue : "0";
+			String leaf = (leafValue != null) ? leafValue : "0";
 			HttpSession session = request.getSession();
 			session.setAttribute("nav", "plant");
-			mv.setViewName("plant/plantListView");
+			mv.addObject("kind",kind).addObject("property",property).addObject("leaf",leaf).setViewName("plant/plantListView");
 			
 			return mv;
 		}
@@ -78,7 +81,8 @@ public class PlantController {
 		
 		// 식물도감 검색페이지 이동 및 출력
 		@RequestMapping(value="plantSearch.kh")
-		public ModelAndView plantSearchView(ModelAndView mv,@RequestParam("search") String search) {
+		public ModelAndView plantSearchView(ModelAndView mv,@RequestParam("search") String search,HttpServletRequest session) {
+			session.setAttribute("nav", "plant");
 			ArrayList<Plant> pList = pService.printSearchAllList(search);
 			if(! pList.isEmpty()) {
 				mv.addObject("pList",pList).setViewName("plant/plantSearchView");
