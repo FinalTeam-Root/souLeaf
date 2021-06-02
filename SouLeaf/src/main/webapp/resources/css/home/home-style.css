@@ -67,8 +67,8 @@
   color:#999;
   line-height:1;
   position: absolute;
-    left: 40%;
-    top: 15%;
+    left: 38%;
+    top: 13%;
 } 
 @keyframes cursor{ 
   0%{border-right: 1px solid #fff} 

@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
-          	<h1 class="mb-4" style="font-size: 100px">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
+          	<h1 class="mb-4" style="  font-size: 5.78571vw;">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
             <!-- <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p> -->
           </div>
         </div>
@@ -97,29 +97,34 @@
     <section class="ftco-section ftco-no-pt ftco-no-pb" style="background: #fff">
     	<div class="container">
     		<div class="row d-flex no-gutters">
-    			
-    			<div class="col-md-12 pl-md-5 py-md-5">
-    				<div class="heading-section pt-md-5">
-	            <h3 class="mb-4" style="color:#00b564; font-weight: 800">Plant Search</h3>
-    				</div>
-    				<div class="row" align="center" >
-	    				<div class="col-md-12 services-2 w-100 d-flex" >
-	    					<div class="text pl-3">
-	    						
-			  <form action="plantSearch.kh" method="get" class="search-form">
-                <div class="form-group" >
-                 <h1 style="display: -webkit-inline-box; font-weight: 800; font-size: 100px; /* color: #fff */">나는&nbsp;<input type="text" class="form-control plant-search" name="search" id="plantSearch" autocomplete="OFF" maxlength="11">&nbsp;<p class="typing"></p>를</h1>
-                </div>
-              </form>
-	    						<h1 style="font-weight: 800; font-size: 100px; /* color: #fff */">잘 키우는 방법이</h1>
-	    						<h1 style="font-weight: 800; font-size: 100px; /* color: #fff */">궁금하다.</h1>
-	    					</div>
-	    				</div>
-	    				
-	    				
-	    			</div>
-	        </div>
-        </div>
+
+			<div class="col-md-12 pl-md-5 py-md-5">
+				<div class="heading-section pt-md-5">
+					<h3 class="mb-4" style="color: #00b564; font-weight: 800">Plant
+						Search</h3>
+				</div>
+				<div class="row" align="center">
+					<div class="col-md-12 services-2 w-100 d-flex">
+						<div class="text pl-3">
+							<form action="plantSearch.kh" method="get" class="search-form">
+								<div class="form-group">
+									<h1
+										style="display: -webkit-inline-box; font-weight: 800; font-size: 100px;">
+										나는&nbsp;<input type="text" class="form-control plant-search"
+											name="search" id="plantSearch" autocomplete="OFF"
+											maxlength="11">&nbsp;
+										<p class="typing"></p>
+										를
+									</h1>
+								</div>
+							</form>
+							<h1 style="font-weight: 800; font-size: 100px;">잘 키우는 방법이</h1>
+							<h1 style="font-weight: 800; font-size: 100px;">궁금하다.</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     	</div>
     </section>
 
@@ -127,31 +132,32 @@
     <section class="ftco-section bg-light ftco-faqs">
     	<div class="container">
     		<div class="row">
-    			
-
     			<div class="col-lg-12" align="center">
     				<div class="heading-section mb-5 mt-5 mt-lg-0">
 	            <h1 class="mb-3" style="font-size:     font-size: 3.21429vw"><strong>어떤 종류의 식물을 찾고있나요?</strong></h1>
     				</div>
     				<div>
-    				<div class="form-group contactForm" id="kind-form">
-	
-	<div class="btn-group btn-group-toggle" data-toggle="buttons" >	
-		<label class="btn btn-outline-success" for="plant-kind1"  style="border-radius: 50px">
-			<input type="radio" name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
-		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind2"  style="border-radius: 50px" >
-			<input type="radio" name="plant-kind" id="plant-kind2" value="2" > 공중식물
-		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind3"  style="border-radius: 50px">
-			<input type="radio" name="plant-kind" id="plant-kind3" value="3" > 다육식물
-		</label>&nbsp;&nbsp;
-		<label class="btn btn-outline-success" for="plant-kind4"  style="border-radius: 50px">
-			<input type="radio" name="plant-kind" id="plant-kind4" value="4" > 덩굴식물
-		</label>
-	</div>
-</div>
-    				</div>
+					<div class="form-group contactForm" id="kind-form">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-outline-success" for="plant-kind1"
+								style="border-radius: 50px"> <input type="radio"
+								name="plant-kind" id="plant-kind1" value="1"> 잎이 있는 식물
+							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
+								for="plant-kind2" style="border-radius: 50px"> <input
+								type="radio" name="plant-kind" id="plant-kind2" value="2">
+								공중식물
+							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
+								for="plant-kind3" style="border-radius: 50px"> <input
+								type="radio" name="plant-kind" id="plant-kind3" value="3">
+								다육식물
+							</label>&nbsp;&nbsp; <label class="btn btn-outline-success"
+								for="plant-kind4" style="border-radius: 50px"> <input
+								type="radio" name="plant-kind" id="plant-kind4" value="4">
+								덩굴식물
+							</label>
+						</div>
+					</div>
+				</div>
 	        </div>
         </div>
     	</div>
