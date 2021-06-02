@@ -3,12 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 	
     calendar = new FullCalendar.Calendar(calendarEl, {
-
- 
       headerToolbar: {
         left: 'today',
         center: 'prev,title,next',
-        right : null
+        right: null
       },
       //defaultDate : Date, // 달력 초기화면에서 날짜 값 (오늘날짜 불러오기)
       navLinks: false, // can click day/week names to navigate views
@@ -35,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       },
+
       // 물방울 아이콘 생성 함수
       eventContent:function(arg){
         let arrayOfDomNodes = []
@@ -78,21 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
       },
     });
     calendar.render();
-
-    // 반려식물 선택값에 따라서 마지막 물 준날 셋팅
-    $("#selectCom").on("change", function(e){
-      $('#edit-lastWater').val(e.target[e.target.selectedIndex].dataset.comWater);
-      // console.log($(e.target).data("comWater"));
-      // console.log(e.target[e.target.selectedIndex].dataset.comWater);
-    });
-
-    //input을 datepicker로 선언
-    $("#edit-date,#edit-lastWater,#modify-edit-date,#modify-edit-lastWater").datepicker({
-      format: "yyyy-mm-dd",
-      language : "kr"
-    }).datepicker("setDate",new Date());
-    // datepicker 오늘 날짜 초기값 설정
-    // 하지만 달력 클릭시 오늘 날짜에 박스가 왜 안쳐질까?
   
     // 글자 수 세주는 카운팅 적용
     $('#comment-content').on('keyup',function() {
@@ -103,11 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         getwordCount($(this), $("#wordCount3"));
     });
     // 카운팅 끝~!!!
-
-    // 사진 첨부 시 이름이 안보여서 추가해주는 코드
-    $("input[type='file']").on('change',function(event){
-      $(this).next('.custom-file-label').html(event.target.files[0].name);
-    });
 
     getGuestbookList();
     //방명록 등록 버튼클릭 시 DB에 데이터 저장
@@ -134,8 +113,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 	  });
   
+
   getDiaryPicList();
-  
+  selectCompanionPic();
+
+  $("#selectVideo").on("change",function(){
+    getMyCompanionPic();
+  }); 
   // document 끝
 });
 
@@ -160,12 +144,6 @@ function commentModify(obj) {
   })
 }
 
-function diaryModify(obj) {
-  $(obj).on("keyup", function() {
-    var editdesc2 = $(obj).parent().find('#wordCount4');
-    getwordCount($(obj),editdesc2);
- })
-}
 // 방명록 리스트를 불러오는 함수
 function getGuestbookList() {
   var memberDiary = $('#memberDiary').val();
@@ -260,7 +238,7 @@ function getDiaryPicList(){
     data : {"memberNo": memberNo},
     dataType : "json",
     success : function(data){
-      var $carouselInner = $('.carousel-inner');
+      var $carouselInner = $('#carouselPicture');
       $carouselInner.html("");
       var $carouselItemActive;
       var $carouselItem;
@@ -326,3 +304,73 @@ $(document).on('click',function(){
   });
 });
 // getDiaryPicList();
+
+function selectCompanionPic() {
+  var memberNo = $("#memberDiary").val();
+  $.ajax({
+    url : "myCompanionList.kh",
+    type : "get",
+    dataType : "json",
+    data : {"memberNo": memberNo},
+    success : function(data) {
+      var $select = $('#selectVideo');
+      var $videoCarousel = $('#videoCarousel');
+      $select.html("");
+      console.log(data);
+      var $option;
+      var $carouselItemActive;
+      if(data.length > 0) {
+        for(var i in data){
+          if(i == 0) {
+            $option = $("<option value='0'>반려식물 선택</option>");
+            $select.append($option);
+            $carouselItemActive = $("<div class='carousel-item active'>");
+            $carouselItemActive.append("<img src='resources/images/photosicon.png' style='width:350px; height=350px;'>");
+            $videoCarousel.append($carouselItemActive);
+            
+          }
+            $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
+            $select.append($option);
+            getMyCompanionPic();
+        }
+      
+      }
+    }
+  });
+  
+}
+
+// 반력식물 선택 시 해당 사진만 모아서 동영상처럼 보이게 효과를 줌
+function getMyCompanionPic(){
+  var companionNo = $("#selectVideo option:selected").val(); 
+  var memberNo = $("#memberDiary").val();
+  $.ajax({
+    url : "diaryPicVideo.kh",
+    type : "get",
+    dataType : "json",
+    data : {"memberNo":memberNo,"companionNo":companionNo},
+    success : function(data){
+      var $videoCarousel = $("#videoCarousel");
+      $videoCarousel.html("");
+      var $carouslInnerActive;
+      var $carouslInner;
+      if(data.length > 0){
+        for(var i in data){
+          if(i==0 && data[i].companionNo != 0){
+            $carouslInnerActive = $("<div class='carousel-item active'>");
+            $carouslInnerActive.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
+            $videoCarousel.append($carouslInnerActive);
+          } else if(i!=0 && data[i].companionNo == 0){
+            $carouselItemActive = $("<div class='carousel-item active'>");
+            $carouselItemActive.append("<img src='resources/images/photosicon.png' style='width:350px; height=350px;'>");
+            $videoCarousel.append($carouselItemActive);
+          }else {
+            $carouslInner = $("<div class='carousel-item'>");
+            $carouslInner.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
+            $videoCarousel.append($carouslInner);
+          }
+        }
+      }
+    }
+  });
+};
