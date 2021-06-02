@@ -314,10 +314,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-
   getDiaryPicList();
-  selectCompanionVideo();
 
+  selectCompanionVideo();
   $("#selectVideo").on("change",function(){
     getMyCompanionPic();
   }); 
@@ -513,26 +512,23 @@ $(document).on('click',function(){
 // getDiaryPicList();
 
 function selectCompanionVideo() {
+  var memberNo = $("#memberNo").val();
   $.ajax({
     url : "myCompanionList.kh",
     type : "get",
     dataType : "json",
+    data : {"memberNo":memberNo},
     success : function(data) {
       var $select = $('#selectVideo');
       $select.html("");
       console.log(data);
       var $option;
       if(data.length > 0) {
+        $select.append("<option value='0'>반려식물 선택</option>");
         for(var i in data){
-          if(i == 0) {
-            $option = $("<option value='0'>반려식물 선택</option>");
-            $select.append($option);
-          }
             $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
-            $select.append($option);
-            getMyCompanionPic();
-        }
-      
+            $select.append($option);        
+        }      
       }
     }
   });
@@ -543,6 +539,9 @@ function selectCompanionVideo() {
 function getMyCompanionPic(){
   var companionNo = $("#selectVideo option:selected").val(); 
   var memberNo = $("#memberNo").val();
+  if(companionNo == 0) {
+    return;
+  }
   $.ajax({
     url : "diaryPicVideo.kh",
     type : "get",
@@ -570,6 +569,7 @@ function getMyCompanionPic(){
             $videoCarousel.append($carouslInner);
           }
         }
+        
       }
     }
   });

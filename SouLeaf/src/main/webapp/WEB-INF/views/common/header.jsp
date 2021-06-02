@@ -16,7 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
     <link rel="stylesheet" href="resources/css/animate.css">
     
-    <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+  	<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
     <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="resources/css/magnific-popup.css">
 
