@@ -173,7 +173,7 @@
 									<br>
 									<h4 class="what_we_do_title">내 게시글 관리</h4>
 									<div class="what_we_do_content">작성한 게시글을 관리합니다.</div>
-									<a class="what_we_do_icon" href="#"> <i
+									<a class="what_we_do_icon" href="mypageBoard.kh"> <i
 										class="fa fa-angle-right" aria-hidden="true"></i>
 									</a>
 								</div>
