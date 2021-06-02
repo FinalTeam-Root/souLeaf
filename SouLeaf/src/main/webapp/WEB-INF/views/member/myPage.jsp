@@ -98,135 +98,19 @@
 	text-align: center;
 	padding: 2px 3px 2px 5px;
 }
-
-.text-successes {
-	color: #00bd56;
-}
-
-.cardform {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	min-width: 0;
-	word-wrap: break-word;
-	background-color: #fff;
-	background-clip: border-box;
-	border: 1px solid #e3e6f0;
-	border-radius: 0.35rem;
-	margin: 0px auto;
-}
-
-.cardform-header {
-	padding: 0.75rem 1.25rem;
-	margin-bottom: 0;
-	background-color: #f8f9fc;
-	border-bottom: 1px solid #e3e6f0;
-}
-
-.shadower {
-	box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
-}
-
-.display-flex {
-	display: flex;
-}
-
-.align-center {
-	align-items: center;
-}
-
-.form-control {
-	height: calc(1.5em + 0.75rem + 2px);
-	border-radius: 0.35rem;
-}
-
-.table-bordered th, .table-bordered td {
-	border: 1px solid #e3e6f0;
-}
-
-.table thead th {
-	vertical-align: middle;
-}
-
-#poststable {
-	table-layout: fixed;
-}
-#poststable thead tr th{
-	font-size:5px;
-	text-align:center;
-}
-
-#poststable thead tr th:nth-child(1){
-	width: 36px;
-	table-layout: fixed;
-}
-#poststable thead tr th:nth-child(2){
-	width: 61px;
-	table-layout: fixed;
-}
-#poststable thead tr th:nth-child(3){
-	width: 399px;
-	table-layout: fixed;
-	text-overflow: ellipsis;
-}
-#poststable thead tr th:nth-child(4){
-	width: 108px;
-	table-layout: fixed;
-}
-#poststable thead tr th:nth-child(5){
-	width: 61px;
-	table-layout: fixed;
-}
-#poststable tbody tr td:nth-child(2){
-	width: 61px;
-	text-align:center;
-	table-layout: fixed;
-}
-#poststable tbody tr td:nth-child(3){
-	width: 399px;
-	table-layout: fixed;
-	white-space: nowrap;
-    overflow: hidden;
-	text-overflow: ellipsis;
-	height: 10px;
-}
-#poststable tbody tr td:nth-child(4){
-	width: 108px;
-	text-align:center;
-	table-layout: fixed;
-}
-#poststable tbody tr td:nth-child(5){
-	text-align:center;
-	table-layout: fixed;
-}
-.btn-danger {
-	font-size:5px;
-	float: right;
-    height: 29px;
-    width: 58px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-
-
 </style>
 </head>
 <body>
 	<div class="container bootstrap snippet">
 		<br> <br>
 		<div class="row">
-			<div class="col-sm-10">
-				<h4>User nick 님</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-3" style="margin-top: 20px;">
 				<!--left col-->
+				<div class="col-sm-10">
+					<h4>User nick 님</h4>
+				</div>
 				<div class="text-center">
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-						class="avatar img-circle img-thumbnail" alt="avatar"
-						style="width: 100%; height: 230px;"> <br> <input
-						type="file" class="text-center center-block file-upload">
+					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 100%; height: 230px;"> <br> 
 				</div>
 				<br>
 				<div class="card" style="width: 16rem;">
@@ -252,21 +136,6 @@
 			</div>
 			<!--/col-3-->
 			<div class="col-sm-9">
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
-					<li class="nav-item" role="presentation"><a
-						class="nav-link active" id="member-tab" data-toggle="tab"
-						href="#member" role="tab" aria-controls="member"
-						aria-selected="true">회원정보</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						id="posts-tab" data-toggle="tab" href="#posts" role="tab"
-						aria-controls="posts" aria-selected="false">내 게시물</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						id="comments-tab" data-toggle="tab" href="#comments" role="tab"
-						aria-controls="comments" aria-selected="false">내 댓글</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
-						id="question-tab" data-toggle="tab" href="#question" role="tab"
-						aria-controls="question" aria-selected="false">QnA문의</a></li>
-				</ul>
 				<br>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="member" role="tabpanel"
@@ -302,6 +171,30 @@
 									onclick="location.href='#'">
 									<div class="top_line"></div>
 									<br>
+									<h4 class="what_we_do_title">내 게시글 관리</h4>
+									<div class="what_we_do_content">작성한 게시글을 관리합니다.</div>
+									<a class="what_we_do_icon" href="#"> <i
+										class="fa fa-angle-right" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="single_what_we_do leftFont"
+									onclick="location.href='#'">
+									<div class="top_line"></div>
+									<br>
+									<h4 class="what_we_do_title">내 댓글 관리</h4>
+									<div class="what_we_do_content">작성한 댓글을 관리합니다.</div>
+									<a class="what_we_do_icon" href="#"> <i
+										class="fa fa-angle-right" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="single_what_we_do leftFont"
+									onclick="location.href='#'">
+									<div class="top_line"></div>
+									<br>
 									<h4 class="what_we_do_title">비밀번호 변경</h4>
 									<div class="what_we_do_content">비밀번호를 변경합니다.</div>
 									<a class="what_we_do_icon" href="#"> <i
@@ -311,99 +204,17 @@
 							</div>
 						</div>
 					</div>
-					<!-- 내 게시물 -->
-					<div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-						<div class="container">
-							<div class="cardform shadower mb-4"> <!-- 그림자 주기 -->
-								<div class="cardform-header py-3"> <!-- 게시판 헤드 -->
-									<div class="row">
-										<div class="col align-self-start"></div>
-										<div class="col align-self-center"></div>
-										<div class="col align-self-center"></div>
-										<div class="col align-self-end">
-											<select class="custom-select custom-select-sm" id="browsers"name="browsers">
-												<option value="boast">자랑하기</option>
-												<option value="clinic">클리닉</option>
-												<option value="curiosity">궁금해요</option>
-											</select>
-										</div>
-									</div>
-<!-- 									<div class="ml-auto display-flex align-center"> -->
-<!-- 										<input type="text" name="" class="form-control" -->
-<!-- 											placeholder="제목을 입력하세요"> -->
-<!-- 										<button class="btn btn-md btn-primary ml-2">Search</button> -->
-<!-- 									</div> -->
-								</div>
-								<div class="card-body">
-									<div class="table-responsive">
-										<table id="poststable" class="table table-bordered"
-											width="100%" cellspacing="0">
-											<thead>
-												<tr>
-													<th>체크</th>
-													<th>글 번호</th>
-													<th>제목</th>
-													<th>등록일</th>
-													<th>조회수</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>
-														<div class="custom-control custom-checkbox">
-															<input type="checkbox" class="custom-control-input"
-																id="customCheck1"> <label
-																class="custom-control-label" for="customCheck1"></label>
-														</div>
-													</td>
-													<td>0001</td>
-													<td>Edinburgh</td>
-													<td>2011/04/25</td>
-													<td>11</td>
-												</tr>
-												<tr>
-													<td>
-														<div class="custom-control custom-checkbox">
-															<input type="checkbox" class="custom-control-input"
-																id="customCheck1"> <label
-																class="custom-control-label" for="customCheck1"></label>
-														</div>
-													</td>
-													<td>0001</td>
-													<td>EdinburghEdinburghEdinburghEdinburghEdinburghEdinburghEdinburghEdinburghEdinburghEdinburgh</td>
-													<td>9999/88/88</td>
-													<td>11</td>
-												</tr>
-											</tbody>
-										</table>
-										<div class="col buttnRight">
-											<button type="button" class="btn btn-danger">삭제</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="comments" role="tabpanel"
-						aria-labelledby="comments-tab">내 댓글</div>
-					<div class="tab-pane fade" id="question" role="tabpanel"  aria-labelledby="question-tab">QnA문의
-					<c:if test="${loginUser.memberId eq 'admin' }">
-						<button class="" id="lastbtn" onclick="location.href='qnaListView.kh'">답변하기</button>
-					</c:if>
 					<c:if test="${loginUser.memberId ne 'admin' }">
-						<button class="" id="lastbtn" onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
+						<button class="" id="lastbtn"
+							onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
 					</c:if>
-					
-					</div>
 				</div>
-				<!--/tab-pane-->
 			</div>
-			<!--/tab-content-->
-
+			<!--/tab-pane-->
 		</div>
-		<!--/col-9-->
+		<!--/tab-content-->
 	</div>
-	<!--/row-->
+	<!--/col-9-->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
