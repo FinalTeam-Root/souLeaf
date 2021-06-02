@@ -27,7 +27,7 @@
 }
 .search-form .form-group input {
     padding-right: 0;
-    font-size: 5.78571vw;
+    font-size: 4.78571vw;
     font-weight:800;
     width: 15.63vw;
     display: revert; 
@@ -63,7 +63,7 @@
   animation-name: cursor; 
   animation-duration: 0.3s; 
   animation-iteration-count: infinite; 
-  font-size: 5.78571vw;
+  font-size: 4.78571vw;
   color:#999;
   line-height:1;
  /*  position: absolute;
@@ -79,9 +79,39 @@
 .btn-outline-success {
     color: #666;
     border-color: #aaa;
-    font-size: 1.28571vw;
+    font-size: 0.88571vw;
 }
 
 .custom-btn{
-	color:#00b564; border-color:#00b564;  border-radius: 50px; font-size: 1.28571vw;
+	color:#00b564; border-color:#00b564;  border-radius: 50px; font-size: 0.88571vw;
+}
+
+.clinic-overlay{
+	background-color:rgba(0, 0, 0, 0.4); /*살짝 투명한 검정으로 배경색*/
+	 width:100%; height:100%; position: absolute; /*다른 요소들 위로 겹쳐질 수 있게함*/
+
+}
+
+.clinic-search{
+	border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    border-bottom: 0;
+    padding-left: 0;
+      height: 100px !important;
+      width : 45.78571vw;
+    background: #fff0 !important;
+    color: #eee !important;
+    font-size: 3.78571vw;
+    //border-radius: 5px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    //border-bottom: 1px solid #fff;
+}
+.clinic-search::placeholder {
+	color:#eee;
+}
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
+    outline: 0 none;
 }

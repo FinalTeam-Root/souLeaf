@@ -7,7 +7,7 @@ open_chatroom();
 
 $("#plantSearch").on("change keyup",function(){
 	var content = $("#plantSearch").val();
-	   	$("#plantSearch").css('width',5.4*content.length+'vw');
+	   	$("#plantSearch").css('width',4.4*content.length+'vw');
 		   if(content.length <= 0){
 			$("#plantSearch").css('width','15.63vw');
 		   }
@@ -134,7 +134,7 @@ function propertySelect(value){
 function resetSelect(){
   $kind = 0;
   $property = 0;
-  $("#plant-text").text('어떤 식물을');
+  $("#plant-text").text('어떤 식물');
   $("#plant-text").css('color','#000');
   $('.form-group').children('div').children().removeClass('active');
   $("#property-form").hide();

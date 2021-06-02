@@ -106,10 +106,10 @@
 					<h2 class="footer-heading">정보</h2>
 					<div class="block-23 mb-3">
 						<ul>
-							<li><span class="icon fa fa-map"></span><span class="text">서울시 남대문로 자말빌딩 2층</span></li>
-							<li><a href="#"><span class="icon fa fa-phone"></span><span
+							<li><span class="icon fa fa-map"></span><span class="text">서울특별시 중구 남대문로 120<br>대일빌딩 2F, 3F</span></li>
+							<li><a><span class="icon fa fa-phone"></span><span
 									class="text">+82 1234 5678</span></a></li>
-							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
+							<li><a><span class="icon fa fa-paper-plane"></span><span
 									class="text">souleaf@info.or.kr</span></a></li>
 						</ul>
 					</div>
