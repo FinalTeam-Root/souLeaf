@@ -82,9 +82,9 @@
 					</div>
 					<div class="video-play">
 						<div class="play">
-							<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="200">
-								<div class="carousel-inner">
-									<div class="carousel-item active">
+							<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="500">
+								<div class="carousel-inner" id="videoCarousel">
+									<!-- <div class="carousel-item active">
 										<img src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="d-block w-100" alt="...">
 									</div>
 									<div class="carousel-item">
@@ -92,7 +92,7 @@
 									</div>
 									<div class="carousel-item">
 										<img src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

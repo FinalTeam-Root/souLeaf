@@ -43,7 +43,7 @@
  	</select>
  	
 	<select id="selectPlantPicAll" parameterType="Diary" resultMap="diaryJsonMap">
-		SELECT DIARY_REPICNAME, MEMBER_NO FROM DIARY WHERE MEMBER_NO = #{memberNo} AND DIARY_REPICNAME IS NOT NULL ORDER BY DIARY_NO DESC
+		SELECT D.DIARY_REPICNAME, D.MEMBER_NO,REPLACE(D.DIARY_STARTDATE,'-','') AS "diaryStartDate" FROM DIARY D, DIARY Y WHERE D.MEMBER_NO = #{memberNo} AND D.DIARY_NO = Y.DIARY_NO AND D.DIARY_REPICNAME IS NOT NULL ORDER BY D.DIARY_STARTDATE DESC
 	</select>
 	
 	<select id="selectGuestbookList" parameterType="Guestbook" resultMap="guestbookResultMap">
@@ -55,7 +55,7 @@
 	</select>
 	
 	<select id="selectAllPicOneComanion" parameterType="Diary" resultMap="diaryResultMap">
-		SELECT DIARY_REPICNAME FROM DIARY WHERE MEMBER_NO = #{memberNo} AND COMPANION_NO = #{companionNo};
+		SELECT D.DIARY_REPICNAME, D.MEMBER_NO, REPLACE(D.DIARY_STARTDATE,'-','') AS "diaryStartDate" FROM DIARY D, DIARY Y WHERE D.MEMBER_NO = #{memberNo} AND D.COMPANION_NO = #{companionNo} AND D.DIARY_NO = Y.DIARY_NO AND D.DIARY_REPICNAME IS NOT NULL ORDER BY D.DIARY_STARTDATE ASC
 	</select>
 	
 	<insert id="insertDiary" useGeneratedKeys="true" keyProperty="diaryNo" keyColumn="DIARY_NO">

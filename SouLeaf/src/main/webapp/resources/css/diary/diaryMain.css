@@ -355,12 +355,17 @@
   width: 500px;
   height: 450px;
   /* border: 1px solid black; */
-  margin: 20px auto 0;
+  margin: 50px auto 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgb(255, 248, 239);
 }
 
 .play img {
-  width: inherit;
-  height: inherit;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
 }
 
 .changecolor {
@@ -490,6 +495,5 @@ img.zoom {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
 
 

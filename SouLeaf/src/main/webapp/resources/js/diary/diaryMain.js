@@ -316,7 +316,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   getDiaryPicList();
-  
+
+  $("#selectVideo").on("change",function(){
+    getMyCompanionPic();
+  }); 
   // document 끝
 });
 
@@ -514,19 +517,56 @@ $.ajax({
   dataType : "json",
   success : function(data) {
     var $select = $('#selectVideo');
+    var $videoCarousel = $('#videoCarousel');
     $select.html("");
     console.log(data);
     var $option;
+    var $carouselItemActive;
     if(data.length > 0) {
       for(var i in data){
         if(i == 0) {
-          $option = $("<option> 반려식물을 선택! </option>");
+          $option = $("<option value='0'>반려식물 선택</option>");
           $select.append($option);
+          $carouselItemActive = $("<div class='carousel-item active'>");
+          $carouselItemActive.append("<img src='resources/images/photosicon.png' style='width:400px; height=400px;'>");
+          $videoCarousel.append($carouselItemActive);
         }
           $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
           $select.append($option);
+          getMyCompanionPic();
       }
     
     }
   }
 });
+
+// 반력식물 선택 시 해당 사진만 모아서 동영상처럼 보이게 효과를 줌
+function getMyCompanionPic(){
+  var companionNo = $("#selectVideo option:selected").val(); 
+  var memberNo = $("#memberNo").val();
+  $.ajax({
+    url : "diaryPicVideo.kh",
+    type : "get",
+    dataType : "json",
+    data : {"memberNo":memberNo,"companionNo":companionNo},
+    success : function(data){
+      var $videoCarousel = $("#videoCarousel");
+      $videoCarousel.html("");
+      var $carouslInnerActive;
+      var $carouslInner;
+      if(data.length > 0){
+        for(var i in data){
+          if(i==0){
+            $carouslInnerActive = $("<div class='carousel-item active'>");
+            $carouslInnerActive.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
+            $videoCarousel.append($carouslInnerActive);
+          }else {
+            $carouslInner = $("<div class='carousel-item'>");
+            $carouslInner.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
+            $videoCarousel.append($carouslInner);
+          }
+        }
+      }
+    }
+  });
+};
