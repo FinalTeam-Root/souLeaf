@@ -35,5 +35,6 @@
 		<mapper resource="mappers/companion-mapper.xml"/>
 		<mapper resource="mappers/clinic-mapper.xml"/>
 		<mapper resource="mappers/boast-mapper.xml"/>
+		<mapper resource="mappers/admin-mapper.xml"/>
 		</mappers>
 </configuration>
