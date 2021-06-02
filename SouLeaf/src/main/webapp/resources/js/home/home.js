@@ -82,13 +82,16 @@ $(".plant-search").hide();
 	///
 	$(".search-form").on("click" , function(){
 		$(".typing").hide();
-    $(".plant-search").show();
-    $("#plantSearch").focus()
+    $(".plant-search").fadeIn(1000,function(){
+      $("#plantSearch").focus()
+
+    });
 	});
   $(".typing").on("click", function(){
     $(".typing").hide();
-    $(".plant-search").show();
-    $("#plantSearch").focus();
+    $(".plant-search").fadeIn(1000,function(){
+      $("#plantSearch").focus();
+    });
   });
 });
 
@@ -114,15 +117,18 @@ function kindSelect(value){
   $kind = value;
   console.log($.trim($("label[for='plant-kind"+value+"']").text()));
   var kindText = $.trim($("label[for='plant-kind"+value+"']").text());
-  $("#plant-text").text(kindText);
-  $("#plant-text").css('color','#00b564');
   $("#kind-form").hide();
-  $("#property-form").show();
+  $("#plant-text").text(kindText);
+    $("#plant-text").css('color','#00b564');
+  $("#property-form").fadeIn(1000, function(){
+    
+  });
+  $("#select-btn").css('display','none');
 }
 
 function propertySelect(value){  
   $property = value;
-  $("#select-btn").show();  
+  $("#select-btn").fadeIn(1000);  
 }
 
 function resetSelect(){
@@ -132,7 +138,7 @@ function resetSelect(){
   $("#plant-text").css('color','#000');
   $('.form-group').children('div').children().removeClass('active');
   $("#property-form").hide();
-  $("#kind-form").show();
+  $("#kind-form").fadeIn(1000);
 }
 
 function plantSelect(){
