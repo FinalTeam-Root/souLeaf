@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 반려식물</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
+
 <style>
 .single_what_we_do {
 	width: 100%;
@@ -58,6 +59,20 @@
 #registerForm {
 	display:none;
 }
+/* 스타일 */
+.bgLayer {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%; 
+	height:100%; 
+	background:#000; 
+	opacity:.5; 
+	filter:alpha(opacity=50); 
+	z-index:10;
+}
+
 </style>
 </head>
 <body>
@@ -130,7 +145,6 @@
 														    <label class="custom-file-label" for="uploadFile">Choose file</label>
 														  </div>
 														<button id="companionSubmit" type="submit" class="btn btn-outline-success backcolor" style="margin-left:10px;padding-top: 8px;padding-bottom: 8px;height: 38px; " >등록</button>
-<!-- 														<input id="companionSubmit" type="submit" class="btn btn-outline-success backcolor" value="등록" style="margin-left:10px;"> -->
 														<input id="companionCancel" type="reset"  onclick="hideRegister()" class="btn btn-outline-success backcolor" style="padding-top: 8px;padding-bottom: 8px;height: 38px;"value="취소">
 														</div>
 													</div>
@@ -149,7 +163,7 @@
 				</div>
 			</div>
 			<!-- 반려 식물 리스트 -->
-			<c:forEach items="${cList }" var="cList">
+			<c:forEach items="${cList }" var="cList" varStatus="status">
 				<div class="row justify-content-center blockstyle">
 					<div class="col-md-12">
 						<div class="wrapper">
@@ -161,14 +175,14 @@
 												<div class="col-md-12">
 													<div class="row">
 														<input type="hidden" id="companionRepicName" name="companionRepicName" value="${cList.companionRepicName }">
+														<input type="hidden" id="companionNick" name="companionNick" value="${cList.companionNick }">
 														<h3 class="mb-4">${cList.companionNick }</h3>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="name">품종</label> <input
-															type="text" class="form-control" name="name" id="name"
-															value="${cList.plantName }" readonly>
+														<label class="label" for="plantName">품종</label>
+														<input type="text" class="form-control" name="plantName" id="plantName" value="${cList.plantName }" readonly>
 														<div class="top_line"></div>
 													</div>
 												</div>
@@ -182,7 +196,7 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="subject">마지막 물 준날</label>
-															<input type="text" class="form-control" name="subject" id="subject" value="${cList.companionLastWater }" readonly>
+															<input type="text" class="form-control" name="lastWater" id="lastWater" value="${cList.companionLastWater }" readonly>
 															<div class="top_line"></div>
 													</div>
 												</div>
@@ -196,62 +210,50 @@
 													</div>
 												</div>
 												<div class="col-md-12">
-													<c:url var="cDelete" value="companionDelete.kh">
+													<c:url var="cUpdate" value="companionUpdateForm.kh">
 														<c:param name="companionNo" value="${cList.companionNo }"></c:param>
-														<c:param name="companionRepicName" value="${cList.companionRepicName }"></c:param>
 													</c:url>
-													<a href="${cDelete }"><button type="button"class="btn btn-outline-success backcolor"
-															style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">삭제</button></a>
- 									
-													<button type="button" class="btn btn-outline-success backcolor"
-														style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">수정</button>
+													<a href="${cUpdate }"><button type="button"class="btn btn-outline-success backcolor" style="margin-left: 10px; padding-top: 8px; padding-bottom: 8px; height: 38px;">관리</button></a>
 												</div>
 											</div>
 										</form>
 									</div>
 								</div>
 								<div class="col-md-5 d-flex align-items-stretch">
-									<div class="info-wrap w-100 p-5 img"
-										style="background-image: url(${cList.companionRepicName });"></div>
+									<img src="${cList.companionRepicName }" class="" alt="" style="width: 100%; height: 403px; outline: none; border: none;">
+<%-- 									<div class="info-wrap w-100 p-5 img" style="background-image: url(${cList.companionRepicName });"></div> --%>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-			
-			
-
 		</div>
 	</section>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
-<!-- 	<script src="resources/js/companion/companion-list.js"></script> -->
 	<script>
-		var readURL = function(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					$('.avatar').attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
+	var readURL = function(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('.avatar').attr('src', e.target.result);
 			}
+			reader.readAsDataURL(input.files[0]);
 		}
-		
-		$(".file-upload").on('change', function(){
-			readURL(this);
-		});
-		
-		$("input[type='file']").on('change',function(event){
-			$(this).next('.custom-file-label').html(event.target.files[0].name);
-		});
-
-		
-		
-		$("#lastWater").datepicker({
-			format : "yyyy-mm-dd",
-			language : "kr"
-		}).datepicker("setDate", new Date());
-		
+	}
+	
+	$(".file-upload").on('change', function(){
+		readURL(this);
+	});
+	
+	$("input[type='file']").on('change',function(event){
+		$(this).next('.custom-file-label').html(event.target.files[0].name);
+	});
+	
+	$("#lastWater").datepicker({
+		format : "yyyy-mm-dd",
+		language : "kr"
+	}).datepicker("setDate", new Date());
 		
 	function showRegister(val){
 	      if($('#registerForm').css('display') == 'none'){
@@ -269,17 +271,12 @@
 	    }
 	}
 
-	$(document).on("click",function(){
-		
-
-		
-		$(function() {
+	$(function() {
 			$('#companionNick').keyup(function(e) {
-				var companionNick = $(this).val();
-				$(this).height(((companionNick.split('\n').length + 1) * 1.5)+ 'em');
-				$('#counter').html(companionNick.length + '/6 최대6자 입력');});
-			$('#companionNick').keyup();
-		});
+			var companionNick = $(this).val();
+			$(this).height(((companionNick.split('\n').length + 1) * 1.5)+ 'em');
+			$('#counter').html(companionNick.length + '/6 최대6자 입력');});
+		$('#companionNick').keyup();
 	});
 
 	</script>

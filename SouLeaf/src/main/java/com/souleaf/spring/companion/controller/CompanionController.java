@@ -90,86 +90,6 @@ public class CompanionController {
 		return mv;
 	}
 	
-//	// 반려식물 조회 화면 이동
-//	@RequestMapping(value="companionListView.kh", method=RequestMethod.GET)
-//	public ModelAndView companionLisAll(ModelAndView mv, HttpSession session) {
-//		Member loginUser = (Member)session.getAttribute("loginUser");
-//		ArrayList<Companion> cList = companionService.printmemberAll(loginUser.getMemberNo());
-//		ArrayList<Plant> pList = plantService.printAllList();
-//		int listSize = cList.size();
-//		mv.addObject("listSize", listSize);
-//		mv.addObject("pList", pList);
-//		mv.setViewName("companion/companionListView");
-//		
-//		return mv;
-//	}
-	// 반려식물 전체 조회
-//	@RequestMapping(value="companionList.kh")
-//	public void companionList(HttpServletResponse response, HttpSession session) {
-//		ArrayList<Companion> realList = new ArrayList<Companion>();
-//		try {
-//			Member loginUser = (Member)session.getAttribute("loginUser");
-//			ArrayList<Companion> cList = companionService.printmemberAll(loginUser.getMemberNo());
-//			System.out.println(cList.toString());
-//			log.info("반려식물 전체조회 성공" + cList.toString());
-//			for(Companion listOne : cList) {
-//				// 식물 정보 조회
-//				Plant plant = plantService.printOne(listOne.getPlantNo());
-//				log.info("식물 정보 조회 성공" + plant.toString());
-//				// 반려식물에 사진이 없다면
-//				if(listOne.getCompanionRepicName() == null) {
-//					// 식물도감에서 식물검색해서 첫번째 값 가져옴
-//					ArrayList<PlantFile> pfList = plantService.printFileList(listOne.getPlantNo());
-//					log.info("플랜트 파일 리스트" + pfList);
-//					loopOut:
-//					for(PlantFile pFile : pfList) {
-//						if(pFile.getPlantFileRename() != null) {
-//							listOne.setCompanionRepicName("resources/uploadFiles/plant/"+pFile.getPlantFileRename());
-//							break loopOut;
-//						}
-//					}
-//				} else {
-//					listOne.setCompanionRepicName("resources/uploadFiles/companion/"+listOne.getCompanionRepicName());
-//				}
-//				listOne.setPlantName(plant.getPlantName());
-//				listOne.setPlantWater(plant.getPlantWater());
-//				realList.add(listOne);
-//			}
-//			log.info("최종 정보 만들기 성공?" + realList.toString());
-//			if(! cList.isEmpty()) {
-//				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-//				gson.toJson(realList, response.getWriter());
-//			}else {
-//				System.out.println("데이터가 없습니다");
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			log.info("반려식물 전체조회 실패");
-//		}
-//	}
-	
-	// 반려식물 상세 조회
-//	@RequestMapping(value="companionDetail.kh", method=RequestMethod.GET)
-//	public ModelAndView companionDetail(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
-//		
-//		try {
-//			Companion companion = companionService.printOne(companionNo);
-//			mv.addObject("Companion", companion);
-//			mv.setViewName("companion/companionDetailView");
-//			log.info("반려식물 상세조회 성공");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			log.info("반려식물 상세조회 실패");
-//		}
-//		return mv;
-//	}
-	
-	// 반려식물 등록화면
-//	@RequestMapping(value="companionWriteView.kh", method=RequestMethod.GET)
-//	public String companionWriteView() {
-//		return "companion/companionWriteForm";
-//	}
-	
 	// 반려식물 등록
 	@RequestMapping(value="companionRegister.kh", method=RequestMethod.POST)
 	public ModelAndView companionRegister(ModelAndView mv,@ModelAttribute Companion companion, HttpServletRequest request,
@@ -203,21 +123,17 @@ public class CompanionController {
 			
 			// 디비에 데이터를 저장하는 작업
 			companionService.registerCompanion(companion);
-			
+			log.info("반려식물 등록 성공");
 			Diary reDiary = new Diary();
             // 새로운 물 줘야하는날 등록
 			reDiary.setDiaryStatus("W");
-	        reDiary.setCompanionNo(companion.getCompanionNo());
 	        reDiary.setMemberNo(companion.getMemberNo());
             reDiary.setDiaryStartDate(dateToStr);
             reDiary.setDiaryTitle(companion.getCompanionNick() + " 물줘!");
             reDiary.setdiaryColor("#4d638c");
             reDiary.setImgUrl("resources/images/watericon.png");
             diaryService.registerWaterDiary(reDiary);
-			
-
-			
-			log.info("반려식물 등록 성공");
+            log.info("물 주는 날 등록 성공");
 		} catch (Exception e) {
 			// 실패시에 화면이동과 화면에 얼러트로 경고창 띄어주면서 리스트로 가야하는데 이거에 대한 처리가 부족함
 			// 여기서 result 로 99 든 뭐든 넘겨줘서 리절트값이 99라면 얼러트 창을 띄어주는식으로?
@@ -257,47 +173,67 @@ public class CompanionController {
 		return renameFileName;
 	}
 	
-	// 반려식물 수정화면
-//	@RequestMapping(value="companionModifyView.kh")
-//	public ModelAndView companionModifyView(ModelAndView mv, @RequestParam("companionNo") int companionNo) {
-//		
-//		try {
-//			Companion companion = companionService.printOne(companionNo);
-//			mv.addObject("companion", companion).setViewName("companion/companionUpdateView");
-//			log.info("반려식물 수정화면 불러오기 성공");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			log.info("반려식물 수정화면 불러오기 실패");
-//		}
-//		return mv;
-//	}
+	// 반려식물 관리 화면 이동
+		@RequestMapping(value="companionUpdateForm.kh", method=RequestMethod.GET)
+		public ModelAndView companionUpdatedelete(ModelAndView mv,
+				@RequestParam("companionNo") int companionNo ,HttpServletRequest request) {
+			try {
+				Companion companion = companionService.printOne(companionNo);
+				
+				if(companion != null) {
+					Plant plant = plantService.printOne(companion.getPlantNo());
+					log.info("식물 정보 조회" + plant.toString());
+					
+					companion.setPlantName(plant.getPlantName());
+					companion.setPlantWater(plant.getPlantWater());
+					// 반려식물에 사진이 없다면
+					if(companion.getCompanionRepicName() == null) {
+						// 식물도감에서 식물검색해서 첫번째 값 가져옴
+						ArrayList<PlantFile> pfList = plantService.printFileList(companion.getPlantNo());
+						log.info("플랜트 파일 리스트" + pfList);
+						loopOut:
+						for(PlantFile pFile : pfList) {
+							if(pFile.getPlantFileRename() != null) {
+								companion.setCompanionRepicName("resources/uploadFiles/plant/"+pFile.getPlantFileRename());
+								break loopOut;
+							}
+						}
+					} else {
+						companion.setCompanionRepicName("resources/uploadFiles/companion/"+companion.getCompanionRepicName());
+					}
+					int nicksize = companion.getCompanionNick().length();
+					mv.addObject("plant",plant);
+					mv.addObject("nicksize",nicksize);
+				}
+				log.info("반려식물 번호조회 성공" + companion.toString());
+				mv.addObject("companion",companion);
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("반려식물 번호조회 실패");
+			}
+			mv.setViewName("companion/companionUpdateForm");
+			return mv;
+		}
 	
 	// 반려식물 수정
 	@RequestMapping(value="companionUpdate.kh", method=RequestMethod.POST)
 	public ModelAndView companionUpdate(ModelAndView mv
 								, HttpServletRequest request
 								, @ModelAttribute Companion companion
-								, @RequestParam(value="reloadFile", required=false) MultipartFile reloadFile) {
+								, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile) {
 		try {
 			// 파일 삭제 후 업로드 ( 수정 )
-			if (reloadFile != null && !reloadFile.isEmpty()) {
+			if(!uploadFile.getOriginalFilename().equals("")) {
 				// 기존 파일 삭제
 				if (companion.getCompanionPicName() != "") {
 					deleteFile(companion.getCompanionRepicName(), request);
 				}
 				// 새 파일 업로드
-				String renameFileName = saveFile(reloadFile, request);
+				String renameFileName = saveFile(uploadFile, request);
 				if (renameFileName != null) {
-					companion.setCompanionPicName(reloadFile.getOriginalFilename());
+					companion.setCompanionPicName(uploadFile.getOriginalFilename());
 					companion.setCompanionRepicName(renameFileName);
 				}
-			} else {
-				// 기존 파일 삭제
-				if (companion.getCompanionPicName() != "") {
-					deleteFile(companion.getCompanionRepicName(), request);
-				}
-				ArrayList<PlantFile> plantFile = plantService.printFileList(companion.getPlantNo());
-				companion.setCompanionPicName(plantFile.get(0).getPlantFilePath());
 			}
 			Plant plant = plantService.printOne(companion.getPlantNo());
 			// 캘린더 선언
@@ -305,7 +241,7 @@ public class CompanionController {
 			// 데이트 포멧
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			// 입력받은 날짜 date 변환
-			java.util.Date date = (java.util.Date) sdf.parse(companion.getCompanionLastWater());
+			Date date = (Date) sdf.parse(companion.getCompanionLastWater());
 			// 물준날 세팅
 			cal.setTime(date);
 			// Plant 줄주기 대입
@@ -317,17 +253,33 @@ public class CompanionController {
 			// 물 주는날 세팅
 			companion.setCompanionNeedWater(dateToStr);
 			
-			// DB 수정
+			// 디비에 데이터를 저장하는 작업
 			companionService.modifyCompanion(companion);
-			mv.setViewName("redirect:companionList.kh");
 			log.info("반려식물 수정 성공");
+			Diary reDiary = new Diary();
+			
+            // 기존의 물 줘야하는날 삭제
+			reDiary.setDiaryStatus("W");
+	        reDiary.setCompanionNo(companion.getCompanionNo());
+	        reDiary.setMemberNo(companion.getMemberNo());
+	        diaryService.removeReDiary(reDiary);
+	        log.info("기존 물 주는 날 삭제 성공");
+	        // 지우고 새로운 물 줘야하는날 등록
+            reDiary.setDiaryStartDate(dateToStr);
+            reDiary.setDiaryTitle(companion.getCompanionNick() + " 물줘!");
+            reDiary.setdiaryColor("#4d638c");
+            reDiary.setImgUrl("resources/images/watericon.png");
+            diaryService.registerDiary(reDiary);
+            log.info("새로운 물 주는 날 등록 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv.setViewName("redirect:companionList.kh");
+			mv.setViewName("redirect:companionListView.kh");
 			log.info("반려식물 수정 실패");
 		} 
+		mv.setViewName("redirect:companionListView.kh");
 		return mv;
 	}
+	
 	
 	// 반려식물 삭제
 	@RequestMapping(value="companionDelete.kh", method=RequestMethod.GET)
@@ -341,6 +293,13 @@ public class CompanionController {
 			}
 			companionService.removeCompanion(companionNo);
 			log.info("반려식물 수정 성공");
+			
+            // 기존의 물 줘야하는날 삭제
+			Diary reDiary = new Diary();
+			reDiary.setDiaryStatus("W");
+	        reDiary.setCompanionNo(companionNo);
+	        diaryService.removeReDiary(reDiary);
+	        log.info("물 줘야하는날 삭제");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
