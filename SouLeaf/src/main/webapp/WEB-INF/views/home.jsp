@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="resources/css/home/home-style.css">
     <div class="hero-wrap js-fullheight" style="background-image: url('resources/images/main_bg_5.jpg');" data-stellar-background-ratio="0.5">
-     <video class="video-intro" id="myVideo" poster="https://mdbootstrap.com/img/Photos/Others/background.jpg" playsinline autoplay muted loop>
+     <video class="video-intro" id="myVideo" poster="/resources/images/main_bg_25.jpg" playsinline autoplay muted loop>
       <source src="/resources/video/video-pc.mp4" type="video/mp4">
     </video>
       <div class="overlay"></div>
@@ -100,26 +100,24 @@
 
 			<div class="col-md-12 pl-md-5 py-md-5">
 				<div class="heading-section pt-md-5">
-					<h3 class="mb-4" style="color: #00b564; font-weight: 800">Plant
+					<h3 class="mb-4" style="color: #00b564; font-weight: 800; font-size: 2vw">Plant
 						Search</h3>
 				</div>
 				<div class="row" align="center">
 					<div class="col-md-12 services-2 w-100 d-flex">
 						<div class="text pl-3">
 							<form action="plantSearch.kh" method="get" class="search-form">
-								<div class="form-group">
+								<div class="form-group ">
 									<h1
-										style="display: -webkit-inline-box; font-weight: 800; font-size: 100px;">
-										나는&nbsp;<input type="text" class="form-control plant-search"
+										style="display: -webkit-inline-box; font-weight: 800; font-size: 5.78571vw;">
+										나는&nbsp;<p class="typing"></p><input type="text" class="form-control plant-search"
 											name="search" id="plantSearch" autocomplete="OFF"
-											maxlength="11">&nbsp;
-										<p class="typing"></p>
-										를
+											maxlength="11">를
 									</h1>
 								</div>
 							</form>
-							<h1 style="font-weight: 800; font-size: 100px;">잘 키우는 방법이</h1>
-							<h1 style="font-weight: 800; font-size: 100px;">궁금하다.</h1>
+							<h1 style="font-weight: 800; font-size: 5.78571vw;">잘 키우는 방법이</h1>
+							<h1 style="font-weight: 800; font-size: 5.78571vw;">궁금하다.</h1>
 						</div>
 					</div>
 				</div>
@@ -380,5 +378,6 @@
     </section>
 
   <jsp:include page="common/footer.jsp"></jsp:include> 
+  <script src="resources/js/home/home.js"></script>
   </body>
 </html>

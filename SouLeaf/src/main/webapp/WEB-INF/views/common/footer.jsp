@@ -22,17 +22,16 @@
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
-	<script src="resources/js/home/home.js"></script>
+	<script src="resources/js/main.js"></script>	
 </head>
 <body>
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
+				
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">Petsitting</h2>
-					<p>A small river named Duden flows by their place and supplies
-						it with the necessary regelialia.</p>
+					<h2 class="footer-heading">STORY</h2>
+					<p>SOUL + LEAF 의 합성어로 식물과 정신적 교감을 통해 마음의 안정을 갖는것을 뜻합니다.</p>
 					<ul class="ftco-footer-social p-0">
 						<li class="ftco-animate"><a href="#" data-toggle="tooltip"
 							data-placement="top" title="Twitter"><span
@@ -91,31 +90,32 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> 
 				<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
-					<h2 class="footer-heading">Quick Links</h2>
+					<h2 class="footer-heading">바로가기</h2>
 					<ul class="list-unstyled">
-						<li><a href="#" class="py-2 d-block">Home</a></li>
-						<li><a href="#" class="py-2 d-block">About</a></li>
-						<li><a href="#" class="py-2 d-block">Services</a></li>
-						<li><a href="#" class="py-2 d-block">Works</a></li>
-						<li><a href="#" class="py-2 d-block">Blog</a></li>
-						<li><a href="#" class="py-2 d-block">Contact</a></li>
+						<li><a href="home.kh" class="py-2 d-block">홈</a></li>
+						<li><a href="intro.kh" class="py-2 d-block">이야기</a></li>
+						<li><a href="plantListView.kh" class="py-2 d-block">식물찾기</a></li>
+						<li><a href="boastListView.kh" class="py-2 d-block">식물자랑</a></li>
+						<li><a href="#" class="py-2 d-block">식물클리닉</a></li>
+						<li><a href="curiosityListView.kh" class="py-2 d-block">궁금해요</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">Have a Questions?</h2>
+					<h2 class="footer-heading">정보</h2>
 					<div class="block-23 mb-3">
 						<ul>
-							<li><span class="icon fa fa-map"></span><span class="text">203
-									Fake St. Mountain View, San Francisco, California, USA</span></li>
+							<li><span class="icon fa fa-map"></span><span class="text">서울시 남대문로 자말빌딩 2층</span></li>
 							<li><a href="#"><span class="icon fa fa-phone"></span><span
-									class="text">+2 392 3929 210</span></a></li>
+									class="text">+82 1234 5678</span></a></li>
 							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-									class="text">info@yourdomain.com</span></a></li>
+									class="text">souleaf@info.or.kr</span></a></li>
 						</ul>
 					</div>
+					<a class="navbar-brand" href="/home.kh"><img src="resources/images/main_white.png" width="200"></a>
 				</div>
+				
 			</div>
 			<div class="row mt-5">
 				<div class="col-md-12 text-center">

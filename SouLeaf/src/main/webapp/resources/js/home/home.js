@@ -7,9 +7,9 @@ open_chatroom();
 
 $("#plantSearch").on("change keyup",function(){
 	var content = $("#plantSearch").val();
-	   	$("#plantSearch").css('width',100*content.length+'px');
+	   	$("#plantSearch").css('width',5.4*content.length+'vw');
 		   if(content.length <= 0){
-			$("#plantSearch").css('width','300px');
+			$("#plantSearch").css('width','15.63vw');
 		   }
 
 	});
@@ -67,24 +67,27 @@ function typing(){
          del= -1;
          typingTxt = $(".typing-txt>ul>li").eq(liIndex).text(); 
          
-         //1분후 다음분장 타이핑 
+         //후 다음분장 타이핑 
          clearInterval(tyInt);
          setTimeout(function(){
            tyInt = setInterval(typing,200);
-         },1000);
+         },500);
        }
      
 
     } 
 }  
 
-
+$(".plant-search").hide();
 	///
-	$("#plantSearch").on("focus" , function(){
+	$(".search-form").on("click" , function(){
 		$(".typing").hide();
+    $(".plant-search").show();
+    $("#plantSearch").focus()
 	});
   $(".typing").on("click", function(){
     $(".typing").hide();
+    $(".plant-search").show();
     $("#plantSearch").focus();
   });
 });
