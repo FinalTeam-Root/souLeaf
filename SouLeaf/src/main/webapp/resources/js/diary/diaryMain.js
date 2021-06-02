@@ -316,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
   getDiaryPicList();
+  selectCompanionVideo();
 
   $("#selectVideo").on("change",function(){
     getMyCompanionPic();
@@ -511,34 +512,32 @@ $(document).on('click',function(){
 });
 // getDiaryPicList();
 
-$.ajax({
-  url : "myCompanionList.kh",
-  type : "get",
-  dataType : "json",
-  success : function(data) {
-    var $select = $('#selectVideo');
-    var $videoCarousel = $('#videoCarousel');
-    $select.html("");
-    console.log(data);
-    var $option;
-    var $carouselItemActive;
-    if(data.length > 0) {
-      for(var i in data){
-        if(i == 0) {
-          $option = $("<option value='0'>반려식물 선택</option>");
-          $select.append($option);
-          $carouselItemActive = $("<div class='carousel-item active'>");
-          $carouselItemActive.append("<img src='resources/images/photosicon.png' style='width:400px; height=400px;'>");
-          $videoCarousel.append($carouselItemActive);
+function selectCompanionVideo() {
+  $.ajax({
+    url : "myCompanionList.kh",
+    type : "get",
+    dataType : "json",
+    success : function(data) {
+      var $select = $('#selectVideo');
+      $select.html("");
+      console.log(data);
+      var $option;
+      if(data.length > 0) {
+        for(var i in data){
+          if(i == 0) {
+            $option = $("<option value='0'>반려식물 선택</option>");
+            $select.append($option);
+          }
+            $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
+            $select.append($option);
+            getMyCompanionPic();
         }
-          $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
-          $select.append($option);
-          getMyCompanionPic();
+      
       }
-    
     }
-  }
-});
+  });
+  
+}
 
 // 반력식물 선택 시 해당 사진만 모아서 동영상처럼 보이게 효과를 줌
 function getMyCompanionPic(){
@@ -560,6 +559,11 @@ function getMyCompanionPic(){
             $carouslInnerActive = $("<div class='carousel-item active'>");
             $carouslInnerActive.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
             $videoCarousel.append($carouslInnerActive);
+          // } 
+          // else if(data[i].companionNo == 0){
+          //   $carouselItemActive = $("<div class='carousel-item active'>");
+          //   $carouselItemActive.append("<img src='resources/images/photosicon.png' style='width:350px; height=350px;'>");
+          //   $videoCarousel.append($carouselItemActive);
           }else {
             $carouslInner = $("<div class='carousel-item'>");
             $carouslInner.append("<img src='resources/uploadFiles/diary/"+data[i].diaryRepicname +"' class='d-block w-100' >");
