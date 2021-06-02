@@ -97,7 +97,6 @@
     border-left: 0;
     border-right: 0;
     border-radius: 0;
-    border-bottom: 0;
     padding-left: 0;
       height: 100px !important;
       width : 45.78571vw;
@@ -107,7 +106,7 @@
     //border-radius: 5px;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    //border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 .clinic-search::placeholder {
 	color:#eee;

@@ -205,8 +205,8 @@
 									</h1>
 								</div>
 							  <div class="form-group">
+				                  <input type="text" class="clinic-search" name="search" autocomplete="OFF">
 				                  <span class="fa fa-search" style="font-size:2.78571vw; color:#eee;"></span>
-				                  <input type="text" class="clinic-search" name="search" placeholder="식물 이름을 검색해 주세요." autocomplete="OFF">
 				                </div>
 							</form>
 						</div>
