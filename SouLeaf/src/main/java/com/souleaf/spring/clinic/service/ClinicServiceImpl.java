@@ -6,29 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.clinic.domain.Clinic;
-import com.souleaf.spring.clinic.domain.ClinicCommnet;
+import com.souleaf.spring.clinic.domain.ClinicReply;
+import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.clinic.store.ClinicStore;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.plant.domain.Plant;
 
-//@Service
+@Service
 public class ClinicServiceImpl implements ClinicService{
 
-//	@Autowired
+	@Autowired
 	private ClinicStore cStore;
 	
 	@Override
-	public int getListCount() {
-		return cStore.selectListCount();
+	public int getClinicListCount() {
+		return cStore.selectClinicListCount();
 	}
-
+	
 	@Override
-	public ArrayList<Clinic> printAll(PageInfo pi) {
+	public ArrayList<Clinic> printAllList(PageInfo pi) {
 		return cStore.selectAllList(pi);
-	}
-
-	@Override
-	public int addReadCount(int clinicNo) {
-		return cStore.addReadCount(clinicNo);
 	}
 
 	@Override
@@ -37,45 +34,64 @@ public class ClinicServiceImpl implements ClinicService{
 	}
 
 	@Override
-	public int registerBoard(Clinic clinic) {
+	public int registerClinic(Clinic clinic) {
+		return cStore.insertClinic(clinic);
+	}
+
+	@Override
+	public int modifyClinic(Clinic clinic) {
+		return cStore.updateClinic(clinic);
+	}
+
+	@Override
+	public int removeClinic(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modifyBoard(Clinic clinic) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int removeBoard(int clinicNo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<ClinicCommnet> printAllReply(int clinicNo) {
+	public ArrayList<Clinic> printSearchAllList(ClinicSearch search) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int registerReply(ClinicCommnet clinicCommnet) {
+	public ArrayList<Plant> printAllhashTagList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addReadCount(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modifyReply(ClinicCommnet clinicCommnet) {
+	public ArrayList<ClinicReply> printAllClinicReply(int clinicNo) {
+		return cStore.selectAllClinicReply(clinicNo);
+	}
+
+	@Override
+	public int registerClinicReply(ClinicReply reply) {
+		return cStore.insertClinicReply(reply);
+	}
+
+	@Override
+	public int modifyClinicReply(ClinicReply reply) {
+		return cStore.updateClinicReply(reply);
+	}
+
+	@Override
+	public int removeClinicReply(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int removeReply(ClinicCommnet clinicCommnet) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void addViewCount(int clinicNo) {
+		cStore.updateViewCount(clinicNo);
+		
 	}
 	
 }

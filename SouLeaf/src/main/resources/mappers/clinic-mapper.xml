@@ -1,32 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="clinicMapper">
-
 	<resultMap type="Clinic" id="clinicResultMap">
-		<id property="clinicNo" column="CLINIC_NO"></id>
-		<result property="memberNo" column="MEMBER_NO"></result>
-		<result property="clinicTitle" column="CLINIC_TITLE"></result>
-		<result property="clinicContent" column="CLINIC_CONTENT"></result>
-		<result property="clinicPalnt" column="CLINIC_PALNT"></result>
-		<result property="clinicDate" column="CLINIC_DATE"></result>
-		<result property="clinicUpdate" column="CLINIC_UPDATE"></result>
-		<result property="clinicPlace" column="CLINIC_PLACE"></result>
-		<result property="clinicRepot" column="CLINIC_REPOT"></result>
-		<result property="clinicWater" column="CLINIC_WATER"></result>
+		<id property="clinicNo" column="CLINIC_NO"/>
+		<result property="clinicContent" column="CLINIC_CONTENT"/>
+		<result property="clinicFileName" column="CLINIC_FILENAME"/>
+		<result property="clinicFileRename" column="CLINIC_FILERENAME"/>
+		<result property="clinicDate" column="CLINIC_DATE"/>
+		<result property="clinicUpdate" column="CLINIC_UPDATEDATE"/>
+		<result property="criosityStatus" column="CLINIC_STATUS"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="clinicCount" column="CLINIC_COUNT"/>
+		<result property="clinicContents" column="CLINIC_CONTENTS"/>
+		<result property="replyCount" column="REPLY_COUNT"/>
 	</resultMap>
 	
-		<resultMap type="ClinicFile" id="clinicFileResultMap">
-		<id property="clinicFileNo" column="CLINICFILE_NO"></id>
-		<result property="clinicNo" column="CLINIC_NO"></result>
-		<result property="clinicfileOriginalName" column="CLINICFILE_ORIGINALNAME"></result>
-		<result property="clinicfileRenameName" column="CLINICFILE_RENAMENAME"></result>
-		<result property="clinicfileSize" column="CLINICFILE_SIZE"></result>
-		<result property="clinicfileDate" column="CLINICFILE_DATE"></result>
+	<resultMap type="CuriosityReply" id="clinicReplyResultMap">
+		<id property="curicommentNo" column="CLINICCOMMENT_NO"/>
+		<result property="curicommentContent" column="CLINICCOMMENT_CONTENT"/>
+		<result property="curicommentDate" column="CLINICCOMMENT_DATE"/>
+		<result property="curicommentStatus" column="CLINICOCOMMENT_STATUS"/>
+		<result property="clinicNo" column="CLINIC_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberNick" column="MEMBER_NICK"/>		
 	</resultMap>
 	
-	<!-- 기본자료형으로 리턴하고싶으시면 resultType= _int && 생략가능 -->
-	<select id="selectListCount" resultType="_int">
-		SELECT COUNT(*) FROM CLINIC
-		WHERE CLINIC_STATUS = 'Y'
+	<insert id="insertCuriosity">
+		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents})
+	</insert>
+	
+	<update id="updateCuriosity" parameterType="Curiosity">
+	<if test="clinicFileRename.toString() == ''">
+			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_CONTENTS = #{clinicContents}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</if>
+	<if test="clinicFileRename.toString() != ''">
+			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_FILERENAME = #{clinicFileRename}, CLINIC_CONTENTS = #{clinicContents}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</if>
+	</update>
+	
+	<update id="updateViewCount">
+		UPDATE CLINIC SET CLINIC_COUNT = CLINIC_COUNT+1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<select id="selectAllList" parameterType="Curiosity" resultMap="clinicResultMap">
+		SELECT CLINIC_NO,CLINIC_CONTENT,CLINIC_DATE,CLINIC_FILERENAME,MEMBER_NO,MEMBER_NICK,CLINIC_COUNT,(SELECT COUNT(*) FROM CLINICCOMMENT B WHERE A.CLINIC_NO=B.CLINIC_NO) REPLY_COUNT FROM CLINIC A JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y' ORDER BY CLINIC_NO DESC
 	</select>
+	
+	<select id="selectCuriosity" parameterType="Curiosity" resultMap="clinicResultMap">
+		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE CLINIC_STATUS = 'Y'
+	</select>
+	
+	<!-- 댓글 -->
+	
+	<insert id="insertReply">
+		INSERT INTO CLINICCOMMENT VALUES (SEQ_CLINICCOMMENT.NEXTVAL, #{curicommentContent}, DEFAULT, #{clinicNo}, #{memberNo}, DEFAULT)
+	</insert>
+	
+	<select id="selectAllReplyList" parameterType="CuriosityReply" resultMap="clinicReplyResultMap">
+		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICOCOMMENT_STATUS = 'Y'
+	</select>
+	
+	<update id="updateReply">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_CONTENT = #{curicommentContent} WHERE CLINIC_NO= #{clinicNo} AND CLINICCOMMENT_NO = #{curicommentNo} AND MEMBER_NO = #{memberNo}
+	</update>
+
 </mapper>

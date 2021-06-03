@@ -8,77 +8,98 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.clinic.domain.Clinic;
-import com.souleaf.spring.clinic.domain.ClinicCommnet;
+import com.souleaf.spring.clinic.domain.ClinicReply;
+import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.plant.domain.Plant;
 
-//@Repository
+
+@Repository
 public class ClinicStoreLogic implements ClinicStore{
 	
-//	@Autowired
+	@Autowired
 	private SqlSession sqlSession;
 
 	@Override
-	public int selectListCount() {
-		return sqlSession.selectOne("clinicMapper.selectListCount");
+	public int selectClinicListCount() {
+		return sqlSession.selectOne("curiosityMapper.selectListCount");
 	}
-
+	
 	@Override
 	public ArrayList<Clinic> selectAllList(PageInfo pi) {
-		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("clinicMapper.selectAllList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllList", null, rowBounds);
 	}
 
 	@Override
-	public int addReadCount(int clinicNo) {
-		return sqlSession.update("clinicMapper.updateCount", clinicNo);
+	public Clinic selectOne(int curiosityNo) {
+		return sqlSession.selectOne("curiosityMapper.selectClinic",curiosityNo);
 	}
 
 	@Override
-	public Clinic selectOne(int clinicNo) {
-		return sqlSession.selectOne("boardMapper.selectOne", clinicNo);
+	public int insertClinic(Clinic curiosity) {
+		return sqlSession.insert("curiosityMapper.insertClinic", curiosity);
 	}
 
 	@Override
-	public int insertBoard(Clinic clinic) {
+	public int updateClinic(Clinic curiosity) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("curiosityMapper.updateClinic", curiosity);
+	}
+
+	@Override
+	public int deleteClinic(int curiosityNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateBoard(Clinic clinic) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int deleteBoard(int clinicNo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<ClinicCommnet> selectAllReply(int clinicNo) {
+	public ArrayList<Clinic> selectSearchAllList(ClinicSearch search) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int insertReply(ClinicCommnet clinicCommnet) {
+	public ArrayList<Plant> selectAllhashTagList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addReadCount(int curiosityNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateReply(ClinicCommnet clinicCommnet) {
+	public ArrayList<ClinicReply> selectAllClinicReply(int curiosityNo) {
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllReplyList",curiosityNo);
+	}
+
+	@Override
+	public int insertClinicReply(ClinicReply reply) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("curiosityMapper.insertReply", reply);
+	}
+
+	@Override
+	public int updateClinicReply(ClinicReply reply) {
+		return sqlSession.update("curiosityMapper.updateReply", reply);
+	}
+
+	@Override
+	public int deleteClinicReply(int curiosityNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int deleteReply(ClinicCommnet clinicCommnet) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void updateViewCount(int curiosityNo) {
+		sqlSession.update("curiosityMapper.updateViewCount",curiosityNo);
+		
 	}
+
+
 
 }

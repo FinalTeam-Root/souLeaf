@@ -21,8 +21,8 @@
 		<typeAlias type="com.souleaf.spring.curiosity.domain.CuriositySearch" alias="CuriositySearch"/>
 		<typeAlias type="com.souleaf.spring.companion.domain.Companion" alias="Companion"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.Clinic" alias="Clinic"/>
-		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
-		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicFile" alias="ClinicFile"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicReply" alias="ClinicReply"/>
+		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicSearch" alias="ClinicSearch"/>
 		<typeAlias type="com.souleaf.spring.boast.domain.Boast" alias="Boast"/>
 		<typeAlias type="com.souleaf.spring.mypage.domain.MypageInfo" alias="MypageInfo"/>
 	</typeAliases>
