@@ -14,6 +14,7 @@
 		<result property="curiosityCount" column="CURIOSITY_COUNT"/>
 		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
+		<result property="num" column="NUM"/>
 	</resultMap>
 	
 	<resultMap type="CuriosityReply" id="curiosityReplyResultMap">
@@ -69,4 +70,9 @@
 		UPDATE CURICOMMENT SET CURICOMMENT_CONTENT = #{curicommentContent} WHERE CURIOSITY_NO= #{curiosityNo} AND CURICOMMENT_NO = #{curicommentNo} AND MEMBER_NO = #{memberNo}
 	</update>
 
+	<!-- 마이페이지 -->
+	<select id="selectAllMyCuriosity" resultMap="curiosityResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE DESC) AS NUM, A.* FROM (SELECT CURIOSITY_NO,CURIOSITY_CONTENT, CURIOSITY_DATE, MEMBER_NO, CURIOSITY_COUNT FROM CURIOSITY) A WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
 </mapper>

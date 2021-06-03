@@ -94,7 +94,11 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	@Override
 	public void updateViewCount(int curiosityNo) {
 		sqlSession.update("curiosityMapper.updateViewCount",curiosityNo);
-		
+	}
+
+	@Override
+	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo) {
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllMyCuriosity", memberNo);
 	}
 
 	

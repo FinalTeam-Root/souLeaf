@@ -24,4 +24,7 @@ public interface CuriosityService {
 	public int removeCuriosityReply(int curiosityNo); // 댓글 삭제
 	public void addViewCount(int curiosityNo); // 조회수 증가
 	
+	// 마이페이지
+	public ArrayList<Curiosity> printAllMyCuriosity(int memberNo); // 내가 쓴 게시글 가져오기
+	
 }

@@ -32,8 +32,8 @@ public class MypageController {
 //	@Autowired
 //	private ClinicService cService;
 //	
-//	@Autowired
-//	private CuriosityService curService;
+	@Autowired
+	private CuriosityService curService;
 	
 	// 마이페이지 뷰
 	@RequestMapping(value = "mypage.kh", method = RequestMethod.GET)
@@ -50,7 +50,7 @@ public class MypageController {
 	// 
 	@RequestMapping(value="myCuriosityList.kh")
 	public void getMyCuriosityList(HttpServletResponse response, @RequestParam("memberNo") int memberNo) throws Exception{
-		ArrayList<Curiosity> curList = mService.printAllMyCuriosity(memberNo);
+		ArrayList<Curiosity> curList = curService.printAllMyCuriosity(memberNo);
 		if(!curList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(curList,response.getWriter());

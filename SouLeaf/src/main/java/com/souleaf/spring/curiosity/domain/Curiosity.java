@@ -15,6 +15,7 @@ public class Curiosity {
 	private int curiosityCount;
 	private String curiosityContents;
 	private int replyCount;
+	private int num;
 	
 	public Curiosity() {
 		// TODO Auto-generated constructor stub
@@ -134,14 +135,25 @@ public class Curiosity {
 		this.replyCount = replyCount;
 	}
 
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	@Override
 	public String toString() {
 		return "Curiosity [curiosityNo=" + curiosityNo + ", curiosityContent=" + curiosityContent
 				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFileRename=" + curiosityFileRename
 				+ ", curiosityDate=" + curiosityDate + ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus="
 				+ criosityStatus + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", curiosityCount="
-				+ curiosityCount + ", curiosityContents=" + curiosityContents + ", replyCount=" + replyCount + "]";
+				+ curiosityCount + ", curiosityContents=" + curiosityContents + ", replyCount=" + replyCount + ", num="
+				+ num + "]";
 	}
+
+
 
 	
 	

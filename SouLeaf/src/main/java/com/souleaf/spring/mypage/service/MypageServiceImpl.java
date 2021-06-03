@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.curiosity.domain.Curiosity;
+import com.souleaf.spring.curiosity.store.CuriosityStore;
 import com.souleaf.spring.mypage.store.MypageStore;
 
 @Service
@@ -16,6 +17,9 @@ public class MypageServiceImpl implements MypageService{
 	
 	@Autowired
 	private MypageStore mStore;
+	
+	@Autowired
+	private CuriosityStore cStore;
 	
 	@Override
 	public ArrayList<Boast> printAllMyBoast(int memberNo) {

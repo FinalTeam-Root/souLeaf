@@ -42,15 +42,15 @@
 							<tr>
 								<th scope="col"><input type="checkbox" name="del-select" id="chk_all" class="chk" value="selectAll"></th>
 								<th scope="col">번호</th>
-								<th scope="col">제목</th>
+								<th scope="col" style='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>제목</th>
 								<th scope="col">작성일</th>
 								<th scope="col">조회수</th>
 								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td scope="col"><input type="checkbox" name="del-select" class="chk" value="selectOne"></td>
+							<!-- <tr>
+								<td><input type="checkbox" name="del-select" class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td><a href="#" class="noColor">오늘의 자랑하기 : 민달래</a></td>
 								<td>2021/05-21</td>
@@ -59,7 +59,7 @@
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
 							<tr>
-								<td scope="col"><input type="checkbox" name="del-select"
+								<td><input type="checkbox" name="del-select"
 									class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td>오늘의 자랑하기 : 민달래</td>
@@ -69,7 +69,7 @@
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
 							<tr>
-								<td scope="col"><input type="checkbox" name="del-select"
+								<td><input type="checkbox" name="del-select"
 									class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td>오늘의 자랑하기 : 민달래</td>
@@ -79,7 +79,7 @@
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
 							<tr>
-								<td scope="col"><input type="checkbox" name="del-select"
+								<td><input type="checkbox" name="del-select"
 									class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td>오늘의 자랑하기 : 민달래</td>
@@ -89,7 +89,7 @@
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
 							<tr>
-								<td scope="col"><input type="checkbox" name="del-select"
+								<td><input type="checkbox" name="del-select"
 									class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td>오늘의 자랑하기 : 민달래</td>
@@ -99,7 +99,7 @@
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
 							<tr>
-								<td scope="col"><input type="checkbox" name="del-select"
+								<td><input type="checkbox" name="del-select"
 									class="chk" value="selectOne"></td>
 								<td scope="row">1</td>
 								<td>오늘의 자랑하기 : 민달래</td>
@@ -111,7 +111,7 @@
 							<tr>
 								<td><button type="button" class="btn btn-outline-warning">선택삭제</button></td>
 								<td colspan="5"></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 
