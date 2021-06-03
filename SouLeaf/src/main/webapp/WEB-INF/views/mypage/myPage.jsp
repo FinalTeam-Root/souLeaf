@@ -156,7 +156,7 @@
 									<div class="top_line"></div>
 									<br>
 									<h4 class="what_we_do_title">기본 정보</h4>
-									<div class="what_we_do_content">프로필 사진, 이름, 이메일, 휴대전화 정보를
+									<div class="what_we_do_content">프로필 사진, 이름, 이메일 정보를
 										수정합니다.</div>
 									<a class="what_we_do_icon" href="#"> <i
 										class="fa fa-angle-right" aria-hidden="true"></i>

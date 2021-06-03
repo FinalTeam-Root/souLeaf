@@ -61,62 +61,59 @@
 						  </div>
 						  
                  </c:forEach>
-                  <div class="row mt-5">
+        <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
-              <ul id="page">
-                <li><a href=""${before }"">&lt;</a></li>
-                <c:if test="${pi.currentPage > 1 }">
-					<a href="${before }"></a>&nbsp;
-				</c:if>
-                <li class="active"><span>1</span></li>
+            
+               <ul>
+               <!--  <li class="active"><span>1</span></li>
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
                 <li><a href="#">5</a></li>
                 <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-                 <tr align="center" height="20">
-					<td colspan="6">
-                 	<c:url var="before" value="qnaListView.kh">
-					<c:param name="page" value="${pi.currentPage - 1 }"></c:param>
-				</c:url>
-				<c:if test="${pi.currentPage <= 1 }">
-					[이전]&nbsp;
-				</c:if>
-				<c:if test="${pi.currentPage > 1 }">
-					<a href="${before }">[이전]</a>&nbsp;
-				</c:if>
-				<!-- 페이지 -->
-				<c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
-					<c:url var="pagination" value="qnaListView.kh">
-						<c:param name="page" value="${p }"></c:param>
-					</c:url>
-					<c:if test="${p eq pi.currentPage }">
-						<font color="red" size="4">[${p }]</font>
-					</c:if>
-					<c:if test="${p ne pi.currentPage }">
-						<a href="${pagination }">${p }</a>&nbsp;
-					</c:if>
-				</c:forEach>
-				<!-- 다음 -->
-				<c:url var="after" value="qnaListView.kh">
-					<c:param name="page" value="${pi.currentPage + 1 }"></c:param>
-				</c:url>
-				<c:if test="${pi.currentPage >= pi.maxPage }">
-					[다음]&nbsp;
-				</c:if>
-				<c:if test="${pi.currentPage < pi.maxPage }">
-					<a href="${after }">[다음]</a>&nbsp;
-				</c:if>
+               -->
+        <!-- 이전 -->
+        <c:url var="before" value="qnaListView.kh">
+               <c:param name="page" value="${pi.currentPage - 1 }"></c:param>
+            </c:url>
+            <c:if test="${pi.currentPage <= 1 }">
+               <li><a href="#">&lt;</a></li>
+            </c:if>
+            <c:if test="${pi.currentPage > 1 }">
+               <li><a href="${before }">&lt;</a></li> 
+            </c:if>
+            <!-- 페이지 -->
+        <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+               <c:url var="pagination" value="qnaListView.kh">
+                  <c:param name="page" value="${p }"></c:param>
+               </c:url>
+               <c:if test="${p eq pi.currentPage }">
+               <li class="active"><span>${p }</span></li>
+                  
+               </c:if>
+               <c:if test="${p ne pi.currentPage }">
+               <li><a href="${pagination }">${p }</a></li>
+               </c:if>
+            </c:forEach>
+            <!-- 다음 -->
+            <c:url var="after" value="qnaListView.kh">
+               <c:param name="page" value="${pi.currentPage + 1 }"></c:param>
+            </c:url>
+            <c:if test="${pi.currentPage >= pi.maxPage }">
+               <li><a href="#">&gt;</a></li>
+            </c:if>
+            <c:if test="${pi.currentPage < pi.maxPage }">
+               <li><a href="${after }">&gt;</a></li>
+            </c:if>
+            </ul>
+
 				</td>
 			</tr>
-			<button id="lastbtn" class="" onclick="location.href='qnaWriteView.kh?qnaNo=${qna.qnaNo}'">등록</button>
 				</div>
 	        </div>
+	         </div>
+			<button id="lastbtn" class="" onclick="location.href='qnaWriteView.kh?qnaNo=${qna.qnaNo}'">등록</button>
         </div>
     	</div>
     </section>

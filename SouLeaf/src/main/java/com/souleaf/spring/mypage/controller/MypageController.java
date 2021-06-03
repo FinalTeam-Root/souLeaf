@@ -54,7 +54,9 @@ public class MypageController {
 		loginUser = memService.printMember(loginUser.getMemberNo());
 		mv.addObject("pList", pList);
 		mv.addObject("loginUser", loginUser).setViewName("mypage/myPage");
+		
 		return mv;
+		
 	}
 	
 	// 마이페이지 내 게시글관리 뷰
@@ -72,7 +74,9 @@ public class MypageController {
 			gson.toJson(curList,response.getWriter());
 		}else {
 			System.out.println("궁금해요 리스트 없다! 어쩔래?");
+			
 		}
+		
 	}
 	// 
 	
