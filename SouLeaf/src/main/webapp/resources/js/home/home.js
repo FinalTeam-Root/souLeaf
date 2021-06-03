@@ -1,5 +1,5 @@
 $kind = 0, $property = 0;
-$( document ).ready(function() {
+$( document ).ready(function() {  
 open_chatroom();
 	$( window ).resize(function() {
    		open_chatroom();

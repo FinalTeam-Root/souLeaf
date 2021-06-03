@@ -67,7 +67,12 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
+	    <c:if test="${nav eq 'home' }">
+	    	<a class="navbar-brand" href="/home.kh"><img src="resources/images/white_main.png" width="200" id="ftco-logo"></a>
+	    </c:if>	    
+	    <c:if test="${nav ne 'home' }">
 	    	<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png" width="200" id="ftco-logo"></a>
+	    </c:if>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
