@@ -5,6 +5,20 @@ open_chatroom();
    		open_chatroom();
 	});		
 
+  $(window).scroll(function(){		
+    if($('body, html').scrollTop() > 700){	      
+     // $("#ftco-navbar").removeClass('ftco-navbar-light');
+     $("#ftco-logo").attr("src", "resources/images/logo.png");
+     $("#wrap").addClass('wrap-origin');
+      $("#ftco-navbar").addClass('ftco-navbar-origin');
+    }else{      
+      //$("#ftco-navbar").addClass('ftco-navbar-light');
+      $("#ftco-logo").attr("src", "resources/images/main_white.png");
+      $("#wrap").removeClass('wrap-origin');
+      $("#ftco-navbar").removeClass('ftco-navbar-origin');
+    }	
+  })	
+
 $("#plantSearch").on("change keyup",function(){
 	var content = $("#plantSearch").val();
 	   	$("#plantSearch").css('width',4.4*content.length+'vw');

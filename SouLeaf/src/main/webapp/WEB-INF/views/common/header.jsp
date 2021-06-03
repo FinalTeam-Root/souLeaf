@@ -29,7 +29,7 @@
  </head>
   <body>
 
-    <div class="wrap">
+    <div class="wrap" id="wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 d-flex align-items-center">
@@ -67,7 +67,7 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png" width="200"></a>
+	    	<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png" width="200" id="ftco-logo"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
