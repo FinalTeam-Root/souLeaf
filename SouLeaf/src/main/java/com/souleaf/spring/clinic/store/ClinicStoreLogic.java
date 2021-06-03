@@ -22,34 +22,34 @@ public class ClinicStoreLogic implements ClinicStore{
 
 	@Override
 	public int selectClinicListCount() {
-		return sqlSession.selectOne("curiosityMapper.selectListCount");
+		return sqlSession.selectOne("clinicMapper.selectListCount");
 	}
 	
 	@Override
 	public ArrayList<Clinic> selectAllList(PageInfo pi) {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectAllList", null, rowBounds);
 	}
 
 	@Override
-	public Clinic selectOne(int curiosityNo) {
-		return sqlSession.selectOne("curiosityMapper.selectClinic",curiosityNo);
+	public Clinic selectOne(int clinicNo) {
+		return sqlSession.selectOne("clinicMapper.selectClinic",clinicNo);
 	}
 
 	@Override
-	public int insertClinic(Clinic curiosity) {
-		return sqlSession.insert("curiosityMapper.insertClinic", curiosity);
+	public int insertClinic(Clinic clinic) {
+		return sqlSession.insert("clinicMapper.insertClinic", clinic);
 	}
 
 	@Override
-	public int updateClinic(Clinic curiosity) {
+	public int updateClinic(Clinic clinic) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("curiosityMapper.updateClinic", curiosity);
+		return sqlSession.update("clinicMapper.updateClinic", clinic);
 	}
 
 	@Override
-	public int deleteClinic(int curiosityNo) {
+	public int deleteClinic(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -67,36 +67,36 @@ public class ClinicStoreLogic implements ClinicStore{
 	}
 
 	@Override
-	public int addReadCount(int curiosityNo) {
+	public int addReadCount(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public ArrayList<ClinicReply> selectAllClinicReply(int curiosityNo) {
-		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllReplyList",curiosityNo);
+	public ArrayList<ClinicReply> selectAllClinicReply(int clinicNo) {
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectAllReplyList",clinicNo);
 	}
 
 	@Override
 	public int insertClinicReply(ClinicReply reply) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("curiosityMapper.insertReply", reply);
+		return sqlSession.insert("clinicMapper.insertReply", reply);
 	}
 
 	@Override
 	public int updateClinicReply(ClinicReply reply) {
-		return sqlSession.update("curiosityMapper.updateReply", reply);
+		return sqlSession.update("clinicMapper.updateReply", reply);
 	}
 
 	@Override
-	public int deleteClinicReply(int curiosityNo) {
+	public int deleteClinicReply(int clinicNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void updateViewCount(int curiosityNo) {
-		sqlSession.update("curiosityMapper.updateViewCount",curiosityNo);
+	public void updateViewCount(int clinicNo) {
+		sqlSession.update("clinicMapper.updateViewCount",clinicNo);
 		
 	}
 
