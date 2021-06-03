@@ -9,6 +9,15 @@ $("#chk_all").click(function(){
 });
 
 
-
 });
 
+function getMyCuriosityList() {
+    var memberNo = $("#memberNo").val();
+    $.ajax({
+        url : "myCuriosityList.kh",
+        type : "get",
+        data : {"memberNo" : memberNo},
+        dataType : "json",
+        
+    })
+}
