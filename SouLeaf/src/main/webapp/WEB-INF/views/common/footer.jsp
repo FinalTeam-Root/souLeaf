@@ -19,9 +19,8 @@
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
+	<!-- <script	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+	<!-- <script src="resources/js/google-map.js"></script> -->
 	<script src="resources/js/main.js"></script>	
 </head>
 <body>
@@ -33,17 +32,18 @@
 					<h2 class="footer-heading">STORY</h2>
 					<p>SOUL + LEAF 의 합성어로 식물과 정신적 교감을 통해 마음의 안정을 갖는것을 뜻합니다.</p>
 					<ul class="ftco-footer-social p-0">
-						<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+						<li class=""><a href="#" data-toggle="tooltip"
 							data-placement="top" title="Twitter"><span
 								class="fab fa-twitter"></span></a></li>
-						<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+						<li class=""><a href="#" data-toggle="tooltip"
 							data-placement="top" title="Facebook"><span
 								class="fab fa-facebook-f"></span></a></li>
-						<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+						<li class=""><a href="#" data-toggle="tooltip"
 							data-placement="top" title="Instagram"><span
 								class="fab fa-instagram"></span></a></li>
 					</ul>
 				</div>
+				
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 					<h2 class="footer-heading">Latest News</h2>
 					<div class="block-21 mb-4 d-flex">

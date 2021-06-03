@@ -99,11 +99,11 @@
     		<div class="row d-flex no-gutters">
 
 			<div class="col-md-12 pl-md-5 py-md-5">
-				<div class="heading-section pt-md-5">
+				<div class="heading-section ftco-animate pt-md-5">
 					<h3 class="mb-4" style="color: #00b564; font-weight: 800; font-size: 2vw">Plant
 						Search</h3>
 				</div>
-				<div class="row" align="center">
+				<div class="row ftco-animate" align="center">
 					<div class="col-md-12 services-2 w-100 d-flex">
 						<div class="text pl-3">
 							<form action="plantSearch.kh" method="get" class="search-form">
@@ -187,14 +187,14 @@
     		<div class="row d-flex no-gutters">
 
 			<div class="col-md-12 pl-md-5 py-md-5">
-				<div class="heading-section pt-md-5">
+				<div class="heading-section ftco-animate pt-md-5">
 					<h3 class="mb-4" style="color: #00b564; font-weight: 800; font-size: 2vw">Plant
 						Boast</h3>
 				</div>			
 			</div>
 		</div>
     	</div>
-      <div class="container">
+      <div class="container ftco-animate">
         <div class="row justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
             <h2 style="font-size:3.21429vw">명예의 전당</h2>
@@ -270,7 +270,7 @@
 					<h3 class="mb-4" style="color: #00b564; font-weight: 800; font-size: 2vw">Plant
 						Clinic</h3>
 				</div>
-				<div class="row" align="center">
+				<div class="row ftco-animate" align="center">
 					<div class="col-md-12 services-2 w-100 d-flex">
 						<div class="text pl-3">
 							<form action="#">
