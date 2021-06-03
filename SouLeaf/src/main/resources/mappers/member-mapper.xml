@@ -37,7 +37,7 @@
  
  <update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
-		SET MEMBER_PW = #{memberPw}, MEMBER_NICK = #{memberNick}, MEMBER_MAIL = #{memberMail}, MEMBER_FILERENAME = #{memberFileRename}, MEMBER_INTRO = #{memberIntro}, MEMBER_PHOTO = #{memberPhoto}
+		SET MEMBER_NICK = #{memberNick}, MEMBER_MAIL = #{memberMail}, MEMBER_FILERENAME = #{memberFileRename}, MEMBER_INTRO = #{memberIntro}, MEMBER_PHOTO = #{memberPhoto}
 		WHERE MEMBER_ID = #{memberId}
  </update>
  

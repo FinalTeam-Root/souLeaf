@@ -90,6 +90,38 @@ public class MemberController {
 		}
 		return "member/memberModifyView";
 	}
+	@RequestMapping(value = "pwUpdateView.kh", method = { RequestMethod.GET, RequestMethod.POST })
+	public String pwUpdateView(HttpSession session, HttpServletRequest request, Model model) {
+		session = request.getSession();
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		int memberNo = loginUser.getMemberNo();
+		Member mOne = mService.printMember(memberNo);
+		if (mOne != null) {
+
+			model.addAttribute("mOne", mOne);
+		} else {
+			model.addAttribute("mOne", null);
+		}
+		return "member/pwUpdateView";
+	}
+	@RequestMapping(value = "pwUpdate.kh", method = RequestMethod.POST)
+	public String modifyMember(@ModelAttribute Member member, Model model,
+		HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		String memberFileRename = (String) session.getAttribute("fileName");
+		System.out.println("controller");
+		int memberNo = loginUser.getMemberNo();
+		member.setMemberNo(memberNo);
+		// 암호 확인
+				System.out.println("첫번째:" + member.getMemberPw());
+				// 비밀번호 암호화 (sha256
+				String encryPassword = MemberSha256.encrypt(member.getMemberPw());
+				member.setMemberPw(encryPassword);
+				System.out.println("두번째:" + member.getMemberPw());
+				return encryPassword;
+	}
+
 
 	// 정보수정
 	@RequestMapping(value = "memberModify.kh", method = RequestMethod.POST)
@@ -105,14 +137,15 @@ public class MemberController {
 		member.setMemberNick(member.getMemberNick());
 		member.setMemberIntro(member.getMemberIntro());
 		member.setMemberNo(memberNo);
+		
 
 		// 암호 확인
-		System.out.println("첫번째:" + member.getMemberPw());
-		// 비밀번호 암호화 (sha256
-		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
-		member.setMemberPw(encryPassword);
-		System.out.println("두번째:" + member.getMemberPw());
-		// 서버에 데이터를 저장하는 작업
+//		System.out.println("첫번째:" + member.getMemberPw());
+//		// 비밀번호 암호화 (sha256
+//		String encryPassword = MemberSha256.encrypt(member.getMemberPw());
+//		member.setMemberPw(encryPassword);
+//		System.out.println("두번째:" + member.getMemberPw());
+//		// 서버에 데이터를 저장하는 작업
 		if (!uploadFile.getOriginalFilename().equals("")) {
 			String renameFileName = saveFile(uploadFile, request);
 			if (renameFileName != null) {
@@ -138,9 +171,9 @@ public class MemberController {
 
 		int result = mService.modifyMember(member);
 		if(result > 0) {
-			return "redirect:myInfo.kh";
+			return "redirect:mypage.kh";
 		}
-		return "redirect:myInfo.kh";
+		return "redirect:mypage.kh";
 		
 
 
