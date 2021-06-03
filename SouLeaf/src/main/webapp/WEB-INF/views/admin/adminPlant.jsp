@@ -28,7 +28,7 @@
             <div class="sidebar-box ftco-animate">
               <div class="categories">
                 <h3>Services</h3>
-                <li><a href="#" style=" color: #00bd56;">도감 관리 <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="adminPlant.kh" style=" color: #00bd56;">도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="#">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="#">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="#">Q&A 관리 <span class="fa fa-chevron-right"></span></a></li>
@@ -63,22 +63,23 @@
                 
           <c:forEach items="${pList }" var="pi" varStatus="status">
           
-            <tr>
+            <tr style="cursor: pointer;">
                 <td align="center"><input type="checkbox" value="${pi.plantNo }" name="plant-check" class="checkbox_group"></td>
                 <td align="center"><img src="resources/uploadFiles/plant/${pi.plantFileRename }" height="30px"></td>
-                <td>${pi.plantName }</td>
-                <td>${pi.plantEngname }</td>
-                <td>${pi.plantDate }</td>
+                <td onclick="location.href='plantDetail.kh?plantNo=${pi.plantNo}'">${pi.plantName }</td>
+                <td onclick="location.href='plantDetail.kh?plantNo=${pi.plantNo}'">${pi.plantEngname }</td>
+                <td onclick="location.href='plantDetail.kh?plantNo=${pi.plantNo}'">${pi.plantDate }</td>
                 <td><input type="button" class="btn btn-primary" value="수정" onclick="location.href='plantUpdateView.kh?plantNo=${pi.plantNo}'"></td>
             </tr>
           </c:forEach>
         </tbody>
         
     </table>
-    <div align="left">
-    <input type="submit" class="btn btn-danger" value="삭제">
-    <input type="button" class="btn btn-success" value="등록" onclick="location.href='plantWrite.kh'">
+    <div class="custom-form" style="left:5%">
+	    <input type="submit" class="btn btn-danger" value="삭제">
+	    <input type="button" class="btn btn-success" value="등록" onclick="location.href='plantWrite.kh'">
     </div>
+         <div class="custom-form" style="top:2%; left:5%; z-index:-1">식물데이터 ${pList.size()} 건</div>
         </form>      
          
     	</div>

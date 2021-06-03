@@ -114,12 +114,18 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     padding-top: 0.25em;
 }
 .dataTables_filter { visibility: hidden;}
+
 .custom-search{
 	    position: absolute;
     right: 5%;
-    z-index: 100;
-    
+    z-index: 100;    
 }
+.custom-form{
+	    position: absolute;
+    bottom: 1%;
+    z-index: 100;
+}
+
 
 .plant-search {
 	    border-top: 0;
@@ -135,4 +141,4 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     border-radius: 25px;
 }
 
-}
+

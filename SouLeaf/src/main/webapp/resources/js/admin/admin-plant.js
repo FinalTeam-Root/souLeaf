@@ -1,7 +1,7 @@
 $(function(){
 	
 	let dataTable = $('#dataTable').DataTable({
-		
+		"bLengthChange": false,
 		"bInfo": false,
 		columns: [
 			{ orderable: false },
