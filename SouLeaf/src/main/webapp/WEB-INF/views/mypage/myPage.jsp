@@ -107,16 +107,24 @@
 			<div class="col-sm-3" style="margin-top: 20px;">
 				<!--left col-->
 				<div class="col-sm-10">
-					<h4>User nick 님</h4>
+					<h4>${loginUser.memberNick }</h4>
 				</div>
 				<div class="text-center">
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" style="width: 100%; height: 230px;"> <br> 
+				<c:choose>
+									<c:when test="${empty loginUser.memberPhoto }">
+										<img src="resources/images/basicMemberImg.png" />
+									</c:when>
+									<c:otherwise>
+										<img src="resources/uploadFiles/member/${loginUser.memberPhoto} "/>
+									</c:otherwise>
+				</c:choose>
+				
 				</div>
 				<br>
 				<div class="card" style="width: 16rem;">
 					<div class="card-header">소개글</div>
 					<ul class="list-group list-group-flush">
-						<li class="list-group-item">안녕하세요~! 저는 식물을 사랑하는 사람입니다.</li>
+						<li class="list-group-item">${loginUser.memberIntro }</li>
 					</ul>
 
 				</div>
@@ -126,9 +134,10 @@
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb"
 							style="margin-bottom: -; margin-bottom: 0px; background-color: white;">
-							<li class="breadcrumb-item"><a href="#">#Home</a></li>
-							<li class="breadcrumb-item"><a href="#">#Library</a></li>
-							<li class="breadcrumb-item"><a href="#">#Data</a></li>
+							<c:forEach var="name" items="${pList }" varStatus="index">
+										<a href="plantDetail.kh?plantNo=${name.plantNo }">#${name.plantName}</a>
+							</c:forEach>
+							
 						</ol>
 					</nav>
 				</div>

@@ -66,6 +66,15 @@
 														value="${mOne.memberMail }">
 												</div>
 											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="memberIntro">소개글</label> <input
+														type="text" class="form-control" name="memberIntro"
+														id="memberIntro" placeholder="memberIntro"
+														value="${mOne.memberIntro }">
+												</div>
+											</div>
+											
 									<!-- 		<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="password">비밀번호</label> <input
