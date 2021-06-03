@@ -1,5 +1,6 @@
 package com.souleaf.spring.mypage.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.souleaf.spring.boast.service.BoastService;
 import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
@@ -45,9 +49,14 @@ public class MypageController {
 	
 	// 
 	@RequestMapping(value="myCuriosityList.kh")
-	public void getMyBoastList(HttpServletResponse response, @RequestParam("memberNo") int memberNo){
+	public void getMyCuriosityList(HttpServletResponse response, @RequestParam("memberNo") int memberNo) throws Exception{
 		ArrayList<Curiosity> curList = mService.printAllMyCuriosity(memberNo);
-		
+		if(!curList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(curList,response.getWriter());
+		}else {
+			System.out.println("궁금해요 리스트 없다! 어쩔래?");
+		}
 	}
 	
 	
