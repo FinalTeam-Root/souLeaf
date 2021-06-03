@@ -59,7 +59,26 @@
 						      </div>
 						    </div>
 						  </div>
+						  
                  </c:forEach>
+                  <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul id="page">
+                <li><a href=""${before }"">&lt;</a></li>
+                <c:if test="${pi.currentPage > 1 }">
+					<a href="${before }"></a>&nbsp;
+				</c:if>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
                  <tr align="center" height="20">
 					<td colspan="6">
                  	<c:url var="before" value="qnaListView.kh">
