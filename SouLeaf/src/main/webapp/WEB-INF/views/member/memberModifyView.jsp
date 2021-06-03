@@ -41,12 +41,6 @@
 														id="memberName" placeholder="memberName"
 														value="${mOne.memberName }" readonly>
 												</div>
-												<div class="form-group">
-													<label class="label" for="memberFileRename">사진파일</label> <input
-														type="file" class="form-control" name="uploadFile"
-														id="memberFilerename" placeholder="memberFilerename"
-														value="${mOne.memberFileRename }" readonly>
-												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
@@ -56,6 +50,14 @@
 														value="${mOne.memberNick }">
 												</div>
 											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="memberFileRename">사진파일</label> <input
+														type="file" class="form-control" name="uploadFile"
+														id="memberFilerename" placeholder="memberFilerename"
+														value="${mOne.memberFileRename }" readonly>
+												</div>
+												</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="memberMail">이메일</label> <input
