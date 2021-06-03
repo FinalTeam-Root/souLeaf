@@ -178,7 +178,7 @@
           </div>
         </div>
     	</div>
-        	<button onclick="location.href='plantUpdateView.kh?plantNo=${plant.plantNo}'">수정</button>
+        	
     </section>
 
 <jsp:include page="../common/footer.jsp"></jsp:include>

@@ -17,7 +17,7 @@
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
           	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home.kh">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">식물도감 <button class="btn btn-success btn-xs" onclick="location.href='plantWrite.kh'">도감 등록</button></h1>
+            <h1 class="mb-0 bread">식물도감</h1>
           </div>
         </div>
       </div>
