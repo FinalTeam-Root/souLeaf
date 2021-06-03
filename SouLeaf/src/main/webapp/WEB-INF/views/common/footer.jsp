@@ -30,7 +30,7 @@
 			<div class="row">
 				
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">STORY</h2>
+					<h2 class="footer-heading">SOULEAF</h2>
 					<p>SOUL + LEAF 의 합성어로 식물과 정신적 교감을 통해 마음의 안정을 갖는것을 뜻합니다.</p>
 					<ul class="ftco-footer-social p-0">
 						<li class=""><a href="#" data-toggle="tooltip"
@@ -46,47 +46,43 @@
 				</div>
 				
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">Latest News</h2>
+					<h2 class="footer-heading">공지사항</h2>
 					<div class="block-21 mb-4 d-flex">
 						<a class="img mr-4 rounded"
-							style="background-image: url(resources/images/image_1.jpg);"></a>
+							style="background-image: url(resources/images/main_bg_27.jpg);"></a>
 						<div class="text">
 							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about</a>
+								<a href="#">서비스 점검 안내 <br>(6월 15일 02:00~06:00)</a>
 							</h3>
 							<div class="meta">
 								<div>
-									<a href="#"><span class="icon-calendar"></span> April 7,
-										2020</a>
+									<a href="#"><span class="icon-person"></span> 관리자</a>
 								</div>
 								<div>
-									<a href="#"><span class="icon-person"></span> Admin</a>
+									<a href="#"><span class="icon-calendar"></span> 2021-06-01</a>
 								</div>
 								<div>
-									<a href="#"><span class="icon-chat"></span> 19</a>
+									<a href="#"><span class="icon-chat"></span></a>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="block-21 mb-4 d-flex">
 						<a class="img mr-4 rounded"
-							style="background-image: url(resources/images/image_2.jpg);"></a>
+							style="background-image: url(resources/images/main_bg_28.jpg);"></a>
 						<div class="text">
 							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about</a>
+								<a href="#">개인정보 처리방침 개정안내</a>
 							</h3>
 							<div class="meta">
 								<div>
-									<a href="#"><span class="icon-calendar"></span> April 7,
-										2020</a>
+									<a href="#"><span class="icon-person"></span> 관리자</a>
 								</div>
 								<div>
-									<a href="#"><span class="icon-person"></span> Admin</a>
+									<a href="#"><span class="icon-calendar"></span> 2021-06-01</a>
 								</div>
 								<div>
-									<a href="#"><span class="icon-chat"></span> 19</a>
+									<a href="#"><span class="icon-chat"></span></a>
 								</div>
 							</div>
 						</div>

@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
-          	<h1 class="mb-4" style="  font-size: 5.78571vw;">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
+          	<h1 class="mb-4" style="  font-size: 4.58571vw;">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
             <!-- <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p> -->
           </div>
         </div>
