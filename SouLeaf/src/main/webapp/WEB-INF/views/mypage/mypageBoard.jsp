@@ -58,56 +58,7 @@
 								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
 								<button type="button" class="btn btn-outline-danger">삭제</button></td>
 							</tr>
-							<tr>
-								<td><input type="checkbox" name="del-select"
-									class="chk" value="selectOne"></td>
-								<td scope="row">1</td>
-								<td>오늘의 자랑하기 : 민달래</td>
-								<td>2021/05-21</td>
-								<td>25</td>
-								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
-								<button type="button" class="btn btn-outline-danger">삭제</button></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" name="del-select"
-									class="chk" value="selectOne"></td>
-								<td scope="row">1</td>
-								<td>오늘의 자랑하기 : 민달래</td>
-								<td>2021/05-21</td>
-								<td>25</td>
-								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
-								<button type="button" class="btn btn-outline-danger">삭제</button></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" name="del-select"
-									class="chk" value="selectOne"></td>
-								<td scope="row">1</td>
-								<td>오늘의 자랑하기 : 민달래</td>
-								<td>2021/05-21</td>
-								<td>25</td>
-								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
-								<button type="button" class="btn btn-outline-danger">삭제</button></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" name="del-select"
-									class="chk" value="selectOne"></td>
-								<td scope="row">1</td>
-								<td>오늘의 자랑하기 : 민달래</td>
-								<td>2021/05-21</td>
-								<td>25</td>
-								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
-								<button type="button" class="btn btn-outline-danger">삭제</button></td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" name="del-select"
-									class="chk" value="selectOne"></td>
-								<td scope="row">1</td>
-								<td>오늘의 자랑하기 : 민달래</td>
-								<td>2021/05-21</td>
-								<td>25</td>
-								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
-								<button type="button" class="btn btn-outline-danger">삭제</button></td>
-							</tr>
+
 							<tr>
 								<td><button type="button" class="btn btn-outline-warning">선택삭제</button></td>
 								<td colspan="5"></td>

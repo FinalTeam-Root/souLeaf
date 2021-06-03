@@ -30,11 +30,10 @@
 										<!-- <h3 class="mb-4">Contact Us</h3> -->
 										<form action="curiosityRegister.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
-										
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">제목</label>
-														<input type="text" class="form-control" name="curiosityContent" id="curiosityContent">
+														<input type="text" class="form-control" name="curiosityContent" id="curiosityContent" required>
 													</div>
 												</div>
 												
