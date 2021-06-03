@@ -168,7 +168,7 @@
 							</div>
 							<div class="row">
 								<div class="single_what_we_do leftFont"
-									onclick="location.href='#'">
+									onclick="location.href='mypageBoard.kh'">
 									<div class="top_line"></div>
 									<br>
 									<h4 class="what_we_do_title">내 게시글 관리</h4>

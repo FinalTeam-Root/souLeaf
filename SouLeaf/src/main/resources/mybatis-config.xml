@@ -24,6 +24,7 @@
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicCommnet" alias="ClinicCommnet"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicFile" alias="ClinicFile"/>
 		<typeAlias type="com.souleaf.spring.boast.domain.Boast" alias="Boast"/>
+		<typeAlias type="com.souleaf.spring.mypage.domain.MypageInfo" alias="MypageInfo"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -36,5 +37,6 @@
 		<mapper resource="mappers/clinic-mapper.xml"/>
 		<mapper resource="mappers/boast-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
+		<mapper resource="mappers/mypage-mapper.xml"/>
 		</mappers>
 </configuration>
