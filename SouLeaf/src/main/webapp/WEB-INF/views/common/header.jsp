@@ -48,13 +48,13 @@
 				    			</c:if>
 				    			<c:if test="${loginUser ne null }">
 					    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fas fa-comments" id="head-chat"> 채팅</span></a>
-					    			<a href="diaryMainView.kh?memberNo=${loginUser.memberNo }" class="d-flex align-items-center justify-content-center"><span class="fas fa-leaf" id="head-leaf"> 성장일기</span></a>
+					    			<a href="diaryMainView.kh?memberNo=${loginUser.memberNo }" class="d-flex align-items-center justify-content-center <c:if test="${nav eq 'diary' }">head-active</c:if>"><span class="fas fa-leaf" id="head-leaf"> 성장일기</span></a>
 					    			
 					    			<c:if test="${loginUser.memberId ne 'admin' }">
-						    			<a href="mypage.kh" class="d-flex align-items-center justify-content-center"><span class="fas fa-user" id="head-mypage"> 마이페이지</span></a>
+						    			<a href="mypage.kh" class="d-flex align-items-center justify-content-center <c:if test="${nav eq 'my' }">head-active</c:if>"><span class="fas fa-user" id="head-mypage"> 마이페이지</span></a>
 					    			</c:if>
 					    			<c:if test="${loginUser.memberId eq 'admin' }">
-						    			<a href="adminHome.kh" class="d-flex align-items-center justify-content-center"><span class="fas fa-user" id="head-mypage"> 관리페이지</span></a>
+						    			<a href="adminHome.kh" class="d-flex align-items-center justify-content-center <c:if test="${nav eq 'admin' }">head-active</c:if>"><span class="fas fa-user" id="head-mypage"> 관리페이지</span></a>
 					    			</c:if>
 					    			
 					    			<a href="logout.kh" class="d-flex align-items-center justify-content-center"><span class="fas fa-sign-out-alt" id="head-logout"> 로그아웃</span></a>

@@ -29,7 +29,7 @@ public class AdminController {
 	@RequestMapping(value = "adminHome.kh", method = RequestMethod.GET)
 	public String adminHome(Locale locale, Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		session.setAttribute("nav", "");
+		session.setAttribute("nav", "admin");
 		return "admin/adminHome";
 	}
 	

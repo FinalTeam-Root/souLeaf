@@ -34,7 +34,12 @@ function getMyCuriosityList() {
                     $tr = $("<tr>");
                     $check = $("<td><input type='checkbox' name='del-select' class='chk' value='selectOne'>");
                     $num = $("<td scope='row'>").text(data[i].num);
-                    $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?"+data[i].curiosityNo+"'class='noColor'>"+data[i].curiosityContent+"</a>");
+                    if(data[i].curiosityContent.length > 10){
+                        $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?"+data[i].curiosityNo+"'class='noColor'>"+data[i].curiosityContent.substr(0,10)+"...</a>");
+                    }else{
+
+                        $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?"+data[i].curiosityNo+"'class='noColor'>"+data[i].curiosityContent+"</a>");
+                    }
                     $writeDate = $("<td>").text(data[i].curiosityDate);
                     $readCount = $("<td>").text(data[i].curiosityCount);
                     $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick=curiosityModifyView.kh?"+data[i].curiosityNo+">수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
