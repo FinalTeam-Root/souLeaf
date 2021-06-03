@@ -45,7 +45,7 @@
 										<img src="resources/images/basicMemberImg.png" />
 									</c:when>
 									<c:otherwise>
-										<img src="resources/uploadFiles/member/${loginUser.memberPhoto} "/>
+										<img src="resources/uploadFiles/member/${loginUser.memberFileRename} "/>
 									</c:otherwise>
 								</c:choose>
 							</div>

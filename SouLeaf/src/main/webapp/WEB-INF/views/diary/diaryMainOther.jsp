@@ -47,9 +47,14 @@
 					<div class="col-md-4">
 						<div class="card card-profile">
 							<div class="card-avatar">
-								<a href="#"> <img
-									src="https://img.icons8.com/plasticine/100/000000/plant-under-sun.png" />
-								</a>
+								<c:choose>
+									<c:when test="${empty loginUser.memberPhoto }">
+										<img src="resources/images/basicMemberImg.png" />
+									</c:when>
+									<c:otherwise>
+										<img src="resources/uploadFiles/member/${loginUser.memberFileRename} " />
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="card-body ">
 								<h6 class="card-category text-gray" name="memberId">${member.memberId }</h6>

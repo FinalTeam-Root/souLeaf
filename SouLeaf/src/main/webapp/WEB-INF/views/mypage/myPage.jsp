@@ -44,7 +44,7 @@
 }
 
 .single_what_we_do {
-	width: 100%;
+	width: 750px;
 	height: 150px;
 	border: 1px solid #E7E7E7;
 	background-color: #ffffff;
@@ -52,6 +52,7 @@
 	padding: 0 35px;
 	border-radius: 10px;
 	position: relative;
+	margin-left:45px;
 	margin-bottom: 30px;
 	-webkit-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
@@ -98,132 +99,179 @@
 	text-align: center;
 	padding: 2px 3px 2px 5px;
 }
+
+
+/* 개인정보 띄워주기 */
+.card {
+  /* margin-bottom: 30px;
+  margin-top: 64px;
+  margin-left: 100px; */
+  border-radius: 1px !important;
+  color: rgba(0,0,0,.87);
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.card-title{
+  font-weight: 700 !important;
+  margin-top: 10px;
+  color: #3c4858;
+}
+.text-gray {
+  color: #999!important;
+}
+
+.card .card-body{
+  padding: .9375rem 1.875rem;
+  width: 280px;
+  text-align: left;
+}
+.card.card-profile{
+  margin-top: 60px;
+  text-align: center;
+  width: 270px;
+}
+.card-description{
+  color: #999;
+}
+
+.card .card-category {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.card-profile .card-avatar {
+  width: 130px;
+  max-width: 130px;
+  max-height: 130px;
+  margin: -50px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+.card-profile .card-avatar img{
+  width: 100%;
+}
+.card-profile .card-avatar+.card-body{
+  margin-top: 15px;
+}
 </style>
 </head>
 <body>
 	<div class="container bootstrap snippet">
 		<br> <br>
-		<div class="row">
-			<div class="col-sm-3" style="margin-top: 20px;">
-				<!--left col-->
-				<div class="col-sm-10">
-					<h4>${loginUser.memberNick }</h4>
-				</div>
-				<div class="text-center">
-				<c:choose>
+		<div class="col-md-12" style="margin-top: 20px;">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="myInfo">
+						<div class="card card-profile">
+							<div class="card-avatar">
+								<c:choose>
 									<c:when test="${empty loginUser.memberPhoto }">
 										<img src="resources/images/basicMemberImg.png" />
 									</c:when>
 									<c:otherwise>
-										<img src="resources/uploadFiles/member/${loginUser.memberPhoto} "/>
+										<img
+											src="resources/uploadFiles/member/${loginUser.memberFileRename} " />
 									</c:otherwise>
-				</c:choose>
-				
-				</div>
-				<br>
-				<div class="card" style="width: 16rem;">
-					<div class="card-header">소개글</div>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">${loginUser.memberIntro }</li>
-					</ul>
-
-				</div>
-				<br>
-				<div class="card" style="width: 16rem;">
-					<div class="card-header">반려식물</div>
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb"
-							style="margin-bottom: -; margin-bottom: 0px; background-color: white;">
-							<c:forEach var="name" items="${pList }" varStatus="index">
+								</c:choose>
+							</div>
+							<div class="card-body ">
+								<h6 class="card-category text-gray" name="memberId">${loginUser.memberId }</h6>
+								<h4 class="card-title" name="memberNick">${loginUser.memberNick }</h4>
+								<hr>
+								<span>소개글 </span>
+								<p class="card-description" name="memberIntro">${loginUser.memberIntro }</p>
+								<span>반려식물</span>
+								<p class="card-description">
+									<c:forEach var="name" items="${pList }" varStatus="index">
 										<a href="plantDetail.kh?plantNo=${name.plantNo }">#${name.plantName}</a>
-							</c:forEach>
-							
-						</ol>
-					</nav>
-				</div>
-				<br>
-			</div>
-			<!--/col-3-->
-			<div class="col-sm-9">
-				<br>
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="member" role="tabpanel"
-						aria-labelledby="member-tab">
-						<div class="container">
-							<div class="row">
-								<div class="single_what_we_do leftFont"
-									onclick="location.href='memerModifyView.kh'">
-									<div class="top_line"></div>
-									<br>
-									<h4 class="what_we_do_title">기본 정보</h4>
-									<div class="what_we_do_content">프로필 사진, 이름, 이메일 정보를
-										수정합니다.</div>
-									<a class="what_we_do_icon" href="#"> <i
-										class="fa fa-angle-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="single_what_we_do leftFont"
-									onclick="location.href='companionListView.kh'">
-									<div class="top_line"></div>
-									<br>
-									<h4 class="what_we_do_title">반려 식물 정보</h4>
-									<div class="what_we_do_content">반려식물 애칭, 이미지를 수정합니다.</div>
-									<a class="what_we_do_icon" href="#"> <i
-										class="fa fa-angle-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="single_what_we_do leftFont"
-									onclick="location.href='mypageBoard.kh'">
-									<div class="top_line"></div>
-									<br>
-									<h4 class="what_we_do_title">내 게시글 관리</h4>
-									<div class="what_we_do_content">작성한 게시글을 관리합니다.</div>
-									<a class="what_we_do_icon" href="mypageBoard.kh"> <i
-										class="fa fa-angle-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="single_what_we_do leftFont"
-									onclick="location.href='#'">
-									<div class="top_line"></div>
-									<br>
-									<h4 class="what_we_do_title">내 댓글 관리</h4>
-									<div class="what_we_do_content">작성한 댓글을 관리합니다.</div>
-									<a class="what_we_do_icon" href="#"> <i
-										class="fa fa-angle-right" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-							<div class="row">
-								<div class="single_what_we_do leftFont"
-									onclick="location.href='pwUpdateView.kh'">
-									<div class="top_line"></div>
-									<br>
-									<h4 class="what_we_do_title">비밀번호 변경</h4>
-									<div class="what_we_do_content">비밀번호를 변경합니다.</div>
-									<a class="what_we_do_icon" href="#"> <i
-										class="fa fa-angle-right" aria-hidden="true"></i>
-									</a>
-								</div>
+									</c:forEach>
+								</p>
 							</div>
 						</div>
 					</div>
-					<c:if test="${loginUser.memberId ne 'admin' }">
-						<button class="" id="lastbtn"
-							onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
-					</c:if>
 				</div>
-			</div>
-			<!--/tab-pane-->
+				<!-- myInfo -->
+				<div class="col-md-9">
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="member" role="tabpanel"
+							aria-labelledby="member-tab">
+							<div class="container">
+								<div class="row">
+									<div class="single_what_we_do leftFont"
+										onclick="location.href='memerModifyView.kh'">
+										<div class="top_line"></div>
+										<br>
+										<h4 class="what_we_do_title">기본 정보</h4>
+										<div class="what_we_do_content">프로필 사진, 이름, 이메일, 휴대전화
+											정보를 수정합니다.</div>
+										<a class="what_we_do_icon" href="#"> <i
+											class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="single_what_we_do leftFont"
+										onclick="location.href='companionListView.kh'">
+										<div class="top_line"></div>
+										<br>
+										<h4 class="what_we_do_title">반려 식물 정보</h4>
+										<div class="what_we_do_content">반려식물 애칭, 이미지를 수정합니다.</div>
+										<a class="what_we_do_icon" href="#"> <i
+											class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="single_what_we_do leftFont"
+										onclick="location.href='mypageBoard.kh'">
+										<div class="top_line"></div>
+										<br>
+										<h4 class="what_we_do_title">내 게시글 관리</h4>
+										<div class="what_we_do_content">작성한 게시글을 관리합니다.</div>
+										<a class="what_we_do_icon" href="mypageBoard.kh"> <i
+											class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="single_what_we_do leftFont"
+										onclick="location.href='#'">
+										<div class="top_line"></div>
+										<br>
+										<h4 class="what_we_do_title">내 댓글 관리</h4>
+										<div class="what_we_do_content">작성한 댓글을 관리합니다.</div>
+										<a class="what_we_do_icon" href="#"> <i
+											class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="single_what_we_do leftFont"
+										onclick="location.href='pwUpdateView.kh'">
+										<div class="top_line"></div>
+										<br>
+										<h4 class="what_we_do_title">비밀번호 변경</h4>
+										<div class="what_we_do_content">비밀번호를 변경합니다.</div>
+										<a class="what_we_do_icon" href="#"> <i
+											class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<c:if test="${loginUser.memberId ne 'admin' }">
+							<button class="" id="lastbtn"
+								onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
+						</c:if>
+					</div>
+				</div> <!--col-md-9-->
+			</div> <!-- col-md-12 -->
 		</div>
 		<!--/tab-content-->
 	</div>
-	<!--/col-9-->
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>
