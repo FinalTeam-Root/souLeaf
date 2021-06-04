@@ -1,11 +1,12 @@
 package com.souleaf.spring.member.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.souleaf.spring.member.domain.Member;
 
 public interface MemberService {
-	public List<Member> selectAll(); // 멤버전체출력
+	public ArrayList<Member> selectAll(); // 멤버전체출력
 	public Member loginMember(Member member); // 로그인
 	public int checkIdDup(String memberId);
 	public int registerMember(Member member);

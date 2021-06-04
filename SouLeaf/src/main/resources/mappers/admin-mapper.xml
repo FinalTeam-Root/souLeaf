@@ -4,5 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="adminMapper">
+<resultMap type="MemberStatus" id="memberStatusResultMap">
+	<result property="statusY" column="STATUS_Y"/>
+	<result property="statusN" column="STATUS_N"/>
+</resultMap>
+
+<select id="selectMemberStatus" resultMap="memberStatusResultMap">
+	SELECT COUNT(CASE WHEN MEMBER_STATUS = 'Y' THEN 'Y' END) AS STATUS_Y,COUNT(CASE WHEN MEMBER_STATUS = 'N' THEN 'N' END) AS STATUS_N FROM MEMBER
+</select>
 	
 </mapper>

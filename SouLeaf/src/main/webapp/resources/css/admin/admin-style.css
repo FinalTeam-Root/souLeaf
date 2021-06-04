@@ -56,7 +56,12 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 .admin-form :hover{
 	cursor: pointer;
 }
-
+.categories li a span, .sidelink li a span {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #ccc;
+}
 .btn {
     padding: 5px 8px;
     cursor: pointer;
@@ -122,10 +127,16 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 }
 .custom-form{
 	    position: absolute;
+    
+    
+top:2%; left:5%; z-index:-1
+}
+.custom-btn-form{
+	    position: absolute;
     bottom: 1%;
+    left:5%;
     z-index: 100;
 }
-
 
 .plant-search {
 	    border-top: 0;
@@ -141,4 +152,9 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     border-radius: 25px;
 }
 
-
+.plant-img{
+	width: 30px; height:30px; object-fit: cover;
+}
+.member-img{
+	width: 30px; height:30px; border-radius: 50%; object-fit: cover;
+}

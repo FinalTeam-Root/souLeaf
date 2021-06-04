@@ -1,5 +1,6 @@
 package com.souleaf.spring.member.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberStore mStore;
 
 	@Override
-	public List<Member> selectAll() {
+	public ArrayList<Member> selectAll() {
 		return mStore.selectAll();
 	}
 

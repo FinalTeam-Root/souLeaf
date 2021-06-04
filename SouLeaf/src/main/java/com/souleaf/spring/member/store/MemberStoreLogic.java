@@ -1,5 +1,6 @@
 package com.souleaf.spring.member.store;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,9 +16,8 @@ public class MemberStoreLogic implements MemberStore {
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<Member> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Member> selectAll() {
+		return (ArrayList)sqlSession.selectList("memberMapper.selectAll");
 	}
 
 	@Override
