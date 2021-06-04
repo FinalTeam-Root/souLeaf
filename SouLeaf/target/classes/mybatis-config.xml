@@ -24,6 +24,7 @@
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicReply" alias="ClinicReply"/>
 		<typeAlias type="com.souleaf.spring.clinic.domain.ClinicSearch" alias="ClinicSearch"/>
 		<typeAlias type="com.souleaf.spring.boast.domain.Boast" alias="Boast"/>
+		<typeAlias type="com.souleaf.spring.boast.domain.BoastReply" alias="BoastReply"/>
 		<typeAlias type="com.souleaf.spring.mypage.domain.MypageInfo" alias="MypageInfo"/>
 	</typeAliases>
 	<mappers>

@@ -65,18 +65,56 @@
           </c:forEach>
         </div>
             <button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh'">글쓰기</button>
+       
+       <!-- 페이징 처리 -->
         <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
-              <ul id="boast-page">
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
+            
+               <ul>
+               <!--  <li class="active"><span>1</span></li>
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
                 <li><a href="#">5</a></li>
                 <li><a href="#">&gt;</a></li>
-              </ul>
+               -->
+        <!-- 이전 -->
+        <c:url var="before" value="boastListView.kh">
+					<c:param name="page" value="${pi.currentPage - 1 }"></c:param>
+				</c:url>
+				<c:if test="${pi.currentPage <= 1 }">
+					<li><a href="#">&lt;</a></li>
+				</c:if>
+				<c:if test="${pi.currentPage > 1 }">
+					<li><a href="${before }">&lt;</a></li> 
+				</c:if>
+				<!-- 페이지 -->
+        <c:forEach var="p" begin="${pi.startPage }" end="${pi.endPage }">
+					<c:url var="pagination" value="boastListView.kh">
+						<c:param name="page" value="${p }"></c:param>
+					</c:url>
+					<c:if test="${p eq pi.currentPage }">
+					<li class="active"><span>${p }</span></li>
+						
+					</c:if>
+					<c:if test="${p ne pi.currentPage }">
+					<li><a href="${pagination }">${p }</a></li>
+					</c:if>
+				</c:forEach>
+				<!-- 다음 -->
+				<c:url var="after" value="boastListView.kh">
+					<c:param name="page" value="${pi.currentPage + 1 }"></c:param>
+				</c:url>
+				<c:if test="${pi.currentPage >= pi.maxPage }">
+					<li><a href="#">&gt;</a></li>
+				</c:if>
+				<c:if test="${pi.currentPage < pi.maxPage }">
+					<li><a href="${after }">&gt;</a></li>
+				</c:if>
+				</ul>
+				
+				
             </div>
           </div>
         </div>

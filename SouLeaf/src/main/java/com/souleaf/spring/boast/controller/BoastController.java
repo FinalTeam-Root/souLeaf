@@ -44,12 +44,13 @@ public class BoastController {
 
 	// 자랑하기 리스트 페이지 이동 및 출력 //////////
 	@RequestMapping(value = "boastListView.kh", method = RequestMethod.GET)
-	public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,HttpServletRequest request) {
+	public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,
+			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.setAttribute("nav", "boast");
 		int currentPage = (page != null) ? page : 1;
 		int listCount = bService.getListCount();
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
 		ArrayList<Boast> bList = bService.printAll(pi);
 		System.out.println("들어왔니?");
 		if (!bList.isEmpty()) {
@@ -65,30 +66,28 @@ public class BoastController {
 	}
 
 	// 자랑하기 리스트 출력
-		@RequestMapping(value="boastList.kh")
-		public void getBoastList(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception {
-			int currentPage = (page != null) ? page : 1;
-			int listCount = bService.getListCount();
-			PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
-			ArrayList<Boast> bList = bService.printAll(pi);
-			if(! bList.isEmpty()) {
-				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-				gson.toJson(bList, response.getWriter());
-			}else {
-				System.out.println("데이터가 없습니다");
-			}
-		}
-	
+	/*
+	 * @RequestMapping(value="boastListView.kh") public void
+	 * getBoastList(HttpServletResponse response, @RequestParam(value = "page",
+	 * required = false) Integer page) throws Exception { int currentPage = (page !=
+	 * null) ? page : 1; int listCount = bService.getListCount(); PageInfo pi =
+	 * BoastPagination.getPageInfo(currentPage, listCount); ArrayList<Boast> bList =
+	 * bService.printAll(pi); if(! bList.isEmpty()) { Gson gson = new
+	 * GsonBuilder().setDateFormat("yyyy-MM-dd").create(); gson.toJson(bList,
+	 * response.getWriter()); }else { System.out.println("데이터가 없습니다"); } }
+	 */
+
 	// 자랑하기 페이지 출력
-	@RequestMapping(value="boastPage.kh")
-	public void getBoastPage(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
-		int currentPage = (page != null) ? page : 1;
-		int listCount = bService.getListCount();
-		PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		gson.toJson(pi, response.getWriter());
-	}
-	
+	/*
+	 * @RequestMapping(value="boastPage.kh") public void
+	 * getBoastPage(HttpServletResponse response, @RequestParam(value = "page",
+	 * required = false) Integer page) throws Exception { int currentPage = (page !=
+	 * null) ? page : 1; int listCount = bService.getListCount(); PageInfo pi =
+	 * BoastPagination.getPageInfo(currentPage, listCount); Gson gson = new
+	 * GsonBuilder().setDateFormat("yyyy-MM-dd").create(); gson.toJson(pi,
+	 * response.getWriter()); }
+	 */
+
 	// 자랑하기 상세페이지 이동 및 출력////////////
 	@RequestMapping(value = "boastDetail.kh", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView boastDetailView(ModelAndView mv, @RequestParam("boastNo") int boastNo) {
@@ -124,7 +123,7 @@ public class BoastController {
 		Member member = (Member) session.getAttribute("loginUser");
 		int memberNo = member.getMemberNo();
 		boast.setMemberNo(memberNo);
-		
+
 		// 서버에 파일을 저장하는 작업
 
 		if (!uploadFile.getOriginalFilename().equals("")) {
@@ -153,7 +152,6 @@ public class BoastController {
 
 	// 자랑하기 수정화면 이동
 
-	
 	// 자랑하기 수정화면 이동 2
 
 	/*
@@ -186,41 +184,47 @@ public class BoastController {
 	 * if (result > 0) { mv.setViewName("redirect:boastListView.kh"); } else {
 	 * mv.setViewName("common/errorPage"); } return mv; }
 	 */
-	
-	
+
 	// 자랑하기 게시글 수정 2
-		@RequestMapping(value="boastUpdate.kh",method = RequestMethod.POST)
-		public ModelAndView boastUpdate(ModelAndView mv, Boast boast, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model, HttpServletRequest request) {
-			int currentPage = (page != null) ? page : 1;
-			int currentCount = (count != null) ? count : 0;
-			HttpSession session = request.getSession();
-			Member member = (Member)session.getAttribute("loginUser");
-			
-			int memberNo = member.getMemberNo();
-			boast.setMemberNo(memberNo);	
-			
+	@RequestMapping(value = "boastUpdateView.kh", method = RequestMethod.POST)
+	public ModelAndView boastUpdate(ModelAndView mv, Boast boast,
+			@RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,
+			@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "count", required = false) Integer count, Model model, HttpServletRequest request) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loginUser");
+
+		int memberNo = member.getMemberNo();
+		boast.setMemberNo(memberNo);
+
 		System.out.println(boast.toString());
-			int result = bService.modifyBoast(boast);
-			System.out.println(result);
-			if(result > 0) {
-				mv.setViewName("redirect:boastDetail.kh?boastNo="+boast.getBoastNo()+"&page="+currentPage+"&count="+currentCount);
-				session.setAttribute("fileName", "");
-			}else {
-				
-			}
-			return mv;
+		int result = bService.modifyBoast(boast);
+		System.out.println(result);
+		if (result > 0) {
+			mv.setViewName("redirect:boastDetail.kh?boastNo=" + boast.getBoastNo() + "&page=" + currentPage + "&count="
+					+ currentCount);
+			session.setAttribute("fileName", "");
+		} else {
+
 		}
-	
+		return mv;
+	}
+
 	// 자랑하기 수정화면 이동
-	@RequestMapping(value= "boastUpdateView.kh")
-	public ModelAndView boastUpdateView(ModelAndView mv,@RequestParam("boastNo") int boastNo,@ModelAttribute Boast boast, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
+	@RequestMapping(value = "boastUpdateView.kh")
+	public ModelAndView boastUpdateView(ModelAndView mv, @RequestParam("boastNo") int boastNo,
+			@ModelAttribute Boast boast, @RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "count", required = false) Integer count, Model model) {
 		int currentPage = (page != null) ? page : 1;
 		int currentCount = (count != null) ? count : 0;
 		boast = bService.printOne(boastNo);
-		if(boast != null) {
-			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("boast",boast).setViewName("Boast/boastUpdateView");
-		}else {
-			
+		if (boast != null) {
+			mv.addObject("page", currentPage).addObject("count", currentCount).addObject("boast", boast)
+					.setViewName("Boast/boastUpdateView");
+		} else {
+
 		}
 		return mv;
 	}
@@ -247,57 +251,63 @@ public class BoastController {
 	}
 
 	// 자랑하기 댓글 리스트 출력
-	@ResponseBody
-	@RequestMapping(value="boastReplyList.kh")
-	public void boastReplyListView(HttpServletResponse response,@RequestParam("boastNo") int boastNo, BoastReply reply, Model model) throws Exception {
+
+	// @ResponseBody
+
+	@RequestMapping(value = "boastReplyList.kh")
+	public void boastReplyListView(HttpServletResponse response, @RequestParam("boastNo") int boastNo, BoastReply reply,
+			Model model) throws Exception {
 		ArrayList<BoastReply> brList = bService.printAllBoastReply(boastNo);
-		if(! brList.isEmpty()) {
+		if (!brList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 			gson.toJson(brList, response.getWriter());
-		}else {
+		} else {
 			System.out.println("데이터가 없습니다");
 		}
 	}
-	
 
 	// 자랑하기 댓글 등록
-	
-	  @ResponseBody
-	  
-	  @RequestMapping(value="boastReplyRegister.kh", method = RequestMethod.POST)
-	  public String boastReplyRegister(@ModelAttribute BoastReply reply,
-	  HttpSession session) { Member loginUser =
-	  (Member)session.getAttribute("loginUser");
-	  reply.setMemberNo(loginUser.getMemberNo()); int result =
-	  bService.registerBoastReply(reply); if(result > 0) { return result+""; }else
-	  { return result+""; } }
-	 
-	
-	
+
+	@ResponseBody
+
+	@RequestMapping(value = "boastReplyRegister.kh", method = RequestMethod.POST)
+	public String boastReplyRegister(@ModelAttribute BoastReply reply, HttpSession session) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		reply.setMemberNo(loginUser.getMemberNo());
+		int result = bService.registerBoastReply(reply);
+		if (result > 0) {
+			return result + "";
+		} else {
+			return result + "";
+		}
+	}
+
 	/*
 	 * public ModelAndView boastReplyRegister(ModelAndView mv, int boastNo,
 	 * BoastReply reply, MultipartFile uploadFile, Model model) { return null; }
 	 */
 	// 자랑하기 댓글 수정
-	  @ResponseBody
-	  @RequestMapping(value="boastReplyModify.kh", method = RequestMethod.POST)
-		public String boastReplyModify(@ModelAttribute BoastReply reply, HttpSession session) {
-			Member loginUser = (Member)session.getAttribute("loginUser");
-			reply.setMemberNo(loginUser.getMemberNo());
-			int result = bService.modifyBoastReply(reply);
-			if(result > 0) {
-				return result+"";
-			}else {
-				return result+"";
-			}
-		}
-		
-	  
-	//public ModelAndView boastReplyUpdate(ModelAndView mv, int boastNo, BoastReply reply, MultipartFile uploadFile,
-	//		Model model) {
-	//	return null;
 
-	//}
+	@ResponseBody
+
+	@RequestMapping(value = "boastReplyModify.kh", method = RequestMethod.POST)
+	public String boastReplyModify(@ModelAttribute BoastReply reply, HttpSession session) {
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		reply.setMemberNo(loginUser.getMemberNo());
+		int result = bService.modifyBoastReply(reply);
+		if (result > 0) {
+			return result + "";
+		} else {
+			return result + "";
+		}
+	}
+
+	// public ModelAndView boastReplyUpdate(ModelAndView mv, int boastNo, BoastReply
+	// reply, MultipartFile uploadFile,
+	// Model model) {
+	// return null;
+
+	// }
 
 	// 자랑하기 댓글 삭제
 	public String boastReplyDelete(int boastNo, Model model) {

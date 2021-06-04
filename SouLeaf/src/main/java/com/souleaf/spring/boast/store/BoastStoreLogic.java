@@ -31,8 +31,8 @@ public class BoastStoreLogic implements BoastStore {
 	@Override
 	public ArrayList<Boast> selectAllList(PageInfo pi) {
 		
-		int offset = (pi.getCurrentPage() - 1) * pi.getPageLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getPageLimit());
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return (ArrayList)sqlSession.selectList("boastMapper.selectAllList", null, rowBounds);
 	}
 	

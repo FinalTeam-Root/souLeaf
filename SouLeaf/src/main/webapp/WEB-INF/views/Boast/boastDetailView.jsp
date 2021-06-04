@@ -27,7 +27,7 @@
 							<div class="row no-gutters">
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-									<h2 class="heading-section p-1 ml-3">${boast.boastContent }</h2>
+									<h2 class="heading-section p-1 ml-3">${boast.boastTitle }</h2>
 									<div class="media p-1 ml-3">
 										<img src="resources/images/main_bg_8.jpg" alt="John Doe"
 											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
@@ -57,7 +57,7 @@
 												href="boastListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
 												<c:if test="${loginUser.memberNo eq boast.memberNo  }">
 													<a
-														href="boastModifyView.kh?boastNo=${boast.boastNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
+														href="boastUpdateView.kh?boastNo=${boast.boastNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
 									    <a href="#">삭제</a>
 												</c:if> </span>
 
@@ -74,7 +74,7 @@
 										<hr>
 										<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
 									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
-									<input type="hidden" id="curiosityNo" value="${boast.boastNo }">
+									<input type="hidden" id="boastNo" value="${boast.boastNo }">
 									<span id="boast-comment"></span>
 <!-- <div class="media p-3">
   <div>
@@ -104,7 +104,7 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
-   <script src="resources/js/curiosity/curiosity-detail.js"></script>
+   <script src="resources/js/boast/boast-detail.js"></script>
   
 </body>
 </html>

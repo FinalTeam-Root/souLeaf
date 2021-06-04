@@ -52,7 +52,7 @@
 					<h2 class="mb-4" style="text-align: center;">내 반려식물 자랑하기 - 글
 						수정</h2>
 				</div>
-				<form action="boastUpdate.kh" method="POST" enctype="multipart/form-data">
+				<form action="boastUpdateView.kh" method="POST" enctype="multipart/form-data">
 					<div class="container">
 
 						<div class="row">
