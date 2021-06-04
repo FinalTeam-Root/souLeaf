@@ -227,7 +227,7 @@
 												<div class="col-md-12">　</div>
 												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="subject">습도 종류</label>
+														<label class="label" for="subject">습도 종류</label><br>
 														<div class="btn-group btn-group-toggle" data-toggle="buttons">
 															<label class="btn btn-outline-success">
 																<input type="radio" name="piHumidityInfo" id="piHumidityInfo-1" value="쾌적한 습도"> 쾌적한 습도

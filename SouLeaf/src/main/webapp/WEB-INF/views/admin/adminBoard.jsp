@@ -69,6 +69,7 @@
 				                <th style="text-align: center; width:50px">이미지</th>
 				                <th>제목</th>
 				                <th>작성자</th>
+				                <th>조회수</th>
 				                <th>등록일</th>
 				            </tr>
 				        </thead>
@@ -104,6 +105,7 @@
 				                <th style="text-align: center; width:50px">이미지</th>
 				                <th>제목</th>
 				                <th>작성자</th>
+				                <th>조회수</th>
 				                <th>등록일</th>
 				            </tr>
 				        </thead>

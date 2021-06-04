@@ -84,7 +84,7 @@ function getBoastList(){
 		destroy: true,
 		"bLengthChange": false,
 		"bInfo": false,		
-		  order: [[4, 'desc']],
+		  order: [[5, 'desc']],
 		  language: {
 			paginate: {
 				previous: '<span class="icon md-chevron-left"><</span>',
@@ -129,6 +129,7 @@ function getBoastList(){
 				}
 			 },
 				{ data: "memberName" },
+				{ data: "boastCount" },
 				{ data: "boastDate" }
 			]
 			
@@ -147,7 +148,7 @@ function getCuriosityList(){
 		"bLengthChange": false,
 		"bInfo": false,	
 		fixedColumns: true,	
-		  order: [[4, 'desc']],
+		  order: [[5, 'desc']],
 		  language: {
 			paginate: {
 				previous: '<span class="icon md-chevron-left"><</span>',
@@ -198,6 +199,7 @@ function getCuriosityList(){
 				}
 			 },
 				{ data: "memberNick" },
+				{ data: "curiosityCount" },
 				{ data: "curiosityDate" }
 			]
 			
