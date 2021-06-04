@@ -192,6 +192,7 @@
 							</div>
 						</div>
 					</div>
+				 <button type="button" class="btn btn-success w-100 font-weight-bold mt-2" onclick="location.href='memberDelete.kh?memberId=${loginUser.memberId}'">회원탈퇴</button>  
 				</div>
 				<!-- myInfo -->
 				<div class="col-md-9">
