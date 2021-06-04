@@ -1,6 +1,7 @@
 package com.souleaf.spring.boast.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
@@ -21,6 +22,7 @@ public interface BoastStore {
 	public int insertBoast(Boast boast); //.
 	public int updateBoast(Boast boast); //.
 	public int deleteBoast(int boastNo); //.
+	public int deleteAdminBoast(HashMap<String, String> map); //. 게시글삭제 (관리자)
 	
 	public ArrayList<BoastReply> selectAllBoastReply(int boastNo); //.
 	public int insertBoastReply(BoastReply reply); //.

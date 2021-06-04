@@ -1,6 +1,7 @@
 package com.souleaf.spring.boast.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -147,6 +148,11 @@ public class BoastStoreLogic implements BoastStore {
 	@Override
 	public ArrayList<Boast> selectAll() {
 		return (ArrayList)sqlSession.selectList("boastMapper.selectAll");
+	}
+
+	@Override
+	public int deleteAdminBoast(HashMap<String, String> map) {
+		return sqlSession.update("boastMapper.deleteAdminBoast", map);
 	}
 
 

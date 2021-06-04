@@ -1,6 +1,7 @@
 package com.souleaf.spring.boast.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +19,7 @@ public interface BoastService {
 	public int registerBoast(Boast boast);// 게시글 등록.
 	public int modifyBoast(Boast boast);// 게시글 수정.
 	public int removeBoast(int boastNo);// 게시글 삭제 .
+	public int removeAdminBoast(HashMap<String, String> map);// 게시글 삭제 .(관리자) 
 	public ArrayList<Boast> printAllhashTagList(); // 해시태그 출력
 	public int addReadCount(int boastNo); // 게시글 상세 조회시 조회수 증가.
 	public ArrayList<BoastReply> printAllBoastReply(int boastNo); // 댓글 전체 출력.

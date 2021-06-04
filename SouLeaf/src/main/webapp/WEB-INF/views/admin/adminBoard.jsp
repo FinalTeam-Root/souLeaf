@@ -78,7 +78,7 @@
 				         
 				    </table>
 					    <div class="custom-btn-form">
-						    <input type="button" class="btn btn-danger" value="삭제">
+						    <input type="button" id="boast-delete" class="btn btn-danger" value="삭제">
 					    </div>
 				         <div class="custom-form">자랑하기데이터 <span id="boast-count"></span> 건</div>
 				         

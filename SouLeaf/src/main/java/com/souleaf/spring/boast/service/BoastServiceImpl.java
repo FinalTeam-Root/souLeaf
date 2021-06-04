@@ -1,6 +1,7 @@
 package com.souleaf.spring.boast.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -142,5 +143,10 @@ public class BoastServiceImpl implements BoastService {
 	@Override
 	public ArrayList<Boast> printAll() {
 		return bStore.selectAll();
+	}
+
+	@Override
+	public int removeAdminBoast(HashMap<String, String> map) {
+		return bStore.deleteAdminBoast(map);
 	}
 }

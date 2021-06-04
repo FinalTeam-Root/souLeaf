@@ -75,6 +75,10 @@
 	<update id="deleteBoast" parameterType="_int">
 		UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo }
 	</update>
+	
+	<update id="deleteAdminBoast" parameterType="Map">
+		UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${checkNo})
+	</update>
 
 	<!-- 댓글 -->
 	<resultMap type="BoastReply" id="boastReplyResultMap">

@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -103,8 +105,7 @@ public class AdminController {
 		// 자랑하기 리스트 출력
 		@RequestMapping(value="adminBoastList.kh")
 		public void getBoastList(HttpServletResponse response) throws Exception {
-			ArrayList<Boast> bList = bService.printAll();
-			System.out.println(bList.toString());
+			ArrayList<Boast> bList = bService.printAll();			
 			HashMap<String, ArrayList<Boast>> map = new HashMap<String, ArrayList<Boast>>();
 			map.put("data", bList);
 			if(! bList.isEmpty()) {
@@ -113,5 +114,14 @@ public class AdminController {
 			}else {
 				System.out.println("데이터가 없습니다");
 			}
+		}
+		// 자랑하기 삭제
+		@ResponseBody
+		@RequestMapping(value="adminBoastDelete.kh")
+		public String adminBoastDelete(@RequestParam("checkNo") String checkNo) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("checkNo", checkNo);
+			int result = bService.removeAdminBoast(map);			
+			return result+"";
 		}
 }

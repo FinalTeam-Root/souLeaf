@@ -13,7 +13,7 @@ function getPageInfo(page){
     type: "get",
     data:{"page":page},
     dataType : "json",
-    success : function(data){      
+    success : function(data){            
       str = "";
       if(data.startPage == 1){
 
