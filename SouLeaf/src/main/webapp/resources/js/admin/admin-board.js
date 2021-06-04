@@ -15,7 +15,8 @@ $(function(){
 			paginate: {
 				previous: '<span class="icon md-chevron-left"><</span>',
 				next: '<span class="icon md-chevron-left">></span>'
-			},
+			}
+		},
 			ajax:{
 				url:"adminBoastList.kh",
 				type:"get",
@@ -28,7 +29,7 @@ $(function(){
 				{ data: "memberName" },
 				{ data: "boastDate" }
 			]
-		}
+		
 	});
 	$('#custom-filter').keyup( function() {
 		dataTable.search( this.value ).draw();

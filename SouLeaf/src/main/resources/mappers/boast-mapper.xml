@@ -22,7 +22,7 @@
 
 
 	<!-- 게시판 -->
-	<select id="Boast" resultMap="boastResultMap">
+	<select id="selectAll" resultMap="boastResultMap">
 	SELECT * FROM BOAST WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 	</select>
 	
