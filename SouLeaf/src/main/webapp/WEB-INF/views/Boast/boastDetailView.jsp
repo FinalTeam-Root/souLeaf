@@ -49,9 +49,7 @@
 													class="far fa-eye"></span> ${boast.boastCount }
 												&nbsp;&nbsp;<span class="fa fa-comment"></span> <span
 													id="replyCount">0</span>
-
-
-												<c:choose>
+											<%-- 	<c:choose>
 													<c:when test="${likecheck eq '0' or empty likecheck}">
 														<!-- likecheck가0이면 빈하트-->
 														<img src="/resources/images/ico_like_before.png"
@@ -66,13 +64,15 @@
 													</c:otherwise>
 												</c:choose>
 												<dd id="likecnt" style="margin-left: 5px;">${likecnt}</dd>
+ --%>
+
 
 
 
 											</div>
 
  
- 
+ <div class="col-md-6">
 											
 											<span style="float: right" class="mt-4"><a
 												href="boastListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
@@ -83,7 +83,7 @@
 												</c:if> </span>
 
 
-											<div class="col-md-6">
+											
 											
 
 											</div>
