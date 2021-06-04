@@ -41,7 +41,7 @@
  </update>
  
  <update id="deleteMember" parameterType="Member">
-		UPDATE  MEMBER SET MEMBER_STATUS = 'N' WHERE MEMBER_ID = #{memberId }
+		UPDATE  MEMBER SET MEMBER_STATUS = 'N', MEMBER_OUT = SYSDATE WHERE MEMBER_ID = #{memberId }
  </update>
  
   <select id="selectMember" resultMap="memberResultMap">
