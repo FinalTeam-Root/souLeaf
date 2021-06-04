@@ -24,9 +24,9 @@ $(function(){
 			},
 			columns:[
 				{ data: "boastNo" },
-				{ data: "boastReName" },
 				{ data: "boastTitle" },
-				{ data: "memberName" },
+				{ data: "boastTitle" },
+				{ data: "memberNo" },
 				{ data: "boastDate" }
 			]
 		

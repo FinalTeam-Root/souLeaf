@@ -23,7 +23,7 @@
 
 	<!-- 게시판 -->
 	<select id="selectAll" resultMap="boastResultMap">
-	SELECT * FROM BOAST WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+	SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
