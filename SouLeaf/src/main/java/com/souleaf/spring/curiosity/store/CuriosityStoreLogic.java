@@ -109,8 +109,12 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	
 
 	@Override
-	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search) {
- 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectSearchAllList", search);
+	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search, MypageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		// 없이 쿼리문을 실행한다고 하면 전체 게시물을 가져오는데 
+		// 내가 원하는 게시물 만큼만가져온다 그래서 사용
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+ 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectSearchAllList", search,rowBounds);
 	}
 
 	@Override
@@ -121,6 +125,11 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	@Override
 	public ArrayList<Curiosity> selectAll() {
 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAll");
+	}
+
+	@Override
+	public int getMySearchCount(MypageSearch search) {
+		return sqlSession.selectOne("curiosityMapper.getMySearchCount", search);
 	}
 	
 	

@@ -98,8 +98,8 @@ public class CuriosityServiceImpl implements CuriosityService {
 	}
 
 	@Override
-	public ArrayList<Curiosity> printSearchAllList(MypageSearch search) {
-		return cStore.selectSearchAllList(search);
+	public ArrayList<Curiosity> printSearchAllList(MypageSearch search,MypageInfo pi) {
+		return cStore.selectSearchAllList(search,pi);
 	}
 
 	@Override
@@ -110,6 +110,12 @@ public class CuriosityServiceImpl implements CuriosityService {
 	@Override
 	public ArrayList<Curiosity> printAll() {
 		return cStore.selectAll();
+	}
+
+	@Override
+	public int getMySearchCount(MypageSearch search) {
+		// TODO Auto-generated method stub
+		return cStore.getMySearchCount(search);
 	}
 	
 

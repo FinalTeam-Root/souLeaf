@@ -29,7 +29,8 @@ public interface CuriosityService {
 	
 	// 마이페이지
 	public ArrayList<Curiosity> printAllMyCuriosity(int memberNo, MypageInfo pi); // 내가 쓴 게시글 가져오기
-	public ArrayList<Curiosity> printSearchAllList(MypageSearch search); // 검색
+	public ArrayList<Curiosity> printSearchAllList(MypageSearch search, MypageInfo pi); // 검색
 	public int getMyCuriosityListCount(int memberNo);
+	public int getMySearchCount(MypageSearch search);
 	
 }

@@ -29,6 +29,7 @@ public interface CuriosityStore {
 	
 	// 마이페이지
 	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo, MypageInfo pi); // 내가 쓴 게시글 목록
-	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search);// 검색
+	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search, MypageInfo pi);// 검색
 	public int selectMyCuriosityListCount(int memberNo); // 내가 쓴 리스트 갯수 가져오기 
+	public int getMySearchCount(MypageSearch search);
 }

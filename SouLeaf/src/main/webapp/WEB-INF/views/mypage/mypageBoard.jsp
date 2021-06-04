@@ -93,7 +93,7 @@
 
 						<div id="custom-search-input">
 							<div class="input-group col-md-12">
-								<input type="text" name="searchValue" id="searchValue" value=" " class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
+								<input type="text" name="searchValue" id="searchValue" class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
 								<span class="input-group-btn">
 									<button class="btn btn-info btn-lg" type="submit" id="curiositySearchBtn">
 										<i class="fa fa-search"></i>
