@@ -156,6 +156,16 @@ top:2%; left:5%; z-index:-1
 .plant-img{
 	width: 30px; height:30px; object-fit: cover;
 }
+.boast-img, .boast-check{
+	text-align: center;
+}
+.boast-img img{
+	width: 30px; height:30px; object-fit: cover;
+}
+.boast-title {
+	color: #000;
+}
+
 .member-img{
 	width: 30px; height:30px; border-radius: 50%; object-fit: cover;
 }

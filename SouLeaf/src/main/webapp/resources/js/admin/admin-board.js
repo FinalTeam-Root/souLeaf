@@ -1,15 +1,8 @@
 $(function(){
 	
-	let dataTable = $('#dataTable1').DataTable({
+	let dataTable1 = $('#dataTable1').DataTable({
 		"bLengthChange": false,
-		"bInfo": false,
-		columns: [
-			{ orderable: false },
-			{ orderable: false },
-			null,
-			null,
-			null
-		  ],
+		"bInfo": false,		
 		  order: [[4, 'desc']],
 		  language: {
 			paginate: {
@@ -20,19 +13,52 @@ $(function(){
 			ajax:{
 				url:"adminBoastList.kh",
 				type:"get",
-				dataType:"json"
+				dataType:"json",
+				"dataSrc": function ( json ) {							
+					$("#boast-count").text(json.data.length);
+					return json.data;
+				}    
 			},
 			columns:[
-				{ data: "boastNo" },
-				{ data: "boastTitle" },
-				{ data: "boastTitle" },
-				{ data: "memberNo" },
+				{ orderable: false,
+					data: "boastNo",
+					className : "boast-check",
+				render: function(data){					
+					return '<input type="checkbox" class="checkbox_group" value="'+data+'">';
+				}
+			 },
+				{  orderable: false,
+					data: "boastReName" ,
+				 "defaultContent": "<i>Not set</i>",
+				 className : "boast-img",
+				 render: function(data){
+					 var img = '';
+					 if(data == null){
+							img = '<img src="resources/uploadFiles/boast/defaultplant.png">';
+					 }else{
+						 img = '<img src="resources/uploadFiles/boast/'+data+'">';
+					 }
+					 return img;
+
+				 }
+			    },
+				{ data: "boastTitle",
+				render: function(data, type, row, meta){
+					console.log("data-"+data);
+					console.log("type-"+type);
+					console.log("row-"+row.boastNo);
+					console.log("meta-"+meta);
+					return '<a href="boastDetail.kh?boastNo='+row.boastNo+'" class="boast-title">'+data+'</a>';
+				}
+			 },
+				{ data: "memberName" },
 				{ data: "boastDate" }
 			]
+			
+		});
 		
-	});
-	$('#custom-filter').keyup( function() {
-		dataTable.search( this.value ).draw();
+	$('#custom-filter1').keyup( function() {
+		dataTable1.search( this.value ).draw();
 	  } );
 	
 $("#check_all").on("click", function(){

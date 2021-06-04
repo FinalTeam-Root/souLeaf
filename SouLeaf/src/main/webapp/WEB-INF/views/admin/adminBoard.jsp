@@ -60,13 +60,13 @@
 				    	<div class="container">    	  
 				    	<div align="right" class="custom-search">
 				    	 <span class="fa fa-search"></span>
-					    	<input id="custom-filter" class="plant-search" placeholder="" type="text"/>
+					    	<input id="custom-filter1" class="plant-search" placeholder="" type="text"/>
 				    	</div>
 				    		 <table id="dataTable1" class="row-border hover" style="width:100%">
 				        <thead>
 				            <tr>
-				                <th style="text-align: center"><input type="checkbox" id="check_all"></th>
-				                <th style="text-align: center">이미지</th>
+				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all"></th>
+				                <th style="text-align: center; width:50px">이미지</th>
 				                <th>제목</th>
 				                <th>작성자</th>
 				                <th>등록일</th>
@@ -78,9 +78,9 @@
 				         
 				    </table>
 					    <div class="custom-btn-form">
-						    <input type="submit" class="btn btn-danger" value="삭제">
+						    <input type="button" class="btn btn-danger" value="삭제">
 					    </div>
-				         <div class="custom-form">자랑하기데이터 건</div>
+				         <div class="custom-form">자랑하기데이터 <span id="boast-count"></span> 건</div>
 				         
 				    	</div>
 				    </section>

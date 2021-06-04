@@ -1,6 +1,7 @@
 package com.souleaf.spring.admin.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -104,9 +105,11 @@ public class AdminController {
 		public void getBoastList(HttpServletResponse response) throws Exception {
 			ArrayList<Boast> bList = bService.printAll();
 			System.out.println(bList.toString());
+			HashMap<String, ArrayList<Boast>> map = new HashMap<String, ArrayList<Boast>>();
+			map.put("data", bList);
 			if(! bList.isEmpty()) {
 				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-				gson.toJson(bList, response.getWriter());
+				gson.toJson(map, response.getWriter());
 			}else {
 				System.out.println("데이터가 없습니다");
 			}
