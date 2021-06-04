@@ -109,8 +109,8 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	
 
 	@Override
-	public ArrayList<Curiosity> selectSearchAllList(HashMap<String, Object> map) {
- 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectSearchAllList", map);
+	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search) {
+ 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectSearchAllList", search);
 	}
 
 	@Override

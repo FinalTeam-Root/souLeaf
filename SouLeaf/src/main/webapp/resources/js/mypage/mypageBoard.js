@@ -123,16 +123,18 @@ $(function(){
     $("#curiositySearchBtn").on("click",function(){
         var searchCondition =  $("#searchCondition").val();
         var searchValue = $("#searchValue").val();
+        console.log(searchCondition,searchValue);
         $.ajax({
             url : "curiositySearch.kh",
             type : "get",
             data : {"searchCondition" : searchCondition, "searchValue" : searchValue, "memberNo" :memberNo},
             dataType : "json",
             success : function(data) {
+                console.log("궁금해요 검색리스트 :");
                 console.log(data);
                 getMyCuriosityList(memberNo, pageInfo);
                 $("#searchValue").val(searchValue);
-                $("#searchCondition").val(searchValue).prop("selected",true);
+                $("#searchCondition").val(searchCondition).prop("selected",true);
             }
         })
     });

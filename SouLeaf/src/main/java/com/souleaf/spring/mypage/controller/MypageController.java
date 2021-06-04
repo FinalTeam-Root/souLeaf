@@ -92,11 +92,8 @@ public class MypageController {
 	
 	// 궁금해요 검색
 	@RequestMapping(value="curiositySearch.kh")
-	public void curiositySearch(@ModelAttribute MypageSearch search, @RequestParam("memberNo") int memberNo, HttpServletResponse response) throws Exception {
-		HashMap<String, Object> map = new HashMap<String,Object>();
-		map.put("search", search);
-		map.put("memberNo", memberNo);
-		ArrayList<Curiosity> searchList = curService.printSearchAllList(map);
+	public void curiositySearch(@ModelAttribute MypageSearch search, HttpServletResponse response) throws Exception {
+		ArrayList<Curiosity> searchList = curService.printSearchAllList(search);
 		if(!searchList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(searchList, response.getWriter());

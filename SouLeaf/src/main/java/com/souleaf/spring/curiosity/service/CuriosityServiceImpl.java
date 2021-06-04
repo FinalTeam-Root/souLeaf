@@ -98,8 +98,8 @@ public class CuriosityServiceImpl implements CuriosityService {
 	}
 
 	@Override
-	public ArrayList<Curiosity> printSearchAllList(HashMap<String, Object> map) {
-		return cStore.selectSearchAllList(map);
+	public ArrayList<Curiosity> printSearchAllList(MypageSearch search) {
+		return cStore.selectSearchAllList(search);
 	}
 
 	@Override
