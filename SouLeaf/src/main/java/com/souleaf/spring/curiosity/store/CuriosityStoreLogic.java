@@ -1,6 +1,8 @@
 package com.souleaf.spring.curiosity.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +13,8 @@ import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 @Repository
 public class CuriosityStoreLogic implements CuriosityStore{
@@ -51,11 +55,6 @@ public class CuriosityStoreLogic implements CuriosityStore{
 		return 0;
 	}
 
-	@Override
-	public ArrayList<Curiosity> selectSearchAllList(CuriositySearch search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<Plant> selectAllhashTagList() {
@@ -96,11 +95,28 @@ public class CuriosityStoreLogic implements CuriosityStore{
 		sqlSession.update("curiosityMapper.updateViewCount",curiosityNo);
 	}
 
+	
+	// 마이페이지 
+	
 	@Override
-	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo) {
-		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllMyCuriosity", memberNo);
+	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo, MypageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		// 없이 쿼리문을 실행한다고 하면 전체 게시물을 가져오는데 
+		// 내가 원하는 게시물 만큼만가져온다 그래서 사용
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAllMyCuriosity",memberNo, rowBounds);
+	}
+	
+
+	@Override
+	public ArrayList<Curiosity> selectSearchAllList(HashMap<String, Object> map) {
+ 		return (ArrayList)sqlSession.selectList("curiosityMapper.selectSearchAllList", map);
 	}
 
+	@Override
+	public int selectMyCuriosityListCount(int memberNo) {
+		return sqlSession.selectOne("curiosityMapper.selectMyListCount", memberNo);
+	}
 	
 	
 

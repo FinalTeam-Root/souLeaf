@@ -13,4 +13,6 @@ public interface MypageStore {
 	public ArrayList<Clinic> selectAllMyClinic(int memberNo);
 
 	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo);
+
+
 }

@@ -69,21 +69,22 @@
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
+								<input type="hidden" id="pageInfo" value="">
 								<ul id="curiosity-page">
-									<li><a href="#">&lt;</a></li>
+									<!-- <li><a href="#">&lt;</a></li>
 									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+									<li><a name="page" href="#">2</a></li>
+									<li><a name="page" href="#">3</a></li>
+									<li><a name="page" href="#">4</a></li>
+									<li><a name="page" href="#">5</a></li>
+									<li><a href="#">&gt;</a></li> -->
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="row" style="margin: 50px auto; width: 550px;">
 						<div id="selectSearch">
-							<select name="searchKeyward" id="searchKeyward" class="form-control-sm">
+							<select name="searchCondition" id="searchCondition" class="form-control-sm">
 								<option value="searchAll">전체</option>
 								<option value="searchTitle">제목</option>
 								<option value="searchContent">내용</option>
@@ -92,9 +93,9 @@
 
 						<div id="custom-search-input">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
+								<input type="text" name="searchValue" id="searchValue" value=" " class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
 								<span class="input-group-btn">
-									<button class="btn btn-info btn-lg" type="button">
+									<button class="btn btn-info btn-lg" type="submit" id="curiositySearchBtn">
 										<i class="fa fa-search"></i>
 									</button>
 								</span>

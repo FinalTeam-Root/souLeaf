@@ -75,4 +75,22 @@
 		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE ASC) AS NUM, A.* FROM (SELECT CURIOSITY_NO,CURIOSITY_CONTENT, CURIOSITY_DATE, MEMBER_NO, CURIOSITY_COUNT FROM CURIOSITY) A WHERE MEMBER_NO = #{memberNo} ORDER BY CURIOSITY_DATE DESC
 	</select>
 	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM CURIOSITY WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_STATUS = 'Y'
+	</select>
+	
+	<select id="selectSearchAllList" resultMap="curiosityResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CURIOSITY ) A 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		ORDER BY CURIOSITY_DATE DESC
+	</select>
+	
 </mapper>

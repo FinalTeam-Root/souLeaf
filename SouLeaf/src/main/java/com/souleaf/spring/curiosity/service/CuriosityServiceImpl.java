@@ -1,6 +1,7 @@
 package com.souleaf.spring.curiosity.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,8 @@ import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.domain.CuriositySearch;
 import com.souleaf.spring.curiosity.store.CuriosityStore;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 @Service
 public class CuriosityServiceImpl implements CuriosityService {
@@ -47,11 +50,6 @@ public class CuriosityServiceImpl implements CuriosityService {
 		return 0;
 	}
 
-	@Override
-	public ArrayList<Curiosity> printSearchAllList(CuriositySearch search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<Plant> printAllhashTagList() {
@@ -92,11 +90,22 @@ public class CuriosityServiceImpl implements CuriosityService {
 		
 	}
 
+	// 마이페이지
+	
 	@Override
-	public ArrayList<Curiosity> printAllMyCuriosity(int memberNo) {
-		return cStore.selectAllMyCuriosity(memberNo);
+	public ArrayList<Curiosity> printAllMyCuriosity(int memberNo, MypageInfo pi) {
+		return cStore.selectAllMyCuriosity(memberNo,pi);
 	}
 
+	@Override
+	public ArrayList<Curiosity> printSearchAllList(HashMap<String, Object> map) {
+		return cStore.selectSearchAllList(map);
+	}
+
+	@Override
+	public int getMyCuriosityListCount(int memberNo) {
+		return cStore.selectMyCuriosityListCount(memberNo);
+	}
 	
 
 }

@@ -31,4 +31,5 @@ public class MypageStoreLogic implements MypageStore{
 		return (ArrayList)sqlSession.selectList("mypageMapper.selectAllMyCuriosity", memberNo);
 	}
 
+
 }
