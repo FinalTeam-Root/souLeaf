@@ -95,7 +95,8 @@ public class PlantController {
 		
 		// 식물도감 상세페이지 이동 및 출력
 		@RequestMapping(value="plantDetail.kh")
-		public ModelAndView plantDetailView(ModelAndView mv,@RequestParam("plantNo") int plantNo, Model model) {
+		public ModelAndView plantDetailView(ModelAndView mv,@RequestParam("plantNo") int plantNo,HttpSession session) {
+			session.setAttribute("nav", "plant");
 			Plant plant = pService.printOne(plantNo);
 			PlantInfo pInfo = pService.printOneInfo(plantNo);
 			ArrayList<PlantFile> pfList = pService.printFileList(plantNo);
@@ -127,7 +128,7 @@ public class PlantController {
 		        int result = pService.registerPlant(plant, plantInfo, fList, filePath);
 		       
 			if(result > 0) {
-				mv.setViewName("redirect:plantListView.kh");
+				mv.setViewName("redirect:adminPlant.kh");
 			}else {
 				mv.setViewName("common/errorPage");
 			}
@@ -161,7 +162,7 @@ public class PlantController {
 		        int result = pService.modifyPlant(plant, plantInfo, fList, filePath);
 		       
 			if(result > 0) {
-				mv.setViewName("redirect:plantListView.kh");
+				mv.setViewName("redirect:adminPlant.kh");
 			}else {
 				mv.setViewName("common/errorPage");
 			}
