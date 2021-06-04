@@ -174,3 +174,8 @@ top:2%; left:5%; z-index:-1
     color: #fff;
     background-color: #00bd56;
 }
+.px50 {
+  width: 50px;
+  max-width: 50px;
+  word-wrap: break-word;
+}

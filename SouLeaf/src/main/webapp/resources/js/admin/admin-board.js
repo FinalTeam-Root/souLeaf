@@ -142,6 +142,7 @@ function getBoastList(){
 
 function getCuriosityList(){
 	let dataTable3 = $('#dataTable3').DataTable({
+		'autoWidth': false,
 		destroy: true,
 		"bLengthChange": false,
 		"bInfo": false,	
@@ -168,7 +169,7 @@ function getCuriosityList(){
 			columns:[
 				{ orderable: false,
 					data: "curiosityNo",
-					className : "curiosity-check",
+					className : "curiosity-check px50",
 				render: function(data){					
 					return '<input type="checkbox" class="checkbox_group2" name="curiosity-check" value="'+data+'">';
 				}
@@ -176,7 +177,7 @@ function getCuriosityList(){
 				{  orderable: false,
 					data: "curiosityFileRename" ,
 				 "defaultContent": "<i>Not set</i>",
-				 className : "curiosity-img",
+				 className : "curiosity-img px50",
 				 render: function(data){
 					 var img = '';
 					 if(data == null){

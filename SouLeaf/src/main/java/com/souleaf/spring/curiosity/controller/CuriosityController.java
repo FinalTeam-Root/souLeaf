@@ -56,7 +56,7 @@ public class CuriosityController {
 		session.setAttribute("nav", "curiosity");
 		session.setAttribute("fileName", "");
 		mv.addObject("page",currentPage).addObject("count",currentCount).setViewName("curiosity/curiosityListView");
-		return mv;
+		return mv; 
 	}
 	
 	// 궁금해요 리스트 출력
