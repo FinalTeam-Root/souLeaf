@@ -144,6 +144,11 @@ public class BoastStoreLogic implements BoastStore {
 		return (ArrayList)sqlSession.selectList("boastMapper.selectRank");
 	}
 
+	@Override
+	public ArrayList<Boast> selectAll() {
+		return (ArrayList)sqlSession.selectList("boastMapper.selectAll");
+	}
+
 
 	
 

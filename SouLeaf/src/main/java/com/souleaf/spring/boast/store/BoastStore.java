@@ -11,7 +11,7 @@ import com.souleaf.spring.common.PageInfo;
 public interface BoastStore {
 
 	
-	
+	public ArrayList<Boast> selectAll();
 	public ArrayList<Boast> selectAllList(PageInfo pi);// .
 	public int selectListCount(); // 전체 수 조회수.
 	public ArrayList<Boast> selectSearchList(BoastSearch search); //검색조회

@@ -141,7 +141,6 @@ public class BoastServiceImpl implements BoastService {
 
 	@Override
 	public ArrayList<Boast> printAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return bStore.selectAll();
 	}
 }

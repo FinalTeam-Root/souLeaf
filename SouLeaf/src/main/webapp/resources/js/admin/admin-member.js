@@ -25,21 +25,50 @@ $(function(){
 		dataTable.search( this.value ).draw();
 	  } );
 	
-$("#check_all").on("click", function(){
+$("#check_all_y").on("click", function(){
 	var checked = $(this).is(":checked");
 	if(checked){
-		$(".checkbox_group").prop("checked",true);
+		$(".checkbox_y").prop("checked",true);
 	}else{
-		$(".checkbox_group").prop("checked",false);
+		$(".checkbox_y").prop("checked",false);
+	}
+    checkStatus();
+});
+$("#check_all_n").on("click", function(){
+	var checked = $(this).is(":checked");
+	if(checked){
+		$(".checkbox_n").prop("checked",true);
+	}else{
+		$(".checkbox_n").prop("checked",false);
+	}
+	checkStatus();
+});
+
+$(".checkbox_group").on("click", function(){
+	if($('.checkbox_y').is(":checked")){
+		$(".checkbox_n").attr('disabled',true);
+	}else if($('.checkbox_y').is(":checked") == false){
+		$(".checkbox_n").attr('disabled',false);
+	}
+	if($('.checkbox_n').is(":checked")){
+		$(".checkbox_y").attr('disabled',true);
+	}else if($('.checkbox_n').is(":checked") == false){
+		$(".checkbox_y").attr('disabled',false);
 	}
 });
 
 $("form").on("submit", function() {
-	if($('.checkbox_group').is(":checked") == false){
+	if($('.checkbox_group').is(":checked") == false && $('.checkbox_reset').is(":checked") == false){
 		 alert('체크된 값이 없습니다.');
 		return false;
 	}else{
-			 if (!confirm("정말 삭제하시겠습니까?")) {
+		var status = "";
+		if($('.checkbox_y').is(":checked")){
+			 status = "비활성화";
+		}else{
+			status = "활성화"; 
+		}
+			 if (!confirm("정말 "+status+" 하시겠습니까?")) {
 		// 취소(아니오) 버튼 클릭 시 이벤트
 			return false;
 		} else {
@@ -49,3 +78,16 @@ $("form").on("submit", function() {
 });
 
 });
+
+function checkStatus(){
+	if($('.checkbox_y').is(":checked")){
+		$(".checkbox_n").attr('disabled',true);
+	}else if($('.checkbox_y').is(":checked") == false){
+		$(".checkbox_n").attr('disabled',false);
+	}
+	if($('.checkbox_n').is(":checked")){
+		$(".checkbox_y").attr('disabled',true);
+	}else if($('.checkbox_n').is(":checked") == false){
+		$(".checkbox_y").attr('disabled',false);
+	}
+}

@@ -30,7 +30,7 @@
                 <h3>Services</h3>
                 <li><a href="adminPlant.kh" style=" color: #00bd56;">도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminMember.kh">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
-                <li><a href="#">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="adminBoard.kh">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="#">Q&A 관리 <span class="fa fa-chevron-right"></span></a></li>
               </div>
             </div>

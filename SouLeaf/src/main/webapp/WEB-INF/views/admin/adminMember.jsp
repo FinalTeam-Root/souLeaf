@@ -30,7 +30,7 @@
                 <h3>Services</h3>
                 <li><a href="adminPlant.kh" >도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminMember.kh" style=" color: #00bd56;">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
-                <li><a href="#">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="adminBoard.kh">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="#">Q&A 관리 <span class="fa fa-chevron-right"></span></a></li>
               </div>
             </div>
@@ -47,11 +47,12 @@
     	 <span class="fa fa-search"></span>
 	    	<input id="custom-filter" class="plant-search" placeholder="" type="text"/>
     	</div>
-        <form action="adminMemberDelete.kh" method="get">
+        <form action="adminMemberState.kh" method="get">
     		 <table id="dataTable" class="row-border hover" style="width:100%">
         <thead>
             <tr>
-                <th style="text-align: center"><input type="checkbox" id="check_all"></th>
+                <!-- <th style="text-align: center"><small><input type="checkbox" id="check_all_y" class="checkbox_y"> <input type="checkbox" id="check_all_n" class="checkbox_n"></small></th> -->
+                <th>선택</th>
                 <th style="text-align: center">이미지</th>
                 <th>아이디</th>
                 <th>닉네임</th>
@@ -64,8 +65,8 @@
                 
           <c:forEach items="${mList }" var="mi" varStatus="status">
           <c:if test="${mi.memberStatus eq 'Y' }">
-            <tr style="cursor: pointer;">
-                <td align="center"><input type="checkbox" value="${mi.memberNo }" name="member-check" class="checkbox_group"></td>
+            <tr>
+                <td align="center"><input type="checkbox" value="${mi.memberNo }" name="member-check" class="checkbox_group checkbox_y"></td>
                 <c:if test="${mi.memberFileRename eq null }">
                 <td align="center"><img src="resources/images/basicMemberImg.png" height="30px"></td>                
                 </c:if>
@@ -76,12 +77,12 @@
                 <td>${mi.memberNick }</td>
                 <td>${mi.memberName }</td>
                 <td>${mi.memberMail }</td>
-                <td>${mi.memberJoin }</td>
+                <td><small>${mi.memberJoin }</small></td>
             </tr>
           </c:if>
           <c:if test="${mi.memberStatus eq 'N' }">
-            <tr style="cursor: pointer; background: #ff4b4b17">
-                <td align="center"><button value="${mi.memberNo }" name="member-reset" class="btn" style="padding: o opx; color:#00bd56">활성화</button></td>
+            <tr style="background: #ff4b4b17">
+                <td align="center"><input type="checkbox" value="${mi.memberNo }" name="member-check" class="checkbox_group checkbox_n"></td>
                 <c:if test="${mi.memberFileRename eq null }">
                 <td align="center"><img src="resources/images/basicMemberImg.png" height="30px"></td>                
                 </c:if>
@@ -92,7 +93,7 @@
                 <td>${mi.memberNick }</td>
                 <td>${mi.memberName }</td>
                 <td>${mi.memberMail }</td>
-                <td>${mi.memberJoin }</td>
+                <td><small>${mi.memberJoin }</small></td>
             </tr>
           </c:if>
           </c:forEach>
@@ -100,9 +101,10 @@
         
     </table>
     <div class="custom-btn-form">
-	    <input type="submit" class="btn btn-danger" value="비활성화">	    
+	    <input type="submit" class="btn btn-danger checkbox_y" name="status" value="비활성화">	    
+	    <input type="submit" class="btn btn-success checkbox_n" name="status" value="활성화">	    
     </div>
-         <div class="custom-form">총회원 수 ${mList.size()} 활성 ${mStatus.statusY} 비활성${mStatus.statusN}</div> 
+         <div class="custom-form">회원데이터 ${mList.size()} 건 &nbsp;&nbsp;<small><span class="text-success">활성 : ${mStatus.statusY}</span> <span class="text-danger">&nbsp; 비활성 : ${mStatus.statusN}</span></small> </div> 
         </form>      
          
     	</div>
