@@ -12,6 +12,7 @@ import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface CuriosityService {
+	public ArrayList<Curiosity> printAll();
 	public int getCuriosityListCount(); // 게시글 갯수 
 	public ArrayList<Curiosity> printAllList(PageInfo pi);// 게시글 출력
 	public Curiosity printOne(int curiosityNo);// 게시글 상세보기

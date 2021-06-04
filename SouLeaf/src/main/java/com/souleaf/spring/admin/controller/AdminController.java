@@ -24,6 +24,8 @@ import com.souleaf.spring.admin.domain.MemberStatus;
 import com.souleaf.spring.admin.service.AdminService;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.curiosity.domain.Curiosity;
+import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.plant.domain.Plant;
@@ -40,6 +42,8 @@ public class AdminController {
 	private MemberService mService;
 	@Autowired
 	private BoastService bService;
+	@Autowired
+	private CuriosityService cService;
 	
 	// 관리자 메인
 	@RequestMapping(value = "adminHome.kh", method = RequestMethod.GET)
@@ -123,5 +127,19 @@ public class AdminController {
 			map.put("checkNo", checkNo);
 			int result = bService.removeAdminBoast(map);			
 			return result+"";
+		}
+		
+		// 궁금해요 리스트 출력
+		@RequestMapping(value="adminCuriosityList.kh")
+		public void getCuriosityList(HttpServletResponse response) throws Exception {
+			ArrayList<Curiosity> cList = cService.printAll();		
+			HashMap<String, ArrayList<Curiosity>> map = new HashMap<String, ArrayList<Curiosity>>();
+			map.put("data", cList);
+			if(! cList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(map, response.getWriter());
+			}else {
+				System.out.println("데이터가 없습니다");
+			}
 		}
 }

@@ -106,6 +106,11 @@ public class CuriosityServiceImpl implements CuriosityService {
 	public int getMyCuriosityListCount(int memberNo) {
 		return cStore.selectMyCuriosityListCount(memberNo);
 	}
+
+	@Override
+	public ArrayList<Curiosity> printAll() {
+		return cStore.selectAll();
+	}
 	
 
 }

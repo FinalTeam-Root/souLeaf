@@ -117,6 +117,11 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	public int selectMyCuriosityListCount(int memberNo) {
 		return sqlSession.selectOne("curiosityMapper.selectMyListCount", memberNo);
 	}
+
+	@Override
+	public ArrayList<Curiosity> selectAll() {
+		return (ArrayList)sqlSession.selectList("curiosityMapper.selectAll");
+	}
 	
 	
 

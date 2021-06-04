@@ -93,8 +93,8 @@
 		AND CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_DATE DESC
 	</select> 
 	
-<!-- 	<select id="selectSearchAllList" resultMap="curiosityResultMap">
-		SELECT ROW_NUMBER() OVER (ORDER BY CURIOSITY_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CURIOSITY ) A WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' AND CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_DATE DESC
-	</select>  -->
+	<select id="selectAll" resultMap="curiosityResultMap">
+		SELECT * FROM CURIOSITY JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_STATUS = 'Y' ORDER BY CURIOSITY_NO DESC
+	</select>
 	
 </mapper>

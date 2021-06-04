@@ -12,6 +12,7 @@ import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface CuriosityStore {
+	public ArrayList<Curiosity> selectAll();
 	public int selectCuriosityListCount();
 	public ArrayList<Curiosity> selectAllList(PageInfo pi);// 게시글 출력
 	public Curiosity selectOne(int curiosityNo);// 게시글 상세보기

@@ -65,7 +65,7 @@
 				    		 <table id="dataTable1" class="row-border hover" style="width:100%">
 				        <thead>
 				            <tr>
-				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all"></th>
+				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all1"></th>
 				                <th style="text-align: center; width:50px">이미지</th>
 				                <th>제목</th>
 				                <th>작성자</th>
@@ -91,7 +91,34 @@
 			</div>
 
 			<div class="tab-pane" id="admin-curiosity">
-				궁금ㅎ요
+				 <section class="mt-3" style="position: relative;">
+				    	<div class="container">    	  
+				    	<div align="right" class="custom-search">
+				    	 <span class="fa fa-search"></span>
+					    	<input id="custom-filter3" class="plant-search" placeholder="" type="text"/>
+				    	</div>
+				    		 <table id="dataTable3" class="row-border hover" style="width:100%">
+				        <thead>
+				            <tr>
+				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all2"></th>
+				                <th style="text-align: center; width:50px">이미지</th>
+				                <th>제목</th>
+				                <th>작성자</th>
+				                <th>등록일</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        </tbody>
+				                
+				         
+				    </table>
+					    <div class="custom-btn-form">
+						    <input type="button" id="curiosity-delete" class="btn btn-danger" value="삭제">
+					    </div>
+				         <div class="custom-form">궁금해요데이터 <span id="curiosity-count"></span> 건</div>
+				         
+				    	</div>
+				    </section>
 			</div>
 			
 			

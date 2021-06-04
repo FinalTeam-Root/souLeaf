@@ -1,21 +1,26 @@
 $(function(){
 	
 	getBoastList();
-
+	getCuriosityList();
 	$("#boast-delete").on("click", function(){
 		deleteBoast();
 	});
 		
-	$('#custom-filter1').keyup( function() {
-		dataTable1.search( this.value ).draw();
-	  } );
-	
-$("#check_all").on("click", function(){
+
+$("#check_all1").on("click", function(){
 	var checked = $(this).is(":checked");
 	if(checked){
-		$(".checkbox_group").prop("checked",true);
+		$(".checkbox_group1").prop("checked",true);
 	}else{
-		$(".checkbox_group").prop("checked",false);
+		$(".checkbox_group1").prop("checked",false);
+	}
+});
+$("#check_all2").on("click", function(){
+	var checked = $(this).is(":checked");
+	if(checked){
+		$(".checkbox_group2").prop("checked",true);
+	}else{
+		$(".checkbox_group2").prop("checked",false);
 	}
 });
 
@@ -100,7 +105,7 @@ function getBoastList(){
 					data: "boastNo",
 					className : "boast-check",
 				render: function(data){					
-					return '<input type="checkbox" class="checkbox_group" name="boast-check" value="'+data+'">';
+					return '<input type="checkbox" class="checkbox_group1" name="boast-check" value="'+data+'">';
 				}
 			 },
 				{  orderable: false,
@@ -119,7 +124,7 @@ function getBoastList(){
 				 }
 			    },
 				{ data: "boastTitle",
-				render: function(data, row){					
+				render: function(data, target, row){					
 					return '<a href="boastDetail.kh?boastNo='+row.boastNo+'" class="boast-title">'+data+'</a>';
 				}
 			 },
@@ -128,4 +133,76 @@ function getBoastList(){
 			]
 			
 		});
+		$('#custom-filter1').keyup( function() {
+			dataTable1.search( this.value ).draw();
+		  } );
+		
+}
+
+
+function getCuriosityList(){
+	let dataTable3 = $('#dataTable3').DataTable({
+		destroy: true,
+		"bLengthChange": false,
+		"bInfo": false,	
+		fixedColumns: true,	
+		  order: [[4, 'desc']],
+		  language: {
+			paginate: {
+				previous: '<span class="icon md-chevron-left"><</span>',
+				next: '<span class="icon md-chevron-left">></span>'
+			}
+		},
+			ajax:{
+				url:"adminCuriosityList.kh",
+				type:"get",
+				dataType:"json",
+				"dataSrc": function ( json ) {							
+					$("#curiosity-count").text(json.data.length);
+					return json.data;
+				}    
+			},
+			columnDefs: [
+				{ width: 50, targets: 0 }
+			],
+			columns:[
+				{ orderable: false,
+					data: "curiosityNo",
+					className : "curiosity-check",
+				render: function(data){					
+					return '<input type="checkbox" class="checkbox_group2" name="curiosity-check" value="'+data+'">';
+				}
+			 },
+				{  orderable: false,
+					data: "curiosityFileRename" ,
+				 "defaultContent": "<i>Not set</i>",
+				 className : "curiosity-img",
+				 render: function(data){
+					 var img = '';
+					 if(data == null){
+							img = '<img src="resources/uploadFiles/curiosity/defaultplant.png">';
+					 }else{
+						 img = '<img src="resources/uploadFiles/curiosity/'+data+'">';
+					 }
+					 return img;
+
+				 }
+			    },
+				{ data: "curiosityContent",
+				render: function(data, target, row){
+					if(data.length>10){
+						data = data.substr(0,10)+"...";
+					}					
+					return '<a href="curiosityDetail.kh?curiosityNo='+row.curiosityNo+'" class="curiosity-title">'+data+'</a>';
+				}
+			 },
+				{ data: "memberNick" },
+				{ data: "curiosityDate" }
+			]
+			
+		});
+		$('#custom-filter3').keyup( function() {
+			dataTable3.search( this.value ).draw();
+		  } );
+		
 }
