@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="wrapper">
 <head>
 <meta charset="UTF-8">
 <title>souLeaf - 로그인</title>
@@ -16,6 +16,12 @@
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 html{
 /* background: #c9ccd1;  Old browsers */ 
@@ -48,6 +54,16 @@ text-align:center;
 
     margin: 0 0 0 20px;
 }
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #00bd56; }
+  a:hover, a:focus {
+    text-decoration: none;
+    color: #00bd56;
+    outline: none !important;
+    font-weight: bold }
 </style>
 </head>
 <body>
