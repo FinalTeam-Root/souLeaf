@@ -374,8 +374,7 @@ public class MemberController {
 			session.setAttribute("loginUser", loginUser);
 			return "redirect:home.kh";
 		} else {
-			model.addAttribute("msg", "로그인 실패!");
-			return "common/errorPage";
+			return "loginView.kh";
 		}
 	}
 	
@@ -389,9 +388,10 @@ public class MemberController {
 			result = mService.registerMember(member);
 			chkMember = mService.loginMember(member);
 		}
-		if(result > 0 && chkMember != null) {
+		if(chkMember != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", chkMember);
+			session.setAttribute("token", token);
 			return "success";			
 		} else {
 			return "fail";
@@ -405,7 +405,8 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:home.kh";
 	}
-
+	
+	
 	// 아이디 중복 검사
 	@RequestMapping(value = "idCheck.kh", method = RequestMethod.POST)
 	public void idDupleCheck(HttpServletResponse response, @ModelAttribute Member member)
@@ -424,5 +425,17 @@ public class MemberController {
 		Integer result = 0; // 변수 값
 		result = mService.checkNickDup(member.getMemberNick()) > 0 ? 1 : 0;
 		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
+	}
+	
+	// 아이디와 비밀번호 
+	@ResponseBody
+	@RequestMapping(value="noMemberLogin.kh", method = RequestMethod.POST)
+	public String noMemberLogin(@ModelAttribute Member member) {
+		Member noMember = mService.loginMember(member);
+		if(noMember == null) { // 아이디와 비밀번호가 일치하지 않다면 success 를 보내줘라
+			return "success";			
+		}else {
+			return "fail";
+		}
 	}
 }

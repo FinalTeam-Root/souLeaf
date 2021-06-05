@@ -24,6 +24,8 @@
 	<script src="resources/js/footer-main.js"></script>	
 	<script src="resources/js/main.js"></script>	
 	<script src="resources/js/home/openweather.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="resources/js/kakaoLogin/kakaoLogin.js"></script>
 </head>
 <body>
 	<footer class="footer">

@@ -62,8 +62,12 @@
 					    			<c:if test="${loginUser.memberId eq 'admin' }">
 						    			<a href="adminHome.kh" class="d-flex align-items-center justify-content-center <c:if test="${nav eq 'admin' }">head-active</c:if>"><small><span class="fas fa-user" id="head-mypage"> 관리페이지</span></small></a>
 					    			</c:if>
-					    			
-					    			<a href="logout.kh" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-sign-out-alt" id="head-logout"> 로그아웃</span></small></a>
+					    			<c:if test="${token eq null }">
+					    				<a href="logout.kh" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-sign-out-alt" id="head-logout"> 로그아웃</span></small></a>
+					    			</c:if>
+					    			<c:if test="${token ne null }">
+					    				<a href="javascript:void(0)" onclick="kakaoLogout();" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-sign-out-alt" id="head-logout"> 카카오 로그아웃</span></small></a>
+				    				</c:if>
 				    			</c:if>
 				    		</p>
 		       			</div>
@@ -84,13 +88,13 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-		        	<li class="nav-item <c:if test="${nav eq 'home' }">active</c:if>"><a href="home.kh" class="nav-link">홈</a></li>
-					<%-- <li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li> --%>
-					<li class="nav-item <c:if test="${nav eq 'plant' }">active</c:if>"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
-					<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="boastListView.kh" class="nav-link">식물자랑</a></li>
-					<li class="nav-item <c:if test="${nav eq 'clinic' }">active</c:if>"><a href="clinicListView.kh" class="nav-link">식물클리닉</a></li>
-					<li class="nav-item <c:if test="${nav eq 'curiosity' }">active</c:if>"><a href="curiosityListView.kh" class="nav-link">궁금해요</a></li>
-					<li class="nav-item <c:if test="${nav eq 'qna' }">active</c:if>"><a href="qnaListView.kh" class="nav-link">Q&A</a></li>
+	        	<li class="nav-item <c:if test="${nav eq 'home' }">active</c:if>"><a href="home.kh" class="nav-link">홈</a></li>
+				<%-- <li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li> --%>
+				<li class="nav-item <c:if test="${nav eq 'plant' }">active</c:if>"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
+				<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="boastListView.kh" class="nav-link">식물자랑</a></li>
+				<li class="nav-item <c:if test="${nav eq 'clinic' }">active</c:if>"><a href="clinicListView.kh" class="nav-link">식물클리닉</a></li>
+				<li class="nav-item <c:if test="${nav eq 'curiosity' }">active</c:if>"><a href="curiosityListView.kh" class="nav-link">궁금해요</a></li>
+				<li class="nav-item <c:if test="${nav eq 'qna' }">active</c:if>"><a href="qnaListView.kh" class="nav-link">Q&A</a></li>
 	        </ul>
 	      </div>
 	    </div>

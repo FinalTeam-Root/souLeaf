@@ -75,7 +75,16 @@ a:hover, a:focus {
 	outline: none !important;
 	font-weight: bold
 }
+.kakao {
+	margin-left : 40px;
+}
 
+.idbox {
+	margin-bottom : 0;
+}
+.msg-contain {
+	margin-bottom : 30px;
+}
 </style>
 </head>
 <body>
@@ -93,13 +102,16 @@ a:hover, a:focus {
 				</div>
 				<div class="form-style">
 					<form action="login.kh" method="post">
-						<div class="form-group pb-3">
+						<div class="form-group pb-3 idbox">
 							<input type="text" placeholder="아이디" class="form-control"
 								name="memberId" id="exampleInputEmail1">
 						</div>
-						<div class="form-group pb-3">
+						<div class="form-group pb-3 idbox">
 							<input type="password" placeholder="비밀번호" name="memberPw"
 								class="form-control" id="exampleInputPassword1">
+						</div>
+						<div class="msg-contain">
+							<span id="msg" style="display:none; font-size:1.2vw; color: red;">아이디 또는 비밀번호가 일치 하지 않습니다.</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center">
@@ -107,20 +119,20 @@ a:hover, a:focus {
 									class="pl-2 font-weight-bold">아이디 저장</span>
 							</div>
 							<div>
-								<a href="#" style="font-size: 0.88vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
-								<a href="#" style="font-size: 0.88vw">비밀번호 찾기</a>
+								<a href="#" style="font-size: 1.2vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
+								<a href="#" style="font-size: 1.2vw">비밀번호 찾기</a>
 							</div>
 						</div>
 						<div class="pb-2">
-							<button type="submit" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
+							<button type="submit" id="loginBtn" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
 						</div>
 					</form>
 					<div class="sideline">OR</div>
-					<div>
+					<div class="kakao">
 						<a href="javascript:void(0)" onclick="kakaoLogin();"><img src="resources/images/kakao_login_medium_wide.png"></a>
 					</div>
 					<div class="pt-4 text-center">
-						<a href="enrollView.kh" style="font-size: 0.88vw">아직 회원이 아니신가요? </a>
+						<a href="enrollView.kh" style="font-size: 1.2vw">아직 회원이 아니신가요? </a>
 					</div>
 				</div>
 
@@ -131,45 +143,37 @@ a:hover, a:focus {
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>Kakao.init('2ed12623656a97e30e08860179073369'); 
-		function kakaoLogin() {
-		    Kakao.Auth.login({
-		      success: function (authObj) {
-		        Kakao.API.request({
-		          url: '/v2/user/me',
-		          success: function (response) {
-		        	  console.log(JSON.stringify(response)); 
-		        	   console.log(JSON.stringify(authObj));
-	
-		        	  console.log(response.id);
-	                  console.log(response.properties['nickname']);
-	                  console.log(authObj.access_token);
-	                
-	                  $.ajax({
-						url :"kakaoLogin.kh",
-						type : "POST",
-						data : {"memberId" :response.id, "memberPw": 1, "memberNick":response.properties['nickname'], "memberName": response.properties['nickname'],"memberMail":'kakao@Mail',"token":authObj.access_token},
-						success : function(data){
-							if(data == "success"){
-								location.href="home.kh";
-							}else {
-								alert("카카오 로그인 실패!");
-							}
-						}
+	<script src="resources/js/kakaoLogin/kakaoLogin.js"></script>
+	<script>
 
-
-					  })
-		          },
-		          fail: function (error) {
-		            console.log(error)
-		          },
-		        })
-		      },
-		      fail: function (error) {
-		        console.log(error)
-		      },
-		    })
-		  }
+		$("#loginBtn").on("click",function(){
+			var memberId = $("#exampleInputEmail1").val();
+			var memberPw = $("#exampleInputPassword1").val();
+			if(memberId == ""){
+				alert("아이디를 입력해주세요.");
+				return false;
+			}
+			if(memberPw == ""){
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}
+			$.ajax({
+				url : "noMemberLogin.kh",
+				type : "post",
+				data : {"memberId":memberId, "memberPw":memberPw},
+				success: function(data){
+					console.log(data);
+					if(data == "success"){
+						$("#msg").show();
+						return false;
+					}else {
+						$("#msg").hide();
+						location.href="login.kh";
+					}
+				}
+			});	
+		});
+		
 	</script>
 	<!——— Include the above in your HEAD tag —————>
 
