@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +27,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.souleaf.spring.clinic.domain.Clinic;
+import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.common.ClinicPagination;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.companion.controller.CompanionController;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.plant.domain.Plant;
 
@@ -36,6 +40,8 @@ import com.souleaf.spring.plant.domain.Plant;
 public class ClinicController {
 	@Autowired
 	private ClinicService cService;
+	
+	private Logger log = LoggerFactory.getLogger(CompanionController.class);
 	
 	// 클리닉 리스트 페이지 이동 및 출력
 	@RequestMapping(value="clinicListView.kh")
@@ -49,13 +55,15 @@ public class ClinicController {
 		return mv;
 	}
 	
-	// 궁금해요 리스트 출력
+	// 클리닉 리스트 출력
 	@RequestMapping(value="clinicList.kh")
 	public void getCuriosityList(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception {
 		int currentPage = (page != null) ? page : 1;
 		int listCount = cService.getClinicListCount();
+		log.info("클리닉 카운트 : " + listCount);
 		PageInfo pi = ClinicPagination.getPageInfo(currentPage, listCount);
 		ArrayList<Clinic> cList = cService.printAllList(pi);
+		log.info("클리닉 조회" + cList.toString());
 		if(! cList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(cList, response.getWriter());
@@ -64,38 +72,46 @@ public class ClinicController {
 		}
 	}
 	
-	// 궁금해요 페이지 출력
+	// 클리닉 페이지 출력
 	@RequestMapping(value="clinicPage.kh")
 	public void getClinicPage(HttpServletResponse response, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
 		int currentPage = (page != null) ? page : 1;
 		int listCount = cService.getClinicListCount();
+		log.info("클리닉 카운트 : " + listCount);
 		PageInfo pi = ClinicPagination.getPageInfo(currentPage, listCount);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		gson.toJson(pi, response.getWriter());
 	}
 	
-	// 궁금해요 상세페이지 이동 및 출력
+	// 클리닉 상세페이지 이동 및 출력
 	@RequestMapping(value="clinicDetail.kh")
-	public ModelAndView clinicDetailView(ModelAndView mv,@RequestParam("clinicNo") int clinicNo, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
+	public ModelAndView clinicDetailView(ModelAndView mv,@RequestParam("clinicNo") int clinicNo, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, HttpSession session) {
 		int currentPage = (page != null) ? page : 1;
 		int currentCount = (count != null) ? count : 0;
 		cService.addViewCount(clinicNo);
 		Clinic clinic = cService.printOne(clinicNo);
-		if(clinic != null) {
-			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("clinic",clinic).setViewName("clinic/clinicDetail");
-		}else {
-			
+		log.info("클리닉 조회" + clinic.toString());
+		
+		// 좋아요 처리
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		if (loginUser != null) {
+		ClinicLike cLike = new ClinicLike();
+		cLike.setClinicNo(clinicNo);
+		cLike.setMemberNo(loginUser.getMemberNo());
+		cLike = cService.printLike(cLike);
+		mv.addObject("cLike",cLike);
 		}
+		mv.addObject("page",currentPage).addObject("count",currentCount).addObject("clinic",clinic).setViewName("clinic/clinicDetail");
 		return mv;
 	}
 	
-	// 궁금해요 등록화면 이동
+	// 클리닉 등록화면 이동
 	@RequestMapping(value="clinicWrite.kh")
 	public String clinicWriterView() {
 		return "clinic/clinicWrite";
 	}
 	
-	// 궁금해요 게시글 등록
+	// 클리닉 게시글 등록
 	@RequestMapping(value="clinicRegister.kh", method = RequestMethod.POST)
 	public ModelAndView clinicRegister(ModelAndView mv, Clinic clinic, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -106,6 +122,7 @@ public class ClinicController {
 		clinic.setClinicFileRename(clinicFileRename);
 	
 		int result = cService.registerClinic(clinic);
+		log.info("클리닉 등록 :" + result);
 		if(result > 0) {
 			mv.setViewName("redirect:clinicListView.kh");
 			session.setAttribute("fileName", "");
@@ -115,12 +132,13 @@ public class ClinicController {
 		return mv;
 	}
 
-	// 궁금해요 수정화면 이동
+	// 클리닉 수정화면 이동
 	@RequestMapping(value="clinicModifyView.kh")
 	public ModelAndView clinicUpdateView(ModelAndView mv,@RequestParam("clinicNo") int clinicNo,@ModelAttribute Clinic clinic, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model) {
 		int currentPage = (page != null) ? page : 1;
 		int currentCount = (count != null) ? count : 0;
 		clinic = cService.printOne(clinicNo);
+		log.info("클리닉 수정화면 이동 :" + clinic.toString());
 		if(clinic != null) {
 			mv.addObject("page",currentPage).addObject("count",currentCount).addObject("clinic",clinic).setViewName("clinic/clinicUpdate");
 		}else {
@@ -129,7 +147,7 @@ public class ClinicController {
 		return mv;
 	}
 	
-	// 궁금해요 게시글 수정
+	// 클리닉 게시글 수정
 	@RequestMapping(value="clinicModify.kh",method = RequestMethod.POST)
 	public ModelAndView clinicUpdate(ModelAndView mv, Clinic clinic, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count, Model model, HttpServletRequest request) {
 		int currentPage = (page != null) ? page : 1;
@@ -142,6 +160,7 @@ public class ClinicController {
 		clinic.setClinicFileRename(clinicFileRename);
 	
 		int result = cService.modifyClinic(clinic);
+		log.info("클리닉 수정화면 :" + result);
 		if(result > 0) {
 			mv.setViewName("redirect:clinicDetail.kh?clinicNo="+clinic.getClinicNo()+"&page="+currentPage+"&count="+currentCount);
 			session.setAttribute("fileName", "");
@@ -151,15 +170,21 @@ public class ClinicController {
 		return mv;
 	}
 	
-	// 궁금해요 게시글 삭제
-	public String clinicDelete(int clinicNo, Model model, HttpServletRequest request) {
-		return "";
+	// 클리닉 게시글 삭제
+	
+	@RequestMapping(value="clinicDelete.kh")
+	public ModelAndView clinicDelete(ModelAndView mv, int clinicNo ,HttpServletRequest request) {
+		int result = cService.removeClinic(clinicNo);
+		log.info("클리닉 삭제 :" + result);
+		mv.setViewName("redirect:clinicListView.kh");
+		return mv;
 	}
 	
-	// 궁금해요 댓글 리스트 출력
+	// 클리닉 댓글 리스트 출력
 	@RequestMapping(value="clinicReplyList.kh")
 	public void clinicReplyListView(HttpServletResponse response,@RequestParam("clinicNo") int clinicNo, ClinicReply reply, Model model) throws Exception {
 		ArrayList<ClinicReply> crList = cService.printAllClinicReply(clinicNo);
+		log.info("클리닉 댓글 :" + crList.toString());
 		if(! crList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
 			gson.toJson(crList, response.getWriter());
@@ -168,7 +193,7 @@ public class ClinicController {
 		}
 	}
 	
-	// 궁금해요 댓글 등록
+	// 클리닉 댓글 등록
 	@ResponseBody
 	@RequestMapping(value="clinicReplyRegister.kh", method = RequestMethod.POST)
 	public String clinicReplyRegister(@ModelAttribute ClinicReply reply, HttpSession session) {
@@ -182,7 +207,7 @@ public class ClinicController {
 		}
 	}
 	
-	// 궁금해요 댓글 수정
+	// 클리닉 댓글 수정
 	@ResponseBody
 	@RequestMapping(value="clinicReplyModify.kh", method = RequestMethod.POST)
 	public String clinicReplyModify(@ModelAttribute ClinicReply reply, HttpSession session) {
@@ -196,7 +221,7 @@ public class ClinicController {
 		}
 	}
 	
-	// 궁금해요 댓글 삭제
+	// 클리닉 댓글 삭제
 	public String clinicReplyDelete(int clinicNo, Model model) {
 		return "";
 	}
@@ -241,7 +266,7 @@ public class ClinicController {
 		
 	}
 	
-	// 궁금해요 조회수 증가
+	// 클리닉 조회수 증가
 	public ModelAndView clinicAddCount(ModelAndView mv, int clinicNo, Model model) {
 		return null;
 	}

@@ -71,7 +71,7 @@ $('.image-upload-wrap').bind('dragover', function () {
 function replyRegister(clinicNo){	
 	var content = $("#replyContent").val();
 	$.ajax({
-		url : "ClinicReplyRegister.kh",
+		url : "clinicReplyRegister.kh",
 		type:"post",
 		data : {"clinicNo":clinicNo,"cliniccommentContent":content},		
 		success : function(data){
@@ -90,7 +90,7 @@ function replyRegister(clinicNo){
 }
 
 function replyModifyView(obj,clinicNo,memberNo,replyNo,content){	
-    $textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyUpdate('+clinicNo+','+memberNo+','+replyNo+')">수정</button></div>';
+    $textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyUpdate('+clinicNo+','+memberNo+','+replyNo+')">수정</button><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:1%;">취소</button></div>';
 	$(".clinic-btn").hide();
   $(obj).hide();  
   $(obj).parent().parent().parent().after($textarea);

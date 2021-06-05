@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.clinic.domain.Clinic;
+import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.clinic.store.ClinicStore;
@@ -46,7 +47,7 @@ public class ClinicServiceImpl implements ClinicService{
 	@Override
 	public int removeClinic(int clinicNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return cStore.deleteClinic(clinicNo);
 	}
 
 	@Override
@@ -92,6 +93,12 @@ public class ClinicServiceImpl implements ClinicService{
 	public void addViewCount(int clinicNo) {
 		cStore.updateViewCount(clinicNo);
 		
+	}
+
+	// 좋아요 확인
+	@Override
+	public ClinicLike printLike(ClinicLike clinicLike) {
+		return cStore.selectLike(clinicLike);
 	}
 	
 }

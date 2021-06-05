@@ -3,6 +3,7 @@ package com.souleaf.spring.clinic.store;
 import java.util.ArrayList;
 
 import com.souleaf.spring.clinic.domain.Clinic;
+import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
@@ -24,4 +25,5 @@ public interface ClinicStore {
 	public int updateClinicReply(ClinicReply reply); // 댓글 수정
 	public int deleteClinicReply(int clinicNo); // 댓글 삭제
 	public void updateViewCount(int clinicNo); // 조회수 증가
+	public ClinicLike selectLike(ClinicLike clinicLike); // 좋아요 확인
 }

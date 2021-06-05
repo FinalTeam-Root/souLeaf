@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.clinic.domain.Clinic;
+import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
@@ -51,7 +52,7 @@ public class ClinicStoreLogic implements ClinicStore{
 	@Override
 	public int deleteClinic(int clinicNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("clinicMapper.deleteClinic", clinicNo);
 	}
 
 	@Override
@@ -90,14 +91,19 @@ public class ClinicStoreLogic implements ClinicStore{
 
 	@Override
 	public int deleteClinicReply(int clinicNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("clinicMapper.deleteReply", clinicNo);
 	}
 
 	@Override
 	public void updateViewCount(int clinicNo) {
 		sqlSession.update("clinicMapper.updateViewCount",clinicNo);
 		
+	}
+
+	// 좋아요 확인
+	@Override
+	public ClinicLike selectLike(ClinicLike clinicLike) {
+		return sqlSession.selectOne("clinicMapper.selectlike", clinicLike);
 	}
 
 
