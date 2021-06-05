@@ -88,7 +88,7 @@
 			</div>
 
 			<div class="tab-pane" id="admin-clinic">
-				식물클리닉
+				식물 클리닉
 			</div>
 
 			<div class="tab-pane" id="admin-curiosity">
