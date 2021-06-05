@@ -378,7 +378,16 @@ public class MemberController {
 			return "common/errorPage";
 		}
 	}
-
+	
+//	@ResponseBody
+//	@RequestMapping(value="kakaoLogin.kh", method = RequestMethod.POST)
+//	public String kakaoLogin(@ModelAttribute Member member, @RequestParam String token) {
+//		Member chkMember = mService.loginMember(member);
+//		if(chkMember )
+//		
+//		return "success";
+//	}
+	
 	// 로그아웃
 	@RequestMapping(value = "logout.kh", method = RequestMethod.GET)
 	public String memberLogout(HttpServletRequest request) {
