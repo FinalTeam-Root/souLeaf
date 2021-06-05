@@ -33,11 +33,17 @@
 			<div class="container">
 				<div class="row" style="justify-content: space-between;">
 					<div class="d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
+						<!-- <p class="mb-0 phone pl-md-2">
 							<a href="#" class="mr-2"><span class="fas fa-map-marker-alt mr-1"></span> 서울시 종로구</a>
 							<a href="#" class="mr-2"><span class="fa fa-cloud-sun mr-1"></span> 맑음</a>
 							<a href="#"><span class="fas fa-temperature-low mr-1"></span> 30°C</a>
-						</p>
+						</p> -->
+						<div class="row weather" style="color:#fff"> 
+						&nbsp;&nbsp;&nbsp;<span class="fas fa-map-marker-alt mr-1 dp-flex"></span><div class="City"></div>
+						&nbsp;&nbsp;&nbsp;<div class="CurrIcon"></div>
+						&nbsp;<div class="CurrText"></div>
+						&nbsp;&nbsp;&nbsp;<i class="fas fa-thermometer-half dp-flex"></i>&nbsp;<div class="CurrTemp"></div>
+						 </div>
 					</div>
 					<div class="d-flex justify-content-md-end">
 						<div class="login-media">

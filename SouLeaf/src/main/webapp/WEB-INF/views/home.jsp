@@ -6,6 +6,8 @@
   <jsp:include page="common/header.jsp"></jsp:include>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="resources/css/home/home-style.css">
+  <!-- <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script> -->
+
     <div class="hero-wrap js-fullheight" style="background-image: url('resources/images/main_bg_5.jpg');" data-stellar-background-ratio="0.5">
      <video class="video-intro" id="myVideo" poster="/resources/images/main_bg_25.jpg" playsinline autoplay muted loop>
       <source src="/resources/video/video-pc.mp4" type="video/mp4">
@@ -14,6 +16,8 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
+          
+
           	<h1 class="mb-4" style="  font-size: 4.58571vw;">누구나 식물을<br> 쉽게, 즐겁게, 함께</h1>
             <!-- <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4" id="more">Learn more <span class="ion-ios-arrow-forward"></span></a></p> -->
           </div>
@@ -95,6 +99,7 @@
 
   
     <section class="ftco-section ftco-no-pt ftco-no-pb " style="background: #fff">
+    
     	<div class="container ftco-animate">
     		<div class="row d-flex no-gutters">
 
@@ -185,7 +190,6 @@
     <section class="ftco-section bg-light" style="padding: 0em 0 4em ;">
     <div class="container ftco-animate">
     		<div class="row d-flex no-gutters">
-
 			<div class="col-md-12 pl-md-5 py-md-5">
 				<div class="heading-section ftco-animate pt-md-5">
 					<h3 class="mb-4" style="color: #00b564; font-weight: 800; font-size: 2vw">Plant
@@ -299,5 +303,6 @@
     
   <jsp:include page="common/footer.jsp"></jsp:include> 
   <script src="resources/js/home/home.js"></script>
+   
   </body>
 </html>
