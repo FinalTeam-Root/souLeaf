@@ -379,14 +379,24 @@ public class MemberController {
 		}
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value="kakaoLogin.kh", method = RequestMethod.POST)
-//	public String kakaoLogin(@ModelAttribute Member member, @RequestParam String token) {
-//		Member chkMember = mService.loginMember(member);
-//		if(chkMember )
-//		
-//		return "success";
-//	}
+	// 카카오 로그인 
+	@ResponseBody
+	@RequestMapping(value="kakaoLogin.kh", method = RequestMethod.POST)
+	public String kakaoLogin(HttpServletRequest request, @ModelAttribute Member member, @RequestParam String token) {
+		Member chkMember = mService.loginMember(member);
+		int result = 0;
+		if(chkMember == null) {
+			result = mService.registerMember(member);
+			chkMember = mService.loginMember(member);
+		}
+		if(result > 0 && chkMember != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", chkMember);
+			return "success";			
+		} else {
+			return "fail";
+		}
+	}
 	
 	// 로그아웃
 	@RequestMapping(value = "logout.kh", method = RequestMethod.GET)

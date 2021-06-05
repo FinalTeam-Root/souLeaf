@@ -148,10 +148,10 @@ a:hover, a:focus {
 	                  $.ajax({
 						url :"kakaoLogin.kh",
 						type : "POST",
-						data : {"memberId" :response.id, "memberNick":response.properties['nickname'], "memberName": response.properties['nickname'],"token":authObj.access_token},
+						data : {"memberId" :response.id, "memberPw": 1, "memberNick":response.properties['nickname'], "memberName": response.properties['nickname'],"memberMail":'kakao@Mail',"token":authObj.access_token},
 						success : function(data){
 							if(data == "success"){
-
+								location.href="home.kh";
 							}else {
 								alert("카카오 로그인 실패!");
 							}
