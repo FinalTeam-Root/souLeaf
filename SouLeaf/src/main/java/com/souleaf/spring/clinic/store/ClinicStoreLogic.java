@@ -1,6 +1,7 @@
 package com.souleaf.spring.clinic.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -104,6 +105,16 @@ public class ClinicStoreLogic implements ClinicStore{
 	@Override
 	public ClinicLike selectLike(ClinicLike clinicLike) {
 		return sqlSession.selectOne("clinicMapper.selectlike", clinicLike);
+	}
+
+	@Override
+	public ArrayList<Clinic> selectAll() {
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectAll");
+	}
+
+	@Override
+	public int deleteAdminClinic(HashMap<String, String> map) {
+		return sqlSession.delete("clinicMapper.deleteAdminClinic", map);
 	}
 
 

@@ -1,6 +1,7 @@
 package com.souleaf.spring.clinic.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,6 +100,16 @@ public class ClinicServiceImpl implements ClinicService{
 	@Override
 	public ClinicLike printLike(ClinicLike clinicLike) {
 		return cStore.selectLike(clinicLike);
+	}
+
+	@Override
+	public ArrayList<Clinic> printAll() {
+		return cStore.selectAll();
+	}
+
+	@Override
+	public int removeAdminClinic(HashMap<String, String> map) {
+		return cStore.deleteAdminClinic(map);
 	}
 	
 }

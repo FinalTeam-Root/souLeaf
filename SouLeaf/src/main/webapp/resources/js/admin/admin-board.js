@@ -1,9 +1,13 @@
 $(function(){
 	
 	getBoastList();
+	getClinicList();
 	getCuriosityList();
 	$("#boast-delete").on("click", function(){
 		deleteBoast();
+	});
+	$("#clinic-delete").on("click", function(){
+		deleteClinic();
 	});
 	$("#curiosity-delete").on("click", function(){
 		deleteCuriosity();
@@ -91,6 +95,7 @@ function deleteBoast(){
 
 function getBoastList(){
 	let dataTable1 = $('#dataTable1').DataTable({
+		'autoWidth': false,
 		destroy: true,
 		"bLengthChange": false,
 		"bInfo": false,		
@@ -127,7 +132,7 @@ function getBoastList(){
 					 if(data == null){
 							img = '<img src="resources/uploadFiles/boast/defaultplant.png">';
 					 }else{
-						 img = '<img src="resources/uploadFiles/boast/'+data+'">';
+						 img = '<img src="resources/uploadFiles/boast/'+data+'" onerror="this.src=\'resources/uploadFiles/curiosity/defaultplant.png\'">';
 					 }
 					 return img;
 
@@ -149,6 +154,108 @@ function getBoastList(){
 		  } );
 		
 }
+
+function deleteClinic(){
+	if($('.checkbox_group2').is(":checked") == false){
+		alert('체크된 값이 없습니다.');
+	   return false;
+   }else{
+			if (!confirm("정말 삭제하시겠습니까?")) {
+	   // 취소(아니오) 버튼 클릭 시 이벤트
+		   return false;
+	   } else {
+		var checkVal = '';
+		$("input:checkbox[name='clinic-check']:checked").each(function(index){
+			if(index != 0){
+				checkVal += ',';
+			}
+			checkVal += $(this).val();
+			
+		});
+		
+		$.ajax({
+
+			url: "adminClinicDelete.kh",
+			type:"get",
+			data:{"checkNo":checkVal},
+			success: function(result){
+				console.log(result);
+				if(result > 0){
+					getClinicList();
+				}
+			},
+			error: function(){
+				console.log('fail');
+			}
+		});
+
+	   }
+   }
+	
+}
+
+function getClinicList(){
+	let dataTable1 = $('#dataTable2').DataTable({
+		'autoWidth': false,
+		destroy: true,
+		"bLengthChange": false,
+		"bInfo": false,		
+		  order: [[5, 'desc']],
+		  language: {
+			paginate: {
+				previous: '<span class="icon md-chevron-left"><</span>',
+				next: '<span class="icon md-chevron-left">></span>'
+			}
+		},
+			ajax:{
+				url:"adminClinicList.kh",
+				type:"get",
+				dataType:"json",
+				"dataSrc": function ( json ) {							
+					$("#clinic-count").text(json.data.length);
+					return json.data;
+				}    
+			},
+			columns:[
+				{ orderable: false,
+					data: "clinicNo",
+					className : "clinic-check",
+				render: function(data){					
+					return '<input type="checkbox" class="checkbox_group2" name="clinic-check" value="'+data+'">';
+				}
+			 },
+				{  orderable: false,
+					data: "clinicFileRename" ,
+				 "defaultContent": "<i>Not set</i>",
+				 className : "clinic-img",
+				 render: function(data){
+					 var img = '';
+					 if(data == null){
+							img = '<img src="resources/uploadFiles/clinic/defaultplant.png">';
+					 }else{
+						 img = '<img src="resources/uploadFiles/clinic/'+data+'" onerror="this.src=\'resources/uploadFiles/curiosity/defaultplant.png\'">';
+					 }
+					 return img;
+
+				 }
+			    },
+				{ data: "clinicContent",
+				render: function(data, target, row){					
+					return '<a href="clinicDetail.kh?clinicNo='+row.clinicNo+'" class="boast-title">'+data+'</a>';
+				}
+			 },
+				{ data: "memberNick" },
+				{ data: "clinicCount" },
+				{ data: "clinicDate" }
+			]
+			
+		});
+		$('#custom-filter2').keyup( function() {
+			dataTable1.search( this.value ).draw();
+		  });
+		
+}
+
 
 function deleteCuriosity(){
 	if($('.checkbox_group3').is(":checked") == false){
@@ -232,7 +339,7 @@ function getCuriosityList(){
 					 if(data == null){
 							img = '<img src="resources/uploadFiles/curiosity/defaultplant.png">';
 					 }else{
-						 img = '<img src="resources/uploadFiles/curiosity/'+data+'">';
+						 img = '<img src="resources/uploadFiles/curiosity/'+data+'" onerror="this.src=\'resources/uploadFiles/curiosity/defaultplant.png\'">';
 					 }
 					 return img;
 

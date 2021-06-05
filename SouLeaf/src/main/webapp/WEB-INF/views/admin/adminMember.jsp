@@ -71,12 +71,12 @@
                 <td align="center"><img src="resources/images/basicMemberImg.png" height="30px"></td>                
                 </c:if>
                 <c:if test="${mi.memberFileRename ne null }">
-                <td align="center"><img src="resources/uploadFiles/member/${mi.memberFileRename }" class="member-img"></td>                
+                <td align="center"><img src="resources/uploadFiles/member/${mi.memberFileRename }" onerror="this.src='resources/images/basicMemberImg.png'" class="member-img"></td>                
                 </c:if>
                 <td>${mi.memberId }</td>
                 <td>${mi.memberNick }</td>
                 <td>${mi.memberName }</td>
-                <td>${mi.memberMail }</td>
+                <td><small>${mi.memberMail }</small></td>
                 <td><small>${mi.memberJoin }</small></td>
             </tr>
           </c:if>
@@ -87,12 +87,12 @@
                 <td align="center"><img src="resources/images/basicMemberImg.png" height="30px"></td>                
                 </c:if>
                 <c:if test="${mi.memberFileRename ne null }">
-                <td align="center"><img src="resources/uploadFiles/member/${mi.memberFileRename }" class="member-img"></td>                
+                <td align="center"><img src="resources/uploadFiles/member/${mi.memberFileRename }" onerror="this.src='resources/images/basicMemberImg.png'" class="member-img"></td>                
                 </c:if>
                 <td>${mi.memberId }</td>
                 <td>${mi.memberNick }</td>
                 <td>${mi.memberName }</td>
-                <td>${mi.memberMail }</td>
+                <td><small>${mi.memberMail }</small></td>
                 <td><small>${mi.memberJoin }</small></td>
             </tr>
           </c:if>

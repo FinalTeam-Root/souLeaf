@@ -90,5 +90,14 @@
     SELECT * FROM CLINICLIKE WHERE CLINIC_NO = #{clinicNo} and MEMBER_NO = #{memberNo}
 	</select>
 	
+	<!-- 관리자 -->
+	<select id="selectAll" resultMap="clinicResultMap">
+		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y'
+	</select>
+	
+	<update id="deleteAdminClinic" parameterType="Map">
+		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
+	</update>
+	
 
 </mapper>

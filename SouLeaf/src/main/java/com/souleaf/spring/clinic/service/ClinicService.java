@@ -1,6 +1,7 @@
 package com.souleaf.spring.clinic.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.clinic.domain.ClinicLike;
@@ -10,7 +11,7 @@ import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface ClinicService {
-	
+	public ArrayList<Clinic> printAll();
 	public int getClinicListCount(); // 게시글 갯수 
 	public ArrayList<Clinic> printAllList(PageInfo pi);// 게시글 출력
 	public Clinic printOne(int clinicNo);// 게시글 상세보기
@@ -26,6 +27,6 @@ public interface ClinicService {
 	public int removeClinicReply(int clinicNo); // 댓글 삭제
 	public void addViewCount(int clinicNo); // 조회수 증가
 	public ClinicLike printLike(ClinicLike clinicLike); // 좋아요 확인
-	
+	public int removeAdminClinic(HashMap<String, String> map) ;
 
 }

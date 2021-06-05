@@ -24,6 +24,8 @@ import com.souleaf.spring.admin.domain.MemberStatus;
 import com.souleaf.spring.admin.service.AdminService;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.clinic.domain.Clinic;
+import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.member.domain.Member;
@@ -44,6 +46,8 @@ public class AdminController {
 	private BoastService bService;
 	@Autowired
 	private CuriosityService cService;
+	@Autowired
+	private ClinicService nService;
 	
 	// 관리자 메인
 	@RequestMapping(value = "adminHome.kh", method = RequestMethod.GET)
@@ -156,6 +160,29 @@ public class AdminController {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("chkNo", checkNo);
 			int result = cService.removeMyCuriosity(map);			
+			return result+"";
+		}
+		
+		// 클리닉 리스트 출력
+		@RequestMapping(value="adminClinicList.kh")
+		public void getClinicList(HttpServletResponse response) throws Exception {
+			ArrayList<Clinic> nList = nService.printAll();		
+			HashMap<String, ArrayList<Clinic>> map = new HashMap<String, ArrayList<Clinic>>();
+			map.put("data", nList);
+			if(! nList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(map, response.getWriter());
+			}else {
+				System.out.println("데이터가 없습니다");
+			}
+		}
+		// 클리닉 삭제
+		@ResponseBody
+		@RequestMapping(value="adminClinicDelete.kh")
+		public String adminClinicDelete(@RequestParam("checkNo") String checkNo) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("chkNo", checkNo);
+			int result = nService.removeAdminClinic(map);		
 			return result+"";
 		}
 }

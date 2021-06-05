@@ -88,7 +88,35 @@
 			</div>
 
 			<div class="tab-pane" id="admin-clinic">
-				식물 클리닉
+				 <section class="mt-3" style="position: relative;">
+				    	<div class="container">    	  
+				    	<div align="right" class="custom-search">
+				    	 <span class="fa fa-search"></span>
+					    	<input id="custom-filter2" class="plant-search" placeholder="" type="text"/>
+				    	</div>
+				    		 <table id="dataTable2" class="row-border hover" style="width:100%">
+				        <thead>
+				            <tr>
+				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all2"></th>
+				                <th style="text-align: center; width:50px">이미지</th>
+				                <th>제목</th>
+				                <th>작성자</th>
+				                <th>조회수</th>
+				                <th>등록일</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        </tbody>
+				                
+				         
+				    </table>
+					    <div class="custom-btn-form">
+						    <input type="button" id="clinic-delete" class="btn btn-danger" value="삭제">
+					    </div>
+				         <div class="custom-form">클리닉데이터 <span id="clinic-count"></span> 건</div>
+				         
+				    	</div>
+				    </section>
 			</div>
 
 			<div class="tab-pane" id="admin-curiosity">
