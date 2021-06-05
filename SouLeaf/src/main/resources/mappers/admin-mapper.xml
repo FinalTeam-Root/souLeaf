@@ -12,5 +12,16 @@
 <select id="selectMemberStatus" resultMap="memberStatusResultMap">
 	SELECT COUNT(CASE WHEN MEMBER_STATUS = 'Y' THEN 'Y' END) AS STATUS_Y,COUNT(CASE WHEN MEMBER_STATUS = 'N' THEN 'N' END) AS STATUS_N FROM MEMBER
 </select>
+
+<update id="updateMemberStatus" parameterType="Map">
+	UPDATE MEMBER SET
+	<if test="status.toString() == 'statusY'">
+	MEMBER_STATUS = 'Y'
+	</if>
+	<if test="status.toString() == 'statusN'">
+	MEMBER_STATUS = 'N'
+	</if>
+	WHERE MEMBER_NO IN (${checkNo})
+</update>
 	
 </mapper>

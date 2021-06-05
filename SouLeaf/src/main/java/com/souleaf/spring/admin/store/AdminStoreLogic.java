@@ -1,5 +1,7 @@
 package com.souleaf.spring.admin.store;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +14,11 @@ public class AdminStoreLogic implements AdminStore {
 
 	@Override
 	public MemberStatus selectMemberStatus() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("adminMapper.selectMemberStatus");
+	}
+
+	@Override
+	public int updateMemberStatus(HashMap<String, String> map) {
+		return sqlSession.update("adminMapper.updateMemberStatus", map);
 	}
 }

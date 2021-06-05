@@ -101,6 +101,10 @@
 		UPDATE PLANTINFO SET PI_LIGHT_INFO=#{piLightInfo}, PI_LIGHT_CONTENTS=#{piLightContents}, PI_TEMP_INFO=#{piTempInfo}, PI_TEMP_CONTENTS=#{piTempContents}, PI_HUMIDITY_INFO=#{piHumidityInfo}, PI_HUMIDITY_CONTENTS=#{piHumidityContents}, PI_WATER_INFO=#{piWaterInfo}, PI_WATER_CONTENTS=#{piWaterContents}, PI_EARTH_INFO=#{piEarthInfo}, PI_EARTH_CONTENTS=#{piEarthContents}, PI_BUNTING=#{piBunting} WHERE PLANTINFO_NO=#{plantinfoNo} 
 	</update>
 	
+	<update id="deleteAdminPlant" parameterType="String">
+		UPDATE PLANT SET PLANT_STATUS = 'N' WHERE PLANT_NO IN (${value})
+	</update>
+	
 	<delete id="deleteFile">
 		DELETE FROM PLANTFILE WHERE PLANT_NO = #{plantNo} AND PLANTFILE_NO = #{plantFileNo}
 	</delete>

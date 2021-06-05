@@ -21,6 +21,7 @@ public interface PlantService {
 	public int registerPlant(Plant plant,PlantInfo plantInfo, List<MultipartFile> fList, String filePath);// 식물도감 등록
 	public int modifyPlant(Plant plant,PlantInfo plantInfo, List<MultipartFile> fList, String filePath);// 식물도감 수정
 	public int removePlant(int plantNo);// 식물도감 삭제
+	public int removeAdminPlant(String checkNo);// 식물 도감 삭제(관리자)
 	public ArrayList<Plant> printSearchAllList(String search);//식물도감 검색
 	public int removeFile(PlantFile plantFile); // 식물도감 파일 삭제
 	public ArrayList<Plant> printMemberCompanion(int memberNo);// 멤버 반려식물 리스트 출력

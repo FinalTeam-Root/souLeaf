@@ -101,8 +101,8 @@
         
     </table>
     <div class="custom-btn-form">
-	    <input type="submit" class="btn btn-danger checkbox_y" name="status" value="비활성화">	    
-	    <input type="submit" class="btn btn-success checkbox_n" name="status" value="활성화">	    
+	    <input type="submit" class="btn btn-danger checkbox_y" name="status" value="statusN">	    
+	    <input type="submit" class="btn btn-success checkbox_n" name="status" value="statusY">	    
     </div>
          <div class="custom-form">회원데이터 ${mList.size()} 건 &nbsp;&nbsp;<small><span class="text-success">활성 : ${mStatus.statusY}</span> <span class="text-danger">&nbsp; 비활성 : ${mStatus.statusN}</span></small> </div> 
         </form>      

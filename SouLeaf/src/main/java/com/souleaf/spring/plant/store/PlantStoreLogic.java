@@ -96,6 +96,11 @@ public class PlantStoreLogic implements PlantStore{
 		return (ArrayList)sqlSession.selectList("plantMapper.selectMemberCompanion", memberNo);
 	}
 
+	@Override
+	public int deleteAdminPlant(String checkNo) {
+		return sqlSession.update("plantMapper.deleteAdminPlant", checkNo);
+	}
+
 	
 
 	

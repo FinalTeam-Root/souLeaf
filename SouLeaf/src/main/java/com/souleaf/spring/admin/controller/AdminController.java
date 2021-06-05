@@ -63,16 +63,20 @@ public class AdminController {
 	// 도감 삭제
 	@RequestMapping(value="adminPlantDelete.kh")
 	public String adminPlantDelete(@RequestParam("plant-check") String[] checkBox) {
-		String plantNo = "";
+		String checkNo = "";
 		for(String no : checkBox) {
 			if(no.equals(checkBox[checkBox.length-1])) {
-				plantNo += no;
+				checkNo += no;
 			}else {
-				plantNo += no+",";
+				checkNo += no+",";
 			}
 		}
-		System.out.println(plantNo);
-		return "redirect:adminPlant.kh";
+		int result = pService.removeAdminPlant(checkNo);
+		if(result > 0) {
+			return "redirect:adminPlant.kh";
+		}else {
+			return "redirect:adminPlant.kh";
+		}
 	}
 	// 회원 관리 이동 및 출력
 		@RequestMapping(value = "adminMember.kh", method = RequestMethod.GET)
@@ -86,16 +90,18 @@ public class AdminController {
 		// 멤버 상태변경
 		@RequestMapping(value="adminMemberState.kh")
 		public String adminMemberDelete(@RequestParam("member-check") String[] checkBox, @RequestParam("status") String status) {
-			System.out.println(status);
-			String memberNo = "";
+			String checkNo = "";
 			for(String no : checkBox) {
 				if(no.equals(checkBox[checkBox.length-1])) {
-					memberNo += no;
+					checkNo += no;
 				}else {
-					memberNo += no+",";
+					checkNo += no+",";
 				}
 			}
-			System.out.println(memberNo);
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("status", status);
+			map.put("checkNo", checkNo);
+			int result = aService.modifyMemberStatus(map);
 			return "redirect:adminMember.kh";
 		}
 		// 게시글 관리 이동

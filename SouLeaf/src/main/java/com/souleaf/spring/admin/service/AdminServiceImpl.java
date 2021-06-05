@@ -1,5 +1,7 @@
 package com.souleaf.spring.admin.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,11 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public MemberStatus printMemberStatus() {
-		// TODO Auto-generated method stub
 		return aStore.selectMemberStatus();
+	}
+
+	@Override
+	public int modifyMemberStatus(HashMap<String, String> map) {
+		return aStore.updateMemberStatus(map);
 	}
 }

@@ -133,6 +133,11 @@ public class PlantServiceImpl implements PlantService{
 	public ArrayList<Plant> printMemberCompanion(int memberNo) {
 		return pStore.selectMemberCompanion(memberNo);
 	}
+
+	@Override
+	public int removeAdminPlant(String checkNo) {
+		return pStore.deleteAdminPlant(checkNo);
+	}
 	
 
 }
