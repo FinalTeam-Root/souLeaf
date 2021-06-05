@@ -32,41 +32,12 @@ body{
     
     background: #fff0;
 }
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
-  color: #00bd56; }
-  a:hover, a:focus {
-    text-decoration: none;
-    color: #00bd56;
-    outline: none !important; }
-
-.form-style input{
-	border:0;
-	height:50px;
-	border-radius:0;
-border-bottom:1px solid #ebebeb;	
-}
-.form-style input:focus{
-border-bottom:1px solid #007bff;	
-box-shadow:none;
-outline:0;
-background-color:#ebebeb;	
-}
-.sideline {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-	color:#ccc;
-}
-button{
-height:50px;	
+.sideline{
+text-align:center;
 }
 .sideline:before,
 .sideline:after {
+
     content: '';
     border-top: 1px solid #ebebeb;
     margin: 0 20px 0 0;
@@ -74,12 +45,8 @@ height:50px;
 }
 
 .sideline:after {
+
     margin: 0 0 0 20px;
-}
-.kakao-btn{
-	background: #F7E600;
-	border-color: #F7E600;
-	color: #3b1e1e;
 }
 </style>
 </head>
