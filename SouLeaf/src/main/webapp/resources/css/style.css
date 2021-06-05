@@ -9848,3 +9848,12 @@ textarea.form-control {
     .head-active{
         background: #02bd58;
     }
+   .dp-flex{
+   
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+	font-size:13px;
+   }
