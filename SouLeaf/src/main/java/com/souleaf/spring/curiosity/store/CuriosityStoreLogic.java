@@ -131,6 +131,11 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	public int getMySearchCount(MypageSearch search) {
 		return sqlSession.selectOne("curiosityMapper.getMySearchCount", search);
 	}
+
+	@Override
+	public int deleteMyCuriosity(HashMap<String, String> map) {
+		return sqlSession.update("curiosityMapper.deleteMyCuriosity", map);
+	}
 	
 	
 

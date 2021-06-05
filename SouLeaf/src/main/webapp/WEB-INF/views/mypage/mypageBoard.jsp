@@ -40,7 +40,7 @@
 					<table class="table table-hover mypageTable">
 						<thead>
 							<tr>
-								<th scope="col"><input type="checkbox" name="del-select" id="chk_all" class="chk" value="selectAll"></th>
+								<th scope="col"><input type="checkbox" class="chk_all"></th>
 								<th scope="col">번호</th>
 								<th scope="col" style='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>제목</th>
 								<th scope="col">작성일</th>

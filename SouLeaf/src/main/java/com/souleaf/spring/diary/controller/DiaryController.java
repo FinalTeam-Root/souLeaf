@@ -83,10 +83,10 @@ public class DiaryController {
 	
 	// 내 반려식물 닉네임 불러오기
 	@RequestMapping(value="myCompanionList.kh", method=RequestMethod.GET)
-	public void companionList(HttpServletResponse response,@RequestParam("memberNo") int memberNo, HttpSession session) throws Exception {
-//		Member loginUser = (Member)session.getAttribute("loginUser");
+	public void companionList(HttpServletResponse response,@RequestParam("memberNo") int memberNo) throws Exception {
 		// 반려식물 전체 가져오는 메소드 = printAll()
 		ArrayList<Companion> cList = cService.printmemberAll(memberNo);
+		System.out.println();
 		if(!cList.isEmpty()) {
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			gson.toJson(cList, response.getWriter());

@@ -32,4 +32,5 @@ public interface CuriosityStore {
 	public ArrayList<Curiosity> selectSearchAllList(MypageSearch search, MypageInfo pi);// 검색
 	public int selectMyCuriosityListCount(int memberNo); // 내가 쓴 리스트 갯수 가져오기 
 	public int getMySearchCount(MypageSearch search);
+	public int deleteMyCuriosity(HashMap<String, String> map);
 }

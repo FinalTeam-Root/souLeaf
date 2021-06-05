@@ -2,6 +2,7 @@ package com.souleaf.spring.curiosity.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,6 +117,11 @@ public class CuriosityServiceImpl implements CuriosityService {
 	public int getMySearchCount(MypageSearch search) {
 		// TODO Auto-generated method stub
 		return cStore.getMySearchCount(search);
+	}
+
+	@Override
+	public int removeMyCuriosity(HashMap<String, String> map) {
+		return cStore.deleteMyCuriosity(map);
 	}
 	
 

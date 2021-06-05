@@ -37,10 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
         myCustomButton: {
           text: '일기쓰기',
           click: function(e) {
+            var memberNo = $("#memberNo").val();
             $.ajax({
               url : "myCompanionList.kh",
               type : "get",
               dataType : "json",
+              data : {"memberNo":memberNo},
               success : function(data) {
                 var $select = $('#selectCom');
                 $select.html("");
@@ -101,10 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
       dateClick: function(info) {
         $('#eventModal-insert').modal({});
         $('#edit-date').val(info.dateStr);
+        var memberNo = $("#memberNo").val();
         $.ajax({
           url : "myCompanionList.kh",
           type : "get",
           dataType : "json",
+          data : {"memberNo":memberNo},
           success : function(data) {
             var $select = $('#selectCom');
             $select.html("");

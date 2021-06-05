@@ -2,6 +2,7 @@ package com.souleaf.spring.curiosity.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.curiosity.domain.Curiosity;
@@ -32,5 +33,6 @@ public interface CuriosityService {
 	public ArrayList<Curiosity> printSearchAllList(MypageSearch search, MypageInfo pi); // 검색
 	public int getMyCuriosityListCount(int memberNo);
 	public int getMySearchCount(MypageSearch search);
+	public int removeMyCuriosity(HashMap<String, String> map);
 	
 }
