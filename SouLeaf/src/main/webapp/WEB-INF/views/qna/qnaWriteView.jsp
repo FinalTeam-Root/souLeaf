@@ -32,17 +32,11 @@
 										<form action="qnaRegister.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
 										
-												<div class="col-md-12">
-													<div class="form-group">
-														<label class="label" for="subject">제목</label>
-														<input type="text" class="form-control" name="qnaTitle" id="qnaTitle">
-													</div>
-												</div>
 												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="qnaContent" class="form-control" id="summernote" cols="30" rows="1" placeholder="이 식물 이름이 뭔가요?"></textarea>
+														<textarea name="qnaContent" class="form-control" id="" cols="30" rows="4" placeholder="문의사항을 적어주세요"></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">

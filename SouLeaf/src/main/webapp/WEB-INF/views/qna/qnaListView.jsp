@@ -19,8 +19,8 @@
 			
     			<div class="col-lg-12">
     				<div class="heading-section mb-5 mt-5 mt-lg-0">
-	            <h2 class="mb-3">Frequently Asks Questions</h2>
-	            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	            <h2 class="mb-3">Q&A 게시판</h2>
+	            <p></p>
     				</div>
     				<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
     				
@@ -32,31 +32,28 @@
 						    <div class="card-header p-0" id="heading${status.index }" role="tab">
 						      <h2 class="mb-0">
 						        <button href="#collapse${status.index }" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapse${status.index }">
-						        	<p class="mb-0">${qna.qnaTitle }</p>
+						        	<p class="mb-0">${qna.qnaContent }</p>
 						          <i class="fa" aria-hidden="true"></i>
 						        </button>
 						      </h2>
 						    </div>
 						    <div class="collapse" id="collapse${status.index }" role="tabpanel" aria-labelledby="heading${status.index }">
-						      <div class="card-body py-3 px-4">${qna.qnaContent }
 						      <c:forEach items="${aList }" var="ans" varStatus="status">
 						       <c:if test="${qna.qnaNo eq ans.qnaNo}">
-						       	답변 :-------------------- ${ans.ansContent }
+						      <div class="card-body py-3 px-4">${ans.ansContent }
+						      </div>
 						       </c:if>
 						      </c:forEach>
 						      	<div id="btn_group">
-						  		<c:if test="${loginUser.memberId eq 'admin' }">
+						  		<%-- <c:if test="${loginUser.memberId eq 'admin' }">
 						  				<button id="ansbtn" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
 								</c:if>
 								<c:if test="${loginUser.memberId eq 'admin' }">
 										<button class="" id="ansbtn" onclick="location.href='ansWriteView.kh?qnaNo=${qna.qnaNo}'">답변하기</button>
 								</c:if>
 								<c:if test="${loginUser.memberId ne 'admin' }">
-								      	<button id="listbtn1" onclick="location.href='qnaModifyView.kh?qnaNo=${qna.qnaNo}'">수정</button>
-								      	<button id="listbtn2" onclick="location.href='qnaDelete.kh?qnaNo=${qna.qnaNo}'">삭제</button>
-								</c:if>
+								</c:if> --%>
 						      	</div>
-						      </div>
 						    </div>
 						  </div>
 						  
