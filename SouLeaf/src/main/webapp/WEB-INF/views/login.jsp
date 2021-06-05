@@ -64,6 +64,11 @@ a {
     color: #00bd56;
     outline: none !important;
     font-weight: bold }
+    .kakao-btn{
+	background: #F7E600;
+	border-color: #F7E600;
+	color: #3b1e1e;
+}
 </style>
 </head>
 <body>
