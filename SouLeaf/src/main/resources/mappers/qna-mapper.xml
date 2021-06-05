@@ -15,6 +15,7 @@
 		<result property="qnaUpdate" column="QNA_UPDATE"></result>
 		<result property="qnaStatus" column="QNA_STATUS"></result>
 		<result property="qnaCount" column="QNA_COUNT"></result>
+		<result property="ansNo" column="ANS_NO"></result>
 
 
 	</resultMap>
@@ -51,5 +52,10 @@
 	<update id="deleteQna" parameterType="_int">
 		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
 	</update>
+	
+	<select id ="selectAdminQnaList" resultMap="qnaResultMap">
+		SELECT QNA_NO,QNA_CONTENT,QNA_DATE,MEMBER_NICK,ANS_NO FROM QNA Q LEFT JOIN ANS A USING(QNA_NO) JOIN MEMBER M ON Q.MEMBER_NO=M.MEMBER_NO
+		
+	</select>
 </mapper>
  

@@ -28,7 +28,7 @@
                 <li><a href="adminPlant.kh">도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminMember.kh">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminBoard.kh">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
-                <li><a href="#">Q&A 관리 <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="adminQna.kh">Q&A 관리 <span class="fa fa-chevron-right"></span></a></li>
               </div>
             </div>
 
@@ -102,7 +102,7 @@
             </div>      
           </div>
           
-            <div class="col-md-6 d-flex align-self-stretch mt-5 px-6 ftco-animate admin-form" onclick="location.href='#'">
+            <div class="col-md-6 d-flex align-self-stretch mt-5 px-6 ftco-animate admin-form" onclick="location.href='adminQna.kh'">
             <div class="d-block services text-center">
               <div class="icon d-flex align-items-center justify-content-center">
             		<i class="fas fa-headset admin-icon"></i>

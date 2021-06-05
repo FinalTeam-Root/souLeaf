@@ -17,5 +17,6 @@ public interface QnaService {
 	public int getListCount();
 	ArrayList<Qna> printQnaAll();
 	public int addReadCount(int qnaNo);
+	public ArrayList<Qna> printAdminAll();
 	
 }

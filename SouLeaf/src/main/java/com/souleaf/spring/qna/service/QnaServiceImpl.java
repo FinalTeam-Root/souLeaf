@@ -63,5 +63,10 @@ public class QnaServiceImpl implements QnaService {
 		return null;
 	}
 
+	@Override
+	public ArrayList<Qna> printAdminAll() {
+		return qStore.selectAdminAll();
+	}
+
 
 }

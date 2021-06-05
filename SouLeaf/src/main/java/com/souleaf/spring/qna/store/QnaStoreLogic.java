@@ -58,6 +58,11 @@ public class QnaStoreLogic implements QnaStore{
 		return sqlSession.update("qnaMapper.updateCount", qnaNo);
 	}
 
+	@Override
+	public ArrayList<Qna> selectAdminAll() {
+		return (ArrayList)sqlSession.selectList("qnaMapper.selectAdminQnaList");
+	}
+
 	
 
 }

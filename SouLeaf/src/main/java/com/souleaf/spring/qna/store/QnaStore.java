@@ -16,4 +16,5 @@ public interface QnaStore {
 	public int insertQna(Qna qna);
 	public int updateQna(Qna qna);
 	public int deleteQna(int qId);
+	public ArrayList<Qna> selectAdminAll();
 }

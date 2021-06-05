@@ -32,12 +32,15 @@ import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
+import com.souleaf.spring.qna.domain.Qna;
+import com.souleaf.spring.qna.service.QnaService;
 
 @Controller
 public class AdminController {
 	@Autowired
 	private AdminService aService;
-	
+	@Autowired
+	private QnaService qService;
 	@Autowired
 	private PlantService pService;
 	@Autowired
@@ -184,5 +187,23 @@ public class AdminController {
 			map.put("chkNo", checkNo);
 			int result = nService.removeAdminClinic(map);		
 			return result+"";
+		}
+		@RequestMapping(value="adminQna.kh", method = RequestMethod.GET) 
+		public String adminQna() {
+			return "admin/adminQna";
+		
+			
+		}
+		@RequestMapping(value="adminQnaList.kh")
+		public void getQnaList(HttpServletResponse response) throws Exception {
+			ArrayList<Qna> qList = qService.printAdminAll();		
+			HashMap<String, ArrayList<Qna>> map = new HashMap<String, ArrayList<Qna>>();
+			map.put("data", qList);
+			if(! qList.isEmpty()) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+				gson.toJson(map, response.getWriter());
+			}else {
+				System.out.println("데이터가 없습니다");
+			}
 		}
 }
