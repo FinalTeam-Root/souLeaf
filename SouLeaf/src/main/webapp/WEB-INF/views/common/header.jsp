@@ -85,11 +85,12 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 		        	<li class="nav-item <c:if test="${nav eq 'home' }">active</c:if>"><a href="home.kh" class="nav-link">홈</a></li>
-					<li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li>
+					<%-- <li class="nav-item <c:if test="${nav eq 'intro' }">active</c:if>"><a href="intro.kh" class="nav-link">이야기</a></li> --%>
 					<li class="nav-item <c:if test="${nav eq 'plant' }">active</c:if>"><a href="plantListView.kh" class="nav-link">식물찾기</a></li>
 					<li class="nav-item <c:if test="${nav eq 'boast' }">active</c:if>"><a href="boastListView.kh" class="nav-link">식물자랑</a></li>
 					<li class="nav-item <c:if test="${nav eq 'clinic' }">active</c:if>"><a href="clinicListView.kh" class="nav-link">식물클리닉</a></li>
 					<li class="nav-item <c:if test="${nav eq 'curiosity' }">active</c:if>"><a href="curiosityListView.kh" class="nav-link">궁금해요</a></li>
+					<li class="nav-item <c:if test="${nav eq 'qna' }">active</c:if>"><a href="qnaListView.kh" class="nav-link">Q&A</a></li>
 	        </ul>
 	      </div>
 	    </div>

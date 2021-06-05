@@ -5,7 +5,9 @@ $(function(){
 	$("#boast-delete").on("click", function(){
 		deleteBoast();
 	});
-		
+	$("#curiosity-delete").on("click", function(){
+		deleteCuriosity();
+	});
 
 $("#check_all1").on("click", function(){
 	var checked = $(this).is(":checked");
@@ -21,6 +23,14 @@ $("#check_all2").on("click", function(){
 		$(".checkbox_group2").prop("checked",true);
 	}else{
 		$(".checkbox_group2").prop("checked",false);
+	}
+});
+$("#check_all3").on("click", function(){
+	var checked = $(this).is(":checked");
+	if(checked){
+		$(".checkbox_group3").prop("checked",true);
+	}else{
+		$(".checkbox_group3").prop("checked",false);
 	}
 });
 
@@ -41,7 +51,7 @@ $("form").on("submit", function() {
 });
 
 function deleteBoast(){
-	if($('.checkbox_group').is(":checked") == false){
+	if($('.checkbox_group1').is(":checked") == false){
 		alert('체크된 값이 없습니다.');
 	   return false;
    }else{
@@ -140,6 +150,44 @@ function getBoastList(){
 		
 }
 
+function deleteCuriosity(){
+	if($('.checkbox_group3').is(":checked") == false){
+		alert('체크된 값이 없습니다.');
+	   return false;
+   }else{
+			if (!confirm("정말 삭제하시겠습니까?")) {
+	   // 취소(아니오) 버튼 클릭 시 이벤트
+		   return false;
+	   } else {
+		var checkVal = '';
+		$("input:checkbox[name='curiosity-check']:checked").each(function(index){
+			if(index != 0){
+				checkVal += ',';
+			}
+			checkVal += $(this).val();
+			
+		});
+		
+		$.ajax({
+
+			url: "adminCuriosityDelete.kh",
+			type:"get",
+			data:{"checkNo":checkVal},
+			success: function(result){
+				console.log(result);
+				if(result > 0){
+					getCuriosityList();
+				}
+			},
+			error: function(){
+				console.log('fail');
+			}
+		});
+
+	   }
+   }
+	
+}
 
 function getCuriosityList(){
 	let dataTable3 = $('#dataTable3').DataTable({
@@ -172,7 +220,7 @@ function getCuriosityList(){
 					data: "curiosityNo",
 					className : "curiosity-check px50",
 				render: function(data){					
-					return '<input type="checkbox" class="checkbox_group2" name="curiosity-check" value="'+data+'">';
+					return '<input type="checkbox" class="checkbox_group3" name="curiosity-check" value="'+data+'">';
 				}
 			 },
 				{  orderable: false,

@@ -148,4 +148,14 @@ public class AdminController {
 				System.out.println("데이터가 없습니다");
 			}
 		}
+		
+		// 궁금해요 삭제
+		@ResponseBody
+		@RequestMapping(value="adminCuriosityDelete.kh")
+		public String adminCuriosityDelete(@RequestParam("checkNo") String checkNo) {
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("chkNo", checkNo);
+			int result = cService.removeMyCuriosity(map);			
+			return result+"";
+		}
 }

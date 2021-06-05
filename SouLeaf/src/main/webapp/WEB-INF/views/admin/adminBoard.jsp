@@ -101,7 +101,7 @@
 				    		 <table id="dataTable3" class="row-border hover" style="width:100%">
 				        <thead>
 				            <tr>
-				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all2"></th>
+				                <th style="text-align: center; width:50px"><input type="checkbox" id="check_all3"></th>
 				                <th style="text-align: center; width:50px">이미지</th>
 				                <th>제목</th>
 				                <th>작성자</th>

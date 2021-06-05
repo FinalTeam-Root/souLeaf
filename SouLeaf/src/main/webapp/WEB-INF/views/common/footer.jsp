@@ -93,11 +93,12 @@
 					<h2 class="footer-heading">바로가기</h2>
 					<ul class="list-unstyled">
 						<li><a href="home.kh" class="py-2 d-block">홈</a></li>
-						<li><a href="intro.kh" class="py-2 d-block">이야기</a></li>
+						<!-- <li><a href="intro.kh" class="py-2 d-block">이야기</a></li> -->
 						<li><a href="plantListView.kh" class="py-2 d-block">식물찾기</a></li>
 						<li><a href="boastListView.kh" class="py-2 d-block">식물자랑</a></li>
-						<li><a href="#" class="py-2 d-block">식물클리닉</a></li>
+						<li><a href="clinicListView.kh" class="py-2 d-block">식물클리닉</a></li>
 						<li><a href="curiosityListView.kh" class="py-2 d-block">궁금해요</a></li>
+						<li><a href="qnaListView.kh" class="py-2 d-block">Q&A</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">

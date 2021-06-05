@@ -36,7 +36,8 @@ public class QnaController {
 
 	// 관리자가 볼땐 전체조회가 필요
 	@RequestMapping(value = "qnaListView.kh", method = RequestMethod.GET)
-	public ModelAndView qnaListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page) {
+	public ModelAndView qnaListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page, HttpSession session) {
+		session.setAttribute("nav", "qna");
 		int currentPage = (page != null) ? page : 1;
 		try {
 			int listCount = qService.getListCount();
