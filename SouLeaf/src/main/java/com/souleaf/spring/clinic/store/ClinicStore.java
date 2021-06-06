@@ -8,6 +8,8 @@ import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 public interface ClinicStore {
@@ -28,4 +30,12 @@ public interface ClinicStore {
 	public void updateViewCount(int clinicNo); // 조회수 증가
 	public ClinicLike selectLike(ClinicLike clinicLike); // 좋아요 확인
 	public int deleteAdminClinic(HashMap<String, String> map) ;
+	
+	// 마이페이지
+	public int selectMyClinicListCount(int memberNo);
+	public ArrayList<Clinic> selectAllMyClinic(int memberNo, MypageInfo pi);
+	public int getMySearchCount(MypageSearch search);
+	public ArrayList<Clinic> selectSearchAllList(MypageSearch search, MypageInfo pi);
+	public int deleteMyClinic(HashMap<String, String> map);
+	
 }

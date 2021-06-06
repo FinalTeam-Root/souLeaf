@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.service.CuriosityService;
@@ -46,9 +47,9 @@ public class MypageController {
 //	@Autowired
 //	private BoastService bService;
 //	
-//	@Autowired
-//	private ClinicService cService;
-//	
+	@Autowired
+	private ClinicService cliService;
+	
 	@Autowired
 	private CuriosityService curService;
 	
@@ -155,5 +156,64 @@ public class MypageController {
 //		}
 //	}
 	
+	
+	//  클리닉 게시글 가져오기
+	@RequestMapping(value="myClinicList.kh")
+	public void getMyClinicList(HttpServletResponse response, HttpServletRequest request, @RequestParam(value="page", required=false) Integer page, HttpSession session) throws Exception{
+		session.setAttribute("fileName","");
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+		int currentPage = (page != null) ? page : 1;
+		int listCount = cliService.getMyClinicListCount(memberNo);
+		MypageInfo pi = MypagePagination.getPageInfo(currentPage, listCount);
+		ArrayList<Clinic> cliList = cliService.printAllMyClinic(memberNo,pi);
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("pi", pi);
+		map.put("cliList", cliList);
+		if(!cliList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map,response.getWriter());
+		}else {
+			System.out.println("클리닉 리스트 없다! 어쩔래?");
+		}
+		
+	}
+	
+	// 궁금해요 검색
+	@RequestMapping(value="clinicSearch.kh")
+	public void clinicSearch(@ModelAttribute MypageSearch search, HttpServletRequest request,  HttpServletResponse response,@RequestParam(value="page", required=false) Integer page) throws Exception {
+		HttpSession session = request.getSession();
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+		int currentPage = (page != null) ? page : 1;
+		search.setMemberNo(memberNo);
+		int listCount = cliService.getMySearchCount(search);
+		MypageInfo pi = MypagePagination.getPageInfo(currentPage, listCount);
+		ArrayList<Clinic> searchList = cliService.printSearchAllList(search,pi);
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("pi", pi);
+		map.put("searchList", searchList);
+		map.put("pageSearch", search);
+		if(!searchList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map, response.getWriter());
+		}else {
+			System.out.println("궁금해요 검색 결과없어 임마 돌아가");
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map,response.getWriter());
+		}
+	}
+		
+	// 궁금해요 리스트 선택 삭제
+	@ResponseBody
+	@RequestMapping(value="clinicdelete.kh" ,method = RequestMethod.GET)
+	public String clinicdelete(@RequestParam String chkNo ) {
+		HashMap<String,String> map = new HashMap<String, String>();
+		map.put("chkNo", chkNo);
+		int result = cliService.removeMyClinic(map);
+		if(result > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 
 }

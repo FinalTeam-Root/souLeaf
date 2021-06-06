@@ -80,7 +80,7 @@
 					</div>
 					<div class="row" style="margin: 50px auto; width: 550px;">
 						<div id="selectSearch">
-							<select name="searchCondition" id="searchCondition" class="form-control-sm">
+							<select name="searchCondition" id="clinicSearchCondition" class="form-control-sm">
 								<option value="searchAll">전체</option>
 								<option value="searchTitle">제목</option>
 								<option value="searchContent">내용</option>
@@ -89,9 +89,9 @@
 
 						<div id="custom-search-input">
 							<div class="input-group col-md-12">
-								<input type="text" name="searchValue" id="searchValue" class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
+								<input type="text" name="searchValue" id="clinicSearchValue" class="form-control-sm input" placeholder="검색어를 입력해주세요." /> 
 								<span class="input-group-btn">
-									<button class="btn btn-info btn-lg" type="submit" id="curiositySearchBtn">
+									<button class="btn btn-info btn-lg" type="submit" id="clinicSearchBtn">
 										<i class="fa fa-search"></i>
 									</button>
 								</span>

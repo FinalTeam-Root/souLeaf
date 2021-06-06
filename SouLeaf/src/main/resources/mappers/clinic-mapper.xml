@@ -14,6 +14,7 @@
 		<result property="clinicCount" column="CLINIC_COUNT"/>
 		<result property="clinicContents" column="CLINIC_CONTENTS"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
+		<result property="num" column="NUM"/>
 	</resultMap>
 	
 	<resultMap type="ClinicReply" id="clinicReplyResultMap">
@@ -99,5 +100,46 @@
 		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
 	</update>
 	
+	
+	<!-- 마이페이지 -->
+	
+	<select id="selectAllMyClinic" resultMap="clinicResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CLINIC_DATE ASC) AS NUM, A.* FROM (SELECT * FROM CLINIC) A WHERE MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y' ORDER BY CLINIC_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectSearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="clinicResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY CLINIC_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CLINIC ) A 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y' 
+		</if>
+		ORDER BY CLINIC_DATE DESC
+	</select> 
+	
+	<select id="getMySearchCount" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC 
+		<if test="searchCondition.toString() == 'searchTitle'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%'
+		</if>	
+		<if test="searchCondition.toString() == 'searchContent'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		AND CLINIC_STATUS = 'Y'
+	</select>
 
+	<update id="deleteMyClinic" parameterType="map">
+		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
+	</update>
 </mapper>

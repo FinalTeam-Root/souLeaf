@@ -15,6 +15,7 @@ public class Clinic {
 	private int clinicCount;
 	private String clinicContents;
 	private int replyCount;
+	private int num;
 	
 	public Clinic() {
 	}
@@ -133,13 +134,22 @@ public class Clinic {
 		this.replyCount = replyCount;
 	}
 
+	
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	@Override
 	public String toString() {
 		return "Clinic [clinicNo=" + clinicNo + ", clinicContent=" + clinicContent + ", clinicFileName="
 				+ clinicFileName + ", clinicFileRename=" + clinicFileRename + ", clinicDate=" + clinicDate
 				+ ", clinicUpdate=" + clinicUpdate + ", clinicStatus=" + clinicStatus + ", memberNo=" + memberNo
 				+ ", memberNick=" + memberNick + ", clinicCount=" + clinicCount + ", clinicContents=" + clinicContents
-				+ ", replyCount=" + replyCount + "]";
+				+ ", replyCount=" + replyCount + ", num=" + num + "]";
 	}
 	
 }

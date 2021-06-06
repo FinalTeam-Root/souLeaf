@@ -13,6 +13,8 @@ import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 
@@ -117,6 +119,38 @@ public class ClinicStoreLogic implements ClinicStore{
 		return sqlSession.delete("clinicMapper.deleteAdminClinic", map);
 	}
 
+	// 마이페이지
+	@Override
+	public ArrayList<Clinic> selectAllMyClinic(int memberNo, MypageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		// 없이 쿼리문을 실행한다고 하면 전체 게시물을 가져오는데 
+		// 내가 원하는 게시물 만큼만가져온다 그래서 사용
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectAllMyClinic",memberNo, rowBounds);
+	}
+
+	@Override
+	public int selectMyClinicListCount(int memberNo) {
+		return sqlSession.selectOne("clinicMapper.selectMyListCount", memberNo);
+	}
+
+	@Override
+	public int getMySearchCount(MypageSearch search) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("clinicMapper.getMySearchCount", search);
+	}
+
+	@Override
+	public ArrayList<Clinic> selectSearchAllList(MypageSearch search, MypageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchAllList", search,rowBounds);
+	}
+
+	@Override
+	public int deleteMyClinic(HashMap<String, String> map) {
+		return sqlSession.update("clinicMapper.deleteMyClinic", map);
+	}
 
 
 }

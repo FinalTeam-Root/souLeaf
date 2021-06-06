@@ -12,6 +12,9 @@ import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.clinic.store.ClinicStore;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.curiosity.domain.Curiosity;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 
 @Service
@@ -110,6 +113,34 @@ public class ClinicServiceImpl implements ClinicService{
 	@Override
 	public int removeAdminClinic(HashMap<String, String> map) {
 		return cStore.deleteAdminClinic(map);
+	}
+	
+	// 마이페이지
+	
+	@Override
+	public int getMyClinicListCount(int memberNo) {
+		return cStore.selectMyClinicListCount(memberNo);
+	}
+
+	@Override
+	public ArrayList<Clinic> printAllMyClinic(int memberNo, MypageInfo pi) {
+		return cStore.selectAllMyClinic(memberNo,pi);
+	}
+
+	@Override
+	public int getMySearchCount(MypageSearch search) {
+		// TODO Auto-generated method stub
+		return cStore.getMySearchCount(search);
+	}
+
+	@Override
+	public ArrayList<Clinic> printSearchAllList(MypageSearch search, MypageInfo pi) {
+		return cStore.selectSearchAllList(search,pi);
+	}
+
+	@Override
+	public int removeMyClinic(HashMap<String, String> map) {
+		return cStore.deleteMyClinic(map);
 	}
 	
 }

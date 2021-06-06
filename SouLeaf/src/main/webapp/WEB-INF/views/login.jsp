@@ -86,6 +86,11 @@ a:hover, a:focus {
 	color :red;
 	font-size:0.9vw;
 }
+.kakao-btn{
+	background: #F7E600;
+	border-color: #F7E600;
+	color: #3b1e1e;
+}
 </style>
 </head>
 <body>
@@ -128,7 +133,7 @@ a:hover, a:focus {
 						</div>
 					<div class="sideline">OR</div>
 						<div class="kakao">
-							<button type="submit" id="loginBtn" onclick="kakaoLogin();" class="btn btn-warning w-100 mt-2"><img src="https://img.icons8.com/metro/26/000000/speech-bubble.png" style="margin-right: 10px; width :15px; height :15px;"/>카카오 로그인</button>
+							<button type="submit" id="loginBtn" onclick="kakaoLogin();" class="btn btn-warning w-100 mt-2 kakao-btn"><img src="https://img.icons8.com/metro/26/000000/speech-bubble.png" style="margin-right: 10px; width :15px; height :15px;"/>카카오 로그인</button>
 						</div>
 					<div class="pt-4 text-center">
 						<a href="enrollView.kh" style="font-size: 0.9vw">아직 회원이 아니신가요? </a>
