@@ -226,17 +226,32 @@ public class MemberController {
 		return renameFileName;
 	}
 
-	// 회원 탈퇴
+	// 회원 탈퇴   
 	@RequestMapping(value = "memberDelete.kh", method = RequestMethod.GET)
-	public String memberDelete(@RequestParam("memberId") String memberId, Model model) {
+	public String memberDelete(@RequestParam("memberId") String memberId) {
 		int result = mService.deleteMember(memberId);
-		if (result > 0) {
-			return "redirect:logout.kh";
-		} else {
-			model.addAttribute("msg", "회원 탈퇴 실패");
-			return "common/errorPage";
+		if(result > 0) {
+			return "redirect:logout.kh";			
+		}else {
+			return "";
 		}
 
+	}
+	// 비밀번호 일치 여부 
+	@ResponseBody  
+	@RequestMapping(value = "checkMemberPw.kh", method = RequestMethod.POST)
+	public String checkMemberPw(@ModelAttribute Member member) {
+		Member memberchk = mService.checkMemberInfo(member.getMemberId()); // 디비에 저장된 암호환된 값 가져옴 
+		String memberOriginalPw = memberchk.getMemberPw();
+		
+		String memberPw = member.getMemberPw(); // 내가 입력한 값
+		String enterPassword = MemberSha256.encrypt(memberPw); // 내가 입력한 값을 다시 암호화 해줌
+		
+		if(!enterPassword.equals(memberOriginalPw)) {
+			return "wrongPw";			
+		}else {
+			return "rigthPw";
+		}
 	}
 	// 아이디 중복 검사
 //	@ResponseBody    

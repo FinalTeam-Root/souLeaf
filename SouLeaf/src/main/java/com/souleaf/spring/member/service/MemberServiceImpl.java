@@ -58,5 +58,10 @@ public class MemberServiceImpl implements MemberService {
 		return mStore.checkNickDup(memberNick);
 	}
 
+	@Override
+	public Member checkMemberInfo(String memberId) {
+		return mStore.checkMemberInfo(memberId);
+	}
+
 
 }

@@ -96,7 +96,7 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<button type="submit" id="modifybtn" class="btn btn-primary">수정하기</button>
-													<input type="button" id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'" class="btn btn-primary" value="취소">
+													<input type="button" id="" onclick="location.href='mypage.kh?memberNo=${member.memberNo}'" class="btn btn-primary" value="취소">
 													<%-- <button id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'">취소</button> --%>
 													<div class="submitting"></div>
 												</div>

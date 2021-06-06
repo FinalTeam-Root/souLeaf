@@ -160,6 +160,9 @@
 	width : fit-content;
 	float : left;
 }
+.modal-content {
+	margin-top : 200px;
+}
 </style>
 </head>
 <body>
@@ -197,7 +200,8 @@
 						</div>
 					</div>
 					<div class="deleteMemberBtn">
-				 		<button type="button" class="btn btn-light w-100 font-weight-bold mt-5" onclick="location.href='memberDelete.kh?memberId=${loginUser.memberId}'">회원탈퇴</button>  
+						<input type="hidden" id="memberId" value="${loginUser.memberId }">
+				 		<button type="button" class="btn btn-light w-100 font-weight-bold mt-5" onclick="deleteModal()">회원탈퇴</button>  
 					</div>
 				</div>
 				<!-- myInfo -->
@@ -207,15 +211,13 @@
 							aria-labelledby="member-tab">
 							<div class="container">
 								<div class="row">
-									<div class="single_what_we_do leftFont"
-										onclick="location.href='memerModifyView.kh'">
+									<div class="single_what_we_do leftFont" onclick="location.href='memerModifyView.kh'">
 										<div class="top_line"></div>
 										<br>
 										<h4 class="what_we_do_title">기본 정보</h4>
-										<div class="what_we_do_content">프로필 사진, 이름, 이메일, 휴대전화
-											정보를 수정합니다.</div>
-										<a class="what_we_do_icon" href="#"> <i
-											class="fa fa-angle-right" aria-hidden="true"></i>
+										<div class="what_we_do_content">프로필 사진, 이름, 이메일, 휴대전화 정보를 수정합니다.</div>
+										<a class="what_we_do_icon" href="#"> 
+										<i class="fa fa-angle-right" aria-hidden="true"></i>
 										</a>
 									</div>
 								</div>
@@ -276,6 +278,47 @@
 		</div>
 		<!--/tab-content-->
 	</div>
+	
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-modify">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5>회원 탈퇴</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<span style="text-align : center;"> 회원 탈퇴 시 회원님께서 작성하신 모든 게시글 및 정보가 삭제됩니다. <br> 탈퇴를 원하시면 비밀번호 입력해주세요.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<input class="form-control form-control-sm" type="text" name="diaryTitle" id="pwdchk" required />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-12">
+								<span id="notPw" style="color : red;"></span>
+							</div>
+						</div>
+					<!-- /.modal-body -->
+					<div class="form-group" style="margin-left: 298px;">
+						<button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-danger" id="deleteMember">탈퇴하기</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+	</div>
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	<script src="resources/js/mypage/mypage.js"></script>
+	
 </body>
 </html>

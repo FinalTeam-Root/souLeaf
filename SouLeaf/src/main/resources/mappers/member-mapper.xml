@@ -50,4 +50,8 @@
  <select id="selectAll" resultMap="memberResultMap">
  	SELECT * FROM MEMBER ORDER BY MEMBER_STATUS DESC, MEMBER_NO DESC
  </select>
+ 
+ <select id="checkMemberPw" resultMap="memberResultMap">
+ 	SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
+ </select>
  </mapper>
