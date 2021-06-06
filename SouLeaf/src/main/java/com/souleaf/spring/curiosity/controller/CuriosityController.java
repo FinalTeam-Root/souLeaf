@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -41,11 +42,14 @@ import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.service.PlantService;
 import com.souleaf.spring.qna.domain.Qna;
 @Controller
 public class CuriosityController {
 	@Autowired
 	private CuriosityService cService;
+	@Autowired
+	private PlantService pService;
 	
 	// 궁금해요 리스트 페이지 이동 및 출력
 	@RequestMapping(value="curiosityListView.kh")
@@ -257,7 +261,15 @@ public class CuriosityController {
 	}
 	
 	// 해시태그 출력
-	public String getHashTagList(Plant plant, Model model) {
+	@RequestMapping(value="getHashTag.kh")
+	public String getHashTagList(@RequestParam("tagName") String tagName, HttpServletResponse response) {
+		System.out.println(tagName);
+		/*
+		 * ArrayList<Plant> pList = pService.printListName(); if(! pList.isEmpty()) {
+		 * Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+		 * gson.toJson(pList, response.getWriter()); }else {
+		 * System.out.println("데이터가 없습니다"); }
+		 */
 		return "";
 	}
 	

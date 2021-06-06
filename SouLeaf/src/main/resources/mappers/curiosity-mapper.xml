@@ -11,6 +11,7 @@
 		<result property="criosityStatus" column="CURIOSITY_STATUS"/>
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>
 		<result property="curiosityCount" column="CURIOSITY_COUNT"/>
 		<result property="curiosityContents" column="CURIOSITY_CONTENTS"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
@@ -25,6 +26,7 @@
 		<result property="curiosityNo" column="CURIOSITY_NO"/>
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="memberNick" column="MEMBER_NICK"/>		
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>		
 	</resultMap>
 	
 	<insert id="insertCuriosity">

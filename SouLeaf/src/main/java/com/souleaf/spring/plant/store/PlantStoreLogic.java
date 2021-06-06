@@ -101,6 +101,11 @@ public class PlantStoreLogic implements PlantStore{
 		return sqlSession.update("plantMapper.deleteAdminPlant", checkNo);
 	}
 
+	@Override
+	public int selectOneName(String plantName) {
+		return sqlSession.selectOne("plantMapper.selectOneName", plantName);
+	}
+
 	
 
 	

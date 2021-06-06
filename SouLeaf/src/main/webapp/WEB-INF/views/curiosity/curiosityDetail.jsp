@@ -29,9 +29,14 @@
 									<div class="contact-wrap w-100 p-md-5 p-4">
 									<h2 class="heading-section p-1 ml-3">${curiosity.curiosityContent }</h2>
 									<div class="media p-1 ml-3">
-										<img src="resources/images/main_bg_8.jpg" alt="John Doe"
+									<c:if test="${curiosity.memberFileRename eq null }">
+										<img src="resources/images/basicMemberImg.png" alt="John Doe"
 											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
-											
+									</c:if>
+									<c:if test="${curiosity.memberFileRename ne null }">
+										<img src="resources/uploadFiles/member/${curiosity.memberFileRename }" alt="John Doe"
+											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
+									</c:if>
 										<div class="media-body row">
 											<div class="dropdown mt-2 col-md-6">
 												<button class="btn dropdown-toggle" type="button"

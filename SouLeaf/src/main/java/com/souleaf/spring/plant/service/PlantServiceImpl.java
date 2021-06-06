@@ -138,6 +138,11 @@ public class PlantServiceImpl implements PlantService{
 	public int removeAdminPlant(String checkNo) {
 		return pStore.deleteAdminPlant(checkNo);
 	}
+
+	@Override
+	public int printOneName(String plantName) {
+		return pStore.selectOneName(plantName);
+	}
 	
 
 }

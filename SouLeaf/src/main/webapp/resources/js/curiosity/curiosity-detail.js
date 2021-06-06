@@ -13,6 +13,7 @@ $(function(){
 		        }
 		 });
 		 getReplyList($("#curiosityNo").val());
+		 getHashtagLink();
 });
 
 /**
@@ -134,10 +135,14 @@ function getReplyList(curiosityNo){
 		
 		 for(var i in data){
 			str+='<div class="media p-3">';
-			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			if(data[i].memberFileRename == null){
+				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+			}else{
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			}			
 			str+='<div class="media-body">';
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
-			str+='<span>'+data[i].curicommentContent+'</span><br>';
+			str+='<span class="entry">'+data[i].curicommentContent+'</span><br>';
             if(loginNo == data[i].memberNo){
 				str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger curiosity-btn">삭제</span></small><br>';
 
@@ -154,7 +159,31 @@ function getReplyList(curiosityNo){
 		},
 		error : function(){
 		  console.log('fail');
+		},
+		complete: function(){
+			getHashtagLink();
 		}
 	
 	  });
+}
+
+function getHashtagLink(){
+
+	var siteURL = 'plantDetailName.kh?plantName=';
+	
+	entries = $('.entry');
+	var tag = $('.entry:contains(#)').text();	
+	var tagText = tag.split("#");		
+	
+	if ( entries.length > 0 ) {
+		
+		entries.each(function(i){
+	  
+	  contents = $(this).text().replace(/#(\S+)/g,'<a href="'+siteURL+'$1" title="$1">#$1</a>');
+	
+	$(this).html(contents);
+	
+  });
+  
+}
 }

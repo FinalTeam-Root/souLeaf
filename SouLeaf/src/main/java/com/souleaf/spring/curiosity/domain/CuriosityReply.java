@@ -10,13 +10,14 @@ public class CuriosityReply {
 	private int curiosityNo;
 	private int memberNo;
 	private String memberNick;
+	private String memberFileRename;
 	
 	public CuriosityReply() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CuriosityReply(int curicommentNo, String curicommentContent, Timestamp curicommentDate,
-			String curicommentStatus, int curiosityNo, int memberNo, String memberNick) {
+			String curicommentStatus, int curiosityNo, int memberNo, String memberNick, String memberFileRename) {
 		super();
 		this.curicommentNo = curicommentNo;
 		this.curicommentContent = curicommentContent;
@@ -25,6 +26,7 @@ public class CuriosityReply {
 		this.curiosityNo = curiosityNo;
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
+		this.memberFileRename = memberFileRename;
 	}
 
 	public int getCuricommentNo() {
@@ -83,14 +85,21 @@ public class CuriosityReply {
 		this.memberNick = memberNick;
 	}
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
 	@Override
 	public String toString() {
 		return "CuriosityReply [curicommentNo=" + curicommentNo + ", curicommentContent=" + curicommentContent
 				+ ", curicommentDate=" + curicommentDate + ", curicommentStatus=" + curicommentStatus + ", curiosityNo="
-				+ curiosityNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + "]";
+				+ curiosityNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", memberFileRename="
+				+ memberFileRename + "]";
 	}
 
-	
-	
 	
 }

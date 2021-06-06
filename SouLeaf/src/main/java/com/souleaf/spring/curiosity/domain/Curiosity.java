@@ -12,6 +12,7 @@ public class Curiosity {
 	private String criosityStatus;
 	private int memberNo;
 	private String memberNick;
+	private String memberFileRename;
 	private int curiosityCount;
 	private String curiosityContents;
 	private int replyCount;
@@ -23,7 +24,7 @@ public class Curiosity {
 
 	public Curiosity(int curiosityNo, String curiosityContent, String curiosityFileName, String curiosityFileRename,
 			Date curiosityDate, Date curiosityUpdate, String criosityStatus, int memberNo, String memberNick,
-			int curiosityCount, String curiosityContents, int replyCount) {
+			String memberFileRename, int curiosityCount, String curiosityContents, int replyCount, int num) {
 		super();
 		this.curiosityNo = curiosityNo;
 		this.curiosityContent = curiosityContent;
@@ -34,9 +35,11 @@ public class Curiosity {
 		this.criosityStatus = criosityStatus;
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
+		this.memberFileRename = memberFileRename;
 		this.curiosityCount = curiosityCount;
 		this.curiosityContents = curiosityContents;
 		this.replyCount = replyCount;
+		this.num = num;
 	}
 
 	public int getCuriosityNo() {
@@ -111,6 +114,14 @@ public class Curiosity {
 		this.memberNick = memberNick;
 	}
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
 	public int getCuriosityCount() {
 		return curiosityCount;
 	}
@@ -148,16 +159,10 @@ public class Curiosity {
 		return "Curiosity [curiosityNo=" + curiosityNo + ", curiosityContent=" + curiosityContent
 				+ ", curiosityFileName=" + curiosityFileName + ", curiosityFileRename=" + curiosityFileRename
 				+ ", curiosityDate=" + curiosityDate + ", curiosityUpdate=" + curiosityUpdate + ", criosityStatus="
-				+ criosityStatus + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", curiosityCount="
-				+ curiosityCount + ", curiosityContents=" + curiosityContents + ", replyCount=" + replyCount + ", num="
-				+ num + "]";
+				+ criosityStatus + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", memberFileRename="
+				+ memberFileRename + ", curiosityCount=" + curiosityCount + ", curiosityContents=" + curiosityContents
+				+ ", replyCount=" + replyCount + ", num=" + num + "]";
 	}
-
-
-
-	
-	
-
 	
 	
 }

@@ -107,6 +107,22 @@ public class PlantController {
 			return mv;
 		}
 		
+		// 식물도감 상세페이지 이동 및 출력
+		@RequestMapping(value="plantDetailName.kh")
+		public ModelAndView plantDetailNameView(ModelAndView mv,@RequestParam("plantName") String plantName,HttpSession session) {
+			session.setAttribute("nav", "plant");
+			int plantNo = pService.printOneName(plantName);
+			Plant plant = pService.printOne(plantNo);
+			PlantInfo pInfo = pService.printOneInfo(plantNo);
+			ArrayList<PlantFile> pfList = pService.printFileList(plantNo);
+			mv.addObject("plant",plant);
+			mv.addObject("pInfo",pInfo);
+			mv.addObject("pfList",pfList);
+			mv.setViewName("plant/plantDetail");
+			return mv;
+		}
+		
+		
 		// 식물도감 등록화면 이동
 		@RequestMapping(value="plantWrite.kh")
 		public String plantWriterView() {
