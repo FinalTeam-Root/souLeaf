@@ -447,6 +447,10 @@ public class MemberController {
 	public String emailAuthenticateView(){
 		return "member/emailAuthenticateView";
 	}
-	
+	// 비밀번호 찾기 폼
+	@RequestMapping(value = "findPwView.kh", method =  RequestMethod.GET)
+	public String findPwView() throws Exception{
+		return "member/enterPassword";
+	}
 	
 }

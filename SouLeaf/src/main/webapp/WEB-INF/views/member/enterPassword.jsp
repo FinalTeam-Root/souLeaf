@@ -54,8 +54,17 @@ position: relative;
 					<div class="row">
 						<div class="col-sm-3"></div>
 						<div class="col-sm-6">
-							<form action="" method="">
+							<form action="findPwView.kh" method="get">
 								<div class="form-floating">
+									  <div class="form-group pb-3">   
+   										 <input type="text" placeholder="아이디" name="memberId" 
+   										 				class="form-control classId" id="id">
+								      </div>
+ 									  <div class="form-group">
+       										<p id="checkId" class="checkBtn">
+  									  </div>
+									<input type="memberMail" class="form-control"
+										id="floatingPassword" placeholder="이메일">
 									<input type="password" class="form-control"
 										id="floatingPassword" placeholder="Password">
 									<div class="container">
@@ -87,7 +96,8 @@ position: relative;
 				<br>
 		</div>
 	</div>
-
-<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/login/findPwView.js"></script>
+ <script src="resources/js/login/main.js"></script>
 </body>
 </html>
