@@ -49,7 +49,7 @@ public class MailSendService {
 			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 					.append("<p>아래 인증번호를 회원가입 창에 입력 시 이메일 인증이 완료됩니다.</p>")
 					.append("<p>인증번호 : "+authKey+" </p>").toString());
-			sendMail.setFrom("이메일 주소", "관리자");
+			sendMail.setFrom("khprojectfinal@gmail.com", "관리자");
 			sendMail.setTo(email);
 			sendMail.send();
 		} catch (MessagingException e) {

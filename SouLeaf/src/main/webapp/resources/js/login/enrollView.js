@@ -47,7 +47,7 @@ $(function(){ // code insert
 		$('#emailAuthenticate').on("click", function(){
 		
 			$.ajax({
-		        url :"/emailAuthCheck.kh",
+		        url :"emailAuthCheck.kh",
 		        type:"post",
 		        data: {"memberMail": $("#email").val()},
 		     	success : function(data) {

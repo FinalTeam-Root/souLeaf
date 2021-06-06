@@ -433,9 +433,10 @@ public class MemberController {
 	}
 	
 	// 이메일 인증
-	@RequestMapping(value = "emailAuthCheck.kh", method = RequestMethod.POST)
+	@RequestMapping(value = "emailAuthCheck.kh", method = { RequestMethod.GET, RequestMethod.POST })
 	public void emailAuthCheck(HttpServletResponse response, @ModelAttribute Member member)
 			throws JsonIOException, IOException {
+		System.out.println("메일");
 		String authKey = mss.sendAuthMail(member.getMemberMail());
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 고정
 		gson.toJson(Integer.parseInt(authKey), response.getWriter());
