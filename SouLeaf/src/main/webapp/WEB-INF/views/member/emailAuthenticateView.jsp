@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>souLeaf - 로그인</title>
+<title>souLeaf - 이메일인증</title>
 <link rel="icon" type="image/png" sizes="16x16"  href="resources/images/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
@@ -72,52 +72,28 @@ color:red;
 		<a class="navbar-brand" href="/home.kh"><img src="resources/images/logo.png"  style="margin-bottom: 10px; width:200px;"></a>
 	</div>
 <div class="form-style">
-<form action="memberRegister.kh" method="post">
-  <div class="form-group pb-3">    
-    <input type="text" placeholder="이름" class="form-control" name="memberName" id="name" >   
-  </div>
+<form action="#" method="post">
   <div class="form-group pb-3">   
-    <input type="text" placeholder="아이디" name="memberId" class="form-control classId" id="id">
+    <p>이메일로 전송된 인증번호를 입력해주세요.(제한시간 : 3분)</p>
   </div>
-  <div class="form-group">
-       <p id="checkId" class="checkBtn">
-  </div>
+ 
   <div class="form-group pb-3">   
-    <input type="text" placeholder="닉네임" name="memberNick" class="form-control classNick" id="nick" maxlength="6">
-  </div>
-  <div class="form-group">
-       <p id="checkNick" class="checkBtn">
-  </div>
-  <div class="form-group pb-3">   
-    <input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
-    <input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기">
-  </div>
-  <div class="form-group pb-3">   
-    <input type="password" placeholder="패스워드" name="memberPw" class="form-control passwordCheck" id="password">
-  </div>
-  <div class="form-group pb-3">   
-    <input type="password" placeholder="패스워드 확인" name="password1" class="form-control passwordCheck" id="password1">
-  </div>
-  <div class="form-group pb-3">
-         <p id="passwordCheck" class="checkBtn">
+    <input type="text" placeholder="인증번호 입력" name="emailAuthKey" class="form-control" id="emailAuthKey">
   </div>
   <div class="d-flex align-items-center justify-content-between">
 </div>
-<input type="button" value="가입하기" class="btn btn-success w-100 font-weight-bold mt-2" id="signbtn">
+<input type="button" value="확인" class="btn btn-success w-100 font-weight-bold mt-2" id="emailAuthConfirmbtn">
 </form>
 </div>
-	<input type="hidden" id="isEmailAuthSuccess" style="display: none;">
+	
 </div>
-<div class="col-md-6 d-none d-md-block">
-<img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" class="img-fluid" style="min-height:100%;" />
-</div>
+
 </div>
 </div>
  <script type="text/javascript" language="javascript" src="/sha256min.js"></script> 
  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script src="resources/js/login/enrollView.js"></script>
- <script src="resources/js/login/main.js"></script>
+ <script src="resources/js/login/emailAuthenticateView.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 </body>

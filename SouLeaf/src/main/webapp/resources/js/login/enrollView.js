@@ -5,33 +5,62 @@
 
 $(function(){ // code insert
 	$(".classId").keyup(function() {
-	 $.ajax({
-	        url :"/idCheck.kh",
-	        type:"post",
-	        data: {"memberId": $("#id").val()},
-	      success : function(data) {
-	          
-	           if(data != 0){
-	        	$("#checkId").html("중복된 아이디 입니다");
-	          }else {
-	           $("#checkId").html("사용 가능한 아이디 입니다");
-	           }
-	      }  
-
-		  
-	      });
+		 $.ajax({
+		        url :"/idCheck.kh",
+		        type:"post",
+		        data: {"memberId": $("#id").val()},
+		     	success : function(data) {
+		          
+			        if(data != 0){
+			        	$("#checkId").html("중복된 아이디 입니다");
+			        }else {
+			           $("#checkId").html("사용 가능한 아이디 입니다");
+			        }
+	
+		      	}  
+	
+			  
+		 });
 		  		  
-		});
+	});
 
 		$("#password").on("keyup",function(){
 			passwordCheck();
 		  });
-			$("#signbtn").on("click",function(){
-			var test = alert("정보수정이 완료되었습니다.");
+		$("#signbtn").on("click",function(){
+			//var test = alert("정보수정이 완료되었습니다.");
+			if($('#id').val() == null || $('#id').val() == '' || $('#id').val() == undefined){
+				alert('아이디는 필수 입력 항목입니다.');
+				return;
+			}
+			if($('#nick').val() == null || $('#nick').val() == '' || $('#nick').val() == undefined){
+				alert('닉네임은 필수 입력 항목입니다.');
+				return;
+			}
+			if($('#isEmailAuthSuccess').val() != 'success'){
+				alert('이메일 인증을 진행해주셔야 회원가입이 완료됩니다.');
+				return;
+			}
 			
 		});
 
-
+		$('#emailAuthenticate').on("click", function(){
+		
+			$.ajax({
+		        url :"/emailAuthCheck.kh",
+		        type:"post",
+		        data: {"memberMail": $("#email").val()},
+		     	success : function(data) {
+					var date = new Date();
+					date.setTime(date.getTime() + 3*60*1000); // 3분 뒤 만료.
+					//$.cookie('authKeyValue', data, { expires: date });
+					document.cookie = "authKeyValue" + "=" + data + "; path=/; expires=" + date.toGMTString() + ";";
+					window.open('http://localhost:8888/emailAuthenticateView.kh', '이메일인증창', 'width=700px,height=800px,scrollbars=yes');
+		      	}  
+			  
+		 	});
+		
+		});
 
 		$(".passwordCheck").keyup(function() {
 			if($("#password").val() == $("#password1").val()){
@@ -104,6 +133,7 @@ $(function(){ // code insert
 								
 					});
 				});
+				
  
 	       	
 	        

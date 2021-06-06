@@ -33,6 +33,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.souleaf.spring.diary.domain.Guestbook;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.member.service.MailSendService;
 import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.security.service.MemberSha256;
 
@@ -43,6 +44,8 @@ public class MemberController {
 	JavaMailSender mailSender;
 	@Autowired
 	private MemberService mService;
+	@Autowired
+    private MailSendService mss;
 
 	// 회원가입 폼
 	@RequestMapping(value = "enrollView.kh", method = { RequestMethod.GET, RequestMethod.POST })
@@ -428,5 +431,21 @@ public class MemberController {
 		result = mService.checkNickDup(member.getMemberNick()) > 0 ? 1 : 0;
 		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
 	}
+	
+	// 이메일 인증
+	@RequestMapping(value = "emailAuthCheck.kh", method = RequestMethod.POST)
+	public void emailAuthCheck(HttpServletResponse response, @ModelAttribute Member member)
+			throws JsonIOException, IOException {
+		String authKey = mss.sendAuthMail(member.getMemberMail());
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 고정
+		gson.toJson(Integer.parseInt(authKey), response.getWriter());
+	}
+	
+	// 이메일 인증
+	@RequestMapping(value = "emailAuthenticateView.kh", method = { RequestMethod.GET, RequestMethod.POST })
+	public String emailAuthenticateView(){
+		return "member/emailAuthenticateView";
+	}
+	
 	
 }
