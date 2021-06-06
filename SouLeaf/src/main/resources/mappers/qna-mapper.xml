@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="selectQnaList" parameterType="Qna" resultMap="qnaResultMap">
-		SELECT * FROM QNA WHERE QNA_STATUS = 'Y' ORDER BY QNA_NO DESC
+		SELECT QNA_NO,QNA_CONTENT,QNA_DATE,MEMBER_NICK,ANS_NO,QNA_STATUS FROM QNA Q LEFT JOIN ANS A USING(QNA_NO) JOIN MEMBER M ON Q.MEMBER_NO=M.MEMBER_NO WHERE QNA_STATUS = 'Y' ORDER BY QNA_NO DESC
 	</select>
 
 	<select id="selectAllList" resultMap="qnaResultMap">
@@ -57,5 +57,9 @@
 		SELECT QNA_NO,QNA_CONTENT,QNA_DATE,MEMBER_NICK,ANS_NO,QNA_STATUS FROM QNA Q LEFT JOIN ANS A USING(QNA_NO) JOIN MEMBER M ON Q.MEMBER_NO=M.MEMBER_NO WHERE QNA_STATUS = 'Y' ORDER BY QNA_NO DESC
 		
 	</select>
+	
+	<update id="deleteAdminQna" parameterType="map">
+		UPDATE QNA SET QNA_STATUS = 'N' WHERE QNA_NO IN (${chkNo})
+	</update>
 </mapper>
  

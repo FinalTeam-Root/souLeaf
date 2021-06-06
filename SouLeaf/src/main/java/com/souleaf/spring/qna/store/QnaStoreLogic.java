@@ -1,6 +1,7 @@
 package com.souleaf.spring.qna.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -61,6 +62,11 @@ public class QnaStoreLogic implements QnaStore{
 	@Override
 	public ArrayList<Qna> selectAdminAll() {
 		return (ArrayList)sqlSession.selectList("qnaMapper.selectAdminQnaList");
+	}
+
+	@Override
+	public int deleteAdminQna(HashMap<String, String> map) {
+		return sqlSession.update("qnaMapper.deleteAdminQna", map);
 	}
 
 	

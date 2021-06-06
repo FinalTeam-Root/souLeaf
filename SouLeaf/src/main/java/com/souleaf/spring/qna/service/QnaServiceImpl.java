@@ -1,6 +1,7 @@
 package com.souleaf.spring.qna.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,11 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public ArrayList<Qna> printAdminAll() {
 		return qStore.selectAdminAll();
+	}
+
+	@Override
+	public int removeAdminQna(HashMap<String, String> map) {
+		return qStore.deleteAdminQna(map);
 	}
 
 

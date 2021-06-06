@@ -1,6 +1,7 @@
 package com.souleaf.spring.qna.store;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.qna.domain.Qna;
@@ -17,4 +18,5 @@ public interface QnaStore {
 	public int updateQna(Qna qna);
 	public int deleteQna(int qId);
 	public ArrayList<Qna> selectAdminAll();
+	public int deleteAdminQna(HashMap<String, String> map);
 }

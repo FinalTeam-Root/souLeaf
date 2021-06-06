@@ -21,7 +21,7 @@
 		
 	</select>
 	
-	<insert id="insertAns">
+	<insert id="insertAns" parameterType="Ans">
 		INSERT INTO ANS VALUES(SEQ_ANS.NEXTVAL, #{memberNo}, #{ansTitle}, #{ansContent}, DEFAULT, #{qnaNo})
 	</insert>
 </mapper>

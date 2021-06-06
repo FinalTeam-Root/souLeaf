@@ -104,6 +104,7 @@ public class AnsController {
 		ans.setMemberNo(memberNo);
 		int result = 0;
 		String path = "";
+		System.out.println(ans.toString());
 		result = aService.registerAns(ans);
 		if(result > 0 ) {
 			path = "redirect:qnaListView.kh";

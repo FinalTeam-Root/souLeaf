@@ -4,13 +4,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/qna/qnalist.css">
 <meta charset="UTF-8">
 <title>Q&A</title>
+ <jsp:include page="../common/header.jsp"></jsp:include> 
+<link rel="stylesheet" href="resources/css/qna/qnalist.css">
 </head>
 <body>
- <jsp:include page="../common/header.jsp"></jsp:include> 
- 
+   <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/main_bg_31.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 ftco-animate pb-5">
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home.kh">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread">Q&A 게시판</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <section class="ftco-section bg-light ftco-faqs">
     	<div class="container">
@@ -19,7 +29,7 @@
 			
     			<div class="col-lg-12">
     				<div class="heading-section mb-5 mt-5 mt-lg-0">
-	            <h2 class="mb-3">Q&A 게시판</h2>
+	            <h2 class="heading-section" align="center" style="margin-bottom:50px">사이트에 궁금한게 있으신가요?</h2>
 	            <p></p>
     				</div>
     				<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
@@ -31,8 +41,9 @@
 						  <div class="card">
 						    <div class="card-header p-0" id="heading${status.index }" role="tab">
 						      <h2 class="mb-0">
-						        <button href="#collapse${status.index }" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapse${status.index }">
-						        	<p class="mb-0">${qna.qnaContent }</p>
+						        <button href="#collapse${status.index }" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapse${status.index }" <c:if test="${qna.ansNo eq null }">disabled</c:if>>
+						        	<p class="mb-0">Q : ${qna.qnaContent } <c:if test="${qna.ansNo eq null }"> &nbsp;<span class="badge badge-secondary">답변대기</span></c:if></p>
+						        	
 						          <i class="fa" aria-hidden="true"></i>
 						        </button>
 						      </h2>
@@ -40,7 +51,7 @@
 						    <div class="collapse" id="collapse${status.index }" role="tabpanel" aria-labelledby="heading${status.index }">
 						      <c:forEach items="${aList }" var="ans" varStatus="status">
 						       <c:if test="${qna.qnaNo eq ans.qnaNo}">
-						      <div class="card-body py-3 px-4">${ans.ansContent }
+						      <div class="card-body py-3 px-4">A : ${ans.ansContent }
 						      </div>
 						       </c:if>
 						      </c:forEach>
