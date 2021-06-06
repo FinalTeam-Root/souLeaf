@@ -188,12 +188,14 @@ public class AdminController {
 			int result = nService.removeAdminClinic(map);		
 			return result+"";
 		}
+		// qna 관리 이동
 		@RequestMapping(value="adminQna.kh", method = RequestMethod.GET) 
 		public String adminQna() {
 			return "admin/adminQna";
 		
 			
 		}
+		// qna 리스트 출력
 		@RequestMapping(value="adminQnaList.kh")
 		public void getQnaList(HttpServletResponse response) throws Exception {
 			ArrayList<Qna> qList = qService.printAdminAll();		
@@ -206,4 +208,14 @@ public class AdminController {
 				System.out.println("데이터가 없습니다");
 			}
 		}
+		// qna 삭제
+				@ResponseBody
+				@RequestMapping(value="adminQnaDelete.kh")
+				public String adminQnaDelete(@RequestParam("checkNo") String checkNo) {
+					HashMap<String, String> map = new HashMap<String, String>();
+					map.put("chkNo", checkNo);
+					System.out.println(checkNo);
+					int result = qService.removeAdminQna(map);
+					return result+"";
+				}
 }

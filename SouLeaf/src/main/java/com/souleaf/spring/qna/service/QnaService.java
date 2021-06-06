@@ -1,6 +1,7 @@
 package com.souleaf.spring.qna.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.qna.domain.Ans;
@@ -18,5 +19,5 @@ public interface QnaService {
 	ArrayList<Qna> printQnaAll();
 	public int addReadCount(int qnaNo);
 	public ArrayList<Qna> printAdminAll();
-	
+	public int removeAdminQna(HashMap<String, String> map);
 }

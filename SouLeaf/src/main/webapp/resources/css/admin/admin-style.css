@@ -156,7 +156,7 @@ top:2%; left:5%; z-index:-1
 .plant-img{
 	width: 30px; height:30px; object-fit: cover;
 }
-.boast-img, .boast-check,.curiosity-img, .curiosity-check,.clinic-img, .clinic-check{
+.boast-img, .boast-check,.curiosity-img, .curiosity-check,.clinic-img, .clinic-check,.qna-check{
 	text-align: center;
 }
 .boast-img img,.curiosity-img img,.clinic-img img{
