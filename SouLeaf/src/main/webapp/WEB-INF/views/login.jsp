@@ -111,7 +111,7 @@ a:hover, a:focus {
 								class="form-control" id="exampleInputPassword1">
 						</div>
 						<div class="msg-contain">
-							<span id="msg" style="display:none; font-size:1.2vw; color: red;">아이디 또는 비밀번호가 일치 하지 않습니다.</span>
+							<span id="msg" style="display:none; font-size:0.9vw; color: red;">아이디 또는 비밀번호가 일치 하지 않습니다.</span>
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center">
@@ -119,8 +119,8 @@ a:hover, a:focus {
 									class="pl-2 font-weight-bold">아이디 저장</span>
 							</div>
 							<div>
-								<a href="#" style="font-size: 1.2vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
-								<a href="#" style="font-size: 1.2vw">비밀번호 찾기</a>
+								<a href="#" style="font-size: 0.9vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
+								<a href="#" style="font-size: 0.9vw">비밀번호 찾기</a>
 							</div>
 						</div>
 						<div class="pb-2">
@@ -132,7 +132,7 @@ a:hover, a:focus {
 						<a href="javascript:void(0)" onclick="kakaoLogin();"><img src="resources/images/kakao_login_medium_wide.png"></a>
 					</div>
 					<div class="pt-4 text-center">
-						<a href="enrollView.kh" style="font-size: 1.2vw">아직 회원이 아니신가요? </a>
+						<a href="enrollView.kh" style="font-size: 0.9vw">아직 회원이 아니신가요? </a>
 					</div>
 				</div>
 
@@ -164,10 +164,10 @@ a:hover, a:focus {
 				success: function(data){
 					console.log(data);
 					if(data == "success"){
-						$("#msg").show();
-						return false;
+						if($("#msg").css('display')=='none'){
+							$("#msg").show();
+						}
 					}else {
-						$("#msg").hide();
 						location.href="login.kh";
 					}
 				}

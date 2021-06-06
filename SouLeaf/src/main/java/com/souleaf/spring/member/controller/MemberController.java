@@ -374,7 +374,7 @@ public class MemberController {
 			session.setAttribute("loginUser", loginUser);
 			return "redirect:home.kh";
 		} else {
-			return "loginView.kh";
+			return "redirect:loginView.kh";
 		}
 	}
 	
