@@ -156,6 +156,10 @@
 .card-profile .card-avatar+.card-body{
   margin-top: 15px;
 }
+.deleteMemberBtn {
+	width : fit-content;
+	float : left;
+}
 </style>
 </head>
 <body>
@@ -192,7 +196,9 @@
 							</div>
 						</div>
 					</div>
-				 <button type="button" class="btn btn-success w-100 font-weight-bold mt-5" onclick="location.href='memberDelete.kh?memberId=${loginUser.memberId}'">회원탈퇴</button>  
+					<div class="deleteMemberBtn">
+				 		<button type="button" class="btn btn-light w-100 font-weight-bold mt-5" onclick="location.href='memberDelete.kh?memberId=${loginUser.memberId}'">회원탈퇴</button>  
+					</div>
 				</div>
 				<!-- myInfo -->
 				<div class="col-md-9">
@@ -263,10 +269,7 @@
 								</div>
 							</div>
 						</div>
-						<c:if test="${loginUser.memberId ne 'admin' }">
-							<button class="" id="lastbtn"
-								onclick="location.href='qnaListView.kh?qnaNo=${qna.qnaNo}'">문의하기</button>
-						</c:if>
+			
 					</div>
 				</div> <!--col-md-9-->
 			</div> <!-- col-md-12 -->

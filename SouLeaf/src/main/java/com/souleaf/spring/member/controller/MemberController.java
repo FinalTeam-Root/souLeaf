@@ -356,7 +356,9 @@ public class MemberController {
 	public String memberLoginView(HttpServletRequest request) {
 		return "login";
 	}
-
+	
+	// 로그인 하기
+	@ResponseBody
 	@RequestMapping(value = "login.kh", method = RequestMethod.POST)
 	public String memberLogin(HttpServletRequest request, @ModelAttribute Member member, Model model) {
 		// 암호 확인
@@ -372,12 +374,12 @@ public class MemberController {
 		if (loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
-			return "redirect:home.kh";
+			return "success";
 		} else {
-			return "redirect:loginView.kh";
+			return "fail";
 		}
 	}
-	
+
 	// 카카오 로그인 
 	@ResponseBody
 	@RequestMapping(value="kakaoLogin.kh", method = RequestMethod.POST)
@@ -427,15 +429,4 @@ public class MemberController {
 		gson.toJson(result, response.getWriter()); // 변수명 넣고 보내기
 	}
 	
-	// 아이디와 비밀번호 
-	@ResponseBody
-	@RequestMapping(value="noMemberLogin.kh", method = RequestMethod.POST)
-	public String noMemberLogin(@ModelAttribute Member member) {
-		Member noMember = mService.loginMember(member);
-		if(noMember == null) { // 아이디와 비밀번호가 일치하지 않다면 success 를 보내줘라
-			return "success";			
-		}else {
-			return "fail";
-		}
-	}
 }

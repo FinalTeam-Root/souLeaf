@@ -47,4 +47,3 @@ Kakao.init('2ed12623656a97e30e08860179073369');
 		Kakao.Auth.setAccessToken(undefined)
 		}
 	}  
-	

@@ -85,6 +85,10 @@ a:hover, a:focus {
 .msg-contain {
 	margin-bottom : 30px;
 }
+.msg{
+	color :red;
+	font-size:0.9vw;
+}
 </style>
 </head>
 <body>
@@ -101,7 +105,6 @@ a:hover, a:focus {
 						style="margin-bottom: 10px; width: 200px;"></a>
 				</div>
 				<div class="form-style">
-					<form action="login.kh" method="post">
 						<div class="form-group pb-3 idbox">
 							<input type="text" placeholder="아이디" class="form-control"
 								name="memberId" id="exampleInputEmail1">
@@ -111,7 +114,7 @@ a:hover, a:focus {
 								class="form-control" id="exampleInputPassword1">
 						</div>
 						<div class="msg-contain">
-							<span id="msg" style="display:none; font-size:0.9vw; color: red;">아이디 또는 비밀번호가 일치 하지 않습니다.</span>
+							<span class="msg"></span>
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center">
@@ -126,7 +129,6 @@ a:hover, a:focus {
 						<div class="pb-2">
 							<button type="submit" id="loginBtn" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
 						</div>
-					</form>
 					<div class="sideline">OR</div>
 					<div class="kakao">
 						<a href="javascript:void(0)" onclick="kakaoLogin();"><img src="resources/images/kakao_login_medium_wide.png"></a>
@@ -145,31 +147,31 @@ a:hover, a:focus {
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="resources/js/kakaoLogin/kakaoLogin.js"></script>
 	<script>
-
 		$("#loginBtn").on("click",function(){
 			var memberId = $("#exampleInputEmail1").val();
 			var memberPw = $("#exampleInputPassword1").val();
 			if(memberId == ""){
 				alert("아이디를 입력해주세요.");
 				return false;
-			}
+			};
 			if(memberPw == ""){
 				alert("비밀번호를 입력해주세요.");
 				return false;
-			}
+			};
 			$.ajax({
-				url : "noMemberLogin.kh",
+				url : "login.kh",
 				type : "post",
 				data : {"memberId":memberId, "memberPw":memberPw},
 				success: function(data){
 					console.log(data);
 					if(data == "success"){
-						if($("#msg").css('display')=='none'){
-							$("#msg").show();
-						}
+						$(".msg").text("");
+						location.href="home.kh";
 					}else {
-						location.href="login.kh";
+						$(".msg").text("아이디와 비밀번호가 일치하지않습니다.");
 					}
+				},error:function() {
+
 				}
 			});	
 		});

@@ -48,11 +48,11 @@
 						<div class="card card-profile">
 							<div class="card-avatar">
 								<c:choose>
-									<c:when test="${empty loginUser.memberPhoto }">
+									<c:when test="${empty member.memberPhoto }">
 										<img src="resources/images/basicMemberImg.png" />
 									</c:when>
 									<c:otherwise>
-										<img src="resources/uploadFiles/member/${loginUser.memberFileRename} " />
+										<img src="resources/uploadFiles/member/${member.memberFileRename} " />
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -61,8 +61,7 @@
 								<h4 class="card-title" name="memberNick">${member.memberNick }</h4>
 								<hr>
 								<span>소개글 </span>
-								<p class="card-description" name="memberIntro">안녕하세요~! 저는
-									식물을 사랑하는 사람입니다.</p>
+								<p class="card-description" name="memberIntro">${member.memberIntro }</p>
 								<span>반려식물</span>
 								<p class="card-description">
 									<c:forEach var="name" items="${pList }" varStatus="index">

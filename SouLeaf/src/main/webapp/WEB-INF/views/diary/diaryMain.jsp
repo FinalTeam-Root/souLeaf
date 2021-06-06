@@ -54,7 +54,7 @@
 								<h4 class="card-title" name="memberNick">${loginUser.memberNick }</h4>
 								<hr>
 								<span>소개글 </span>
-								<p class="card-description" name="memberIntro">안녕하세요~! 저는 식물을 사랑하는 사람입니다.</p>
+								<p class="card-description" name="memberIntro">${loginUser.memberIntro }</p>
 								<span>반려식물</span>
 								<p class="card-description">
 									<c:forEach var="name" items="${pList }" varStatus="index">
