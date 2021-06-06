@@ -357,35 +357,104 @@ $(function(){
 
     }
 
-// 내가 한그지같은 코드
-// function deleteCuriositySelectList(){
-//     var cnt = $("input[name='del-select']:checked").length; // 체크된 개수를 보내서 그 개수 만큼 delete문을 실행해야 함
-//     var arr = new Array(); // cheack된 것들의 id값을 배열에 담고 배열 객체를 controller로 넘겨주기 위함
-//     $("input[name='del-select']:checked").each(function(){ // .each 메서드는 제이쿼리를 사용해 배열을 관리할때 사용할 수 있는데 매개 변수로 받은 것을 사용해 반복문과 같이 배열이나 객체의 요소를 검사할 수 있는 메서드
-//         arr.push($(this).attr('id'));
-//     });
-//     console.log(arr);
-//     if(cnt == 0){
-//         alert("선택된 삭제 목록이 없습니다.");
-//     }else {
-//         // var chk = confirm("정말로 삭제하시겠습니까?");
-//         $.ajax({
-//             url : 'curiositydelete.kh',
-//             type : 'get',
-//             // traditional : true,
-//             data : {"arr" : arr,"cnt":cnt },
-//             succress : function(data){
-//                 if(data == "success"){
-//                     alert("선택한 게시글이 삭제 되었습니다.");
-//                 }else{
-//                     alert("삭제 실패!!");
-//                 }
-//             },
-//             error : function(){}
-//         })
-//     }
 
+    // 내가 쓴 클리닉 리스트 뿌려주기
+    function getMyClincList(memberNo, pageInfo) {
+        var memberNo = $("#memberNo").val();
+        //var pageInfo = $("#pageInfo").val();
+        var $tr;
+        var $check;
+        var $num;
+        var $title;
+        var $writeDate;
+        var $readCount;
+        var $btnArea;
+        var $chooseDelete;
+        var $delTr;
 
-//     // foreach를 통해 체크된 고유값을 Array에 push로 넣음
+        var $lt;
+        var $gt;
+        var $aActive;
+        var $a;
+
+        $.ajax({
+            url : "myClinicList.kh",
+            type : "get",
+            data : {"page" : pageInfo,"memberNo" : memberNo},
+            dataType : "json",
+            success : function(data) {
+                console.log(data);
+                var $tbody = $("#myPage-clinic tbody");
+                var $paging = $("#clinic-page");
+
+                var page = data.pi.currentPage;
+                var startPage = data.pi.startPage;
+                var endPage = data.pi.endPage;
+                var maxPage = data.pi.maxPage;
+                console.log(maxPage,endPage);
+
+                $tbody.html("");
+                $paging.html("");
+                if(data.curList.length > 0){
+                    for(var i in data.curList){
+                        $tr = $("<tr>");
+                        $check = $("<td><input type='checkbox' name='del-select' class='chk' value='"+data.curList[i].curiosityNo+"'>");
+                        $num = $("<td scope='row'>").text(data.curList[i].num);
+                        if(data.curList[i].curiosityContent.length > 18){
+                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?curiosityNo="+data.curList[i].curiosityNo+"&page=1&count=0'class='noColor'>"+data.curList[i].curiosityContent.substr(0,18)+"...</a>");
+                        }else{
     
-// }
+                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?curiosityNo="+data.curList[i].curiosityNo+"&page=1&count=0'class='noColor'>"+data.curList[i].curiosityContent+"</a>");
+                        }
+                        $writeDate = $("<td>").text(data.curList[i].curiosityDate);
+                        $readCount = $("<td>").text(data.curList[i].curiosityCount);
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyCuriosity("+data.curList[i].curiosityNo+")'>수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
+    
+                        $chooseDelete = $("<td>").append("<button type='button' onclick='deleteCuriositySelectList("+data.curList[i].memberNo+","+page+");' class='btn btn-outline-warning'>선택삭제</button>");
+                        
+                        $tr.append($check);
+                        $tr.append($num);
+                        $tr.append($title);
+                        $tr.append($writeDate);
+                        $tr.append($readCount);
+                        $tr.append($btnArea);
+                        if(i == (data.curList.length-1)){
+                            $delTr = $("<tr>");
+                            $delTr.append($chooseDelete);
+                            $delTr.append("<td colspan='5'></td>");
+                        }
+                        $tbody.append($tr);
+                        $tbody.append($delTr);
+                    }
+                }
+                if(page <= 1){
+                    $lt = $("<li><a href='#'>&lt;</a></li>");
+                    $paging.append($lt);
+                }else {
+                    $lt = $("<li><a href='#' onclick='getMyCuriosityList("+data.curList[0].memberNo+","+(Number(page)-1)+"); return false;'>&lt;</a></li>");
+                    $paging.append($lt);
+                }
+                for(var j = startPage; j<=endPage; j++){
+                    if(j == page){
+                        $aActive = $('<li class="active"><span>'+j+'</span></li>');
+                        $paging.append($aActive);
+                    }else {
+                        $a = $("<li><a name='page' href='#' onclick='getMyCuriosityList("+data.curList[0].memberNo+","+j+"); return false;'>"+j+"</a></li>");
+                        $paging.append($a);
+                    }
+                }
+                if(page >= maxPage){
+                    $gt = $('<li><a href="#">&gt;</a></li>');
+                    $paging.append($gt);
+                } else {
+                    $gt = $("<li><a href='#' onclick='getMyCuriosityList("+data.curList[0].memberNo+","+(Number(page)+1)+"); return false;'>&gt;</a></li>");
+                    $paging.append($gt);
+                }
+
+
+            },
+            error : function(){
+                
+            }
+        });
+    }

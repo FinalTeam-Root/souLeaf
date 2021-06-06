@@ -75,9 +75,6 @@ a:hover, a:focus {
 	outline: none !important;
 	font-weight: bold
 }
-.kakao {
-	margin-left : 40px;
-}
 
 .idbox {
 	margin-bottom : 0;
@@ -106,12 +103,12 @@ a:hover, a:focus {
 				</div>
 				<div class="form-style">
 						<div class="form-group pb-3 idbox">
-							<input type="text" placeholder="아이디" class="form-control"
+							<input type="text" placeholder="아이디" class="form-control logininfo"
 								name="memberId" id="exampleInputEmail1">
 						</div>
 						<div class="form-group pb-3 idbox">
 							<input type="password" placeholder="비밀번호" name="memberPw"
-								class="form-control" id="exampleInputPassword1">
+								class="form-control logininfo" id="exampleInputPassword1">
 						</div>
 						<div class="msg-contain">
 							<span class="msg"></span>
@@ -130,9 +127,9 @@ a:hover, a:focus {
 							<button type="submit" id="loginBtn" class="btn btn-success w-100 font-weight-bold mt-2">로그인</button>
 						</div>
 					<div class="sideline">OR</div>
-					<div class="kakao">
-						<a href="javascript:void(0)" onclick="kakaoLogin();"><img src="resources/images/kakao_login_medium_wide.png"></a>
-					</div>
+						<div class="kakao">
+							<button type="submit" id="loginBtn" onclick="kakaoLogin();" class="btn btn-warning w-100 mt-2"><img src="https://img.icons8.com/metro/26/000000/speech-bubble.png" style="margin-right: 10px; width :15px; height :15px;"/>카카오 로그인</button>
+						</div>
 					<div class="pt-4 text-center">
 						<a href="enrollView.kh" style="font-size: 0.9vw">아직 회원이 아니신가요? </a>
 					</div>
@@ -147,33 +144,36 @@ a:hover, a:focus {
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="resources/js/kakaoLogin/kakaoLogin.js"></script>
 	<script>
-		$("#loginBtn").on("click",function(){
-			var memberId = $("#exampleInputEmail1").val();
-			var memberPw = $("#exampleInputPassword1").val();
-			if(memberId == ""){
-				alert("아이디를 입력해주세요.");
-				return false;
-			};
-			if(memberPw == ""){
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			};
-			$.ajax({
-				url : "login.kh",
-				type : "post",
-				data : {"memberId":memberId, "memberPw":memberPw},
-				success: function(data){
-					console.log(data);
-					if(data == "success"){
-						$(".msg").text("");
-						location.href="home.kh";
-					}else {
-						$(".msg").text("아이디와 비밀번호가 일치하지않습니다.");
-					}
-				},error:function() {
+	
+		$(".logininfo").on("keypress",function(e){
+			if(e.keyCode == 13){
+				var memberId = $("#exampleInputEmail1").val();
+				var memberPw = $("#exampleInputPassword1").val();
+				if(memberId == ""){
+					alert("아이디를 입력해주세요.");
+					return false;
+				};
+				if(memberPw == ""){
+					alert("비밀번호를 입력해주세요.");
+					return false;
+				};
+				$.ajax({
+					url : "login.kh",
+					type : "post",
+					data : {"memberId":memberId, "memberPw":memberPw},
+					success: function(data){
+						console.log(data);
+						if(data == "success"){
+							$(".msg").text("");
+							location.href="home.kh";
+						}else {
+							$(".msg").text("아이디와 비밀번호가 일치하지않습니다.");
+						}
+					},error:function() {
 
-				}
-			});	
+					}
+				});	
+			}
 		});
 		
 	</script>
