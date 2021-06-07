@@ -161,8 +161,9 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 
 function replyRegister(curiosityNo){
-	if($("#logingUser").val() == null){
+	if($("#loginNo").val() == ""){
 		alert("로그인 후 사용가능합니다.");
+		return false;
 	}	
 	var content = $("#replyContent").val();
 	$.ajax({
@@ -303,4 +304,15 @@ function getHashtagLink(){
  	 });
   
 	}
+}
+
+function curiosityDelete(curiosityNo,page,count){	
+	console.log(page);
+	console.log(count);
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+		location.href="curiosityDelete.kh?curiosityNo="+curiosityNo+"&page="+page+"&count="+count;
+		}
 }

@@ -166,8 +166,16 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 게시글 삭제
-	public String curiosityDelete(int curiosityNo, Model model, HttpServletRequest request) {
-		return "";
+	@RequestMapping(value="curiosityDelete.kh")
+	public String curiosityDelete(int curiosityNo, Model model, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count ,HttpServletRequest request) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;
+		int result = cService.removeCuriosity(curiosityNo);
+		if(result > 0) {
+			return "redirect:curiosityListView.kh?page="+currentPage+"&count="+currentCount;
+		}else {
+			return "redirect:curiosityListView.kh?page="+currentPage+"&count="+currentCount;			
+		}
 	}
 	
 	// 궁금해요 댓글 리스트 출력

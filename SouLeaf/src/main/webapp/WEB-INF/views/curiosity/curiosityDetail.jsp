@@ -63,7 +63,7 @@
 												<c:if test="${loginUser.memberNo eq curiosity.memberNo  }">
 													<a
 														href="curiosityModifyView.kh?curiosityNo=${curiosity.curiosityNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
-									    <a href="#">삭제</a>
+									    <a href="#" onclick="curiosityDelete(${curiosity.curiosityNo},${page },${count})">삭제</a>
 												</c:if> </span>
 
 											</div>
