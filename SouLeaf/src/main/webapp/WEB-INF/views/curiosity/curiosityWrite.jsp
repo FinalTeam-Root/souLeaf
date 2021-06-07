@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>souLeaf - 식물도감</title>
+<jsp:include page="../common/loginCheck.jsp"></jsp:include>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
 <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">
