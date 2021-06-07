@@ -133,6 +133,7 @@
 
 .list-wrap th:nth-child(1) {
 	text-align:center;
+/*     width: 60px; */
     width: 60px;
 }
 
@@ -170,7 +171,7 @@
 
 .list-wrap td p {
 	width: 600px;
-	   overflow:hidden;
+	overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
 }
