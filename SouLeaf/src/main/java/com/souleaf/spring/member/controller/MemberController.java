@@ -475,13 +475,24 @@ public class MemberController {
 	// 아이디 찾기 이름이랑 이메일 받아와서 있는지 확인
 	@RequestMapping(value = "findId.kh", method = RequestMethod.POST)
 	public void findId(HttpServletResponse response, @ModelAttribute Member member) throws Exception {
-		Member memberchk = mService.checkMember(member);
+		Member memberchk = mService.checkMember(member); // 내가 적은 이름이랑 이메일값을 가진 member 를 가지고 checkMember로 넘어감 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-		if(memberchk != null) {
+		if(memberchk != null) { // 디비에 내가 적은 이름이랑 이메일값이 있으면 
 			gson.toJson(memberchk ,response.getWriter());			
 		} else {
 			gson.toJson("null" ,response.getWriter());	
 		}
 
+	}
+	@RequestMapping(value = "findPw.kh", method = RequestMethod.POST)
+	public void findPw(HttpServletResponse response, @ModelAttribute Member member) throws Exception {
+		Member memberchk = mService.checkMember(member); // 내가 적은 이름이랑 이메일값을 가진 member 를 가지고 checkMember로 넘어감 
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		if(memberchk != null) { // 디비에 내가 적은 이름이랑 이메일값이 있으면 
+			gson.toJson(memberchk ,response.getWriter());			
+		} else {
+			gson.toJson("null" ,response.getWriter());	
+		}
+		
 	}
 }

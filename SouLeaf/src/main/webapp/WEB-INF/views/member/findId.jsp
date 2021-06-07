@@ -53,14 +53,14 @@
 				<br> <br> <br> <br>
 				<div class="account">
 				<center>
-					<div class="main">계정 확인</div>
+					<div class="main findForm">계정 확인</div>
 				</center>
 				</div>
 				<br> <br>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-3"></div>
-						<div class="col-sm-6">
+						<div class="col-sm-6 findForm">
 							<div class="form-floating">
 								<div class="form-group pb-3">
 									<input type="text" placeholder="이름" name="memberName"
@@ -71,7 +71,7 @@
 										class="form-control" id="email"> 
 									<div class="container"></div>
 								</div>
-								<button type="submit" id="findIdCheck" class="btn btn-primary btn-block btn-success">확인</button>
+								<button type="submit" id="findIdCheck" class="btn btn-block btn-success">확인</button>
 							</div>
 						</div>
 					</div>
@@ -80,6 +80,7 @@
 							<span id="msg"></span>
 						</center>
 						</div>
+						<div class="btnarea" align="center"></div>
 				</div>
 				<br> <br> <br> <br> <br>
 				<hr>
@@ -102,8 +103,13 @@
 				dataType : "json",
 				success : function(data){
 				 console.log(data);
+				 /* data에는 memberchk 혹은 "null" 이 들어왓어요  */
 					if(data.memberId != null){
-						$("#msg").html("회원님의 아이디는 "+data.memberId+" 입니다.");
+						var $btnarea = $(".btnarea");
+						$(".findForm").hide();
+						$("#msg").html("<h3>회원님의 아이디는 <span class='text-success'>"+data.memberId+"</span> 입니다.</h3>");
+						$btnarea.append("<button type='button' class='btn btn-success'>비밀번호 찾기</button>");
+						
 					}else if(data == "null"){
 						$("#msg").html("일치하는 회원 정보가 없습니다. 다시 확인해주세요.");
 					}

@@ -56,6 +56,6 @@
  </select>
  
  <select id="checkMember" resultMap="memberResultMap">
- 	SELECT * FROM MEMBER WHERE MEMBER_NAME = #{memberName} AND MEMBER_MAIL = #{memberMail}
+ 	SELECT * FROM MEMBER WHERE MEMBER_STATUS = 'Y' AND (MEMBER_NAME = #{memberName} AND MEMBER_MAIL = #{memberMail})  OR (MEMBER_ID = #{memberId} AND MEMBER_MAIL = #{memberMail}) AND MEMBER_STATUS = 'Y'
  </select>
  </mapper>
