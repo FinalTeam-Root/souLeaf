@@ -25,4 +25,5 @@ public interface PlantStore {
 	public int deletePlantFile(PlantFile plantFile);// 식물도감 파일 삭제
 	public ArrayList<Plant> selectMemberCompanion(int memberNo);//멤버 반려식물 리스트 출력
 	public int selectOneName(String plantName);
+	public ArrayList<Plant> selectHashListName(String tag);
 }

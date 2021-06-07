@@ -14,8 +14,99 @@ $(function(){
 		 });
 		 getReplyList($("#curiosityNo").val());
 		 getHashtagLink();
-});
 
+		 $("#replyContent").on("keypress",function(key){
+			if(key.keyCode==13) {
+				replyRegister($("#curiosityNo").val());
+			}
+			if(key.keyCode==32) {
+			
+				$("#replyContent").focus();	
+				setTimeout(function() { 
+					$("#hashTagSearch").val("");	
+					$("#hashTagResult").text("#");	
+				},200);
+				$("#hashTag").hide();
+			}
+		
+		});
+
+	
+			
+			Mousetrap.bind('shift+3', function(e) {				
+				getHashTag();
+			});
+			// Mousetrap.bind('space', function(e) {				
+			// 	$("#hashTag").hide();
+			// 	$("#replyContent").focus();	
+			// 	$("#hashTagSearch").val("");			
+			// });
+			// Mousetrap.bind('backspace', function(e) {				
+			// 	$("#hashTag").hide();
+			// });
+			
+	
+});
+function getHashTag(){
+	var reply = $("#replyContent").val();
+	//var text = $("#hashTagText").text();
+	$("#hashTagText").text(reply);
+	$("#hashTag").show();	
+	$("#hashTagSearch").focus();
+	
+	$("#hashTagSearch").on("keyup",function(key){
+		if(key.keyCode==8 && $("#hashTagSearch").val().length==0){
+			$("#replyContent").focus();	
+			$("#hashTag").hide();
+		}
+		if(key.keyCode==32) {
+			
+			$("#replyContent").focus();	
+	    	setTimeout(function() { 
+				$("#hashTagSearch").val("");	
+				$("#hashTagResult").text("#");	
+			},200);
+			$("#hashTag").hide();
+		}
+		var search = $("#hashTagSearch").val();
+		console.log($("#hashTagSearch").val());
+		$("#replyContent").val(function(){
+			return $("#hashTagText").text() + search;
+		});
+		if(search.length > 0){
+
+				$.ajax({
+					url:"getHashTag.kh",
+					tyle:"get",
+					data:{"tagName":search},
+					dataType:"json",
+					success:function(data){
+						console.log(data);
+						var str = "";
+						for(var i in data){
+							str+='<span class="hashTagPlant"onmouseover="chageColor(this)"onmouseout="chageDefaultColor(this)" onclick="insertText(\''+data[i].plantName+'\')">'+data[i].plantName+'<br></span>';
+						}
+						$("#hashTagResult").html(str);
+						}
+						
+				});
+		}
+	
+	});
+
+}
+function insertText(plantName){
+	$("#replyContent").val($("#hashTagText").text()+"#"+plantName+" ");
+	$("#replyContent").focus();	
+	$("#hashTagSearch").val("");
+	$("#hashTag").hide();
+}
+function chageColor(obj){
+	$(obj).css("color","#00bd56");
+}
+function chageDefaultColor(obj){
+	$(obj).css("color","#808080");
+}
 /**
 	* 이미지 파일 업로드
 	*/

@@ -78,6 +78,7 @@
 											</div>
 										<hr>
 										<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
+										<input type="hidden" id="curiosityNo" value="${curiosity.curiosityNo}">
 									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
 									<input type="hidden" id="curiosityNo" value="${curiosity.curiosityNo }">
 									<span id="curiosity-comment"></span>
@@ -93,8 +94,14 @@
 </div> -->
 									<br>
 									<div class="row" style="position: relative;">
-									<input type="text" class="form-control" id="replyContent" style="width: 95%; margin-left:1.5%; height: 32px !important;" placeholder="댓글을 남겨주세요" >
+									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%; margin-left:1.5%; height: 32px !important;" placeholder="댓글을 남겨주세요"   autocomplete="off">
 									<button class="mt-4 p-2 btn btn-secondary reply-btn" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
+									</div>
+									
+									<div id="hashTag" class="hashTagForm" style="display: none;">
+									<input type="text" id="hashTagSearch" class="mousetrap"  style="color: #fff; border: 0px; position: absolute;" autocomplete="off"><br>
+									<span id="hashTagText"  style="display: none"></span><br>
+									<span id="hashTagResult" class="hashTagSearchForm" style="position: absolute; top:0">#</span> 
 									</div>
 									</div>
 								</div>
@@ -105,10 +112,39 @@
 				</div>
 			</div>
 		</section>
+		
+		<!-- modal -->
+		<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">식물도감</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">적용</button>
+      </div>
+    </div>
+  </div>
+</div>
+		<!-- modal end -->
           
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
+  <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script>
   <script src="resources/js/curiosity/curiosity-detail.js"></script>
 </body>
 </html>

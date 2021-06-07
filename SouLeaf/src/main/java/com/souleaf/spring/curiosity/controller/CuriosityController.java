@@ -262,15 +262,16 @@ public class CuriosityController {
 	
 	// 해시태그 출력
 	@RequestMapping(value="getHashTag.kh")
-	public String getHashTagList(@RequestParam("tagName") String tagName, HttpServletResponse response) {
-		System.out.println(tagName);
-		/*
-		 * ArrayList<Plant> pList = pService.printListName(); if(! pList.isEmpty()) {
-		 * Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
-		 * gson.toJson(pList, response.getWriter()); }else {
-		 * System.out.println("데이터가 없습니다"); }
-		 */
-		return "";
+	public void getHashTagList(@RequestParam("tagName") String tagName, HttpServletResponse response) throws Exception {
+		String tag = tagName.replace("#","");		
+		  ArrayList<Plant> pList = pService.printHashListName(tag);
+		  if(! pList.isEmpty()) {
+		  Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+		  gson.toJson(pList, response.getWriter()); 
+		  }else {
+		  System.out.println("데이터가 없습니다"); }
+		 
+		
 	}
 	
 	@ResponseBody

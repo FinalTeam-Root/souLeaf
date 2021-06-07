@@ -106,6 +106,11 @@ public class PlantStoreLogic implements PlantStore{
 		return sqlSession.selectOne("plantMapper.selectOneName", plantName);
 	}
 
+	@Override
+	public ArrayList<Plant> selectHashListName(String tag) {
+		return (ArrayList)sqlSession.selectList("plantMapper.selectHashList", tag);
+	}
+
 	
 
 	

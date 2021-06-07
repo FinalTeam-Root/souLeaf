@@ -9858,4 +9858,6 @@ textarea.form-control {
 	font-size:13px;
    }
    
-   
+   textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
+    outline: 0 none;
+}

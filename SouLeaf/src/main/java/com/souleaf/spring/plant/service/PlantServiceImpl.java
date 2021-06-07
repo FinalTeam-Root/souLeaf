@@ -143,6 +143,11 @@ public class PlantServiceImpl implements PlantService{
 	public int printOneName(String plantName) {
 		return pStore.selectOneName(plantName);
 	}
+
+	@Override
+	public ArrayList<Plant> printHashListName(String tag) {
+		return pStore.selectHashListName(tag);
+	}
 	
 
 }
