@@ -259,12 +259,12 @@
 								</div>
 								<div class="row">
 									<div class="single_what_we_do leftFont"
-										onclick="location.href='pwUpdateView.kh'">
+										onclick="location.href='changPwView.kh'">
 										<div class="top_line"></div>
 										<br>
 										<h4 class="what_we_do_title">비밀번호 변경</h4>
 										<div class="what_we_do_content">비밀번호를 변경합니다.</div>
-										<a class="what_we_do_icon" href="#"> <i
+										<a class="what_we_do_icon" href="changPwView.kh"> <i
 											class="fa fa-angle-right" aria-hidden="true"></i>
 										</a>
 									</div>
