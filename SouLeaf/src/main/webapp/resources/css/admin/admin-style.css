@@ -179,3 +179,18 @@ top:2%; left:5%; z-index:-1
   max-width: 50px;
   word-wrap: break-word;
 }
+
+/* .x1 {
+
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 15px;
+    text-transform: uppercase;float:left;padding:50px;
+    -webkit-background-clip:text;color:transparent;text-align:center;line-height:100px;
+
+}
+.x2{background-image: url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);background-size:contain;animation:moving 25s linear infinite;}
+@keyframes moving{
+    from{background-position:left;}
+    to{background-position:right;}
+} */

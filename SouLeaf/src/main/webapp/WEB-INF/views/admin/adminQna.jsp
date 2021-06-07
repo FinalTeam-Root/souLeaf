@@ -18,16 +18,10 @@
         <div class="row">
          <div class="col-lg-3 sidebar pl-lg-5 ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
+              <div class="x1 x2"><h3><a href="adminHome.kh">SOULEAF ADMIN</a></h3></div>
             </div>
             <div class="sidebar-box ftco-animate">
               <div class="categories">
-                <h3>Services</h3>
                 <li><a href="adminPlant.kh" >도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminMember.kh">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminBoard.kh">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
