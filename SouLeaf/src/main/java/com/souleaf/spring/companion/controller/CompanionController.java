@@ -134,6 +134,10 @@ public class CompanionController {
             reDiary.setImgUrl("resources/images/watericon.png");
             diaryService.registerWaterDiary(reDiary);
             log.info("물 주는 날 등록 성공");
+            
+            plant.setPlantPoint(plant.getPlantPoint()+1);
+            int result = plantService.modifyPlantPoint(plant);
+            log.info("반려식물 포인트 업데이트 :" + result);
 		} catch (Exception e) {
 			// 실패시에 화면이동과 화면에 얼러트로 경고창 띄어주면서 리스트로 가야하는데 이거에 대한 처리가 부족함
 			// 여기서 result 로 99 든 뭐든 넘겨줘서 리절트값이 99라면 얼러트 창을 띄어주는식으로?

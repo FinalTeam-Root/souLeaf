@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.domain.PlantInfo;
-import com.souleaf.spring.plant.domain.PlantSearch;
 @Repository
 public class PlantStoreLogic implements PlantStore{
 	@Autowired
@@ -109,6 +108,12 @@ public class PlantStoreLogic implements PlantStore{
 	@Override
 	public ArrayList<Plant> selectHashListName(String tag) {
 		return (ArrayList)sqlSession.selectList("plantMapper.selectHashList", tag);
+	}
+
+	@Override
+	public int updatePlantPoint(Plant plant) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("plantMapper.updatePlantPoint", plant);
 	}
 
 	

@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.domain.PlantInfo;
-import com.souleaf.spring.plant.domain.PlantSearch;
 import com.souleaf.spring.plant.store.PlantStore;
 @Service
 public class PlantServiceImpl implements PlantService{
@@ -147,6 +146,11 @@ public class PlantServiceImpl implements PlantService{
 	@Override
 	public ArrayList<Plant> printHashListName(String tag) {
 		return pStore.selectHashListName(tag);
+	}
+
+	@Override
+	public int modifyPlantPoint(Plant plant) {
+		return pStore.updatePlantPoint(plant);
 	}
 	
 

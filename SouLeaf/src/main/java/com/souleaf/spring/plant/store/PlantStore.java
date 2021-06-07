@@ -26,4 +26,5 @@ public interface PlantStore {
 	public ArrayList<Plant> selectMemberCompanion(int memberNo);//멤버 반려식물 리스트 출력
 	public int selectOneName(String plantName);
 	public ArrayList<Plant> selectHashListName(String tag);
+	public int updatePlantPoint(Plant plant);
 }
