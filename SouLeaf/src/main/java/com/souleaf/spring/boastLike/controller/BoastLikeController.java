@@ -3,7 +3,12 @@ package com.souleaf.spring.boastLike.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +20,8 @@ public class BoastLikeController {
 	
 	private BoastLikeService bService;
 
+	
+	
 	/* Controller */
 	// 좋아요 눌렀을때
 //	@RequestMapping("/clickLike")
@@ -62,12 +69,12 @@ public class BoastLikeController {
 
 	
 //  ---------------------------------------------------------------------------------------
-//	/* JSP SCRIPT */
+	/* JSP SCRIPT */
 //	var bbsidx = ${bbsidx};
 //	var useridx = ${useridx};
 //	 
 //	var btn_like = document.getElementById("btn_like");
-//	 btn_like.onclick = function(){ changeHeart(); }
+// btn_like.onclick = function(){ changeHeart(); }
 //	 
 //	/* 좋아요 버튼 눌렀을떄 */
 //	 function changeHeart(){ 

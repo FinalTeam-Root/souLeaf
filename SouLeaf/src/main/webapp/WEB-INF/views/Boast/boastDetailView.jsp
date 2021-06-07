@@ -10,6 +10,10 @@
 
 <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">
 <link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
+ 
+ 
+
+
 </head>
 <body>
 
@@ -47,9 +51,22 @@
 												</div>
 												${boast.boastDate } &nbsp;&nbsp;<span
 													class="far fa-eye"></span> ${boast.boastCount }
-												&nbsp;&nbsp;<span class="fa fa-comment"></span> <span
+												&nbsp;&nbsp;<span class="fa fa-comment"></span>
+												
+
+												
+												 <span
 													id="replyCount">0</span>
-											<%-- 	<c:choose>
+
+ 
+
+											</div>
+
+ 
+ <div class="col-md-6">
+ 
+ 
+												<c:choose>
 													<c:when test="${likecheck eq '0' or empty likecheck}">
 														<!-- likecheck가0이면 빈하트-->
 														<img src="/resources/images/ico_like_before.png"
@@ -64,17 +81,11 @@
 													</c:otherwise>
 												</c:choose>
 												<dd id="likecnt" style="margin-left: 5px;">${likecnt}</dd>
- --%>
-
-
-
-
-											</div>
-
- 
- <div class="col-md-6">
 											
-											<span style="float: right" class="mt-4"><a
+											<span style="float: right" class="mt-4">
+											
+											
+											<a
 												href="boastListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
 												<c:if test="${loginUser.memberNo eq boast.memberNo  }">
 													<a
@@ -125,7 +136,9 @@
 				</div>
 			</div>
 		</section>
-          
+       
+      
+
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>

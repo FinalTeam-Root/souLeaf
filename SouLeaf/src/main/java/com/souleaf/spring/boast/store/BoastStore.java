@@ -3,10 +3,12 @@ package com.souleaf.spring.boast.store;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.souleaf.spring.boast.domain.BoFile;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.plant.domain.PlantInfo;
 
 
 public interface BoastStore {
@@ -50,7 +52,7 @@ public interface BoastStore {
 	 * @since 2021.8.15
 	 */
 	public ArrayList<Boast> selectRank();
-
+	
 	
 	
 	

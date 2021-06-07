@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boastMapper">
-	<resultMap type="Boast" id="boastResultMap">
-		<id property="boastNo" column="BOAST_NO"></id>
-		<result property="boastTitle" column="BOAST_TITLE"></result>
-		<result property="boastContent" column="BOAST_CONTENT"></result>
-		<result property="boastCount" column="BOAST_COUNT"></result>
-		<result property="boastDate" column="BOAST_DATE"></result>
-		<result property="boastUpdate" column="BOAST_UPDATE"></result>
-		<result property="memberNo" column="MEMBER_NO"></result>
-		<result property="boastPoint" column="BOAST_POINT"></result>
-		<result property="boastStatus" column="BOAST_STATUS"></result>
-		<result property="plantNo" column="PLANT_NO"></result>
-		<result property="boastFileName" column="BOAST_FILENAME"></result>
-		<result property="boastReName" column="BOAST_RENAME"></result>
-		<result property="memberName" column="MEMBER_NAME"></result>
-		<result property="ReplyCount" column="BOAST_REPLYCOUNT" />
-	</resultMap>
+   <resultMap type="Boast" id="boastResultMap">
+      <id property="boastNo" column="BOAST_NO"></id>
+      <result property="boastTitle" column="BOAST_TITLE"></result>
+      <result property="boastContent" column="BOAST_CONTENT"></result>
+      <result property="boastCount" column="BOAST_COUNT"></result>
+      <result property="boastDate" column="BOAST_DATE"></result>
+      <result property="boastUpdate" column="BOAST_UPDATE"></result>
+      <result property="memberNo" column="MEMBER_NO"></result>
+      <result property="boastPoint" column="BOAST_POINT"></result>
+      <result property="boastStatus" column="BOAST_STATUS"></result>
+      <result property="plantNo" column="PLANT_NO"></result>
+      <result property="boastFileName" column="BOAST_FILENAME"></result>
+      <result property="boastReName" column="BOAST_RENAME"></result>
+      <result property="memberName" column="MEMBER_NAME"></result>
+      <result property="ReplyCount" column="BOAST_REPLYCOUNT" />
+   </resultMap>
 
-	<!-- 댓글 관련 부분 -->
-
-
-	<!-- 게시판 -->
-	<select id="selectAll" resultMap="boastResultMap">
-	SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
-	</select>
-	
-	<select id="selectListCount" resultType="_int">
-		SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y'
-	</select>
-	<select id="selectAllList" parameterType="Boast"
-		resultMap="boastResultMap">
-		SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE
-		BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
-
-	</select>
-	<select id="selectOne" parameterType="Boast"
-		resultMap="boastResultMap">
-		SELECT BOAST_NO ,
-		BOAST_TITLE ,
-		BOAST_CONTENT ,
-		BOAST_COUNT ,
-		BOAST_DATE ,
-		BOAST_UPDATE ,
-		MEMBER_NO ,
-		MEMBER_NAME,
-		BOAST_POINT ,
-		BOAST_STATUS ,
-		PLANT_NO ,
-		BOAST_FILENAME ,
-		BOAST_RENAME
-		FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND
-		BOAST_STATUS = 'Y'
-	</select>
-
-	<insert id="insertBoast">
+   <!-- 댓글 관련 부분 -->
 
 
-		INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent },
-		DEFAULT, DEFAULT, DEFAULT, #{memberNo},DEFAULT, DEFAULT, #{plantNo},
-		#{boastFileName}, #{boastReName})
-	</insert>
-	<!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent 
-		}, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert> -->
+   <!-- 게시판 -->
+   <select id="selectAll" resultMap="boastResultMap">
+   SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+   </select>
+   
+   <select id="selectListCount" resultType="_int">
+      SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y'
+   </select>
+   <select id="selectAllList" parameterType="Boast"
+      resultMap="boastResultMap">
+      SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE
+      BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 
-	<update id="updateBoast">
-		UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENT =
-		#{boastContent}, BOAST_UPDATE = SYSDATE WHERE BOAST_NO = #{boastNo}
-	</update>
-	<update id="updateCount">
-		UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
-	</update>
+   </select>
+   <select id="selectOne" parameterType="Boast"
+      resultMap="boastResultMap">
+      SELECT BOAST_NO ,
+      BOAST_TITLE ,
+      BOAST_CONTENT ,
+      BOAST_COUNT ,
+      BOAST_DATE ,
+      BOAST_UPDATE ,
+      MEMBER_NO ,
+      MEMBER_NAME,
+      BOAST_POINT ,
+      BOAST_STATUS ,
+      PLANT_NO 
+    <!--   BOAST_FILENAME ,
+      BOAST_RENAME -->
+      FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND
+      BOAST_STATUS = 'Y'
+   </select>
 
-	<update id="deleteBoast" parameterType="_int">
-		UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo }
-	</update>
-	
-	<update id="deleteAdminBoast" parameterType="Map">
-		UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${checkNo})
-	</update>
+   <insert id="insertBoast">
 
-	<!-- 댓글 -->
-	<resultMap type="BoastReply" id="boastReplyResultMap">
-		<id property="bocommentNo" column="BOCOMMENT_NO"/>
-		<result property="boastNo" column="BOAST_NO"/>
-		<result property="bocommentContent" column="BOCOMMENT_CONTENT"/>
-		<result property="bocommentDate" column="BOCOMMENT_DATE"/>
-		<result property="memberNo" column="MEMBER_NO"/>
-		<result property="memberName" column="MEMBER_NAME"/>		
-		<result property="bocommentStatus" column="BOCOMMENT_STATUS"/>
-	</resultMap>
 
-	<insert id="insertBoastReply">
-		INSERT INTO BOCOMMENT VALUES (SEQ_BOCOMMENT.NEXTVAL, #{boastNo},#{bocommentContent}, DEFAULT, #{memberNo},#{memberName}, DEFAULT)
-	</insert>
-	
-	<select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">
-		SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND BOCOMMENT_STATUS = 'Y'
-	</select>
-	
-	<update id="updateReply">
-		UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOAST_NO= #{boastNo} AND BOCOMMENT_NO = #{bocommentNo} AND MEMBER_NO = #{memberNo}
-	</update>
+      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent },
+      DEFAULT, DEFAULT, DEFAULT, #{memberNo},DEFAULT, DEFAULT, #{plantNo}
+     <!--  #{boastFileName}, #{boastReName} -->)
+   </insert>
+   <!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent 
+      }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert> -->
+
+   <update id="updateBoast">
+      UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENT =
+      #{boastContent}, BOAST_UPDATE = SYSDATE WHERE BOAST_NO = #{boastNo}
+   </update>
+   <update id="updateCount">
+      UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
+   </update>
+
+   <update id="deleteBoast" parameterType="_int">
+      UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo }
+   </update>
+   
+   <update id="deleteAdminBoast" parameterType="Map">
+      UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${checkNo})
+   </update>
+
+   <!-- 댓글 -->
+   <resultMap type="BoastReply" id="boastReplyResultMap">
+      <id property="bocommentNo" column="BOCOMMENT_NO"/>
+      <result property="boastNo" column="BOAST_NO"/>
+      <result property="bocommentContent" column="BOCOMMENT_CONTENT"/>
+      <result property="bocommentDate" column="BOCOMMENT_DATE"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="memberName" column="MEMBER_NAME"/>      
+      <result property="bocommentStatus" column="BOCOMMENT_STATUS"/>
+   </resultMap>
+
+   <insert id="insertBoastReply">
+      INSERT INTO BOCOMMENT VALUES (SEQ_BOCOMMENT.NEXTVAL, #{boastNo},#{bocommentContent}, DEFAULT, #{memberNo},#{memberName}, DEFAULT)
+   </insert>
+   
+   <select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">
+      SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND BOCOMMENT_STATUS = 'Y'
+   </select>
+   
+   <update id="updateReply">
+      UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOAST_NO= #{boastNo} AND BOCOMMENT_NO = #{bocommentNo} AND MEMBER_NO = #{memberNo}
+   </update>
 
 </mapper>

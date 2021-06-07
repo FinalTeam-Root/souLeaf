@@ -9,8 +9,7 @@
 
   <title>souLeaf - 자랑하기 </title>
   <jsp:include page="../common/header.jsp"></jsp:include>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ 
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
  
@@ -115,8 +114,8 @@
  <jsp:include page="../common/footer.jsp"></jsp:include>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
   <!-- 서머노트를 위해 추가해야할 부분 -->
-  <script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+ <%--  <script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script> --%>
   <script>
 	$(function(){
 		

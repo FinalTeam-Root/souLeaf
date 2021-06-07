@@ -1,17 +1,24 @@
 package com.souleaf.spring.boast.service;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.souleaf.spring.boast.domain.BoFile;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 
 import com.souleaf.spring.boast.store.BoastStore;
 import com.souleaf.spring.common.PageInfo;
+
 
 @Service
 public class BoastServiceImpl implements BoastService {
@@ -148,5 +155,13 @@ public class BoastServiceImpl implements BoastService {
 	@Override
 	public int removeAdminBoast(HashMap<String, String> map) {
 		return bStore.deleteAdminBoast(map);
+	}
+
+	
+
+	@Override
+	public int removeFile(BoFile boFile) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

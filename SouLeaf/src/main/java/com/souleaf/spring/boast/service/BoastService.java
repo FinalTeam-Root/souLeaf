@@ -2,13 +2,18 @@ package com.souleaf.spring.boast.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.souleaf.spring.boast.domain.BoFile;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
+
 
 
 public interface BoastService {
@@ -16,7 +21,8 @@ public interface BoastService {
 	public ArrayList<Boast> printAll(PageInfo pi);
 	public ArrayList<Boast> printSearchAll(BoastSearch search); // 게시글 검색
 	public Boast printOne(int boastNo);// 게시글 상세조회 .
-	public int registerBoast(Boast boast);// 게시글 등록.
+	
+	
 	public int modifyBoast(Boast boast);// 게시글 수정.
 	public int removeBoast(int boastNo);// 게시글 삭제 .
 	public int removeAdminBoast(HashMap<String, String> map);// 게시글 삭제 .(관리자) 
@@ -53,6 +59,10 @@ public interface BoastService {
 //	ArrayList<Boast> printAll();
 	//int removeBoastReply(BoastReply reply);
 	ArrayList<Boast> printAll();
+	public int removeFile(BoFile boFile);
+	int registerBoast(Boast boast);
+
+	
 	
 	
 	

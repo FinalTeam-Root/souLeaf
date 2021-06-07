@@ -9,12 +9,15 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.souleaf.spring.boast.domain.BoFile;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.service.BoastService;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
-import com.souleaf.spring.plant.domain.Plant;
+import com.souleaf.spring.plant.domain.PlantInfo;
+
+
 
 @Repository
 public class BoastStoreLogic implements BoastStore {
@@ -155,8 +158,9 @@ public class BoastStoreLogic implements BoastStore {
 		return sqlSession.update("boastMapper.deleteAdminBoast", map);
 	}
 
-
 	
+
+
 
 
 

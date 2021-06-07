@@ -15,8 +15,8 @@ public class Boast {
 	private int boastPoint; // 랭킹포인트
 	private String boastStatus; // 상태
 	private int plantNo; // 식물번호
-	private String boastFileName; // 사진이름 
-	private String boastReName; // 서버사진이름
+	private String boastFileName; // 사진이름  // 
+	private String boastReName; // 서버사진이름 //
 	private int boastReplyCount; 
 	
 	public Boast() {}
