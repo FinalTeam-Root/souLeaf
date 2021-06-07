@@ -5,17 +5,17 @@
 		<id property="clinicNo" column="CLINIC_NO"/>
 		<result property="clinicContent" column="CLINIC_CONTENT"/>
 		<result property="clinicFileName" column="CLINIC_FILENAME"/>
-		<result property="clinicFileRename" column="CLINIC_FILERENAME"/>
 		<result property="clinicDate" column="CLINIC_DATE"/>
 		<result property="clinicUpdate" column="CLINIC_UPDATEDATE"/>
-		<result property="clinicStatus" column="CLINIC_STATUS"/>
 		<result property="memberNo" column="MEMBER_NO"/>
-		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="clinicFileRename" column="CLINIC_FILERENAME"/>
+		<result property="clinicStatus" column="CLINIC_STATUS"/>
 		<result property="clinicCount" column="CLINIC_COUNT"/>
 		<result property="clinicContents" column="CLINIC_CONTENTS"/>
+		<result property="clinicLike" column="CLINIC_LIKE"/>
+		<result property="memberNick" column="MEMBER_NICK"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
 		<result property="num" column="NUM"/>
-		<result property="clinicLike" column="CLINIC_LIKE"/>
 	</resultMap>
 	
 	<resultMap type="ClinicReply" id="clinicReplyResultMap">
