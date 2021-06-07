@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.captcha.domain.CaptchaUtil;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
@@ -34,6 +36,8 @@ import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.mypage.service.MypageService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
+
+import nl.captcha.Captcha;
 
 @Controller
 public class MypageController {
@@ -216,41 +220,28 @@ public class MypageController {
 		}
 	}
 	
-	// 패스워드 변경 시 이미지로 확인
-	// 페이지 매핑 
-	@GetMapping("/captcha.do") 
-	public String Captcha() {
-		return "captcha"; 
-	} 
-	// captcha 이미지 가져오는 메서드 
-	@GetMapping("/captchaImg.do") 
-	@ResponseBody 
-	public void captchaImg(HttpServletRequest req, HttpServletResponse res) throws Exception{ 
-		new CaptchaUtil().getImgCaptCha(req, res); 
-	} 
-	// 전달받은 문자열로 음성 가져오는 메서드 
-	@GetMapping("/captchaAudio.do") 
-	@ResponseBody 
-	public void captchaAudio(HttpServletRequest req, HttpServletResponse res) throws Exception{ 
-		Captcha captcha = (Captcha) req.getSession().getAttribute(Captcha.NAME); 
-		String getAnswer = captcha.getAnswer(); 
-		new CaptchaUtil().getAudioCaptCha(req, res, getAnswer); 
-		} 
-	// 사용자가 입력한 보안문자 체크하는 메서드 
-	@PostMapping("/chkAnswer.do") 
-	@ResponseBody public String chkAnswer(HttpServletRequest req, HttpServletResponse res) { 
-		String result = ""; 
-		Captcha captcha = (Captcha) req.getSession().getAttribute(Captcha.NAME); 
-		String ans = req.getParameter("answer"); 
-		if(ans!=null && !"".equals(ans)) { if(captcha.isCorrect(ans)) { 
-			req.getSession().removeAttribute(Captcha.NAME); 
-			result = "200"; 
-		}else { 
-			result = "300"; 
-			} 
-		} 
-		return result; 
+	// 패스워트 변경 페이지로 이동
+	@RequestMapping(value="changPwView.kh", method=RequestMethod.GET)
+	public String changPwView() {
+		return "mypage/changePassword";
 	}
+	
+	/**
+
+	  * 이미지 자동방지
+	  */
+	 @RequestMapping(value = "captchaImg.kh")
+	 public void captchaImg(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	   new CaptchaUtil().capthcaImg(request,response);
+	 }
+	 /**
+	  * 소리 자동방지
+	  */
+	
+	 @RequestMapping(value = "captchaAudio.kh" ,method = RequestMethod.POST)
+	 public void captchaAudio(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	   new CaptchaUtil().captchaAudio(request,response);
+	 }
 
 
 
