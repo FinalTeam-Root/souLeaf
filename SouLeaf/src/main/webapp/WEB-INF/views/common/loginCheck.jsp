@@ -10,8 +10,8 @@
 <body>
 <c:if test="${loginUser eq null }">
 <script type="text/javascript">
-alert("로그인하셔야죠");
-history.back();
+alert("로그인이 필요한 기능입니다.");
+location.href="loginView.kh";
 </script>
 </c:if>
 </body>
