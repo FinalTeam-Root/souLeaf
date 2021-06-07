@@ -215,5 +215,43 @@ public class MypageController {
 			return "fail";
 		}
 	}
+	
+	// 패스워드 변경 시 이미지로 확인
+	// 페이지 매핑 
+	@GetMapping("/captcha.do") 
+	public String Captcha() {
+		return "captcha"; 
+	} 
+	// captcha 이미지 가져오는 메서드 
+	@GetMapping("/captchaImg.do") 
+	@ResponseBody 
+	public void captchaImg(HttpServletRequest req, HttpServletResponse res) throws Exception{ 
+		new CaptchaUtil().getImgCaptCha(req, res); 
+	} 
+	// 전달받은 문자열로 음성 가져오는 메서드 
+	@GetMapping("/captchaAudio.do") 
+	@ResponseBody 
+	public void captchaAudio(HttpServletRequest req, HttpServletResponse res) throws Exception{ 
+		Captcha captcha = (Captcha) req.getSession().getAttribute(Captcha.NAME); 
+		String getAnswer = captcha.getAnswer(); 
+		new CaptchaUtil().getAudioCaptCha(req, res, getAnswer); 
+		} 
+	// 사용자가 입력한 보안문자 체크하는 메서드 
+	@PostMapping("/chkAnswer.do") 
+	@ResponseBody public String chkAnswer(HttpServletRequest req, HttpServletResponse res) { 
+		String result = ""; 
+		Captcha captcha = (Captcha) req.getSession().getAttribute(Captcha.NAME); 
+		String ans = req.getParameter("answer"); 
+		if(ans!=null && !"".equals(ans)) { if(captcha.isCorrect(ans)) { 
+			req.getSession().removeAttribute(Captcha.NAME); 
+			result = "200"; 
+		}else { 
+			result = "300"; 
+			} 
+		} 
+		return result; 
+	}
+
+
 
 }

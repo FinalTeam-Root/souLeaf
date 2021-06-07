@@ -181,6 +181,35 @@ a:hover, a:focus {
 			}
 		});
 		
+		$("#loginBtn").on("click",function(){
+				var memberId = $("#exampleInputEmail1").val();
+				var memberPw = $("#exampleInputPassword1").val();
+				if(memberId == ""){
+					alert("아이디를 입력해주세요.");
+					return false;
+				};
+				if(memberPw == ""){
+					alert("비밀번호를 입력해주세요.");
+					return false;
+				};
+				$.ajax({
+					url : "login.kh",
+					type : "post",
+					data : {"memberId":memberId, "memberPw":memberPw},
+					success: function(data){
+						console.log(data);
+						if(data == "success"){
+							$(".msg").text("");
+							location.href="home.kh";
+						}else {
+							$(".msg").text("아이디와 비밀번호가 일치하지않습니다.");
+						}
+					},error:function() {
+
+					}
+				});	
+		});
+		
 	</script>
 	<!——— Include the above in your HEAD tag —————>
 
