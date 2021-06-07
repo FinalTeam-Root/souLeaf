@@ -211,8 +211,15 @@ public class CuriosityController {
 	}
 	
 	// 궁금해요 댓글 삭제
-	public String curiosityReplyDelete(int curiosityNo, Model model) {
-		return "";
+	@ResponseBody
+	@RequestMapping(value="curiosityReplyDelete.kh")
+	public String curiosityReplyDelete(int curicommentNo, Model model) {
+		int result = cService.removeCuriosityReply(curicommentNo);
+		if(result > 0) {
+			return result+"";
+		}else {
+			return result+"";
+		}
 	}
 	
 	// 파일 저장

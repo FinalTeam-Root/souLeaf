@@ -71,6 +71,10 @@
 	<update id="updateReply">
 		UPDATE CURICOMMENT SET CURICOMMENT_CONTENT = #{curicommentContent} WHERE CURIOSITY_NO= #{curiosityNo} AND CURICOMMENT_NO = #{curicommentNo} AND MEMBER_NO = #{memberNo}
 	</update>
+	
+	<update id="deleteReply">
+		UPDATE CURICOMMENT SET CURIOCOMMENT_STATUS = 'N' WHERE CURICOMMENT_NO = #{curicommentNo} AND CURIOCOMMENT_STATUS = 'Y'
+	</update>
 
 	<!-- 마이페이지 -->
 	<select id="selectAllMyCuriosity" resultMap="curiosityResultMap">

@@ -85,9 +85,8 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	}
 
 	@Override
-	public int deleteCuriosityReply(int curiosityNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteCuriosityReply(int curicommentNo) {
+		return sqlSession.update("curiosityMapper.deleteReply", curicommentNo);
 	}
 
 	@Override

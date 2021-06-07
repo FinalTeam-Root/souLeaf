@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="../common/loginCheck.jsp"></jsp:include>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <link href='resources/css/admin/admin-style.css' rel='stylesheet' />
 </head>

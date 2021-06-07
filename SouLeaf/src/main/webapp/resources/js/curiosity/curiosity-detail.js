@@ -160,7 +160,10 @@ $('.image-upload-wrap').bind('dragover', function () {
         $('.image-upload-wrap').removeClass('image-dropping');
 });
 
-function replyRegister(curiosityNo){	
+function replyRegister(curiosityNo){
+	if($("#logingUser").val() == null){
+		alert("로그인 후 사용가능합니다.");
+	}	
 	var content = $("#replyContent").val();
 	$.ajax({
 		url : "curiosityReplyRegister.kh",
@@ -235,7 +238,7 @@ function getReplyList(curiosityNo){
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
 			str+='<span class="entry">'+data[i].curicommentContent+'</span><br>';
             if(loginNo == data[i].memberNo){
-				str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger curiosity-btn">삭제</span></small><br>';
+				str+='<small>'+data[i].curicommentDate+' <span onclick="replyModifyView(this,'+data[i].curiosityNo+','+data[i].memberNo+','+data[i].curicommentNo+',\''+data[i].curicommentContent+'\')" class="text-success curiosity-btn">수정</span> <span onclick="replyDelete('+data[i].curicommentNo+')" class="text-danger curiosity-btn">삭제</span></small><br>';
 
 			}else{
 				str+='<small>'+data[i].curicommentDate+'</small><br>';
@@ -258,6 +261,29 @@ function getReplyList(curiosityNo){
 	  });
 }
 
+function replyDelete(curicommentNo){
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+			$.ajax({
+				url:"curiosityReplyDelete.kh",
+				type:"get",
+				data:{"curicommentNo":curicommentNo},
+				success: function(result){
+					console.log(result);
+					if(result > 0){
+						getReplyList($("#curiosityNo").val());
+					}
+				},
+				error: function(){
+					console.log('fail');
+				}
+			});
+		}
+	
+}
+
 function getHashtagLink(){
 
 	var siteURL = 'plantDetailName.kh?plantName=';
@@ -274,7 +300,7 @@ function getHashtagLink(){
 	
 	$(this).html(contents);
 	
-  });
+ 	 });
   
-}
+	}
 }

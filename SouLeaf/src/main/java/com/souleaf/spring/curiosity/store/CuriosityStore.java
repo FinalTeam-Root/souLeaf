@@ -24,7 +24,7 @@ public interface CuriosityStore {
 	public ArrayList<CuriosityReply> selectAllCuriosityReply(int curiosityNo);// 댓글 전체 출력
 	public int insertCuriosityReply(CuriosityReply reply); // 댓글 등록
 	public int updateCuriosityReply(CuriosityReply reply); // 댓글 수정
-	public int deleteCuriosityReply(int curiosityNo); // 댓글 삭제
+	public int deleteCuriosityReply(int curicommentNo); // 댓글 삭제
 	public void updateViewCount(int curiosityNo); // 조회수 증가
 	
 	// 마이페이지
