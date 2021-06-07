@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Date;
-
+ 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -290,4 +290,35 @@ public class ClinicController {
 		out.close();
 	
 	}
+	
+    @RequestMapping("clickLike.kh")
+    @ResponseBody
+    public String clickLike(ModelAndView mv, @ModelAttribute ClinicLike clinicLike, HttpServletResponse response){
+        log.info("request: /clickLike");
+
+        int likeCheck = -1;
+        try {
+        	ClinicLike cLike = cService.printLike(clinicLike);
+            if(cLike == null) {
+                //처음 좋아요 누른것 likecheck=1, 좋아요 빨간색이 되야됨
+            	clinicLike.setLikeCheck(1);
+            	cService.registerLike(clinicLike); //좋아요 테이블 인서트
+            	likeCheck = 1;
+            } else if(cLike.getLikeCheck() == 1) {
+            	clinicLike.setLikeCheck(0);
+            	cService. modifyLike(clinicLike); //좋아요 테이블 업데이트
+            	likeCheck = 0;
+            } else {
+            	clinicLike.setLikeCheck(1);
+            	cService. modifyLike(clinicLike); //좋아요 테이블 업데이트
+            	likeCheck = 1;
+            }
+        } catch (Exception e) {
+            log.debug(e.getMessage());
+            likeCheck = -1;
+        }
+        String check = Integer.toString(likeCheck);
+        return check;
+    }
+
 }

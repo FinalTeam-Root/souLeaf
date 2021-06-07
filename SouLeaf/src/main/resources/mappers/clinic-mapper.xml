@@ -86,11 +86,6 @@
 		UPDATE CLINIC SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
 	</update>
 	
-	<!-- 좋아요 -->
-	<select id="selectlike" parameterType="ClinicLike" resultMap="clinicLikeResultMap">
-    SELECT * FROM CLINICLIKE WHERE CLINIC_NO = #{clinicNo} and MEMBER_NO = #{memberNo}
-	</select>
-	
 	<!-- 관리자 -->
 	<select id="selectAll" resultMap="clinicResultMap">
 		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y'
@@ -141,5 +136,18 @@
 
 	<update id="deleteMyClinic" parameterType="map">
 		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
+	</update>
+	
+		<!-- 좋아요 -->
+	<select id="selectlike" parameterType="ClinicLike" resultMap="clinicLikeResultMap">
+    SELECT * FROM CLINICLIKE WHERE CLINIC_NO = #{clinicNo} and MEMBER_NO = #{memberNo}
+	</select>
+	
+	<insert id="insertlike">
+		INSERT INTO CLINICLIKE VALUES (SEQ_CLINICLIKE.NEXTVAL, #{clinicNo}, #{memberNo}, 1)
+	</insert>
+	
+	<update id="updatelike">
+		UPDATE CLINICLIKE SET LIKE_CHECK = #{likeCheck} WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo}
 	</update>
 </mapper>

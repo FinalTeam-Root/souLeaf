@@ -123,7 +123,6 @@
 	cursor: pointer;
 }
 
-
 .reply-btn{
 	    float: right;
     position: absolute;
@@ -131,4 +130,71 @@
     right: 10px;
     height: 32px;
 }
+
+.list-wrap th:nth-child(1) {
+	text-align:center;
+    width: 60px;
+}
+
+.list-wrap th:nth-child(2) {
+	text-align:center;
+	width: 110px;
+}
+
+.list-wrap th:nth-child(3) {
+	text-align:center;
+}
+
+.list-wrap th:nth-child(4){
+	text-align:center;
+    width: 106px;
+}
+
+.list-wrap th:nth-child(5){
+	text-align:center;
+    width: 109px;
+}
+
+.list-wrap th:nth-child(6){
+	text-align:center;
+	width: 65px;
+}
+
+.list-wrap td:nth-child(1) {
+	text-align:center;
+    padding-top: 50px;
+}
+.list-wrap td:nth-child(3) {
+    padding-top: 50px;
+}
+
+.list-wrap td p {
+	width: 600px;
+	   overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.list-wrap td:nth-child(4) {
+	text-align:center;
+    padding-top: 50px;
+}
+.list-wrap td:nth-child(5) {
+	text-align:center;
+    padding-top: 50px;
+}
+.list-wrap td:nth-child(6) {
+	text-align:center;
+    padding-top: 50px;
+}
+/* ==== 게시판 =====*/
+.list-wrap > ul {
+	list-style: none;
+	padding: 0px;
+}
+
+.list-wrap img {
+	width: 100px;
+	height: 100px;
+}
+
 

@@ -158,3 +158,37 @@ function getReplyList(clinicNo){
 	
 	  });
 }
+
+
+ 
+var btn_like = document.getElementById("btn_like");
+ btn_like.onclick = function(){ changeHeart(); }
+ 
+/* 좋아요 버튼 눌렀을떄 */
+ function changeHeart(){
+ 	var memberNo = $("#loginNo").val();
+	var clinicNo = $("#clinicNo").val();
+	console.log(memberNo, clinicNo);
+     $.ajax({
+            type : "POST",  
+            url : "clickLike.kh",       
+            dataType : "json",   
+            data : {"clinicNo":clinicNo,"memberNo":memberNo},
+            success : function(jdata) {
+                if(jdata == -1){
+                    Rnd.alert("좋아요 오류","error","확인",function(){});
+                }
+                else{
+                    if(jdata == 1){
+                        $("#btn_like").attr("src","resources/images/ico_like_after.png");
+                        $("#likecnt").empty();
+                    }
+                    else if (jdata == 0){
+                        $("#btn_like").attr("src","resources/images/ico_like_before.png");
+                        $("#likecnt").empty();
+                        
+                    }
+                }
+            }
+        });
+ }

@@ -71,25 +71,36 @@ function getClinicList(page){
       currentPage = page;            
       if(data.length > 0){
         var str = "";
+        str+='         <div class="list-wrap">';
+		str+='			<table class="table table-hover">';
+		str+='			  <thead>';
+		str+='			    <tr>';
+		str+='			      <th scope="col">순번</th>';
+		str+='			      <th scope="col">이미지</th>';
+		str+='			      <th scope="col">제목</th>';
+		str+='			      <th scope="col">작성자</th>';
+		str+='			      <th scope="col">작성일</th>';
+		str+='			      <th scope="col">조회수</th>';
+		str+='			    </tr>';
+		str+='			  </thead>';
+		str+='			  <tbody>';
         for(var i in data){
-			str+='<div class="col-lg-4 sidebar pl-lg-4 ftco-animate fadeInUp ftco-animated">';
-			str+='<div class="block-21 mb-3 d-flex">';
-
-			if(data[i].clinicFileRename == null){
-				str+=' <a href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'" class="blog-img mr-4 mt-2" style="background-image: url(resources/uploadFiles/clinic/defaultplant.png);"></a>';
-			}else{
-				str+=' <a href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'" class="blog-img mr-4 mt-2" style="background-image: url(resources/uploadFiles/clinic/'+data[i].clinicFileRename+');"></a>';
-			}
-
-			str+=' <div class="text mt-2">';
-			str+='	<h3 class="heading clinic-title"><a href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'">'+data[i].clinicContent+'</a></h3>';
-			str+='	<div class="meta">';
-      str+='	  <div><span class="icon-person"></span>'+data[i].memberNick+'</div>';
-			str+='	  <div><span class="icon-calendar"></span>'+data[i].clinicDate+'</div><br>';			
-      str+='<div class="meta-chat"><span class="far fa-eye"></span> '+data[i].clinicCount+'</div>';
-      str+='<div class="meta-chat"><span class="fa fa-comment"></span> '+data[i].replyCount+'</div>';
-			str+='	</div></div></div></div>';
+			str+='			    <tr>';
+			str+='			      <td>'+data[i].clinicNo+'</td>';
+								if(data[i].clinicFileRename == null){
+			str+='					<td><img src="resources/uploadFiles/clinic/defaultplant.png"></td>';
+									}else{
+			str+='					<td><img src="resources/uploadFiles/clinic/'+data[i].clinicFileRename+'"></td>';
+									}
+			str+='			      <td><a href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'">'+data[i].clinicContent+'</a></td>';
+			str+='			      <td>'+data[i].memberNick+'</td>';
+			str+='			      <td>'+data[i].clinicDate+'</td>';
+			str+='			      <td>'+data[i].clinicCount+'</td>';
+			str+='			    </tr>';
         }
+        str+='			  </tbody>';
+		str+='			</table>';
+		str+='         </div>';
         
         $("#clinic-list").append(str);
       }

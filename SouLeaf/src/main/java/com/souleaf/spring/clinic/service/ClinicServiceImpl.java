@@ -12,7 +12,6 @@ import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.clinic.store.ClinicStore;
 import com.souleaf.spring.common.PageInfo;
-import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
@@ -99,12 +98,6 @@ public class ClinicServiceImpl implements ClinicService{
 		
 	}
 
-	// 좋아요 확인
-	@Override
-	public ClinicLike printLike(ClinicLike clinicLike) {
-		return cStore.selectLike(clinicLike);
-	}
-
 	@Override
 	public ArrayList<Clinic> printAll() {
 		return cStore.selectAll();
@@ -141,6 +134,25 @@ public class ClinicServiceImpl implements ClinicService{
 	@Override
 	public int removeMyClinic(HashMap<String, String> map) {
 		return cStore.deleteMyClinic(map);
+	}
+	
+	// 좋아요 확인
+	@Override
+	public ClinicLike printLike(ClinicLike clinicLike) {
+		return cStore.selectLike(clinicLike);
+	}
+	
+	// 좋아요 초기 등록
+	@Override
+	public int registerLike(ClinicLike clinicLike) {
+		return cStore.insertLike(clinicLike);
+		
+	}
+	
+	// 좋아요 수정
+	@Override
+	public int modifyLike(ClinicLike clinicLike) {
+		return cStore.updateLike(clinicLike);
 	}
 	
 }

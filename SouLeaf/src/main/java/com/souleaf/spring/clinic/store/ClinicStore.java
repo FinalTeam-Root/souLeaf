@@ -29,6 +29,8 @@ public interface ClinicStore {
 	public int deleteClinicReply(int clinicNo); // 댓글 삭제
 	public void updateViewCount(int clinicNo); // 조회수 증가
 	public ClinicLike selectLike(ClinicLike clinicLike); // 좋아요 확인
+	public int insertLike(ClinicLike clinicLike); // 좋아요 초기 등록
+	public int updateLike(ClinicLike clinicLike); // 좋아요 수정
 	public int deleteAdminClinic(HashMap<String, String> map) ;
 	
 	// 마이페이지

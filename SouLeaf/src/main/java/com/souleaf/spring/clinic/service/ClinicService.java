@@ -8,7 +8,6 @@ import com.souleaf.spring.clinic.domain.ClinicLike;
 import com.souleaf.spring.clinic.domain.ClinicReply;
 import com.souleaf.spring.clinic.domain.ClinicSearch;
 import com.souleaf.spring.common.PageInfo;
-import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
@@ -30,6 +29,8 @@ public interface ClinicService {
 	public int removeClinicReply(int clinicNo); // 댓글 삭제
 	public void addViewCount(int clinicNo); // 조회수 증가
 	public ClinicLike printLike(ClinicLike clinicLike); // 좋아요 확인
+	public int registerLike(ClinicLike clinicLike); // 좋아요 초기 등록
+	public int modifyLike(ClinicLike clinicLike);// 좋아요 수정
 	public int removeAdminClinic(HashMap<String, String> map) ;
 	
 	

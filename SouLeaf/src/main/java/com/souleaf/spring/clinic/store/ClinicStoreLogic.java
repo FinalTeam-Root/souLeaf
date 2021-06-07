@@ -103,12 +103,6 @@ public class ClinicStoreLogic implements ClinicStore{
 		
 	}
 
-	// 좋아요 확인
-	@Override
-	public ClinicLike selectLike(ClinicLike clinicLike) {
-		return sqlSession.selectOne("clinicMapper.selectlike", clinicLike);
-	}
-
 	@Override
 	public ArrayList<Clinic> selectAll() {
 		return (ArrayList)sqlSession.selectList("clinicMapper.selectAll");
@@ -151,6 +145,23 @@ public class ClinicStoreLogic implements ClinicStore{
 	public int deleteMyClinic(HashMap<String, String> map) {
 		return sqlSession.update("clinicMapper.deleteMyClinic", map);
 	}
+	
+	// 좋아요 확인
+	@Override
+	public ClinicLike selectLike(ClinicLike clinicLike) {
+		return sqlSession.selectOne("clinicMapper.selectlike", clinicLike);
+	}
 
+	// 좋아요 초기 등록
+	@Override
+	public int insertLike(ClinicLike clinicLike) {
+		return sqlSession.insert("clinicMapper.insertlike", clinicLike);
+	}
+
+	// 좋아요 수정
+	@Override
+	public int updateLike(ClinicLike clinicLike) {
+		return sqlSession.update("clinicMapper.updatelike", clinicLike);
+	}
 
 }
