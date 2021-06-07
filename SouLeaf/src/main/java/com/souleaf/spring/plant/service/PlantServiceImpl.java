@@ -152,6 +152,11 @@ public class PlantServiceImpl implements PlantService{
 	public int modifyPlantPoint(Plant plant) {
 		return pStore.updatePlantPoint(plant);
 	}
+
+	@Override
+	public ArrayList<Plant> printAllRank() {
+		return pStore.selectAllRank();
+	}
 	
 
 }

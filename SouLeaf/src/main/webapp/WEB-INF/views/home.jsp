@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
   <jsp:include page="common/header.jsp"></jsp:include>
@@ -28,62 +29,94 @@
     <section class="ftco-section bg-light ftco-no-pt ftco-intro">
     	<div class="container">
     		<div class="row">
-          <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-            <div class="d-block services active text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#FFD700;"></i> -->
-            		<i class="fas fa-crown" style="font-size:40px; color:#FFD700;"></i>
-              </div>
-               <div class="media-body">
-                <h3 class="heading" style="text-align: left">BEST 1</h3>
-                <div class="rank-form">
-                  <img src="resources/uploadFiles/plant/120210531162553.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
-                  <div class="text pt-3 px-3 pb-4 text-center">
-					<span class="position mb-2">Red box Gum</span>
-					<h3>유칼립투스 폴리안</h3>
+    		<!-- 반려 식물 리스트 -->
+			<c:forEach items="${pRank }" var="pRank" varStatus="status">
+			
+				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+					<div class="d-block services active text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<!-- <i class="ri-medal-fill" style="font-size:40px; color:#FFD700;"></i> -->
+							<c:if test="${status.index == 0}">
+								<i class="fas fa-crown" style="font-size: 40px; color: #FFD700;"></i>
+							</c:if>
+							<c:if test="${status.index == 1}">
+								<i class="fas fa-crown" style="font-size: 40px; color: #C0C0C0;"></i>
+							</c:if>
+								<c:if test="${status.index == 2}">
+							<i class="fas fa-crown" style="font-size: 40px; color: #865d5a;"></i>
+							</c:if>
+						</div>
+						<div class="media-body">
+							<h3 class="heading" style="text-align: left">BEST ${status.index + 1}</h3>
+							<div class="rank-form">
+								<img src="resources/uploadFiles/plant/${pRank.plantFileRename }" style = "height: 272px"
+									class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
+								<div class="text pt-3 px-3 pb-4 text-center">
+									<span class="position mb-2">${pRank.plantEngname }</span>
+									<h3>${pRank.plantName }</h3>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				</div>
-              </div>
-            </div>      
-          </div>
+				
+			</c:forEach>
+<!--           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate"> -->
+<!--             <div class="d-block services active text-center"> -->
+<!--               <div class="icon d-flex align-items-center justify-content-center"> -->
+<!--             		<i class="ri-medal-fill" style="font-size:40px; color:#FFD700;"></i> -->
+<!--             		<i class="fas fa-crown" style="font-size:40px; color:#FFD700;"></i> -->
+<!--               </div> -->
+<!--                <div class="media-body"> -->
+<!--                 <h3 class="heading" style="text-align: left">BEST 1</h3> -->
+<!--                 <div class="rank-form"> -->
+<!--                   <img src="resources/uploadFiles/plant/120210531162553.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"> -->
+<!--                   <div class="text pt-3 px-3 pb-4 text-center"> -->
+<!-- 					<span class="position mb-2">Red box Gum</span> -->
+<!-- 					<h3>유칼립투스 폴리안</h3> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
+<!--               </div> -->
+<!--             </div>       -->
+<!--           </div> -->
           
-          <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-            <div class="d-block services text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#C0C0C0;"></i> -->
-            		<i class="fas fa-crown" style="font-size:40px; color:#C0C0C0;"></i>
-              </div>
-               <div class="media-body">
-                <h3 class="heading" style="text-align: left">BEST 2</h3>
-                <div class="rank-form">
-                  <img src="/resources/uploadFiles/plant/120210531142943.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
-                  <div class="text pt-3 px-3 pb-4 text-center">
-					<span class="position mb-2">Red box Gum</span>
-					<h3>유칼립투스 폴리안</h3>
-				</div>
-				</div>
-              </div>
-            </div>    
-          </div>
+<!--           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate"> -->
+<!--             <div class="d-block services text-center"> -->
+<!--               <div class="icon d-flex align-items-center justify-content-center"> -->
+<!--             		<i class="ri-medal-fill" style="font-size:40px; color:#C0C0C0;"></i> -->
+<!--             		<i class="fas fa-crown" style="font-size:40px; color:#C0C0C0;"></i> -->
+<!--               </div> -->
+<!--                <div class="media-body"> -->
+<!--                 <h3 class="heading" style="text-align: left">BEST 2</h3> -->
+<!--                 <div class="rank-form"> -->
+<!--                   <img src="/resources/uploadFiles/plant/120210531142943.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"> -->
+<!--                   <div class="text pt-3 px-3 pb-4 text-center"> -->
+<!-- 					<span class="position mb-2">Red box Gum</span> -->
+<!-- 					<h3>유칼립투스 폴리안</h3> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
+<!--               </div> -->
+<!--             </div>     -->
+<!--           </div> -->
           
-          <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-            <div class="d-block services text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<!-- <i class="ri-medal-fill" style="font-size:40px; color:#865d5a;"></i> -->
-            		<i class="fas fa-crown" style="font-size:40px; color:#865d5a;"></i>
-              </div>
-              <div class="media-body">
-                <h3 class="heading" style="text-align: left">BEST 3</h3>
-                <div class="rank-form">
-                  <img src="/resources/uploadFiles/plant/120210531162046.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0">
-                  <div class="text pt-3 px-3 pb-4 text-center">
-					<span class="position mb-2">Red box Gum</span>
-					<h3>유칼립투스 폴리안</h3>
-				</div>
-				</div>
-              </div>
-            </div>      
-          </div>
+<!--           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate"> -->
+<!--             <div class="d-block services text-center"> -->
+<!--               <div class="icon d-flex align-items-center justify-content-center"> -->
+<!--             		<i class="ri-medal-fill" style="font-size:40px; color:#865d5a;"></i> -->
+<!--             		<i class="fas fa-crown" style="font-size:40px; color:#865d5a;"></i> -->
+<!--               </div> -->
+<!--               <div class="media-body"> -->
+<!--                 <h3 class="heading" style="text-align: left">BEST 3</h3> -->
+<!--                 <div class="rank-form"> -->
+<!--                   <img src="/resources/uploadFiles/plant/120210531162046.jpg" class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"> -->
+<!--                   <div class="text pt-3 px-3 pb-4 text-center"> -->
+<!-- 					<span class="position mb-2">Red box Gum</span> -->
+<!-- 					<h3>유칼립투스 폴리안</h3> -->
+<!-- 				</div> -->
+<!-- 				</div> -->
+<!--               </div> -->
+<!--             </div>       -->
+<!--           </div> -->
           
         </div>
     	</div>

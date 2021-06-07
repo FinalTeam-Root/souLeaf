@@ -27,5 +27,6 @@ public interface PlantService {
 	public ArrayList<Plant> printMemberCompanion(int memberNo);// 멤버 반려식물 리스트 출력
 	public int printOneName(String plantName);
 	public ArrayList<Plant> printHashListName(String tag);
-	public int modifyPlantPoint(Plant plant);
+	public int modifyPlantPoint(Plant plant); // 식물 포인트
+	public ArrayList<Plant> printAllRank(); // 식물 랭크
 }

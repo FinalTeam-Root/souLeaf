@@ -116,6 +116,11 @@ public class PlantStoreLogic implements PlantStore{
 		return sqlSession.update("plantMapper.updatePlantPoint", plant);
 	}
 
+	@Override
+	public ArrayList<Plant> selectAllRank() {
+		return (ArrayList)sqlSession.selectList("plantMapper.selectAllRank");
+	}
+
 	
 
 	

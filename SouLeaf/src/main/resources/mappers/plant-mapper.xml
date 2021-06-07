@@ -122,5 +122,9 @@
 	<update id="updatePlantPoint" parameterType="Plant">
 		 UPDATE PLANT SET PLANT_POINT =#{plantPoint} WHERE PLANT_NO = #{plantNo}
 	</update>
+	
+	<select id="selectAllRank" parameterType="Plant" resultMap="plantResultMap">
+		SELECT PLANT_NO,PLANT_NAME,PLANT_ENGNAME,PLANT_PLANTAE,PLANT_KIND,PLANT_PROPERTY,PLANT_LEAF,PLANT_DETAIL,PLANT_WATER,PLANT_ENVI,PLANT_HUMIDITY,PLANT_DATE,PLANT_COUNT,PLANT_POINT ,PLANT_STATUS FROM PLANT ORDER BY PLANT_POINT DESC
+	</select>
 
 </mapper>
