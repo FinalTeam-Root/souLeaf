@@ -52,6 +52,18 @@ public class ClinicServiceImpl implements ClinicService{
 		// TODO Auto-generated method stub
 		return cStore.deleteClinic(clinicNo);
 	}
+	
+	// 클리닉 좋아요 랭크 포인트 +1 
+	@Override
+	public int modifyRankLike(Clinic clinic) {
+		return cStore.updateRankLike(clinic);
+	}
+	
+	// 클리닉 좋아요 랭크 포인트 -1 
+	@Override
+	public int modifyRankunLike(Clinic clinic) {
+		return cStore.updateRankunLike(clinic);
+	}
 
 	@Override
 	public ArrayList<Clinic> printSearchAllList(ClinicSearch search) {

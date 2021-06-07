@@ -20,9 +20,13 @@ public interface ClinicService {
 	public int registerClinic(Clinic clinic);// 게시글 등록
 	public int modifyClinic(Clinic clinic);// 게시글 수정
 	public int removeClinic(int clinicNo);// 게시글 삭제
+	public int modifyRankLike(Clinic clinic); // 클리닉 좋아요 랭크 포인트 +1 
+	public int modifyRankunLike(Clinic clinic); // 클리닉 좋아요 랭크 포인트 -11 
+	
 	public ArrayList<Clinic> printSearchAllList(ClinicSearch search);// 검색
 	public ArrayList<Plant> printAllhashTagList();// 해시태그 출력
 	public int addReadCount(int ClinicNo);// 조회수증가
+	
 	public ArrayList<ClinicReply> printAllClinicReply(int clinicNo);// 댓글 전체 출력
 	public int registerClinicReply(ClinicReply reply); // 댓글 등록
 	public int modifyClinicReply(ClinicReply reply); // 댓글 수정
@@ -40,5 +44,6 @@ public interface ClinicService {
 	public int getMySearchCount(MypageSearch search); // 검색한 게시글 개수 가져오기
 	public ArrayList<Clinic> printSearchAllList(MypageSearch search, MypageInfo pi); // 검색한 게시글 리스트 출력
 	public int removeMyClinic(HashMap<String, String> map);
+	
 
 }

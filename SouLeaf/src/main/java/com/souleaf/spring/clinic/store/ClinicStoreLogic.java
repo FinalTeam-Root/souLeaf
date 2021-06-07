@@ -57,6 +57,18 @@ public class ClinicStoreLogic implements ClinicStore{
 		// TODO Auto-generated method stub
 		return sqlSession.update("clinicMapper.deleteClinic", clinicNo);
 	}
+	
+	// 클리닉 좋아요 랭크 포인트 + 1
+	@Override
+	public int updateRankLike(Clinic clinic) {
+		return sqlSession.update("clinicMapper.updateRankLike", clinic);
+	}
+	
+	// 클리닉 좋아요 랭크 포인트 - 1
+	@Override
+	public int updateRankunLike(Clinic clinic) {
+		return sqlSession.update("clinicMapper.updateRankunLike", clinic);
+	}
 
 	@Override
 	public ArrayList<Clinic> selectSearchAllList(ClinicSearch search) {

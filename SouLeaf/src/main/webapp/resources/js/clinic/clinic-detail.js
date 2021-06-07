@@ -180,11 +180,13 @@ var btn_like = document.getElementById("btn_like");
                 }
                 else{
                     if(jdata == 1){
-                        $("#btn_like").attr("src","resources/images/ico_like_after.png");
+						$("#btn_like").removeClass("far fa-heart");
+                        $("#btn_like").addClass("fa fa-heart");
                         $("#likecnt").empty();
                     }
                     else if (jdata == 0){
-                        $("#btn_like").attr("src","resources/images/ico_like_before.png");
+						$("#btn_like").removeClass("fa fa-heart");
+                        $("#btn_like").addClass("far fa-heart");
                         $("#likecnt").empty();
                         
                     }

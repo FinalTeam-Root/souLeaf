@@ -81,11 +81,12 @@ function getClinicList(page){
 		str+='			      <th scope="col">작성자</th>';
 		str+='			      <th scope="col">작성일</th>';
 		str+='			      <th scope="col">조회수</th>';
+		str+='			      <th scope="col">좋아요</th>';
 		str+='			    </tr>';
 		str+='			  </thead>';
 		str+='			  <tbody>';
         for(var i in data){
-			str+='			    <tr>';
+			str+='			    <tr onClick="goPage('+data[i].clinicNo+', '+currentPage+', '+currentCount+')">';
 			str+='			      <td>'+data[i].clinicNo+'</td>';
 								if(data[i].clinicFileRename == null){
 			str+='					<td><img src="resources/uploadFiles/clinic/defaultplant.png"></td>';
@@ -96,6 +97,7 @@ function getClinicList(page){
 			str+='			      <td>'+data[i].memberNick+'</td>';
 			str+='			      <td>'+data[i].clinicDate+'</td>';
 			str+='			      <td>'+data[i].clinicCount+'</td>';
+			str+='			      <td>'+data[i].clinicLike+'</td>';
 			str+='			    </tr>';
         }
         str+='			  </tbody>';
@@ -115,5 +117,8 @@ function getClinicList(page){
 
   });
 
+}
 
+function goPage(clinicNo, page, count) {
+    location.href="clinicDetail.kh?clinicNo="+clinicNo+"&page="+page+"&count="+count+"";
 }

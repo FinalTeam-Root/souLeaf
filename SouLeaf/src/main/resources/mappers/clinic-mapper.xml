@@ -15,6 +15,7 @@
 		<result property="clinicContents" column="CLINIC_CONTENTS"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
 		<result property="num" column="NUM"/>
+		<result property="clinicLike" column="CLINIC_LIKE"/>
 	</resultMap>
 	
 	<resultMap type="ClinicReply" id="clinicReplyResultMap">
@@ -35,7 +36,7 @@
 	</resultMap>
 	
 	<insert id="insertClinic">
-		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents})
+		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents},DEFAULT)
 	</insert>
 	
 	<update id="updateClinic" parameterType="Clinic">
@@ -67,6 +68,13 @@
 		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO = #{clinicNo}
 	</update>
 	
+	<update id="updateRankLike">
+		UPDATE CLINIC SET CLINIC_LIKE = CLINIC_LIKE+1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
+	
+	<update id="updateRankunLike">
+		UPDATE CLINIC SET CLINIC_LIKE = CLINIC_LIKE-1 WHERE CLINIC_NO = #{clinicNo}
+	</update>
 	
 	<!-- 댓글 -->
 	

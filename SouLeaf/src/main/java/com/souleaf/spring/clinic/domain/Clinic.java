@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Clinic {
 	private int clinicNo;
 	private String clinicContent;
-	private String clinicFileName;	
+	private String clinicFileName;
 	private String clinicFileRename;
 	private Date clinicDate;
 	private Date clinicUpdate;
@@ -16,14 +16,14 @@ public class Clinic {
 	private String clinicContents;
 	private int replyCount;
 	private int num;
-	
+	private int clinicLike;
+
 	public Clinic() {
 	}
 
 	public Clinic(int clinicNo, String clinicContent, String clinicFileName, String clinicFileRename, Date clinicDate,
 			Date clinicUpdate, String clinicStatus, int memberNo, String memberNick, int clinicCount,
-			String clinicContents, int replyCount) {
-		super();
+			String clinicContents, int replyCount, int num, int clinicLike) {
 		this.clinicNo = clinicNo;
 		this.clinicContent = clinicContent;
 		this.clinicFileName = clinicFileName;
@@ -36,6 +36,8 @@ public class Clinic {
 		this.clinicCount = clinicCount;
 		this.clinicContents = clinicContents;
 		this.replyCount = replyCount;
+		this.num = num;
+		this.clinicLike = clinicLike;
 	}
 
 	public int getClinicNo() {
@@ -134,7 +136,6 @@ public class Clinic {
 		this.replyCount = replyCount;
 	}
 
-	
 	public int getNum() {
 		return num;
 	}
@@ -143,13 +144,21 @@ public class Clinic {
 		this.num = num;
 	}
 
+	public int getClinicLike() {
+		return clinicLike;
+	}
+
+	public void setClinicLike(int clinicLike) {
+		this.clinicLike = clinicLike;
+	}
+
 	@Override
 	public String toString() {
 		return "Clinic [clinicNo=" + clinicNo + ", clinicContent=" + clinicContent + ", clinicFileName="
 				+ clinicFileName + ", clinicFileRename=" + clinicFileRename + ", clinicDate=" + clinicDate
 				+ ", clinicUpdate=" + clinicUpdate + ", clinicStatus=" + clinicStatus + ", memberNo=" + memberNo
 				+ ", memberNick=" + memberNick + ", clinicCount=" + clinicCount + ", clinicContents=" + clinicContents
-				+ ", replyCount=" + replyCount + ", num=" + num + "]";
+				+ ", replyCount=" + replyCount + ", num=" + num + ", clinicLike=" + clinicLike + "]";
 	}
-	
+
 }

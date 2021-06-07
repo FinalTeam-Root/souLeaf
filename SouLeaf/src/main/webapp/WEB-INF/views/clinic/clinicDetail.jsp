@@ -30,7 +30,6 @@
 									<div class="media p-1 ml-3">
 										<img src="resources/images/main_bg_8.jpg" alt="John Doe"
 											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
-
 										<div class="media-body row">
 											<div class="dropdown mt-2 col-md-6">
 												<button class="btn dropdown-toggle" type="button"
@@ -47,16 +46,7 @@
 												${clinic.clinicDate } &nbsp;&nbsp;<span class="far fa-eye"></span>
 												${clinic.clinicCount } &nbsp;&nbsp;<span class="fa fa-comment"></span>
 												 <span id="replyCount">0</span> &nbsp;
-												<%--  <c:choose>
-												 <c:when test="${cLike.likeCheck eq '0' or empty cLike}">
-												 <span class="fa fa-heart" id="btn_like"></span>
-												 </c:when>
-												 <c:otherwise>
-												 <span class="far fa-heart" id="btn_like"></span>
-												 </c:otherwise>
-												 </c:choose> --%>
-												 <span >
-											 	<c:choose>
+											<%-- <c:choose>
 												    <c:when test="${cLike.likeCheck eq '0' or empty cLike}"> 
 												        <img src="resources/images/ico_like_before.png" 
 												             id="btn_like" style="cursor:pointer; width: 20px;">
@@ -65,11 +55,18 @@
 												        <img src="resources/images/ico_like_after.png" 
 												              id="btn_like" style="cursor:pointer; width: 20px;">
 												    </c:otherwise>
-												</c:choose> 
+												</c:choose> --%>
+												 <span >
+												 <c:choose>
+												 <c:when test="${cLike.likeCheck eq '0' or empty cLike}">
+												 	<span class="far fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;</span>
+												 </c:when>
+												 <c:otherwise>
+												 	<span class="fa fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;</span>
+												 </c:otherwise>
+												 </c:choose>
 												 </span>
 											</div>
-
-
 											<div class="col-md-6">
 												<span style="float: right" class="mt-4"><a
 													href="clinicListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
