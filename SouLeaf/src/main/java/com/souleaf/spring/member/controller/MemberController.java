@@ -253,7 +253,7 @@ public class MemberController {
 			return "rigthPw";
 		}
 	}
-	// 아이디 중복 검사
+
 //	@ResponseBody    
 //	@RequestMapping(value="dupId.kh", method=RequestMethod.GET)
 //	public String idDuplicateCheck(@RequestParam("memberId") String memberId) {
