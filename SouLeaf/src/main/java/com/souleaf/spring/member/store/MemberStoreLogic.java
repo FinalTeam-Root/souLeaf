@@ -62,4 +62,11 @@ public class MemberStoreLogic implements MemberStore {
 	public Member checkMemberInfo(String memberId) {
 		return sqlSession.selectOne("memberMapper.checkMemberPw", memberId);
 	}
+
+
+	@Override
+	public Member checkMember(Member member) {
+		return sqlSession.selectOne("memberMapper.checkMember", member);
+
+	}
 }

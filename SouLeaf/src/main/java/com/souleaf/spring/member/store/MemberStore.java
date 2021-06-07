@@ -15,4 +15,5 @@ public interface MemberStore {
 	public Member selectMember(int memberNo);
 	public int checkNickDup(String memberNick);
 	public Member checkMemberInfo(String memberId);
+	public Member checkMember(Member member);
 }

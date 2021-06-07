@@ -64,4 +64,10 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	@Override
+	public Member checkMember(Member member) {
+		return mStore.checkMember(member);
+	}
+
+
 }

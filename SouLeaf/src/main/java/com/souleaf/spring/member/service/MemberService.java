@@ -15,6 +15,7 @@ public interface MemberService {
 	public Member printMember(int memberNo);
 	public int checkNickDup(String memberNick);
 	public Member checkMemberInfo(String memberId);
+	public Member checkMember(Member member);
 	
 }
 

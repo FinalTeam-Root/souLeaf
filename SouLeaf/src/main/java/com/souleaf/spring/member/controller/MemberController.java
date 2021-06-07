@@ -465,7 +465,23 @@ public class MemberController {
 	// 비밀번호 찾기 폼
 	@RequestMapping(value = "findPwView.kh", method =  RequestMethod.GET)
 	public String findPwView() throws Exception{
-		return "member/enterPassword";
+		return "member/findPw";
 	}
-	
+	// 아이디 찾기 폼
+	@RequestMapping(value = "findIdView.kh", method =  RequestMethod.GET)
+	public String findIdView() throws Exception{
+		return "member/findId";
+	}
+	// 아이디 찾기 이름이랑 이메일 받아와서 있는지 확인
+	@RequestMapping(value = "findId.kh", method = RequestMethod.POST)
+	public void findId(HttpServletResponse response, @ModelAttribute Member member) throws Exception {
+		Member memberchk = mService.checkMember(member);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		if(memberchk != null) {
+			gson.toJson(memberchk ,response.getWriter());			
+		} else {
+			gson.toJson("null" ,response.getWriter());	
+		}
+
+	}
 }

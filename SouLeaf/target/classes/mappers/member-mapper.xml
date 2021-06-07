@@ -54,4 +54,8 @@
  <select id="checkMemberPw" resultMap="memberResultMap">
  	SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId}
  </select>
+ 
+ <select id="checkMember" resultMap="memberResultMap">
+ 	SELECT * FROM MEMBER WHERE MEMBER_NAME = #{memberName} AND MEMBER_MAIL = #{memberMail}
+ </select>
  </mapper>

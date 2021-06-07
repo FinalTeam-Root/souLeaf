@@ -66,20 +66,10 @@ position: relative;
 										 <div class="form-group pb-3">   
     <input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
     <input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기">
-  </div>
-									<input type="password" class="form-control"
-										id="floatingPassword" placeholder="Password">
 									<div class="container">
-										<div class="row">
-											<div class="col-sm-8" style="color: red">비밀번호가 일치하지
-												않습니다.</div>
-											<div class="col-sm-4" style="text-align: right">
-												<a href="#" class="alert-link">비밀번호 찾기</a>
-											</div>
-										</div>
 									</div>
 								</div>
-								<button type="sumbit" class="btn btn-primary btn-block btn-success">확인</button>
+								<button type="submit" class="btn btn-primary btn-block btn-success">확인</button>
 							</form>
 						</div>
 						<div class="col-sm-3"></div>

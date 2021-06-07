@@ -124,7 +124,7 @@ a:hover, a:focus {
 									class="pl-2 font-weight-bold">아이디 저장</span>
 							</div>
 							<div>
-								<a href="#" style="font-size: 0.9vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
+								<a href="findIdView.kh" style="font-size: 0.9vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
 								<a href="findPwView.kh" style="font-size: 0.9vw">비밀번호 찾기</a>
 							</div>
 						</div>
