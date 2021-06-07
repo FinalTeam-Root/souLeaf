@@ -63,8 +63,10 @@ position: relative;
  									  <div class="form-group">
        										<p id="checkId" class="checkBtn">
   									  </div>
-									<input type="memberMail" class="form-control"
-										id="floatingPassword" placeholder="이메일">
+										 <div class="form-group pb-3">   
+    <input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
+    <input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기">
+  </div>
 									<input type="password" class="form-control"
 										id="floatingPassword" placeholder="Password">
 									<div class="container">

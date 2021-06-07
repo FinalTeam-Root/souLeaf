@@ -24,13 +24,13 @@ $(function(){ // code insert
 			}
 	});
 		
-	// $("#signbtn").on("click",function(){
-	// 	if($('#isEmailAuthSuccess').val() != 'success'){
+	 $("#signbtn").on("click",function(){
+	 	if($('#isEmailAuthSuccess').val() != 'success'){
 	// 		alert('이메일 인증을 진행해주셔야 회원가입이 완료됩니다.');
-	// 		return;
-	// 	}
+	 		return;
+	 	}
 		
-	// });
+	 });
 
 	 $('#emailAuthenticate').on("click", function(){
 	
