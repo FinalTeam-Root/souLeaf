@@ -46,19 +46,27 @@
 												</div>
 												${clinic.clinicDate } &nbsp;&nbsp;<span class="far fa-eye"></span>
 												${clinic.clinicCount } &nbsp;&nbsp;<span class="fa fa-comment"></span>
-												 <span id="replyCount">0</span>
-												 <span>
-												<c:choose>
+												 <span id="replyCount">0</span> &nbsp;
+												<%--  <c:choose>
+												 <c:when test="${cLike.likeCheck eq '0' or empty cLike}">
+												 <span class="fa fa-heart" id="btn_like"></span>
+												 </c:when>
+												 <c:otherwise>
+												 <span class="far fa-heart" id="btn_like"></span>
+												 </c:otherwise>
+												 </c:choose> --%>
+												 <span >
+											 	<c:choose>
 												    <c:when test="${cLike.likeCheck eq '0' or empty cLike}"> 
 												        <img src="resources/images/ico_like_before.png" 
-												             id="btn_like" align="left" style="cursor:pointer; width: 20px;">
+												             id="btn_like" style="cursor:pointer; width: 20px;">
 												    </c:when>
 												    <c:otherwise>
 												        <img src="resources/images/ico_like_after.png" 
-												              id="btn_like" align="left" style="cursor:pointer; width: 20px;">
+												              id="btn_like" style="cursor:pointer; width: 20px;">
 												    </c:otherwise>
-												</c:choose>
-												</span>
+												</c:choose> 
+												 </span>
 											</div>
 
 
@@ -85,6 +93,7 @@
 									</div>
 									<hr>
 									<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
+									
 									<p class="p-3" style="margin-bottom: 0px">
 										<strong>댓글 <span id="comment-count">0</span>개
 										</strong>
