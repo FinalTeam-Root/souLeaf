@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.admin.domain.MemberStatus;
+import com.souleaf.spring.admin.domain.TotalCount;
 @Repository
 public class AdminStoreLogic implements AdminStore {
 	@Autowired
@@ -21,4 +22,27 @@ public class AdminStoreLogic implements AdminStore {
 	public int updateMemberStatus(HashMap<String, String> map) {
 		return sqlSession.update("adminMapper.updateMemberStatus", map);
 	}
+
+	@Override
+	public int selectPlantCount() {
+		return sqlSession.selectOne("adminMapper.selectPlantCount");
+	}
+
+	@Override
+	public int selectMemberCount() {
+		return sqlSession.selectOne("adminMapper.selectMemberCount");
+	}
+
+	@Override
+	public int selectBoardCount() {
+		return sqlSession.selectOne("adminMapper.selectBoardCount");
+	}
+
+	@Override
+	public int selectQNACount() {
+		return sqlSession.selectOne("adminMapper.selectQnaCount");
+	}
+
+	
+	
 }

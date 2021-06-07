@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.souleaf.spring.admin.domain.MemberStatus;
+import com.souleaf.spring.admin.domain.TotalCount;
 import com.souleaf.spring.admin.service.AdminService;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.service.BoastService;
@@ -54,9 +55,15 @@ public class AdminController {
 	
 	// 관리자 메인
 	@RequestMapping(value = "adminHome.kh", method = RequestMethod.GET)
-	public String adminHome(Locale locale, Model model,HttpServletRequest request) {
+	public String adminHome(Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.setAttribute("nav", "admin");
+		TotalCount totalCount = new TotalCount();
+		totalCount.setPlantCount(aService.printPlantCount());
+		totalCount.setMemberCount(aService.printMemberCount());
+		totalCount.setBoardCount(aService.printBoardCount());
+		totalCount.setQnaCount(aService.printQNACount());
+		model.addAttribute("totalCount",totalCount);
 		return "admin/adminHome";
 	}
 	// 도감 관리 이동 및 출력

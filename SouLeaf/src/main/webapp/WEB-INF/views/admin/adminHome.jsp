@@ -24,7 +24,7 @@
             </div>
             <div class="sidebar-box ftco-animate">
               <div class="categories">
-                <h3>Services</h3>
+                
                 <li><a href="adminPlant.kh">도감 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminMember.kh">회원 관리 <span class="fa fa-chevron-right"></span></a></li>
                 <li><a href="adminBoard.kh">게시글 관리 <span class="fa fa-chevron-right"></span></a></li>
@@ -51,7 +51,7 @@
                 <h3 class="heading">도감 관리</h3>
                  <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="50"></strong> 건
+                <strong class="number" data-number="${totalCount.plantCount }"></strong> 건
               </div>
               <div class="text">
               	<span>식물 데이터</span>
@@ -71,7 +71,7 @@
                 <h3 class="heading">회원 관리</h3>
                  <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="100"></strong> 명
+                <strong class="number" data-number="${totalCount.memberCount }"></strong> 명
               </div>
               <div class="text">
               	<span>활동중</span>
@@ -91,7 +91,7 @@
                 <h3 class="heading">게시글 관리</h3>
                  <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="500"></strong> 개
+                <strong class="number" data-number="${totalCount.boardCount }"></strong> 개
               </div>
               <div class="text">
               	<span>등록 된 게시글</span>
@@ -111,7 +111,7 @@
                 <h3 class="heading">QnA 관리</h3>
                  <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="20"></strong> 개
+                <strong class="number" data-number="${totalCount.qnaCount }"></strong> 개
               </div>
               <div class="text">
               	<span>답변 대기</span>

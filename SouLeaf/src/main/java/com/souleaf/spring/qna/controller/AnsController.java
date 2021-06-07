@@ -24,9 +24,12 @@ import com.souleaf.spring.qna.domain.AnsSearch;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 import com.souleaf.spring.qna.service.AnsService;
+import com.souleaf.spring.qna.service.QnaService;
 
 @Controller
 public class AnsController {
+	@Autowired
+	private QnaService qService;
 	@Autowired
 	private AnsService aService;
 	private Logger log = LoggerFactory.getLogger(AnsController.class);
@@ -94,8 +97,20 @@ public class AnsController {
 	
 	@RequestMapping(value="ansWriteView.kh", method=RequestMethod.GET)
 	public String ansWriteView(@RequestParam("qnaNo") int qnaNo, Model model) {
+		Qna qna = qService.printQnaOne(qnaNo);
 		model.addAttribute("qnaNo", qnaNo);
+		model.addAttribute("qna", qna);
 		return "ans/ansWriteView";
+	}
+	@RequestMapping(value="ansUpdateView.kh", method=RequestMethod.GET)
+	public String ansUpdateView(@RequestParam("qnaNo") int qnaNo, Model model) {
+		Qna qna = qService.printQnaOne(qnaNo);
+		Ans ans = aService.printAnsOne(qnaNo);
+		model.addAttribute("qnaNo", qnaNo);
+		model.addAttribute("qna", qna);
+		model.addAttribute("ans", ans);
+		
+		return "ans/ansUpdateView";
 	}
 	@RequestMapping(value = "ansRegister.kh", method = RequestMethod.POST)
 	public ModelAndView ansRegister(ModelAndView mv, @ModelAttribute Ans ans, HttpSession session, HttpServletRequest request) {
@@ -116,22 +131,17 @@ public class AnsController {
 		return mv;
 	}
 	
-//	// AnS 수정화면
-//	@RequestMapping(value= "ansModifyView.kh", method = RequestMethod.GET)
-//	public ModelAndView ansModifyView(ModelAndView mv, @RequestParam("ansNo") int ansNo) {
-//		try {
-//
-//			Ans ans = aService.printAnsOne(ansNo);
-//			mv.addObject("ans", ans);
-//			mv.setViewName("ans/ansUpdateView");
-//			log.info("AnS 게시글 수정 성공");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			log.info("AnS 게시글 수정 실패");
-//		}
-//		return mv;
-//
-//	}
+	// AnS 수정
+	@RequestMapping(value= "ansModify.kh", method = RequestMethod.POST)
+	public ModelAndView ansModifyView(ModelAndView mv, @ModelAttribute Ans ans) {
+			int result = aService.modifyAns(ans);
+			if(result > 0) {
+				
+				mv.setViewName("redirect:adminQna.kh");
+			}
+			return mv;
+
+	}
 	@RequestMapping(value= "ansDelete.kh", method=RequestMethod.GET)
 	public String qnaDelete(Model model, @RequestParam("ansNo") int ansNo) {
 		int result = aService.removeAns(ansNo);

@@ -28,10 +28,15 @@
 								<div class="col-md-12">
 									<div class="contact-wrap w-100 p-md-5 p-4">
 										<!-- <h3 class="mb-4">Contact Us</h3> -->
-										<form action="ansRegister.kh"" method="post" enctype="multipart/form-data">
+										<form action="ansRegister.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
 										
-												
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="#">Q:</label>
+														${qna.qnaContent }
+													</div>
+												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">답변내용</label>

@@ -45,7 +45,14 @@ function getQnaList(){ // 함수 선언
 						return '<input type="checkbox" class="checkbox_group1" name="qna-check" value="'+data+'">';
 					}
 			    },
-				{ data: "qnaContent" },
+				{ data: "qnaContent",
+				render: function(data, target, row){	
+					if(data.length>15){
+						data = data.substr(0,15)+"...";
+					}					
+					return '<a href="qnaListView.kh" class="boast-title">'+data+'</a>';
+				}
+			 },
 				{ data: "memberNick" },
 				{ data: "qnaDate" },
 				{ data: "ansNo", 
@@ -53,7 +60,7 @@ function getQnaList(){ // 함수 선언
 				 render: function(data, target, row){
 					 var str = "";
 					 if(data != null){
-						 str = "<span class='text-success'>답변완료</span>";
+						 str = '<a href="ansUpdateView.kh?qnaNo='+row.qnaNo+'" class="boast-title text-success" >답변완료</a>';
 					 }else{
 						 str = '<a href="ansWriteView.kh?qnaNo='+row.qnaNo+'" class="boast-title">답변하기</a>';
 					 }

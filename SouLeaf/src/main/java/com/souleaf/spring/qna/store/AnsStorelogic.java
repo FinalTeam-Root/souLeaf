@@ -33,7 +33,7 @@ public class AnsStorelogic implements AnsStore {
 
 	@Override
 	public int updateAns(Ans ans) {
-		return sqlSession.update("ansMapper.updateAns");
+		return sqlSession.update("ansMapper.updateAns", ans);
 	}
 
 	@Override

@@ -139,7 +139,10 @@ function getBoastList(){
 				 }
 			    },
 				{ data: "boastTitle",
-				render: function(data, target, row){					
+				render: function(data, target, row){	
+					if(data.length>12){
+						data = data.substr(0,12)+"...";
+					}					
 					return '<a href="boastDetail.kh?boastNo='+row.boastNo+'" class="boast-title">'+data+'</a>';
 				}
 			 },
@@ -231,7 +234,7 @@ function getClinicList(){
 				 render: function(data){
 					 var img = '';
 					 if(data == null){
-							img = '<img src="resources/uploadFiles/clinic/defaultplant.png">';
+							img = '<img src="resources/uploadFiles/curiosity/defaultplant.png">';
 					 }else{
 						 img = '<img src="resources/uploadFiles/clinic/'+data+'" onerror="this.src=\'resources/uploadFiles/curiosity/defaultplant.png\'">';
 					 }
@@ -240,7 +243,10 @@ function getClinicList(){
 				 }
 			    },
 				{ data: "clinicContent",
-				render: function(data, target, row){					
+				render: function(data, target, row){
+					if(data.length>12){
+						data = data.substr(0,12)+"...";
+					}						
 					return '<a href="clinicDetail.kh?clinicNo='+row.clinicNo+'" class="boast-title">'+data+'</a>';
 				}
 			 },
@@ -347,8 +353,8 @@ function getCuriosityList(){
 			    },
 				{ data: "curiosityContent",
 				render: function(data, target, row){
-					if(data.length>10){
-						data = data.substr(0,10)+"...";
+					if(data.length>12){
+						data = data.substr(0,12)+"...";
 					}					
 					return '<a href="curiosityDetail.kh?curiosityNo='+row.curiosityNo+'" class="curiosity-title">'+data+'</a>';
 				}

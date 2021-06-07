@@ -28,6 +28,7 @@
 		<typeAlias type="com.souleaf.spring.boast.domain.BoastReply" alias="BoastReply"/>
 		<typeAlias type="com.souleaf.spring.mypage.domain.MypageInfo" alias="MypageInfo"/>
 		<typeAlias type="com.souleaf.spring.admin.domain.MemberStatus" alias="MemberStatus"/>
+		<typeAlias type="com.souleaf.spring.admin.domain.TotalCount" alias="TotalCount"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
