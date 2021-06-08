@@ -274,14 +274,26 @@ public class BoastController {
    }
 
    // 자랑하기 댓글 등록
-
    @ResponseBody
-
    @RequestMapping(value = "boastReplyRegister.kh", method = RequestMethod.POST)
    public String boastReplyRegister(@ModelAttribute BoastReply reply, HttpSession session) {
       Member loginUser = (Member) session.getAttribute("loginUser");
       reply.setMemberNo(loginUser.getMemberNo());
       int result = bService.registerBoastReply(reply);
+      if (result > 0) {
+         return result + "";
+      } else {
+         return result + "";
+      }
+   }
+   
+   // 자랑하기 답글 등록
+   @ResponseBody
+   @RequestMapping(value = "boastReReplyRegister.kh", method = RequestMethod.POST)
+   public String boastReReplyRegister(@ModelAttribute BoastReply reply, HttpSession session) {
+      Member loginUser = (Member) session.getAttribute("loginUser");
+      reply.setMemberNo(loginUser.getMemberNo());
+      int result = bService.registerBoastReReply(reply);
       if (result > 0) {
          return result + "";
       } else {

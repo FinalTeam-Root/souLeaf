@@ -158,6 +158,11 @@ public class BoastStoreLogic implements BoastStore {
 		return sqlSession.update("boastMapper.deleteAdminBoast", map);
 	}
 
+	@Override
+	public int insertBoastReReply(BoastReply reply) {
+		return sqlSession.insert("boastMapper.insertBoastReReply", reply);
+	}
+
 	
 
 

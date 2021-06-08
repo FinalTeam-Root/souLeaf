@@ -28,6 +28,7 @@ public interface BoastStore {
 	
 	public ArrayList<BoastReply> selectAllBoastReply(int boastNo); //.
 	public int insertBoastReply(BoastReply reply); //.
+	public int insertBoastReReply(BoastReply reply); //.
 	public int updateBoastReply(BoastReply reply); //.
 	public int deleteBoastReply(BoastReply reply); //.
 	//ArrayList<BoastReply> selectAllBoastreply(int boastNo);

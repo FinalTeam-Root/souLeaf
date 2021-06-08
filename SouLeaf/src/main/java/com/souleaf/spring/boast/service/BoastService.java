@@ -30,6 +30,7 @@ public interface BoastService {
 	public int addReadCount(int boastNo); // 게시글 상세 조회시 조회수 증가.
 	public ArrayList<BoastReply> printAllBoastReply(int boastNo); // 댓글 전체 출력.
 	public int registerBoastReply(BoastReply reply); // 댓글 등록.
+	public int registerBoastReReply(BoastReply reply); // 답글 등록.
 	public int modifyBoastReply(BoastReply reply); // 댓글 수정.
 	public int removeBoastReply(BoastReply reply); // 댓글 삭제.
 	public int likeNo(Boast boast); // 좋아요

@@ -163,4 +163,9 @@ public class BoastServiceImpl implements BoastService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int registerBoastReReply(BoastReply reply) {
+		return bStore.insertBoastReReply(reply);
+	}
 }

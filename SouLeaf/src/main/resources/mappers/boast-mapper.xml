@@ -81,12 +81,16 @@
       INSERT INTO BOCOMMENT VALUES(SEQ_BOCOMMENT.NEXTVAL,#{boastNo},#{bocommentContent},DEFAULT,#{memberNo},DEFAULT,NULL,DEFAULT)
    </insert>
    
+    <insert id="insertBoastReReply">
+      INSERT INTO BOCOMMENT VALUES(SEQ_BOCOMMENT.NEXTVAL,#{boastNo},#{bocommentContent},DEFAULT,#{memberNo},DEFAULT,#{bocommentNo},1)
+   </insert>
+   
    <select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">
       SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND BOCOMMENT_STATUS = 'Y'
    </select>
    
    <update id="updateReply">
-      UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOAST_NO= #{boastNo} AND BOCOMMENT_NO = #{bocommentNo} AND MEMBER_NO = #{memberNo}
+      UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOCOMMENT_NO = #{bocommentNo}
    </update>
 
 </mapper>

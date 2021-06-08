@@ -126,32 +126,70 @@ function getReplyList(boastNo){
 		data : {"boastNo":boastNo},	
 		dataType:"json",	
 		success : function(data){
-				console.log(data);
+				
 			var str = "";
 			if(data.length > 0){
 				$("#comment-count").text(data.length);
 				$("#replyCount").text(data.length);
 		
 		 for(var i in data){
-			str+='<div class="media p-3">';			
-			if(data[i].memberFileRename == null){
-				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
-			}else{
-				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
-			}	
-			str+='<div class="media-body">';
-			str+='<strong>'+data[i].memberNick+'</strong><br>';
-			str+='<span>'+data[i].bocommentContent+'</span><br>';
-            if(loginNo == data[i].memberNo){
-				str+='<small>'+data[i].bocommentDate+' <span onclick="replyReView('+data[i].bocommentNo+')" class="text-primary boast-btn">답글달기</span> <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';
+				if(data[i].bocommentDepth <= 0){
 
-			}else{
-				str+='<small>'+data[i].bocommentDate+'</small><br>';
+				 str+='<div class="media p-3">';			
+				 if(data[i].memberFileRename == null){
+					 str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+				 }else{
+					 str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+				 }	
+				 str+='<div class="media-body">';
+				 str+='<strong>'+data[i].memberNick+'</strong><br>';
+				 str+='<span>'+data[i].bocommentContent+'</span><br>';
+				 if(loginNo == data[i].memberNo){
+					 str+='<small>'+data[i].bocommentDate+' <span onclick="replyReReView(this,'+data[i].boastNo+','+data[i].bocommentNo+',\''+data[i].memberNick+'\')" class="text-primary boast-btn">답글달기</span> <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success boast-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';	
+	 
+				 }else{
+					 str+='<small>'+data[i].bocommentDate+' <span onclick="replyReReView(this,'+data[i].boastNo+','+data[i].bocommentNo+',\''+data[i].memberNick+'\')" class="text-primary boast-btn">답글달기</span></small><br>';
+				 }
+	 
+				 str+='</div>';
+				 str+='</div>';
+
+				 $.ajax({
+					url : "boastReplyList.kh",
+					type:"get",
+					data : {"boastNo":boastNo},	
+					async : false,
+					dataType:"json",	
+					success : function(reData){
+						
+						for(var j in reData){
+							if(data[i].bocommentNo == data[j].bocommentParentNo){
+									str+='<div class="media p-3 ml-5">';			
+								if(data[j].memberFileRename == null){
+									str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+								}else{
+									str+='<img src="/resources/uploadFiles/member/'+data[j].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+								}	
+								str+='<div class="media-body">';
+								str+='<strong>'+data[j].memberNick+'</strong><br>';
+								str+='<span>'+data[j].bocommentContent+'</span><br>';
+								if(loginNo == data[j].memberNo){
+									str+='<small>'+data[j].bocommentDate+' <span onclick="replyReView(this,\''+data[j].bocommentContent+'\','+data[j].bocommentNo+')" class="text-success boast-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';	
+					
+								}else{
+									str+='<small>'+data[j].bocommentDate+' </small><br>';
+								}
+					
+								str+='</div>';
+								str+='</div>';	
+							}
+						}
+					}
+				 });
+			 }
+			
+
 			}
-
-			str+='</div>';
-			str+='</div>';
-		 }
 		
 		  $("#boast-comment").html(str);
 		}
@@ -163,8 +201,34 @@ function getReplyList(boastNo){
 	  });
 }
 
-function replyReView(bocommentNo){
-	alert(bocommentNo);
+function replyReView(obj,content,bocommentNo){
+	
+	$textarea = '<div class="row" style="position: relative;"><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReReContent" value="'+content+'"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyReUpdate('+bocommentNo+')">수정</button></div>';
+	$(".boast-btn").hide();
+  $(obj).hide();  
+  $(obj).parent().parent().parent().after($textarea);
+}
+
+function replyReUpdate(bocommentNo){	
+	var content = $("#replyReReContent").val();	
+	$.ajax({
+		url : "boastReplyModify.kh",
+		type:"post",
+		data : {"bocommentNo":bocommentNo,"bocommentContent":content},		
+		success : function(data){
+						 
+		if(data == 1){
+			getReplyList($("#boastNo").val());
+			$("#replyContent").val("");
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+	
 }
 
 function boastDelete(boastNo){	
@@ -175,4 +239,34 @@ function boastDelete(boastNo){
 		} else {
 		location.href="boastDelete.kh?boastNo="+boastNo;
 		}
+}
+
+// 답글달기
+function replyReReView(obj,boastNo,bocommentNo,memberNick){	
+	$textarea = '<div class="row" style="position: relative;"><small class="text-primary" style="position:absolute; top:-65%; left:10%">@'+memberNick+'</small><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReReContent"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyReRegister('+boastNo+','+bocommentNo+')">답글</button></div>';
+	$(".boast-btn").hide();
+  $(obj).hide();  
+  $(obj).parent().parent().parent().after($textarea);
+}
+
+function replyReRegister(boastNo,bocommentNo){
+	var content = $("#replyReReContent").val();
+	
+	$.ajax({
+		url : "boastReReplyRegister.kh",
+		type:"post",
+		data : {"boastNo":boastNo,"bocommentNo":bocommentNo,"bocommentContent":content},		
+		success : function(data){
+						 
+		if(data == 1){
+			getReplyList(boastNo);
+			$("#replyContent").val("");
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
 }
