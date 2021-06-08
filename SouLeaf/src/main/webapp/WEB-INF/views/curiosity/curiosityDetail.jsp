@@ -96,12 +96,13 @@
 									<div class="row" style="position: relative;justify-content: center;">
 									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%;height: 32px !important;" placeholder="댓글을 남겨주세요"   autocomplete="off">
 									<button class="mt-4 p-2 btn reply-btn" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
+									
 									</div>
 									
 									<div id="hashTag" class="hashTagForm" style="display: none;">
 									<input type="text" id="hashTagSearch" class="mousetrap"  style="color: #fff; border: 0px; position: absolute;" autocomplete="off"><br>
 									<span id="hashTagText"  style="display: none"></span><br>
-									<span id="hashTagResult" class="hashTagSearchForm" style="position: absolute; top:0">#</span> 
+									<span id="hashTagResult" class="hashTagSearchForm" style="position: absolute; top:0; left:5%">#</span> 
 									</div>
 									</div>
 								</div>
@@ -144,7 +145,8 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
-  <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script>
+   <!-- <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script> -->  
+   <script src="resources/js/curiosity/moustrap.js"></script>
   <script src="resources/js/curiosity/curiosity-detail.js"></script>
 </body>
 </html>
