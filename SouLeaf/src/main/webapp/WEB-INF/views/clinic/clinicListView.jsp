@@ -34,8 +34,30 @@
 			<div id="clinic-list" style="min-height: 450px;"></div>
 			<input type="hidden" id="currentPage" value="${page }">
 			<input type="hidden" id="currentCount" value="${count }">
-			
-			<button class="btn btn-primary" style="float: right;" onclick="location.href='clinicWrite.kh'">글쓰기</button>
+
+				<button class="btn btn-primary" style="float: right;" onclick="location.href='clinicWrite.kh'">글쓰기</button>
+				<form action="clinicMainSearch.kh" method="get" class="search-form">
+					<div class="row" style="margin: 50px auto; width: 550px;">
+						<div id="selectSearch">
+							<select name="searchCondition" id="clinicSearchCondition" class="form-control-sm">
+								<option value="searchAll">전체</option>
+								<option value="searchTitle">제목</option>
+								<option value="searchContent">내용</option>
+							</select>
+						</div>
+		
+						<div id="custom-search-input">
+							<div class="input-group col-md-12">
+								<input type="text" name="searchValue" id="clinicSearchValue" class="form-control-sm input" placeholder="검색어를 입력해주세요." />
+									<span class="input-group-btn">
+									<button class="btn btn-info btn-lg" type="submit" id="clinicSearchBtn">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
 			<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">
@@ -51,7 +73,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
 

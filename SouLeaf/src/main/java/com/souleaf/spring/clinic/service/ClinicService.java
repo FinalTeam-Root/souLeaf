@@ -45,5 +45,7 @@ public interface ClinicService {
 	public ArrayList<Clinic> printSearchAllList(MypageSearch search, MypageInfo pi); // 검색한 게시글 리스트 출력
 	public int removeMyClinic(HashMap<String, String> map);
 	
+	public ArrayList<Plant> printSearchAllList(String search); //클리닉 검색
+	
 
 }

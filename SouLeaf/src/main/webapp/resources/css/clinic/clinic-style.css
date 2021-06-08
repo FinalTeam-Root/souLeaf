@@ -210,4 +210,54 @@
 	height: 100px;
 }
 
+.noColor{
+	color : black;
+}
+
+/* 검색 박스 디자인 */
+ #custom-search-input{
+  padding: 3px;
+  border: solid 1px #E4E4E4;
+  border-radius: 6px;
+  background-color: #fff;
+  width: 450px;
+} 
+
+#custom-search-input input{
+  width: 375px;
+  height: inherit;
+  border: 0;
+  box-shadow: none;
+}
+
+#custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+
+.input-group {
+  padding: 0 10px 0 10px;
+}
+
+#custom-search-input .fa-search{
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+#searchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
+
+#clinicSearchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
 

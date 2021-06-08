@@ -166,5 +166,10 @@ public class ClinicServiceImpl implements ClinicService{
 	public int modifyLike(ClinicLike clinicLike) {
 		return cStore.updateLike(clinicLike);
 	}
+
+	@Override
+	public ArrayList<Plant> printSearchAllList(String search) {
+		return cStore.selectSearchAllList(search);
+	}
 	
 }

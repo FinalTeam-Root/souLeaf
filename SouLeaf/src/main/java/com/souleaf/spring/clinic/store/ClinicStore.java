@@ -43,5 +43,6 @@ public interface ClinicStore {
 	public int getMySearchCount(MypageSearch search);
 	public ArrayList<Clinic> selectSearchAllList(MypageSearch search, MypageInfo pi);
 	public int deleteMyClinic(HashMap<String, String> map);
+	public ArrayList<Plant> selectSearchAllList(String search); //클리닉 검색
 	
 }

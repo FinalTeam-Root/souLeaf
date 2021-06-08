@@ -176,4 +176,9 @@ public class ClinicStoreLogic implements ClinicStore{
 		return sqlSession.update("clinicMapper.updatelike", clinicLike);
 	}
 
+	@Override
+	public ArrayList<Plant> selectSearchAllList(String search) {
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchAllList", search);
+	}
+
 }

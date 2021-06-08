@@ -326,5 +326,17 @@ public class ClinicController {
         String check = Integer.toString(likeCheck);
         return check;
     }
+    
+	@RequestMapping(value="clinicMainSearch.kh")
+	public ModelAndView clinicMainSearch(ModelAndView mv,@RequestParam("search") String search,HttpServletRequest session) {
+		session.setAttribute("nav", "clinic");
+		ArrayList<Plant> pList = cService.printSearchAllList(search);
+		if(! pList.isEmpty()) {
+			mv.addObject("pList",pList).setViewName("plant/plantSearchView");
+		}else {
+			mv.addObject("pList",null).addObject("search",search).setViewName("plant/plantSearchView");
+		}
+		return mv;
+	}
 
 }

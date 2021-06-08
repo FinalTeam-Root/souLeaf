@@ -93,7 +93,7 @@ function getClinicList(page){
 									}else{
 			str+='					<td><img src="resources/uploadFiles/clinic/'+data[i].clinicFileRename+'"></td>';
 									}
-			str+='			      <td><p><a href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'">'+data[i].clinicContent+'</a><p></td>';
+			str+='			      <td><p><a class="noColor" href="clinicDetail.kh?clinicNo='+data[i].clinicNo+'&page='+currentPage+'&count='+currentCount+'">'+data[i].clinicContent+'</a><p></td>';
 			str+='			      <td>'+data[i].memberNick+'</td>';
 			str+='			      <td>'+data[i].clinicDate+'</td>';
 			str+='			      <td>'+data[i].clinicCount+'</td>';
