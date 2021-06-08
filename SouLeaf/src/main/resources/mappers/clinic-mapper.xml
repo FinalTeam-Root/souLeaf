@@ -16,6 +16,9 @@
 		<result property="memberNick" column="MEMBER_NICK"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
 		<result property="num" column="NUM"/>
+		<result property="clinicPlace" column="CLINIC_PLACE"/>
+		<result property="clinicHowWater" column="CLINIC_HOWWATER"/>
+		<result property="clinicLastPot" column="CLINIC_LASTPOT"/>
 	</resultMap>
 	
 	<resultMap type="ClinicReply" id="clinicReplyResultMap">

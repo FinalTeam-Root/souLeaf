@@ -164,16 +164,16 @@ $(function(){
                         $check = $("<td><input type='checkbox' name='del-select' class='chk' value='"+data.searchList[i].clinicNo+"'>");
                         $num = $("<td scope='row'>").text(data.searchList[i].num);
                         if(data.searchList[i].clinicContent.length > 18){
-                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?curiosityNo="+data.searchList[i].clinicNo+"&page=1&count=0'class='noColor'>"+data.searchList[i].clinicContent.substr(0,18)+"...</a>");
+                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='clinicDetail.kh?clinicNo="+data.searchList[i].clinicNo+"&page=1&count=0'class='noColor'>"+data.searchList[i].clinicContent.substr(0,18)+"...</a>");
                         }else{
     
-                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='curiosityDetail.kh?curiosityNo="+data.searchList[i].clinicNo+"&page=1&count=0'class='noColor'>"+data.searchList[i].clinicContent+"</a>");
+                            $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='clinicDetail.kh?clinicNo="+data.searchList[i].clinicNo+"&page=1&count=0'class='noColor'>"+data.searchList[i].clinicContent+"</a>");
                         }
                         $writeDate = $("<td>").text(data.searchList[i].clinicDate);
                         $readCount = $("<td>").text(data.searchList[i].clinicCount);
-                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyCuriosity("+data.searchList[i].clinicNo+")'>수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyclinic("+data.searchList[i].clinicNo+")'>수정</button><button type='button' class='btn btn-outline-danger' onclick='deleteclinic("+data.searchList[i].clinicNo+")'>삭제</button>");
     
-                        $chooseDelete = $("<td>").append("<button type='button' onclick='deleteCuriositySelectList("+data.searchList[i].memberNo+","+page+")' class='btn btn-outline-warning'>선택삭제</button>");
+                        $chooseDelete = $("<td>").append("<button type='button' onclick='deleteClinicSelectList("+data.searchList[i].memberNo+","+page+")' class='btn btn-outline-warning'>선택삭제</button>");
                         
                         $tr.append($check);
                         $tr.append($num);
@@ -276,7 +276,7 @@ $(function(){
                         }
                         $writeDate = $("<td>").text(data.curList[i].curiosityDate);
                         $readCount = $("<td>").text(data.curList[i].curiosityCount);
-                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyCuriosity("+data.curList[i].curiosityNo+")'>수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyCuriosity("+data.curList[i].curiosityNo+")'>수정</button><button type='button' onclick='deleteCuriosity("+data.curList[i].curiosityNo+")' class='btn btn-outline-danger'>삭제</button>");
     
                         $chooseDelete = $("<td>").append("<button type='button' onclick='deleteCuriositySelectList("+data.curList[i].memberNo+","+page+");' class='btn btn-outline-warning'>선택삭제</button>");
                         
@@ -330,7 +330,11 @@ $(function(){
     // 마이페이지 궁금해요 수정버튼 클릭시 수정화면 이동
     function modifyCuriosity(curiosityNo){
         location.href ='curiosityModifyView.kh?curiosityNo='+curiosityNo+'';
-    }   
+    }  
+   // 마이페지이 궁금해요 삭제버튼 클릭시 삭제
+   function deleteCuriosity(curiosityNo){
+    location.href='myCuriosityDelete.kh?curiosityNo='+curiosityNo+'';
+}
     // 마이페이지 궁금해요 검색 함수
     function getSearchCuriosityList(searchCondition,searchValue,pageInfo){
         var $tr;
@@ -515,7 +519,7 @@ $(function(){
                         }
                         $writeDate = $("<td>").text(data.cliList[i].clinicDate);
                         $readCount = $("<td>").text(data.cliList[i].clinicCount);
-                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.cliList[i].clinicNo+")'>수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.cliList[i].clinicNo+")'>수정</button><button type='button' onclick='deleteclinic("+data.cliList[i].clinicNo+")' class='btn btn-outline-danger'>삭제</button>");
     
                         $chooseDelete = $("<td>").append("<button type='button' onclick='deleteClinicSelectList("+data.cliList[i].memberNo+","+page+");' class='btn btn-outline-warning'>선택삭제</button>");
                         
@@ -571,6 +575,11 @@ $(function(){
         location.href ='clinicModifyView.kh?clinicNo='+clinicNo+'';
     }
 
+    // 마이페지이 클리닉 삭제버튼 클릭시 삭제
+    function deleteclinic(clinicNo){
+        location.href='myClinicDelete.kh?clinicNo='+clinicNo+'';
+    }
+
     // 마이페이지 클리닉 검색 함수
     function getSearchClinicList(searchCondition,searchValue,pageInfo){
         var $tr;
@@ -618,7 +627,7 @@ $(function(){
                         }
                         $writeDate = $("<td>").text(data.searchList[i].clinicDate);
                         $readCount = $("<td>").text(data.searchList[i].clinicCount);
-                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.searchList[i].clinicNo+")'>수정</button><button type='button' class='btn btn-outline-danger'>삭제</button>");
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.searchList[i].clinicNo+")'>수정</button><button type='button' onclick='deleteclinic("+data.cliList[i].clinicNo+")' class='btn btn-outline-danger'>삭제</button>");
 
                         $chooseDelete = $("<td>").append("<button type='button' onclick='deleteClinicSelectList("+data.searchList[i].memberNo+","+page+")' class='btn btn-outline-warning'>선택삭제</button>");
                         

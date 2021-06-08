@@ -261,3 +261,17 @@
   border:solid 1px #ccc ;
 }
 
+
+.infoText {
+	background :#fff5e6;
+	font-weight : bolder;
+	color:#343a40;
+}
+.charArea {
+	width : inherit;
+	height: inherit;
+	margin : 50px auto;
+}
+.charArea >table{
+	width : 700px;
+}

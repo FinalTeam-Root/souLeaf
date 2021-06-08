@@ -171,7 +171,6 @@ public class ClinicController {
 	}
 	
 	// 클리닉 게시글 삭제
-	
 	@RequestMapping(value="clinicDelete.kh")
 	public ModelAndView clinicDelete(ModelAndView mv, int clinicNo ,HttpServletRequest request) {
 		int result = cService.removeClinic(clinicNo);
@@ -179,6 +178,15 @@ public class ClinicController {
 		mv.setViewName("redirect:clinicListView.kh");
 		return mv;
 	}
+	
+	// 마이페이지 클리닉 게시글 삭제
+		@RequestMapping(value="myClinicDelete.kh")
+		public ModelAndView myClinicDelete(ModelAndView mv, int clinicNo ,HttpServletRequest request) {
+			int result = cService.removeClinic(clinicNo);
+			log.info("클리닉 삭제 :" + result);
+			mv.setViewName("redirect:mypageBoard.kh");
+			return mv;
+		}
 	
 	// 클리닉 댓글 리스트 출력
 	@RequestMapping(value="clinicReplyList.kh")

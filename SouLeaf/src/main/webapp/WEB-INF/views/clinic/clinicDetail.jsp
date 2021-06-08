@@ -44,9 +44,10 @@
 														보러가기</a> <a class="dropdown-item" href="#">1:1 채팅</a>
 												</div>
 												${clinic.clinicDate } &nbsp;&nbsp;<span class="far fa-eye"></span>
-												${clinic.clinicCount } &nbsp;&nbsp;<span class="fa fa-comment"></span>
-												 <span id="replyCount">0</span> &nbsp;
-											<%-- <c:choose>
+												${clinic.clinicCount } &nbsp;&nbsp;<span
+													class="fa fa-comment"></span> <span id="replyCount">0</span>
+												&nbsp;
+												<%-- <c:choose>
 												    <c:when test="${cLike.likeCheck eq '0' or empty cLike}"> 
 												        <img src="resources/images/ico_like_before.png" 
 												             id="btn_like" style="cursor:pointer; width: 20px;">
@@ -56,16 +57,19 @@
 												              id="btn_like" style="cursor:pointer; width: 20px;">
 												    </c:otherwise>
 												</c:choose> --%>
-												 <span >
-												 <c:choose>
-												 <c:when test="${cLike.likeCheck eq '0' or empty cLike}">
-												 	<span class="far fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;<span id='likepoint'>${clinic.clinicLike }</span></span>
-												 </c:when>
-												 <c:otherwise>
-												 	<span class="fa fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;<span id='likepoint'>${clinic.clinicLike }</span></span>
-												 </c:otherwise>
-												 </c:choose>
-												 </span>
+												<span> <c:choose>
+														<c:when test="${cLike.likeCheck eq '0' or empty cLike}">
+															<span class="far fa-heart" id="btn_like"
+																style="color: #00bd56; cursor: pointer;">&nbsp;좋아요&nbsp;<span
+																id='likepoint'>${clinic.clinicLike }</span></span>
+														</c:when>
+														<c:otherwise>
+															<span class="fa fa-heart" id="btn_like"
+																style="color: #00bd56; cursor: pointer;">&nbsp;좋아요&nbsp;<span
+																id='likepoint'>${clinic.clinicLike }</span></span>
+														</c:otherwise>
+													</c:choose>
+												</span>
 											</div>
 											<div class="col-md-6">
 												<span style="float: right" class="mt-4"><a
@@ -74,10 +78,11 @@
 														<a
 															href="clinicModifyView.kh?clinicNo=${clinic.clinicNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
 															<c:url var="cDelete" value="clinicDelete.kh">
-																<c:param name="clinicNo" value="${clinic.clinicNo }"></c:param>
-																<c:param name="clinicFileRename" value="${clinic.clinicFileRename }"></c:param>
-															</c:url>
-									   		 				<a href="${cDelete }">삭제</a>
+															<c:param name="clinicNo" value="${clinic.clinicNo }"></c:param>
+															<c:param name="clinicFileRename"
+																value="${clinic.clinicFileRename }"></c:param>
+														</c:url>
+														<a href="${cDelete }">삭제</a>
 													</c:if> </span>
 
 											</div>
@@ -85,12 +90,32 @@
 
 									</div>
 									<hr>
+									<div class="col-md-12 charArea">
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td class="infoText">키우는 장소</td>
+													<td>실내</td>
+												</tr>
+												<tr>
+													<td class="infoText">물 주는 방식</td>
+													<td>흙이 충분히 마른 후 듬뿍</td>
+												</tr>
+												<tr>
+													<td class="infoText">마지막 분갈이</td>
+													<td>50일 전</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 									<div class="row">
-										<div class="col-md-12 contact-wrap w-100 p-md-5 p-3" style="min-height: 300px">${clinic.clinicContents }</div>
+										<div class="col-md-12 contact-wrap w-100 p-md-5 p-3"
+											style="min-height: 300px">${clinic.clinicContents }</div>
 									</div>
 									<hr>
-									<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
-									
+									<input type="hidden" id="loginNo"
+										value="${loginUser.memberNo }">
+
 									<p class="p-3" style="margin-bottom: 0px">
 										<strong>댓글 <span id="comment-count">0</span>개
 										</strong>
@@ -112,7 +137,8 @@
 										<input type="text" class="form-control" id="replyContent"
 											style="width: 95%; margin-left: 1.5%; height: 32px !important;"
 											placeholder="댓글을 남겨주세요">
-										<button class="mt-4 p-2 btn btn-secondary reply-btn" onclick="replyRegister(${clinic.clinicNo})">등록</button>
+										<button class="mt-4 p-2 btn btn-secondary reply-btn"
+											onclick="replyRegister(${clinic.clinicNo})">등록</button>
 									</div>
 								</div>
 							</div>

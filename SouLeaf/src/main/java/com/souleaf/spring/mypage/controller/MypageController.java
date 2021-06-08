@@ -224,26 +224,25 @@ public class MypageController {
 	
 	// 패스워드 변경 확인
 	@RequestMapping(value="changePw.kh" ,method=RequestMethod.POST)
-	public void chagnePw(HttpServletResponse response,@ModelAttribute Member member ) throws Exception {
+	public void chagnePw(HttpServletResponse response,@ModelAttribute Member member, @RequestParam("newMemberPw") String newMemberPw) throws Exception {
 		Member checkMember = memService.checkMemberInfo(member.getMemberId()); 
 		String originalPw = checkMember.getMemberPw();  // 기존에 있던 암호환된 패스워드
-		String enterPw = MemberSha256.encrypt(member.getMemberPw()); // 내가 입력한 값을 다시 암호화 해줌
+		String enterPw = MemberSha256.encrypt(newMemberPw); // 내가 입력한 값을 다시 암호화 해줌
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		
-		if(!enterPw.equals(originalPw)) {
-			out.println("alert('올바른 패스워드가 아닙니다. 다시 확인해주세요.');document.location.href='changPwView.kh';</script>");
+		if(!originalPw.equals(originalPw)) {
+			out.println("<script>alert('올바른 패스워드가 아닙니다. 다시 확인해주세요.');document.location.href='changPwView.kh';</script>");
 			out.flush();
 		} else {
-			Member updateMem = new Member();
-			updateMem.setMemberId(member.getMemberId());
-			updateMem.setMemberPw(enterPw);
-			int result = memService.modifyPw(updateMem);
-				out.println("<script>location.href='mypage.kh';<script>");
-				out.flush();
+			checkMember.setMemberPw(enterPw);
+			int result = memService.modifyPw(checkMember);
+			out.println("<script>document.location.href='mypage.kh';</script>");
+			out.flush();
 		}
+	
+		
 	}
 	
 }

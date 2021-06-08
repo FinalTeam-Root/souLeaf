@@ -34,7 +34,17 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="subject">제목</label>
-														<input type="text" class="form-control" name="clinicContent" id="clinicContent">
+														<input type="text" class="form-control" name="clinicContent" id="clinicContent" required>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="subject">키우는 장소</label>
+														<input type="text" class="form-control" name="clinicPlace" id="clinicPlace" maxlength="10" required>
+														<label class="label" for="subject">물 주는 방식</label>
+														<input type="text" class="form-control" name="clinicHowWater" id="clinicHowWater" maxlength="20" required>
+														<label class="label" for="subject">마지막 분갈이</label>
+														<input type="text" class="form-control" name="clinicLastPot" id="clinicLastPot" maxlength="20" required>
 													</div>
 												</div>
 												

@@ -178,6 +178,19 @@ public class CuriosityController {
 		}
 	}
 	
+	// 마이페지이 궁금해요 게시글 삭제
+		@RequestMapping(value="myCuriosityDelete.kh")
+		public String myCuriosityDelete(int curiosityNo, Model model, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "count", required = false) Integer count ,HttpServletRequest request) {
+			int currentPage = (page != null) ? page : 1;
+			int currentCount = (count != null) ? count : 0;
+			int result = cService.removeCuriosity(curiosityNo);
+			if(result > 0) {
+				return "redirect:mypageBoard.kh";
+			}else {
+				return "redirect:mypageBoard.kh";			
+			}
+		}
+	
 	// 궁금해요 댓글 리스트 출력
 	@RequestMapping(value="curiosityReplyList.kh")
 	public void curiosityReplyListView(HttpServletResponse response,@RequestParam("curiosityNo") int curiosityNo, CuriosityReply reply, Model model) throws Exception {

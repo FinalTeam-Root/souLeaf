@@ -17,13 +17,17 @@ public class Clinic {
 	private String memberNick;
 	private int replyCount;
 	private int num;
+	private String clinicPlace;
+	private String clinicHowWater;
+	private String clinicLastPot;
 
 	public Clinic() {
 	}
 
 	public Clinic(int clinicNo, String clinicContent, String clinicFileName, Date clinicDate, Date clinicUpdate,
 			int memberNo, String clinicFileRename, String clinicStatus, int clinicCount, String clinicContents,
-			int clinicLike, String memberNick, int replyCount, int num) {
+			int clinicLike, String memberNick, int replyCount, int num, String clinicPlace, String clinicHowWater,
+			String clinicLastPot) {
 		super();
 		this.clinicNo = clinicNo;
 		this.clinicContent = clinicContent;
@@ -39,6 +43,9 @@ public class Clinic {
 		this.memberNick = memberNick;
 		this.replyCount = replyCount;
 		this.num = num;
+		this.clinicPlace = clinicPlace;
+		this.clinicHowWater = clinicHowWater;
+		this.clinicLastPot = clinicLastPot;
 	}
 
 	public int getClinicNo() {
@@ -153,13 +160,40 @@ public class Clinic {
 		this.num = num;
 	}
 
+	public String getClinicPlace() {
+		return clinicPlace;
+	}
+
+	public void setClinicPlace(String clinicPlace) {
+		this.clinicPlace = clinicPlace;
+	}
+
+	public String getClinicHowWater() {
+		return clinicHowWater;
+	}
+
+	public void setClinicHowWater(String clinicHowWater) {
+		this.clinicHowWater = clinicHowWater;
+	}
+
+	public String getClinicLastPot() {
+		return clinicLastPot;
+	}
+
+	public void setClinicLastPot(String clinicLastPot) {
+		this.clinicLastPot = clinicLastPot;
+	}
+
 	@Override
 	public String toString() {
 		return "Clinic [clinicNo=" + clinicNo + ", clinicContent=" + clinicContent + ", clinicFileName="
 				+ clinicFileName + ", clinicDate=" + clinicDate + ", clinicUpdate=" + clinicUpdate + ", memberNo="
 				+ memberNo + ", clinicFileRename=" + clinicFileRename + ", clinicStatus=" + clinicStatus
 				+ ", clinicCount=" + clinicCount + ", clinicContents=" + clinicContents + ", clinicLike=" + clinicLike
-				+ ", memberNick=" + memberNick + ", replyCount=" + replyCount + ", num=" + num + "]";
+				+ ", memberNick=" + memberNick + ", replyCount=" + replyCount + ", num=" + num + ", clinicPlace="
+				+ clinicPlace + ", clinicHowWater=" + clinicHowWater + ", clinicLastPot=" + clinicLastPot + "]";
 	}
+
+	
 	
 }
