@@ -495,9 +495,28 @@ public class MemberController {
 		}
 		
 	}
-	// 아이디 찾기 폼
-	@RequestMapping(value = "newPw.kh", method =  RequestMethod.GET)
-	public String newPw() throws Exception{
+	// 새 비밀번호 폼
+	@RequestMapping(value = "newPwView.kh", method =RequestMethod.GET)
+	public String newPw(@RequestParam String memberId, Model model) throws Exception{
+		model.addAttribute("memberId",memberId);
 		return "member/newPw";
 	}
-}
+	// 패스워드 변경 확인
+		@RequestMapping(value="newPw.kh" ,method=RequestMethod.POST)
+		public String chagnePw(HttpServletResponse response,@ModelAttribute Member member ) throws Exception {
+			String newPw = MemberSha256.encrypt(member.getMemberPw()); // 내가 입력한 값을 다시 암호화 해줌
+			
+			Member updateMem = new Member();
+			updateMem.setMemberId(member.getMemberId());
+			updateMem.setMemberMail(member.getMemberMail());
+			updateMem.setMemberPw(newPw);
+			int result = mService.modifyPw(updateMem);
+			
+			return "login";
+		}
+		// 이메일 인증
+		@RequestMapping(value = "newPwEmail.kh", method = { RequestMethod.GET, RequestMethod.POST })
+		public String newPwEmail(){
+			return "member/newPwEmail";
+		}
+	}
