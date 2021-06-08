@@ -59,10 +59,10 @@
 												 <span >
 												 <c:choose>
 												 <c:when test="${cLike.likeCheck eq '0' or empty cLike}">
-												 	<span class="far fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;</span>
+												 	<span class="far fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;<span id='likepoint'>${clinic.clinicLike }</span></span>
 												 </c:when>
 												 <c:otherwise>
-												 	<span class="fa fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;</span>
+												 	<span class="fa fa-heart" id="btn_like" style="color: #00bd56; cursor:pointer;">&nbsp;좋아요&nbsp;<span id='likepoint'>${clinic.clinicLike }</span></span>
 												 </c:otherwise>
 												 </c:choose>
 												 </span>

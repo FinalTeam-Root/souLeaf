@@ -168,7 +168,9 @@ var btn_like = document.getElementById("btn_like");
  function changeHeart(){
  	var memberNo = $("#loginNo").val();
 	var clinicNo = $("#clinicNo").val();
-	console.log(memberNo, clinicNo);
+	const resultElement = document.getElementById('likepoint');
+	let number = resultElement.innerText;
+	console.log(number);
      $.ajax({
             type : "POST",  
             url : "clickLike.kh",       
@@ -182,14 +184,16 @@ var btn_like = document.getElementById("btn_like");
                     if(jdata == 1){
 						$("#btn_like").removeClass("far fa-heart");
                         $("#btn_like").addClass("fa fa-heart");
+                        number = parseInt(number) + 1;
                         $("#likecnt").empty();
                     }
                     else if (jdata == 0){
 						$("#btn_like").removeClass("fa fa-heart");
                         $("#btn_like").addClass("far fa-heart");
+                        number = parseInt(number) - 1;
                         $("#likecnt").empty();
-                        
                     }
+                    resultElement.innerText = number;
                 }
             }
         });
