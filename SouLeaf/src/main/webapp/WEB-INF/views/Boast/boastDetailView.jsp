@@ -98,7 +98,7 @@
 									  
 									</div>
 									<div class="span6 row" style="position: relative;">
-    								<textarea id="emojionearea5" placeholder="댓글을 남겨주세요"></textarea>
+    								<textarea id="emojionearea1" placeholder="댓글을 남겨주세요"></textarea>
     								<button class="mt-4 p-2 btn reply-btn btn-success" onclick="replyRegister(${boast.boastNo})">등록</button>
 									</div>
 									<div id="hashTag" class="hashTagForm" style="display: none;">

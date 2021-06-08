@@ -1,4 +1,5 @@
 $(function(){
+	window.emojioneVersion = "3.1.2";
 //여기 아래 부분
 $('#summernote').summernote({
 	placeholder: '최대 500자 작성 가능합니다.',
@@ -14,7 +15,7 @@ $('#summernote').summernote({
 	 });
 		 getReplyList($("#boastNo").val());
 		 
-		 $("#emojionearea5").emojioneArea({
+		 $("#emojionearea1").emojioneArea({
 			pickerPosition: "top",
 			filtersPosition: "bottom",
 		  tones: false,
@@ -23,7 +24,9 @@ $('#summernote').summernote({
 		  hidePickerOnBlur: true
 		});
 
-		$("#emojionearea5").on("keypress",function(key){			
+	
+
+		$("#emojionearea1").on("keypress",function(key){			
 			if(key.keyCode==13) {
 				
 				replyRegister($("#boastyNo").val());
@@ -85,7 +88,7 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 
 function replyRegister(boastNo){	
-	var content = $("#emojionearea5").val();
+	var content = $("#emojionearea1").val();
 	
 	$.ajax({
 		url : "boastReplyRegister.kh",
@@ -95,7 +98,7 @@ function replyRegister(boastNo){
 						 
 		if(data == 1){
 			getReplyList(boastNo);
-			$("#replyContent").val("");
+			$("#emojionearea1").val("");
 		}
 		  
 		},
@@ -261,15 +264,23 @@ function boastDelete(boastNo){
 
 // 답글달기
 function replyReReView(obj,boastNo,bocommentNo,memberNick){	
-	$textarea = '<div class="row" style="position: relative;"><small class="text-primary" style="position:absolute; top:-65%; left:10%">@'+memberNick+'</small><input type="text" style="width: 80%; margin-left:10%; height: 32px !important;" class="form-control" id="replyReReContent"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="right:6%;" onclick="replyReRegister('+boastNo+','+bocommentNo+')">답글</button></div>';
+	$textarea = '<div class="span6 row" style="position: relative;"><small class="text-primary" style="position:absolute; top:-65%; left:2%">@'+memberNick+'</small><textarea style="margin-left:10%;" id="emojionearea2" placeholder="답글을 남겨주세요"></textarea></div><div style="position:absolute; right:5.2%; width:100%"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="position: absolute; right:1%;" onclick="replyReRegister('+boastNo+','+bocommentNo+')">답글</button></div>';
 	$(".boast-btn").hide();
   $(obj).hide();  
   $(obj).parent().parent().parent().after($textarea);
+
+  $("#emojionearea2").emojioneArea({
+	pickerPosition: "top",
+	filtersPosition: "bottom",
+  tones: false,
+  autocomplete: false,
+  inline: true,
+  hidePickerOnBlur: true
+});
 }
 
 function replyReRegister(boastNo,bocommentNo){
-	var content = $("#replyReReContent").val();
-	
+	var content = $("#emojionearea2").val();	
 	$.ajax({
 		url : "boastReReplyRegister.kh",
 		type:"post",
