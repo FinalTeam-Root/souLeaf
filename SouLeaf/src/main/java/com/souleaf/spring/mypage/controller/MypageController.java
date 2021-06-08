@@ -1,6 +1,8 @@
 package com.souleaf.spring.mypage.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +35,7 @@ import com.souleaf.spring.mypage.domain.MypagePagination;
 import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
+import com.souleaf.spring.security.service.MemberSha256;
 
 @Controller
 public class MypageController {
@@ -213,11 +216,34 @@ public class MypageController {
 		}
 	}
 	
-	// 패스워트 변경 페이지로 이동
+	// 패스워드 변경 페이지로 이동
 	@RequestMapping(value="changPwView.kh", method=RequestMethod.GET)
 	public String changPwView() {
 		return "mypage/changePassword";
 	}
 	
-
+	// 패스워드 변경 확인
+	@RequestMapping(value="changePw.kh" ,method=RequestMethod.POST)
+	public void chagnePw(HttpServletResponse response,@ModelAttribute Member member ) throws Exception {
+		Member checkMember = memService.checkMemberInfo(member.getMemberId()); 
+		String originalPw = checkMember.getMemberPw();  // 기존에 있던 암호환된 패스워드
+		String enterPw = MemberSha256.encrypt(member.getMemberPw()); // 내가 입력한 값을 다시 암호화 해줌
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		
+		if(!enterPw.equals(originalPw)) {
+			out.println("alert('올바른 패스워드가 아닙니다. 다시 확인해주세요.');document.location.href='changPwView.kh';</script>");
+			out.flush();
+		} else {
+			Member updateMem = new Member();
+			updateMem.setMemberId(member.getMemberId());
+			updateMem.setMemberPw(enterPw);
+			int result = memService.modifyPw(updateMem);
+				out.println("<script>location.href='mypage.kh';<script>");
+				out.flush();
+		}
+	}
+	
 }

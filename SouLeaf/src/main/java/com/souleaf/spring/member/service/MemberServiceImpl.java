@@ -69,5 +69,10 @@ public class MemberServiceImpl implements MemberService {
 		return mStore.checkMember(member);
 	}
 
+	@Override
+	public int modifyPw(Member updateMem) {
+		return mStore.updatePw(updateMem);
+	}
+
 
 }

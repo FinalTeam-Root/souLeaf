@@ -58,6 +58,9 @@
     padding : 2px 10px;
     margin: 5px 0px;
  }
+ .btnarea {
+ 	text-align : center;
+ }
 </style>
 <body>
 <div class="container bootstrap snippet wrapper">
@@ -75,43 +78,31 @@
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
-						<div class="form-floating">
-							<div class="form-group pb-3">
-								<input type="text" placeholder="기존 비밀번호" name="memberPw"
-									class="form-control " id="originalPw">
-							</div>
-							<div class="form-group pb-3">
-								<input type="text" placeholder="새 비밀번호" name="newMemberPw"
-									class="form-control" id="newPw">
-								<div class="container"></div>
-							</div>
+						<form action="changePw.kh" method="POST">
+							<div class="form-floating">
 								<div class="form-group pb-3">
-									<input type="text" placeholder="비밀번호 확인" name="newMemberPwChk"
+									<input type="text" placeholder="기존 비밀번호" name="memberPw" id="memberPw"
+										class="form-control " id="originalPw">
+								</div>
+								<div class="form-group pb-3">
+									<input type="text" placeholder="새 비밀번호" name="newMemberPw" id="newMemberPw"
+										class="form-control" id="newPw">
+									<div class="container"></div>
+								</div>
+								<div class="form-group pb-3">
+									<input type="text" placeholder="비밀번호 확인" name="newMemberPwChk" id="newMemberPwChk"
 										class="form-control " id="newPwChk">
 								</div>
-								<div class="form-group">
-									<div class="captcha">
-										<div class="captcha_child">
-											<img id="captchaImg" title="캡차 이미지" src="captchaImg.kh"
-												alt="캡차 이미지" />
-											<div id="captchaAudio" style="display: none"></div>
-										</div>
-										<div class="captcha_child_two">
-											<a href="#" onclick="refreshBtn();" class="refreshBtn">
-												<i class="fa fa-refresh" aria-hidden="true"></i> 새로고침
-											</a> <a href="#" onclick="audio();" class="refreshBtn"> <i
-												class="fa fa-volum-up" aria-hidden="true"></i> 음성듣기
-											</a>
-										</div>
-									<input type="text" name="checkNum" class="form-control " id="checkNum">
-									</div>
+								<div class="form-group pb-3">
+									<p id="passwordCheck">
 								</div>
-								<div class="btnarea">
-								<button type="submit" id="changePwbtn" class="btn btn-success">변경</button>
-								<button type="submit" id="cancelbtn" class="btn btn-secondary">취소</button>
+									<div class="btnarea">
+									<input type="hidden" name="memberId" value ="${loginUser.memberId }">
+									<button type="submit" id="changePwbtn" class="btn btn-success">변경</button>
+									<button type="reset" id="cancelbtn" onclick="location.href='myPage.kh'" class="btn btn-secondary">취소</button>
+								</div>
 							</div>
-						</div>
-
+						</form>
 					</div>
 				</div>
 				</div>
@@ -120,45 +111,24 @@
 			<hr>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
-	function audio(){
-	      var rand = Math.random();
 
-	      var url = 'captchaAudio.kh';
-	      $.ajax({
-	         url : url,
-	         type : 'POST',
-	         dataType : 'text',
-	         data : 'rand='+rand,
-	         async : false,
-	         success : function(resp){
-	           var uAgent = navigator.userAgent;
-	           var soundUrl = 'captchaAudio.kh?rand='+rand;
-	           // 브라우저별 오디오 처리
-	           if (uAgent.indexOf('Trident') > -1 || uAgent.indexOf('MSIE') > -1) {    //IE인 경우
-	             winPlayer(soundUrl);
-	           } else if (!!document.createElement('audio').canPlayType){
-	             try {
-	               new Audio(soundUrl).play();
-	             } catch (e) {
-	               winPlayer(soundUrl);
-	             }
-	           } else {
-	               window.open(soundUrl, '', 'width=1,height=1');
-	           }
-	        }
-	      });
-	    }
-	    function refreshBtn(type){
-	      var rand = Math.random();
-	      var url = 'captchaImg.kh?rand='+rand;
-
-	      $("#captchaImg").attr("src", url);
-	    }
-	    function winPlayer(objUrl){
-	      $("#captchaAudio").html('<bgsoun src="'+objUrl +'">');       //bgsound 배경음악 제어
-	    }
-
+		$("#newMemberPw").on("keyup",function(){
+			var passwordVal = $("#newMemberPw").val();
+			var regExp = /^[a-z|A-z|0-9]{4,10}$/;
+			if(!regExp.test(passwordVal)){
+				$("#passwordCheck").html("비밀번호는 영소문자,숫자 4~10자리입니다.").css("color" ,"red");
+				return false;
+			} 
+		});
+		$("#newMemberPwChk").on("keyup",function(){
+			if($("#newMemberPw").val() != $("#newMemberPwChk").val() && $("#newMemberPw").val()!= ""){
+				$("#passwordCheck").html("패스워드가 일치하지 않습니다").css("color" ,"red");
+			}else{
+				$("#passwordCheck").html("");
+			}		
+		});
 	</script>
 	
 </body>

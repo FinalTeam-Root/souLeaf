@@ -69,4 +69,9 @@ public class MemberStoreLogic implements MemberStore {
 		return sqlSession.selectOne("memberMapper.checkMember", member);
 
 	}
+
+	@Override
+	public int updatePw(Member updateMem) {
+		return sqlSession.update("memberMapper.updatePw", updateMem);
+	}
 }

@@ -16,4 +16,5 @@ public interface MemberStore {
 	public int checkNickDup(String memberNick);
 	public Member checkMemberInfo(String memberId);
 	public Member checkMember(Member member);
+	public int updatePw(Member updateMem);
 }
