@@ -125,11 +125,15 @@
 
 
 .reply-btn{
-	    float: right;
+	     float: right;
     position: absolute;
     top: -24px;
-    right: 10px;
+    right: 3%;
     height: 32px;
+    background: #fff0;
+    color: #000;
+    border-color: #fff0;
+}
 }
 
 .hashTagForm{

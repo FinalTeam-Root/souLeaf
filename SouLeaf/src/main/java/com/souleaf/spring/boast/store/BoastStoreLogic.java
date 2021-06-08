@@ -86,7 +86,7 @@ public class BoastStoreLogic implements BoastStore {
 	@Override
 	public int deleteBoast(int boastNo) {
 		// 
-		return sqlSession.update("bastMapper.deleteBoast", boastNo);
+		return sqlSession.update("boastMapper.deleteBoast", boastNo);
 	}
 	
 	@Override

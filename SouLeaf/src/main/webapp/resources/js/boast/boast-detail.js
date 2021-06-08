@@ -1,17 +1,17 @@
 $(function(){
 //여기 아래 부분
-	$('#summernote').summernote({
-		placeholder: '최대 500자 작성 가능합니다.',
-		        height: 300,
-		        lang: 'ko-KR',
-		        callbacks: {
-		        	onImageUpload: function(files, editor, welEditable) {
-		        		for(var i = files.length -1; i>=0; i--) {
-		        			sendFile(files[i], this);
-		        		}
-		        	}
-		        }
-		 });
+$('#summernote').summernote({
+	placeholder: '최대 500자 작성 가능합니다.',
+			height: 300,
+			lang: 'ko-KR',
+			callbacks: {
+				onImageUpload: function(files, editor, welEditable) {
+					for(var i = files.length -1; i>=0; i--) {
+						sendFile(files[i], this);
+					}
+				}
+			}
+	 });
 		 getReplyList($("#boastNo").val());
 });
 
@@ -24,7 +24,7 @@ $(function(){
 		$.ajax({
 			data: form_data,
 			type : "post",
-			url: 'summer_image.kh',
+			url: 'boast_summer_image.kh',
 			cache :false,
 			contentType : false,
 			enctype : 'multipart/form-data',
@@ -126,20 +126,24 @@ function getReplyList(boastNo){
 		data : {"boastNo":boastNo},	
 		dataType:"json",	
 		success : function(data){
-				
+				console.log(data);
 			var str = "";
 			if(data.length > 0){
 				$("#comment-count").text(data.length);
 				$("#replyCount").text(data.length);
 		
 		 for(var i in data){
-			str+='<div class="media p-3">';
-			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			str+='<div class="media p-3">';			
+			if(data[i].memberFileRename == null){
+				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+			}else{
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			}	
 			str+='<div class="media-body">';
-			str+='<strong>'+data[i].memberName+'</strong><br>';
+			str+='<strong>'+data[i].memberNick+'</strong><br>';
 			str+='<span>'+data[i].bocommentContent+'</span><br>';
             if(loginNo == data[i].memberNo){
-				str+='<small>'+data[i].bocommentDate+' <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';
+				str+='<small>'+data[i].bocommentDate+' <span onclick="replyReView('+data[i].bocommentNo+')" class="text-primary boast-btn">답글달기</span> <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success curiosity-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';
 
 			}else{
 				str+='<small>'+data[i].bocommentDate+'</small><br>';
@@ -157,4 +161,18 @@ function getReplyList(boastNo){
 		}
 	
 	  });
+}
+
+function replyReView(bocommentNo){
+	alert(bocommentNo);
+}
+
+function boastDelete(boastNo){	
+
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+		location.href="boastDelete.kh?boastNo="+boastNo;
+		}
 }

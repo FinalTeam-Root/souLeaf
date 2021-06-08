@@ -4,7 +4,7 @@
    <resultMap type="Boast" id="boastResultMap">
       <id property="boastNo" column="BOAST_NO"></id>
       <result property="boastTitle" column="BOAST_TITLE"></result>
-      <result property="boastContent" column="BOAST_CONTENT"></result>
+      <result property="boastContents" column="BOAST_CONTENTS"></result>
       <result property="boastCount" column="BOAST_COUNT"></result>
       <result property="boastDate" column="BOAST_DATE"></result>
       <result property="boastUpdate" column="BOAST_UPDATE"></result>
@@ -12,9 +12,11 @@
       <result property="boastPoint" column="BOAST_POINT"></result>
       <result property="boastStatus" column="BOAST_STATUS"></result>
       <result property="plantNo" column="PLANT_NO"></result>
+      <result property="plantName" column="PLANT_NAME"></result>
       <result property="boastFileName" column="BOAST_FILENAME"></result>
-      <result property="boastReName" column="BOAST_RENAME"></result>
-      <result property="memberName" column="MEMBER_NAME"></result>
+      <result property="boastFileRename" column="BOAST_FILERENAME"></result>
+      <result property="memberNick" column="MEMBER_NICK"></result>
+      <result property="memberFileRename" column="MEMBER_FILERENAME"></result>
       <result property="ReplyCount" column="BOAST_REPLYCOUNT" />
    </resultMap>
 
@@ -23,7 +25,7 @@
 
    <!-- 게시판 -->
    <select id="selectAll" resultMap="boastResultMap">
-   SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+   SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
    </select>
    
    <select id="selectListCount" resultType="_int">
@@ -31,49 +33,31 @@
    </select>
    <select id="selectAllList" parameterType="Boast"
       resultMap="boastResultMap">
-      SELECT * FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE
-      BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+     SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 
    </select>
    <select id="selectOne" parameterType="Boast"
       resultMap="boastResultMap">
-      SELECT BOAST_NO ,
-      BOAST_TITLE ,
-      BOAST_CONTENT ,
-      BOAST_COUNT ,
-      BOAST_DATE ,
-      BOAST_UPDATE ,
-      MEMBER_NO ,
-      MEMBER_NAME,
-      BOAST_POINT ,
-      BOAST_STATUS ,
-      PLANT_NO 
-    <!--   BOAST_FILENAME ,
-      BOAST_RENAME -->
-      FROM BOAST JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND
-      BOAST_STATUS = 'Y'
+     SELECT * FROM BOAST B JOIN COMPANION C ON B.PLANT_NO=C.PLANT_NO JOIN MEMBER M ON B.MEMBER_NO=M.MEMBER_NO WHERE B.BOAST_NO = #{boastNo} AND BOAST_STATUS = 'Y'
    </select>
 
    <insert id="insertBoast">
-
-
-      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent },
-      DEFAULT, DEFAULT, DEFAULT, #{memberNo},DEFAULT, DEFAULT, #{plantNo}
-     <!--  #{boastFileName}, #{boastReName} -->)
+      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle },NULL,DEFAULT, DEFAULT, NULL, #{memberNo},DEFAULT, DEFAULT, #{plantNo},#{boastFileRename},#{boastContents})
+    
    </insert>
    <!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent 
       }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT) </insert> -->
 
    <update id="updateBoast">
-      UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENT =
-      #{boastContent}, BOAST_UPDATE = SYSDATE WHERE BOAST_NO = #{boastNo}
+      UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENTS =
+      #{boastContents}, BOAST_UPDATE = SYSDATE, PLANT_NO = #{plantNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
    </update>
    <update id="updateCount">
       UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
    </update>
 
-   <update id="deleteBoast" parameterType="_int">
-      UPDATE BOAST SET BOAST_STATUS = 'N'WHERE BOAST_NO = #{boastNo }
+   <update id="deleteBoast" >
+      UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO = #{boastNo }
    </update>
    
    <update id="deleteAdminBoast" parameterType="Map">
@@ -87,12 +71,14 @@
       <result property="bocommentContent" column="BOCOMMENT_CONTENT"/>
       <result property="bocommentDate" column="BOCOMMENT_DATE"/>
       <result property="memberNo" column="MEMBER_NO"/>
-      <result property="memberName" column="MEMBER_NAME"/>      
+      <result property="memberNick" column="MEMBER_NICK"/>      
       <result property="bocommentStatus" column="BOCOMMENT_STATUS"/>
+      <result property="bocommentParentNo" column="BOCOMMENT_PARENT_NO"/>
+      <result property="bocommentDepth" column="BOCOMMENT_DEPTH"/>
    </resultMap>
 
    <insert id="insertBoastReply">
-      INSERT INTO BOCOMMENT VALUES (SEQ_BOCOMMENT.NEXTVAL, #{boastNo},#{bocommentContent}, DEFAULT, #{memberNo},#{memberName}, DEFAULT)
+      INSERT INTO BOCOMMENT VALUES(SEQ_BOCOMMENT.NEXTVAL,#{boastNo},#{bocommentContent},DEFAULT,#{memberNo},DEFAULT,NULL,DEFAULT)
    </insert>
    
    <select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">

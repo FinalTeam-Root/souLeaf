@@ -13,7 +13,7 @@
 
  
           
- <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/main_bg_20.jpg');" data-stellar-background-ratio="0.5">
+ <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/main_bg_37.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
@@ -49,22 +49,38 @@
           <c:forEach items="${bList }" var="boast" varStatus="status">
 	          <div class="col-md-3 d-flex ftco-animate">
 	            <div class="blog-entry align-self-stretch">
-	              <a href="boastDetail.kh?boastNo=${boast.boastNo }" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');">
-	              </a>
+	            	<c:if test="${boast.boastFileRename ne null }">
+	              <a href="boastDetail.kh?boastNo=${boast.boastNo }" class="block-20 rounded" style="background-image: url('resources/uploadFiles/boast/${boast.boastFileRename}');"></a>
+	              </c:if>
+	               <c:if test="${boast.boastFileRename eq  null }">
+	              <a href="boastDetail.kh?boastNo=${boast.boastNo }" class="block-20 rounded" style="background-image: url('resources/uploadFiles/boast/defaultplant.png');"></a>
+	               </c:if>
 	              <div class="text p-4">
 	              	<div class="meta mb-2">
-	                  <div>${boast.memberName }</div>
-	                  <div>${boast.boastDate }</div>
-	                  <div class="meta-chat"><span class="far fa-eye"></span> ${boast.boastCount }</div>
-	                  <div class="meta-chat"><span class="fa fa-comment"></span> 0</div>
+	              	  <div>${boast.memberNick}</div>
+	                  <div>${boast.boastDate }</div><br>
+	              	  <div class=""><span class="far fa-eye"></span> ${boast.boastCount }</div>
+	                  <div class=""><span class="fa fa-comment"></span> 0</div>
+	                     <div class=""><span class="fas fa-heart"></span> 0</div>	                     
 	                </div>
 	                <h3 class="heading boast-title"><a href="boastDetail.kh?boastNo=${boast.boastNo }">${boast.boastTitle }</a></h3>
+	              <%--   <div class="meta mb-2">
+	                  <div>${boast.memberNick}</div>
+	                  <div>${boast.boastDate }</div>
+                  </div> --%>
+	              	<h6 class="text-success" style="font-size: 12px"><a href="plantDetailName.kh?plantName=${boast.plantName}">#${boast.plantName }</a></h6>
 	              </div>
+	              
 	            </div>
 	          </div>
           </c:forEach>
         </div>
+        	<c:if test="${loginUser ne null }">
+            <button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh?userNo=${loginUser.memberNo}'">글쓰기</button>
+        	</c:if>
+        	<c:if test="${loginUser eq null }">
             <button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh'">글쓰기</button>
+        	</c:if>
        
        <!-- 페이징 처리 -->
         <div class="row mt-5">

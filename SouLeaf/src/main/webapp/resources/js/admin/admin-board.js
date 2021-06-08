@@ -146,7 +146,7 @@ function getBoastList(){
 					return '<a href="boastDetail.kh?boastNo='+row.boastNo+'" class="boast-title">'+data+'</a>';
 				}
 			 },
-				{ data: "memberName" },
+				{ data: "memberNick" },
 				{ data: "boastCount" },
 				{ data: "boastDate" }
 			]

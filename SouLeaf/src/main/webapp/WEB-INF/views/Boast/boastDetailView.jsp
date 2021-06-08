@@ -7,13 +7,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 식물자랑</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
-
-<link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">
-<link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
- 
- 
-
-
+<link rel="stylesheet" href="resources/css/boast/boast-style.css">
 </head>
 <body>
 
@@ -33,16 +27,21 @@
 									<div class="contact-wrap w-100 p-md-5 p-4">
 									<h2 class="heading-section p-1 ml-3">${boast.boastTitle }</h2>
 									<div class="media p-1 ml-3">
-										<img src="resources/images/main_bg_8.jpg" alt="John Doe"
+									<c:if test="${boast.memberFileRename eq null }">
+										<img src="resources/images/basicMemberImg.png" alt="John Doe"
 											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
-											
+									</c:if>
+									<c:if test="${boast.memberFileRename ne null }">
+										<img src="resources/uploadFiles/member/${boast.memberFileRename }" alt="John Doe"
+											class="mr-1 rounded-circle" style="width: 60px; height: 60px">
+									</c:if>
 										<div class="media-body row">
 											<div class="dropdown mt-2 col-md-6">
 												<button class="btn dropdown-toggle" type="button"
 													id="dropdownMenuButton" data-toggle="dropdown"
 													aria-haspopup="true" aria-expanded="false"
 													style="padding: 12px 10px; font-size: 15px; text-transform: none;">
-													${boast.memberName }</button>
+													${boast.memberNick }</button>
 												<div class="dropdown-menu"
 													aria-labelledby="dropdownMenuButton">
 													<a class="dropdown-item"
@@ -51,51 +50,19 @@
 												</div>
 												${boast.boastDate } &nbsp;&nbsp;<span
 													class="far fa-eye"></span> ${boast.boastCount }
-												&nbsp;&nbsp;<span class="fa fa-comment"></span>
-												
-
-												
-												 <span
+												&nbsp;&nbsp;<span class="fa fa-comment"></span> <span
 													id="replyCount">0</span>
-
- 
-
 											</div>
 
- 
- <div class="col-md-6">
- 
- 
-												<c:choose>
-													<c:when test="${likecheck eq '0' or empty likecheck}">
-														<!-- likecheck가0이면 빈하트-->
-														<img src="/resources/images/ico_like_before.png"
-															id="btn_like" align="left"
-															style="cursor: pointer; width: 20px;">
-													</c:when>
-													<c:otherwise>
-														<!-- likecheck가1이면 빨간 하트-->
-														<img src="/resources/images/ico_like_after.png"
-															id="btn_like" align="left"
-															style="cursor: pointer; width: 20px;">
-													</c:otherwise>
-												</c:choose>
-												<dd id="likecnt" style="margin-left: 5px;">${likecnt}</dd>
-											
-											<span style="float: right" class="mt-4">
-											
-											
-											<a
+
+											<div class="col-md-6">
+											<span style="float: right" class="mt-4"><a
 												href="boastListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
 												<c:if test="${loginUser.memberNo eq boast.memberNo  }">
 													<a
-														href="boastUpdateView.kh?boastNo=${boast.boastNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
-									    <a href="#">삭제</a>
+														href="boastUpdateView.kh?boastNo=${boast.boastNo }">수정</a>&nbsp;&nbsp;
+									    <a href="#" onclick="boastDelete(${boast.boastNo})">삭제</a>
 												</c:if> </span>
-
-
-											
-											
 
 											</div>
 										</div>
@@ -104,11 +71,12 @@
 									<hr>
 											<div class="row">										
 												<div class="col-md-12 contact-wrap w-100 p-md-5 p-3" style="min-height: 300px">
-													${boast.boastContent }
+													${boast.boastContents }
 												</div>
 											</div>
 										<hr>
 										<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
+										<input type="hidden" id="boastNo" value="${boast.boastNo}">
 									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
 									<input type="hidden" id="boastNo" value="${boast.boastNo }">
 									<span id="boast-comment"></span>
@@ -123,9 +91,15 @@
   </div>
 </div> -->
 									<br>
-									<div class="row" style="position: relative;">
-									<input type="text" class="form-control" id="replyContent" style="width: 95%; margin-left:1.5%; height: 32px !important;" placeholder="댓글을 남겨주세요" >
-									<button class="mt-4 p-2 btn btn-secondary reply-btn" onclick="replyRegister(${boast.boastNo})">등록</button>
+									<div class="row" style="position: relative;justify-content: center;">
+									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%; height: 32px !important; " placeholder="댓글을 남겨주세요"   autocomplete="off">
+									<button class="mt-4 p-2 btn reply-btn" onclick="replyRegister(${boast.boastNo})">등록</button>
+									</div>
+									
+									<div id="hashTag" class="hashTagForm" style="display: none;">
+									<input type="text" id="hashTagSearch" class="mousetrap"  style="color: #fff; border: 0px; position: absolute;" autocomplete="off"><br>
+									<span id="hashTagText"  style="display: none"></span><br>
+									<span id="hashTagResult" class="hashTagSearchForm" style="position: absolute; top:0">#</span> 
 									</div>
 									</div>
 								</div>
@@ -136,13 +110,12 @@
 				</div>
 			</div>
 		</section>
-       
-      
-
+		
+	
+          
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
-   <script src="resources/js/boast/boast-detail.js"></script>
-  
+  <script src="resources/js/boast/boast-detail.js"></script>
 </body>
 </html>

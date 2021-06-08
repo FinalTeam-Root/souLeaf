@@ -11,19 +11,23 @@ public class Boast {
 	private Date boastDate; // 작성일
 	private Date boastUpdate; // 수정일
 	private int memberNo; // 회원번호
-	private String memberName; // 작성자 이름
+	private String memberNick; // 작성자 닉네임
+	private String memberFileRename; // 작성자 사진
 	private int boastPoint; // 랭킹포인트
 	private String boastStatus; // 상태
 	private int plantNo; // 식물번호
+	private String plantName; // 식물네임
 	private String boastFileName; // 사진이름  // 
-	private String boastReName; // 서버사진이름 //
-	private int boastReplyCount; 
+	private String boastFileRename; // 서버사진이름 //
+	private String boastContents; // 썸머노트내용 //
+	private int boastReplyCount; // 댓글수
 	
 	public Boast() {}
 
 	public Boast(int boastNo, String boastTitle, String boastContent, String boastCount, Date boastDate,
-			Date boastUpdate, int memberNo, String memberName, int boastPoint, String boastStatus, int plantNo,
-			String boastFileName, String boastReName, int boastReplyCount) {
+			Date boastUpdate, int memberNo, String memberNick, String memberFileRename, int boastPoint,
+			String boastStatus, int plantNo, String plantName, String boastFileName, String boastFileRename,
+			String boastContents, int boastReplyCount) {
 		super();
 		this.boastNo = boastNo;
 		this.boastTitle = boastTitle;
@@ -32,12 +36,15 @@ public class Boast {
 		this.boastDate = boastDate;
 		this.boastUpdate = boastUpdate;
 		this.memberNo = memberNo;
-		this.memberName = memberName;
+		this.memberNick = memberNick;
+		this.memberFileRename = memberFileRename;
 		this.boastPoint = boastPoint;
 		this.boastStatus = boastStatus;
 		this.plantNo = plantNo;
+		this.plantName = plantName;
 		this.boastFileName = boastFileName;
-		this.boastReName = boastReName;
+		this.boastFileRename = boastFileRename;
+		this.boastContents = boastContents;
 		this.boastReplyCount = boastReplyCount;
 	}
 
@@ -97,12 +104,20 @@ public class Boast {
 		this.memberNo = memberNo;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getMemberNick() {
+		return memberNick;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMemberNick(String memberNick) {
+		this.memberNick = memberNick;
+	}
+
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
 	}
 
 	public int getBoastPoint() {
@@ -129,6 +144,14 @@ public class Boast {
 		this.plantNo = plantNo;
 	}
 
+	public String getPlantName() {
+		return plantName;
+	}
+
+	public void setPlantName(String plantName) {
+		this.plantName = plantName;
+	}
+
 	public String getBoastFileName() {
 		return boastFileName;
 	}
@@ -137,12 +160,20 @@ public class Boast {
 		this.boastFileName = boastFileName;
 	}
 
-	public String getBoastReName() {
-		return boastReName;
+	public String getBoastFileRename() {
+		return boastFileRename;
 	}
 
-	public void setBoastReName(String boastReName) {
-		this.boastReName = boastReName;
+	public void setBoastFileRename(String boastFileRename) {
+		this.boastFileRename = boastFileRename;
+	}
+
+	public String getBoastContents() {
+		return boastContents;
+	}
+
+	public void setBoastContents(String boastContents) {
+		this.boastContents = boastContents;
 	}
 
 	public int getBoastReplyCount() {
@@ -157,13 +188,15 @@ public class Boast {
 	public String toString() {
 		return "Boast [boastNo=" + boastNo + ", boastTitle=" + boastTitle + ", boastContent=" + boastContent
 				+ ", boastCount=" + boastCount + ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate
-				+ ", memberNo=" + memberNo + ", memberName=" + memberName + ", boastPoint=" + boastPoint
-				+ ", boastStatus=" + boastStatus + ", plantNo=" + plantNo + ", boastFileName=" + boastFileName
-				+ ", boastReName=" + boastReName + ", boastReplyCount=" + boastReplyCount + "]";
+				+ ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", memberFileRename=" + memberFileRename
+				+ ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + ", plantNo=" + plantNo
+				+ ", plantName=" + plantName + ", boastFileName=" + boastFileName + ", boastFileRename="
+				+ boastFileRename + ", boastContents=" + boastContents + ", boastReplyCount=" + boastReplyCount + "]";
 	}
+
 	
 	
-	}
+}
 
 
 	

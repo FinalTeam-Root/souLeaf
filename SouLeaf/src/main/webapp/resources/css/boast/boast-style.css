@@ -4,5 +4,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 200px;
-  height: 20px;
+  height: 25px;
+}
+
+.reply-btn {
+       float: right;
+    position: absolute;
+    top: -24px;
+    right: 3%;
+    height: 32px;
+    background: #fff0;
+    color: #000;
+    border-color: #fff0;
 }

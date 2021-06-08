@@ -68,7 +68,6 @@ public class BoastServiceImpl implements BoastService {
 
 	@Override
 	public int removeBoast(int boastNo) {
-		//
 		return bStore.deleteBoast(boastNo);
 	}
 

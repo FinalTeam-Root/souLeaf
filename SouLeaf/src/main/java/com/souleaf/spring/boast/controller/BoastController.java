@@ -2,6 +2,7 @@ package com.souleaf.spring.boast.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +33,8 @@ import com.souleaf.spring.common.BoastPagination;
 import com.souleaf.spring.common.CuriosityPagination;
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.common.Pagination;
+import com.souleaf.spring.companion.domain.Companion;
+import com.souleaf.spring.companion.service.CompanionService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.domain.CuriosityReply;
 import com.souleaf.spring.member.domain.Member;
@@ -41,6 +44,8 @@ public class BoastController {
 
    @Autowired
    private BoastService bService;
+   @Autowired
+   private CompanionService cService;
 
    // 자랑하기 리스트 페이지 이동 및 출력 //////////
    @RequestMapping(value = "boastListView.kh", method = RequestMethod.GET)
@@ -48,10 +53,12 @@ public class BoastController {
          HttpServletRequest request) {
       HttpSession session = request.getSession();
       session.setAttribute("nav", "boast");
+      session.setAttribute("fileName", "");
       int currentPage = (page != null) ? page : 1;
       int listCount = bService.getListCount();
       PageInfo pi = BoastPagination.getPageInfo(currentPage, listCount);
       ArrayList<Boast> bList = bService.printAll(pi);
+      System.out.println(bList.toString());
       System.out.println("들어왔니?");
       if (!bList.isEmpty()) {
          mv.addObject("bList", bList);
@@ -109,8 +116,27 @@ public class BoastController {
 
    // 자랑하기 등록화면 이동
    @RequestMapping(value = "boastWrite.kh") // 매핑 잘 확인하기
-   public String boastWriterView() {
-      return "Boast/boastWriteForm"; // 대소문자 확인 잘하기
+   public String boastWriterView( @RequestParam(value = "userNo", required = false) Integer userNo, Model model, HttpSession session) {
+		/*
+		 * Member member = (Member)session.getAttribute("loginUser"); int memberNo =
+		 * member.getMemberNo();
+		 */
+	   int memberNo =  0;
+	   if(userNo != null) {
+		   Member member = (Member)session.getAttribute("loginUser");
+		  memberNo =  member.getMemberNo();
+	   }else {
+		   memberNo =  0;
+	   }
+	   ArrayList<Companion> cList = cService.printmemberAll(memberNo);
+	   if(! cList.isEmpty()) {
+		   model.addAttribute("cList",cList);
+		   return "Boast/boastWriteForm"; // 대소문자 확인 잘하기
+	   }else {
+		   model.addAttribute("cList","");
+		   return "Boast/boastWriteForm"; // 대소문자 확인 잘하기
+	   }
+	   
    }
 
    
@@ -122,33 +148,21 @@ public class BoastController {
 
       HttpSession session = request.getSession();
       Member member = (Member) session.getAttribute("loginUser");
+      String boastFileRename = (String)session.getAttribute("fileName");
       int memberNo = member.getMemberNo();
       boast.setMemberNo(memberNo);
-
-      // 서버에 파일을 저장하는 작업
-
-      if (!uploadFile.getOriginalFilename().equals("")) {
-         String renameFileName = saveFile(uploadFile, request);
-         System.out.println("들어왔니");
-         if (renameFileName != null) {
-            boast.setBoastFileName(uploadFile.getOriginalFilename());
-            boast.setBoastReName(renameFileName);
-
-            System.out.println("들어왔니");
-         }
-      } // 디비에 데이터를 저장하는 작업
-      System.out.println("들어왔니");
-      int result = 0;
-      String path = "";
-      result = bService.registerBoast(boast);
-      if (result > 0) {
-         path = "redirect:boastListView.kh";
+      boast.setBoastFileRename(boastFileRename);
+      System.out.println("식물번호"+boast.getPlantNo());
+     
+      int result = bService.registerBoast(boast);   
+      System.out.println(result);
+      if (result > 0) {    	  
+    	  mv.setViewName("redirect:boastListView.kh");
+    	  session.setAttribute("fileName", "");
       } else {
-         mv.addObject("msg", "게시글 등록 실패");
-         path = "common/errorPage";
+       
       }
-      mv.setViewName(path);
-      return mv;
+     return mv;
    }
 
    // 자랑하기 수정화면 이동
@@ -186,8 +200,8 @@ public class BoastController {
     * mv.setViewName("common/errorPage"); } return mv; }
     */
 
-   // 자랑하기 게시글 수정 2
-   @RequestMapping(value = "boastUpdateView.kh", method = RequestMethod.POST)
+   // 자랑하기 게시글 수정 
+   @RequestMapping(value = "boastUpdate.kh", method = RequestMethod.POST)
    public ModelAndView boastUpdate(ModelAndView mv, Boast boast,
          @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,
          @RequestParam(value = "page", required = false) Integer page,
@@ -196,16 +210,14 @@ public class BoastController {
       int currentCount = (count != null) ? count : 0;
       HttpSession session = request.getSession();
       Member member = (Member) session.getAttribute("loginUser");
-
+      String boastFileRename = (String)session.getAttribute("fileName");
       int memberNo = member.getMemberNo();
       boast.setMemberNo(memberNo);
-
-      System.out.println(boast.toString());
+      boast.setBoastFileRename(boastFileRename);
       int result = bService.modifyBoast(boast);
       System.out.println(result);
       if (result > 0) {
-         mv.setViewName("redirect:boastDetail.kh?boastNo=" + boast.getBoastNo() + "&page=" + currentPage + "&count="
-               + currentCount);
+         mv.setViewName("redirect:boastDetail.kh?boastNo=" + boast.getBoastNo());
          session.setAttribute("fileName", "");
       } else {
 
@@ -217,12 +229,15 @@ public class BoastController {
    @RequestMapping(value = "boastUpdateView.kh")
    public ModelAndView boastUpdateView(ModelAndView mv, @RequestParam("boastNo") int boastNo,
          @ModelAttribute Boast boast, @RequestParam(value = "page", required = false) Integer page,
-         @RequestParam(value = "count", required = false) Integer count, Model model) {
+         @RequestParam(value = "count", required = false) Integer count, Model model,HttpSession session) {
       int currentPage = (page != null) ? page : 1;
       int currentCount = (count != null) ? count : 0;
-      boast = bService.printOne(boastNo);
+      Member member = (Member)session.getAttribute("loginUser");
+	  int memberNo =  member.getMemberNo();
+      ArrayList<Companion> cList = cService.printmemberAll(memberNo);
+      Boast bOne = bService.printOne(boastNo);
       if (boast != null) {
-         mv.addObject("page", currentPage).addObject("count", currentCount).addObject("boast", boast)
+         mv.addObject("page", currentPage).addObject("count", currentCount).addObject("boast", bOne).addObject("cList", cList)
                .setViewName("Boast/boastUpdateView");
       } else {
 
@@ -231,24 +246,15 @@ public class BoastController {
    }
 
    // 자랑하기 게시글 삭제
-   @RequestMapping(value = "boastDelete.kh", method = RequestMethod.POST)
-   public String boastDelete(@RequestParam("boastNo") int boastNo, Model model,
-         @RequestParam("renameFilename") String renameFilename, HttpServletRequest request) {
-
-// 업로드된 파일 삭제
-      if (renameFilename != "") {
-         deleteFile(renameFilename, request);
-      }
-
-// 디비에 데이터 업데이트
-      int result = bService.removeBoast(boastNo);
-      if (result > 0) {
-         return "redirect:boastListView.kh";
-      } else {
-         model.addAttribute("msg", "게시글 삭제 실패");
-
-         return "common/errorPage";
-      }
+   @RequestMapping(value = "boastDelete.kh", method = RequestMethod.GET)
+   public String boastDelete(@RequestParam("boastNo") int boastNo, Model model, HttpServletRequest request) {
+	   System.out.println(boastNo);
+		int result = bService.removeBoast(boastNo);
+		if(result > 0) {
+			return "redirect:boastListView.kh";
+		}else {
+			return "redirect:boastListView.kh";			
+		}
    }
 
    // 자랑하기 댓글 리스트 출력
@@ -349,6 +355,23 @@ public class BoastController {
       return renameFileName;
 
    }
+   
+	@ResponseBody
+	@RequestMapping(value="boast_summer_image.kh",method = RequestMethod.POST)
+	public void summer_image(MultipartFile file, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		String server_file_name = saveFile(file, request);
+		System.out.println("server file : " + server_file_name);
+		
+		out.println("resources/uploadFiles/boast/"+server_file_name);
+		out.close();
+		
+	
+	}
+   
 
    // 저장된 파일 삭제
    public void deleteFile(String fileName, HttpServletRequest request) {
