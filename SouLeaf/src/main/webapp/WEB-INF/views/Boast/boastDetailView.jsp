@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>souLeaf - 식물자랑</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/curiosity/emojionearea.min.css">
 <link rel="stylesheet" href="resources/css/boast/boast-style.css">
 </head>
 <body>
@@ -92,10 +93,14 @@
 </div> -->
 									<br>
 									<div class="row" style="position: relative;justify-content: center;">
-									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%; height: 32px !important; " placeholder="댓글을 남겨주세요"   autocomplete="off">
-									<button class="mt-4 p-2 btn reply-btn" onclick="replyRegister(${boast.boastNo})">등록</button>
-									</div>
+									<!-- <input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%; height: 32px !important; " placeholder="댓글을 남겨주세요"   autocomplete="off"> -->
 									
+									  
+									</div>
+									<div class="span6 row" style="position: relative;">
+    								<textarea id="emojionearea5" placeholder="댓글을 남겨주세요"></textarea>
+    								<button class="mt-4 p-2 btn reply-btn btn-success" onclick="replyRegister(${boast.boastNo})">등록</button>
+									</div>
 									<div id="hashTag" class="hashTagForm" style="display: none;">
 									<input type="text" id="hashTagSearch" class="mousetrap"  style="color: #fff; border: 0px; position: absolute;" autocomplete="off"><br>
 									<span id="hashTagText"  style="display: none"></span><br>
@@ -116,6 +121,7 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
+  <script type="text/javascript" src="resources/js/curiosity/emojionearea.min.js"></script>
   <script src="resources/js/boast/boast-detail.js"></script>
 </body>
 </html>

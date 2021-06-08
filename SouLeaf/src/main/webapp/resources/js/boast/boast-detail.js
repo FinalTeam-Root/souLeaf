@@ -13,6 +13,22 @@ $('#summernote').summernote({
 			}
 	 });
 		 getReplyList($("#boastNo").val());
+		 
+		 $("#emojionearea5").emojioneArea({
+			pickerPosition: "top",
+			filtersPosition: "bottom",
+		  tones: false,
+		  autocomplete: false,
+		  inline: true,
+		  hidePickerOnBlur: true
+		});
+
+		$("#emojionearea5").on("keypress",function(key){			
+			if(key.keyCode==13) {
+				
+				replyRegister($("#boastyNo").val());
+			}			
+		});
 });
 
 /**
@@ -69,7 +85,8 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 
 function replyRegister(boastNo){	
-	var content = $("#replyContent").val();
+	var content = $("#emojionearea5").val();
+	
 	$.ajax({
 		url : "boastReplyRegister.kh",
 		type:"post",
@@ -87,6 +104,7 @@ function replyRegister(boastNo){
 		}
 	
 	  });
+
 }
 
 function replyModifyView(obj,boastNo,memberNo,replyNo,content){	

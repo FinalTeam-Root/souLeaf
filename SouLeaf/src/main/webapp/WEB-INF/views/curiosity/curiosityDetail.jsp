@@ -7,8 +7,10 @@
 <meta charset="UTF-8">
 <title>souLeaf - 식물도감</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
-<link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
 <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">
+<!-- <link rel="stylesheet" href="resources/css/curiosity/emojionearea.min.css"> -->
+<link rel="stylesheet" href="resources/css/curiosity/curiosity-style.css">
+
 
 </head>
 <body>
@@ -108,6 +110,11 @@
 								</div>
 							
 							</div>
+	
+<!-- 
+<div class="span6">
+    <textarea id="emojionearea5" placeholder="#식물이름"></textarea>
+</div> -->
 						</div>
 					</div>
 				</div>
@@ -147,6 +154,7 @@
   <script src="resources/js/summernote/summernote-lite.js"></script>
    <!-- <script src="https://craig.global.ssl.fastly.net/js/mousetrap/mousetrap.min.js?a4098"></script> -->  
    <script src="resources/js/curiosity/moustrap.js"></script>
+   <!-- <script type="text/javascript" src="resources/js/curiosity/emojionearea.min.js"></script> -->
   <script src="resources/js/curiosity/curiosity-detail.js"></script>
 </body>
 </html>
