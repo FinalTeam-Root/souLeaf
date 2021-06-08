@@ -1,6 +1,6 @@
 package com.souleaf.spring.mypage.controller;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +22,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.souleaf.spring.boast.service.BoastService;
-import com.souleaf.spring.captcha.domain.CaptchaUtil;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.clinic.service.ClinicService;
 import com.souleaf.spring.curiosity.domain.Curiosity;
@@ -33,18 +31,13 @@ import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.mypage.domain.MypagePagination;
 import com.souleaf.spring.mypage.domain.MypageSearch;
-import com.souleaf.spring.mypage.service.MypageService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
-
-import nl.captcha.Captcha;
 
 @Controller
 public class MypageController {
 	@Autowired
 	private PlantService pService;
-	@Autowired
-	private MypageService mService;
 	@Autowired
 	private MemberService memService;
 	
@@ -226,23 +219,5 @@ public class MypageController {
 		return "mypage/changePassword";
 	}
 	
-	/**
-
-	  * 이미지 자동방지
-	  */
-	 @RequestMapping(value = "captchaImg.kh")
-	 public void captchaImg(HttpServletRequest request, HttpServletResponse response) throws Exception{
-	   new CaptchaUtil().capthcaImg(request,response);
-	 }
-	 /**
-	  * 소리 자동방지
-	  */
-	
-	 @RequestMapping(value = "captchaAudio.kh" ,method = RequestMethod.POST)
-	 public void captchaAudio(HttpServletRequest request, HttpServletResponse response) throws Exception{
-	   new CaptchaUtil().captchaAudio(request,response);
-	 }
-
-
 
 }
