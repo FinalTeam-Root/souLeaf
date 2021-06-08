@@ -168,7 +168,7 @@
 <body>
 	<div class="container bootstrap snippet">
 		<br> <br>
-		<div class="col-md-12" style="margin-top: 20px;">
+		<div class="col-md-12" style="margin:50px 0px 100px 0;">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="myInfo">
@@ -258,8 +258,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="single_what_we_do leftFont"
-										onclick="location.href='changPwView.kh'">
+									<div class="single_what_we_do leftFont" onclick="location.href='changPwView.kh'">
 										<div class="top_line"></div>
 										<br>
 										<h4 class="what_we_do_title">비밀번호 변경</h4>

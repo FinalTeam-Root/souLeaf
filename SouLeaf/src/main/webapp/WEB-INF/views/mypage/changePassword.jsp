@@ -85,12 +85,12 @@
 										class="form-control " id="originalPw">
 								</div>
 								<div class="form-group pb-3">
-									<input type="text" placeholder="새 비밀번호" name="newMemberPw" id="newMemberPw"
+									<input type="password" placeholder="새 비밀번호" name="newMemberPw" id="newMemberPw"
 										class="form-control" id="newPw">
 									<div class="container"></div>
 								</div>
 								<div class="form-group pb-3">
-									<input type="text" placeholder="비밀번호 확인" name="newMemberPwChk" id="newMemberPwChk"
+									<input type="password" placeholder="비밀번호 확인" name="newMemberPwChk" id="newMemberPwChk"
 										class="form-control " id="newPwChk">
 								</div>
 								<div class="form-group pb-3">

@@ -39,12 +39,12 @@
 	</resultMap>
 	
 	<insert id="insertClinic">
-		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents},DEFAULT)
+		INSERT INTO CLINIC VALUES (SEQ_CLINIC.NEXTVAL,#{clinicContent},#{clinicFileName},SYSDATE,NULL,#{memberNo},#{clinicFileRename},DEFAULT,DEFAULT,#{clinicContents},DEFAULT, #{clinicPlace},#{clinicHowWater},#{clinicLastPot})
 	</insert>
 	
 	<update id="updateClinic" parameterType="Clinic">
 	<if test="clinicFileRename.toString() == ''">
-			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_CONTENTS = #{clinicContents}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
+			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_CONTENTS = #{clinicContents},CLINIC_PLACE = #{clinicPlace},CLINIC_HOWWATER =#{clinicHowWater},CLINIC_LASTPOT=#{clinicLastPot}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
 	</if>
 	<if test="clinicFileRename.toString() != ''">
 			UPDATE CLINIC SET CLINIC_CONTENT = #{clinicContent}, CLINIC_UPDATEDATE = SYSDATE, CLINIC_FILERENAME = #{clinicFileRename}, CLINIC_CONTENTS = #{clinicContents}  WHERE CLINIC_NO = #{clinicNo} AND MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'

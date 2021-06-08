@@ -22,7 +22,6 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="wrapper">
-
 						<div class="row no-gutters">
 							<div class="col-md-12">
 								<div class="contact-wrap w-100 p-md-5 p-4">
@@ -75,19 +74,15 @@
 												<span style="float: right" class="mt-4"><a
 													href="clinicListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
 													<c:if test="${loginUser.memberNo eq clinic.memberNo  }">
-														<a
-															href="clinicModifyView.kh?clinicNo=${clinic.clinicNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
+														<a href="clinicModifyView.kh?clinicNo=${clinic.clinicNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
 															<c:url var="cDelete" value="clinicDelete.kh">
 															<c:param name="clinicNo" value="${clinic.clinicNo }"></c:param>
-															<c:param name="clinicFileRename"
-																value="${clinic.clinicFileRename }"></c:param>
+															<c:param name="clinicFileRename" value="${clinic.clinicFileRename }"></c:param>
 														</c:url>
 														<a href="${cDelete }">삭제</a>
 													</c:if> </span>
-
 											</div>
 										</div>
-
 									</div>
 									<hr>
 									<div class="col-md-12 charArea">
@@ -95,15 +90,15 @@
 											<tbody>
 												<tr>
 													<td class="infoText">키우는 장소</td>
-													<td>실내</td>
+													<td>${clinic.clinicPlace }</td>
 												</tr>
 												<tr>
 													<td class="infoText">물 주는 방식</td>
-													<td>흙이 충분히 마른 후 듬뿍</td>
+													<td>${clinic.clinicHowWater }</td>
 												</tr>
 												<tr>
 													<td class="infoText">마지막 분갈이</td>
-													<td>50일 전</td>
+													<td>${clinic.clinicLastPot }</td>
 												</tr>
 											</tbody>
 										</table>
