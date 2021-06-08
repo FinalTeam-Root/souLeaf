@@ -495,4 +495,9 @@ public class MemberController {
 		}
 		
 	}
+	// 아이디 찾기 폼
+	@RequestMapping(value = "newPw.kh", method =  RequestMethod.GET)
+	public String newPw() throws Exception{
+		return "member/newPw";
+	}
 }
