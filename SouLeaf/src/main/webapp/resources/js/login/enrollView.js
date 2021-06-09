@@ -52,7 +52,7 @@ $(function(){ // code insert
 
 	$("#password").on("keyup",function(){
 		var passwordVal = $("#password").val();
-		var regExp = /^[a-z|A-z|0-9]{4,10}$/;
+		var regExp = /^[a-z|A-Z|0-9]{4,10}$/;
 		if(!regExp.test(passwordVal)){
 			$("#passwordCheck").html("비밀번호는 영소문자,숫자 4~10자리입니다.").css("color" ,"red");
 			return false;

@@ -61,6 +61,9 @@
  .btnarea {
  	text-align : center;
  }
+ #autoBtn {
+ margin-left : 150px;
+ }
 </style>
 <body>
 <div class="container bootstrap snippet wrapper">
@@ -93,7 +96,7 @@
 								<div class="form-group pb-3">
 									<p id="passwordCheck">
 								</div>
-									<div class="form-group">
+									<div class="form-group" id="autoBtn">
 													<button type="submit" id="pwUpdate" class="btn btn-primary">등록하기</button>
 													<input type="button" id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'" class="btn btn-primary" value="취소">
 													<%-- <button id="" onclick="location.href='myInfo.kh?memberNo=${member.memberNo}'">취소</button> --%>

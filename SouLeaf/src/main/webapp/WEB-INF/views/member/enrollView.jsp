@@ -62,6 +62,12 @@ height:50px;
 .checkBtn {
 color:red;
 }
+#emailAuthenticate{
+    width: 70px;
+    font-size: 13px;
+    margin-left: 310px;
+    margin-top: -50px;
+}
 </style>
 </head>
 <body>
@@ -88,7 +94,7 @@ color:red;
   <div class="form-group">
        <p id="checkNick" class="checkBtn">
   </div>
-  <div class="form-group pb-3">   
+  <div class="form-group pb-3" id="autoBtn">   
     <input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
     <input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기">
   </div>

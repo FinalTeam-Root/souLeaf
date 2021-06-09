@@ -37,6 +37,9 @@ position: relative;
 #msg {
  margin : 0;
 }
+#emailAuthenticate {
+background-color:#00bd56
+}
 </style>
 </head>
 <body>
@@ -47,7 +50,7 @@ position: relative;
 		<br>
 		<div class="row">
 			<div class="col-sm-12">
-				<h4>ENTER PASSWORD <span class="badge badge-secondary" style="background-color: #00bd56;">비밀번호 확인</span></h4>
+				<h4>ENTER PASSWORD <span class="badge badge-secondary" style="background-color: #00bd56;">비밀번호 재설정</span></h4>
 				<hr>
 				<div class="top_line">
 				</div>
@@ -73,7 +76,7 @@ position: relative;
 
 										 <div class="form-group pb-3">   
     										<input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
-   										 	<input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기" >
+   										 	<input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기"  >
 										</div>
 								</div>
 							</form>
