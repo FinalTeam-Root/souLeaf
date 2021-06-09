@@ -28,6 +28,7 @@ import com.souleaf.spring.diary.service.DiaryService;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantFile;
+import com.souleaf.spring.plant.domain.PlantInfo;
 import com.souleaf.spring.plant.service.PlantService;
 
 @Controller
@@ -51,7 +52,7 @@ public class CompanionController {
 			Member loginUser = (Member)session.getAttribute("loginUser");
 			ArrayList<Companion> companionList = companionService.printmemberAll(loginUser.getMemberNo());
 			ArrayList<Plant> pList = plantService.printAllList();
-			mv.addObject("pList",pList);
+			mv.addObject("pList",pList); // 반려식물 사진 불러오기위해 사용
 			System.out.println(companionList.toString());
 			log.info("반려식물 조회" + companionList.toString());
 			for(Companion listOne : companionList) {

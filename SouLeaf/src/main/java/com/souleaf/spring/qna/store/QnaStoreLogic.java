@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 
@@ -67,6 +68,22 @@ public class QnaStoreLogic implements QnaStore{
 	@Override
 	public int deleteAdminQna(HashMap<String, String> map) {
 		return sqlSession.update("qnaMapper.deleteAdminQna", map);
+	}
+	
+	// 마이페이지
+
+	@Override
+	public int selectMyQnaCount(int memberNo) {
+		return sqlSession.selectOne("qnaMapper.selectMyListCount", memberNo);
+	}
+
+	@Override
+	public ArrayList<Qna> selectAllMyQna(int memberNo, MypageInfo pi) {
+		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+		// 없이 쿼리문을 실행한다고 하면 전체 게시물을 가져오는데 
+		// 내가 원하는 게시물 만큼만가져온다 그래서 사용
+		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("qnaMapper.selectAllMyQna",memberNo, rowBounds);
 	}
 
 	

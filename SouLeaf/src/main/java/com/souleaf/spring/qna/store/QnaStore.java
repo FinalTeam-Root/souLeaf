@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 
@@ -19,4 +20,6 @@ public interface QnaStore {
 	public int deleteQna(int qId);
 	public ArrayList<Qna> selectAdminAll();
 	public int deleteAdminQna(HashMap<String, String> map);
+	public int selectMyQnaCount(int memberNo);
+	public ArrayList<Qna> selectAllMyQna(int memberNo, MypageInfo pi);
 }

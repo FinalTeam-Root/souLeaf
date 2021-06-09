@@ -366,7 +366,9 @@ public class DiaryController {
 			//ArrayList에서 gson형태로 변환시켜준다.
 			gson.toJson(gList, response.getWriter());
 		} else {
-			System.out.println("데이터가 없다!");
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create(); // 날짜 포맷 변경!
+			//ArrayList에서 gson형태로 변환시켜준다.
+			gson.toJson("null", response.getWriter());
 		}
 	}
 	// 방명록 등록

@@ -24,6 +24,8 @@
 						href="#myPage-clinic" role="tab" data-toggle="tab"> 식물클리닉 </a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="#myPage-curiosity" role="tab" data-toggle="tab"> 궁금해요 </a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="#myPage-qna" role="tab" data-toggle="tab"> Q&A </a></li>
 				</ul>
 			</div>
 
@@ -167,6 +169,54 @@
 										<i class="fa fa-search"></i>
 									</button>
 								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="tab-pane" id="myPage-qna">
+				<div>
+					<table class="table table-hover mypageTable">
+						<thead>
+							<tr>
+								<th scope="col">번호</th>
+								<th scope="col" style='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'>문의 내용</th>
+								<th scope="col">작성일</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr>
+								<td><input type="checkbox" name="del-select" class="chk" value="selectOne"></td>
+								<td scope="row">1</td>
+								<td><a href="#" class="noColor">오늘의 자랑하기 : 민달래</a></td>
+								<td>2021/05-21</td>
+								<td>25</td>
+								<td><button type="button" class="btn btn-outline-success btnGreen">수정</button>
+								<button type="button" class="btn btn-outline-danger">삭제</button></td>
+							</tr>
+
+							<tr>
+								<td><button type="button" class="btn btn-outline-warning">선택삭제</button></td>
+								<td colspan="5"></td>
+							</tr> -->
+						</tbody>
+					</table>
+
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<input type="hidden" id="pageInfo" value="">
+								<ul id="qna-page">
+									<!-- <li><a href="#">&lt;</a></li>
+									<li class="active"><span>1</span></li>
+									<li><a name="page" href="#">2</a></li>
+									<li><a name="page" href="#">3</a></li>
+									<li><a name="page" href="#">4</a></li>
+									<li><a name="page" href="#">5</a></li>
+									<li><a href="#">&gt;</a></li> -->
+								</ul>
 							</div>
 						</div>
 					</div>

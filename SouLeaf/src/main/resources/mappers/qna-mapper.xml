@@ -16,8 +16,7 @@
 		<result property="qnaStatus" column="QNA_STATUS"></result>
 		<result property="qnaCount" column="QNA_COUNT"></result>
 		<result property="ansNo" column="ANS_NO"></result>
-
-
+		<result property="num" column="NUM"/>
 	</resultMap>
 
 	<select id="selectListCount" resultType="_int">
@@ -40,7 +39,18 @@
 	<select id="selectOne" resultMap="qnaResultMap">
 		SELECT * FROM QNA WHERE QNA_NO = #{qnaNo} AND QNA_STATUS = 'Y'
 	</select>
-		
+	
+	<!-- 마이페이지 내가 쓴 qna 리스트 불러오기 -->
+	<select id="selectAllMyQna" resultMap="qnaResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY QNA_DATE ASC) AS NUM, A.* FROM (SELECT QNA_NO, QNA_CONTENT, QNA_DATE, ANS_NO FROM QNA FULL OUTER JOIN ANS USING (QNA_NO)) A WHERE MEMBER_NO = #{memberNo} AND QNA_STATUS = 'Y' ORDER BY QNA_DATE DESC;
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM QNA WHERE MEMBER_NO = #{memberNo} AND QNA_STATUS = 'Y'
+	</select>
+	
+	
+	<!-- 마이페이지 끝	 -->
 	<update id="updateQna">
 		UPDATE QNA SET QNA_TITLE = #{qnaTitle}, QNA_CONTENT = #{qnaContent}, QNA_UPDATE = SYSDATE WHERE QNA_NO = #{qnaNo}
 	</update>

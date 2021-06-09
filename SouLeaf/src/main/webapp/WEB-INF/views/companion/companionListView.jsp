@@ -204,7 +204,7 @@
 													<div class="form-group">
 														<label class="label" for="subject">tip!</label> <input
 															type="text" class="form-control" name="subject"
-															id="subject" value="${cList.plantWater }일마다 겉흙이 마르면 줘"
+															id="subject" value="${cList.plantWater } 일 마다 물줘!"
 															readonly>
 														<div class="top_line"></div>
 													</div>

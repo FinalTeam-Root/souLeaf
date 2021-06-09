@@ -38,6 +38,8 @@ import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.mypage.service.MypageService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
+import com.souleaf.spring.qna.domain.Qna;
+import com.souleaf.spring.qna.service.QnaService;
 import com.souleaf.spring.security.service.MemberSha256;
 
 @Controller
@@ -57,6 +59,9 @@ public class MypageController {
 	private CuriosityService curService;
 	@Autowired
 	private MypageService myService;
+	
+	@Autowired
+	private QnaService qService;
 	
 	// 마이페이지 뷰
 	@RequestMapping(value = "mypage.kh", method = RequestMethod.GET)
@@ -263,4 +268,25 @@ public class MypageController {
 		return "mypage/mypageReply";
 	}
 	
+	
+	//  큐앤에이 게시글 가져오기
+	@RequestMapping(value="myQnaList.kh")
+	public void getMyQnaList(HttpServletResponse response, HttpServletRequest request, @RequestParam(value="page", required=false) Integer page, HttpSession session) throws Exception{
+		session.setAttribute("fileName","");
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+		int currentPage = (page != null) ? page : 1;
+		int listCount = qService.getMyQnaListCount(memberNo);
+		MypageInfo pi = MypagePagination.getPageInfo(currentPage, listCount);
+		ArrayList<Qna> qnaList = qService.printAllMyQna(memberNo,pi);
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("pi", pi);
+		map.put("qnaList", qnaList);
+		if(!qnaList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map,response.getWriter());
+		}else {
+			System.out.println("QnA 리스트 없다! 어쩔래?");
+		}
+		
+	}
 }

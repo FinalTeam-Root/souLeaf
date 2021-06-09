@@ -49,7 +49,7 @@ public class QnaController {
 			mv.addObject("aList", aList);
 			mv.addObject("pi", pi);
 			mv.setViewName("qna/qnaListView");
-			log.info("QnA 전체 조회 성공");
+//			log.info("QnA 전체 조회 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
 			//log.info("QnA 전체 조회 실패");
@@ -151,7 +151,7 @@ public class QnaController {
 	public String qnaDelete(Model model, @RequestParam("qnaNo") int qnaNo) {
 		int result = qService.removeQna(qnaNo);
 		if(result > 0) {
-			return "redirect:qnaListView.kh";
+			return "redirect:mypageBoard.kh";
 		}else {
 			model.addAttribute("msg", "QnA 삭제 실패 ");
 			log.info("QnA 삭제 실패");

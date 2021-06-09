@@ -3,11 +3,13 @@ package com.souleaf.spring.qna.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.souleaf.spring.common.PageInfo;
 import com.souleaf.spring.member.store.MemberStore;
+import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.qna.domain.Qna;
 import com.souleaf.spring.qna.domain.QnaSearch;
 import com.souleaf.spring.qna.store.QnaStore;
@@ -72,6 +74,18 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public int removeAdminQna(HashMap<String, String> map) {
 		return qStore.deleteAdminQna(map);
+	}
+	
+	
+	// 마이페이지
+	@Override
+	public ArrayList<Qna> printAllMyQna(int memberNo, MypageInfo pi) {
+		return qStore.selectAllMyQna(memberNo,pi);
+	}
+
+	@Override
+	public int getMyQnaListCount(int memberNo) {
+		return qStore.selectMyQnaCount(memberNo);
 	}
 
 

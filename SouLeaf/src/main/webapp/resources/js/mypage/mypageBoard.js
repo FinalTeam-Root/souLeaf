@@ -11,6 +11,7 @@ $(function(){
     var pageInfo = $("#pageInfo").val();
     getMyCuriosityList(memberNo,pageInfo);
     getMyClincList(memberNo, pageInfo);
+    getMyQnaList(memberNo, pageInfo)
 
      // 마이페이지 궁금해요 검색 버튼 클릭
      var pageInfo = $("#pageInfo").val();
@@ -711,3 +712,97 @@ $(function(){
         }
 
     }
+
+
+    // 내가 쓴 클리닉 리스트 뿌려주기
+    function getMyQnaList(memberNo, pageInfo) {
+        var memberNo = $("#memberNo").val();
+        //var pageInfo = $("#pageInfo").val();
+        var $tr;
+        var $check;
+        var $num;
+        var $title;
+        var $writeDate;
+        var $btnArea;
+        var $chooseDelete;
+        var $delTr;
+
+        var $lt;
+        var $gt;
+        var $aActive;
+        var $a;
+
+        $.ajax({
+            url : "myQnaList.kh",
+            type : "get",
+            data : {"page" : pageInfo,"memberNo" : memberNo},
+            dataType : "json",
+            success : function(data) {
+                console.log(data);
+                var $tbody = $("#myPage-qna tbody");
+                var $paging = $("#qna-page");
+
+                var page = data.pi.currentPage;
+                var startPage = data.pi.startPage;
+                var endPage = data.pi.endPage;
+                var maxPage = data.pi.maxPage;
+                console.log(maxPage,endPage);
+
+                $tbody.html("");
+                $paging.html("");
+                if(data.qnaList.length > 0){
+                    for(var i in data.qnaList){
+                        $tr = $("<tr>");
+                        $num = $("<td scope='row'>").text(data.qnaList[i].num);
+                        $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='clinicDetail.kh?clinicNo="+data.qnaList[i].qnaNo+"&page=1&count=0'class='noColor'>"+data.qnaList[i].qnaContent+"</a>");
+                    
+                        $writeDate = $("<td>").text(data.qnaList[i].qnaDate);
+                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.qnaList[i].qnaNo+")'>수정</button><button type='button' onclick='deleteQna("+data.qnaList[i].qnaNo+")' class='btn btn-outline-danger'>삭제</button>");
+    
+                        
+                        $tr.append($num);
+                        $tr.append($title);
+                        $tr.append($writeDate);
+                        $tr.append($btnArea);
+                        
+                        $tbody.append($tr);
+                        $tbody.append($delTr);
+                    }
+                }
+                if(page <= 1){
+                    $lt = $("<li><a href='#'>&lt;</a></li>");
+                    $paging.append($lt);
+                }else {
+                    $lt = $("<li><a href='#' onclick='getMyClincList("+data.qnaList[0].memberNo+","+(Number(page)-1)+"); return false;'>&lt;</a></li>");
+                    $paging.append($lt);
+                }
+                for(var j = startPage; j<=endPage; j++){
+                    if(j == page){
+                        $aActive = $('<li class="active"><span>'+j+'</span></li>');
+                        $paging.append($aActive);
+                    }else {
+                        $a = $("<li><a name='page' href='#' onclick='getMyClincList("+data.qnaList[0].memberNo+","+j+"); return false;'>"+j+"</a></li>");
+                        $paging.append($a);
+                    }
+                }
+                if(page >= maxPage){
+                    $gt = $('<li><a href="#">&gt;</a></li>');
+                    $paging.append($gt);
+                } else {
+                    $gt = $("<li><a href='#' onclick='getMyClincList("+data.qnaList[0].memberNo+","+(Number(page)+1)+"); return false;'>&gt;</a></li>");
+                    $paging.append($gt);
+                }
+
+
+            },
+            error : function(){
+                
+            }
+        });
+    }
+
+
+    function deleteQna(qnaNo){
+        location.href="qnaDelete.kh?qnaNo="+qnaNo+'';
+    }
+
