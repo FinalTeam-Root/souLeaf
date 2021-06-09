@@ -350,7 +350,7 @@ public class BoastController {
       String renameFileName = sdf.format(new Date(System.currentTimeMillis())) + "."
             + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
       // a.bc.jpg
-      String filePath = folder + "\\" + renameFileName;
+      String filePath = folder + "/" + renameFileName;
       // 파일저장
       try {
          file.transferTo(new File(filePath));
