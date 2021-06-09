@@ -6,6 +6,7 @@
   <head>
     <meta charset="utf-8">
     <title>Q&A</title>
+    <jsp:include page="../common/loginCheck.jsp"></jsp:include>
  	<jsp:include page="../common/header.jsp"></jsp:include> 
     <link rel="stylesheet" href="resources/css/member/member-style.css">
     <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">

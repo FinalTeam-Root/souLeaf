@@ -25,10 +25,21 @@ $(function(){ // code insert
 	});
 		
 	$("#signbtn").on("click",function(){
+		var passwordVal = $("#password").val();
+		var regExp = /^[a-z|A-Z|0-9]{4,10}$/;
 		if($('#isEmailAuthSuccess').val() != 'success'){
 			alert('이메일 인증을 진행해주셔야 회원가입이 완료됩니다.');
-			return;
+			return false;
 		}
+			if(!regExp.test(passwordVal)){
+			$("#passwordCheck").html("비밀번호는 영소문자,숫자 4~10자리입니다.").css("color" ,"red");
+			return false;
+		} 
+		if($("#password").val() != $("#password1").val() && $("#password").val()!= ""){
+			$("#passwordCheck").html("패스워드가 일치하지 않습니다").css("color" ,"red");
+		}else{
+			$("#passwordCheck").html("");
+		}		
 		
 	});
 
@@ -92,7 +103,6 @@ $(function(){ // code insert
 					
 	});
 });
-				
  
 	       	
 	        

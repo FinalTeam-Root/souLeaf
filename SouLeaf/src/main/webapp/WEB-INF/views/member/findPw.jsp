@@ -40,6 +40,11 @@ position: relative;
 #emailAuthenticate {
 background-color:#00bd56
 }
+.btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
 </style>
 </head>
 <body>
@@ -76,8 +81,8 @@ background-color:#00bd56
 
 										 <div class="form-group pb-3">   
     										<input type="text" placeholder="이메일" name="memberMail" class="form-control" id="email">
-   										 	<input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control" id="emailAuthenticate" value="인증하기"  >
 										</div>
+   										 	<input type="button" placeholder="인증하기" name="memberMailAuthenticate" class="form-control btn-success" id="emailAuthenticate" value="인증하기"  >
 								</div>
 							</form>
 						</div>

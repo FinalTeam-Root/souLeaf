@@ -65,7 +65,7 @@ color:red;
 #emailAuthenticate{
     width: 70px;
     font-size: 13px;
-    margin-left: 310px;
+    margin-left: 80%;
     margin-top: -50px;
 }
 </style>
@@ -109,7 +109,7 @@ color:red;
   </div>
   <div class="d-flex align-items-center justify-content-between">
 </div>
-<input type="submit" value="가입하기" class="btn btn-success w-100 font-weight-bold mt-2" id="signbtn">
+<input type="submit" value="가입하기"  class="btn btn-success w-100 font-weight-bold mt-2" id="signbtn">
 </form>
 </div>
 	<input type="hidden" id="isEmailAuthSuccess" style="display: none;">
