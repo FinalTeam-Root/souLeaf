@@ -69,7 +69,7 @@
 	</insert>
 	
 	<select id="selectAllReplyList" parameterType="CuriosityReply" resultMap="curiosityReplyResultMap">
-		SELECT * FROM CURICOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOCOMMENT_STATUS = 'Y'
+		SELECT * FROM CURICOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CURIOSITY_NO = #{curiosityNo} AND CURIOCOMMENT_STATUS = 'Y' ORDER BY CURICOMMENT_NO
 	</select>
 	
 	<update id="updateReply">

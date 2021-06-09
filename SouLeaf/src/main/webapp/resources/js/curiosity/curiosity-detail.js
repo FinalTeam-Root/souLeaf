@@ -242,9 +242,9 @@ function getReplyList(curiosityNo){
 		 for(var i in data){
 			str+='<div class="media p-3">';
 			if(data[i].memberFileRename == null){
-				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+				str+='<img src="resources/images/basicMemberImg.png" alt="image" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
 			}else{
-				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="img" onerror="this.src=\'resources/images/basicMemberImg.png\'" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
 			}			
 			str+='<div class="media-body">';
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
