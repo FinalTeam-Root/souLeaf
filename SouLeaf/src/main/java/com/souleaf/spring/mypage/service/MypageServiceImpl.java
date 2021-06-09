@@ -10,6 +10,7 @@ import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.store.CuriosityStore;
+import com.souleaf.spring.mypage.domain.MyReply;
 import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.mypage.store.MypageStore;
 
@@ -41,6 +42,11 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public ArrayList<Curiosity> printSearchAllList(HashMap<String, Object> map) {
 		return null;
+	}
+
+	@Override
+	public ArrayList<MyReply> printAllMyReply(int memberNo) {
+		return mStore.selectAllMyReply(memberNo);
 	}
 
 

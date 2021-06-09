@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.curiosity.domain.Curiosity;
+import com.souleaf.spring.mypage.domain.MyReply;
 
 @Repository
 public class MypageStoreLogic implements MypageStore{
@@ -29,6 +30,11 @@ public class MypageStoreLogic implements MypageStore{
 	@Override
 	public ArrayList<Curiosity> selectAllMyCuriosity(int memberNo) {
 		return (ArrayList)sqlSession.selectList("mypageMapper.selectAllMyCuriosity", memberNo);
+	}
+
+	@Override
+	public ArrayList<MyReply> selectAllMyReply(int memberNo) {
+		return (ArrayList)sqlSession.selectList("mypageMapper.selectAllMyReply", memberNo);
 	}
 
 

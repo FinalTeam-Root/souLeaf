@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,9 +31,11 @@ import com.souleaf.spring.curiosity.domain.Curiosity;
 import com.souleaf.spring.curiosity.service.CuriosityService;
 import com.souleaf.spring.member.domain.Member;
 import com.souleaf.spring.member.service.MemberService;
+import com.souleaf.spring.mypage.domain.MyReply;
 import com.souleaf.spring.mypage.domain.MypageInfo;
 import com.souleaf.spring.mypage.domain.MypagePagination;
 import com.souleaf.spring.mypage.domain.MypageSearch;
+import com.souleaf.spring.mypage.service.MypageService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.service.PlantService;
 import com.souleaf.spring.security.service.MemberSha256;
@@ -52,6 +55,8 @@ public class MypageController {
 	
 	@Autowired
 	private CuriosityService curService;
+	@Autowired
+	private MypageService myService;
 	
 	// 마이페이지 뷰
 	@RequestMapping(value = "mypage.kh", method = RequestMethod.GET)
@@ -243,6 +248,19 @@ public class MypageController {
 		}
 	
 		
+	}
+	
+	// 마이페이지 내 댓글관리 뷰
+	@RequestMapping(value="mypageReply.kh")
+	public String mypageReply(HttpSession session, Model model) {
+		Member member = (Member)session.getAttribute("loginUser");
+		int memberNo = member.getMemberNo();
+		ArrayList<MyReply> myList = myService.printAllMyReply(memberNo);
+		if(! myList.isEmpty()) {
+			model.addAttribute("myList",myList);
+			return "mypage/mypageReply";
+		}
+		return "mypage/mypageReply";
 	}
 	
 }

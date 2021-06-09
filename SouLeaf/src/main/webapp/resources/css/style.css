@@ -8044,7 +8044,7 @@ h1, h2, h3, h4, h5,
 
 .wrap {
   position: sticky;
-  z-index: 3;
+  z-index: 300;
   width: 100%;
   top: 0px;
   width: 100%;
@@ -8097,7 +8097,7 @@ h1, h2, h3, h4, h5,
 
 .ftco-navbar-light {
   background: #fff !important;
-    z-index: 3;
+    z-index: 300;
     padding: 0;
     position: sticky;
     top: 40px;
