@@ -252,10 +252,14 @@ document.addEventListener('DOMContentLoaded', function() {
       dataType : "json",
       success : function(data) {
         if(data.resultYN == "success") {
-          alert("일기가 삭제되었습니다.");
-          $('#eventModal-modify').modal('hide');
-          calendar.refetchEvents();
-          getDiaryPicList();
+          var delChk = confirm("일기가 삭제하시겠습니까?");
+          if(delChk == true){
+            $('#eventModal-modify').modal('hide');
+            calendar.refetchEvents();
+            getDiaryPicList();
+          } else {
+            
+          }
         } else {
           alert("일기 삭제 실패!!");
         }

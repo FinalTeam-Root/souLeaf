@@ -168,7 +168,7 @@
 <body>
 	<div class="container bootstrap snippet">
 		<br> <br>
-		<div class="col-md-12" style="margin-top: 20px;">
+		<div class="col-md-12" style="margin:70px 0 130px 0;">
 			<div class="row">
 				<div class="col-md-3">
 					<div class="myInfo">
