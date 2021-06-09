@@ -158,6 +158,11 @@ function getGuestbookList() {
      console.log(data);
      var $cacommentList = $(".comment-list");
      $cacommentList.html("");
+     if(data == "null"){
+      $cacommentList.html("<br><br><br><h3> 등록된 방명록이 없습니다. </h3><br><br><br>");
+      $cardBody.html("");
+     }
+
      if(data.length > 0) {
        for(var i in data){
          var $cardBody = $("<div class='card-body'>");
