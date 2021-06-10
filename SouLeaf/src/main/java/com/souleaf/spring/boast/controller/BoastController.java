@@ -217,6 +217,10 @@ public class BoastController {
       int memberNo = member.getMemberNo();
       boast.setMemberNo(memberNo);
       boast.setBoastFileRename(boastFileRename);
+      int companionNo = boast.getCompanionNo();
+      System.out.println("반려식물번호"+ companionNo);
+      Companion cOne = cService.printOne(companionNo);
+      boast.setPlantNo(cOne.getPlantNo());
       int result = bService.modifyBoast(boast);
       System.out.println(result);
       if (result > 0) {

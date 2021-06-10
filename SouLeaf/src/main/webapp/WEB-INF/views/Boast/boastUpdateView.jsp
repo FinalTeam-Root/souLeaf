@@ -39,8 +39,8 @@
 														<c:if test="${cList ne null }">
 															<div class="btn-group btn-group-toggle" data-toggle="buttons">
 														<c:forEach items="${cList }" var="companion" varStatus="status">															
-																<label class="btn btn-outline-success <c:if test="${companion.plantNo eq boast.plantNo  }">active</c:if>">
-																	<input type="radio" name="companionNo" id="jb-radio-${companion.companionNo }" value="${companion.companionNo }"> ${companion.companionNick }
+																<label class="btn btn-outline-success <c:if test="${companion.companionNo eq boast.companionNo  }">active</c:if>">
+																	<input type="radio" name="companionNo" id="jb-radio-${companion.companionNo }" value="${companion.companionNo }" <c:if test="${companion.companionNo eq boast.companionNo  }">checked</c:if>> ${companion.companionNick }
 																</label>																
 														</c:forEach>
 															</div>

@@ -52,7 +52,7 @@
 
    <update id="updateBoast">
       UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENTS =
-      #{boastContents}, BOAST_UPDATE = SYSDATE, COMPANION_NO = #{companionNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
+      #{boastContents}, BOAST_UPDATE = SYSDATE, PLANT_NO = #{plantNo}, COMPANION_NO = #{companionNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
    </update>
    <update id="updateCount">
       UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
