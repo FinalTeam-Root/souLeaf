@@ -230,8 +230,11 @@ public class ClinicController {
 	}
 	
 	// 클리닉 댓글 삭제
-	public String clinicReplyDelete(int clinicNo, Model model) {
-		return "";
+	@ResponseBody
+	@RequestMapping(value="clinicReplyDelete.kh")
+	public String clinicReplyDelete(@RequestParam("cliniccommentNo") int clinicNo, Model model) {
+		int result = cService.removeClinicReply(clinicNo);
+		return result+"";
 	}
 	
 	// 파일 저장

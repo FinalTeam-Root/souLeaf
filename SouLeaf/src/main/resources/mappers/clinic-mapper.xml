@@ -94,7 +94,7 @@
 	</insert>
 	
 	<select id="selectAllReplyList" parameterType="ClinicReply" resultMap="clinicReplyResultMap">
-		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y'
+		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y' ORDER BY CLINICCOMMENT_NO
 	</select>
 	
 	<update id="updateReply">
@@ -102,7 +102,7 @@
 	</update>
 	
 	<update id="deleteReply">
-		UPDATE CLINIC SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
 	</update>
 	
 	<!-- 관리자 -->

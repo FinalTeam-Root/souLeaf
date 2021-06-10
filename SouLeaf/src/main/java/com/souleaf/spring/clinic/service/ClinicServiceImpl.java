@@ -100,8 +100,7 @@ public class ClinicServiceImpl implements ClinicService{
 
 	@Override
 	public int removeClinicReply(int clinicNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return cStore.deleteClinicReply(clinicNo);
 	}
 
 	@Override

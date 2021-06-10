@@ -139,7 +139,7 @@ function getReplyList(clinicNo){
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
 			str+='<span>'+data[i].cliniccommentContent+'</span><br>';
             if(loginNo == data[i].memberNo){
-				str+='<small>'+data[i].cliniccommentDate+' <span onclick="replyModifyView(this,'+data[i].clinicNo+','+data[i].memberNo+','+data[i].cliniccommentNo+',\''+data[i].cliniccommentContent+'\')" class="text-success clinic-btn">수정</span> <span class="text-danger clinic-btn">삭제</span></small><br>';
+				str+='<small>'+data[i].cliniccommentDate+' <span onclick="replyModifyView(this,'+data[i].clinicNo+','+data[i].memberNo+','+data[i].cliniccommentNo+',\''+data[i].cliniccommentContent+'\')" class="text-success clinic-btn">수정</span> <span onclick="replyDelete('+data[i].cliniccommentNo+','+data[i].clinicNo+')" class="text-danger clinic-btn">삭제</span></small><br>';
 
 			}else{
 				str+='<small>'+data[i].cliniccommentDate+'</small><br>';
@@ -157,6 +157,26 @@ function getReplyList(clinicNo){
 		}
 	
 	  });
+}
+
+function replyDelete(replyNo,clinicNo){	
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+	$.ajax({
+		url: "clinicReplyDelete.kh",
+		type: "get",
+		data: {"cliniccommentNo":replyNo},
+		success : function(data){
+			console.log(data);
+			getReplyList(clinicNo);
+		},
+		error: function(){
+			console.log('fail');
+		}
+	});
+}
 }
 
 
