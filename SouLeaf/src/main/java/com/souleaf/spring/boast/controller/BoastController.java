@@ -329,9 +329,18 @@ public class BoastController {
    // }
 
    // 자랑하기 댓글 삭제
-   public String boastReplyDelete(int boastNo, Model model) {
-      return "";
-   }
+   @ResponseBody
+   @RequestMapping(value = "boastReplyDelete.kh", method = RequestMethod.POST)
+   public String boastReplyDelete(@ModelAttribute BoastReply reply, HttpSession session) {
+	   Member loginUser = (Member) session.getAttribute("loginUser");
+	      reply.setMemberNo(loginUser.getMemberNo());
+	      int result = bService.removeBoastReply(reply);
+	      if (result > 0) {
+	          return result + "";
+	       } else {
+	          return result + "";
+	       }
+	    }
 
    // 파일 저장
    public String saveFile(MultipartFile file, HttpServletRequest request) {

@@ -93,4 +93,8 @@
       UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOCOMMENT_NO = #{bocommentNo}
    </update>
 
+
+	<update id="deleteBoastReply">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N'WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo } </update>
+	
 </mapper>

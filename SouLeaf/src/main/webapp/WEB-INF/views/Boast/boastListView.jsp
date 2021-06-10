@@ -60,7 +60,7 @@
 	              	  <div>${boast.memberNick}</div>
 	                  <div>${boast.boastDate }</div><br>
 	              	  <div class=""><span class="far fa-eye"></span> ${boast.boastCount }</div>
-	                  <div class=""><span class="fa fa-comment"></span> 0</div>
+	                  <div class=""><span class="fa fa-comment"></span> </div>
 	                     <div class=""><span class="fas fa-heart"></span> 0</div>	                     
 	                </div>
 	                <h3 class="heading boast-title"><a href="boastDetail.kh?boastNo=${boast.boastNo }">${boast.boastTitle }</a></h3>
