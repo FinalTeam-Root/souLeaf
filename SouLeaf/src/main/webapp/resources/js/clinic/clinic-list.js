@@ -122,3 +122,4 @@ function getClinicList(page){
 function goPage(clinicNo, page, count) {
     location.href="clinicDetail.kh?clinicNo="+clinicNo+"&page="+page+"&count="+count+"";
 }
+

@@ -15,7 +15,9 @@ import com.souleaf.spring.plant.domain.Plant;
 public interface ClinicStore {
 	public ArrayList<Clinic> selectAll();
 	public int selectClinicListCount();
+	public int selectClinicSearchListCount(String search);
 	public ArrayList<Clinic> selectAllList(PageInfo pi);// 게시글 출력
+	public ArrayList<Clinic> selectAllSearchList(PageInfo pi, String search); // 검색 게시글 출력
 	public Clinic selectOne(int clinicNo);// 게시글 상세보기
 	public int insertClinic(Clinic clinic);// 게시글 등록
 	public int updateClinic(Clinic clinic);// 게시글 수정

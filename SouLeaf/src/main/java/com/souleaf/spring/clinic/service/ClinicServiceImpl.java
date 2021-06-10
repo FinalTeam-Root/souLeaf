@@ -171,5 +171,15 @@ public class ClinicServiceImpl implements ClinicService{
 	public ArrayList<Plant> printSearchAllList(String search) {
 		return cStore.selectSearchAllList(search);
 	}
+
+	@Override
+	public int getClinicSearchListCount(String search) {
+		return cStore.selectClinicSearchListCount(search);
+	}
+
+	@Override
+	public ArrayList<Clinic> printAllSearchList(PageInfo pi, String search) {
+		return cStore.selectAllSearchList(pi, search);
+	}
 	
 }

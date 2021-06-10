@@ -150,7 +150,7 @@ public class ClinicStoreLogic implements ClinicStore{
 	public ArrayList<Clinic> selectSearchAllList(MypageSearch search, MypageInfo pi) {
 		int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchAllList", search,rowBounds);
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectMySearchAllList", search,rowBounds);
 	}
 
 	@Override
@@ -179,6 +179,18 @@ public class ClinicStoreLogic implements ClinicStore{
 	@Override
 	public ArrayList<Plant> selectSearchAllList(String search) {
 		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchAllList", search);
+	}
+
+	@Override
+	public int selectClinicSearchListCount(String search) {
+		return sqlSession.selectOne("clinicMapper.selectSearchListCount",search);
+	}
+
+	@Override
+	public ArrayList<Clinic> selectAllSearchList(PageInfo pi, String search) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit(); 
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchList", search, rowBounds);
 	}
 
 }

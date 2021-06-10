@@ -59,12 +59,20 @@
 		SELECT CLINIC_NO,CLINIC_CONTENT,CLINIC_DATE,CLINIC_FILERENAME,MEMBER_NO,MEMBER_NICK,CLINIC_LIKE,CLINIC_COUNT,(SELECT COUNT(*) FROM CLINICCOMMENT B WHERE A.CLINIC_NO=B.CLINIC_NO) REPLY_COUNT FROM CLINIC A JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_STATUS = 'Y' ORDER BY CLINIC_NO DESC
 	</select>
 	
+	<select id="selectSearchList" parameterType="String" resultMap="clinicResultMap">
+		SELECT CLINIC_NO,CLINIC_CONTENT,CLINIC_DATE,CLINIC_FILERENAME,MEMBER_NO,MEMBER_NICK,CLINIC_LIKE,CLINIC_COUNT,(SELECT COUNT(*) FROM CLINICCOMMENT B WHERE A.CLINIC_NO=B.CLINIC_NO) REPLY_COUNT FROM CLINIC A JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_CONTENT LIKE '%'||#{value}||'%' AND CLINIC_STATUS = 'Y' ORDER BY CLINIC_NO DESC
+	</select>
+	
 	<select id="selectClinic" parameterType="Clinic" resultMap="clinicResultMap">
 		SELECT * FROM CLINIC JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINIC_STATUS = 'Y'
 	</select>
 	
 	<select id="selectListCount" resultType="_int">
 		SELECT COUNT(*) FROM CLINIC WHERE CLINIC_STATUS = 'Y'
+	</select>
+	
+	<select id="selectSearchListCount" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM CLINIC WHERE CLINIC_STATUS = 'Y' AND CLINIC_CONTENT LIKE '%'||#{value}||'%'
 	</select>
 	
 	<update id="deleteClinic">
@@ -117,7 +125,7 @@
 		SELECT COUNT(*) FROM CLINIC WHERE MEMBER_NO = #{memberNo} AND CLINIC_STATUS = 'Y'
 	</select>
 	
-	<select id="selectSearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="clinicResultMap">
+	<select id="selectMySearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="clinicResultMap">
 		SELECT ROW_NUMBER() OVER (ORDER BY CLINIC_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM CLINIC ) A 
 		<if test="searchCondition.toString() == 'searchTitle'">
 			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'

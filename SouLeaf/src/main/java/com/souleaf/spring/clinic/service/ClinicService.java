@@ -15,7 +15,9 @@ import com.souleaf.spring.plant.domain.Plant;
 public interface ClinicService {
 	public ArrayList<Clinic> printAll();
 	public int getClinicListCount(); // 게시글 갯수 
+	public int getClinicSearchListCount(String search); // 검색 게시글 갯수 
 	public ArrayList<Clinic> printAllList(PageInfo pi);// 게시글 출력
+	public ArrayList<Clinic> printAllSearchList(PageInfo pi, String search); // 검색 게시글 출력
 	public Clinic printOne(int clinicNo);// 게시글 상세보기
 	public int registerClinic(Clinic clinic);// 게시글 등록
 	public int modifyClinic(Clinic clinic);// 게시글 수정
@@ -46,6 +48,7 @@ public interface ClinicService {
 	public int removeMyClinic(HashMap<String, String> map);
 	
 	public ArrayList<Plant> printSearchAllList(String search); //클리닉 검색
+	
 	
 
 }

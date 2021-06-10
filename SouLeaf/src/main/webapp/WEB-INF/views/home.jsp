@@ -310,7 +310,7 @@
 				<div class="row ftco-animate" align="center">
 					<div class="col-md-12 services-2 w-100 d-flex">
 						<div class="text pl-3">
-							<form action="#">
+							<form action="clinicMainSearch.kh" method="get">
 								<div class="form-group ">
 									<h1
 										style="display: -webkit-inline-box; font-weight: 800; font-size: 4.78571vw; color:#fff;">
@@ -320,7 +320,7 @@
 									</h1>
 								</div>
 							  <div class="form-group">
-				                  <input type="text" class="clinic-search" name="search" autocomplete="OFF">
+				                  <input type="text" class="clinic-search" name="searchValue" autocomplete="OFF">
 				                  <span class="fa fa-search" style="font-size:2.78571vw; color:#eee;"></span>
 				                </div>
 							</form>

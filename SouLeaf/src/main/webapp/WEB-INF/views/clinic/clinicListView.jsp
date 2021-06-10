@@ -36,16 +36,15 @@
 			<input type="hidden" id="currentCount" value="${count }">
 
 				<button class="btn btn-primary" style="float: right;" onclick="location.href='clinicWrite.kh'">글쓰기</button>
-				<form action="clinicMainSearch.kh" method="get" class="search-form">
-					<div class="row" style="margin: 50px auto; width: 550px;">
-						<div id="selectSearch">
+					<div class="row" style="justify-content: center;">
+						<!-- <div id="selectSearch">
 							<select name="searchCondition" id="clinicSearchCondition" class="form-control-sm">
 								<option value="searchAll">전체</option>
 								<option value="searchTitle">제목</option>
 								<option value="searchContent">내용</option>
 							</select>
-						</div>
-		
+						</div> -->
+						<form action="clinicMainSearch.kh" method="get">
 						<div id="custom-search-input">
 							<div class="input-group col-md-12">
 								<input type="text" name="searchValue" id="clinicSearchValue" class="form-control-sm input" placeholder="검색어를 입력해주세요." />
@@ -56,8 +55,8 @@
 								</span>
 							</div>
 						</div>
+						</form>
 					</div>
-				</form>
 			<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">

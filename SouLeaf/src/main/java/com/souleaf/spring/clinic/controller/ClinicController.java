@@ -335,16 +335,44 @@ public class ClinicController {
         return check;
     }
     
+    // 클리닉 검색
 	@RequestMapping(value="clinicMainSearch.kh")
-	public ModelAndView clinicMainSearch(ModelAndView mv,@RequestParam("search") String search,HttpServletRequest session) {
+	public ModelAndView clinicMainSearch(ModelAndView mv,@RequestParam("searchValue") String search,@RequestParam(value = "page", required = false) Integer page ,@RequestParam(value = "count", required = false) Integer count,HttpServletRequest session) {
+		int currentPage = (page != null) ? page : 1;
+		int currentCount = (count != null) ? count : 0;		
 		session.setAttribute("nav", "clinic");
-		ArrayList<Plant> pList = cService.printSearchAllList(search);
-		if(! pList.isEmpty()) {
-			mv.addObject("pList",pList).setViewName("plant/plantSearchView");
-		}else {
-			mv.addObject("pList",null).addObject("search",search).setViewName("plant/plantSearchView");
-		}
+		session.setAttribute("fileName", "");
+		mv.addObject("page",currentPage).addObject("count",currentCount).setViewName("clinic/clinicSearchListView");
 		return mv;
+	}
+	
+	// 클리닉 검색 리스트 출력
+	@RequestMapping(value="clinicSearchList.kh")
+	public void getClinicSearchList(HttpServletResponse response,@RequestParam("searchValue") String search, @RequestParam(value = "page", required = false) Integer page) throws Exception {
+		int currentPage = (page != null) ? page : 1;
+		System.out.println(search);
+		int listCount = cService.getClinicSearchListCount(search);
+		log.info("클리닉 검색 카운트 : " + listCount);
+		PageInfo pi = ClinicPagination.getPageInfo(currentPage, listCount);
+		ArrayList<Clinic> cList = cService.printAllSearchList(pi,search);
+		log.info("클리닉 검색 조회" + cList.toString());
+		if(! cList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(cList, response.getWriter());
+		}else {
+			System.out.println("데이터가 없습니다");
+		}
+	}
+	
+	// 클리닉 검색 페이지 출력
+	@RequestMapping(value="clinicSearchPage.kh")
+	public void getClinicSearchPage(HttpServletResponse response,@RequestParam("searchValue") String search, @RequestParam(value = "page", required = false) Integer page) throws Exception  {
+		int currentPage = (page != null) ? page : 1;
+		int listCount = cService.getClinicSearchListCount(search);
+		log.info("클리닉 써치 카운트 : " + listCount);
+		PageInfo pi = ClinicPagination.getPageInfo(currentPage, listCount);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(pi, response.getWriter());
 	}
 
 }
