@@ -79,8 +79,7 @@ function getHashTag(){
 			},200);
 			$("#hashTag").hide();
 		}
-		var search = $("#hashTagSearch").val();
-		console.log($("#hashTagSearch").val());
+		var search = $("#hashTagSearch").val();		
 		$("#replyContent").val(function(){
 			return $("#hashTagText").text() + search;
 		});
@@ -92,10 +91,15 @@ function getHashTag(){
 					data:{"tagName":search},
 					dataType:"json",
 					success:function(data){
-						console.log(data);
+						
 						var str = "";
-						for(var i in data){
-							str+='<span class="hashTagPlant"onmouseover="chageColor(this)"onmouseout="chageDefaultColor(this)" onclick="insertText(\''+data[i].plantName+'\')">'+data[i].plantName+'<br></span>';
+						if(data.length > 0){
+							
+							for(var i in data){
+								str+='<span class="hashTagPlant"onmouseover="chageColor(this)"onmouseout="chageDefaultColor(this)" onclick="insertText(\''+data[i].plantName+'\')">'+data[i].plantName+'<br></span>';
+							}
+						}else{
+							str='검색결과가 없습니다';
 						}
 						$("#hashTagResult").html(str);
 						}

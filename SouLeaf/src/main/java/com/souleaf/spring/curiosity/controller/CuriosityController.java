@@ -293,11 +293,12 @@ public class CuriosityController {
 	public void getHashTagList(@RequestParam("tagName") String tagName, HttpServletResponse response) throws Exception {
 		String tag = tagName.replace("#","");		
 		  ArrayList<Plant> pList = pService.printHashListName(tag);
-		  if(! pList.isEmpty()) {
 		  Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+		  if(! pList.isEmpty()) {
 		  gson.toJson(pList, response.getWriter()); 
 		  }else {
-		  System.out.println("데이터가 없습니다"); }
+		  gson.toJson(pList, response.getWriter());		 
+		  }
 		 
 		
 	}
