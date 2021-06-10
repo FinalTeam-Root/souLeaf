@@ -134,6 +134,11 @@ public class CuriosityStoreLogic implements CuriosityStore{
 	public int deleteMyCuriosity(HashMap<String, String> map) {
 		return sqlSession.update("curiosityMapper.deleteMyCuriosity", map);
 	}
+
+	@Override
+	public void deleteCuriosityReplys(int curiosityNo) {
+		sqlSession.update("curiosityMapper.deleteReplys", curiosityNo);
+	}
 	
 	
 

@@ -45,17 +45,7 @@ $(function(){
 			// Mousetrap.bind('backspace', function(e) {				
 			// 	$("#hashTag").hide();
 			// });
-			
-
-		
-			  $("#emojionearea5").emojioneArea({
-				pickerPosition: "top",
-				filtersPosition: "bottom",
-			  tones: false,
-			  autocomplete: false,
-			  inline: true,
-			  hidePickerOnBlur: true
-			});
+	
 	
 });
 function getHashTag(){

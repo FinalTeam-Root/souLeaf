@@ -96,7 +96,7 @@
 </div> -->
 									<br>
 									<div class="row" style="position: relative;justify-content: center;">
-									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%;height: 32px !important;" placeholder="댓글을 남겨주세요"   autocomplete="off">
+									<input type="text" class="form-control mousetrap" id="replyContent" style="width: 95%;height: 32px !important;" placeholder="#식물이름"   autocomplete="off">
 									<button class="mt-4 p-2 btn reply-btn" onclick="replyRegister(${curiosity.curiosityNo})">등록</button>
 									
 									</div>

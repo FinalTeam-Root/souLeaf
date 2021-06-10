@@ -19,6 +19,7 @@ public interface CuriosityStore {
 	public int insertCuriosity(Curiosity curiosity);// 게시글 등록
 	public int updateCuriosity(Curiosity curiosity);// 게시글 수정
 	public int deleteCuriosity(int curiosityNo);// 게시글 삭제
+	public void deleteCuriosityReplys(int curiosityNo); // 게시글 삭제 시 댓글 삭제
 	public ArrayList<Plant> selectAllhashTagList();// 해시태그 출력
 	public int addReadCount(int curiosityNo);// 조회수증가
 	public ArrayList<CuriosityReply> selectAllCuriosityReply(int curiosityNo);// 댓글 전체 출력

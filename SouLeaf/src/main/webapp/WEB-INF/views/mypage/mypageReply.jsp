@@ -68,7 +68,12 @@
           </c:forEach>
         </tbody>
     </table>
+    	<c:if test="${myList eq null }">
+    	<div class="custom-form">댓글데이터 0 건</div>
+    	</c:if>
+    	<c:if test="${myList ne null }">
         <div class="custom-form">댓글데이터 ${myList.size()} 건</div>
+        </c:if>
 			</div>
 
 			

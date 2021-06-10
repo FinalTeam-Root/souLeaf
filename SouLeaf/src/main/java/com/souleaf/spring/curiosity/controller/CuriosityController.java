@@ -172,6 +172,7 @@ public class CuriosityController {
 		int currentCount = (count != null) ? count : 0;
 		int result = cService.removeCuriosity(curiosityNo);
 		if(result > 0) {
+			cService.removeCuriosityReplys(curiosityNo);
 			return "redirect:curiosityListView.kh?page="+currentPage+"&count="+currentCount;
 		}else {
 			return "redirect:curiosityListView.kh?page="+currentPage+"&count="+currentCount;			

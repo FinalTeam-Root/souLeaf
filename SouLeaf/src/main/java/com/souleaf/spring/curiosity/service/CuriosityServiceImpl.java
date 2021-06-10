@@ -121,6 +121,12 @@ public class CuriosityServiceImpl implements CuriosityService {
 	public int removeMyCuriosity(HashMap<String, String> map) {
 		return cStore.deleteMyCuriosity(map);
 	}
+
+	@Override
+	public void removeCuriosityReplys(int curiosityNo) {
+		cStore.deleteCuriosityReplys(curiosityNo);
+		
+	}
 	
 
 }

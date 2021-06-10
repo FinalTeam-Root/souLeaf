@@ -20,6 +20,7 @@ public interface CuriosityService {
 	public int registerCuriosity(Curiosity curiosity);// 게시글 등록
 	public int modifyCuriosity(Curiosity curiosity);// 게시글 수정
 	public int removeCuriosity(int curiosityNo);// 게시글 삭제
+	public void removeCuriosityReplys(int curiosityNo); // 게시글 삭제 시 댓글 삭제
 	public ArrayList<Plant> printAllhashTagList();// 해시태그 출력
 	public int addReadCount(int curiosityNo);// 조회수증가
 	public ArrayList<CuriosityReply> printAllCuriosityReply(int curiosityNo);// 댓글 전체 출력
