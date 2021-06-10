@@ -113,7 +113,20 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
-
+	$("#changePwbtn").on("click",function(){
+		var passwordVal = $("#newMemberPw").val();
+		var regExp = /^[a-z|A-Z|0-9]{4,10}$/;
+			if(!regExp.test(passwordVal)){
+			$("#passwordCheck").html("비밀번호는 영소문자,숫자 4~10자리입니다.").css("color" ,"red");
+			return false;
+		} 
+		if($("#newMemberPw").val() != $("#newMemberPwChk").val() && $("#newMemberPw").val()!= ""){
+			$("#passwordCheck").html("패스워드가 일치하지 않습니다").css("color" ,"red");
+		}else{
+			$("#passwordCheck").html("");
+		}		
+		
+	});
 		$("#newMemberPw").on("keyup",function(){
 			var passwordVal = $("#newMemberPw").val();
 			var regExp = /^[a-z|A-Z|0-9]{4,10}$/;
