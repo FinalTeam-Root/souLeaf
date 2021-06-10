@@ -15,12 +15,13 @@ public class Qna {
 	private int qnaCount;
 	private String ansNo;
 	private int num;
+	private String ansContent;
 	
 	public Qna() {
 	}
 
 	public Qna(int qnaNo, int memberNo, String memberNick, Date qnaUpdate, String qnaTitle, String qnaContent,
-			Date qnaDate, String qnaStatus, int qnaCount, String ansNo, int num) {
+			Date qnaDate, String qnaStatus, int qnaCount, String ansNo, int num, String ansContent) {
 		super();
 		this.qnaNo = qnaNo;
 		this.memberNo = memberNo;
@@ -33,6 +34,7 @@ public class Qna {
 		this.qnaCount = qnaCount;
 		this.ansNo = ansNo;
 		this.num = num;
+		this.ansContent = ansContent;
 	}
 
 	public int getQnaNo() {
@@ -123,14 +125,21 @@ public class Qna {
 		this.num = num;
 	}
 
+	public String getAnsContent() {
+		return ansContent;
+	}
+
+	public void setAnsContent(String ansContent) {
+		this.ansContent = ansContent;
+	}
+
 	@Override
 	public String toString() {
 		return "Qna [qnaNo=" + qnaNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", qnaUpdate="
 				+ qnaUpdate + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent + ", qnaDate=" + qnaDate
-				+ ", qnaStatus=" + qnaStatus + ", qnaCount=" + qnaCount + ", ansNo=" + ansNo + ", num=" + num + "]";
+				+ ", qnaStatus=" + qnaStatus + ", qnaCount=" + qnaCount + ", ansNo=" + ansNo + ", num=" + num
+				+ ", ansContent=" + ansContent + "]";
 	}
 
-	
 
-	
 }

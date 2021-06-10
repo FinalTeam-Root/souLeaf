@@ -224,9 +224,22 @@ $(function(){
 
     });
 
-
-
 });
+
+
+
+    function clickAns (e){
+        var oStatus = $(e).next().css("display");
+        if(oStatus == "none") { 
+            $(e).next().css("display", "contents");
+        }else{
+            $(e).next().css("display", "none");
+        }
+    }
+
+
+
+
     // 내가 쓴 궁금해요 리스트 뿌려주기
     function getMyCuriosityList(memberNo, pageInfo) {
         var memberNo = $("#memberNo").val();
@@ -719,19 +732,21 @@ $(function(){
         var memberNo = $("#memberNo").val();
         //var pageInfo = $("#pageInfo").val();
         var $tr;
-        var $check;
         var $num;
         var $title;
         var $writeDate;
         var $btnArea;
-        var $chooseDelete;
-        var $delTr;
 
         var $lt;
         var $gt;
         var $aActive;
         var $a;
 
+        var $ansTr;
+        var $ansContent; 
+        var $td1;
+        var $td2;
+        var $td3;
         $.ajax({
             url : "myQnaList.kh",
             type : "get",
@@ -748,25 +763,42 @@ $(function(){
                 var maxPage = data.pi.maxPage;
                 console.log(maxPage,endPage);
 
+
                 $tbody.html("");
                 $paging.html("");
                 if(data.qnaList.length > 0){
                     for(var i in data.qnaList){
-                        $tr = $("<tr>");
+                        $tr = $("<tr onclick='clickAns(this)'>");
                         $num = $("<td scope='row'>").text(data.qnaList[i].num);
-                        $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='clinicDetail.kh?clinicNo="+data.qnaList[i].qnaNo+"&page=1&count=0'class='noColor'>"+data.qnaList[i].qnaContent+"</a>");
+                        $title = $("<td stlye='width:524px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'><a href='#' class='noColor'>"+data.qnaList[i].qnaContent+"</a>");
                     
                         $writeDate = $("<td>").text(data.qnaList[i].qnaDate);
-                        $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyClinic("+data.qnaList[i].qnaNo+")'>수정</button><button type='button' onclick='deleteQna("+data.qnaList[i].qnaNo+")' class='btn btn-outline-danger'>삭제</button>");
-    
-                        
+
+
+                        console.log(data.qnaList[i].ansNo);
+                        if(data.qnaList[i].ansNo == null){
+                            $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-success btnGreen' onclick='modifyQna("+data.qnaList[i].qnaNo+")'>수정</button><button type='button' onclick='deleteQna("+data.qnaList[i].qnaNo+")' class='btn btn-outline-danger'>삭제</button>");
+                        }else {
+                            $btnArea = $("<td>").append("<button type='button' class='btn btn-outline-warning btnGreen'>답변완료</button>");
+
+                            $ansTr = $("<tr class='showAns' style='display:none;'>");
+                            $td1 = $("<td>").text("");
+                            $ansContent = $("<td stlye='width:524px; color :'#666666'; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'> 답변 : "+data.qnaList[i].ansContent+"</a>"); 
+                            $td2 = $("<td>").text("");
+                            $td3 = $("<td>").text("");
+                            $ansTr.append($td1);
+                            $ansTr.append($ansContent);
+                            $ansTr.append($td2);
+                            $ansTr.append($td3);
+                        }
+
                         $tr.append($num);
                         $tr.append($title);
                         $tr.append($writeDate);
                         $tr.append($btnArea);
                         
                         $tbody.append($tr);
-                        $tbody.append($delTr);
+                        $tbody.append($ansTr);
                     }
                 }
                 if(page <= 1){
@@ -806,3 +838,6 @@ $(function(){
         location.href="qnaDelete.kh?qnaNo="+qnaNo+'';
     }
 
+    function modifyQna(qnaNo){
+        location.href="qnaModifyView.kh?qnaNo="+qnaNo+'';
+    }

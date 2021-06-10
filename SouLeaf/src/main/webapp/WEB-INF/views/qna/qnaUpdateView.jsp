@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +17,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center mb-5">
-						<h2 class="heading-section">Q&A</h2>
+						<h2 class="heading-section">Q&A 수정</h2>
 					</div>
 				</div>
 				<div class="row justify-content-center">
@@ -31,24 +32,22 @@
 										<form action="qnaUpdate.kh" method="post" enctype="multipart/form-data">
 											<div class="row">
 										
-												<div class="col-md-12">
-													<div class="form-group">
-														<label class="label" for="subject">제목</label>
-														<input type="text" class="form-control" value="${qna.qnaTitle }" name="qnaTitle" id="name" placeholder="Name">
-													</div>
-												</div>
 												
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="qnaContent" class="form-control" id="summernote"  cols="30" rows="1" placeholder="">${qna.qnaContent }</textarea>
+														<textarea name="qnaContent" class="form-control" id="" cols="30" rows="4" placeholder="문의사항을 적어주세요">${qna.qnaContent} </textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
-												<input type="hidden" value="${qna.qnaNo }" name="qnaNo">
-													<div class="form-group" >
-														<input type="submit" class="btn btn-outline-success" value="수정">
+													<div class="form-group">
+														<c:if test="${loginUser.memberId eq 'admin' }">
+														<input type="submit" class="btn btn-outline-success" value="등록">
+														</c:if>
+														<c:if test="${loginUser.memberId ne 'admin' }">
+														<input type="submit" class="btn btn-outline-success" value="등록">
          												<input type="button"  class="btn btn-outline-success" onclick="location.href='qnaListView.kh'" value="취소">
+														</c:if>
 														<div class="submitting"></div>
 													</div>
 												</div>
@@ -65,17 +64,6 @@
 		</section>
   
   
-       
-        </form>
-</div>
- 
- 
-
-
- 
- 
-
-
 
     <jsp:include page="../common/footer.jsp"></jsp:include> 
     <script src="resources/js/member/main.js"></script>

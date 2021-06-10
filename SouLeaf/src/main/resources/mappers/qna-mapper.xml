@@ -17,6 +17,7 @@
 		<result property="qnaCount" column="QNA_COUNT"></result>
 		<result property="ansNo" column="ANS_NO"></result>
 		<result property="num" column="NUM"/>
+		<result property="ansContent" column="ANS_CONTENT"/>
 	</resultMap>
 
 	<select id="selectListCount" resultType="_int">
@@ -42,7 +43,7 @@
 	
 	<!-- 마이페이지 내가 쓴 qna 리스트 불러오기 -->
 	<select id="selectAllMyQna" resultMap="qnaResultMap">
-		SELECT ROW_NUMBER() OVER (ORDER BY QNA_DATE ASC) AS NUM, A.* FROM (SELECT QNA_NO, QNA_CONTENT, QNA_DATE, ANS_NO FROM QNA FULL OUTER JOIN ANS USING (QNA_NO)) A WHERE MEMBER_NO = #{memberNo} AND QNA_STATUS = 'Y' ORDER BY QNA_DATE DESC;
+		SELECT ROW_NUMBER() OVER (ORDER BY QNA_DATE ASC) AS NUM, A.* FROM (SELECT QNA_NO, QNA_CONTENT, QNA_DATE, ANS_NO, ANS_CONTENT, Q.MEMBER_NO, QNA_STATUS FROM QNA Q FULL OUTER JOIN ANS ANS USING (QNA_NO) WHERE QNA_STATUS = 'Y') A WHERE A.MEMBER_NO = #{memberNo} AND A.QNA_STATUS = 'Y' ORDER BY A.QNA_DATE DESC
 	</select>
 	
 	<select id="selectMyListCount" resultType="_int">
