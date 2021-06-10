@@ -113,6 +113,13 @@ public class BoastStoreLogic implements BoastStore {
 		return sqlSession.delete("boastMapper.deleteBoastReply", reply);
 	}
 	
+	@Override
+	public int deleteBoastReReply(BoastReply reply) {
+		// 
+		return sqlSession.delete("boastMapper.deleteBoastReReply", reply);
+	}
+	
+	
 	
 	
 	
@@ -161,6 +168,37 @@ public class BoastStoreLogic implements BoastStore {
 	@Override
 	public int insertBoastReReply(BoastReply reply) {
 		return sqlSession.insert("boastMapper.insertBoastReReply", reply);
+	}
+
+	@Override
+	public int selectLikeCount(int boastNo) {
+		return sqlSession.selectOne("boastMapper.selectLikeCount", boastNo);
+	}
+
+	@Override
+	public int updateLike(Boast boast) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int selectLikeCheck(Boast boast) {
+		return sqlSession.selectOne("boastMapper.selectLikeCheck", boast);
+	}
+
+	@Override
+	public int selectLikeAddCheck(Boast boast) {
+		return sqlSession.selectOne("boastMapper.selectLikeAddCheck", boast);
+	}
+
+	@Override
+	public int insertBoastLike(Boast boast) {
+		return sqlSession.insert("boastMapper.insertLike", boast);
+	}
+
+	@Override
+	public int updateBoastLike(Boast boast) {
+		return sqlSession.update("boastMapper.updateLike", boast);
 	}
 
 	

@@ -106,11 +106,10 @@ public class BoastServiceImpl implements BoastService {
 		// 
 		return bStore.deleteBoastReply(reply);
 	}
-
 	@Override
-	public int likeNo(Boast boast) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int removeBoastReReply(BoastReply reply) {
+		// 
+		return bStore.deleteBoastReReply(reply);
 	}
 	
 	/**
@@ -167,5 +166,36 @@ public class BoastServiceImpl implements BoastService {
 	@Override
 	public int registerBoastReReply(BoastReply reply) {
 		return bStore.insertBoastReReply(reply);
+	}
+
+	@Override
+	public int getLikeCount(int boastNo) {
+		return bStore.selectLikeCount(boastNo);
+	}
+
+	@Override
+	public int modifyLike(Boast boast) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLikeCheck(Boast boast) {
+		return bStore.selectLikeCheck(boast);
+	}
+
+	@Override
+	public int getLikeAddCheck(Boast boast) {
+		return bStore.selectLikeAddCheck(boast);
+	}
+
+	@Override
+	public int registerBoastLike(Boast boast) {
+		return bStore.insertBoastLike(boast);
+	}
+
+	@Override
+	public int modifyBoastLike(Boast boast) {
+		return bStore.updateBoastLike(boast);
 	}
 }

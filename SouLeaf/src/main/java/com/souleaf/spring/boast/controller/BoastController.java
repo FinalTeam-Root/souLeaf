@@ -341,6 +341,19 @@ public class BoastController {
 	          return result + "";
 	       }
 	    }
+   // 자랑하기 대댓글 삭제
+   @ResponseBody
+   @RequestMapping(value = "boastReReplyDelete.kh", method = RequestMethod.POST)
+   public String boastReReplyDelete(@ModelAttribute BoastReply reply, HttpSession session) {
+	   Member loginUser = (Member) session.getAttribute("loginUser");
+	      reply.setMemberNo(loginUser.getMemberNo());
+	      int result = bService.removeBoastReReply(reply);
+	      if (result > 0) {
+	          return result + "";
+	       } else {
+	          return result + "";
+	       }
+	    }
 
    // 파일 저장
    public String saveFile(MultipartFile file, HttpServletRequest request) {
@@ -410,10 +423,44 @@ public class BoastController {
       return "";
    }
 
-   // 자랑하기 좋아요 증가
-   public ModelAndView boastLikeNo(ModelAndView mv, int boastNo, Model model) {
-      return null;
+   // 자랑하기 좋아요 
+   @ResponseBody
+   @RequestMapping(value="boastLike.kh")
+   public String boastLike(@ModelAttribute Boast boast, Model model) {
+	   System.out.println(boast.toString());
+	   int addCheck = bService.getLikeAddCheck(boast);
+	   int result = 0;
+	   if(addCheck > 0) {
+		   int likeCheck = bService.getLikeCheck(boast);
+		   if(likeCheck > 0) {
+			   boast.setBoastLike(0);
+			    result = bService.modifyBoastLike(boast);
+		   }else {
+			   boast.setBoastLike(1);
+			    result = bService.modifyBoastLike(boast);
+		   }
+	   }else {
+		    result = bService.registerBoastLike(boast);
+	   }
+      return result+"";
    }
+   
+   // 자랑하기 좋아요 수
+   @ResponseBody
+   @RequestMapping(value="getLikeCount.kh")
+   public String getLikeCount(@RequestParam("boastNo") int boastNo, Model model) {
+	  int count = bService.getLikeCount(boastNo);
+      return count+"";
+   }
+   
+   // 자랑하기 좋아요 체크
+   @ResponseBody
+   @RequestMapping(value="getLikeCheck.kh")
+   public String getLikeCheck(@ModelAttribute Boast boast, Model model) {
+	  int check = bService.getLikeCheck(boast);
+      return check+"";
+   }
+   
 
    // 자랑하기 대댓글 등록
 

@@ -52,7 +52,8 @@
 												${boast.boastDate } &nbsp;&nbsp;<span
 													class="far fa-eye"></span> ${boast.boastCount }
 												&nbsp;&nbsp;<span class="fa fa-comment"></span> <span
-													id="replyCount">0</span>
+													id="replyCount">0</span>&nbsp;&nbsp;
+													<span id="boast-like">0</span> 
 											</div>
 
 
@@ -78,6 +79,7 @@
 										<hr>
 										<input type="hidden" id="loginNo" value="${loginUser.memberNo }">
 										<input type="hidden" id="boastNo" value="${boast.boastNo}">
+										<span id="like-btn"></span>
 									<p class="p-3" style="margin-bottom: 0px"><strong>댓글 <span id="comment-count">0</span>개</strong></p>
 									<input type="hidden" id="boastNo" value="${boast.boastNo }">
 									<span id="boast-comment"></span>

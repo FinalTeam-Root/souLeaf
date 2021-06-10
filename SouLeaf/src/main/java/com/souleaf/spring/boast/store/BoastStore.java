@@ -31,6 +31,13 @@ public interface BoastStore {
 	public int insertBoastReReply(BoastReply reply); //.
 	public int updateBoastReply(BoastReply reply); //.
 	public int deleteBoastReply(BoastReply reply); //.
+	public int deleteBoastReReply(BoastReply reply); //.
+	public int selectLikeCount(int boastNo); // 좋아요 수
+	public int selectLikeAddCheck(Boast boast); //
+	public int insertBoastLike(Boast boast);
+	public int updateBoastLike(Boast boast);
+	public int selectLikeCheck(Boast boast); //
+	public int updateLike(Boast boast); // 좋아요
 	//ArrayList<BoastReply> selectAllBoastreply(int boastNo);
 	/**
 	 * 게시판 NO 취득

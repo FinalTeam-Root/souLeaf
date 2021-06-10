@@ -17,7 +17,8 @@
       <result property="boastFileRename" column="BOAST_FILERENAME"></result>
       <result property="memberNick" column="MEMBER_NICK"></result>
       <result property="memberFileRename" column="MEMBER_FILERENAME"></result>
-      <result property="ReplyCount" column="BOAST_REPLYCOUNT" />
+      <result property="boastReplyCount" column="BOAST_REPLYCOUNT" />
+      <result property="boastLike" column="BOAST_LIKE" />
    </resultMap>
 
    <!-- 댓글 관련 부분 -->
@@ -29,11 +30,11 @@
    </select>
    
    <select id="selectListCount" resultType="_int">
-      SELECT COUNT(*) FROM BOAST WHERE BOAST_STATUS = 'Y'
+      SELECT COUNT(*) FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y'
    </select>
    <select id="selectAllList" parameterType="Boast"
       resultMap="boastResultMap">
-     SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME FROM BOAST JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
+     SELECT BOAST_NO,BOAST_TITLE,BOAST_CONTENTS,BOAST_FILERENAME,BOAST_DATE,BOAST_COUNT,MEMBER_NICK,PLANT_NAME, (SELECT COUNT(*) FROM BOCOMMENT B WHERE A.BOAST_NO=B.BOAST_NO AND BOAST_STATUS='Y' AND BOCOMMENT_STATUS = 'Y') BOAST_REPLYCOUNT, (SELECT COUNT(*) FROM BOASTLIKE C WHERE A.BOAST_NO=C.BOAST_NO AND LIKE_CHECK = 1 )BOAST_LIKE FROM BOAST A JOIN MEMBER USING(MEMBER_NO) JOIN PLANT USING(PLANT_NO) WHERE BOAST_STATUS = 'Y' ORDER BY BOAST_NO DESC
 
    </select>
    <select id="selectOne" parameterType="Boast"
@@ -63,6 +64,26 @@
    <update id="deleteAdminBoast" parameterType="Map">
       UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${checkNo})
    </update>
+   
+   <select id="selectLikeCount" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND LIKE_CHECK = 1
+   </select>
+   
+   <select id="selectLikeCheck" parameterType="Boast" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo} AND LIKE_CHECK = 1
+   </select>
+   
+      <select id="selectLikeAddCheck" parameterType="Boast" resultType="_int">
+  	 SELECT COUNT(*) FROM BOASTLIKE WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo}
+   </select>
+   
+   <insert id="insertLike">
+ 	  INSERT INTO BOASTLIKE VALUES (SEQ_BOASTLIKE.NEXTVAL,#{boastNo},#{memberNo},DEFAULT)
+   </insert>
+   
+   <update id="updateLike" parameterType="Boast">
+   	UPDATE BOASTLIKE SET LIKE_CHECK = ${boastLike} WHERE BOAST_NO = #{boastNo} AND MEMBER_NO = #{memberNo}
+   </update>
 
    <!-- 댓글 -->
    <resultMap type="BoastReply" id="boastReplyResultMap">
@@ -86,15 +107,19 @@
    </insert>
    
    <select id="selectBoastReply" parameterType="BoastReply" resultMap="boastReplyResultMap">
-      SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO = #{boastNo} AND BOCOMMENT_STATUS = 'Y'
+      SELECT * FROM BOCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE BOAST_NO =#{boastNo} AND BOCOMMENT_STATUS = 'Y' ORDER BY BOCOMMENT_NO,BOCOMMENT_PARENT_NO
    </select>
    
    <update id="updateReply">
       UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOCOMMENT_NO = #{bocommentNo}
    </update>
-
-
+   
 	<update id="deleteBoastReply">
-	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N'WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo } </update>
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOCOMMENT_NO= #{bocommentNo} OR BOCOMMENT_PARENT_NO = #{bocommentNo} AND BOCOMMENT_STATUS = 'Y'
+	 </update>
+
+	<update id="deleteBoastReReply">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo }
+	 </update>
 	
 </mapper>

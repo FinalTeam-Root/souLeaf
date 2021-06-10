@@ -13,6 +13,11 @@ $('#summernote').summernote({
 				}
 			}
 	 });
+	 getLikeCount();
+	 if( $("#loginNo").val() != ""){
+		 likeCheck();
+
+	 }
 		 getReplyList($("#boastNo").val());
 		 
 		 $("#emojionearea1").emojioneArea({
@@ -99,6 +104,7 @@ function replyRegister(boastNo){
 		if(data == 1){
 			getReplyList(boastNo);
 			$("#emojionearea1").val("");
+			$('.emojionearea-editor').text('');
 		}
 		  
 		},
@@ -166,7 +172,7 @@ function getReplyList(boastNo){
 				 str+='<strong>'+data[i].memberNick+'</strong><br>';
 				 str+='<span>'+data[i].bocommentContent+'</span><br>';
 				 if(loginNo == data[i].memberNo){
-					 str+='<small>'+data[i].bocommentDate+' <span onclick="replyReReView(this,'+data[i].boastNo+','+data[i].bocommentNo+',\''+data[i].memberNick+'\')" class="text-primary boast-btn">답글달기</span> <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success boast-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';	
+					 str+='<small>'+data[i].bocommentDate+' <span onclick="replyReReView(this,'+data[i].boastNo+','+data[i].bocommentNo+',\''+data[i].memberNick+'\')" class="text-primary boast-btn">답글달기</span> <span onclick="replyModifyView(this,'+data[i].boastNo+','+data[i].memberNo+','+data[i].bocommentNo+',\''+data[i].bocommentContent+'\')" class="text-success boast-btn">수정</span> <span onclick="replyDelete('+data[i].bocommentNo+')" class="text-danger boast-btn">삭제</span></small><br>';	
 	 
 				 }else{
 					 str+='<small>'+data[i].bocommentDate+' <span onclick="replyReReView(this,'+data[i].boastNo+','+data[i].bocommentNo+',\''+data[i].memberNick+'\')" class="text-primary boast-btn">답글달기</span></small><br>';
@@ -195,7 +201,7 @@ function getReplyList(boastNo){
 								str+='<strong>'+data[j].memberNick+'</strong><br>';
 								str+='<span>'+data[j].bocommentContent+'</span><br>';
 								if(loginNo == data[j].memberNo){
-									str+='<small>'+data[j].bocommentDate+' <span onclick="replyReView(this,\''+data[j].bocommentContent+'\','+data[j].bocommentNo+')" class="text-success boast-btn">수정</span> <span class="text-danger boast-btn">삭제</span></small><br>';	
+									str+='<small>'+data[j].bocommentDate+' <span onclick="replyReView(this,\''+data[j].bocommentContent+'\','+data[j].bocommentNo+')" class="text-success boast-btn">수정</span> <span onclick="replyReDelete('+data[j].bocommentNo+')" class="text-danger boast-btn">삭제</span></small><br>';	
 					
 								}else{
 									str+='<small>'+data[j].bocommentDate+' </small><br>';
@@ -220,6 +226,56 @@ function getReplyList(boastNo){
 		}
 	
 	  });
+}
+
+function replyDelete(bocommentNo){
+	if (!confirm("삭제시 대댓글도 삭제됩니다. 정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+	var boastNo = $("#boastNo").val();
+	$.ajax({
+		url : "boastReplyDelete.kh",
+		type:"post",
+		data : {"boastNo":boastNo,"bocommentNo":bocommentNo},		
+		success : function(data){
+					
+		if(data > 0){
+			getReplyList(boastNo);			
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+	}
+}
+
+function replyReDelete(bocommentNo){
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+	var boastNo = $("#boastNo").val();
+	$.ajax({
+		url : "boastReReplyDelete.kh",
+		type:"post",
+		data : {"boastNo":boastNo,"bocommentNo":bocommentNo},		
+		success : function(data){
+			
+		if(data > 0){
+			getReplyList(boastNo);			
+		}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
+	}
 }
 
 function replyReView(obj,content,bocommentNo){
@@ -289,7 +345,8 @@ function replyReRegister(boastNo,bocommentNo){
 						 
 		if(data == 1){
 			getReplyList(boastNo);
-			$("#replyContent").val("");
+			$("#emojionearea2").val("");
+			$('.emojionearea-editor').text('');
 		}
 		  
 		},
@@ -298,4 +355,69 @@ function replyReRegister(boastNo,bocommentNo){
 		}
 	
 	  });
+}
+
+function getLikeCount(){
+	var count = 1;
+	var boastNo = $("#boastNo").val();
+	
+	$.ajax({
+		url : "getLikeCount.kh",
+		type:"get",
+		data : {"boastNo":boastNo},		
+		success : function(data){			
+			if(data > 0){
+				$("#boast-like").html('<span class="fas fa-heart"> '+data+'</span>');
+
+			}else{
+				$("#boast-like").html('<span class="far fa-heart"> '+data+'</span>');
+			}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	});
+}
+
+function clickLike(){
+	var boastNo = $("#boastNo").val();
+	var memberNo = $("#loginNo").val();
+	
+	$.ajax({
+		url : "boastLike.kh",
+		type:"get",
+		data : {"boastNo":boastNo,"memberNo":memberNo},		
+		success : function(data){
+						 
+			console.log(data);
+			likeCheck();
+			getLikeCount();
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	});
+}
+
+function likeCheck(){
+	var boastNo = $("#boastNo").val();
+	var memberNo = $("#loginNo").val();
+	$.ajax({
+		url : "getLikeCheck.kh",
+		type:"get",
+		data : {"boastNo":boastNo,"memberNo":memberNo},		
+		success : function(data){
+						 
+			if(data > 0){
+				$("#like-btn").html('<span onclick="clickLike()" class="p-3" style="margin-bottom: 0px">좋아요 취소<span>');
+			}else{
+				$("#like-btn").html('<span onclick="clickLike()" class="p-3" style="margin-bottom: 0px">좋아요</span>');
+			}
+		  
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	});
 }

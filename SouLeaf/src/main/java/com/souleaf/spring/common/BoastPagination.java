@@ -5,7 +5,7 @@ public class BoastPagination {
 		public static PageInfo getPageInfo(int currentPage, int listCount) {
 			PageInfo pi = null;
 			
-			int pageLimit = 4; // 한 페이지에서 보여줄 네비게이션 수
+			int pageLimit = 5; // 한 페이지에서 보여줄 네비게이션 수
 			int boardLimit = 12; // 한 페이지에서 보여줄 게시글의 갯수 ?? 왜 안돼
 			int maxPage;		// 전체 페이지 중 가장 마지막 페이지
 			int startPage;		// 현재 페이지에서 시작하는 첫번째 페이지

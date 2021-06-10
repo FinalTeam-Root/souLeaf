@@ -33,7 +33,14 @@ public interface BoastService {
 	public int registerBoastReReply(BoastReply reply); // 답글 등록.
 	public int modifyBoastReply(BoastReply reply); // 댓글 수정.
 	public int removeBoastReply(BoastReply reply); // 댓글 삭제.
-	public int likeNo(Boast boast); // 좋아요
+	public int removeBoastReReply(BoastReply reply); // 대댓글 삭제.
+	
+	public int getLikeCount(int boastNo); // 좋아요 수
+	public int getLikeAddCheck(Boast boast); // 좋아요 존재 체크
+	public int getLikeCheck(Boast boast); // 좋아요 체크
+	public int registerBoastLike(Boast boast);
+	public int modifyBoastLike(Boast boast);
+	public int modifyLike(Boast boast); // 좋아요
 	public int getListCount(); // 게시물 갯수 조회
 	
 	
