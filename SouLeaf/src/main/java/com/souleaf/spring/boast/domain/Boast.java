@@ -16,6 +16,7 @@ public class Boast {
 	private int boastPoint; // 랭킹포인트
 	private String boastStatus; // 상태
 	private int plantNo; // 식물번호
+	private int companionNo; // 반려식물번호
 	private String plantName; // 식물네임
 	private String boastFileName; // 사진이름  // 
 	private String boastFileRename; // 서버사진이름 //
@@ -27,8 +28,8 @@ public class Boast {
 
 	public Boast(int boastNo, String boastTitle, String boastContent, String boastCount, Date boastDate,
 			Date boastUpdate, int memberNo, String memberNick, String memberFileRename, int boastPoint,
-			String boastStatus, int plantNo, String plantName, String boastFileName, String boastFileRename,
-			String boastContents, int boastReplyCount, int boastLike) {
+			String boastStatus, int plantNo, int companionNo, String plantName, String boastFileName,
+			String boastFileRename, String boastContents, int boastReplyCount, int boastLike) {
 		super();
 		this.boastNo = boastNo;
 		this.boastTitle = boastTitle;
@@ -42,6 +43,7 @@ public class Boast {
 		this.boastPoint = boastPoint;
 		this.boastStatus = boastStatus;
 		this.plantNo = plantNo;
+		this.companionNo = companionNo;
 		this.plantName = plantName;
 		this.boastFileName = boastFileName;
 		this.boastFileRename = boastFileRename;
@@ -146,6 +148,14 @@ public class Boast {
 		this.plantNo = plantNo;
 	}
 
+	public int getCompanionNo() {
+		return companionNo;
+	}
+
+	public void setCompanionNo(int companionNo) {
+		this.companionNo = companionNo;
+	}
+
 	public String getPlantName() {
 		return plantName;
 	}
@@ -200,11 +210,12 @@ public class Boast {
 				+ ", boastCount=" + boastCount + ", boastDate=" + boastDate + ", boastUpdate=" + boastUpdate
 				+ ", memberNo=" + memberNo + ", memberNick=" + memberNick + ", memberFileRename=" + memberFileRename
 				+ ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + ", plantNo=" + plantNo
-				+ ", plantName=" + plantName + ", boastFileName=" + boastFileName + ", boastFileRename="
-				+ boastFileRename + ", boastContents=" + boastContents + ", boastReplyCount=" + boastReplyCount
-				+ ", boastLike=" + boastLike + "]";
+				+ ", companionNo=" + companionNo + ", plantName=" + plantName + ", boastFileName=" + boastFileName
+				+ ", boastFileRename=" + boastFileRename + ", boastContents=" + boastContents + ", boastReplyCount="
+				+ boastReplyCount + ", boastLike=" + boastLike + "]";
 	}
 
+	
 	
 }
 

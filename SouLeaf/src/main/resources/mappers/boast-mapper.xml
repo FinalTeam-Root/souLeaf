@@ -12,6 +12,7 @@
       <result property="boastPoint" column="BOAST_POINT"></result>
       <result property="boastStatus" column="BOAST_STATUS"></result>
       <result property="plantNo" column="PLANT_NO"></result>
+      <result property="companionNo" column="COMPANION_NO"></result>
       <result property="plantName" column="PLANT_NAME"></result>
       <result property="boastFileName" column="BOAST_FILENAME"></result>
       <result property="boastFileRename" column="BOAST_FILERENAME"></result>
@@ -39,11 +40,11 @@
    </select>
    <select id="selectOne" parameterType="Boast"
       resultMap="boastResultMap">
-     SELECT * FROM BOAST B JOIN COMPANION C ON B.PLANT_NO=C.PLANT_NO JOIN MEMBER M ON B.MEMBER_NO=M.MEMBER_NO WHERE B.BOAST_NO = #{boastNo} AND BOAST_STATUS = 'Y'
+     SELECT * FROM BOAST B JOIN COMPANION C ON B.COMPANION_NO=C.COMPANION_NO JOIN MEMBER M ON B.MEMBER_NO=M.MEMBER_NO WHERE B.BOAST_NO = #{boastNo} AND BOAST_STATUS = 'Y'
    </select>
 
    <insert id="insertBoast">
-      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle },NULL,DEFAULT, DEFAULT, NULL, #{memberNo},DEFAULT, DEFAULT, #{plantNo},#{boastFileRename},#{boastContents})
+      INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle },NULL,DEFAULT, DEFAULT, NULL, #{memberNo},DEFAULT, DEFAULT, #{plantNo},#{boastFileRename},#{boastContents},#{companionNo})
     
    </insert>
    <!-- INSERT INTO BOAST VALUES(SEQ_BOAST.NEXTVAL,#{boastTitle }, #{boastContent 
@@ -51,7 +52,7 @@
 
    <update id="updateBoast">
       UPDATE BOAST SET BOAST_TITLE = #{boastTitle}, BOAST_CONTENTS =
-      #{boastContents}, BOAST_UPDATE = SYSDATE, PLANT_NO = #{plantNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
+      #{boastContents}, BOAST_UPDATE = SYSDATE, COMPANION_NO = #{companionNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
    </update>
    <update id="updateCount">
       UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
