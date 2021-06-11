@@ -48,7 +48,7 @@
 													<input type="hidden" name="qnaNo" value="${qnaNo }">
 													<input type="hidden" name="ansNo" value="${ans.ansNo }">
 														<input type="submit" class="btn btn-outline-success" value="등록" >
-         												<input type="button"  class="btn btn-outline-success" onclick="location.href='ansListView.kh'" value="취소">
+         												<input type="button"  class="btn btn-outline-success" onclick="location.href='adminQna.kh'" value="취소">
 														<div class="submitting"></div>
 													</div>
 												</div>

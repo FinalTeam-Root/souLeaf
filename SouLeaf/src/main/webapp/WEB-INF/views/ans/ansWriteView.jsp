@@ -40,14 +40,14 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">답변내용</label>
-														<textarea name="ansContent" class="form-control" id="" cols="30" rows="4" placeholder="답변을 적어주세요."></textarea>
+														<textarea name="ansContent" class="form-control" id="" cols="30" rows="4" placeholder="답변을 적어주세요." required></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 													<input type="hidden" name="qnaNo" value="${qnaNo }">
 														<input type="submit" class="btn btn-outline-success" value="등록" >
-         												<input type="button"  class="btn btn-outline-success" onclick="location.href='ansListView.kh'" value="취소">
+         												<input type="button"  class="btn btn-outline-success" onclick="location.href='adminQna.kh'" value="취소">
 														<div class="submitting"></div>
 													</div>
 												</div>
