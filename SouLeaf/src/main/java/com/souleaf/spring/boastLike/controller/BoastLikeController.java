@@ -26,7 +26,7 @@ public class BoastLikeController {
 	
 	private BoastLikeService bService;
 
-	
+	  
 	
 	/* Controller */
 	// 좋아요 눌렀을때

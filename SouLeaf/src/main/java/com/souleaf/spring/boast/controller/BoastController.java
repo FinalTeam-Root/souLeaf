@@ -46,7 +46,7 @@ public class BoastController {
    private BoastService bService;
    @Autowired
    private CompanionService cService;
-
+  
    // 자랑하기 리스트 페이지 이동 및 출력 //////////
    @RequestMapping(value = "boastListView.kh", method = RequestMethod.GET)
    public ModelAndView boastListView(ModelAndView mv, @RequestParam(value = "page", required = false) Integer page,

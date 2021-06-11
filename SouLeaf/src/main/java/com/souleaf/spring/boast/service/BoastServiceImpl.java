@@ -22,7 +22,7 @@ import com.souleaf.spring.common.PageInfo;
 
 @Service
 public class BoastServiceImpl implements BoastService {
-	
+	  
 @Autowired
 	private BoastStore bStore;
 

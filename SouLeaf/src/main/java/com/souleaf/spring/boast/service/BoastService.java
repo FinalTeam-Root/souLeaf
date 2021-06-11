@@ -21,8 +21,6 @@ public interface BoastService {
 	public ArrayList<Boast> printAll(PageInfo pi);
 	public ArrayList<Boast> printSearchAll(BoastSearch search); // 게시글 검색
 	public Boast printOne(int boastNo);// 게시글 상세조회 .
-	
-	
 	public int modifyBoast(Boast boast);// 게시글 수정.
 	public int removeBoast(int boastNo);// 게시글 삭제 .
 	public int removeAdminBoast(HashMap<String, String> map);// 게시글 삭제 .(관리자) 

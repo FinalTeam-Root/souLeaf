@@ -13,7 +13,7 @@ import com.souleaf.spring.plant.domain.PlantInfo;
 
 public interface BoastStore {
 
-	
+	  
 	public ArrayList<Boast> selectAll();
 	public ArrayList<Boast> selectAllList(PageInfo pi);// .
 	public int selectListCount(); // 전체 수 조회수.

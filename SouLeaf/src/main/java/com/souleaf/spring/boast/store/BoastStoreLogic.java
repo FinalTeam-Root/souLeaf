@@ -25,7 +25,7 @@ public class BoastStoreLogic implements BoastStore {
 @Autowired
 	private SqlSession sqlSession;
 	
-	
+	  
 	@Override
 	public int selectListCount() {
 		//
