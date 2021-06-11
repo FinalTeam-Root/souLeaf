@@ -464,12 +464,14 @@ public class MemberController {
 	}
 	// 비밀번호 찾기 폼
 	@RequestMapping(value = "findPwView.kh", method =  RequestMethod.GET)
-	public String findPwView() throws Exception{
+	public String findPwView(HttpSession session) throws Exception{
+		session.setAttribute("nav","");
 		return "member/findPw";
 	}
 	// 아이디 찾기 폼
 	@RequestMapping(value = "findIdView.kh", method =  RequestMethod.GET)
-	public String findIdView() throws Exception{
+	public String findIdView(HttpSession session) throws Exception{
+		session.setAttribute("nav","");
 		return "member/findId";
 	}
 	// 아이디 찾기 이름이랑 이메일 받아와서 있는지 확인

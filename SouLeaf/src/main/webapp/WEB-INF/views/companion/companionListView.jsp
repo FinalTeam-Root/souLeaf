@@ -85,6 +85,10 @@
 			</div>
 			<div class="row justify-content-center blockstyle">
 				<div class="col-md-12">
+<!-- 				<h2>나의 첫번째 반려식물을 등록해보세요!</h2> -->
+				<c:if test="${listSize < 1 }">
+				<h2 class="heading-section" align="center" style="margin-bottom: 50px">나의 첫번째 반려식물을 등록해보세요!</h2>
+				</c:if>
 					<c:if test="${listSize lt 3}">
 					<button type="button" id="registerbutton" class="btn btn-outline-success backcolor" onclick="showRegister()">등록하기</button>
 					</c:if>

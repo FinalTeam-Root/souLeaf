@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>>souLeaf - 비밀번호 확인</title>
+<title>souLeaf - 비밀번호 확인</title>
 <jsp:include page="../common/header.jsp"></jsp:include>
 <style>
 .top_line {
@@ -55,7 +55,10 @@ background-color:#00bd56
 		<br>
 		<div class="row">
 			<div class="col-sm-12">
-				<h4>ENTER PASSWORD <span class="badge badge-secondary" style="background-color: #00bd56;">비밀번호 재설정</span></h4>
+					<h4>
+					비밀번호 찾기<span class="badge badge-secondary"
+						style="background-color: #00bd56;"></span>
+				</h4>
 				<hr>
 				<div class="top_line">
 				</div>
@@ -175,6 +178,6 @@ background-color:#00bd56
 		}
 	</script>
 	<script src="resources/js/login/emailAuthenticatePwView.js"></script>
-	
+	<script src="resources/js/home/openweather.js"></script>
 </body>
 </html>

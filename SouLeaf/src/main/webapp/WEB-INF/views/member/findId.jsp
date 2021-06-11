@@ -91,7 +91,7 @@
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="resources/js/login/findPwView.js"></script>
 		<script src="resources/js/login/main.js"></script>
-		
+		<script src="resources/js/home/openweather.js"></script>
 		<script>
 		$("#findIdCheck").on("click",function(){
 	 		var memberName = $("#name").val();
