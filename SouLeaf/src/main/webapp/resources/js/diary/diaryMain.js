@@ -50,10 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 var $option;
                 if(data.length > 0) {
                   for(var i in data){
-                    if(i == 0) {
-                      $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
-                      $select.append($option);
-                    }
                       $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                       $select.append($option);
                   }
@@ -101,8 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       },
       dateClick: function(info) {
-        $('#eventModal-insert').modal({});
-        $('#edit-date').val(info.dateStr);
         var memberNo = $("#memberNo").val();
         $.ajax({
           url : "myCompanionList.kh",
@@ -116,10 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var $option;
             if(data.length > 0) {
               for(var i in data){
-                if(i == 0) {
-                  $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
-                  $select.append($option);
-                }
                   $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                   $select.append($option);
               }
@@ -127,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
               $('#eventModal-insert').modal({});
               $('#edit-date').val(info.dateStr);
             } else if(data.length == 0) {
+              $('#eventModal-insert').modal('hide');
               var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
               if(noList == true){
                 location.href="companionListView.kh";

@@ -338,7 +338,6 @@ $(document).on('click',function(){
 function getMyCompanionPic(){
   var companionNo = $("#selectVideo option:selected").val(); 
   var memberNo = $("#memberDiary").val();
-  debugger;
   $.ajax({
     url : "diaryPicVideo.kh",
     type : "get",
