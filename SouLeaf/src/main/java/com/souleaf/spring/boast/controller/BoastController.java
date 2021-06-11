@@ -142,9 +142,7 @@ public class BoastController {
    
    // 자랑하기 게시글 등록
    @RequestMapping(value = "boastWrite.kh", method = RequestMethod.POST)
-   public ModelAndView boastRegister(ModelAndView mv, @ModelAttribute Boast boast,
-         @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile,
-         HttpServletRequest request) {
+   public ModelAndView boastRegister(ModelAndView mv, @ModelAttribute Boast boast, @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile, HttpServletRequest request) {
 
       HttpSession session = request.getSession();
       Member member = (Member) session.getAttribute("loginUser");

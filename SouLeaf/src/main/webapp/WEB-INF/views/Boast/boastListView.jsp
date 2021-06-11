@@ -76,7 +76,7 @@
           </c:forEach>
         </div>
         	<c:if test="${loginUser ne null }">
-            <button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh?userNo=${loginUser.memberNo}'">글쓰기</button>
+            	<button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh?userNo=${loginUser.memberNo}'">글쓰기</button>
         	</c:if>
         	<c:if test="${loginUser eq null }">
             <button class="btn btn-primary" style="float: right;" onclick="location.href='boastWrite.kh'">글쓰기</button>
@@ -129,8 +129,6 @@
 					<li><a href="${after }">&gt;</a></li>
 				</c:if>
 				</ul>
-				
-				
             </div>
           </div>
         </div>

@@ -13,8 +13,16 @@
 
 </head>
 <body>
-
-        <section class="ftco-section bg-light">
+	<c:if test="${empty cList }">
+	<script>
+		var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
+	    if(noList == true){
+	      location.href="companionListView.kh";
+	    }
+	</script>
+	</c:if>
+	
+	<section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center mb-5">
@@ -45,9 +53,6 @@
 																</label>																
 														</c:forEach>
 															</div>
-														</c:if>
-														<c:if test="${cList eq null }">
-															<a href="companionListView.kh">반려식물을 등록해주세요.</a>
 														</c:if>
 													</div>
 												</div>
@@ -86,5 +91,6 @@
 <jsp:include page="../common/footer.jsp"></jsp:include>
   <script src="resources/js/summernote/summernote-lite.js"></script>
   <script src="resources/js/boast/boast-detail.js"></script>
+
 </body>
 </html>
