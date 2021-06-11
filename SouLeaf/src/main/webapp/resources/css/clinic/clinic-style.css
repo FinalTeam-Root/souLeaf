@@ -124,7 +124,12 @@
 	cursor: pointer;
 }
 
+.clinic-btn{
+	cursor: pointer;
+}
+
 .reply-btn{
+	cursor: pointer;
 	    float: right;
     position: absolute;
     top: -24px;

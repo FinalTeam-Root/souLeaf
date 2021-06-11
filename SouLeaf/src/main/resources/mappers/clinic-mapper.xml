@@ -14,6 +14,7 @@
 		<result property="clinicContents" column="CLINIC_CONTENTS"/>
 		<result property="clinicLike" column="CLINIC_LIKE"/>
 		<result property="memberNick" column="MEMBER_NICK"/>
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>
 		<result property="replyCount" column="REPLY_COUNT"/>
 		<result property="num" column="NUM"/>
 		<result property="clinicPlace" column="CLINIC_PLACE"/>

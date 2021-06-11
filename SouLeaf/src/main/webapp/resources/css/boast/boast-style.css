@@ -12,6 +12,9 @@
     width: 90%;
     margin-left: 2%;
 }
+.boast-btn{
+	cursor: pointer;
+}
 .reply-btn {
    /*     float: right;
     position: absolute;

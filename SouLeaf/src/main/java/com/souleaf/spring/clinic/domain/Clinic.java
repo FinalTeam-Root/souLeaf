@@ -15,6 +15,7 @@ public class Clinic {
 	private String clinicContents;
 	private int clinicLike;
 	private String memberNick;
+	private String memberFileRename;
 	private int replyCount;
 	private int num;
 	private String clinicPlace;
@@ -26,8 +27,8 @@ public class Clinic {
 
 	public Clinic(int clinicNo, String clinicContent, String clinicFileName, Date clinicDate, Date clinicUpdate,
 			int memberNo, String clinicFileRename, String clinicStatus, int clinicCount, String clinicContents,
-			int clinicLike, String memberNick, int replyCount, int num, String clinicPlace, String clinicHowWater,
-			String clinicLastPot) {
+			int clinicLike, String memberNick, String memberFileRename, int replyCount, int num, String clinicPlace,
+			String clinicHowWater, String clinicLastPot) {
 		super();
 		this.clinicNo = clinicNo;
 		this.clinicContent = clinicContent;
@@ -41,6 +42,7 @@ public class Clinic {
 		this.clinicContents = clinicContents;
 		this.clinicLike = clinicLike;
 		this.memberNick = memberNick;
+		this.memberFileRename = memberFileRename;
 		this.replyCount = replyCount;
 		this.num = num;
 		this.clinicPlace = clinicPlace;
@@ -144,6 +146,14 @@ public class Clinic {
 		this.memberNick = memberNick;
 	}
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
 	public int getReplyCount() {
 		return replyCount;
 	}
@@ -190,10 +200,10 @@ public class Clinic {
 				+ clinicFileName + ", clinicDate=" + clinicDate + ", clinicUpdate=" + clinicUpdate + ", memberNo="
 				+ memberNo + ", clinicFileRename=" + clinicFileRename + ", clinicStatus=" + clinicStatus
 				+ ", clinicCount=" + clinicCount + ", clinicContents=" + clinicContents + ", clinicLike=" + clinicLike
-				+ ", memberNick=" + memberNick + ", replyCount=" + replyCount + ", num=" + num + ", clinicPlace="
-				+ clinicPlace + ", clinicHowWater=" + clinicHowWater + ", clinicLastPot=" + clinicLastPot + "]";
+				+ ", memberNick=" + memberNick + ", memberFileRename=" + memberFileRename + ", replyCount=" + replyCount
+				+ ", num=" + num + ", clinicPlace=" + clinicPlace + ", clinicHowWater=" + clinicHowWater
+				+ ", clinicLastPot=" + clinicLastPot + "]";
 	}
 
-	
 	
 }
