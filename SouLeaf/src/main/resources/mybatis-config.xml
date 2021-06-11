@@ -30,6 +30,8 @@
 		<typeAlias type="com.souleaf.spring.admin.domain.MemberStatus" alias="MemberStatus"/>
 		<typeAlias type="com.souleaf.spring.admin.domain.TotalCount" alias="TotalCount"/>
 		<typeAlias type="com.souleaf.spring.mypage.domain.MyReply" alias="MyReply"/>
+		<typeAlias type="com.souleaf.spring.chat.room.Room" alias="Room"/>
+		<typeAlias type="com.souleaf.spring.chat.room.Chat" alias="Chat"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
@@ -43,5 +45,6 @@
 		<mapper resource="mappers/boast-mapper.xml"/>
 		<mapper resource="mappers/admin-mapper.xml"/>
 		<mapper resource="mappers/mypage-mapper.xml"/>
+		<mapper resource="mappers/room-mapper.xml"/>
 		</mappers>
 </configuration>

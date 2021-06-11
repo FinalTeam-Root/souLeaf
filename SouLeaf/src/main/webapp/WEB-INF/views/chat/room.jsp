@@ -305,8 +305,7 @@ img {
 				var tag = "";
 				// d : {roomNumber: ?, roomName : "createRoom 에서 입력한 채팅방 이름"}
 				// idx : 인덱스
-				res
-						.forEach(function(d, idx) {
+				res.forEach(function(d, idx) {
 							// 방 이름
 							var rn = d.roomName.trim();
 							// 방 번호
