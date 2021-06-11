@@ -120,8 +120,8 @@ a:hover, a:focus {
 						</div>
 						<div class="d-flex align-items-center justify-content-between">
 							<div class="d-flex align-items-center">
-								<input name="" type="checkbox" value="" /> <span
-									class="pl-2 font-weight-bold">아이디 저장</span>
+								<input name="" id="idSaveCheck" type="checkbox" value="" /> <span
+									class="pl-2 font-weight-bold"><label for="idSaveCheck">아이디 저장</label></span>
 							</div>
 							<div>
 								<a href="findIdView.kh" style="font-size: 0.9vw">아이디 찾기</a>&nbsp;&nbsp;&nbsp;
@@ -149,7 +149,66 @@ a:hover, a:focus {
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="resources/js/kakaoLogin/kakaoLogin.js"></script>
 	<script>
+
 	
+	$(function() {
+		var userInputId = getCookie("userInputId");
+	    var setCookieYN = getCookie("setCookieYN");
+	    
+	    if(setCookieYN == 'Y') {
+	        $("#idSaveCheck").prop("checked", true);
+	    } else {
+	        $("#idSaveCheck").prop("checked", false);
+	    }
+	    
+	    $("#exampleInputEmail1").val(userInputId); 
+	    
+	    //로그인 버튼 클릭
+	    $('#loginBtn').click(function() {
+	        if($("#idSaveCheck").is(":checked")){ 
+	            var userInputId = $("#exampleInputEmail1").val();
+	            setCookie("userInputId", userInputId, 60); 
+	            setCookie("setCookieYN", "Y", 60);
+	        } else {
+	            deleteCookie("userInputId");
+	            deleteCookie("setCookieYN");
+	        }
+	    });
+
+
+	});
+	//쿠키값 Set
+	function setCookie(cookieName, value, exdays){
+	    var exdate = new Date();
+	    exdate.setDate(exdate.getDate() + exdays);
+	    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + 
+	    exdate.toGMTString());
+	    document.cookie = cookieName + "=" + cookieValue;
+	}
+
+	//쿠키값 Delete
+	function deleteCookie(cookieName){
+	    var expireDate = new Date();
+	    expireDate.setDate(expireDate.getDate() - 1);
+	    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+	}
+
+	//쿠키값 가져오기
+	function getCookie(cookie_name) {
+	    var x, y;
+	    var val = document.cookie.split(';');
+	    
+	    for (var i = 0; i < val.length; i++) {
+	        x = val[i].substr(0, val[i].indexOf('='));
+	        y = val[i].substr(val[i].indexOf('=') + 1);
+	        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+	        
+	        if (x == cookie_name) {
+	          return unescape(y); // unescape로 디코딩 후 값 리턴
+	        }
+	    }
+	}
+	/////////////
 		$(".logininfo").on("keypress",function(e){
 			if(e.keyCode == 13){
 				var memberId = $("#exampleInputEmail1").val();
@@ -169,6 +228,14 @@ a:hover, a:focus {
 					success: function(data){
 						console.log(data);
 						if(data == "success"){
+							  if($("#idSaveCheck").is(":checked")){ 
+						            var userInputId = $("#exampleInputEmail1").val();
+						            setCookie("userInputId", userInputId, 60); 
+						            setCookie("setCookieYN", "Y", 60);
+						        } else {
+						            deleteCookie("userInputId");
+						            deleteCookie("setCookieYN");
+						        }
 							$(".msg").text("");
 							location.href="home.kh";
 						}else {
