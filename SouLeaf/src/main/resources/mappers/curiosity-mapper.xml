@@ -102,7 +102,7 @@
 			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%' AND CURIOSITY_STATUS = 'Y'
 		</if>
 		<if test="searchCondition.toString() == 'searchAll'">
-			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%' AND CURIOSITY_STATUS = 'Y' 
+			WHERE MEMBER_NO = #{memberNo} AND (CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%') AND CURIOSITY_STATUS = 'Y' 
 		</if>
 		ORDER BY CURIOSITY_DATE DESC
 	</select> 
@@ -116,7 +116,7 @@
 			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%'
 		</if>
 		<if test="searchCondition.toString() == 'searchAll'">
-			WHERE MEMBER_NO = #{memberNo} AND CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%'
+			WHERE MEMBER_NO = #{memberNo} AND (CURIOSITY_CONTENT LIKE '%' || #{searchValue } || '%' OR CURIOSITY_CONTENTS LIKE '%' || #{searchValue } || '%')
 		</if>
 		AND CURIOSITY_STATUS = 'Y'
 	</select>

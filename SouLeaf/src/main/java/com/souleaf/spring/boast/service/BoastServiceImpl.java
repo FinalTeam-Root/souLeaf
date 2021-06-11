@@ -18,6 +18,8 @@ import com.souleaf.spring.boast.domain.BoastSearch;
 
 import com.souleaf.spring.boast.store.BoastStore;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 
 
 @Service
@@ -197,5 +199,53 @@ public class BoastServiceImpl implements BoastService {
 	@Override
 	public int modifyBoastLike(Boast boast) {
 		return bStore.updateBoastLike(boast);
+	}
+	
+	// 마이페이지
+
+	@Override
+
+	public int getMyBoastListCount(int memberNo) {
+
+	return bStore.selectMyBoastListCount(memberNo);
+
+	}
+
+	@Override
+
+	public ArrayList<Boast> printAllMyBoast(int memberNo, MypageInfo pi) {
+
+	return bStore.selectAllMyBoast(memberNo,pi);
+
+	}
+
+	@Override
+
+	public int getMySearchCount(MypageSearch search) {
+
+	// **TODO** Auto-generated method stub
+
+	return bStore.getMySearchCount(search);
+
+	}
+
+	@Override
+
+	public ArrayList<Boast> printSearchAllList(MypageSearch search, MypageInfo pi) {
+
+	// **TODO** Auto-generated method stub
+
+	return bStore.selectSearchAllList(search,pi);
+
+	}
+
+	@Override
+
+	public int removeMyBoast(HashMap<String, String> map) {
+
+	// **TODO** Auto-generated method stub
+
+	return bStore.deleteMyBoast(map);
+
 	}
 }

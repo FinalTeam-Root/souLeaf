@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
+import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.service.BoastService;
 import com.souleaf.spring.clinic.domain.Clinic;
 import com.souleaf.spring.clinic.service.ClinicService;
@@ -49,9 +50,9 @@ public class MypageController {
 	@Autowired
 	private MemberService memService;
 	
-//	@Autowired
-//	private BoastService bService;
-//	
+	@Autowired
+	private BoastService bService;
+	
 	@Autowired
 	private ClinicService cliService;
 	
@@ -188,7 +189,7 @@ public class MypageController {
 		
 	}
 	
-	// 궁금해요 검색
+	// 클리닉 검색
 	@RequestMapping(value="clinicSearch.kh")
 	public void clinicSearch(@ModelAttribute MypageSearch search, HttpServletRequest request,  HttpServletResponse response,@RequestParam(value="page", required=false) Integer page) throws Exception {
 		HttpSession session = request.getSession();
@@ -212,7 +213,7 @@ public class MypageController {
 		}
 	}
 		
-	// 궁금해요 리스트 선택 삭제
+	// 클리닉 리스트 선택 삭제
 	@ResponseBody
 	@RequestMapping(value="clinicdelete.kh" ,method = RequestMethod.GET)
 	public String clinicdelete(@RequestParam String chkNo ) {
@@ -288,5 +289,65 @@ public class MypageController {
 			System.out.println("QnA 리스트 없다! 어쩔래?");
 		}
 		
+	}
+	
+	// 자랑하기 리스트 가져오기
+	@RequestMapping(value="myBoastList.kh")
+	public void getMyBoastList(HttpServletResponse response, HttpServletRequest request, @RequestParam(value="page", required=false) Integer page, HttpSession session) throws Exception{
+		session.setAttribute("fileName","");
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+		int currentPage = (page != null) ? page : 1;
+		int listCount = bService.getMyBoastListCount(memberNo);
+		MypageInfo pi = MypagePagination.getPageInfo(currentPage, listCount);
+		ArrayList<Boast> bList = bService.printAllMyBoast(memberNo,pi);
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("pi", pi);
+		map.put("bList", bList);
+		if(!bList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map,response.getWriter());
+		}else {
+			System.out.println("궁금해요 리스트 없다! 어쩔래?");
+		}
+		
+	}
+	
+	// 자랑하기 검색
+	@RequestMapping(value="boastSearch.kh")
+	public void BoastSearch(@ModelAttribute MypageSearch search, HttpServletRequest request,  HttpServletResponse response,@RequestParam(value="page", required=false) Integer page) throws Exception {
+		HttpSession session = request.getSession();
+		int memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+		int currentPage = (page != null) ? page : 1;
+		search.setMemberNo(memberNo);
+		int listCount = bService.getMySearchCount(search);
+		MypageInfo pi = MypagePagination.getPageInfo(currentPage, listCount);
+		ArrayList<Boast> searchList = bService.printSearchAllList(search,pi);
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("pi", pi);
+		map.put("searchList", searchList);
+		map.put("pageSearch", search);
+		if(!searchList.isEmpty()) {
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map, response.getWriter());
+		}else {
+			System.out.println("자랑하기 검색 결과없어 임마 돌아가");
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(map,response.getWriter());
+		}
+	}
+	
+	// 자랑하기 리스트 선택 삭제
+	@ResponseBody
+	@RequestMapping(value="boastdelete.kh" ,method = RequestMethod.GET)
+	public String boastdelete(@RequestParam String chkNo ) {
+		System.out.println(chkNo);
+		HashMap<String,String> map = new HashMap<String, String>();
+		map.put("chkNo", chkNo);
+		int result = bService.removeMyBoast(map);
+		if(result > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
 	}
 }

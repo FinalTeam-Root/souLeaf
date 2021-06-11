@@ -15,6 +15,8 @@ import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.service.BoastService;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.PlantInfo;
 
 
@@ -203,6 +205,61 @@ public class BoastStoreLogic implements BoastStore {
 
 	
 
+	// 마이페이지
+
+	@Override
+
+	public int selectMyBoastListCount(int memberNo) {
+
+	return sqlSession.selectOne("boastMapper.selectMyListCount", memberNo);
+
+	}
+
+	@Override
+
+	public ArrayList<Boast> selectAllMyBoast(int memberNo, MypageInfo pi) {
+
+	int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+
+	// 없이 쿼리문을 실행한다고 하면 전체 게시물을 가져오는데
+
+	// 내가 원하는 게시물 만큼만가져온다 그래서 사용
+
+	RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+
+	return (ArrayList)sqlSession.selectList("boastMapper.selectAllMyBoast",memberNo, rowBounds);
+
+	}
+
+	@Override
+
+	public int getMySearchCount(MypageSearch search) {
+
+	// **TODO** Auto-generated method stub
+
+	return sqlSession.selectOne("boastMapper.getMySearchCount", search);
+
+	}
+
+	@Override
+
+	public ArrayList<Boast> selectSearchAllList(MypageSearch search, MypageInfo pi) {
+
+	int offset = (pi.getCurrentPage()-1)*pi.getBoardLimit();
+
+	RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+
+	return (ArrayList)sqlSession.selectList("boastMapper.selectMySearchAllList", search,rowBounds);
+
+	}
+
+	@Override
+
+	public int deleteMyBoast(HashMap<String, String> map) {
+
+	return sqlSession.update("boastMapper.deleteMyBoast", map);
+
+	}
 
 
 

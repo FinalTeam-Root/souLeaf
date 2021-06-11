@@ -8,6 +8,8 @@ import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 import com.souleaf.spring.plant.domain.PlantInfo;
 
 
@@ -61,7 +63,17 @@ public interface BoastStore {
 	 */
 	public ArrayList<Boast> selectRank();
 	
-	
+	// 마이페이지
+
+	public int selectMyBoastListCount(int memberNo);
+
+	public ArrayList<Boast> selectAllMyBoast(int memberNo, MypageInfo pi);
+
+	public int getMySearchCount(MypageSearch search);
+
+	public ArrayList<Boast> selectSearchAllList(MypageSearch search, MypageInfo pi);
+
+	public int deleteMyBoast(HashMap<String, String> map);
 	
 	
 }

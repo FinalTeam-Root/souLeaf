@@ -123,4 +123,48 @@
 	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo }
 	 </update>
 	
+	
+	<!-- 마이페이지 -->
+
+	<select id="selectAllMyBoast" resultMap="boastResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY BOAST_DATE ASC) AS NUM, A.* FROM (SELECT * FROM BOAST) A WHERE MEMBER_NO = #{memberNo} AND BOAST_STATUS = 'Y' ORDER BY BOAST_DATE DESC
+	</select>
+	
+	<select id="selectMyListCount" resultType="_int">
+		SELECT COUNT(*) FROM BOAST WHERE MEMBER_NO = #{memberNo} AND BOAST_STATUS = 'Y'
+	</select>
+	
+	<select id="selectMySearchAllList" parameterType="com.souleaf.spring.mypage.domain.MypageSearch" resultMap="boastResultMap">
+		SELECT ROW_NUMBER() OVER (ORDER BY BOAST_DATE ASC) AS NUM, A.* FROM ( SELECT * FROM BOAST ) A
+		<if test="searchCondition.toString() == 'searchTitle'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_TITLE LIKE '%' || #{searchValue } || '%' AND BOAST_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchContent'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_CONTENTS LIKE '%' || #{searchValue } || '%' AND BOAST_STATUS = 'Y'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+		WHERE MEMBER_NO = #{memberNo} AND (BOAST_TITLE LIKE '%' || #{searchValue } || '%' OR BOAST_CONTENTS LIKE '%' || #{searchValue } || '%') AND BOAST_STATUS = 'Y'
+		</if>
+		ORDER BY BOAST_DATE DESC
+	</select>
+	
+	<select id="getMySearchCount" resultType="_int">
+		SELECT COUNT(*) FROM BOAST
+		<if test="searchCondition.toString() == 'searchTitle'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_TITLE LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchContent'">
+		WHERE MEMBER_NO = #{memberNo} AND BOAST_CONTENTS LIKE '%' || #{searchValue } || '%'
+		</if>
+		<if test="searchCondition.toString() == 'searchAll'">
+		WHERE MEMBER_NO = #{memberNo} AND (BOAST_TITLE LIKE '%' || #{searchValue } || '%' OR BOAST_CONTENTS LIKE '%' || #{searchValue } || '%')
+		</if>
+		AND BOAST_STATUS = 'Y'
+	</select>
+	
+	<update id="deleteMyBoast" parameterType="map">
+		UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${chkNo})
+	</update>
+	
+	
 </mapper>

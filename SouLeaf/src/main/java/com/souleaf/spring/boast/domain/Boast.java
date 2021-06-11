@@ -23,13 +23,14 @@ public class Boast {
 	private String boastContents; // 썸머노트내용 //
 	private int boastReplyCount; // 댓글수
 	private int boastLike;
+	private int num;
 	
 	public Boast() {}
 
 	public Boast(int boastNo, String boastTitle, String boastContent, String boastCount, Date boastDate,
 			Date boastUpdate, int memberNo, String memberNick, String memberFileRename, int boastPoint,
 			String boastStatus, int plantNo, int companionNo, String plantName, String boastFileName,
-			String boastFileRename, String boastContents, int boastReplyCount, int boastLike) {
+			String boastFileRename, String boastContents, int boastReplyCount, int boastLike, int num) {
 		super();
 		this.boastNo = boastNo;
 		this.boastTitle = boastTitle;
@@ -50,6 +51,7 @@ public class Boast {
 		this.boastContents = boastContents;
 		this.boastReplyCount = boastReplyCount;
 		this.boastLike = boastLike;
+		this.num = num;
 	}
 
 	public int getBoastNo() {
@@ -204,6 +206,14 @@ public class Boast {
 		this.boastLike = boastLike;
 	}
 
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	@Override
 	public String toString() {
 		return "Boast [boastNo=" + boastNo + ", boastTitle=" + boastTitle + ", boastContent=" + boastContent
@@ -212,10 +222,9 @@ public class Boast {
 				+ ", boastPoint=" + boastPoint + ", boastStatus=" + boastStatus + ", plantNo=" + plantNo
 				+ ", companionNo=" + companionNo + ", plantName=" + plantName + ", boastFileName=" + boastFileName
 				+ ", boastFileRename=" + boastFileRename + ", boastContents=" + boastContents + ", boastReplyCount="
-				+ boastReplyCount + ", boastLike=" + boastLike + "]";
+				+ boastReplyCount + ", boastLike=" + boastLike + ", num=" + num + "]";
 	}
 
-	
 	
 }
 

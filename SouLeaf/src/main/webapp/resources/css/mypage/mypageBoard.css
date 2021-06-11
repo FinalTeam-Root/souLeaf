@@ -123,6 +123,12 @@
   border:solid 1px #ccc ;
 }
 
+#boastSearchCondition {
+  width: 100px;
+  height: 45px;
+  border:solid 1px #ccc ;
+}
+
 .noColor{
   color: black;
 }

@@ -13,6 +13,8 @@ import com.souleaf.spring.boast.domain.Boast;
 import com.souleaf.spring.boast.domain.BoastReply;
 import com.souleaf.spring.boast.domain.BoastSearch;
 import com.souleaf.spring.common.PageInfo;
+import com.souleaf.spring.mypage.domain.MypageInfo;
+import com.souleaf.spring.mypage.domain.MypageSearch;
 
 
 
@@ -68,7 +70,17 @@ public interface BoastService {
 	public int removeFile(BoFile boFile);
 	int registerBoast(Boast boast);
 
-	
+	// 마이페이지
+
+	public int getMyBoastListCount(int memberNo);
+
+	public ArrayList<Boast> printAllMyBoast(int memberNo, MypageInfo pi);
+
+	public int getMySearchCount(MypageSearch search);
+
+	public ArrayList<Boast> printSearchAllList(MypageSearch search, MypageInfo pi);
+
+	public int removeMyBoast(HashMap<String, String> map);
 	
 	
 	

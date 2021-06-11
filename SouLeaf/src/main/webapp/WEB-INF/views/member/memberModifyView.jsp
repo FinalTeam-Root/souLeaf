@@ -30,69 +30,47 @@
 												<div class="form-group">
 													<label class="label" for="memberId">아이디</label> <input
 														type="text" class="form-control" name="memberId"
-														id="=memberId" placeholder="MemberId"
-														value="${mOne.memberId }" readonly>
+														id="memberId" value="${mOne.memberId }" readonly>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="memberName">이름</label> <input
 														type="text" class="form-control" name="memberName"
-														id="memberName" placeholder="memberName"
-														value="${mOne.memberName }" readonly>
+														id="memberName" value="${mOne.memberName }" readonly>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="memberNick">닉네임</label> <input
 														type="text" class="form-control" name="memberNick"
-														id="memberNick" placeholder="memberNick"
-														value="${mOne.memberNick }">
+														id="memberNick" value="${mOne.memberNick }">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
-													<label class="label" for="memberFileRename">사진파일</label> <input
-														type="file" class="form-control" name="uploadFile"
-														id="memberFilerename" placeholder="memberFilerename"
-														value="${mOne.memberFileRename }" readonly>
+													<label class="label" for="memberFileRename">사진파일</label> <br>
+													<div class="custom-file" style="width:400px">
+													    <input type="file" class="file-upload custom-file-input" id="uploadFile" name="uploadFile" aria-describedby="inputGroupFileAddon04">
+													    <label class="custom-file-label" for="uploadFile">${mOne.memberPhoto }</label>
+													</div>
 												</div>
 												</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="memberMail">이메일</label> <input
 														type="text" class="form-control" name="memberMail"
-														id="memberMail" placeholder="memberMail"
-														value="${mOne.memberMail }">
+														id="memberMail" value="${mOne.memberMail }">
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="memberIntro">소개글</label> <input
 														type="text" class="form-control" name="memberIntro"
-														id="memberIntro" placeholder="memberIntro"
-														value="${mOne.memberIntro }">
+														id="memberIntro" value="${mOne.memberIntro }">
 												</div>
 											</div>
 											
-									<!-- 		<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="password">비밀번호</label> <input
-														type="password" class="form-control passwordCheck" name="memberPw"
-														id=password placeholder="새 비밀번호">
-														<span id="pwMsg"></span>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="label" for="re-password">비밀번호 확인</label> <input
-														type="password" class="form-control passwordCheck" name="password1"
-														id="password1" placeholder="비밀번호 확인">
-												</div>
-											</div>
-												<div class="form-group">
-													<p id="passwordCheck">
-												</div> -->
 											<div class="col-md-12">
 												<div class="form-group">
 													<button type="submit" id="modifybtn" class="btn btn-primary">수정하기</button>
