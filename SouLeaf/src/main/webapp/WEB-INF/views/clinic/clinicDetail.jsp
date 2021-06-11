@@ -42,11 +42,9 @@
 													aria-haspopup="true" aria-expanded="false"
 													style="padding: 12px 10px; font-size: 15px; text-transform: none;">
 													${clinic.memberNick }</button>
-												<div class="dropdown-menu"
-													aria-labelledby="dropdownMenuButton">
-													<a class="dropdown-item"
-														href="diaryMainOtherView.kh?memberDiary=${clinic.memberNo }">일기
-														보러가기</a> <a class="dropdown-item" href="#">1:1 채팅</a>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+													<a class="dropdown-item" href="diaryMainOtherView.kh?memberDiary=${clinic.memberNo }">일기 보러가기</a>
+													<a class="dropdown-item" href="#" onclick="registerRoom();">1:1 채팅</a>
 												</div>
 												${clinic.clinicDate } &nbsp;&nbsp;<span class="far fa-eye"></span>
 												${clinic.clinicCount } &nbsp;&nbsp;<span
@@ -160,6 +158,26 @@
 			</div>
 		</div>
 	</section>
+	<script>
+	function registerRoom() {
+		 $.ajax({
+             url : "/createRoom.kh",
+             type : "get",
+             dataType : "json",
+             data : {"memberNo":${clinic.memberNo}, "roomName":"${clinic.memberNick}" },
+             success : function(data) {
+            	 var number = "data[lastItem].roomNumber";
+            	 var name = '+data[lastItem].roomName+';
+            	 let lastItem=data[data.length-1];  
+            	 goRoom(number, name);
+             }
+             });
+	}
+	
+	function goRoom(number, name) { 
+		window.open("/moveChating.kh?roomName=" + name + "&" + "roomNumber=" + number, "new", "width=400,height=600");
+	}
+	</script>
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script src="resources/js/summernote/summernote-lite.js"></script>

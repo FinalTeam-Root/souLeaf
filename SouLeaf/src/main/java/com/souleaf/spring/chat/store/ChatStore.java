@@ -16,4 +16,6 @@ public interface ChatStore {
 	public int insertChat(Chat chat); // 채팅 내용 저장
 	
 	public ArrayList<Chat> selectAllChat(int roomNumber); // 채팅 내용 가져오기
+
+	public int insertRoom(Room room); // 룸 정보 저장
 }

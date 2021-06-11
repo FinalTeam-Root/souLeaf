@@ -42,6 +42,12 @@ public class ChatServiceImpl implements ChatService{
 	@Override
 	public ArrayList<Chat> printAllChat(int roomNumber) {
 		return cStore.selectAllChat(roomNumber);
+	}
+
+	@Override
+	public int registerRoom(Room room) {
+		// TODO Auto-generated method stub
+		return cStore.insertRoom(room);
 	}	
 
 

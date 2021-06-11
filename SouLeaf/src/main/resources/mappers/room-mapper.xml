@@ -38,6 +38,10 @@
 		SELECT * FROM ROOM WHERE MEMBER_NO = #{memberNo} AND ROOM_NUMBER = #{roomNumber}
 	</select>
 	
+	<insert id="insertRoom">
+		INSERT INTO ROOM VALUES (#{roomNumber}, #{roomName},#{memberNo},#{memberNick},#{withMemberNo},#{withMemberNick},DEFAULT,SYSDATE,#{lastChatMessage},#{withMemberPick})
+	</insert>
+	
 	<insert id="insertChat">
 		INSERT INTO CHAT VALUES (SEQ_CHAT.NEXTVAL, #{roomNumber},#{roomName},#{memberNo},#{memberNick},#{withMemberNo},#{withMemberNick},#{msg},SYSDATE)
 	</insert>

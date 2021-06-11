@@ -44,4 +44,10 @@ public class ChatStoreLogic implements ChatStore{
 		return (ArrayList)sqlSession.selectList("roomMapper.selectAllChat",roomNumber);
 	}
 
+	@Override
+	public int insertRoom(Room room) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("roomMapper.insertRoom", room);
+	}
+
 }

@@ -27,12 +27,15 @@ import com.souleaf.spring.chat.room.Room;
 import com.souleaf.spring.chat.service.ChatService;
 import com.souleaf.spring.companion.controller.CompanionController;
 import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.member.service.MemberService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private ChatService cService;
+	@Autowired
+	private MemberService mService;
 
 	private Logger log = LoggerFactory.getLogger(CompanionController.class);
 
@@ -70,14 +73,38 @@ public class MainController {
 	 */
 	// HashMap<Object, Object> params {roomName=입력한 방이름}
 	@RequestMapping("/createRoom.kh")
-	public @ResponseBody List<Room> createRoom(@RequestParam HashMap<Object, Object> params) {
+	public @ResponseBody List<Room> createRoom(@RequestParam HashMap<Object, Object> params, HttpSession session) {
 		String roomName = (String) params.get("roomName");
-		if (roomName != null && !roomName.trim().equals("")) {
+ 		if (roomName != null && !roomName.trim().equals("")) {
 			roomNumber = cService.printMaxRoomNum();
-			Room room = new Room();
-			room.setRoomNumber(++roomNumber);
-			room.setRoomName(roomName);
-			roomList.add(room);
+			Room room1 = new Room();
+			Room room2 = new Room();
+			int MemberNo=Integer.parseInt((String) params.get("memberNo"));
+			
+			Member loginUser = (Member) session.getAttribute("loginUser");
+			Member mOne1 = mService.printMember(loginUser.getMemberNo());
+			Member mOne2 = mService.printMember(MemberNo);
+			
+			room1.setRoomNumber(++roomNumber);
+			room1.setRoomName(roomName);
+			room1.setMemberNo(mOne1.getMemberNo());
+			room1.setMemberNick(mOne1.getMemberNick());
+			room1.setWithMemberNo(mOne2.getMemberNo());
+			room1.setWithMemberNick(mOne2.getMemberNick());
+			room1.setWithMemberPick(mOne2.getMemberFileRename());
+			int result1 = cService.registerRoom(room1);
+			
+			room2.setRoomNumber(roomNumber);
+			room2.setRoomName(mOne1.getMemberNick());
+			room2.setMemberNo(mOne2.getMemberNo());
+			room2.setMemberNick(mOne2.getMemberNick());
+			room2.setWithMemberNo(mOne1.getMemberNo());
+			room2.setWithMemberNick(mOne1.getMemberNick());
+			room2.setWithMemberPick(mOne1.getMemberFileRename());
+			int result2 = cService.registerRoom(room2);
+			
+			roomList.add(room1);
+			roomList.add(room2);
 		}
 		return roomList;
 	}

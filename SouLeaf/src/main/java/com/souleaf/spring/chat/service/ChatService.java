@@ -17,4 +17,6 @@ public interface ChatService {
 	
 	public ArrayList<Chat> printAllChat(int roomNumber); // 채팅 내용 가져오기
 
+	public int registerRoom(Room room); // 방 정보 저장
+
 }
