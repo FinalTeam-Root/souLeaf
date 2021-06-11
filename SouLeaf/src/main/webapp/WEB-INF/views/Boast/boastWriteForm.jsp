@@ -49,7 +49,7 @@
 														<c:forEach items="${cList }" var="companion" varStatus="status">
 																<label class="btn btn-outline-success" for="">
 																
-																	<input type="radio" name="companionNo" id="jb-radio-${companion.companionNo }" value="${companion.companionNo }"> ${companion.companionNick }
+																	<input type="radio" name="companionNo" id="jb-radio-${companion.companionNo }" value="${companion.companionNo }" required> ${companion.companionNick }
 																</label>																
 														</c:forEach>
 															</div>
@@ -72,7 +72,7 @@
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="submit" value="등록" class="btn btn-primary">
+														<input type="submit" value="등록" class="btn btn-primary" id="submit-btn">
 														<div class="submitting"></div>
 													</div>
 												</div>

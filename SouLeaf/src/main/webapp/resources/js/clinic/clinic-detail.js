@@ -70,7 +70,15 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 
 function replyRegister(clinicNo){	
+	if($("#loginNo").val() ==  ""){
+		alert('로그인 후 이용가능합니다.');
+		return false;
+	}	
 	var content = $("#replyContent").val();
+	if(content == ""){
+		alert('내용을 입력해주세요.');
+		return false;
+	}
 	$.ajax({
 		url : "clinicReplyRegister.kh",
 		type:"post",

@@ -37,6 +37,19 @@ $('#summernote').summernote({
 				replyRegister($("#boastyNo").val());
 			}			
 		});
+
+		$("#submit-btn").on("click",function(){
+			alert("a");
+			return false;
+			var check  = $("input[name='companionNo']:checked").val();
+
+					
+			console.log(check);
+			if(check){
+				alert('d');
+				return false;
+			}
+		});
 });
 
 /**
@@ -92,9 +105,16 @@ $('.image-upload-wrap').bind('dragover', function () {
         $('.image-upload-wrap').removeClass('image-dropping');
 });
 
-function replyRegister(boastNo){	
+function replyRegister(boastNo){
+	if($("#loginNo").val() ==  ""){
+		alert('로그인 후 이용가능합니다.');
+		return false;
+	}	
 	var content = $("#emojionearea1").val();
-	
+	if(content == ""){
+		alert('내용을 입력해주세요.');
+		return false;
+	}
 	$.ajax({
 		url : "boastReplyRegister.kh",
 		type:"post",
@@ -320,6 +340,10 @@ function boastDelete(boastNo){
 
 // 답글달기
 function replyReReView(obj,boastNo,bocommentNo,memberNick){	
+	if($("#loginNo").val() ==  ""){
+		alert('로그인 후 이용가능합니다.');
+		return false;
+	}
 	$textarea = '<div class="span6 row" style="position: relative;"><small class="text-primary" style="position:absolute; top:-65%; left:2%">@'+memberNick+'</small><textarea style="margin-left:10%;" id="emojionearea2" placeholder="답글을 남겨주세요"></textarea></div><div style="position:absolute; right:5.2%; width:100%"><button class="mt-4 p-2 btn btn-secondary reply-btn" style="position: absolute; right:1%;" onclick="replyReRegister('+boastNo+','+bocommentNo+')">답글</button></div>';
 	$(".boast-btn").hide();
   $(obj).hide();  
@@ -336,7 +360,12 @@ function replyReReView(obj,boastNo,bocommentNo,memberNick){
 }
 
 function replyReRegister(boastNo,bocommentNo){
-	var content = $("#emojionearea2").val();	
+
+	var content = $("#emojionearea2").val();
+	if(content == ""){
+		alert('내용을 입력해주세요.');
+		return false;
+	}	
 	$.ajax({
 		url : "boastReReplyRegister.kh",
 		type:"post",
@@ -381,6 +410,7 @@ function getLikeCount(){
 }
 
 function clickLike(){
+
 	var boastNo = $("#boastNo").val();
 	var memberNo = $("#loginNo").val();
 	
@@ -388,9 +418,7 @@ function clickLike(){
 		url : "boastLike.kh",
 		type:"get",
 		data : {"boastNo":boastNo,"memberNo":memberNo},		
-		success : function(data){
-						 
-			console.log(data);
+		success : function(data){					 			
 			likeCheck();
 			getLikeCount();
 		},

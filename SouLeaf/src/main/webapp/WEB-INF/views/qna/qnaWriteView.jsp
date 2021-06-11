@@ -37,7 +37,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="#">내용</label>
-														<textarea name="qnaContent" class="form-control" id="" cols="30" rows="4" placeholder="문의사항을 적어주세요"></textarea>
+														<textarea name="qnaContent" class="form-control" id="" cols="30" rows="4" placeholder="문의사항을 적어주세요" required></textarea>
 													</div>
 												</div>
 												<div class="col-md-12">

@@ -171,6 +171,10 @@ function replyRegister(curiosityNo){
 		return false;
 	}	
 	var content = $("#replyContent").val();
+	if(content == ""){
+		alert('내용을 입력해주세요.');
+		return false;
+	}
 	$.ajax({
 		url : "curiosityReplyRegister.kh",
 		type:"post",
