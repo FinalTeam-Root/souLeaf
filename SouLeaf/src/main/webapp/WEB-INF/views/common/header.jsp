@@ -53,7 +53,7 @@
 					    			<a href="loginView.kh" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-sign-in-alt"> 로그인</span></small></a>
 				    			</c:if>
 				    			<c:if test="${loginUser ne null }">
-					    			<a href="#" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-comments" id="head-chat"> 채팅</span></small></a>
+					    			<a href="#" onclick="window.open('room.kh', '_blank', 'width=400 height=600')" class="d-flex align-items-center justify-content-center"><small><span class="fas fa-comments" id="head-chat"> 채팅</span></small></a>
 					    			<a href="diaryMainView.kh?memberNo=${loginUser.memberNo }" class="d-flex align-items-center justify-content-center <c:if test="${nav eq 'diary' }">head-active</c:if>"><small><span class="fas fa-leaf" id="head-leaf"> 성장일기</span></small></a>
 					    			
 					    			<c:if test="${loginUser.memberId ne 'admin' }">
