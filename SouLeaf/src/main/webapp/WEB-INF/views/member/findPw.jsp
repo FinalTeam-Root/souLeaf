@@ -171,7 +171,7 @@ background-color:#00bd56
 			
 		});
 		function confirmPwEmail(){
-		alert('test');	
+		/* alert('test'); */	
 		}
 	</script>
 	<script src="resources/js/login/emailAuthenticatePwView.js"></script>
