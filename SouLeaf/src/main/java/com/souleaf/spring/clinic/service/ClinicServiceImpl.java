@@ -180,5 +180,15 @@ public class ClinicServiceImpl implements ClinicService{
 	public ArrayList<Clinic> printAllSearchList(PageInfo pi, String search) {
 		return cStore.selectAllSearchList(pi, search);
 	}
+
+	@Override
+	public ArrayList<ClinicReply> printSelectionClinicReply(int clinicNo) {
+		return cStore.selectSelectionClinicReply(clinicNo);
+	}
+
+	@Override
+	public int modifyReplySelection(int cliniccommentNo) {
+		return cStore.updateReplySelection(cliniccommentNo);
+	}
 	
 }

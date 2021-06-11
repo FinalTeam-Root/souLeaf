@@ -110,7 +110,19 @@
 									<hr>
 									<input type="hidden" id="loginNo"
 										value="${loginUser.memberNo }">
-
+										<input type="hidden" id="clinicMemberNo" value="${clinic.memberNo }">
+										<span id="clinic-selection"></span>
+									<!-- <div class="ml-3">
+										<span>채택답변</span>
+										<div class="media p-3">
+										<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">
+										<div class="media-body">
+										<strong>'+data[i].memberNick+'</strong><br>
+										<span>'+data[i].cliniccommentContent+'</span><br>
+										<small>'+data[i].cliniccommentDate+'</small><br>
+										</div>
+										</div>
+									</div> -->
 									<p class="p-3" style="margin-bottom: 0px">
 										<strong>댓글 <span id="comment-count">0</span>개
 										</strong>
@@ -129,6 +141,7 @@
 </div> -->
 									<br>
 									<div class="row" style="position: relative;">
+									
 										<input type="text" class="form-control" id="replyContent"
 											style="width: 95%; margin-left: 1.5%; height: 32px !important;"
 											placeholder="댓글을 남겨주세요">

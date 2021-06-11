@@ -26,9 +26,11 @@
 		<result property="cliniccommentContent" column="CLINICCOMMENT_CONTENT"/>
 		<result property="cliniccommentDate" column="CLINICCOMMENT_DATE"/>
 		<result property="cliniccommentStatus" column="CLINICCOMMENT_STATUS"/>
+		<result property="cliniccommentSelection" column="CLINICCOMMENT_SELECTION"/>
 		<result property="clinicNo" column="CLINIC_NO"/>
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="memberNick" column="MEMBER_NICK"/>		
+		<result property="memberFileRename" column="MEMBER_FILERENAME"/>		
 	</resultMap>
 	
 	<resultMap type="ClinicLike" id="clinicLikeResultMap">
@@ -90,11 +92,15 @@
 	<!-- 댓글 -->
 	
 	<insert id="insertReply">
-		INSERT INTO CLINICCOMMENT VALUES (SEQ_CLINICCOMMENT.NEXTVAL, #{cliniccommentContent}, DEFAULT, #{clinicNo}, #{memberNo}, DEFAULT)
+		INSERT INTO CLINICCOMMENT VALUES (SEQ_CLINICCOMMENT.NEXTVAL, #{cliniccommentContent}, DEFAULT, #{clinicNo}, #{memberNo}, DEFAULT, DEFAULT)
 	</insert>
 	
 	<select id="selectAllReplyList" parameterType="ClinicReply" resultMap="clinicReplyResultMap">
 		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y' ORDER BY CLINICCOMMENT_NO
+	</select>
+	
+	<select id="selectSelectionReply" parameterType="ClinicReply" resultMap="clinicReplyResultMap">
+		SELECT * FROM CLINICCOMMENT JOIN MEMBER USING(MEMBER_NO) WHERE CLINIC_NO = #{clinicNo} AND CLINICCOMMENT_STATUS = 'Y' AND CLINICCOMMENT_SELECTION = 'Y' ORDER BY CLINICCOMMENT_NO
 	</select>
 	
 	<update id="updateReply">
@@ -103,6 +109,10 @@
 	
 	<update id="deleteReply">
 		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
+	</update>
+		
+	<update id="updateSelectionReply">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_SELECTION = 'Y' WHERE CLINICCOMMENT_NO = #{cliniccommentNo} AND CLINICCOMMENT_STATUS = 'Y'
 	</update>
 	
 	<!-- 관리자 -->
@@ -113,6 +123,8 @@
 	<update id="deleteAdminClinic" parameterType="Map">
 		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
 	</update>
+	
+	
 	
 	
 	<!-- 마이페이지 -->
@@ -134,7 +146,7 @@
 			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y'
 		</if>
 		<if test="searchCondition.toString() == 'searchAll'">
-			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%' AND CLINIC_STATUS = 'Y' 
+			WHERE MEMBER_NO = #{memberNo} AND (CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%') AND CLINIC_STATUS = 'Y'
 		</if>
 		ORDER BY CLINIC_DATE DESC
 	</select> 
@@ -148,7 +160,7 @@
 			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%'
 		</if>
 		<if test="searchCondition.toString() == 'searchAll'">
-			WHERE MEMBER_NO = #{memberNo} AND CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%'
+			WHERE MEMBER_NO = #{memberNo} AND (CLINIC_CONTENT LIKE '%' || #{searchValue } || '%' OR CLINIC_CONTENTS LIKE '%' || #{searchValue } || '%')
 		</if>
 		AND CLINIC_STATUS = 'Y'
 	</select>
@@ -156,6 +168,7 @@
 	<update id="deleteMyClinic" parameterType="map">
 		UPDATE CLINIC SET CLINIC_STATUS = 'N' WHERE CLINIC_NO IN (${chkNo})
 	</update>
+
 	
 		<!-- 좋아요 -->
 	<select id="selectlike" parameterType="ClinicLike" resultMap="clinicLikeResultMap">

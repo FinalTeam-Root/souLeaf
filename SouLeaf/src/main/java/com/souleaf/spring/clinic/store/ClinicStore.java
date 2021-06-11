@@ -39,6 +39,9 @@ public interface ClinicStore {
 	public int updateLike(ClinicLike clinicLike); // 좋아요 수정
 	public int deleteAdminClinic(HashMap<String, String> map) ;
 	
+	public ArrayList<ClinicReply> selectSelectionClinicReply(int clinicNo); // 채택댓글
+	public int updateReplySelection(int cliniccommentNo); // 채택하기
+	
 	// 마이페이지
 	public int selectMyClinicListCount(int memberNo);
 	public ArrayList<Clinic> selectAllMyClinic(int memberNo, MypageInfo pi);

@@ -7,23 +7,28 @@ public class ClinicReply {
 	private String cliniccommentContent;
 	private Timestamp cliniccommentDate;
 	private String cliniccommentStatus;
+	private String cliniccommentSelection;
 	private int clinicNo;
 	private int memberNo;
 	private String memberNick;
+	private String memberFileRename;
 	
 	public ClinicReply() {
 	}
 
 	public ClinicReply(int cliniccommentNo, String cliniccommentContent, Timestamp cliniccommentDate,
-			String cliniccommentStatus, int clinicNo, int memberNo, String memberNick) {
+			String cliniccommentStatus, String cliniccommentSelection, int clinicNo, int memberNo, String memberNick,
+			String memberFileRename) {
 		super();
 		this.cliniccommentNo = cliniccommentNo;
 		this.cliniccommentContent = cliniccommentContent;
 		this.cliniccommentDate = cliniccommentDate;
 		this.cliniccommentStatus = cliniccommentStatus;
+		this.cliniccommentSelection = cliniccommentSelection;
 		this.clinicNo = clinicNo;
 		this.memberNo = memberNo;
 		this.memberNick = memberNick;
+		this.memberFileRename = memberFileRename;
 	}
 
 	public int getCliniccommentNo() {
@@ -58,6 +63,14 @@ public class ClinicReply {
 		this.cliniccommentStatus = cliniccommentStatus;
 	}
 
+	public String getCliniccommentSelection() {
+		return cliniccommentSelection;
+	}
+
+	public void setCliniccommentSelection(String cliniccommentSelection) {
+		this.cliniccommentSelection = cliniccommentSelection;
+	}
+
 	public int getClinicNo() {
 		return clinicNo;
 	}
@@ -82,11 +95,22 @@ public class ClinicReply {
 		this.memberNick = memberNick;
 	}
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
 	@Override
 	public String toString() {
 		return "ClinicReply [cliniccommentNo=" + cliniccommentNo + ", cliniccommentContent=" + cliniccommentContent
 				+ ", cliniccommentDate=" + cliniccommentDate + ", cliniccommentStatus=" + cliniccommentStatus
-				+ ", clinicNo=" + clinicNo + ", memberNo=" + memberNo + ", memberNick=" + memberNick + "]";
+				+ ", cliniccommentSelection=" + cliniccommentSelection + ", clinicNo=" + clinicNo + ", memberNo="
+				+ memberNo + ", memberNick=" + memberNick + ", memberFileRename=" + memberFileRename + "]";
 	}
+
+	
 
 }

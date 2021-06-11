@@ -188,6 +188,24 @@ public class ClinicController {
 			return mv;
 		}
 	
+		// 클리닉 댓글 채택 출력
+		@RequestMapping(value="clinicReplySelectionList.kh")
+		public void clinicReplySelectionView(HttpServletResponse response,@RequestParam("clinicNo") int clinicNo, ClinicReply reply, Model model) throws Exception {
+			ArrayList<ClinicReply> crOne = cService.printSelectionClinicReply(clinicNo);
+			log.info("클리닉 댓글 :" + crOne.toString());
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create();
+			gson.toJson(crOne, response.getWriter());
+		}
+		
+		// 클리닉 댓글 채택 출력 
+		@ResponseBody
+		@RequestMapping(value="clinicReplySelectionModify.kh")
+		public String clinicReplySelectionModify(HttpServletResponse response,@RequestParam("cliniccommentNo") int cliniccommentNo, ClinicReply reply, Model model) throws Exception {
+			int result = cService.modifyReplySelection(cliniccommentNo);
+			return result+"";
+		}
+		
+		
 	// 클리닉 댓글 리스트 출력
 	@RequestMapping(value="clinicReplyList.kh")
 	public void clinicReplyListView(HttpServletResponse response,@RequestParam("clinicNo") int clinicNo, ClinicReply reply, Model model) throws Exception {

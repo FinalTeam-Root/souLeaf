@@ -193,4 +193,14 @@ public class ClinicStoreLogic implements ClinicStore{
 		return (ArrayList)sqlSession.selectList("clinicMapper.selectSearchList", search, rowBounds);
 	}
 
+	@Override
+	public ArrayList<ClinicReply> selectSelectionClinicReply(int clinicNo) {
+		return (ArrayList)sqlSession.selectList("clinicMapper.selectSelectionReply", clinicNo);
+	}
+
+	@Override
+	public int updateReplySelection(int cliniccommentNo) {
+		return sqlSession.update("clinicMapper.updateSelectionReply",cliniccommentNo);
+	}
+
 }

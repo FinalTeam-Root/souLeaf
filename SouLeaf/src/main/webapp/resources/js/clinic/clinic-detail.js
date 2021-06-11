@@ -12,7 +12,8 @@ $(function(){
 		        	}
 		        }
 		 });
-		 getReplyList($("#clinicNo").val());
+		 getReplySelection($("#clinicNo").val());
+		//  getReplyList($("#clinicNo").val());
 });
 
 /**
@@ -77,7 +78,7 @@ function replyRegister(clinicNo){
 		success : function(data){
 						 
 		if(data == 1){
-			getReplyList(clinicNo);
+			getReplySelection($("#clinicNo").val());
 			$("#replyContent").val("");
 		}
 		  
@@ -105,7 +106,7 @@ function replyUpdate(clinicNo,memberNo,replyNo){
 		success : function(data){
 						 
 		if(data == 1){
-			getReplyList(clinicNo);
+			getReplySelection($("#clinicNo").val());
 			$("#replyContent").val("");
 		}
 		  
@@ -116,6 +117,106 @@ function replyUpdate(clinicNo,memberNo,replyNo){
 	
 	  });
 	
+}
+
+
+function getReplySelection(clinicNo){
+	var loginNo = $("loginNo").val();
+	$.ajax({
+		url : "clinicReplySelectionList.kh",
+		type:"get",
+		data : {"clinicNo":clinicNo},	
+		dataType:"json",	
+		success : function(data){
+			console.log(data);
+			var str = "";
+			if(data.length > 0){
+				for(var i in data){
+
+				
+				str+='<strong class="ml-3 text-success">채택 된 답변입니다.</strong><br>';
+				str+='<div class="media p-3" style="background-color:#abe8a24a">';
+
+			if(data[i].memberFileRename == null){
+				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+			}else{
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			}	
+			str+='<div class="media-body">';
+			str+='<strong>'+data[i].memberNick+'</strong><br>';
+			str+='<span>'+data[i].cliniccommentContent+'</span><br>';
+            if(loginNo == data[i].memberNo){
+				str+='<small>'+data[i].cliniccommentDate+' <span onclick="replyModifyView(this,'+data[i].clinicNo+','+data[i].memberNo+','+data[i].cliniccommentNo+',\''+data[i].cliniccommentContent+'\')" class="text-success clinic-btn">수정</span> <span onclick="replyDelete('+data[i].cliniccommentNo+','+data[i].clinicNo+')" class="text-danger clinic-btn">삭제</span></small><br>';
+
+			}else{
+				str+='<small>'+data[i].cliniccommentDate+'</small><br>';
+			}
+
+			str+='</div>';
+			str+='</div>';
+			}
+
+			$("#clinic-selection").html(str);
+				getReplyList(clinicNo);
+			}else{
+				getReplySelectionList(clinicNo);
+			}
+		}
+	})
+
+}
+
+function getReplySelectionList(clinicNo){	
+	var loginNo = $("#loginNo").val();
+	var clinicMemberNo =$("#clinicMemberNo").val();
+	$.ajax({
+		url : "clinicReplyList.kh",
+		type:"get",
+		data : {"clinicNo":clinicNo},	
+		dataType:"json",	
+		success : function(data){
+				
+			var str = "";
+			if(data.length > 0){
+				$("#comment-count").text(data.length);
+				$("#replyCount").text(data.length);
+		
+				console.log(data);
+		 for(var i in data){
+			str+='<div class="media p-3">';
+
+			if(data[i].memberFileRename == null){
+				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+			}else{
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			}	
+			str+='<div class="media-body">';
+			str+='<strong>'+data[i].memberNick+'</strong><br>';
+			str+='<span>'+data[i].cliniccommentContent+'</span><br>';
+            if(loginNo == data[i].memberNo){
+				str+='<small>'+data[i].cliniccommentDate+' <span onclick="replyModifyView(this,'+data[i].clinicNo+','+data[i].memberNo+','+data[i].cliniccommentNo+',\''+data[i].cliniccommentContent+'\')" class="text-success clinic-btn">수정</span> <span onclick="replyDelete('+data[i].cliniccommentNo+','+data[i].clinicNo+')" class="text-danger clinic-btn">삭제</span></small><br>';
+
+			}else{
+				if(loginNo == clinicMemberNo){
+					str+='<small>'+data[i].cliniccommentDate+' <span onclick="updateSelection('+data[i].cliniccommentNo+')" class="text-primary">채택</span></small> <br>';
+
+				}else{
+					str+='<small>'+data[i].cliniccommentDate+' </small> <br>';
+				}
+			}
+
+			str+='</div>';
+			str+='</div>';
+		 }
+		
+		  $("#clinic-comment").html(str);
+		}
+		},
+		error : function(){
+		  console.log('fail');
+		}
+	
+	  });
 }
 
 function getReplyList(clinicNo){	
@@ -132,9 +233,15 @@ function getReplyList(clinicNo){
 				$("#comment-count").text(data.length);
 				$("#replyCount").text(data.length);
 		
+				console.log(data);
 		 for(var i in data){
 			str+='<div class="media p-3">';
-			str+='<img src="resources/images/gallery-3.jpg" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+
+			if(data[i].memberFileRename == null){
+				str+='<img src="resources/images/basicMemberImg.png" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';	
+			}else{
+				str+='<img src="/resources/uploadFiles/member/'+data[i].memberFileRename+'" alt="John Doe" class="mr-3 mt-2 rounded-circle" style="width:60px; height: 60px">';
+			}	
 			str+='<div class="media-body">';
 			str+='<strong>'+data[i].memberNick+'</strong><br>';
 			str+='<span>'+data[i].cliniccommentContent+'</span><br>';
@@ -170,7 +277,27 @@ function replyDelete(replyNo,clinicNo){
 		data: {"cliniccommentNo":replyNo},
 		success : function(data){
 			console.log(data);
-			getReplyList(clinicNo);
+			getReplySelection($("#clinicNo").val());
+		},
+		error: function(){
+			console.log('fail');
+		}
+	});
+}
+}
+
+function updateSelection(cliniccommentNo){
+	if (!confirm("정말 채택하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+	$.ajax({
+		url: "clinicReplySelectionModify.kh",
+		type: "get",
+		data: {"cliniccommentNo":cliniccommentNo},
+		success : function(data){
+			console.log(data);
+			getReplySelection($("#clinicNo").val());
 		},
 		error: function(){
 			console.log('fail');

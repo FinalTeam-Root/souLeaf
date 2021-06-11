@@ -39,6 +39,8 @@ public interface ClinicService {
 	public int modifyLike(ClinicLike clinicLike);// 좋아요 수정
 	public int removeAdminClinic(HashMap<String, String> map) ;
 	
+	public ArrayList<ClinicReply> printSelectionClinicReply(int clinicNo); // 채택댓글
+	public int modifyReplySelection(int cliniccommentNo); // 채택하기
 	
 	// 마이페이지
 	public int getMyClinicListCount(int memberNo); // 게시글 개수 가져오기
