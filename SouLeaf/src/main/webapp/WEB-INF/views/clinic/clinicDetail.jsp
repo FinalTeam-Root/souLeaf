@@ -141,23 +141,19 @@
 </div> -->
 									<br>
 									<div class="row" style="position: relative;">
-									
 										<input type="text" class="form-control" id="replyContent"
 											style="width: 95%; margin-left: 1.5%; height: 32px !important;"
 											placeholder="댓글을 남겨주세요">
-										<button class="mt-4 p-2 btn btn-secondary reply-btn"
-											onclick="replyRegister(${clinic.clinicNo})">등록</button>
+										<button class="mt-4 p-2 btn btn-secondary reply-btn" onclick="replyRegister(${clinic.clinicNo})">등록</button>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script src="resources/js/summernote/summernote-lite.js"></script>

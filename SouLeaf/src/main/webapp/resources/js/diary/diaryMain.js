@@ -23,7 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var companionNo= info.event.extendedProps.companionNo;
   
         $('#selectCompanion').html("");
-        $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
+        // undefined가 type인데 그것을 string으로 해줄려면 typeof를 작성해줘야함
+        if(typeof companionNick == "undefined"){
+          $('#selectCompanion').append("<option>삭제된 반려식물입니다.</option>");
+        }else {
+          $('#selectCompanion').append("<option value='"+companionNo+"'>"+companionNick+"</option>");
+        }
         $('#eventModal-modify .modal-body #modify-edit-title').val(info.event.title);
         var todayDate = getFormatDate(info.event.start);
         $('#eventModal-modify .modal-body #modify-edit-date').val(todayDate);
@@ -50,6 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 var $option;
                 if(data.length > 0) {
                   for(var i in data){
+                    // if(i == 0) {
+                    //   $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
+                    //   $select.append($option);
+                    // }
                       $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                       $select.append($option);
                   }
@@ -97,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       },
       dateClick: function(info) {
+
         var memberNo = $("#memberNo").val();
         $.ajax({
           url : "myCompanionList.kh",
@@ -109,19 +119,18 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data);
             var $option;
             if(data.length > 0) {
+              $('#eventModal-insert').modal({});
+              $('#edit-date').val(info.dateStr);  
               for(var i in data){
                   $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                   $select.append($option);
               }
-              e.preventDefault();
-              $('#eventModal-insert').modal({});
-              $('#edit-date').val(info.dateStr);
             } else if(data.length == 0) {
-              $('#eventModal-insert').modal('hide');
               var noList = confirm("등록된 반려식물이 없습니다. 반려식물을 등록하러가시겠습니까?");
               if(noList == true){
                 location.href="companionListView.kh";
               }
+              $('#eventModal-insert').modal('hide');
             }
           }
         });
