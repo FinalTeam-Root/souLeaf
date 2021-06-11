@@ -256,6 +256,7 @@ public class BoastController {
 	   System.out.println(boastNo);
 		int result = bService.removeBoast(boastNo);
 		if(result > 0) {
+			bService.removeBoastReplys(boastNo);
 			return "redirect:boastListView.kh";
 		}else {
 			return "redirect:boastListView.kh";			

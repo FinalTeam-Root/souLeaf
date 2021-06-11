@@ -81,6 +81,7 @@ public interface BoastService {
 	public ArrayList<Boast> printSearchAllList(MypageSearch search, MypageInfo pi);
 
 	public int removeMyBoast(HashMap<String, String> map);
+	public void removeBoastReplys(int boastNo);
 	
 	
 	

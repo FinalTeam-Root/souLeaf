@@ -49,5 +49,6 @@ public interface ClinicStore {
 	public ArrayList<Clinic> selectSearchAllList(MypageSearch search, MypageInfo pi);
 	public int deleteMyClinic(HashMap<String, String> map);
 	public ArrayList<Plant> selectSearchAllList(String search); //클리닉 검색
+	public void deleteClinicReplys(int clinicNo);
 	
 }

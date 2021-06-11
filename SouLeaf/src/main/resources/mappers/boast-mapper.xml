@@ -115,6 +115,10 @@
       UPDATE BOCOMMENT SET BOCOMMENT_CONTENT = #{bocommentContent} WHERE BOCOMMENT_NO = #{bocommentNo}
    </update>
    
+   	<update id="deleteReplys">
+	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo}
+	 </update>
+   
 	<update id="deleteBoastReply">
 	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOCOMMENT_NO= #{bocommentNo} OR BOCOMMENT_PARENT_NO = #{bocommentNo} AND BOCOMMENT_STATUS = 'Y'
 	 </update>

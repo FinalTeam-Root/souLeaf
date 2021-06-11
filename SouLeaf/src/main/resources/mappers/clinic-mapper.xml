@@ -111,6 +111,10 @@
 	<update id="deleteReply">
 		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINICCOMMENT_NO = #{cliniccommentNo}
 	</update>
+	
+	<update id="deleteReplys">
+		UPDATE CLINICCOMMENT SET CLINICCOMMENT_STATUS = 'N' WHERE CLINIC_NO = #{clinicNo}
+	</update>
 		
 	<update id="updateSelectionReply">
 		UPDATE CLINICCOMMENT SET CLINICCOMMENT_SELECTION = 'Y' WHERE CLINICCOMMENT_NO = #{cliniccommentNo} AND CLINICCOMMENT_STATUS = 'Y'

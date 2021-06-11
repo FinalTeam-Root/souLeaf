@@ -248,4 +248,9 @@ public class BoastServiceImpl implements BoastService {
 	return bStore.deleteMyBoast(map);
 
 	}
+
+	@Override
+	public void removeBoastReplys(int boastNo) {
+		bStore.deleteBoastReplys(boastNo);
+	}
 }

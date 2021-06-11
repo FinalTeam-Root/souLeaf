@@ -50,6 +50,7 @@ public interface ClinicService {
 	public int removeMyClinic(HashMap<String, String> map);
 	
 	public ArrayList<Plant> printSearchAllList(String search); //클리닉 검색
+	public void removeClinicReplys(int clinicNo);
 	
 	
 

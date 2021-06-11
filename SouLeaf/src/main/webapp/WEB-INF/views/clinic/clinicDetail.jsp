@@ -81,11 +81,11 @@
 													href="clinicListView.kh?page=${page }&count=${count}">목록</a>&nbsp;&nbsp;
 													<c:if test="${loginUser.memberNo eq clinic.memberNo  }">
 														<a href="clinicModifyView.kh?clinicNo=${clinic.clinicNo }&page=${page }&count=${count}">수정</a>&nbsp;&nbsp;
-															<c:url var="cDelete" value="clinicDelete.kh">
+														<%-- 	<c:url var="cDelete" value="clinicDelete.kh">
 															<c:param name="clinicNo" value="${clinic.clinicNo }"></c:param>
 															<c:param name="clinicFileRename" value="${clinic.clinicFileRename }"></c:param>
-														</c:url>
-														<a href="${cDelete }">삭제</a>
+														</c:url> --%>
+														<a href="#" onclick="clinicDelete(${clinic.clinicNo})">삭제</a>
 													</c:if> </span>
 											</div>
 										</div>

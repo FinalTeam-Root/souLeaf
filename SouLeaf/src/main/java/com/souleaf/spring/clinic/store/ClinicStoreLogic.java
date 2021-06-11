@@ -203,4 +203,9 @@ public class ClinicStoreLogic implements ClinicStore{
 		return sqlSession.update("clinicMapper.updateSelectionReply",cliniccommentNo);
 	}
 
+	@Override
+	public void deleteClinicReplys(int clinicNo) {
+		sqlSession.update("clinicMapper.deleteReplys", clinicNo);
+	}
+
 }

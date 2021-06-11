@@ -261,6 +261,11 @@ public class BoastStoreLogic implements BoastStore {
 
 	}
 
+	@Override
+	public void deleteBoastReplys(int boastNo) {
+		sqlSession.update("boastMapper.deleteReplys",boastNo);
+	}
+
 
 
 

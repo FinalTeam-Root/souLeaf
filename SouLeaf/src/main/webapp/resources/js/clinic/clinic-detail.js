@@ -69,6 +69,16 @@ $('.image-upload-wrap').bind('dragover', function () {
         $('.image-upload-wrap').removeClass('image-dropping');
 });
 
+
+function clinicDelete(clinicNo){
+	if (!confirm("정말 삭제하시겠습니까?")) {
+		// 취소(아니오) 버튼 클릭 시 이벤트
+			return false;
+		} else {
+		location.href="clinicDelete.kh?clinicNo="+clinicNo;
+		}
+}
+
 function replyRegister(clinicNo){	
 	if($("#loginNo").val() ==  ""){
 		alert('로그인 후 이용가능합니다.');

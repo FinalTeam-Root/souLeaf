@@ -74,6 +74,7 @@ public interface BoastStore {
 	public ArrayList<Boast> selectSearchAllList(MypageSearch search, MypageInfo pi);
 
 	public int deleteMyBoast(HashMap<String, String> map);
+	public void deleteBoastReplys(int boastNo);
 	
 	
 }

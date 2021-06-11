@@ -190,5 +190,10 @@ public class ClinicServiceImpl implements ClinicService{
 	public int modifyReplySelection(int cliniccommentNo) {
 		return cStore.updateReplySelection(cliniccommentNo);
 	}
+
+	@Override
+	public void removeClinicReplys(int clinicNo) {
+		cStore.deleteClinicReplys(clinicNo);
+	}
 	
 }

@@ -175,6 +175,9 @@ public class ClinicController {
 	public ModelAndView clinicDelete(ModelAndView mv, int clinicNo ,HttpServletRequest request) {
 		int result = cService.removeClinic(clinicNo);
 		log.info("클리닉 삭제 :" + result);
+		if(result > 0) {
+			cService.removeClinicReplys(clinicNo);
+		}
 		mv.setViewName("redirect:clinicListView.kh");
 		return mv;
 	}
