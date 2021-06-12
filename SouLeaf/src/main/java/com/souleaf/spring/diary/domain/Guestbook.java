@@ -11,6 +11,7 @@ public class Guestbook {
 	private int memberNo;
 	private int memberDiary;
 	private String memberNick;
+	private String memberFileRename;
 	
 	public Guestbook() {}
 
@@ -62,7 +63,6 @@ public class Guestbook {
 		this.memberDiary = memberDiary;
 	}
 
-	
 	public String getMemberNick() {
 		return memberNick;
 	}
@@ -71,13 +71,21 @@ public class Guestbook {
 		this.memberNick = memberNick;
 	}
 
+	public String getMemberFileRename() {
+		return memberFileRename;
+	}
+
+	public void setMemberFileRename(String memberFileRename) {
+		this.memberFileRename = memberFileRename;
+	}
+
 	@Override
 	public String toString() {
 		return "Guestbook [guestbookNo=" + guestbookNo + ", guestbookContent=" + guestbookContent + ", guestbookDate="
 				+ guestbookDate + ", guestbookUpdate=" + guestbookUpdate + ", memberNo=" + memberNo + ", memberDiary="
-				+ memberDiary + ", memberNick=" + memberNick + "]";
+				+ memberDiary + ", memberNick=" + memberNick + ", memberFileRename=" + memberFileRename + "]";
 	}
-	
+
 	
 	
 	

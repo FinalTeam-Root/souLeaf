@@ -20,7 +20,7 @@
  		<result property="diaryStatus" column="DIARY_STATUS"/>
  		<result property="imgUrl" column="IMG_URL"/>
  	</resultMap>
- 	 	<resultMap type="Diary" id="diaryJsonMap">
+ 	 <resultMap type="Diary" id="diaryJsonMap">
  		<result property="diaryRepicname" column="DIARY_REPICNAME"/>
 		<result property="memberNo" column="MEMBER_NO"/>
  	</resultMap>
@@ -32,6 +32,7 @@
  		<result property="memberNo" column="MEMBER_NO"/>
  		<result property="memberDiary" column="MEMBER_DIARY"/>
  		<result property="memberNick" column="MEMBER_NICK" />
+ 		<result property="memberFileRename" column="MEMBER_FILERENAME" />
  	</resultMap>
  	
  	<select id="selectAllDairy" resultType="CalendarView">
