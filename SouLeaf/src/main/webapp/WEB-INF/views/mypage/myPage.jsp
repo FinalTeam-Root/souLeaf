@@ -140,7 +140,11 @@
   margin-bottom: 10px;
 }
 .card-profile .card-avatar {
+/* background-image: url(resources/uploadFiles/member/${loginUser.memberFileRename} );
+ background-repeat : no-repeat;
+        background-size : contain; */
   width: 130px;
+  height: 130px;
   max-width: 130px;
   max-height: 130px;
   margin: -50px auto 0;
@@ -180,7 +184,7 @@
 									</c:when>
 									<c:otherwise>
 										<img
-											src="resources/uploadFiles/member/${loginUser.memberFileRename} " />
+											src="resources/uploadFiles/member/${loginUser.memberFileRename} "  width="130px" height="130px"/> 
 									</c:otherwise>
 								</c:choose>
 							</div>
