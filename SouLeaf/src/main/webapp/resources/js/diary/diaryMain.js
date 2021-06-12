@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       },
       dateClick: function(info) {
-
         var memberNo = $("#memberNo").val();
         $.ajax({
           url : "myCompanionList.kh",
