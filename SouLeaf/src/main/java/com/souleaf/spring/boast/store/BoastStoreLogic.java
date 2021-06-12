@@ -266,6 +266,16 @@ public class BoastStoreLogic implements BoastStore {
 		sqlSession.update("boastMapper.deleteReplys",boastNo);
 	}
 
+	@Override
+	public ArrayList<Boast> selectAllRank() {
+		return (ArrayList)sqlSession.selectList("boastMapper.selectAllRank");
+	}
+
+	@Override
+	public int getBoastReReply(int boastNo) {
+		return sqlSession.selectOne("boastMapper.getBoastReReply", boastNo);
+	}
+
 
 
 

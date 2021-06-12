@@ -239,59 +239,90 @@
         </div>
         <div class="row d-flex">
         
+        <c:forEach items="${bRank }" var="bRank" varStatus="status">
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');">
+              <a href="boastDetail.kh?boastNo=${bRank.boastNo }" class="block-20 rounded" style="background-image: url('resources/uploadFiles/boast/${bRank.boastFileRename }');">
               </a>
               <div class="text p-4">
+              <c:if test="${status.index == 0}">
                <i class="ri-medal-fill" style="font-size:40px; color:#FFD700; position: absolute; top: -5%;  right: 1%;"></i> 
-              	<div class="meta mb-2">
-                  <div class="meta-chat"><span class="far fa-eye"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br>
-                  <div><a>작성자</a></div>
-                  <div><a>2021-06-01</a></div>
-                </div>
-                <h3 class="heading boast-title"><a href="#">Even the all-powerful Pointing has no control l about the blind l about the blind about the blind texts</a></h3>
-              </div>
-            </div>
-          </div>
-          
-           <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');">
-              </a>
-              <div class="text p-4">
+              </c:if>
+              <c:if test="${status.index == 1}">
                <i class="ri-medal-fill" style="font-size:40px; color:#C0C0C0; position: absolute; top: -5%;  right: 1%;"></i> 
-              	<div class="meta mb-2">
-                  <div class="meta-chat"><span class="far fa-eye"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br>
-                  <div><a>작성자</a></div>
-                  <div><a>2021-06-01</a></div>
-                </div>
-                <h3 class="heading boast-title"><a href="#">Even th no control l about the blind l about the blind about the blind texts</a></h3>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');">
-              </a>
-              <div class="text p-4">
+              </c:if>
+              <c:if test="${status.index == 2}">
                <i class="ri-medal-fill" style="font-size:40px; color:#865d5a; position: absolute; top: -5%;  right: 1%;"></i> 
+              </c:if>
               	<div class="meta mb-2">
-                  <div class="meta-chat"><span class="far fa-eye"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div>
-	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br>
-                  <div><a>작성자</a></div>
-                  <div><a>2021-06-01</a></div>
+                  <div><a>${bRank.memberNick }</a></div>
+                  <div><a>${bRank.boastDate }</a></div>
+                  <br>
+                  <div class="meta-chat"><span class="far fa-eye"></span>${bRank.boastCount }</div>
+	                  <div class="meta-chat"><span class="fa fa-comment"></span>${bRank.boastLike }</div>
+	                  <div class="meta-chat"><span class="fas fa-heart"></span>${bRank.boastReplyCount }</div><br>
                 </div>
-                <h3 class="heading boast-title"><a href="#"> about the blind about the blind texts</a></h3>
+                <h3 class="heading boast-title"><a href="boastDetail.kh?boastNo=${bRank.boastNo }">${bRank.boastTitle }</a></h3>
+                <br>
+                <h6 class="text-success" style="font-size: 12px"><a href="plantDetailName.kh?plantName=${bRank.plantName}">#${bRank.plantName }</a></h6>
               </div>
             </div>
           </div>
+         </c:forEach>
+          
+<!--           <div class="col-md-4 d-flex ftco-animate"> -->
+<!--             <div class="blog-entry align-self-stretch"> -->
+<!--               <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');"> -->
+<!--               </a> -->
+<!--               <div class="text p-4"> -->
+<!--                <i class="ri-medal-fill" style="font-size:40px; color:#FFD700; position: absolute; top: -5%;  right: 1%;"></i>  -->
+<!--               	<div class="meta mb-2"> -->
+<!--                   <div class="meta-chat"><span class="far fa-eye"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br> -->
+<!--                   <div><a>작성자</a></div> -->
+<!--                   <div><a>2021-06-01</a></div> -->
+<!--                 </div> -->
+<!--                 <h3 class="heading boast-title"><a href="#">Even the all-powerful Pointing has no control l about the blind l about the blind about the blind texts</a></h3> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+          
+<!--            <div class="col-md-4 d-flex ftco-animate"> -->
+<!--             <div class="blog-entry align-self-stretch"> -->
+<!--               <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');"> -->
+<!--               </a> -->
+<!--               <div class="text p-4"> -->
+<!--                <i class="ri-medal-fill" style="font-size:40px; color:#C0C0C0; position: absolute; top: -5%;  right: 1%;"></i>  -->
+<!--               	<div class="meta mb-2"> -->
+<!--                   <div class="meta-chat"><span class="far fa-eye"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br> -->
+<!--                   <div><a>작성자</a></div> -->
+<!--                   <div><a>2021-06-01</a></div> -->
+<!--                 </div> -->
+<!--                 <h3 class="heading boast-title"><a href="#">Even th no control l about the blind l about the blind about the blind texts</a></h3> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+          
+<!--           <div class="col-md-4 d-flex ftco-animate"> -->
+<!--             <div class="blog-entry align-self-stretch"> -->
+<!--               <a href="#" class="block-20 rounded" style="background-image: url('resources/images/main_bg_16.jpg');"> -->
+<!--               </a> -->
+<!--               <div class="text p-4"> -->
+<!--                <i class="ri-medal-fill" style="font-size:40px; color:#865d5a; position: absolute; top: -5%;  right: 1%;"></i>  -->
+<!--               	<div class="meta mb-2"> -->
+<!--                   <div class="meta-chat"><span class="far fa-eye"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fa fa-comment"></span> 1234</div> -->
+<!-- 	                  <div class="meta-chat"><span class="fas fa-heart"></span> 1234</div><br> -->
+<!--                   <div><a>작성자</a></div> -->
+<!--                   <div><a>2021-06-01</a></div> -->
+<!--                 </div> -->
+<!--                 <h3 class="heading boast-title"><a href="#"> about the blind about the blind texts</a></h3> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
           
         </div>
       </div>

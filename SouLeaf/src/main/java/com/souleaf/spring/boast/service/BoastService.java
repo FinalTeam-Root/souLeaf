@@ -83,6 +83,9 @@ public interface BoastService {
 	public int removeMyBoast(HashMap<String, String> map);
 	public void removeBoastReplys(int boastNo);
 	
+	public ArrayList<Boast> printAllRank();
+	public int getReplyCount(int boastNo);
+	
 	
 	
 	

@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.souleaf.spring.boast.domain.Boast;
+import com.souleaf.spring.boast.service.BoastService;
+import com.souleaf.spring.boastLike.domain.BoastLike;
+import com.souleaf.spring.member.domain.Member;
+import com.souleaf.spring.member.service.MemberService;
 import com.souleaf.spring.plant.domain.Plant;
 import com.souleaf.spring.plant.domain.PlantFile;
 import com.souleaf.spring.plant.service.PlantService;
@@ -27,6 +32,10 @@ public class HomeController {
 	
 	@Autowired
 	PlantService pService;
+	@Autowired
+	BoastService bService;
+	@Autowired
+	MemberService mService;
 	
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
@@ -57,6 +66,22 @@ public class HomeController {
 				pRankList.add(pRank);
 			}
 			mv.addObject("pRank",pRankList);
+		}
+		ArrayList<Boast> bList = bService.printAllRank();
+		ArrayList<Boast> bRankList = new ArrayList<Boast>();
+		Boast bRank = new Boast();
+		if (bList != null) {
+			for(int i =0; i <3; i++) {
+				bRank = bList.get(i);
+				bRank.setBoastLike(bService.getLikeCount(bRank.getBoastNo()));
+				bRank.setBoastReplyCount(bService.getReplyCount(bRank.getBoastNo()));
+				Member member = mService.printMember(bRank.getMemberNo());
+				bRank.setMemberNick(member.getMemberNick());
+				Plant plant = pService.printOne(bRank.getPlantNo());
+				bRank.setPlantName(plant.getPlantName());
+				bRankList.add(bRank);
+			}
+			mv.addObject("bRank",bRankList);
 		}
 		mv.setViewName("home");
 		return mv;

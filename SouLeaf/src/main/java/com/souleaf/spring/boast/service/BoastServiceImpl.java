@@ -253,4 +253,14 @@ public class BoastServiceImpl implements BoastService {
 	public void removeBoastReplys(int boastNo) {
 		bStore.deleteBoastReplys(boastNo);
 	}
+
+	@Override
+	public ArrayList<Boast> printAllRank() {
+		return bStore.selectAllRank();
+	}
+
+	@Override
+	public int getReplyCount(int boastNo) {
+		return bStore.getBoastReReply(boastNo);
+	}
 }

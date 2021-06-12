@@ -55,7 +55,7 @@
       #{boastContents}, BOAST_UPDATE = SYSDATE, PLANT_NO = #{plantNo}, COMPANION_NO = #{companionNo}, BOAST_FILERENAME = #{boastFileRename} WHERE BOAST_NO = #{boastNo}
    </update>
    <update id="updateCount">
-      UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1 WHERE BOAST_NO = #{boastNo }
+      UPDATE BOAST SET BOAST_COUNT = BOAST_COUNT + 1, BOAST_POINT = BOAST_POINT +1 WHERE BOAST_NO = #{boastNo }
    </update>
 
    <update id="deleteBoast" >
@@ -126,6 +126,10 @@
 	<update id="deleteBoastReReply">
 	UPDATE BOCOMMENT SET BOCOMMENT_STATUS = 'N' WHERE BOAST_NO = #{boastNo } AND BOCOMMENT_NO = #{bocommentNo }
 	 </update>
+	 
+	<select id="getBoastReReply" resultType="_int">
+		SELECT COUNT(*) FROM BOCOMMENT WHERE BOAST_NO = #{boastNo}
+	</select>
 	
 	
 	<!-- 마이페이지 -->
@@ -169,6 +173,10 @@
 	<update id="deleteMyBoast" parameterType="map">
 		UPDATE BOAST SET BOAST_STATUS = 'N' WHERE BOAST_NO IN (${chkNo})
 	</update>
+	
+	<select id="selectAllRank" parameterType="Boast" resultMap="boastResultMap">
+		SELECT * FROM BOAST ORDER BY BOAST_POINT DESC
+	</select>
 	
 	
 </mapper>

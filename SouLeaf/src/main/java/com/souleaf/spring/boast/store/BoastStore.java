@@ -76,5 +76,8 @@ public interface BoastStore {
 	public int deleteMyBoast(HashMap<String, String> map);
 	public void deleteBoastReplys(int boastNo);
 	
+	public ArrayList<Boast> selectAllRank();
+	public int getBoastReReply(int boastNo);
+	
 	
 }
