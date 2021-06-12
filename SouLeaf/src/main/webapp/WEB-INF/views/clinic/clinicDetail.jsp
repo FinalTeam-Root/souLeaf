@@ -164,11 +164,11 @@
              url : "/createRoom.kh",
              type : "get",
              dataType : "json",
-             data : {"memberNo":${clinic.memberNo}, "roomName":"${clinic.memberNick}" },
+             data : {"memberNo": ${clinic.memberNo}, "roomName":"${clinic.memberNick}" },
              success : function(data) {
-            	 var number = "data[lastItem].roomNumber";
-            	 var name = '+data[lastItem].roomName+';
-            	 let lastItem=data[data.length-1];  
+            	 let lastItem=data[data.length-1];
+            	 var number = lastItem.roomNumber;
+            	 var name = lastItem.roomName;
             	 goRoom(number, name);
              }
              });

@@ -76,7 +76,11 @@ public class MainController {
 	public @ResponseBody List<Room> createRoom(@RequestParam HashMap<Object, Object> params, HttpSession session) {
 		String roomName = (String) params.get("roomName");
  		if (roomName != null && !roomName.trim().equals("")) {
-			roomNumber = cService.printMaxRoomNum();
+ 			try {
+ 				roomNumber = cService.printMaxRoomNum();
+ 			} catch(Exception e) {
+ 				roomNumber = 0;
+ 			}
 			Room room1 = new Room();
 			Room room2 = new Room();
 			int MemberNo=Integer.parseInt((String) params.get("memberNo"));
@@ -103,8 +107,8 @@ public class MainController {
 			room2.setWithMemberPick(mOne1.getMemberFileRename());
 			int result2 = cService.registerRoom(room2);
 			
-			roomList.add(room1);
 			roomList.add(room2);
+			roomList.add(room1);
 		}
 		return roomList;
 	}
