@@ -44,7 +44,11 @@
 													${clinic.memberNick }</button>
 												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 													<a class="dropdown-item" href="diaryMainOtherView.kh?memberDiary=${clinic.memberNo }">일기 보러가기</a>
-													<a class="dropdown-item" href="#" onclick="registerRoom();">1:1 채팅</a>
+													<c:if test ="${loginUser.memberNo ne null}">
+														<c:if test ="${loginUser.memberNo ne clinic.memberNo}">
+															<a class="dropdown-item" href="#" onclick="checkRoom();">1:1 채팅</a>
+														</c:if>
+													</c:if>
 												</div>
 												${clinic.clinicDate } &nbsp;&nbsp;<span class="far fa-eye"></span>
 												${clinic.clinicCount } &nbsp;&nbsp;<span
@@ -159,12 +163,31 @@
 		</div>
 	</section>
 	<script>
+	function checkRoom() {
+		 $.ajax({
+             url : "/checkRoom.kh",
+             type : "get",
+             dataType : "json",
+             data : {"memberNo": "${loginUser.memberNo}", "withMemberNo":"${clinic.memberNo}" },
+             success : function(data) {
+            	 var cheakRoom = data;
+            	 if(cheakRoom == 0) {
+            	 registerRoom();
+            	 } else {
+            		 var number = ${clinic.memberNo};
+            		 var name = "${clinic.memberNick}";
+            		 goRoom(number, name);
+            	 }
+             }
+             });
+	}
+	
 	function registerRoom() {
 		 $.ajax({
              url : "/createRoom.kh",
              type : "get",
              dataType : "json",
-             data : {"memberNo": ${clinic.memberNo}, "roomName":"${clinic.memberNick}" },
+             data : {"memberNo": "${clinic.memberNo}", "roomName":"${clinic.memberNick}" },
              success : function(data) {
             	 let lastItem=data[data.length-1];
             	 var number = lastItem.roomNumber;

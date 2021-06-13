@@ -1,23 +1,25 @@
 package com.souleaf.spring.chat.room;
 
+import java.sql.Date;
+
 public class Chat {
 	private int chatNo; // 채팅 넘버
 	private int roomNumber; // 룸 넘버
 	private String roomName; // 룸 이름
-	private String memberNo; // 멤버 아이디
+	private int memberNo; // 멤버 번호
 	private String memberNick; // 멤버 닉네임
-	private String withMemberNo; // 상대방 아이디
+	private int withMemberNo; // 상대방 번호
 	private String withMemberNick; // 상대방 닉네임
 	private String msg; // 메시지
-	private String chatDate; // 입력 날짜
+	private Date chatDate; // 입력 날짜
 
 	public Chat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Chat(int chatNo, int roomNumber, String roomName, String memberNo, String memberNick, String withMemberNo,
-			String withMemberNick, String msg, String chatDate) {
+	public Chat(int chatNo, int roomNumber, String roomName, int memberNo, String memberNick, int withMemberNo,
+			String withMemberNick, String msg, Date chatDate) {
 		super();
 		this.chatNo = chatNo;
 		this.roomNumber = roomNumber;
@@ -54,11 +56,11 @@ public class Chat {
 		this.roomName = roomName;
 	}
 
-	public String getMemberNo() {
+	public int getMemberNo() {
 		return memberNo;
 	}
 
-	public void setMemberNo(String memberNo) {
+	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
 
@@ -70,11 +72,11 @@ public class Chat {
 		this.memberNick = memberNick;
 	}
 
-	public String getWithMemberNo() {
+	public int getWithMemberNo() {
 		return withMemberNo;
 	}
 
-	public void setWithMemberNo(String withMemberNo) {
+	public void setWithMemberNo(int withMemberNo) {
 		this.withMemberNo = withMemberNo;
 	}
 
@@ -94,11 +96,11 @@ public class Chat {
 		this.msg = msg;
 	}
 
-	public String getChatDate() {
+	public Date getChatDate() {
 		return chatDate;
 	}
 
-	public void setChatDate(String chatDate) {
+	public void setChatDate(Date chatDate) {
 		this.chatDate = chatDate;
 	}
 

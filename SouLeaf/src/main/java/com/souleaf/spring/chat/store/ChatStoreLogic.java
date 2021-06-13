@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.stereotype.Repository;
 
 import com.souleaf.spring.chat.room.Chat;
@@ -48,6 +49,24 @@ public class ChatStoreLogic implements ChatStore{
 	public int insertRoom(Room room) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("roomMapper.insertRoom", room);
+	}
+
+	@Override
+	public int selectCheckRoom(Room room) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("roomMapper.selectCheckRoom", room);
+	}
+
+	@Override
+	public int updateRoom(Room room) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("roomMapper.updateRoom", room);
+	}
+
+	@Override
+	public int updateRoom2(Room room) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("roomMapper.updateRoom2", room);
 	}
 
 }

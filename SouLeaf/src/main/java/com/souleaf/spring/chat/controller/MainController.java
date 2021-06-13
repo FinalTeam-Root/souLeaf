@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,6 +97,7 @@ public class MainController {
 			room1.setWithMemberNo(mOne2.getMemberNo());
 			room1.setWithMemberNick(mOne2.getMemberNick());
 			room1.setWithMemberPick(mOne2.getMemberFileRename());
+			room1.setLastChatMessage("");
 			int result1 = cService.registerRoom(room1);
 			
 			room2.setRoomNumber(roomNumber);
@@ -105,6 +107,7 @@ public class MainController {
 			room2.setWithMemberNo(mOne1.getMemberNo());
 			room2.setWithMemberNick(mOne1.getMemberNick());
 			room2.setWithMemberPick(mOne1.getMemberFileRename());
+			room2.setLastChatMessage("");
 			int result2 = cService.registerRoom(room2);
 			
 			roomList.add(room2);
@@ -158,11 +161,21 @@ public class MainController {
 	 * 
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping("/chatRegister.kh")
 	public void registerChat(@ModelAttribute Chat chat) {
 		try {
 			int result = cService.registerChat(chat);
 			log.info("채팅 저장 결과 : " + result);
+			Room room = new Room();
+			room.setMemberNo(chat.getMemberNo());
+			room.setWithMemberNo(chat.getWithMemberNo());
+			room.setLastChatMessage(chat.getMsg());
+			System.out.println(room.toString());
+			int room1 = cService.modifyRoom(room);
+			log.info("채팅방 마지막 채팅 내용 저장1 : " + room1);
+			int room2 = cService.modifyRoom2(room);
+			log.info("채팅방 마지막 채팅 내용 저장2 : " + room2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -195,5 +208,15 @@ public class MainController {
 			log.info("채팅 내용 저장 DB 에러");
 		}
 	}
-
+	
+	@RequestMapping("/checkRoom.kh")
+	public void cheakRoom(@ModelAttribute Room room, HttpServletResponse response) {
+		try {
+			int result = cService.printCheckRoom(room);
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+			gson.toJson(result, response.getWriter());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

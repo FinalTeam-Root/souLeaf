@@ -99,6 +99,7 @@ public class ClinicController {
 		cLike.setClinicNo(clinicNo);
 		cLike.setMemberNo(loginUser.getMemberNo());
 		cLike = cService.printLike(cLike);
+		mv.addObject("loginUser",loginUser);
 		mv.addObject("cLike",cLike);
 		}
 		mv.addObject("page",currentPage).addObject("count",currentCount).addObject("clinic",clinic).setViewName("clinic/clinicDetail");

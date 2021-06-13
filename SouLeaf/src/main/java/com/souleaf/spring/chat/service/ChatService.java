@@ -19,4 +19,9 @@ public interface ChatService {
 
 	public int registerRoom(Room room); // 방 정보 저장
 
+	public int printCheckRoom(Room room); // 방 존재 여부 확인
+
+	public int modifyRoom(Room room); // 마지막 채팅 내용 표시
+
+	public int modifyRoom2(Room room); // 마지막 채팅 내용 표시
 }

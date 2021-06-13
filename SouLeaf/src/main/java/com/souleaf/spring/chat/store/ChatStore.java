@@ -18,4 +18,10 @@ public interface ChatStore {
 	public ArrayList<Chat> selectAllChat(int roomNumber); // 채팅 내용 가져오기
 
 	public int insertRoom(Room room); // 룸 정보 저장
+
+	public int selectCheckRoom(Room room); // 룸 정보 존재 여부
+
+	public int updateRoom(Room room); // 마지막 채팅 내용
+
+	public int updateRoom2(Room room); // 마지막 채팅 내용
 }

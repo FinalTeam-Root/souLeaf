@@ -50,4 +50,15 @@
 		SELECT * FROM CHAT WHERE ROOM_NUMBER = #{roomNumber} ORDER BY CHAT_DATE ASC
 	</select>
 	
+	<select id="selectCheckRoom" resultType="_int">
+		SELECT COUNT(*) FROM ROOM WHERE MEMBER_NO = #{memberNo } AND WITHMEMBER_NO = #{withMemberNo }
+	</select>
+	
+	<update id="updateRoom" parameterType="Room">
+		UPDATE ROOM SET LASTCHAT_MESSAGE = #{lastChatMessage} ,LASTCHAT_DATE = SYSDATE WHERE MEMBER_NO = #{memberNo } AND WITHMEMBER_NO = #{withMemberNo }
+	</update>
+
+	<update id="updateRoom2">
+		UPDATE ROOM SET LASTCHAT_MESSAGE = #{lastChatMessage} ,LASTCHAT_DATE = SYSDATE WHERE MEMBER_NO = #{withMemberNo } AND WITHMEMBER_NO = #{memberNo }
+	</update>
 </mapper>

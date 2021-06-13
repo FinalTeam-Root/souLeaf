@@ -179,8 +179,7 @@ img {
 		<input type="hidden" id="memberNo" value="${room.memberNo}">
 		<input type="hidden" id="memberNick" value="${room.memberNick}">
 		<input type="hidden" id="withMemberNo" value="${room.withMemberNo}">
-		<input type="hidden" id="withMemberNick"
-			value="${room.withMemberNick}">
+		<input type="hidden" id="withMemberNick" value="${room.withMemberNick}">
 
 		<div class="mesgs">
 			<div class="msg_history">
@@ -295,7 +294,6 @@ img {
 			$.ajax({
 				url : "/chatRegister.kh",
 				type : "get",
-				dataType : "json",
 				data : {
 					"roomNumber" : roomNumber,
 					"roomName" : roomName,
@@ -306,6 +304,8 @@ img {
 					"msg" : $("#chatting").val()
 				},
 				success : function(data) {
+					opener.location.reload();
+
 				}
 			});
 
