@@ -11,7 +11,7 @@ public class Chat {
 	private int withMemberNo; // 상대방 번호
 	private String withMemberNick; // 상대방 닉네임
 	private String msg; // 메시지
-	private Date chatDate; // 입력 날짜
+	private String chatDate; // 입력 날짜
 
 	public Chat() {
 		super();
@@ -19,7 +19,7 @@ public class Chat {
 	}
 
 	public Chat(int chatNo, int roomNumber, String roomName, int memberNo, String memberNick, int withMemberNo,
-			String withMemberNick, String msg, Date chatDate) {
+			String withMemberNick, String msg, String chatDate) {
 		super();
 		this.chatNo = chatNo;
 		this.roomNumber = roomNumber;
@@ -96,11 +96,11 @@ public class Chat {
 		this.msg = msg;
 	}
 
-	public Date getChatDate() {
+	public String getChatDate() {
 		return chatDate;
 	}
 
-	public void setChatDate(Date chatDate) {
+	public void setChatDate(String chatDate) {
 		this.chatDate = chatDate;
 	}
 

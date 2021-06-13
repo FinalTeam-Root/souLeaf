@@ -217,10 +217,10 @@ img {
 						var html = "";
 						if (data[i].memberNo == $("#memberNo").val()) {
 							$("#chating")
-							.append("<div class='outgoing_msg'><div class='sent_msg'> <p>" + data[i].msg + "</p> <span class='time_date'>" + moment( data[i].chatDate) .format( "HH:mm") + "</span></div></div>");
+							.append("<div class='outgoing_msg'><div class='sent_msg'> <p>" + data[i].msg + "</p> <span class='time_date'>" + moment(data[i].chatDate).format("HH:mm") + "</span></div></div>");
 							} else {
 								$("#chating")
-								.append("<div class='incoming_msg'><div class='incoming_msg_img'><img src='resources/images/basicMemberImg.png' alt='sunil'></div><div class='received_msg'><div class='received_withd_msg'><p>" + data[i].msg + "</p> <span class='time_date'>" + moment( data[i].chatDate) .format( "HH:mm") + "</span></div></div></div>");
+								.append("<div class='incoming_msg'><div class='incoming_msg_img'><img src='resources/images/basicMemberImg.png' alt='sunil'></div><div class='received_msg'><div class='received_withd_msg'><p>" + data[i].msg + "</p> <span class='time_date'>" + moment(data[i].chatDate).format("HH:mm") + "</span></div></div></div>");
 							}
 						}
 					$('div.msg_history').scrollTop($('div.msg_history').prop('scrollHeight'));
