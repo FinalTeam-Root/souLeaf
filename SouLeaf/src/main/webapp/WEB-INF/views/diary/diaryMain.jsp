@@ -285,7 +285,7 @@
 						<div class="form-group">
 							<label class="col-xs-4" for="edit-lastWater">마지막 물 준 날</label>
 							<div class="col-xs-12 input-group date" id="datapicker2">
-								<input class="form-control datetimepicker-input" type="text" name="companionLastWater" id="edit-lastWater" />
+								<input class="form-control datetimepicker-input" type="text" name="companionLastWater" id="edit-lastWater"/>
 								<div class="input-group-append" data-toggle="datetimepicker">
 									<div class="input-group-text">
 										<i class="fa fa-calendar"></i>

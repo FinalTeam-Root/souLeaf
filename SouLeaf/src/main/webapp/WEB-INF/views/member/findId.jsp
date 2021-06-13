@@ -108,7 +108,7 @@
 						var $btnarea = $(".btnarea");
 						$(".findForm").hide();
 						$("#msg").html("<h3>회원님의 아이디는 <span class='text-success'>"+data.memberId+"</span> 입니다.</h3>");
-						$btnarea.append("<button type='button' class='btn btn-success'>비밀번호 찾기</button>");
+						$btnarea.append("<button type='button' onclick='findPw()'class='btn btn-success'>비밀번호 찾기</button>");
 						
 					}else if(data == "null"){
 						$("#msg").html("일치하는 회원 정보가 없습니다. 다시 확인해주세요.");
@@ -117,6 +117,10 @@
 			}) 
 			
 		});
+		
+		function findPw(){
+			location.href='findPwView.kh';
+		}
 		</script>
 </body>
 </html>

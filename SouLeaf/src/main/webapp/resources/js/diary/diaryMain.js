@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         myCustomButton: {
           text: '일기쓰기',
           click: function(e) {
+
             var memberNo = $("#memberNo").val();
             $.ajax({
               url : "myCompanionList.kh",
@@ -55,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 var $option;
                 if(data.length > 0) {
                   for(var i in data){
-                    // if(i == 0) {
-                    //   $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
-                    //   $select.append($option);
-                    // }
+                    if(i == 0) {
+                      $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
+                      $select.append($option);
+                    }
                       $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                       $select.append($option);
                   }
@@ -121,6 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
               $('#eventModal-insert').modal({});
               $('#edit-date').val(info.dateStr);  
               for(var i in data){
+                if(i == 0) {
+                  $option = $("<option> ===== 반려식물을 선택해주세요 ===== </option>");
+                  $select.append($option);
+                }
                   $option = $("<option value='"+data[i].companionNo +"' data-com-water='"+data[i].companionLastWater+"'>"+data[i].companionNick +"</option>");
                   $select.append($option);
               }
@@ -182,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 반려식물 선택값에 따라서 마지막 물 준날 셋팅
     $("#selectCom").on("change", function(e){
       $('#edit-lastWater').val(e.target[e.target.selectedIndex].dataset.comWater);
-      // console.log($(e.target).data("comWater"));
-      // console.log(e.target[e.target.selectedIndex].dataset.comWater);
+      console.log($(e.target).data("comWater"));
+      console.log(e.target[e.target.selectedIndex].dataset.comWater);
     });
 
     //input을 datepicker로 선언
