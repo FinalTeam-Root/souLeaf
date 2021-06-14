@@ -65,7 +65,7 @@ CI | Github
 <br><br>
 
 
-  
+ - 김윤정
   - 성장일기
     - FullCalendar를 활용한 반려 식물 물주기 관리 및 성장일기 
     - 사진첩
