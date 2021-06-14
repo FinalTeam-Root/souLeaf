@@ -148,7 +148,7 @@ CI | Github
 ------------
 ## 주요 기능
 
-[시연영상](https://youtu.be/f04d1yifcHQ)
+[시연영상 바로가기](https://youtu.be/f04d1yifcHQ)<br>
 <img width="1422" alt="메인1" src="https://user-images.githubusercontent.com/46438918/121857755-e7710480-cd30-11eb-91fe-a8f22d545fb5.png">
 <img width="1422" alt="메인2" src="https://user-images.githubusercontent.com/46438918/121857771-e9d35e80-cd30-11eb-8664-c368b305080d.png">
 <img width="1425" alt="메인 - 검색" src="https://user-images.githubusercontent.com/46438918/121857792-ee981280-cd30-11eb-9a4b-cea92736ce30.png">
