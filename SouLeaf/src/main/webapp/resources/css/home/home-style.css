@@ -239,7 +239,7 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 .boast-title{
   overflow: hidden;
   text-overflow: ellipsis;
-  //white-space: nowrap;
+  white-space: nowrap;
   width: 300px;
-  height: 80px;
+  //height: 80px;
 }
