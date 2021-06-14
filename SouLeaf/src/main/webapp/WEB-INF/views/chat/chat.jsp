@@ -304,7 +304,7 @@ img {
 					"msg" : $("#chatting").val()
 				},
 				success : function(data) {
-					opener.location.reload();
+// 					opener.location.reload();
 
 				}
 			});
