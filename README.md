@@ -43,14 +43,15 @@
 
 Category | Detail
 ---- | ----
-Laguage & Library |  Java, Servlet, HTML5, css, Javascript, jQuery, Ajax, JSP
+Laguage & Library |  Java, Servlet, HTML5, CSS, Javascript, jQuery, Ajax, JSP
 API | kakao login, fullcalendar, openWeather 
 IDE | Eclpise
+DataBase | Oracle 11g
 Server | Tomcat(v8.5)
 Framework | Spring, Bootstrap, MyBatis
 Document | draw.io, google drive, ERDCloud, StarUML
 CI | Github
-DataBase | Oracle 11g
+
 
 ------------
 ## 프로젝트 기능 구현
@@ -64,7 +65,8 @@ DataBase | Oracle 11g
     - 프로젝트 문서 작업
 <br><br>
 
-- 김윤정  
+
+  
   - 성장일기
     - FullCalendar를 활용한 반려 식물 물주기 관리 및 성장일기 
     - 사진첩
@@ -132,7 +134,7 @@ DataBase | Oracle 11g
   - 마이페이지
     - 반려식물 CRUD
   - 서버
-    - 로그를 활용한 로그 
+    - 로그를 활용한 로그 기록
   
   
 <br><br>
@@ -143,7 +145,7 @@ DataBase | Oracle 11g
   - 자랑하기
     - 게시글 CRUD  
  
-  
+  <br><br>
 ------------
 ## 주요 기능
 
@@ -151,7 +153,7 @@ DataBase | Oracle 11g
 ------------ 
 ## Document
 ### 1. 유스케이스
-
+- 유스케이스![total](https://user-images.githubusercontent.com/46438918/121833774-027b4e80-cd08-11eb-905d-be1a2d1283ea.jpg)
 
 ### 2. ERD
-
+![souleaf_erd](https://user-images.githubusercontent.com/46438918/121833850-3a829180-cd08-11eb-9de9-cbe23ba7e803.JPG)
