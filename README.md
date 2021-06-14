@@ -148,6 +148,16 @@ CI | Github
 ------------
 ## 주요 기능
 
+[시연영상](https://youtu.be/f04d1yifcHQ)
+<img width="1422" alt="메인1" src="https://user-images.githubusercontent.com/46438918/121857755-e7710480-cd30-11eb-91fe-a8f22d545fb5.png">
+<img width="1422" alt="메인2" src="https://user-images.githubusercontent.com/46438918/121857771-e9d35e80-cd30-11eb-8664-c368b305080d.png">
+<img width="1425" alt="메인 - 검색" src="https://user-images.githubusercontent.com/46438918/121857792-ee981280-cd30-11eb-9a4b-cea92736ce30.png">
+<img width="1081" alt="식물 찾기" src="https://user-images.githubusercontent.com/46438918/121857832-f8217a80-cd30-11eb-831b-5162a084c926.png">
+<img width="704" alt="자랑하기" src="https://user-images.githubusercontent.com/46438918/121857840-fa83d480-cd30-11eb-9bfe-47a8f50669bb.png">
+<img width="1425" alt="마이페이지" src="https://user-images.githubusercontent.com/46438918/121857849-fce62e80-cd30-11eb-81c3-e848aa58f995.png">
+<img width="1224" alt="관리자페이지" src="https://user-images.githubusercontent.com/46438918/121857858-ff488880-cd30-11eb-996f-443a15216d9e.png">
+<img width="966" alt="성장일기 메인" src="https://user-images.githubusercontent.com/46438918/121857867-01124c00-cd31-11eb-9a30-dda56552852b.png">
+
 
 ------------ 
 ## Document
