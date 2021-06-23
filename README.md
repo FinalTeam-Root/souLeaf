@@ -45,7 +45,7 @@ Category | Detail
 ---- | ----
 Laguage & Library |  Java, Servlet, HTML5, CSS, Javascript, jQuery, Ajax, JSP
 API | kakao login, fullcalendar, openWeather 
-IDE | Eclpise
+IDE | Eclipse
 DataBase | Oracle 11g
 Server | Tomcat(v8.5)
 Framework | Spring, Bootstrap, MyBatis
